@@ -1,0 +1,134 @@
+plugins {
+    id 'io.freefair.lombok' version '6.4.2' apply false
+    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0' apply false
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'io.freefair.lombok'
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+
+    group = 'net.accelbyte.sdk'
+
+    compileJava.options.encoding = 'UTF-8'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    java {
+        //withJavadocJar()
+        //withSourcesJar()
+    }
+
+    task testCore(type: Test) {
+        useJUnitPlatform {
+            includeTags('test-core')
+        }
+        reports {
+            junitXml.required = true
+            html.required = false
+        }
+    }
+
+    task testIntegration(type: Test) {
+        useJUnitPlatform {
+            includeTags('test-integration')
+        }
+        reports {
+            junitXml.required = true
+            html.required = false
+        }
+    }
+
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from 'jd'
+    }
+
+    task sourcesJar(type: Jar) {
+        archiveClassifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact javadocJar
+                artifact sourcesJar
+
+                groupId = 'net.accelbyte.sdk'
+                artifactId = project.name
+
+                pom {
+                    name = 'accelbyte-java-sdk'
+                    description = 'AccelByte Gaming Services Java Extend SDK generated from OpenAPI specs'
+                    url = 'https://github.com/AccelByte/accelbyte-java-sdk'
+                    inceptionYear = '2021'
+
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'developer'
+                            name = 'AccelByte Developer'
+                            email = 'developer@accelbyte.net'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git:github.com/AccelByte/accelbyte-java-sdk.git'
+                        developerConnection = 'scm:git:ssh://github.com/AccelByte/accelbyte-java-sdk.git'
+                        url = 'https://github.com/AccelByte/accelbyte-java-sdk/'
+                    }
+                }
+            }
+        }
+
+        if ('publishToSonatype' in gradle.startParameter.taskNames) {
+            // https://github.com/gradle-nexus/publish-plugin/issues/81
+
+            apply plugin: 'io.github.gradle-nexus.publish-plugin'
+
+            nexusPublishing {
+                repositories {
+                    sonatype {
+                        nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+                        snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+                        username = System.getenv("PUBLISH_OSSRH_USERNAME")
+                        password = System.getenv("PUBLISH_OSSRH_PASSWORD")
+                    }
+                }
+            }
+        }
+
+        signing {
+            def signingKey = System.getenv("PUBLISH_ASC_KEY")
+            def signingPassword = System.getenv("PUBLISH_ASC_KEY_PASSWORD")
+            useInMemoryPgpKeys(signingKey, signingPassword)
+            sign publishing.publications.mavenJava
+        }
+
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+        implementation 'com.google.guava:guava:31.1-jre'
+        implementation 'com.nimbusds:nimbus-jose-jwt:9.25.6'
+        implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+        implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+        implementation 'commons-io:commons-io:2.11.0'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    }
+}
+

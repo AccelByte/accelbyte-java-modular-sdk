@@ -1,0 +1,27 @@
+version = '0.32.0'
+
+dependencies {
+    api project(':module-achievement')
+    api project(':module-basic')
+    api project(':module-cloudsave')
+    api project(':module-dslogmanager')
+    api project(':module-dsmc')
+    api project(':module-eventlog')
+    api project(':module-gametelemetry')
+    api project(':module-gdpr')
+    api project(':module-group')
+    api project(':module-iam')
+    api project(':module-leaderboard')
+    api project(':module-legal')
+    api project(':module-lobby')
+    api project(':module-match2')
+    api project(':module-matchmaking')
+    api project(':module-platform')
+    api project(':module-qosm')
+    api project(':module-reporting')
+    api project(':module-seasonpass')
+    api project(':module-session')
+    api project(':module-sessionbrowser')
+    api project(':module-social')
+    api project(':module-ugc')
+}

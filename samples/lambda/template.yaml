@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  An AWS Lambda Sample App built using AccelByte Java SDK for adding statistic to a user, getting a list of statistics of a user, and deleting a statistic from a user
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+    Environment:
+      Variables:
+        AB_BASE_URL: 'https://demo.accelbyte.io'
+        AB_CLIENT_ID: 'xxxxxxxxxxx'
+        AB_CLIENT_SECRET: 'xxxxxxxxxxx'
+
+Resources:
+  UserStatsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: UserStatsFunction
+      Handler: awslambdaexample.App::handleRequest
+      Runtime: java8
+      MemorySize: 512
+      FunctionUrlConfig: # https://docs.aws.amazon.com/lambda/latest/dg/urls-tutorial.html
+        AuthType: NONE # Change to "AWS_IAM" based on your needs https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html
+        Cors:
+          AllowOrigins:
+            - "*"
+          AllowHeaders:
+            - "*"
+          AllowMethods:
+            - "*"
+
+Outputs:
+  UserStatsFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt UserStatsFunction.Arn
+  UserStatsFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt UserStatsFunctionRole.Arn
+  UserStatsFunctionUrlEndpoint:
+    Description: "Java Simple App Lambda Function URL Endpoint"
+    Value:
+      Fn::GetAtt: UserStatsFunctionUrl.FunctionUrl # {Function Name}Url.FunctionUrl

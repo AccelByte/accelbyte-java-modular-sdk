@@ -1,0 +1,37 @@
+rootProject.name = 'accelbyte-java-sdk'
+
+include ":module-common"
+include ":module-iam"
+include ":module-platform"
+include ":module-basic"
+include ":module-cloudsave"
+include ":module-achievement"
+include ":module-dslogmanager"
+include ":module-dsmc"
+include ":module-eventlog"
+include ":module-gametelemetry"
+include ":module-gdpr"
+include ":module-group"
+include ":module-leaderboard"
+include ":module-legal"
+include ":module-lobby"
+include ":module-match2"
+include ":module-matchmaking"
+include ":module-qosm"
+include ":module-reporting"
+include ":module-seasonpass"
+include ":module-session"
+include ":module-sessionbrowser"
+include ":module-social"
+include ":module-ugc"
+include ":all-module"
+
+// set project name specifically for all-module to 'sdk'
+// so the published jar will have the old naming format
+// net.accelbyte.sdk:sdk:+
+// it was intended to use :all-module instead of :sdk,
+// for the sake of clarity, and prevent misunderstanding
+// when using directory called 'sdk' on the new modular
+// structure
+project(':all-module').name = 'sdk'
+

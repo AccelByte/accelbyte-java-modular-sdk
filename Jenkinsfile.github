@@ -1,0 +1,118 @@
+library(
+  identifier: 'jenkins-shared-library@master',
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: 'https://github.com/dhanarab/jenkins-pipeline-library.git'
+    ]
+  )
+)
+
+githubOwner = 'AccelByte'
+githubRepo = 'accelbyte-java-sdk'
+githubSsh = 'dhanarab-sdkbuild-ssh'
+githubPat = 'dhanarab-sdkbuild-pat-github'
+bitbucketSsh = 'bitbucket-build-extend-ssh'
+
+githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
+
+pipeline {
+  agent {
+    label "justice-codegen-sdk"
+  }
+  stages {
+    stage('Prepare') {
+      steps {
+        script {
+          currentBuild.displayName = "#${env.BUILD_NUMBER} ${params.ACTION}"
+          gitHost = sh(script: "echo '${githubUrl}' | grep -oP '(?<=@).+(?=:)'", returnStdout: true).trim()
+          sh "grep -q ${gitHost} ~/.ssh/known_hosts || ssh-keyscan ${gitHost} | tee -a ~/.ssh/known_hosts"
+        }
+      }
+    }
+    stage('Push') {
+      when {
+        expression {
+          return params.ACTION == 'PUSH'
+        }
+      }
+      steps {
+        script {
+          sh "git checkout master"
+          sshagent(credentials: [githubSsh])
+          {
+            sh "git push ${githubUrl} HEAD:main"
+          }
+        }
+      }
+    }
+    stage('Release') {
+      when {
+        expression {
+          return params.ACTION == 'PUSH+RELEASE'
+        }
+      }
+      environment {
+        PUBLISH_OSSRH = credentials('maven-central-accelbyte')
+        PUBLISH_ASC_KEY_FILE_PATH = credentials('maven-central-accelbyte-signing-key')
+        PUBLISH_ASC_KEY_PASSWORD = credentials('maven-central-accelbyte-signing-password')
+      }
+      steps {
+        script {
+          if (params.RELEASE_NOTE ==~ /(?s).*@[A-Za-z0-9_-]+@.*/)
+          {
+            echo 'Release note still contains one or more template placeholders e.g. @VERSION@, etc. Please check.'
+            sh 'false' // Fail this job
+          }
+          sh "git checkout ${params.RELEASE_BRANCH}"
+          sshagent(credentials: [githubSsh])
+          {
+            if (params.RELEASE_BRANCH == "master") {
+              sh "git push ${githubUrl} HEAD:main"
+            }
+            else {
+              sh "git push ${githubUrl} HEAD:${params.RELEASE_BRANCH}"
+            }
+            sh "git push ${githubUrl} ${params.RELEASE_TAG}"
+          }
+          github.createRelease(githubPat, githubOwner, githubRepo, params.RELEASE_TAG, params.RELEASE_TAG, params.RELEASE_NOTE)
+          sh 'make publish PUBLISH_OSSRH_USERNAME="$PUBLISH_OSSRH_USR" PUBLISH_OSSRH_PASSWORD="$PUBLISH_OSSRH_PSW" PUBLISH_ASC_KEY="$(cat "$PUBLISH_ASC_KEY_FILE_PATH")" PUBLISH_ASC_KEY_PASSWORD="$PUBLISH_ASC_KEY_PASSWORD"'
+        }
+      }
+    }
+    stage('Pull') {
+      when {
+        expression {
+          return params.ACTION == 'PULL'
+        }
+      }
+      steps {
+        script {
+          sh "git checkout master"
+          sshagent(credentials: [githubSsh])
+          {
+            sh "git pull ${githubUrl} main"
+          }
+          sshagent(credentials: [bitbucketSsh])
+          {
+            sh "git push"
+          }
+        }
+      }
+    }
+  }
+  post {
+    failure {
+      script {
+        message = """
+            :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
+
+            |*Action*
+            |${params.ACTION}
+
+            |""".stripMargin()
+        slackSend(channel: "#activity-justice-server-sdks", color: '#FF0000', message: message)
+      }
+    }
+  }
+}
