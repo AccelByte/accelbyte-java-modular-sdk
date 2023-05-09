@@ -94,7 +94,7 @@ pipeline {
           }
           post {
             always {
-              junit 'build/test-results/testCore/*.xml'
+              junit 'all-module/build/test-results/testCore/*.xml'
             }
           }
         }
