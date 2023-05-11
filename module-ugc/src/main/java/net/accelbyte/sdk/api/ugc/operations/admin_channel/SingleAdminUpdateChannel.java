@@ -37,7 +37,7 @@ public class SingleAdminUpdateChannel extends Operation {
   private String channelId;
 
   private String namespace;
-  private ModelsChannelRequest body;
+  private ModelsUpdateChannelRequest body;
 
   /**
    * @param channelId required
@@ -45,9 +45,10 @@ public class SingleAdminUpdateChannel extends Operation {
    * @param body required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public SingleAdminUpdateChannel(String channelId, String namespace, ModelsChannelRequest body) {
+  public SingleAdminUpdateChannel(
+      String channelId, String namespace, ModelsUpdateChannelRequest body) {
     this.channelId = channelId;
     this.namespace = namespace;
     this.body = body;
@@ -68,7 +69,7 @@ public class SingleAdminUpdateChannel extends Operation {
   }
 
   @Override
-  public ModelsChannelRequest getBodyParams() {
+  public ModelsUpdateChannelRequest getBodyParams() {
     return this.body;
   }
 

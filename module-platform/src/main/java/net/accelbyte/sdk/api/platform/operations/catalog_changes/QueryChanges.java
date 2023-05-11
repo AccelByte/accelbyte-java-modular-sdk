@@ -8,8 +8,6 @@
 
 package net.accelbyte.sdk.api.platform.operations.catalog_changes;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
@@ -62,7 +60,7 @@ public class QueryChanges extends Operation {
    * @param storeId required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryChanges(
       String namespace,
@@ -139,15 +137,14 @@ public class QueryChanges extends Operation {
     return true;
   }
 
-  public List<CatalogChangePagingSlicedResult> parseResponse(
+  public CatalogChangePagingSlicedResult parseResponse(
       int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
     if (code != 200) {
       final String json = Helper.convertInputStreamToString(payload);
       throw new HttpResponseException(code, json);
     }
     final String json = Helper.convertInputStreamToString(payload);
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<CatalogChangePagingSlicedResult>>() {});
+    return new CatalogChangePagingSlicedResult().createFromJson(json);
   }
 
   @Override

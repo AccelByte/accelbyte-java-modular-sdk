@@ -17,6 +17,7 @@
 |---|---|---|---|---|
 | `/matchmaking/namespaces/{namespace}/channels` | GET | GetAllChannelsHandler | [GetAllChannelsHandler](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/GetAllChannelsHandler.java) | [GetAllChannelsHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/GetAllChannelsHandler.java) |
 | `/matchmaking/namespaces/{namespace}/channels` | POST | CreateChannelHandler | [CreateChannelHandler](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/CreateChannelHandler.java) | [CreateChannelHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/CreateChannelHandler.java) |
+| `/matchmaking/namespaces/{namespace}/channels/{channelName}/metrics` | GET | GetMatchPoolMetric | [GetMatchPoolMetric](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/GetMatchPoolMetric.java) | [GetMatchPoolMetric](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/GetMatchPoolMetric.java) |
 | `/matchmaking/namespaces/{namespace}/channels/{channel}` | DELETE | DeleteChannelHandler | [DeleteChannelHandler](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/DeleteChannelHandler.java) | [DeleteChannelHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/DeleteChannelHandler.java) |
 | `/matchmaking/namespaces/{namespace}/matchresult` | POST | StoreMatchResults | [StoreMatchResults](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/StoreMatchResults.java) | [StoreMatchResults](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/StoreMatchResults.java) |
 | `/matchmaking/namespaces/{namespace}/rebalance` | POST | Rebalance | [Rebalance](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/matchmaking/Rebalance.java) | [Rebalance](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/matchmaking/Rebalance.java) |
@@ -60,7 +61,6 @@
 | `models.ChannelRequest` | [ModelsChannelRequest](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsChannelRequest.java) |
 | `models.ChannelV1` | [ModelsChannelV1](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsChannelV1.java) |
 | `models.Combination` | [ModelsCombination](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsCombination.java) |
-| `models.Combination.alliances` | [ModelsCombinationAlliances](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsCombinationAlliances.java) |
 | `models.CreateChannelResponse` | [ModelsCreateChannelResponse](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsCreateChannelResponse.java) |
 | `models.DequeueRequest` | [ModelsDequeueRequest](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsDequeueRequest.java) |
 | `models.FlexingRule` | [ModelsFlexingRule](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsFlexingRule.java) |
@@ -83,9 +83,11 @@
 | `models.RebalanceResponse` | [ModelsRebalanceResponse](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsRebalanceResponse.java) |
 | `models.ResultAttributeRequest` | [ModelsResultAttributeRequest](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsResultAttributeRequest.java) |
 | `models.ResultAttributeResponse` | [ModelsResultAttributeResponse](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsResultAttributeResponse.java) |
+| `models.Role` | [ModelsRole](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsRole.java) |
 | `models.RuleSet` | [ModelsRuleSet](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsRuleSet.java) |
 | `models.RuleSetV1` | [ModelsRuleSetV1](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsRuleSetV1.java) |
 | `models.SubGameMode` | [ModelsSubGameMode](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsSubGameMode.java) |
+| `models.TicketMetricResultRecord` | [ModelsTicketMetricResultRecord](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsTicketMetricResultRecord.java) |
 | `models.UpdateAllianceRule` | [ModelsUpdateAllianceRule](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsUpdateAllianceRule.java) |
 | `models.UpdateChannelRequest` | [ModelsUpdateChannelRequest](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsUpdateChannelRequest.java) |
 | `models.UpdatePlayTimeWeightRequest` | [ModelsUpdatePlayTimeWeightRequest](../../src/main/java/net/accelbyte/sdk/api/matchmaking/models/ModelsUpdatePlayTimeWeightRequest.java) |

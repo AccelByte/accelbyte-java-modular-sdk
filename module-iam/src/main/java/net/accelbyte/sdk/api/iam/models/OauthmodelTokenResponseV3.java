@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class OauthmodelTokenResponseV3 extends Model {
@@ -29,6 +29,7 @@ public class OauthmodelTokenResponseV3 extends Model {
   private String accessToken;
 
   @JsonProperty("bans")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AccountcommonJWTBanV3> bans;
 
   @JsonProperty("display_name")
@@ -50,6 +51,7 @@ public class OauthmodelTokenResponseV3 extends Model {
   private String namespace;
 
   @JsonProperty("namespace_roles")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AccountcommonNamespaceRole> namespaceRoles;
 
   @JsonProperty("permissions")
@@ -72,6 +74,7 @@ public class OauthmodelTokenResponseV3 extends Model {
   private String refreshToken;
 
   @JsonProperty("roles")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> roles;
 
   @JsonProperty("scope")

@@ -3,16 +3,21 @@
   "info": {
     "description": "Justice Matchmaking Service",
     "title": "Justice Match Service v2",
-    "version": "2.2.0"
+    "version": "2.3.1"
   },
   "schemes": [
     "https"
   ],
+  "externalDocs": {
+    "description": "API Docs",
+    "url": "https://stage.accelbyte.io/match2/apidocs"
+  },
   "securityDefinitions": {
     "HasPermission": {
       "authorizationUrl": "https://dummy.oauth.net/auth",
       "flow": "accessCode",
       "scopes": {
+        "ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]": "ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]",
         "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]": "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]",
         "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]": "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]",
         "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]": "NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]",
@@ -1358,12 +1363,88 @@
         ]
       }
     },
+    "/match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]\n\nRequired Scope: social\n\nGet player metric for a specific match pool\n",
+        "operationId": "GetPlayerMetric",
+        "parameters": [
+          {
+            "description": "namespace of the game",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the match pool",
+            "in": "path",
+            "name": "pool",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/api.PlayerMetricRecord"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Get metrics player for a specific match pool",
+        "tags": [
+          "Match-Pools",
+          "admin"
+        ]
+      }
+    },
     "/match2/v1/namespaces/{namespace}/match-tickets": {
       "post": {
         "consumes": [
           "application/json"
         ],
-        "description": "Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]\n\nRequired Scope: social\n\nCreates a new request for matchmaking\n",
+        "description": "Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]\n\nRequired Scope: social\n\nCreates a new request for matchmaking.\n\nCross Platform: Allow player to play game with \u0026#34;any\u0026#34; registered plaftforms.\n1. Cross Platform can be enabled through session service or create match ticket. \n\ta. via ticket: specify several cross_platform on create match ticket attributes. \n\t   This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]\n\tb. via session service: set player/party cross_platform attributes.\n\tc. Enable match options ruleset with name cross_platform and type \u0026#34;any\u0026#34;.\n\t{\n\t\t\u0026#34;name\u0026#34;: \u0026#34;co-op\u0026#34;,\n\t\t\u0026#34;data\u0026#34;: {\n\t\t  \u0026#34;alliance\u0026#34;: {\n\t\t\t\u0026#34;min_number\u0026#34;: 1,\n\t\t\t\u0026#34;max_number\u0026#34;: 1,\n\t\t\t\u0026#34;player_min_number\u0026#34;: 1,\n\t\t\t\u0026#34;player_max_number\u0026#34;: 4\n\t\t  }, \n\t\t  \u0026#34;match_options\u0026#34;: {\n\t\t\t\u0026#34;options\u0026#34;: [\n\t\t\t  {“name”: “cross_platform”, “type”: “any”}\n\t\t\t]\n\t\t  }\n\t\t}\n\t}\n2. Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox] \n3. Matchmaking will consider Party leader cross_platform preference or Session attribute cross_platform preference.\n4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.\n",
         "operationId": "CreateMatchTicket",
         "parameters": [
           {
@@ -2419,6 +2500,17 @@
         }
       }
     },
+    "api.PlayerMetricRecord": {
+      "properties": {
+        "playerInQueue": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "playerInQueue"
+      ]
+    },
     "api.ProposedProposal": {
       "properties": {
         "backfillID": {
@@ -2568,5 +2660,16 @@
         "ErrorMessage"
       ]
     }
+  },
+  "x-docs": {
+    "alias": "match2",
+    "host": "https://stage.accelbyte.io",
+    "path": "/match2/apidocs/api.json"
+  },
+  "x-version": {
+    "buildDate": "2023-04-24T07:42:21+00:00",
+    "gitHash": "71d4d8387146cb7bc6060dd36d76e970cb6edf6d",
+    "rolesSeedingVersion": "0.0.20",
+    "version": "2.3.1"
   }
 }

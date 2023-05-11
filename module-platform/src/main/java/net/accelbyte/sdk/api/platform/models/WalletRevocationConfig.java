@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class WalletRevocationConfig extends Model {
@@ -66,6 +66,7 @@ public class WalletRevocationConfig extends Model {
 
   public enum Strategy {
     ALWAYSREVOKE("ALWAYS_REVOKE"),
+    CUSTOM("CUSTOM"),
     REVOKEORREPORT("REVOKE_OR_REPORT");
 
     private String value;

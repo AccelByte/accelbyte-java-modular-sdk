@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class OrderInfo extends Model {
@@ -55,6 +55,7 @@ public class OrderInfo extends Model {
   private Integer discountedPrice;
 
   @JsonProperty("expireTime")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String expireTime;
 
   @JsonProperty("ext")

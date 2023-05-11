@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class CreditRevocation extends Model {
@@ -36,6 +36,10 @@ public class CreditRevocation extends Model {
   @JsonProperty("currencyCode")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String currencyCode;
+
+  @JsonProperty("customRevocation")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> customRevocation;
 
   @JsonProperty("reason")
   @JsonInclude(JsonInclude.Include.NON_NULL)

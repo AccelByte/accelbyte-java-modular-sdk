@@ -3,11 +3,15 @@
   "info": {
     "description": "Justice Matchmaking Service",
     "title": "Justice Matchmaking Service",
-    "version": "2.21.5"
+    "version": "2.24.1"
   },
   "schemes": [
     "https"
   ],
+  "externalDocs": {
+    "description": "API Docs",
+    "url": "https://stage.accelbyte.io/matchmaking/apidocs"
+  },
   "securityDefinitions": {
     "HasPermission": {
       "authorizationUrl": "https://dummy.oauth.net/auth",
@@ -22,6 +26,7 @@
         "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]": "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Delete]",
         "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]": "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [READ]",
         "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]": "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [UPDATE]",
+        "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]": "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]",
         "NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]": "NAMESPACE:{namespace}:MATCHMAKING:REBALANCE [Update]",
         "NAMESPACE:{namespace}:MATCHRESULT [CREATE]": "NAMESPACE:{namespace}:MATCHRESULT [CREATE]",
         "NAMESPACE:{namespace}:SESSION [CREATE]": "NAMESPACE:{namespace}:SESSION [CREATE]",
@@ -249,6 +254,82 @@
         "tags": [
           "Matchmaking",
           "admin"
+        ]
+      }
+    },
+    "/matchmaking/namespaces/{namespace}/channels/{channelName}/metrics": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Required Permission: NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]\n\t\nRequired Scope: social\n\nGet metric for a specific match pool\n\t\nResult: queue_time in seconds\n",
+        "operationId": "GetMatchPoolMetric",
+        "parameters": [
+          {
+            "description": "channel name, accept snake_case, lowercase, and numeric",
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "namespace of the game",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.TicketMetricResultRecord"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "HasPermission": [
+              "NAMESPACE:{namespace}:MATCHMAKING:CHANNEL:METRICS [READ]"
+            ],
+            "HasScope": [
+              "social"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Get metrics for a specific channel",
+        "tags": [
+          "Matchmaking",
+          "public"
         ]
       }
     },
@@ -982,6 +1063,12 @@
         "responses": {
           "200": {
             "description": "OK",
+            "headers": {
+              "Content-Disposition": {
+                "description": "Content-Disposition",
+                "type": "string"
+              }
+            },
             "schema": {
               "type": "file"
             }
@@ -2389,6 +2476,22 @@
         "namespace": {
           "type": "string"
         },
+        "region_expansion_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_expansion_rate_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_initial_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_max_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
         "ruleset": {
           "$ref": "#/definitions/models.RuleSet"
         },
@@ -2419,6 +2522,10 @@
         "joinable",
         "max_delay_ms",
         "namespace",
+        "region_expansion_range_ms",
+        "region_expansion_rate_ms",
+        "region_latency_initial_range_ms",
+        "region_latency_max_ms",
         "ruleset",
         "session_queue_timeout_seconds",
         "slug",
@@ -2455,6 +2562,22 @@
           "format": "int32",
           "type": "integer",
           "x-nullable": false
+        },
+        "region_expansion_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_expansion_rate_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_initial_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_max_ms": {
+          "format": "int32",
+          "type": "integer"
         },
         "rule_set": {
           "$ref": "#/definitions/models.RuleSet",
@@ -2512,6 +2635,22 @@
         "namespace": {
           "type": "string"
         },
+        "region_expansion_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_expansion_rate_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_initial_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_max_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
         "ruleSet": {
           "$ref": "#/definitions/models.RuleSetV1"
         },
@@ -2542,6 +2681,10 @@
         "joinable",
         "max_delay_ms",
         "namespace",
+        "region_expansion_range_ms",
+        "region_expansion_rate_ms",
+        "region_latency_initial_range_ms",
+        "region_latency_max_ms",
         "ruleSet",
         "sessionQueueTimeoutSeconds",
         "slug",
@@ -2554,7 +2697,10 @@
       "properties": {
         "alliances": {
           "items": {
-            "$ref": "#/definitions/models.Combination.alliances"
+            "items": {
+              "$ref": "#/definitions/models.Role"
+            },
+            "type": "array"
           },
           "type": "array"
         },
@@ -2583,26 +2729,6 @@
         "role_flexing_second"
       ]
     },
-    "models.Combination.alliances": {
-      "properties": {
-        "max": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "min": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "max",
-        "min",
-        "name"
-      ]
-    },
     "models.CreateChannelResponse": {
       "properties": {
         "deployment": {
@@ -2628,6 +2754,22 @@
         },
         "namespace": {
           "type": "string"
+        },
+        "region_expansion_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_expansion_rate_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_initial_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_max_ms": {
+          "format": "int32",
+          "type": "integer"
         },
         "ruleset": {
           "$ref": "#/definitions/models.RuleSet"
@@ -2659,6 +2801,10 @@
         "joinable",
         "max_delay_ms",
         "namespace",
+        "region_expansion_range_ms",
+        "region_expansion_rate_ms",
+        "region_latency_initial_range_ms",
+        "region_latency_max_ms",
         "ruleset",
         "session_queue_timeout_seconds",
         "slug",
@@ -2800,10 +2946,7 @@
           },
           "type": "array"
         }
-      },
-      "required": [
-        "options"
-      ]
+      }
     },
     "models.MatchResultRequest": {
       "properties": {
@@ -3144,6 +3287,26 @@
         "value"
       ]
     },
+    "models.Role": {
+      "properties": {
+        "max": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "min": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "max",
+        "min",
+        "name"
+      ]
+    },
     "models.RuleSet": {
       "properties": {
         "alliance": {
@@ -3183,12 +3346,10 @@
       },
       "required": [
         "alliance",
-        "alliance_flexing_rule",
         "flexing_rule",
         "match_options",
         "matching_rule",
-        "rebalance_enable",
-        "sub_game_modes"
+        "rebalance_enable"
       ]
     },
     "models.RuleSetV1": {
@@ -3255,6 +3416,17 @@
         "name"
       ]
     },
+    "models.TicketMetricResultRecord": {
+      "properties": {
+        "queue_time": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "queue_time"
+      ]
+    },
     "models.UpdateAllianceRule": {
       "properties": {
         "combination": {
@@ -3302,6 +3474,22 @@
           "format": "int32",
           "type": "integer",
           "x-nullable": true
+        },
+        "region_expansion_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_expansion_rate_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_initial_range_ms": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "region_latency_max_ms": {
+          "format": "int32",
+          "type": "integer"
         },
         "ruleSet": {
           "$ref": "#/definitions/models.UpdateRuleset",
@@ -3702,5 +3890,16 @@
         "pagination"
       ]
     }
+  },
+  "x-docs": {
+    "alias": "matchmaking",
+    "host": "https://stage.accelbyte.io",
+    "path": "/matchmaking/apidocs/api.json"
+  },
+  "x-version": {
+    "buildDate": "2023-05-03T03:30:12+00:00",
+    "gitHash": "a3833be8b9bd673802c99dc6e473d3139a501fa2",
+    "version": "2.24.1",
+    "version-roles-seeding": "0.0.23"
   }
 }

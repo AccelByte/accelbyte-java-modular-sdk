@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class OauthmodelTokenResponse extends Model {
@@ -30,6 +30,10 @@ public class OauthmodelTokenResponse extends Model {
 
   @JsonProperty("bans")
   private List<AccountcommonJWTBanV3> bans;
+
+  @JsonProperty("device_id")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String deviceId;
 
   @JsonProperty("display_name")
   private String displayName;

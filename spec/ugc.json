@@ -8,11 +8,15 @@
     },
     "description": "Justice UGC Service",
     "title": "justice-ugc-service",
-    "version": "2.9.3"
+    "version": "2.11.0"
   },
   "schemes": [
     "https"
   ],
+  "externalDocs": {
+    "description": "API Docs",
+    "url": "https://stage.accelbyte.io/ugc/apidocs"
+  },
   "securityDefinitions": {
     "HasPermission": {
       "authorizationUrl": "https://dummy.oauth.net/auth",
@@ -185,6 +189,12 @@
               "$ref": "#/definitions/response.Error"
             }
           },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -280,7 +290,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ChannelRequest"
+              "$ref": "#/definitions/models.UpdateChannelRequest"
             }
           },
           {
@@ -401,6 +411,12 @@
               "$ref": "#/definitions/response.Error"
             }
           },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -427,7 +443,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\\n \n\t\t\t\tAll request body are required except preview, tags, contentType and customAttributes.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\t\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]\u0026lt;/b\u0026gt;.\n\nAll request body are required except \u0026lt;code\u0026gt;preview\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;tags\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;customAttributes\u0026lt;/code\u0026gt; and \u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt;.\n\n\u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt; values is used to enforce the Content-Type header needed by the client when uploading the content using the S3 presigned URL. If not specified, it will use fileExtension value.\n\n\u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt; format should follows: \n\nLength: 7\nAvailable characters: abcdefhkpqrstuxyz\n\n\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
         "operationId": "AdminUploadContentS3",
         "parameters": [
           {
@@ -475,6 +491,12 @@
               "$ref": "#/definitions/response.Error"
             }
           },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -501,7 +523,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\n\t\t\t\t\tAll request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes.\n\t\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\t\tTo update content\u0026#39;s file, set \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt; to \u0026lt;code\u0026gt;true\u0026lt;/code\u0026gt; and upload the file using URL in \u0026lt;code\u0026gt;payloadURL.url\u0026lt;/code\u0026gt; in response body.\n\t\t\t\t\t\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\n\nAll request body are required except \u0026lt;code\u0026gt;payload\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;preview\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;tags\u0026lt;/code\u0026gt;,\u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;customAttributes\u0026lt;/code\u0026gt; and \u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt;.\n\n\u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt; values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\nIf not specified, it will use \u0026lt;code\u0026gt;fileExtension\u0026lt;/code\u0026gt; value.\n\nTo update content file, set \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt; to \u0026lt;code\u0026gt;true\u0026lt;/code\u0026gt; and upload the file using URL in \u0026lt;code\u0026gt;payloadURL.url\u0026lt;/code\u0026gt; in response body.\n\n\u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt; format should follows:\n\nMax length: 7\nAvailable characters: abcdefhkpqrstuxyz\n\n\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
         "operationId": "SingleAdminUpdateContentS3",
         "parameters": [
           {
@@ -509,7 +531,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ContentRequest"
+              "$ref": "#/definitions/models.AdminUpdateContentRequest"
             }
           },
           {
@@ -558,6 +580,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
             "schema": {
               "$ref": "#/definitions/response.Error"
             }
@@ -2810,7 +2838,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ChannelRequest"
+              "$ref": "#/definitions/models.UpdateChannelRequest"
             }
           },
           {
@@ -2889,7 +2917,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;. \n\t\t\t\tAll request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes.\n\t\t\t\tcontentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\t\t\t\tIf not specified, it will use fileExtension value.\n\t\t\t\tTo update content\u0026#39;s file, set \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt; to \u0026lt;code\u0026gt;true\u0026lt;/code\u0026gt; and upload the file using URL in \u0026lt;code\u0026gt;payloadURL.url\u0026lt;/code\u0026gt; in response body.\n\t\t\t\t\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
+        "description": "Required permission \u0026lt;b\u0026gt;ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]\u0026lt;/b\u0026gt;.\n\nAll request body are required except \u0026lt;code\u0026gt;payload\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;preview\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;tags\u0026lt;/code\u0026gt;,\u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt;, \u0026lt;code\u0026gt;customAttributes\u0026lt;/code\u0026gt; and \u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt;.\n\n\u0026lt;code\u0026gt;contentType\u0026lt;/code\u0026gt; values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.\n\nIf not specified, it will use \u0026lt;code\u0026gt;fileExtension\u0026lt;/code\u0026gt; value.\n\nTo update content file, set \u0026lt;code\u0026gt;updateContentFile\u0026lt;/code\u0026gt; to \u0026lt;code\u0026gt;true\u0026lt;/code\u0026gt; and upload the file using URL in \u0026lt;code\u0026gt;payloadURL.url\u0026lt;/code\u0026gt; in response body.\n\n\u0026lt;code\u0026gt;shareCode\u0026lt;/code\u0026gt; format should follows:\n\nMax length: 7\nAvailable characters: abcdefhkpqrstuxyz\n\n\u0026lt;br\u0026gt;\u0026lt;p\u0026gt;\u0026lt;b\u0026gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content\u0026lt;/b\u0026gt;\u0026lt;/p\u0026gt;",
         "operationId": "AdminUpdateContentS3",
         "parameters": [
           {
@@ -2897,7 +2925,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ContentRequest"
+              "$ref": "#/definitions/models.AdminUpdateContentRequest"
             }
           },
           {
@@ -2953,6 +2981,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
             "schema": {
               "$ref": "#/definitions/response.Error"
             }
@@ -5251,14 +5285,14 @@
           "application/octet-stream"
         ],
         "description": "Required permission \u0026lt;b\u0026gt;NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]\u0026lt;/b\u0026gt;",
-        "operationId": "CreateChannel",
+        "operationId": "PublicCreateChannel",
         "parameters": [
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ChannelRequest"
+              "$ref": "#/definitions/models.PublicChannelRequest"
             }
           },
           {
@@ -5402,7 +5436,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ChannelRequest"
+              "$ref": "#/definitions/models.UpdateChannelRequest"
             }
           },
           {
@@ -5573,7 +5607,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.CreateContentRequestS3"
+              "$ref": "#/definitions/models.PublicCreateContentRequestS3"
             }
           },
           {
@@ -5655,7 +5689,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/models.ContentRequest"
+              "$ref": "#/definitions/models.UpdateContentRequest"
             }
           },
           {
@@ -7157,8 +7191,67 @@
         "contentIds"
       ]
     },
+    "models.AdminUpdateContentRequest": {
+      "properties": {
+        "contentType": {
+          "type": "string"
+        },
+        "customAttributes": {
+          "type": "object"
+        },
+        "fileExtension": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "preview": {
+          "description": "Preview is legacy code, please use Screenshot instead",
+          "type": "string"
+        },
+        "previewMetadata": {
+          "$ref": "#/definitions/models.previewMetadata"
+        },
+        "shareCode": {
+          "type": "string"
+        },
+        "subType": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "type": "string"
+        },
+        "updateContentFile": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "contentType",
+        "fileExtension",
+        "name",
+        "payload",
+        "preview",
+        "subType",
+        "tags",
+        "type",
+        "updateContentFile"
+      ]
+    },
     "models.ChannelRequest": {
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         }
@@ -7337,59 +7430,6 @@
         "likeStatus"
       ]
     },
-    "models.ContentRequest": {
-      "properties": {
-        "contentType": {
-          "type": "string"
-        },
-        "customAttributes": {
-          "type": "object"
-        },
-        "fileExtension": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "payload": {
-          "type": "string"
-        },
-        "preview": {
-          "description": "Preview is legacy code, please use Screenshot instead",
-          "type": "string"
-        },
-        "previewMetadata": {
-          "$ref": "#/definitions/models.previewMetadata"
-        },
-        "subType": {
-          "type": "string"
-        },
-        "tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "type": {
-          "type": "string"
-        },
-        "updateContentFile": {
-          "type": "boolean",
-          "x-omitempty": false
-        }
-      },
-      "required": [
-        "contentType",
-        "fileExtension",
-        "name",
-        "payload",
-        "preview",
-        "subType",
-        "tags",
-        "type",
-        "updateContentFile"
-      ]
-    },
     "models.CreateContentRequest": {
       "properties": {
         "customAttributes": {
@@ -7450,6 +7490,9 @@
         },
         "previewMetadata": {
           "$ref": "#/definitions/models.previewMetadata"
+        },
+        "shareCode": {
+          "type": "string"
         },
         "subType": {
           "type": "string"
@@ -8004,6 +8047,58 @@
         }
       }
     },
+    "models.PublicChannelRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "models.PublicCreateContentRequestS3": {
+      "properties": {
+        "contentType": {
+          "type": "string"
+        },
+        "customAttributes": {
+          "type": "object"
+        },
+        "fileExtension": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "preview": {
+          "description": "Preview is legacy code, please use Screenshot instead",
+          "type": "string"
+        },
+        "previewMetadata": {
+          "$ref": "#/definitions/models.previewMetadata"
+        },
+        "subType": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "preview",
+        "subType",
+        "tags",
+        "type"
+      ]
+    },
     "models.PublicGetContentBulkRequest": {
       "properties": {
         "contentIds": {
@@ -8044,6 +8139,69 @@
         "screenshotId",
         "source",
         "url"
+      ]
+    },
+    "models.UpdateChannelRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "models.UpdateContentRequest": {
+      "properties": {
+        "contentType": {
+          "type": "string"
+        },
+        "customAttributes": {
+          "type": "object"
+        },
+        "fileExtension": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "preview": {
+          "description": "Preview is legacy code, please use Screenshot instead",
+          "type": "string"
+        },
+        "previewMetadata": {
+          "$ref": "#/definitions/models.previewMetadata"
+        },
+        "subType": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "type": "string"
+        },
+        "updateContentFile": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "contentType",
+        "fileExtension",
+        "name",
+        "payload",
+        "preview",
+        "subType",
+        "tags",
+        "type",
+        "updateContentFile"
       ]
     },
     "models.UpdateScreenshotRequest": {
@@ -8167,5 +8325,18 @@
         "errorMessage"
       ]
     }
+  },
+  "x-docs": {
+    "alias": "ugc",
+    "host": "https://stage.accelbyte.io",
+    "path": "/ugc/apidocs/api.json"
+  },
+  "x-version": {
+    "buildDate": "2023-05-09T01:43:07+00:00",
+    "gitHash": "daada171e7eb85ce7e3f5478f05d3c58c411ca29",
+    "name": "justice-ugc-service",
+    "realm": "staging",
+    "version": "2.11.0",
+    "version-roles-seeding": "0.0.13"
   }
 }

@@ -20,15 +20,17 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ImportStoreItemInfo extends Model {
 
   @JsonProperty("categoryPath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String categoryPath;
 
   @JsonProperty("itemId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String itemId;
 
   @JsonProperty("itemType")
@@ -38,6 +40,7 @@ public class ImportStoreItemInfo extends Model {
   private Map<String, Localization> localizations;
 
   @JsonProperty("name")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String name;
 
   @JsonProperty("sku")

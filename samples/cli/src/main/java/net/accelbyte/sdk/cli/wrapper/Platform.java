@@ -34,6 +34,7 @@ import net.accelbyte.sdk.cli.api.platform.revocation.*;
 import net.accelbyte.sdk.cli.api.platform.reward.*;
 import net.accelbyte.sdk.cli.api.platform.section.*;
 import net.accelbyte.sdk.cli.api.platform.service_plugin_config.*;
+import net.accelbyte.sdk.cli.api.platform.session_platform.*;
 import net.accelbyte.sdk.cli.api.platform.store.*;
 import net.accelbyte.sdk.cli.api.platform.subscription.*;
 import net.accelbyte.sdk.cli.api.platform.ticket.*;
@@ -95,6 +96,9 @@ import picocli.CommandLine.Command;
       UpdatePlatformDLCConfig.class,
       DeletePlatformDLCConfig.class,
       QueryEntitlements.class,
+      QueryEntitlements1.class,
+      GrantEntitlements.class,
+      RevokeEntitlements.class,
       GetEntitlement.class,
       QueryFulfillmentHistories.class,
       GetAppleIAPConfig.class,
@@ -180,7 +184,7 @@ import picocli.CommandLine.Command;
       GetPlatformWalletConfig.class,
       UpdatePlatformWalletConfig.class,
       ResetPlatformWalletConfig.class,
-      GetPaymentCallbackConfig1.class,
+      GetRevocationConfig.class,
       UpdateRevocationConfig.class,
       DeleteRevocationConfig.class,
       QueryRevocationHistories.class,
@@ -237,6 +241,7 @@ import picocli.CommandLine.Command;
       AnonymizeRevocation.class,
       AnonymizeSubscription.class,
       AnonymizeWallet.class,
+      GetUserDLCByPlatform.class,
       GetUserDLC.class,
       QueryUserEntitlements.class,
       GrantUserEntitlement.class,
@@ -251,6 +256,7 @@ import picocli.CommandLine.Command;
       GetUserEntitlementOwnershipByItemId.class,
       GetUserEntitlementOwnershipByItemIds.class,
       GetUserEntitlementOwnershipBySku.class,
+      RevokeAllEntitlements.class,
       RevokeUserEntitlements.class,
       GetUserEntitlement.class,
       UpdateUserEntitlement.class,
@@ -259,6 +265,7 @@ import picocli.CommandLine.Command;
       EnableUserEntitlement.class,
       GetUserEntitlementHistories.class,
       RevokeUserEntitlement.class,
+      RevokeUseCount.class,
       SellUserEntitlement.class,
       FulfillItem.class,
       RedeemCode.class,
@@ -281,6 +288,7 @@ import picocli.CommandLine.Command;
       RefundUserPaymentOrder.class,
       ApplyUserRedemption.class,
       DoRevocation.class,
+      RegisterXblSessions.class,
       QueryUserSubscriptions.class,
       GetUserSubscriptionActivities.class,
       PlatformSubscribeSubscription.class,
@@ -309,6 +317,8 @@ import picocli.CommandLine.Command;
       UpdateView.class,
       DeleteView.class,
       QueryWallets.class,
+      BulkCredit.class,
+      BulkDebit.class,
       GetWallet.class,
       SyncOrders.class,
       TestAdyenConfig.class,

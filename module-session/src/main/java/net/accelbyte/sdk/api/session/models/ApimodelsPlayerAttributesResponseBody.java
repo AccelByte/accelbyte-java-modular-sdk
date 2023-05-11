@@ -20,13 +20,16 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsPlayerAttributesResponseBody extends Model {
 
   @JsonProperty("crossplayEnabled")
   private Boolean crossplayEnabled;
+
+  @JsonProperty("currentPlatform")
+  private String currentPlatform;
 
   @JsonProperty("data")
   private Map<String, ?> data;

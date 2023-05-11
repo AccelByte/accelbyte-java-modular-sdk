@@ -23,9 +23,16 @@ import net.accelbyte.sdk.core.util.Helper;
  *
  * <p>Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
  *
- * <p>All request body are required except preview, tags, contentType and customAttributes.
- * contentType values is used to enforce the Content-Type header needed by the client when uploading
- * the content using the S3 presigned URL. If not specified, it will use fileExtension value.
+ * <p>All request body are required except `preview`, `tags`, `contentType`, `customAttributes` and
+ * `shareCode`.
+ *
+ * <p>`contentType` values is used to enforce the Content-Type header needed by the client when
+ * uploading the content using the S3 presigned URL. If not specified, it will use fileExtension
+ * value.
+ *
+ * <p>`shareCode` format should follows:
+ *
+ * <p>Length: 7 Available characters: abcdefhkpqrstuxyz
  *
  * <p>NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of
  * a content
@@ -52,7 +59,7 @@ public class AdminUploadContentS3 extends Operation {
    * @param body required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUploadContentS3(
       String channelId, String namespace, ModelsCreateContentRequestS3 body) {

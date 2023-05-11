@@ -21,7 +21,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * publicGameSessionInvite
  *
- * <p>Invite a user to a game session.
+ * <p>Invite a user to a game session. platformID represents the native platform of the invitee. API
+ * will return the corresponding native platform's userID. supported platforms: - STEAM - XBOX - PSN
  */
 @Getter
 @Setter
@@ -45,7 +46,7 @@ public class PublicGameSessionInvite extends Operation {
    * @param body required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGameSessionInvite(
       String namespace, String sessionId, ApimodelsSessionInviteRequest body) {

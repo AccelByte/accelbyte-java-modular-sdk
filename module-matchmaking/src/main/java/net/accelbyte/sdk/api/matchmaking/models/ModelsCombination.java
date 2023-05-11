@@ -20,13 +20,13 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsCombination extends Model {
 
   @JsonProperty("alliances")
-  private List<ModelsCombinationAlliances> alliances;
+  private List<List<ModelsRole>> alliances;
 
   @JsonProperty("has_combination")
   private Boolean hasCombination;

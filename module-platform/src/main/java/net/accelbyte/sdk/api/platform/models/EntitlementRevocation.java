@@ -20,10 +20,14 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class EntitlementRevocation extends Model {
+
+  @JsonProperty("customRevocation")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> customRevocation;
 
   @JsonProperty("entitlementId")
   @JsonInclude(JsonInclude.Include.NON_NULL)

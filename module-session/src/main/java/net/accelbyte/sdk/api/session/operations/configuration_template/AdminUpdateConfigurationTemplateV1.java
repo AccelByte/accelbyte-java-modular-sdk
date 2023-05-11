@@ -26,7 +26,18 @@ import net.accelbyte.sdk.core.util.Helper;
  * will be assign to NONE - MinPlayers (must greather or equal 0) - MaxPlayers (must greather than
  * 0) - InviteTimeout (must greather or equal 0) if InviteTimeout equal 0 will be use default
  * DefaultTimeoutSecond (60s) - InactiveTimeout (must greather or equal 0) if InactiveTimeout equal
- * 0 will be use default DefaultTimeoutSecond (60s)
+ * 0 will be use default DefaultTimeoutSecond (60s) - Persistent Flag only can use with type DS
+ * (example value true or false) - If Persistent True the session always active even DS removing or
+ * terminate and Session will be request DS again until DS Ready or Busy. - To Stop Session Not
+ * request again to DS or want Delete Session can Delete Session using endpoint DELETE
+ * /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId} - If Persistent False the
+ * session will be inactive if all member left and DS terminate or removing - nativeSessionSetting:
+ * - XboxSessionTemplateName: the XBox session template name that correspondent to the AB session
+ * template, and is needed to define XBox session's joinRestriction and maxMembersCount when doing
+ * the session sync. - XboxServiceConfigID: the XBox service configuration ID. - PSNServiceLabel:
+ * the PSN service label. - SessionTitle: the session title. In PSN, this will be used to define
+ * name of the session thats displayed on PlayStation system UI. - ShouldSync: to define whether the
+ * service needs to do session sync with native platform(s). Default: false (disabled).
  */
 @Getter
 @Setter
@@ -50,7 +61,7 @@ public class AdminUpdateConfigurationTemplateV1 extends Operation {
    * @param body required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUpdateConfigurationTemplateV1(
       String name, String namespace, ApimodelsUpdateConfigurationTemplateRequest body) {

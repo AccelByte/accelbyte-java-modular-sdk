@@ -153,7 +153,8 @@ public class AccelByteSDK {
       final AppInfo appInfo = configRepository.getAppInfo();
       final String appName = appInfo.getAppName();
       final String appVersion = appInfo.getAppVersion();
-      final String userAgent = String.format("%s %s (%s/%s)", sdkName, moduleInformation, appName, appVersion);
+      final String userAgent =
+          String.format("%s %s (%s/%s)", sdkName, moduleInformation, appName, appVersion);
       headers.put(HttpHeaders.USER_AGENT, userAgent);
     }
 

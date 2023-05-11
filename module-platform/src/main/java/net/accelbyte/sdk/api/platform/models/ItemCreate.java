@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ItemCreate extends Model {
@@ -113,7 +113,7 @@ public class ItemCreate extends Model {
   private Recurring recurring;
 
   @JsonProperty("regionData")
-  private Map<String, List<RegionDataItem>> regionData;
+  private Map<String, List<RegionDataItemDTO>> regionData;
 
   @JsonProperty("saleConfig")
   @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -122,6 +122,10 @@ public class ItemCreate extends Model {
   @JsonProperty("seasonType")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String seasonType;
+
+  @JsonProperty("sectionExclusive")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean sectionExclusive;
 
   @JsonProperty("sellable")
   @JsonInclude(JsonInclude.Include.NON_NULL)

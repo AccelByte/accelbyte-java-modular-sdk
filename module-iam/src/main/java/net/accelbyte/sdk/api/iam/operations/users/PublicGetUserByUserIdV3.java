@@ -22,7 +22,10 @@ import net.accelbyte.sdk.core.util.Helper;
  * PublicGetUserByUserIdV3
  *
  * <p>This endpoint retrieve user attributes. action code: 10129
+ *
+ * @deprecated
  */
+@Deprecated
 @Getter
 @Setter
 public class PublicGetUserByUserIdV3 extends Operation {
@@ -43,7 +46,7 @@ public class PublicGetUserByUserIdV3 extends Operation {
    * @param userId required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetUserByUserIdV3(String namespace, String userId) {
     this.namespace = namespace;

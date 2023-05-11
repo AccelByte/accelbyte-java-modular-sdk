@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class AdminOrderCreate extends Model {
@@ -70,6 +70,10 @@ public class AdminOrderCreate extends Model {
   @JsonProperty("sandbox")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean sandbox;
+
+  @JsonProperty("sectionId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String sectionId;
 
   @JsonIgnore
   public String getPlatform() {

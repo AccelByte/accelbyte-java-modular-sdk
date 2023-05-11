@@ -26,6 +26,11 @@ import net.accelbyte.sdk.core.util.Helper;
  * <p>Join type can only be updated by the party's leader. To update only specified fields, please
  * use following endpoint: method : PATCH API :
  * /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
+ *
+ * <p>Reserved attributes key: 1. preference: used to store preference of the leader and it is
+ * non-replaceable to keep the initial behavior of the session regardless the leader changes. 2.
+ * NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation
+ * system UI.
  */
 @Getter
 @Setter
@@ -49,7 +54,7 @@ public class PublicUpdateParty extends Operation {
    * @param body required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicUpdateParty(String namespace, String partyId, ApimodelsUpdatePartyRequest body) {
     this.namespace = namespace;

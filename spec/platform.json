@@ -8,7 +8,7 @@
     },
     "description": "Justice Platform Service",
     "title": "justice-platform-service",
-    "version": "4.26.0"
+    "version": "4.30.0"
   },
   "schemes": [
     "https"
@@ -93,6 +93,9 @@
       "name": "ServicePluginConfig"
     },
     {
+      "name": "Session(Platform)"
+    },
+    {
       "name": "Store"
     },
     {
@@ -108,6 +111,10 @@
       "name": "Wallet"
     }
   ],
+  "externalDocs": {
+    "description": "API Docs",
+    "url": "https://stage.accelbyte.io/platform"
+  },
   "securityDefinitions": {
     "HasPermission": {
       "authorizationUrl": "https://dummy.oauth.net/auth",
@@ -136,6 +143,7 @@
         "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]": "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]",
         "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]": "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]",
         "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]": "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]",
+        "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]": "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]",
         "ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]": "ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]",
         "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]": "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]",
         "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]": "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]",
@@ -189,6 +197,7 @@
         "ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]",
         "ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [UPDATE]",
         "ADMIN:NAMESPACE:{namespace}:WALLET [READ]": "ADMIN:NAMESPACE:{namespace}:WALLET [READ]",
+        "ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]": "ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]",
         "ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [READ]": "ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [READ]",
         "ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]": "ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]",
         "ADMIN:ORDER [READ]": "ADMIN:ORDER [READ]",
@@ -3235,6 +3244,209 @@
         }
       }
     },
+    "/platform/admin/namespaces/{namespace}/entitlements/byItemIds": {
+      "get": {
+        "description": "Query entitlements by Item Ids.\u0026lt;p\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:ENTITLEMENT\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: entitlement list\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "queryEntitlements_1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": true,
+            "in": "query",
+            "name": "activeOnly",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
+            "collectionFormat": "multi",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "itemIds",
+            "required": false,
+            "type": "array"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EntitlementPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Query entitlements by Item Ids",
+        "tags": [
+          "Entitlement"
+        ],
+        "x-authorization": {
+          "action": "2",
+          "resource": "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/entitlements/grant": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Grant entitlements to multiple users, skipped granting will be treated as fail.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:ENTITLEMENT\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: bulk grant entitlements result\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "grantEntitlements",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/BulkEntitlementGrantRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkEntitlementGrantResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Grant entitlements to different users",
+        "tags": [
+          "Entitlement"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/entitlements/revoke": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Revoke entitlements, skipped revocation will be treated as fail.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:ENTITLEMENT\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: bulk revoke entitlements result\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "revokeEntitlements",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkEntitlementRevokeResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Revoke entitlements by Ids",
+        "tags": [
+          "Entitlement"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:ENTITLEMENT"
+        }
+      }
+    },
     "/platform/admin/namespaces/{namespace}/entitlements/{entitlementId}": {
       "get": {
         "description": "Get entitlement.\u0026lt;p\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:ENTITLEMENT\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: entitlement\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
@@ -4811,7 +5023,7 @@
             }
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30322\u003c/td\u003e\u003ctd\u003eBundle item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30325\u003c/td\u003e\u003ctd\u003eCode item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30326\u003c/td\u003e\u003ctd\u003eSubscription item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30329\u003c/td\u003e\u003ctd\u003eInvalid bundled item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30021\u003c/td\u003e\u003ctd\u003eDefault language [{language}] required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30321\u003c/td\u003e\u003ctd\u003eInvalid item discount amount\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30022\u003c/td\u003e\u003ctd\u003eDefault region [{region}] is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30323\u003c/td\u003e\u003ctd\u003eTarget namespace is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30327\u003c/td\u003e\u003ctd\u003eInvalid item trial price\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30330\u003c/td\u003e\u003ctd\u003eInvalid item region price currency namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30332\u003c/td\u003e\u003ctd\u003eInvalid option box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30333\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into option box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30334\u003c/td\u003e\u003ctd\u003eOption box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30337\u003c/td\u003e\u003ctd\u003eInvalid loot box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30338\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into loot box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30339\u003c/td\u003e\u003ctd\u003eLoot box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20024\u003c/td\u003e\u003ctd\u003eunsupported operation\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30301\u003c/td\u003e\u003ctd\u003eUnsupported Item Type [{itemType}] for box item [{itemId}] with expiration\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30322\u003c/td\u003e\u003ctd\u003eBundle item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30325\u003c/td\u003e\u003ctd\u003eCode item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30326\u003c/td\u003e\u003ctd\u003eSubscription item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30329\u003c/td\u003e\u003ctd\u003eInvalid bundled item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30021\u003c/td\u003e\u003ctd\u003eDefault language [{language}] required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30321\u003c/td\u003e\u003ctd\u003eInvalid item discount amount\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30022\u003c/td\u003e\u003ctd\u003eDefault region [{region}] is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30323\u003c/td\u003e\u003ctd\u003eTarget namespace is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30327\u003c/td\u003e\u003ctd\u003eInvalid item trial price\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30330\u003c/td\u003e\u003ctd\u003eInvalid item region price currency namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30332\u003c/td\u003e\u003ctd\u003eInvalid option box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30333\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into option box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30334\u003c/td\u003e\u003ctd\u003eOption box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30337\u003c/td\u003e\u003ctd\u003eInvalid loot box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30338\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into loot box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30339\u003c/td\u003e\u003ctd\u003eLoot box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -4823,7 +5035,7 @@
             }
           },
           "409": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30173\u003c/td\u003e\u003ctd\u003ePublished store can't modify content\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30373\u003c/td\u003e\u003ctd\u003eItemType [{itemType}] is not allowed in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30376\u003c/td\u003e\u003ctd\u003ePublisher namespace don’t allow sellback item\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30377\u003c/td\u003e\u003ctd\u003eThis item type [{itemType}] don’t allow sellback\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30378\u003c/td\u003e\u003ctd\u003eSale price don’t allow real currency [{currencyCode}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30173\u003c/td\u003e\u003ctd\u003ePublished store can't modify content\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30373\u003c/td\u003e\u003ctd\u003eItemType [{itemType}] is not allowed in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30376\u003c/td\u003e\u003ctd\u003ePublisher namespace don’t allow sellback item\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30377\u003c/td\u003e\u003ctd\u003eThis item type [{itemType}] don’t allow sellback\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30378\u003c/td\u003e\u003ctd\u003eSale price don’t allow real currency [{currencyCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30380\u003c/td\u003e\u003ctd\u003eBox item [{itemId}] duration and end date can’t be set at the same time\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -6288,7 +6500,7 @@
             }
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30322\u003c/td\u003e\u003ctd\u003eBundle item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30325\u003c/td\u003e\u003ctd\u003eCode item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30326\u003c/td\u003e\u003ctd\u003eSubscription item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30329\u003c/td\u003e\u003ctd\u003eInvalid bundled item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30021\u003c/td\u003e\u003ctd\u003eDefault language [{language}] required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30321\u003c/td\u003e\u003ctd\u003eInvalid item discount amount\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30022\u003c/td\u003e\u003ctd\u003eDefault region [{region}] is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30323\u003c/td\u003e\u003ctd\u003eTarget namespace is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30327\u003c/td\u003e\u003ctd\u003eInvalid item trial price\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30330\u003c/td\u003e\u003ctd\u003eInvalid item region price currency namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30332\u003c/td\u003e\u003ctd\u003eInvalid option box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30333\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into option box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30334\u003c/td\u003e\u003ctd\u003eOption box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30337\u003c/td\u003e\u003ctd\u003eInvalid loot box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30338\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into loot box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30339\u003c/td\u003e\u003ctd\u003eLoot box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20024\u003c/td\u003e\u003ctd\u003eunsupported operation\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30301\u003c/td\u003e\u003ctd\u003eUnsupported Item Type [{itemType}] for box item [{itemId}] with expiration\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30322\u003c/td\u003e\u003ctd\u003eBundle item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30325\u003c/td\u003e\u003ctd\u003eCode item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30326\u003c/td\u003e\u003ctd\u003eSubscription item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30329\u003c/td\u003e\u003ctd\u003eInvalid bundled item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30021\u003c/td\u003e\u003ctd\u003eDefault language [{language}] required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30321\u003c/td\u003e\u003ctd\u003eInvalid item discount amount\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30022\u003c/td\u003e\u003ctd\u003eDefault region [{region}] is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30323\u003c/td\u003e\u003ctd\u003eTarget namespace is required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30327\u003c/td\u003e\u003ctd\u003eInvalid item trial price\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30330\u003c/td\u003e\u003ctd\u003eInvalid item region price currency namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30332\u003c/td\u003e\u003ctd\u003eInvalid option box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30333\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into option box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30334\u003c/td\u003e\u003ctd\u003eOption box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30337\u003c/td\u003e\u003ctd\u003eInvalid loot box item [{itemId}] quantity\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30338\u003c/td\u003e\u003ctd\u003eItem [{itemId}] item type [{itemType}] can't be bundled into loot box\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30339\u003c/td\u003e\u003ctd\u003eLoot box item [{itemId}] can't be bundled\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -6300,7 +6512,7 @@
             }
           },
           "409": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30173\u003c/td\u003e\u003ctd\u003ePublished store can't modify content\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30371\u003c/td\u003e\u003ctd\u003eItem maxCount not allow reduce\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30372\u003c/td\u003e\u003ctd\u003eItemType is not updatable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30376\u003c/td\u003e\u003ctd\u003ePublisher namespace don’t allow sellback item\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30377\u003c/td\u003e\u003ctd\u003eThis item type [{itemType}] don’t allow sellback\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30378\u003c/td\u003e\u003ctd\u003eSale price don’t allow real currency [{currencyCode}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30371\u003c/td\u003e\u003ctd\u003eItem maxCount not allow reduce\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30372\u003c/td\u003e\u003ctd\u003eItemType is not updatable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30173\u003c/td\u003e\u003ctd\u003ePublished store can't modify content\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30374\u003c/td\u003e\u003ctd\u003eItem sku [{sku}] already exists in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30376\u003c/td\u003e\u003ctd\u003ePublisher namespace don’t allow sellback item\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30377\u003c/td\u003e\u003ctd\u003eThis item type [{itemType}] don’t allow sellback\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30378\u003c/td\u003e\u003ctd\u003eSale price don’t allow real currency [{currencyCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30379\u003c/td\u003e\u003ctd\u003eItem sku is not updatable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30380\u003c/td\u003e\u003ctd\u003eBox item [{itemId}] duration and end date can’t be set at the same time\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -9018,7 +9230,7 @@
       },
       "get": {
         "description": "Get revocation configuration.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: Revocation config\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
-        "operationId": "getPaymentCallbackConfig_1",
+        "operationId": "getRevocationConfig",
         "parameters": [
           {
             "in": "path",
@@ -9240,6 +9452,12 @@
               "$ref": "#/definitions/RewardInfo"
             }
           },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34023\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
           "404": {
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34042\u003c/td\u003e\u003ctd\u003eReward item [{itemId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
@@ -9247,7 +9465,7 @@
             }
           },
           "409": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34071\u003c/td\u003e\u003ctd\u003eReward with code [{rewardCode}] already exists in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34072\u003c/td\u003e\u003ctd\u003eDuplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34071\u003c/td\u003e\u003ctd\u003eReward with code [{rewardCode}] already exists in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34072\u003c/td\u003e\u003ctd\u003eDuplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34074\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] duration and end date can’t be set at the same time\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -9460,7 +9678,13 @@
             "description": "successful import of reward configs"
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34021\u003c/td\u003e\u003ctd\u003eReward data for namespace [{namespace}] is invalid\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34021\u003c/td\u003e\u003ctd\u003eReward data for namespace [{namespace}] is invalid\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34023\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "409": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34074\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] duration and end date can’t be set at the same time\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -9635,6 +9859,12 @@
               "$ref": "#/definitions/RewardInfo"
             }
           },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34023\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
           "404": {
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34041\u003c/td\u003e\u003ctd\u003eReward [{rewardId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34042\u003c/td\u003e\u003ctd\u003eReward item [{itemId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
@@ -9642,7 +9872,7 @@
             }
           },
           "409": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34072\u003c/td\u003e\u003ctd\u003eDuplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34072\u003c/td\u003e\u003ctd\u003eDuplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e34074\u003c/td\u003e\u003ctd\u003eReward Item [{itemId}] duration and end date can’t be set at the same time\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -10563,7 +10793,7 @@
             }
           },
           "404": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30142\u003c/td\u003e\u003ctd\u003ePublished store does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30143\u003c/td\u003e\u003ctd\u003ePublished store [{storeId}] backup doest not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30142\u003c/td\u003e\u003ctd\u003ePublished store does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30143\u003c/td\u003e\u003ctd\u003ePublished store [{storeId}] backup does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -10616,7 +10846,7 @@
             }
           },
           "404": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30142\u003c/td\u003e\u003ctd\u003ePublished store does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30143\u003c/td\u003e\u003ctd\u003ePublished store [{storeId}] backup doest not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30142\u003c/td\u003e\u003ctd\u003ePublished store does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30143\u003c/td\u003e\u003ctd\u003ePublished store [{storeId}] backup does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -10984,10 +11214,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "items": {
-                "$ref": "#/definitions/CatalogChangePagingSlicedResult"
-              },
-              "type": "array"
+              "$ref": "#/definitions/CatalogChangePagingSlicedResult"
             }
           }
         },
@@ -11408,7 +11635,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30141\u003c/td\u003e\u003ctd\u003eStore [{storeId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30041\u003c/td\u003e\u003ctd\u003eChangelog [{changelogId}] doest not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30141\u003c/td\u003e\u003ctd\u003eStore [{storeId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30041\u003c/td\u003e\u003ctd\u003eChangelog [{changelogId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -11470,7 +11697,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30141\u003c/td\u003e\u003ctd\u003eStore [{storeId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30041\u003c/td\u003e\u003ctd\u003eChangelog [{changelogId}] doest not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30141\u003c/td\u003e\u003ctd\u003eStore [{storeId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30041\u003c/td\u003e\u003ctd\u003eChangelog [{changelogId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -12682,7 +12909,7 @@
     "/platform/admin/namespaces/{namespace}/users/{userId}/dlc": {
       "get": {
         "description": "Get user dlc by platform.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: user dlc\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
-        "operationId": "getUserDLC",
+        "operationId": "getUserDLCByPlatform",
         "parameters": [
           {
             "in": "path",
@@ -12732,6 +12959,71 @@
           }
         ],
         "summary": "Get user dlc by platform",
+        "tags": [
+          "DLC"
+        ],
+        "x-authorization": {
+          "action": "2",
+          "resource": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records": {
+      "get": {
+        "description": "Get user dlc records.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: user dlc\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "getUserDLC",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "enum": [
+              "EPICGAMES",
+              "PSN",
+              "STEAM",
+              "XBOX"
+            ],
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/UserDLCRecord"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Get user dlc records",
         "tags": [
           "DLC"
         ],
@@ -13735,6 +14027,56 @@
         }
       }
     },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke": {
+      "put": {
+        "description": "Revoke all entitlements of a user (This API is for testing purpose only)\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: revoked entitlements count\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "revokeAllEntitlements",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkOperationResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Revoke all entitlements of a user (This API is for testing purpose only)",
+        "tags": [
+          "Entitlement"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT"
+        }
+      }
+    },
     "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/revoke/byIds": {
       "put": {
         "description": "Revoke user\u0026#39;s entitlements by ids.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: revoke entitlements count\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
@@ -13982,6 +14324,12 @@
               "$ref": "#/definitions/EntitlementDecrementResult"
             }
           },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31123\u003c/td\u003e\u003ctd\u003eUnable to acquire box item, box item [{itemId}] expired\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
           "404": {
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31141\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
@@ -13989,7 +14337,7 @@
             }
           },
           "409": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31171\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] already revoked\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31172\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] not active\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31173\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] is not consumable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31174\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] already consumed\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31176\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] use count is insufficient\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31180\u003c/td\u003e\u003ctd\u003eDuplicate request id: [{requestId}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20006\u003c/td\u003e\u003ctd\u003eoptimistic lock\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31171\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] already revoked\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31172\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] not active\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31173\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] is not consumable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31174\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] already consumed\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31176\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] use count is insufficient\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31178\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] out of time range\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31180\u003c/td\u003e\u003ctd\u003eDuplicate request id: [{requestId}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20006\u003c/td\u003e\u003ctd\u003eoptimistic lock\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -14264,6 +14612,79 @@
           }
         ],
         "summary": "Revoke user entitlement",
+        "tags": [
+          "Entitlement"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revokeByUseCount": {
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Revoke specified use count of user entitlement.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: revoke entitlement\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "revokeUseCount",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entitlementId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RevokeUseCountRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EntitlementInfo"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31141\u003c/td\u003e\u003ctd\u003eEntitlement [{entitlementId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Revoke specified use count of user entitlement",
         "tags": [
           "Entitlement"
         ],
@@ -15058,7 +15479,7 @@
             }
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32121\u003c/td\u003e\u003ctd\u003eOrder price mismatch\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32122\u003c/td\u003e\u003ctd\u003eItem type [{itemType}] does not support\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32123\u003c/td\u003e\u003ctd\u003eItem is not purchasable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35124\u003c/td\u003e\u003ctd\u003eWallet [{currencyCode}] has insufficient balance\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32124\u003c/td\u003e\u003ctd\u003eInvalid currency namespace\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32121\u003c/td\u003e\u003ctd\u003eOrder price mismatch\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32122\u003c/td\u003e\u003ctd\u003eItem type [{itemType}] does not support\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32123\u003c/td\u003e\u003ctd\u003eItem is not purchasable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35124\u003c/td\u003e\u003ctd\u003eWallet [{currencyCode}] has insufficient balance\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32126\u003c/td\u003e\u003ctd\u003eSection ID is required for placing this order\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32124\u003c/td\u003e\u003ctd\u003eInvalid currency namespace\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -15947,6 +16368,70 @@
         "x-authorization": {
           "action": "4",
           "resource": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/session/xbl": {
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "This API is used to register/update a session on xbox.\u0026lt;p\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:INTEGRATION, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "registerXblSessions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/XblUserSessionRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Register/Update a session",
+        "tags": [
+          "Session(Platform)"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:INTEGRATION"
         }
       }
     },
@@ -18133,6 +18618,134 @@
         ],
         "x-authorization": {
           "action": "2",
+          "resource": "ADMIN:NAMESPACE:{namespace}:WALLET"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/wallets/credit": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Credit different users\u0026#39; wallets.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:WALLET\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: bulk credit result\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "bulkCredit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/BulkCreditRequest"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkCreditResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Credit different users' wallets",
+        "tags": [
+          "Wallet"
+        ],
+        "x-authorization": {
+          "action": "4",
+          "resource": "ADMIN:NAMESPACE:{namespace}:WALLET"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/wallets/debit": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Debit different users\u0026#39; wallets.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:WALLET\u0026#34;, action=4 (UPDATE)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: bulk credit result\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "bulkDebit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/BulkDebitRequest"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkDebitResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Debit different users' wallets",
+        "tags": [
+          "Wallet"
+        ],
+        "x-authorization": {
+          "action": "4",
           "resource": "ADMIN:NAMESPACE:{namespace}:WALLET"
         }
       }
@@ -23951,7 +24564,7 @@
             }
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31121\u003c/td\u003e\u003ctd\u003eOptionBox entitlement [{entitlementId}] use count is not 1\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31122\u003c/td\u003e\u003ctd\u003eOptionBox entitlement [{entitlementId}] options size is not 1\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31121\u003c/td\u003e\u003ctd\u003eOptionBox entitlement [{entitlementId}] use count is not 1\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31122\u003c/td\u003e\u003ctd\u003eOptionBox entitlement [{entitlementId}] options size is not 1\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e31123\u003c/td\u003e\u003ctd\u003eUnable to acquire box item, box item [{itemId}] expired\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -24843,7 +25456,7 @@
             }
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32121\u003c/td\u003e\u003ctd\u003eOrder price mismatch\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32122\u003c/td\u003e\u003ctd\u003eItem type [{itemType}] does not support\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32123\u003c/td\u003e\u003ctd\u003eItem is not purchasable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32125\u003c/td\u003e\u003ctd\u003eThe user does not meet the purchase conditions\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35124\u003c/td\u003e\u003ctd\u003eWallet [{currencyCode}] has insufficient balance\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32121\u003c/td\u003e\u003ctd\u003eOrder price mismatch\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32122\u003c/td\u003e\u003ctd\u003eItem type [{itemType}] does not support\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32123\u003c/td\u003e\u003ctd\u003eItem is not purchasable\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32125\u003c/td\u003e\u003ctd\u003eThe user does not meet the purchase conditions\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32126\u003c/td\u003e\u003ctd\u003eSection ID is required for placing this order\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35124\u003c/td\u003e\u003ctd\u003eWallet [{currencyCode}] has insufficient balance\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -26239,6 +26852,13 @@
             "type": "string"
           },
           {
+            "in": "query",
+            "name": "sectionExclusive",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
             "default": [
               "name:asc",
               "displayOrder:asc"
@@ -26593,6 +27213,10 @@
           "description": "sandbox",
           "type": "boolean",
           "x-omitempty": false
+        },
+        "sectionId": {
+          "description": "section Id, required if order consists of section item",
+          "type": "string"
         }
       },
       "required": [
@@ -27069,7 +27693,6 @@
         }
       },
       "required": [
-        "bundleId",
         "namespace"
       ],
       "type": "object"
@@ -27538,6 +28161,17 @@
           "format": "int32",
           "type": "integer"
         },
+        "duration": {
+          "description": "box item will be expired after this duration (in seconds). Only available for OptionBox. Supported item type(s): COINS",
+          "format": "int32",
+          "type": "integer"
+        },
+        "endDate": {
+          "description": "box item will be expired after this time. Only available for OptionBox. Supported item type(s): COINS",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
         "itemId": {
           "description": "item id",
           "type": "string"
@@ -27549,6 +28183,161 @@
         "itemType": {
           "description": "item type",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "BulkCreditRequest": {
+      "properties": {
+        "creditRequest": {
+          "$ref": "#/definitions/CreditRequest"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "userIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "BulkCreditResult": {
+      "properties": {
+        "failList": {
+          "items": {
+            "$ref": "#/definitions/CreditResult"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "FAIL",
+            "PARTIAL_SUCCESS",
+            "SUCCESS"
+          ],
+          "type": "string"
+        },
+        "successList": {
+          "items": {
+            "$ref": "#/definitions/CreditResult"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BulkDebitRequest": {
+      "properties": {
+        "currencyCode": {
+          "type": "string"
+        },
+        "request": {
+          "$ref": "#/definitions/DebitByCurrencyCodeRequest"
+        },
+        "userIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "BulkDebitResult": {
+      "properties": {
+        "failList": {
+          "items": {
+            "$ref": "#/definitions/DebitResult"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "FAIL",
+            "PARTIAL_SUCCESS",
+            "SUCCESS"
+          ],
+          "type": "string"
+        },
+        "successList": {
+          "items": {
+            "$ref": "#/definitions/DebitResult"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BulkEntitlementGrantRequest": {
+      "description": "A DTO object for granting entitlement in bulk",
+      "properties": {
+        "entitlementGrantList": {
+          "items": {
+            "$ref": "#/definitions/EntitlementGrant"
+          },
+          "type": "array"
+        },
+        "userIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "BulkEntitlementGrantResult": {
+      "properties": {
+        "failList": {
+          "items": {
+            "$ref": "#/definitions/EntitlementGrantResult"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "FAIL",
+            "PARTIAL_SUCCESS",
+            "SUCCESS"
+          ],
+          "type": "string"
+        },
+        "successList": {
+          "items": {
+            "$ref": "#/definitions/EntitlementGrantResult"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BulkEntitlementRevokeResult": {
+      "properties": {
+        "failList": {
+          "items": {
+            "$ref": "#/definitions/EntitlementRevokeResult"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "FAIL",
+            "PARTIAL_SUCCESS",
+            "SUCCESS"
+          ],
+          "type": "string"
+        },
+        "successList": {
+          "items": {
+            "$ref": "#/definitions/EntitlementRevokeResult"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -27783,6 +28572,11 @@
             "TIER"
           ],
           "type": "string"
+        },
+        "sectionExclusive": {
+          "description": "whether it is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "sellable": {
           "description": "whether allow to sell back to store",
@@ -28713,6 +29507,24 @@
       },
       "type": "object"
     },
+    "ConsumableEntitlementRevocationConfig": {
+      "properties": {
+        "enabled": {
+          "description": "will do revocation if enabled, otherwise will skip do revocation.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "strategy": {
+          "description": "consumable entitlement revocation strategy",
+          "enum": [
+            "CUSTOM",
+            "REVOKE_OR_REPORT"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ConsumeItem": {
       "properties": {
         "extItemId": {
@@ -28790,6 +29602,23 @@
       ],
       "type": "object"
     },
+    "CreditResult": {
+      "properties": {
+        "creditRequest": {
+          "$ref": "#/definitions/CreditRequest"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "CreditRevocation": {
       "properties": {
         "amount": {
@@ -28801,6 +29630,9 @@
         },
         "currencyCode": {
           "type": "string"
+        },
+        "customRevocation": {
+          "type": "object"
         },
         "reason": {
           "type": "string"
@@ -29225,6 +30057,23 @@
       ],
       "type": "object"
     },
+    "DebitResult": {
+      "properties": {
+        "currencyCode": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "request": {
+          "$ref": "#/definitions/DebitByCurrencyCodeRequest"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DeleteRewardConditionRequest": {
       "properties": {
         "conditionName": {
@@ -29333,6 +30182,7 @@
         "strategy": {
           "description": "durable entitlement revocation strategy",
           "enum": [
+            "CUSTOM",
             "REVOKE_OR_REPORT"
           ],
           "type": "string"
@@ -29615,6 +30465,20 @@
       ],
       "type": "object"
     },
+    "EntitlementGrantResult": {
+      "properties": {
+        "entitlementGrants": {
+          "$ref": "#/definitions/EntitlementGrant"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "EntitlementHistoryInfo": {
       "properties": {
         "action": {
@@ -29648,6 +30512,10 @@
           "description": "The operator",
           "type": "string"
         },
+        "reason": {
+          "description": "reason",
+          "type": "string"
+        },
         "updatedAt": {
           "description": "History update time",
           "format": "date-time",
@@ -29655,7 +30523,12 @@
           "x-nullable": false
         },
         "useCount": {
-          "description": "The use count of a consumable entitlement.",
+          "description": "The reminder use count of a consumable entitlement.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "useCountChange": {
+          "description": "changed use count.",
           "format": "int32",
           "type": "integer"
         },
@@ -29895,6 +30768,9 @@
     },
     "EntitlementRevocation": {
       "properties": {
+        "customRevocation": {
+          "type": "object"
+        },
         "entitlementId": {
           "type": "string"
         },
@@ -29930,9 +30806,27 @@
     },
     "EntitlementRevocationConfig": {
       "properties": {
+        "consumable": {
+          "$ref": "#/definitions/ConsumableEntitlementRevocationConfig",
+          "description": "consumable entitlement revocation config"
+        },
         "durable": {
           "$ref": "#/definitions/DurableEntitlementRevocationConfig",
           "description": "durable entitlement revocation config"
+        }
+      },
+      "type": "object"
+    },
+    "EntitlementRevokeResult": {
+      "properties": {
+        "entitlementId": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -30136,8 +31030,7 @@
         }
       },
       "required": [
-        "namespace",
-        "sandboxId"
+        "namespace"
       ],
       "type": "object"
     },
@@ -31284,6 +32177,11 @@
           ],
           "type": "string"
         },
+        "sectionExclusive": {
+          "description": "whether it is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "sellable": {
           "description": "sellable",
           "type": "boolean",
@@ -31482,9 +32380,7 @@
         "namespace",
         "sectionId",
         "startDate",
-        "updatedAt",
-        "viewId",
-        "viewName"
+        "updatedAt"
       ],
       "type": "object"
     },
@@ -32144,11 +33040,8 @@
         }
       },
       "required": [
-        "categoryPath",
-        "itemId",
         "itemType",
-        "localizations",
-        "name"
+        "localizations"
       ],
       "type": "object"
     },
@@ -32437,7 +33330,7 @@
         "regionData": {
           "additionalProperties": {
             "items": {
-              "$ref": "#/definitions/RegionDataItem"
+              "$ref": "#/definitions/RegionDataItemDTO"
             },
             "type": "array"
           },
@@ -32455,6 +33348,11 @@
             "TIER"
           ],
           "type": "string"
+        },
+        "sectionExclusive": {
+          "description": "Whether this item is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "sellable": {
           "description": "sellable, whether allow to sell back to store",
@@ -32781,6 +33679,11 @@
           ],
           "type": "string"
         },
+        "sectionExclusive": {
+          "description": "whether it is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "sellable": {
           "description": "whether allow to sell back to store",
           "type": "boolean",
@@ -32997,6 +33900,9 @@
           },
           "type": "array"
         },
+        "customRevocation": {
+          "type": "object"
+        },
         "entitlementRevocations": {
           "items": {
             "$ref": "#/definitions/EntitlementRevocation"
@@ -33035,6 +33941,9 @@
           "format": "int64",
           "type": "integer"
         },
+        "reason": {
+          "type": "string"
+        },
         "skipped": {
           "type": "boolean",
           "x-omitempty": false
@@ -33044,6 +33953,9 @@
             "FAIL",
             "SUCCESS"
           ],
+          "type": "string"
+        },
+        "strategy": {
           "type": "string"
         }
       },
@@ -33198,6 +34110,11 @@
             "TIER"
           ],
           "type": "string"
+        },
+        "sectionExclusive": {
+          "description": "whether it is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "sellable": {
           "description": "whether allow to sell back to store",
@@ -33536,7 +34453,7 @@
         "regionData": {
           "additionalProperties": {
             "items": {
-              "$ref": "#/definitions/RegionDataItem"
+              "$ref": "#/definitions/RegionDataItemDTO"
             },
             "type": "array"
           },
@@ -33554,6 +34471,11 @@
             "TIER"
           ],
           "type": "string"
+        },
+        "sectionExclusive": {
+          "description": "Whether this item is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "sellable": {
           "description": "sellable, whether allow to sell back to store",
@@ -34311,6 +35233,10 @@
         "returnUrl": {
           "description": "custom return url for real payment, user will be redirected to this url once payment is finished",
           "type": "string"
+        },
+        "sectionId": {
+          "description": "section Id, required if order consists of section item",
+          "type": "string"
         }
       },
       "required": [
@@ -34465,7 +35391,7 @@
           "description": "payment expire time",
           "format": "date-time",
           "type": "string",
-          "x-nullable": false
+          "x-nullable": true
         },
         "ext": {
           "additionalProperties": {
@@ -34632,7 +35558,6 @@
         "createdAt",
         "currency",
         "discountedPrice",
-        "expireTime",
         "itemId",
         "namespace",
         "orderNo",
@@ -35904,7 +36829,6 @@
         "extOrderNo",
         "namespace",
         "paymentOrderNo",
-        "paymentProvider",
         "price",
         "sandbox",
         "status",
@@ -36239,7 +37163,6 @@
       "required": [
         "id",
         "namespace",
-        "paymentMerchantConfigId",
         "region"
       ],
       "type": "object"
@@ -36734,7 +37657,6 @@
         }
       },
       "required": [
-        "environment",
         "namespace"
       ],
       "type": "object"
@@ -37039,6 +37961,11 @@
             "TIER"
           ],
           "type": "string"
+        },
+        "sectionExclusive": {
+          "description": "whether it is sold in section only",
+          "type": "boolean",
+          "x-omitempty": false
         },
         "sellable": {
           "description": "whether allow to sell back to store",
@@ -37523,6 +38450,82 @@
       ],
       "type": "object"
     },
+    "RegionDataItemDTO": {
+      "description": "Region data DTO Object, it's used when create/update item",
+      "properties": {
+        "currencyCode": {
+          "description": "currency code",
+          "example": "USD",
+          "type": "string"
+        },
+        "currencyNamespace": {
+          "description": "currency namespace",
+          "type": "string"
+        },
+        "currencyType": {
+          "description": "currency type",
+          "enum": [
+            "REAL",
+            "VIRTUAL"
+          ],
+          "type": "string"
+        },
+        "discountAmount": {
+          "description": "Discount amount, min is 0, max is price",
+          "format": "int32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "discountExpireAt": {
+          "description": "Discount expire date time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "discountPercentage": {
+          "description": "Discount percentage，default is 0, if this value is not 0, it will override the discountAmount",
+          "format": "int32",
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "discountPurchaseAt": {
+          "description": "DiscountPurchaseAt",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "expireAt": {
+          "description": "ExpireAt",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "price": {
+          "description": "price value, set to 0 if it's free",
+          "format": "int32",
+          "type": "integer"
+        },
+        "purchaseAt": {
+          "description": "PurchaseAt",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "trialPrice": {
+          "description": "trial price, required while fixedTrialCycles set, should \u003e=0 and \u003c= price, default same as trialPrice",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "currencyCode",
+        "currencyNamespace",
+        "currencyType",
+        "price"
+      ],
+      "type": "object"
+    },
     "RequestHistory": {
       "properties": {
         "requestTime": {
@@ -37624,6 +38627,25 @@
       },
       "type": "object"
     },
+    "RevocationError": {
+      "properties": {
+        "code": {
+          "description": "error code",
+          "format": "int32",
+          "type": "integer"
+        },
+        "httpStatus": {
+          "description": "http status",
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "description": "error message",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "RevocationHistoryInfo": {
       "properties": {
         "createdAt": {
@@ -37668,6 +38690,13 @@
           "description": "namespace",
           "type": "string"
         },
+        "revocationErrors": {
+          "description": "revocation errors",
+          "items": {
+            "$ref": "#/definitions/RevocationError"
+          },
+          "type": "array"
+        },
         "revokeEntries": {
           "description": "revoke entries",
           "items": {
@@ -37685,6 +38714,10 @@
             "FAIL",
             "SUCCESS"
           ],
+          "type": "string"
+        },
+        "transactionId": {
+          "description": "transactionId, Order No, DLC Order No.",
           "type": "string"
         },
         "updatedAt": {
@@ -37936,6 +38969,20 @@
       },
       "type": "object"
     },
+    "RevokeUseCountRequest": {
+      "properties": {
+        "reason": {
+          "description": "reason",
+          "type": "string"
+        },
+        "useCount": {
+          "description": "use count",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "RewardCondition": {
       "properties": {
         "condition": {
@@ -38074,6 +39121,11 @@
         "duration": {
           "format": "int32",
           "type": "integer"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
         },
         "itemId": {
           "type": "string"
@@ -40248,6 +41300,79 @@
       },
       "type": "object"
     },
+    "UserDLCRecord": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "namespace": {
+          "description": "namespace",
+          "type": "string"
+        },
+        "obtainedAt": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "platform": {
+          "description": "platform",
+          "enum": [
+            "EPICGAMES",
+            "PSN",
+            "STEAM",
+            "XBOX"
+          ],
+          "type": "string"
+        },
+        "revocationResult": {
+          "$ref": "#/definitions/RevocationResult"
+        },
+        "revokeResults": {
+          "items": {
+            "$ref": "#/definitions/RevokeResult"
+          },
+          "type": "array"
+        },
+        "revokedAt": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "rewards": {
+          "items": {
+            "$ref": "#/definitions/PlatformReward"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "FULFILLED",
+            "REVOKED",
+            "REVOKE_FAILED"
+          ],
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "userId": {
+          "description": "userId",
+          "type": "string"
+        },
+        "version": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "ValidationErrorEntity": {
       "properties": {
         "errorCode": {
@@ -40497,6 +41622,7 @@
           "description": "wallet revocation strategy",
           "enum": [
             "ALWAYS_REVOKE",
+            "CUSTOM",
             "REVOKE_OR_REPORT"
           ],
           "type": "string"
@@ -40769,6 +41895,34 @@
       },
       "type": "object"
     },
+    "XblUserSessionRequest": {
+      "description": "A DTO object for xbl user session",
+      "properties": {
+        "gameSessionId": {
+          "description": "game session id",
+          "type": "string"
+        },
+        "payload": {
+          "description": "session objects",
+          "type": "object"
+        },
+        "scid": {
+          "description": "service config id",
+          "type": "string"
+        },
+        "sessionTemplateName": {
+          "description": "session template name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gameSessionId",
+        "payload",
+        "scid",
+        "sessionTemplateName"
+      ],
+      "type": "object"
+    },
     "XsollaConfig": {
       "description": "A DTO object for updating xsolla config.",
       "properties": {
@@ -40875,5 +42029,24 @@
       },
       "type": "object"
     }
+  },
+  "x-docs": {
+    "alias": "platform",
+    "host": "https://stage.accelbyte.io",
+    "path": "/platform/swagger.json"
+  },
+  "x-version": {
+    "buildBy": "Gradle 6.9.1",
+    "buildDate": "2023-05-09T01:35:02+00:00",
+    "buildID": "4.30.0",
+    "buildJDK": "1.8.0_232 (Eclipse OpenJ9 openj9-0.17.0)",
+    "buildOS": "Linux amd64 5.13.0-1021-aws",
+    "gitBranchName": "release-candidate",
+    "gitHash": "4bce45178c",
+    "gitTag": "3.31.0",
+    "name": "justice-platform-service",
+    "realm": "staging",
+    "version": "4.30.0",
+    "version-roles-seeding": "0.0.28"
   }
 }

@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelInviteUserRequestV4 extends Model {
@@ -39,6 +39,7 @@ public class ModelInviteUserRequestV4 extends Model {
   private String namespace;
 
   @JsonProperty("roleId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String roleId;
 
   @JsonIgnore

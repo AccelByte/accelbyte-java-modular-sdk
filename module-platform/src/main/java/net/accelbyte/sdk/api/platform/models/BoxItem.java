@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class BoxItem extends Model {
@@ -28,6 +28,14 @@ public class BoxItem extends Model {
   @JsonProperty("count")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private Integer count;
+
+  @JsonProperty("duration")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Integer duration;
+
+  @JsonProperty("endDate")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String endDate;
 
   @JsonProperty("itemId")
   @JsonInclude(JsonInclude.Include.NON_NULL)

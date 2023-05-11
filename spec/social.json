@@ -8,7 +8,7 @@
     },
     "description": "Justice Social Service",
     "title": "justice-social-service",
-    "version": "2.2.0"
+    "version": "2.6.0"
   },
   "schemes": [
     "https"
@@ -39,6 +39,10 @@
       "name": "UserStatisticCycle"
     }
   ],
+  "externalDocs": {
+    "description": "API Docs",
+    "url": "https://stage.accelbyte.io/social"
+  },
   "securityDefinitions": {
     "HasPermission": {
       "authorizationUrl": "https://dummy.oauth.net/auth",
@@ -1929,6 +1933,62 @@
         }
       }
     },
+    "/social/v1/admin/namespaces/{namespace}/statCycles/bulk": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Bulk get stat cycle.\u0026lt;br\u0026gt;Other detail info:\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:STAT\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: list of stat cycles\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "bulkGetStatCycle",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/BulkStatCycleRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkStatCycleResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "ADMIN:NAMESPACE:{namespace}:STAT [READ]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Bulk get stat cycle",
+        "tags": [
+          "StatCycleConfiguration"
+        ],
+        "x-authorization": {
+          "action": "2",
+          "resource": "ADMIN:NAMESPACE:{namespace}:STAT"
+        }
+      }
+    },
     "/social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}": {
       "delete": {
         "description": "Deletes stat cycle.\u0026lt;br\u0026gt;Other detail info:\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;ADMIN:NAMESPACE:{namespace}:STAT\u0026#34;, action=8 (DELETE)\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
@@ -3227,6 +3287,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -3316,6 +3382,12 @@
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/UserStatItemPagingSlicedResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -3689,6 +3761,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -3757,6 +3835,12 @@
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e12274\u003c/td\u003e\u003ctd\u003eStat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -3846,6 +3930,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -3934,6 +4024,12 @@
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e12241\u003c/td\u003e\u003ctd\u003eStat [{statCode}] cannot be found in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -4174,6 +4270,62 @@
           }
         ],
         "summary": "List stat cycles",
+        "tags": [
+          "StatCycleConfiguration"
+        ],
+        "x-authorization": {
+          "action": "2",
+          "resource": "NAMESPACE:{namespace}:STAT"
+        }
+      }
+    },
+    "/social/v1/public/namespaces/{namespace}/statCycles/bulk": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Bulk get stat cycle.\u0026lt;br\u0026gt;Other detail info:\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: resource=\u0026#34;NAMESPACE:{namespace}:STAT\u0026#34;, action=2 (READ)\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: list of stat cycles\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "bulkGetStatCycle_1",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/BulkStatCycleRequest"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BulkStatCycleResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          },
+          {
+            "HasPermission": [
+              "NAMESPACE:{namespace}:STAT [READ]"
+            ],
+            "authorization": []
+          }
+        ],
+        "summary": "Bulk get stat cycle",
         "tags": [
           "StatCycleConfiguration"
         ],
@@ -4651,6 +4803,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -4739,6 +4897,12 @@
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/UserStatItemPagingSlicedResult"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -5205,6 +5369,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -5273,6 +5443,12 @@
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e12274\u003c/td\u003e\u003ctd\u003eStat item with code [{statCode}] of user [{profileId}] already exists in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -5362,6 +5538,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -5448,6 +5630,12 @@
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
+            }
           }
         },
         "security": [
@@ -5521,6 +5709,12 @@
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e12241\u003c/td\u003e\u003ctd\u003eStat [{statCode}] cannot be found in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -5913,6 +6107,12 @@
             "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e12242\u003c/td\u003e\u003ctd\u003eStat item of [{statCode}] of user [{profileId}] cannot be found in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "422": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20002\u003c/td\u003e\u003ctd\u003evalidation error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorEntity"
             }
           }
         },
@@ -6450,6 +6650,35 @@
       },
       "required": [
         "statCodes"
+      ],
+      "type": "object"
+    },
+    "BulkStatCycleRequest": {
+      "properties": {
+        "cycleIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "cycleIds"
+      ],
+      "type": "object"
+    },
+    "BulkStatCycleResult": {
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/definitions/StatCycleInfo"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "data"
       ],
       "type": "object"
     },
@@ -7549,6 +7778,12 @@
     },
     "UserStatCycleItemInfo": {
       "properties": {
+        "additionalData": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "type": "object"
+        },
         "createdAt": {
           "format": "date-time",
           "type": "string",
@@ -7626,6 +7861,12 @@
     },
     "UserStatItemInfo": {
       "properties": {
+        "additionalData": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "type": "object"
+        },
         "createdAt": {
           "format": "date-time",
           "type": "string",
@@ -7712,5 +7953,24 @@
       ],
       "type": "object"
     }
+  },
+  "x-docs": {
+    "alias": "social",
+    "host": "https://stage.accelbyte.io",
+    "path": "/social/swagger.json"
+  },
+  "x-version": {
+    "buildBy": "Gradle 6.9.1",
+    "buildDate": "2023-05-09T02:59:29+00:00",
+    "buildID": "2.6.0",
+    "buildJDK": "1.8.0_232 (Eclipse OpenJ9 openj9-0.17.0)",
+    "buildOS": "Linux amd64 5.13.0-1021-aws",
+    "gitBranchName": "release-candidate",
+    "gitHash": "9e3a2b9d1c",
+    "gitTag": "1.31.2",
+    "name": "justice-social-service",
+    "realm": "staging",
+    "version": "2.6.0",
+    "version-roles-seeding": "0.0.12"
   }
 }

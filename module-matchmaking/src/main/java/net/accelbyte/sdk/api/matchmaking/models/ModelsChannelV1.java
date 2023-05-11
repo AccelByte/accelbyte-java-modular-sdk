@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsChannelV1 extends Model {
@@ -45,6 +45,18 @@ public class ModelsChannelV1 extends Model {
 
   @JsonProperty("namespace")
   private String namespace;
+
+  @JsonProperty("region_expansion_range_ms")
+  private Integer regionExpansionRangeMs;
+
+  @JsonProperty("region_expansion_rate_ms")
+  private Integer regionExpansionRateMs;
+
+  @JsonProperty("region_latency_initial_range_ms")
+  private Integer regionLatencyInitialRangeMs;
+
+  @JsonProperty("region_latency_max_ms")
+  private Integer regionLatencyMaxMs;
 
   @JsonProperty("ruleSet")
   private ModelsRuleSetV1 ruleSet;

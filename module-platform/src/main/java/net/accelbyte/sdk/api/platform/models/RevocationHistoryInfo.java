@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class RevocationHistoryInfo extends Model {
@@ -53,6 +53,10 @@ public class RevocationHistoryInfo extends Model {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String namespace;
 
+  @JsonProperty("revocationErrors")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<RevocationError> revocationErrors;
+
   @JsonProperty("revokeEntries")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<RevokeEntry> revokeEntries;
@@ -64,6 +68,10 @@ public class RevocationHistoryInfo extends Model {
   @JsonProperty("status")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String status;
+
+  @JsonProperty("transactionId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String transactionId;
 
   @JsonProperty("updatedAt")
   @JsonInclude(JsonInclude.Include.NON_NULL)

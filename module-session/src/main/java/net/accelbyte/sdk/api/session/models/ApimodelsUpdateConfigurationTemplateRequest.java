@@ -20,10 +20,14 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsUpdateConfigurationTemplateRequest extends Model {
+
+  @JsonProperty("NativeSessionSetting")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ModelsNativeSessionSetting nativeSessionSetting;
 
   @JsonProperty("clientVersion")
   private String clientVersion;
@@ -48,6 +52,9 @@ public class ApimodelsUpdateConfigurationTemplateRequest extends Model {
 
   @JsonProperty("name")
   private String name;
+
+  @JsonProperty("persistent")
+  private Boolean persistent;
 
   @JsonProperty("requestedRegions")
   private List<String> requestedRegions;

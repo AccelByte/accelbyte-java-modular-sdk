@@ -8,6 +8,8 @@
 
 package net.accelbyte.sdk.api.platform.operations.dlc;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
@@ -21,7 +23,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * getUserDLC
  *
- * <p>Get user dlc by platform. Other detail info:
+ * <p>Get user dlc records. Other detail info:
  *
  * <p>* Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2
  * (READ) * Returns : user dlc
@@ -30,7 +32,7 @@ import net.accelbyte.sdk.core.util.Helper;
 @Setter
 public class GetUserDLC extends Operation {
   /** generated field's value */
-  private String path = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc";
+  private String path = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records";
 
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
@@ -45,10 +47,9 @@ public class GetUserDLC extends Operation {
   /**
    * @param namespace required
    * @param userId required
-   * @param type required
    */
   @Builder
-  // deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetUserDLC(String namespace, String userId, String type) {
     this.namespace = namespace;
@@ -85,20 +86,17 @@ public class GetUserDLC extends Operation {
     if (this.userId == null) {
       return false;
     }
-    if (this.type == null) {
-      return false;
-    }
     return true;
   }
 
-  public UserDLC parseResponse(int code, String contentType, InputStream payload)
+  public List<UserDLCRecord> parseResponse(int code, String contentType, InputStream payload)
       throws HttpResponseException, IOException {
     if (code != 200) {
       final String json = Helper.convertInputStreamToString(payload);
       throw new HttpResponseException(code, json);
     }
     final String json = Helper.convertInputStreamToString(payload);
-    return new UserDLC().createFromJson(json);
+    return new ObjectMapper().readValue(json, new TypeReference<List<UserDLCRecord>>() {});
   }
 
   @Override

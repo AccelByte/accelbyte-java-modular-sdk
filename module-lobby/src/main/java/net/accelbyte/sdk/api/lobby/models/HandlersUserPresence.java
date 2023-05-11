@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.Model;
 @Builder
 @Getter
 @Setter
-// deprecated(2022-08-29): All args constructor may cause problems. Use builder instead.
+// @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class HandlersUserPresence extends Model {
@@ -36,6 +36,9 @@ public class HandlersUserPresence extends Model {
 
   @JsonProperty("namespace")
   private String namespace;
+
+  @JsonProperty("platform")
+  private String platform;
 
   @JsonProperty("userID")
   private String userID;
