@@ -64,7 +64,7 @@ pipeline {
         // replace openapi specs inside sdk from spec repository
         sh script: """
           rm -fv ${sdkPath}/spec/*;
-          find ${sdkSpecPath}/spec/stage_main/ -maxdepth 1 -type f -exec cp -v -t ${sdkPath}/spec/ {} \\;
+          find ${sdkSpecPath}/spec/stage_extend-sdk/ -maxdepth 1 -type f -exec cp -v -t ${sdkPath}/spec/ {} \\;
           cp -v ${sdkSpecPath}/docs/openapi-2.0-vendor-extensions.md ${sdkPath}/spec/
         """, label: "Prepare: Copy Latest SDK Specs"
 
