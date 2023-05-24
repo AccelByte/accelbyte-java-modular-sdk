@@ -1,6 +1,7 @@
 includeBuild("../../") {
     dependencySubstitution {
         substitute module('net.accelbyte.sdk:module-achievement') using project(':module-achievement')
+        substitute module('net.accelbyte.sdk:module-ams') using project(':module-ams')
         substitute module('net.accelbyte.sdk:module-basic') using project(':module-basic')
         substitute module('net.accelbyte.sdk:module-cloudsave') using project(':module-cloudsave')
         substitute module('net.accelbyte.sdk:module-dslogmanager') using project(':module-dslogmanager')
