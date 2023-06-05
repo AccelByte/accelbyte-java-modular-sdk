@@ -20,7 +20,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * DeleteDeployment
  *
- * <p>Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+ * <p>Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
  *
  * <p>Required scope: social
  *
@@ -37,6 +37,7 @@ public class DeleteDeployment extends Operation {
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
+
   /** fields as input parameter */
   private String deployment;
 

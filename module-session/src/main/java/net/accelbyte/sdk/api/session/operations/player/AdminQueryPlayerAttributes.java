@@ -29,7 +29,8 @@ import net.accelbyte.sdk.core.util.Helper;
  * if the player wants to enable crossplay to their session (default: false). - platforms : list of
  * the player's 3rd party platform account information. - name : platform name. supported platforms:
  * STEAM, XBOX, PSN - userID : platform userID - data : other data that the player wants to store. -
- * currentPlatform : latest user game platform.
+ * currentPlatform : latest user game platform. - roles : user role for matchmaking role base
+ * support.
  */
 @Getter
 @Setter
@@ -41,6 +42,7 @@ public class AdminQueryPlayerAttributes extends Operation {
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
+
   /** fields as input parameter */
   private String namespace;
 

@@ -8,7 +8,7 @@
     },
     "description": "Justice Group Service",
     "title": "justice-group-service",
-    "version": "2.16.1"
+    "version": "2.16.2"
   },
   "schemes": [
     "https"
@@ -6696,11 +6696,11 @@
     "path": "/group/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2023-05-09T01:42:15+00:00",
-    "gitHash": "906317cdc82da577e68830bf080b4fd564176e1e",
+    "buildDate": "2023-05-23T02:03:40+00:00",
+    "gitHash": "ad8bb540aa7e09d073135c2ec638d485c7f5c67c",
     "name": "justice-group-service",
     "realm": "staging",
-    "version": "2.16.1",
+    "version": "2.16.2",
     "version-roles-seeding": "0.0.3"
   }
 }
