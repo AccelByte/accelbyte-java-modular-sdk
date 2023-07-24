@@ -1,3 +1,13 @@
+<a name="v0.34.0"></a>
+## [v0.34.0]
+### feat
+- **mock-server:** change jenkinfile for new mock-server path
+### test
+- **integration:** fix matchv2
+### fix
+- **:** integration test unable to delete session
+
+
 <a name="v0.32.0"></a>
 ## [v0.32.0] - 2023-03-13
 ### Chore

@@ -111,7 +111,6 @@ public class TestIntegrationServiceSessionBrowser extends TestIntegration {
         sessionWrapper.adminDeleteSession(
             AdminDeleteSession.builder().namespace(this.namespace).sessionID(sessionId).build());
 
-
     // ESAC
 
     assertNotNull(deleteSessionResult);

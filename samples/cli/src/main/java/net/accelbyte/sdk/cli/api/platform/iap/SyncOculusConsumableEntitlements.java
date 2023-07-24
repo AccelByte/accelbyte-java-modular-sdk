@@ -6,12 +6,13 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.cli.api.ams.operations;
+package net.accelbyte.sdk.cli.api.platform.iap;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 import java.util.concurrent.Callable;
-import net.accelbyte.sdk.api.ams.models.*;
-import net.accelbyte.sdk.api.ams.wrappers.Operations;
+import net.accelbyte.sdk.api.platform.models.*;
+import net.accelbyte.sdk.api.platform.wrappers.IAP;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponseException;
@@ -24,10 +25,20 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "func1", mixinStandardHelpOptions = true)
-public class Func1 implements Callable<Integer> {
+@Command(name = "syncOculusConsumableEntitlements", mixinStandardHelpOptions = true)
+public class SyncOculusConsumableEntitlements implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(Func1.class);
+  private static final Logger log = LogManager.getLogger(SyncOculusConsumableEntitlements.class);
+
+  @Option(
+      names = {"--namespace"},
+      description = "namespace")
+  String namespace;
+
+  @Option(
+      names = {"--userId"},
+      description = "userId")
+  String userId;
 
   @Option(
       names = {"--logging"},
@@ -35,7 +46,7 @@ public class Func1 implements Callable<Integer> {
   boolean logging;
 
   public static void main(String[] args) {
-    int exitCode = new CommandLine(new Func1()).execute(args);
+    int exitCode = new CommandLine(new SyncOculusConsumableEntitlements()).execute(args);
     System.exit(exitCode);
   }
 
@@ -49,11 +60,19 @@ public class Func1 implements Callable<Integer> {
       final AccelByteSDK sdk =
           new AccelByteSDK(
               httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final Operations wrapper = new Operations(sdk);
-      final net.accelbyte.sdk.api.ams.operations.operations.Func1 operation =
-          net.accelbyte.sdk.api.ams.operations.operations.Func1.builder().build();
-      wrapper.func1(operation);
-      log.info("Operation successful");
+      final IAP wrapper = new IAP(sdk);
+      final net.accelbyte.sdk.api.platform.operations.iap.SyncOculusConsumableEntitlements
+          operation =
+              net.accelbyte.sdk.api.platform.operations.iap.SyncOculusConsumableEntitlements
+                  .builder()
+                  .namespace(namespace)
+                  .userId(userId)
+                  .build();
+      final List<OculusReconcileResult> response =
+          wrapper.syncOculusConsumableEntitlements(operation);
+      final String responseString =
+          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+      log.info("Operation successful\n{}", responseString);
       return 0;
     } catch (HttpResponseException e) {
       log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);

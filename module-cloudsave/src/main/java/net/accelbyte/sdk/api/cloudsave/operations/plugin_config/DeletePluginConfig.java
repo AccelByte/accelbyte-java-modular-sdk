@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.ams.operations.operations;
+package net.accelbyte.sdk.api.cloudsave.operations.plugin_config;
 
 import java.io.*;
 import java.util.*;
@@ -17,37 +17,62 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.util.Helper;
 
-/** func1 */
+/**
+ * deletePluginConfig
+ *
+ * <p>Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [DELETE]` Required scope:
+ * `social`
+ *
+ * <p>## Description
+ *
+ * <p>This endpoints will delete grpc plugins configuration
+ */
 @Getter
 @Setter
-public class Func1 extends Operation {
+public class DeletePluginConfig extends Operation {
   /** generated field's value */
-  private String path = "/ams/version";
+  private String path = "/cloudsave/v1/admin/namespaces/{namespace}/plugins";
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
+  private String method = "DELETE";
+  private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
 
   /** fields as input parameter */
+  private String namespace;
 
-  /** */
+  /**
+   * @param namespace required
+   */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public Func1() {
+  public DeletePluginConfig(String namespace) {
+    this.namespace = namespace;
 
     securities.add("Bearer");
   }
 
   @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
   public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
     return true;
   }
 
   public void handleEmptyResponse(int code, String contentType, InputStream payload)
       throws HttpResponseException, IOException {
-    if (code != 200) {
+    if (code != 204) {
       final String json = Helper.convertInputStreamToString(payload);
       throw new HttpResponseException(code, json);
     }

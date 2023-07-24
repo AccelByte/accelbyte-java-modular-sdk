@@ -13,6 +13,7 @@ import net.accelbyte.sdk.cli.api.session.dsmc_default_configuration.*;
 import net.accelbyte.sdk.cli.api.session.game_session.*;
 import net.accelbyte.sdk.cli.api.session.operations.*;
 import net.accelbyte.sdk.cli.api.session.party.*;
+import net.accelbyte.sdk.cli.api.session.platform_credential.*;
 import net.accelbyte.sdk.cli.api.session.player.*;
 import picocli.CommandLine.Command;
 
@@ -38,6 +39,9 @@ import picocli.CommandLine.Command;
       AdminDeleteBulkGameSessions.class,
       AdminUpdateGameSessionMember.class,
       AdminQueryParties.class,
+      AdminGetPlatformCredentials.class,
+      AdminUpdatePlatformCredentials.class,
+      AdminDeletePlatformCredentials.class,
       AdminQueryPlayerAttributes.class,
       AdminGetPlayerAttributes.class,
       CreateGameSession.class,
@@ -53,6 +57,7 @@ import picocli.CommandLine.Command;
       PublicRevokeGameSessionCode.class,
       PublicGameSessionInvite.class,
       JoinGameSession.class,
+      PublicPromoteGameSessionLeader.class,
       LeaveGameSession.class,
       PublicGameSessionReject.class,
       AppendTeamGameSession.class,

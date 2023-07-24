@@ -25,6 +25,13 @@ import net.accelbyte.sdk.core.Model;
 @NoArgsConstructor
 public class ApimodelsPublicConfiguration extends Model {
 
+  @JsonProperty("PSNBaseURL")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String psnBaseURL;
+
+  @JsonProperty("autoJoin")
+  private Boolean autoJoin;
+
   @JsonProperty("clientVersion")
   private String clientVersion;
 
@@ -57,6 +64,10 @@ public class ApimodelsPublicConfiguration extends Model {
   @JsonProperty("name")
   private String name;
 
+  @JsonProperty("native_session_setting")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ModelsNativeSessionSetting nativeSessionSetting;
+
   @JsonProperty("persistent")
   private Boolean persistent;
 
@@ -70,6 +81,10 @@ public class ApimodelsPublicConfiguration extends Model {
 
   @JsonProperty("textChat")
   private Boolean textChat;
+
+  @JsonProperty("tieTeamsSessionLifetime")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean tieTeamsSessionLifetime;
 
   @JsonProperty("type")
   private String type;

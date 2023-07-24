@@ -28,6 +28,10 @@ public class ApiMatchFunctionConfig extends Model {
   @JsonProperty("match_function")
   private String matchFunction;
 
+  @JsonProperty("serviceAppName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String serviceAppName;
+
   @JsonProperty("url")
   private String url;
 

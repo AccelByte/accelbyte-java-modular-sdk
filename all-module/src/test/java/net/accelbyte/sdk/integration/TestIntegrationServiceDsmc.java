@@ -250,7 +250,6 @@ class TestIntegrationServiceDsmc extends TestIntegration {
         sessionBrowserWrapper.adminDeleteSession(
             AdminDeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build());
 
-
     assertNotNull(deleteSessionResult);
   }
 

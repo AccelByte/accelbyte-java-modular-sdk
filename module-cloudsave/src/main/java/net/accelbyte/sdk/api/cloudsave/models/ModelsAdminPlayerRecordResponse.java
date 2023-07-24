@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.platform.models;
+package net.accelbyte.sdk.api.cloudsave.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,23 +23,36 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class Achievement extends Model {
+public class ModelsAdminPlayerRecordResponse extends Model {
 
-  @JsonProperty("id")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String id;
+  @JsonProperty("created_at")
+  private String createdAt;
+
+  @JsonProperty("key")
+  private String key;
+
+  @JsonProperty("namespace")
+  private String namespace;
+
+  @JsonProperty("updated_at")
+  private String updatedAt;
+
+  @JsonProperty("user_id")
+  private String userId;
 
   @JsonProperty("value")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer value;
+  private Map<String, ?> value;
 
   @JsonIgnore
-  public Achievement createFromJson(String json) throws JsonProcessingException {
+  public ModelsAdminPlayerRecordResponse createFromJson(String json)
+      throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<Achievement> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<Achievement>>() {});
+  public List<ModelsAdminPlayerRecordResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsAdminPlayerRecordResponse>>() {});
   }
 }

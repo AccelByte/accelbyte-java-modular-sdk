@@ -2,8 +2,8 @@
   "host": "demo.accelbyte.io",
   "info": {
     "description": "Manage AMS Fleets",
-    "title": "fleet-command",
-    "version": "0.1.0:2d4e9f4a2b83c482b0b2858ae7a6702f22bf0558 - 2023-06-06T01:48:34+00:00"
+    "title": "fleet-commander",
+    "version": "0.2.0"
   },
   "schemes": [
     "https"
@@ -739,13 +739,13 @@
             "type": "string"
           },
           {
-            "description": "the limit for the number of records",
+            "description": "Defines the maximum number of records returned in one page. Default is 1000 when not provided.",
             "in": "query",
-            "name": "limit",
+            "name": "count",
             "type": "integer"
           },
           {
-            "description": "the offset for pagination",
+            "description": "Specifies the start index for the records returned. Useful for implementing pagination. Default is 0 when not provided.",
             "in": "query",
             "name": "offset",
             "type": "integer"
@@ -1500,7 +1500,10 @@
             "authorization": []
           }
         ],
-        "summary": "Version info"
+        "summary": "Version info",
+        "tags": [
+          "Fleet Commander"
+        ]
       }
     },
     "/healthz": {
@@ -1633,9 +1636,7 @@
     "api.DSHistoryEvent": {
       "properties": {
         "createdAt": {
-          "format": "date-time",
-          "type": "string",
-          "x-nullable": false
+          "$ref": "#/definitions/time.Time"
         },
         "exitCode": {
           "format": "int32",
@@ -1678,10 +1679,14 @@
             "$ref": "#/definitions/api.DSHistoryEvent"
           },
           "type": "array"
+        },
+        "paging": {
+          "$ref": "#/definitions/api.PagingInfo"
         }
       },
       "required": [
-        "events"
+        "events",
+        "paging"
       ]
     },
     "api.DSHostConfiguration": {
@@ -1894,7 +1899,6 @@
       },
       "required": [
         "active",
-        "claimKeys",
         "dsHostConfiguration",
         "imageDeploymentProfile",
         "name",
@@ -1939,9 +1943,7 @@
     "api.FleetServerHistoryEventResponse": {
       "properties": {
         "createdAt": {
-          "format": "date-time",
-          "type": "string",
-          "x-nullable": false
+          "$ref": "#/definitions/time.Time"
         },
         "exitCode": {
           "format": "int32",
@@ -1989,9 +1991,7 @@
     "api.FleetServerInfoResponse": {
       "properties": {
         "createdAt": {
-          "format": "date-time",
-          "type": "string",
-          "x-nullable": false
+          "$ref": "#/definitions/time.Time"
         },
         "fleetId": {
           "type": "string"
@@ -2262,6 +2262,53 @@
         "virtualCpu"
       ]
     },
+    "api.PagingInfo": {
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hasNext": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "hasPages": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "hasPrev": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "next": {
+          "type": "string"
+        },
+        "pageNums": {
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "previous": {
+          "type": "string"
+        },
+        "total": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "currentPage",
+        "hasNext",
+        "hasPages",
+        "hasPrev",
+        "next",
+        "pageNums",
+        "previous",
+        "total"
+      ]
+    },
     "api.PortConfiguration": {
       "properties": {
         "name": {
@@ -2371,6 +2418,10 @@
         "errorMessage",
         "traceId"
       ]
+    },
+    "time.Time": {
+      "format": "date-time",
+      "type": "string"
     }
   },
   "x-docs": {
@@ -2379,11 +2430,10 @@
     "path": "/ams/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2023-06-06T01:48:34+00:00",
-    "gitHash": "2d4e9f4a2b83c482b0b2858ae7a6702f22bf0558",
-    "name": "fleet-command",
-    "revisionId": "0.1.0",
-    "version": "0.1.0:2d4e9f4a2b83c482b0b2858ae7a6702f22bf0558 - 2023-06-06T01:48:34+00:00",
+    "buildDate": "2023-06-30T15:17:47+00:00",
+    "gitHash": "29d45eaade1fffbf813b974d48518bf57b7257f4",
+    "name": "fleet-commander",
+    "version": "0.2.0",
     "version-roles-seeding": "0.0.24"
   }
 }

@@ -82,6 +82,26 @@
 | `/platform/admin/namespaces/{namespace}/codes/{code}/enable` | PUT | EnableCode | [EnableCode](../../src/main/java/net/accelbyte/sdk/api/platform/operations/campaign/EnableCode.java) | [EnableCode](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/campaign/EnableCode.java) |
 | `/platform/admin/namespaces/{namespace}/users/{userId}/redemption` | POST | ApplyUserRedemption | [ApplyUserRedemption](../../src/main/java/net/accelbyte/sdk/api/platform/operations/campaign/ApplyUserRedemption.java) | [ApplyUserRedemption](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/campaign/ApplyUserRedemption.java) |
 
+### ServicePluginConfig Wrapper:  [ServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/wrappers/ServicePluginConfig.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox` | GET | GetLootBoxPluginConfig | [GetLootBoxPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetLootBoxPluginConfig.java) | [GetLootBoxPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetLootBoxPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox` | PUT | UpdateLootBoxPluginConfig | [UpdateLootBoxPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UpdateLootBoxPluginConfig.java) | [UpdateLootBoxPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UpdateLootBoxPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox` | DELETE | DeleteLootBoxPluginConfig | [DeleteLootBoxPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/DeleteLootBoxPluginConfig.java) | [DeleteLootBoxPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/DeleteLootBoxPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/customConfig/cert` | PUT | UplodLootBoxPluginConfigCert | [UplodLootBoxPluginConfigCert](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UplodLootBoxPluginConfigCert.java) | [UplodLootBoxPluginConfigCert](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UplodLootBoxPluginConfigCert.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/grpcInfo` | GET | GetLootBoxGrpcInfo | [GetLootBoxGrpcInfo](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetLootBoxGrpcInfo.java) | [GetLootBoxGrpcInfo](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetLootBoxGrpcInfo.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/section` | GET | GetSectionPluginConfig | [GetSectionPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetSectionPluginConfig.java) | [GetSectionPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetSectionPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/section` | PUT | UpdateSectionPluginConfig | [UpdateSectionPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UpdateSectionPluginConfig.java) | [UpdateSectionPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UpdateSectionPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/section` | DELETE | DeleteSectionPluginConfig | [DeleteSectionPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/DeleteSectionPluginConfig.java) | [DeleteSectionPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/DeleteSectionPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/catalog/plugins/section/customConfig/cert` | PUT | UploadSectionPluginConfigCert | [UploadSectionPluginConfigCert](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UploadSectionPluginConfigCert.java) | [UploadSectionPluginConfigCert](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UploadSectionPluginConfigCert.java) |
+| [DEPRECATED] `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | GET | GetServicePluginConfig | [GetServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetServicePluginConfig.java) | [GetServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetServicePluginConfig.java) |
+| [DEPRECATED] `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | PUT | UpdateServicePluginConfig | [UpdateServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UpdateServicePluginConfig.java) | [UpdateServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UpdateServicePluginConfig.java) |
+| [DEPRECATED] `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | DELETE | DeleteServicePluginConfig | [DeleteServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/DeleteServicePluginConfig.java) | [DeleteServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/DeleteServicePluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/revocation/plugins/revocation` | GET | GetLootBoxPluginConfig1 | [GetLootBoxPluginConfig1](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetLootBoxPluginConfig1.java) | [GetLootBoxPluginConfig1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetLootBoxPluginConfig1.java) |
+| `/platform/admin/namespaces/{namespace}/revocation/plugins/revocation` | PUT | UpdateRevocationPluginConfig | [UpdateRevocationPluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UpdateRevocationPluginConfig.java) | [UpdateRevocationPluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UpdateRevocationPluginConfig.java) |
+| `/platform/admin/namespaces/{namespace}/revocation/plugins/revocation` | DELETE | DeleteLootBoxPluginConfig1 | [DeleteLootBoxPluginConfig1](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/DeleteLootBoxPluginConfig1.java) | [DeleteLootBoxPluginConfig1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/DeleteLootBoxPluginConfig1.java) |
+| `/platform/admin/namespaces/{namespace}/revocation/plugins/revocation/revocation/customConfig/cert` | PUT | UploadRevocationPluginConfigCert | [UploadRevocationPluginConfigCert](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UploadRevocationPluginConfigCert.java) | [UploadRevocationPluginConfigCert](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UploadRevocationPluginConfigCert.java) |
+
 ### Category Wrapper:  [Category](../../src/main/java/net/accelbyte/sdk/api/platform/wrappers/Category.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -98,13 +118,6 @@
 | `/platform/public/namespaces/{namespace}/categories/{categoryPath}` | GET | PublicGetCategory | [PublicGetCategory](../../src/main/java/net/accelbyte/sdk/api/platform/operations/category/PublicGetCategory.java) | [PublicGetCategory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/category/PublicGetCategory.java) |
 | `/platform/public/namespaces/{namespace}/categories/{categoryPath}/children` | GET | PublicGetChildCategories | [PublicGetChildCategories](../../src/main/java/net/accelbyte/sdk/api/platform/operations/category/PublicGetChildCategories.java) | [PublicGetChildCategories](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/category/PublicGetChildCategories.java) |
 | `/platform/public/namespaces/{namespace}/categories/{categoryPath}/descendants` | GET | PublicGetDescendantCategories | [PublicGetDescendantCategories](../../src/main/java/net/accelbyte/sdk/api/platform/operations/category/PublicGetDescendantCategories.java) | [PublicGetDescendantCategories](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/category/PublicGetDescendantCategories.java) |
-
-### ServicePluginConfig Wrapper:  [ServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/wrappers/ServicePluginConfig.java)
-| Endpoint | Method | ID | Class | Example |
-|---|---|---|---|---|
-| `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | GET | GetServicePluginConfig | [GetServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/GetServicePluginConfig.java) | [GetServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/GetServicePluginConfig.java) |
-| `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | PUT | UpdateServicePluginConfig | [UpdateServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/UpdateServicePluginConfig.java) | [UpdateServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/UpdateServicePluginConfig.java) |
-| `/platform/admin/namespaces/{namespace}/configs/servicePlugin` | DELETE | DeleteServicePluginConfig | [DeleteServicePluginConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/service_plugin_config/DeleteServicePluginConfig.java) | [DeleteServicePluginConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/service_plugin_config/DeleteServicePluginConfig.java) |
 
 ### Currency Wrapper:  [Currency](../../src/main/java/net/accelbyte/sdk/api/platform/wrappers/Currency.java)
 | Endpoint | Method | ID | Class | Example |
@@ -129,6 +142,7 @@
 | `/platform/admin/namespaces/{namespace}/users/{userId}/dlc` | GET | GetUserDLCByPlatform | [GetUserDLCByPlatform](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/GetUserDLCByPlatform.java) | [GetUserDLCByPlatform](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/GetUserDLCByPlatform.java) |
 | `/platform/admin/namespaces/{namespace}/users/{userId}/dlc/records` | GET | GetUserDLC | [GetUserDLC](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/GetUserDLC.java) | [GetUserDLC](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/GetUserDLC.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync` | PUT | SyncEpicGameDLC | [SyncEpicGameDLC](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/SyncEpicGameDLC.java) | [SyncEpicGameDLC](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/SyncEpicGameDLC.java) |
+| `/platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync` | PUT | SyncOculusDLC | [SyncOculusDLC](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/SyncOculusDLC.java) | [SyncOculusDLC](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/SyncOculusDLC.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync` | PUT | PublicSyncPsnDlcInventory | [PublicSyncPsnDlcInventory](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/PublicSyncPsnDlcInventory.java) | [PublicSyncPsnDlcInventory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/PublicSyncPsnDlcInventory.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels` | PUT | PublicSyncPsnDlcInventoryWithMultipleServiceLabels | [PublicSyncPsnDlcInventoryWithMultipleServiceLabels](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/PublicSyncPsnDlcInventoryWithMultipleServiceLabels.java) | [PublicSyncPsnDlcInventoryWithMultipleServiceLabels](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/PublicSyncPsnDlcInventoryWithMultipleServiceLabels.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync` | PUT | SyncSteamDLC | [SyncSteamDLC](../../src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/SyncSteamDLC.java) | [SyncSteamDLC](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/SyncSteamDLC.java) |
@@ -210,6 +224,9 @@
 | `/platform/admin/namespaces/{namespace}/iap/config/item` | GET | GetIAPItemConfig | [GetIAPItemConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/GetIAPItemConfig.java) | [GetIAPItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/GetIAPItemConfig.java) |
 | `/platform/admin/namespaces/{namespace}/iap/config/item` | PUT | UpdateIAPItemConfig | [UpdateIAPItemConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/UpdateIAPItemConfig.java) | [UpdateIAPItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/UpdateIAPItemConfig.java) |
 | `/platform/admin/namespaces/{namespace}/iap/config/item` | DELETE | DeleteIAPItemConfig | [DeleteIAPItemConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/DeleteIAPItemConfig.java) | [DeleteIAPItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/DeleteIAPItemConfig.java) |
+| `/platform/admin/namespaces/{namespace}/iap/config/oculus` | GET | GetOculusIAPConfig | [GetOculusIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/GetOculusIAPConfig.java) | [GetOculusIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/GetOculusIAPConfig.java) |
+| `/platform/admin/namespaces/{namespace}/iap/config/oculus` | PUT | UpdateOculusIAPConfig | [UpdateOculusIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/UpdateOculusIAPConfig.java) | [UpdateOculusIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/UpdateOculusIAPConfig.java) |
+| `/platform/admin/namespaces/{namespace}/iap/config/oculus` | DELETE | DeleteOculusIAPConfig | [DeleteOculusIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/DeleteOculusIAPConfig.java) | [DeleteOculusIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/DeleteOculusIAPConfig.java) |
 | `/platform/admin/namespaces/{namespace}/iap/config/playstation` | GET | GetPlayStationIAPConfig | [GetPlayStationIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/GetPlayStationIAPConfig.java) | [GetPlayStationIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/GetPlayStationIAPConfig.java) |
 | `/platform/admin/namespaces/{namespace}/iap/config/playstation` | PUT | UpdatePlaystationIAPConfig | [UpdatePlaystationIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/UpdatePlaystationIAPConfig.java) | [UpdatePlaystationIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/UpdatePlaystationIAPConfig.java) |
 | `/platform/admin/namespaces/{namespace}/iap/config/playstation` | DELETE | DeletePlaystationIAPConfig | [DeletePlaystationIAPConfig](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/DeletePlaystationIAPConfig.java) | [DeletePlaystationIAPConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/DeletePlaystationIAPConfig.java) |
@@ -232,6 +249,7 @@
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt` | PUT | PublicFulfillAppleIAPItem | [PublicFulfillAppleIAPItem](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/PublicFulfillAppleIAPItem.java) | [PublicFulfillAppleIAPItem](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/PublicFulfillAppleIAPItem.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync` | PUT | SyncEpicGamesInventory | [SyncEpicGamesInventory](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/SyncEpicGamesInventory.java) | [SyncEpicGamesInventory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/SyncEpicGamesInventory.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt` | PUT | PublicFulfillGoogleIAPItem | [PublicFulfillGoogleIAPItem](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/PublicFulfillGoogleIAPItem.java) | [PublicFulfillGoogleIAPItem](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/PublicFulfillGoogleIAPItem.java) |
+| `/platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/sync` | PUT | SyncOculusConsumableEntitlements | [SyncOculusConsumableEntitlements](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/SyncOculusConsumableEntitlements.java) | [SyncOculusConsumableEntitlements](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/SyncOculusConsumableEntitlements.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync` | PUT | PublicReconcilePlayStationStore | [PublicReconcilePlayStationStore](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/PublicReconcilePlayStationStore.java) | [PublicReconcilePlayStationStore](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/PublicReconcilePlayStationStore.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels` | PUT | PublicReconcilePlayStationStoreWithMultipleServiceLabels | [PublicReconcilePlayStationStoreWithMultipleServiceLabels](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/PublicReconcilePlayStationStoreWithMultipleServiceLabels.java) | [PublicReconcilePlayStationStoreWithMultipleServiceLabels](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/PublicReconcilePlayStationStoreWithMultipleServiceLabels.java) |
 | `/platform/public/namespaces/{namespace}/users/{userId}/iap/steam/sync` | PUT | SyncSteamInventory | [SyncSteamInventory](../../src/main/java/net/accelbyte/sdk/api/platform/operations/iap/SyncSteamInventory.java) | [SyncSteamInventory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/iap/SyncSteamInventory.java) |
@@ -535,12 +553,12 @@
 
 | Model | Class |
 |---|---|
-| `Achievement` | [Achievement](../../src/main/java/net/accelbyte/sdk/api/platform/models/Achievement.java) |
 | `AchievementInfo` | [AchievementInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/AchievementInfo.java) |
 | `AdditionalData` | [AdditionalData](../../src/main/java/net/accelbyte/sdk/api/platform/models/AdditionalData.java) |
 | `AdminOrderCreate` | [AdminOrderCreate](../../src/main/java/net/accelbyte/sdk/api/platform/models/AdminOrderCreate.java) |
 | `AdyenConfig` | [AdyenConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/AdyenConfig.java) |
 | `AliPayConfig` | [AliPayConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/AliPayConfig.java) |
+| `AppConfig` | [AppConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/AppConfig.java) |
 | `AppEntitlementInfo` | [AppEntitlementInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/AppEntitlementInfo.java) |
 | `AppEntitlementPagingSlicedResult` | [AppEntitlementPagingSlicedResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/AppEntitlementPagingSlicedResult.java) |
 | `AppInfo` | [AppInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/AppInfo.java) |
@@ -551,6 +569,8 @@
 | `AppleIAPReceipt` | [AppleIAPReceipt](../../src/main/java/net/accelbyte/sdk/api/platform/models/AppleIAPReceipt.java) |
 | `AvailableComparison` | [AvailableComparison](../../src/main/java/net/accelbyte/sdk/api/platform/models/AvailableComparison.java) |
 | `AvailablePredicate` | [AvailablePredicate](../../src/main/java/net/accelbyte/sdk/api/platform/models/AvailablePredicate.java) |
+| `BaseCustomConfig` | [BaseCustomConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/BaseCustomConfig.java) |
+| `BaseTLSConfig` | [BaseTLSConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/BaseTLSConfig.java) |
 | `BasicCategoryInfo` | [BasicCategoryInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/BasicCategoryInfo.java) |
 | `BasicItem` | [BasicItem](../../src/main/java/net/accelbyte/sdk/api/platform/models/BasicItem.java) |
 | `BillingAccount` | [BillingAccount](../../src/main/java/net/accelbyte/sdk/api/platform/models/BillingAccount.java) |
@@ -664,6 +684,7 @@
 | `GoogleIAPReceipt` | [GoogleIAPReceipt](../../src/main/java/net/accelbyte/sdk/api/platform/models/GoogleIAPReceipt.java) |
 | `GoogleReceiptResolveResult` | [GoogleReceiptResolveResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/GoogleReceiptResolveResult.java) |
 | `GrantSubscriptionDaysRequest` | [GrantSubscriptionDaysRequest](../../src/main/java/net/accelbyte/sdk/api/platform/models/GrantSubscriptionDaysRequest.java) |
+| `GrpcServerInfo` | [GrpcServerInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/GrpcServerInfo.java) |
 | `HierarchicalCategoryInfo` | [HierarchicalCategoryInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/HierarchicalCategoryInfo.java) |
 | `IAPConsumeHistoryInfo` | [IAPConsumeHistoryInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/IAPConsumeHistoryInfo.java) |
 | `IAPConsumeHistoryPagingSlicedResult` | [IAPConsumeHistoryPagingSlicedResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/IAPConsumeHistoryPagingSlicedResult.java) |
@@ -709,9 +730,14 @@
 | `ListViewInfo` | [ListViewInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/ListViewInfo.java) |
 | `Localization` | [Localization](../../src/main/java/net/accelbyte/sdk/api/platform/models/Localization.java) |
 | `LootBoxConfig` | [LootBoxConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/LootBoxConfig.java) |
+| `LootBoxPluginConfigInfo` | [LootBoxPluginConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/LootBoxPluginConfigInfo.java) |
+| `LootBoxPluginConfigUpdate` | [LootBoxPluginConfigUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/LootBoxPluginConfigUpdate.java) |
 | `LootBoxReward` | [LootBoxReward](../../src/main/java/net/accelbyte/sdk/api/platform/models/LootBoxReward.java) |
 | `MockIAPReceipt` | [MockIAPReceipt](../../src/main/java/net/accelbyte/sdk/api/platform/models/MockIAPReceipt.java) |
 | `NotificationProcessResult` | [NotificationProcessResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/NotificationProcessResult.java) |
+| `OculusIAPConfigInfo` | [OculusIAPConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/OculusIAPConfigInfo.java) |
+| `OculusIAPConfigRequest` | [OculusIAPConfigRequest](../../src/main/java/net/accelbyte/sdk/api/platform/models/OculusIAPConfigRequest.java) |
+| `OculusReconcileResult` | [OculusReconcileResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/OculusReconcileResult.java) |
 | `OptionBoxConfig` | [OptionBoxConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/OptionBoxConfig.java) |
 | `Order` | [Order](../../src/main/java/net/accelbyte/sdk/api/platform/models/Order.java) |
 | `OrderCreate` | [OrderCreate](../../src/main/java/net/accelbyte/sdk/api/platform/models/OrderCreate.java) |
@@ -780,6 +806,7 @@
 | `PopulatedItemInfo` | [PopulatedItemInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/PopulatedItemInfo.java) |
 | `Predicate` | [Predicate](../../src/main/java/net/accelbyte/sdk/api/platform/models/Predicate.java) |
 | `PredicateValidateResult` | [PredicateValidateResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/PredicateValidateResult.java) |
+| `PublicCustomConfigInfo` | [PublicCustomConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/PublicCustomConfigInfo.java) |
 | `PurchaseCondition` | [PurchaseCondition](../../src/main/java/net/accelbyte/sdk/api/platform/models/PurchaseCondition.java) |
 | `PurchaseConditionUpdate` | [PurchaseConditionUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/PurchaseConditionUpdate.java) |
 | `PurchasedItemCount` | [PurchasedItemCount](../../src/main/java/net/accelbyte/sdk/api/platform/models/PurchasedItemCount.java) |
@@ -800,6 +827,8 @@
 | `RevocationError` | [RevocationError](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationError.java) |
 | `RevocationHistoryInfo` | [RevocationHistoryInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationHistoryInfo.java) |
 | `RevocationHistoryPagingSlicedResult` | [RevocationHistoryPagingSlicedResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationHistoryPagingSlicedResult.java) |
+| `RevocationPluginConfigInfo` | [RevocationPluginConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationPluginConfigInfo.java) |
+| `RevocationPluginConfigUpdate` | [RevocationPluginConfigUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationPluginConfigUpdate.java) |
 | `RevocationRequest` | [RevocationRequest](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationRequest.java) |
 | `RevocationResult` | [RevocationResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevocationResult.java) |
 | `RevokeCurrency` | [RevokeCurrency](../../src/main/java/net/accelbyte/sdk/api/platform/models/RevokeCurrency.java) |
@@ -821,6 +850,8 @@
 | `SectionInfo` | [SectionInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionInfo.java) |
 | `SectionItem` | [SectionItem](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionItem.java) |
 | `SectionPagingSlicedResult` | [SectionPagingSlicedResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionPagingSlicedResult.java) |
+| `SectionPluginConfigInfo` | [SectionPluginConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionPluginConfigInfo.java) |
+| `SectionPluginConfigUpdate` | [SectionPluginConfigUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionPluginConfigUpdate.java) |
 | `SectionUpdate` | [SectionUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/SectionUpdate.java) |
 | `ServicePluginConfigInfo` | [ServicePluginConfigInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/ServicePluginConfigInfo.java) |
 | `ServicePluginConfigUpdate` | [ServicePluginConfigUpdate](../../src/main/java/net/accelbyte/sdk/api/platform/models/ServicePluginConfigUpdate.java) |
@@ -844,6 +875,7 @@
 | `SubscriptionInfo` | [SubscriptionInfo](../../src/main/java/net/accelbyte/sdk/api/platform/models/SubscriptionInfo.java) |
 | `SubscriptionPagingSlicedResult` | [SubscriptionPagingSlicedResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/SubscriptionPagingSlicedResult.java) |
 | `SubscriptionSummary` | [SubscriptionSummary](../../src/main/java/net/accelbyte/sdk/api/platform/models/SubscriptionSummary.java) |
+| `TLSConfig` | [TLSConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/TLSConfig.java) |
 | `TaxResult` | [TaxResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/TaxResult.java) |
 | `TestResult` | [TestResult](../../src/main/java/net/accelbyte/sdk/api/platform/models/TestResult.java) |
 | `TicketAcquireRequest` | [TicketAcquireRequest](../../src/main/java/net/accelbyte/sdk/api/platform/models/TicketAcquireRequest.java) |
@@ -886,3 +918,5 @@
 | `XsollaConfig` | [XsollaConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/XsollaConfig.java) |
 | `XsollaPaywallConfig` | [XsollaPaywallConfig](../../src/main/java/net/accelbyte/sdk/api/platform/models/XsollaPaywallConfig.java) |
 | `XsollaPaywallConfigRequest` | [XsollaPaywallConfigRequest](../../src/main/java/net/accelbyte/sdk/api/platform/models/XsollaPaywallConfigRequest.java) |
+| `steam achievement` | [SteamAchievement](../../src/main/java/net/accelbyte/sdk/api/platform/models/SteamAchievement.java) |
+| `xbox achievement` | [XboxAchievement](../../src/main/java/net/accelbyte/sdk/api/platform/models/XboxAchievement.java) |

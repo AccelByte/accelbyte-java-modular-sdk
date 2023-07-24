@@ -29,6 +29,14 @@ public class ApimodelsUpdateConfigurationTemplateRequest extends Model {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private ModelsNativeSessionSetting nativeSessionSetting;
 
+  @JsonProperty("PSNBaseUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String psnBaseUrl;
+
+  @JsonProperty("autoJoin")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean autoJoin;
+
   @JsonProperty("clientVersion")
   private String clientVersion;
 
@@ -77,6 +85,10 @@ public class ApimodelsUpdateConfigurationTemplateRequest extends Model {
 
   @JsonProperty("textChat")
   private Boolean textChat;
+
+  @JsonProperty("tieTeamsSessionLifetime")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean tieTeamsSessionLifetime;
 
   @JsonProperty("type")
   private String type;

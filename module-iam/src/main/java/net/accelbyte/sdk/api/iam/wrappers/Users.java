@@ -819,6 +819,16 @@ public class Users {
   }
 
   /**
+   * @see AdminGetBulkUserBanV3
+   */
+  public ModelGetUserBanV3Response adminGetBulkUserBanV3(AdminGetBulkUserBanV3 input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminListUserIDByUserIDsV3
    */
   public ModelListUserInformationResult adminListUserIDByUserIDsV3(AdminListUserIDByUserIDsV3 input)
@@ -1116,6 +1126,16 @@ public class Users {
    */
   public ModelTokenThirdPartyLinkStatusResponse adminGetThirdPartyPlatformTokenLinkStatusV3(
       AdminGetThirdPartyPlatformTokenLinkStatusV3 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetUserSinglePlatformAccount
+   */
+  public ModelUserPlatformMetadata adminGetUserSinglePlatformAccount(
+      AdminGetUserSinglePlatformAccount input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
