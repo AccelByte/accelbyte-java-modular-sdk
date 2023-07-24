@@ -21,11 +21,12 @@ import net.accelbyte.sdk.api.dsmc.models.ModelsRequestMatchingAlly;
 import net.accelbyte.sdk.api.dsmc.operations.admin.ListLocalServer;
 import net.accelbyte.sdk.api.dsmc.operations.session.ClaimServer;
 import net.accelbyte.sdk.api.dsmc.wrappers.Admin;
+import net.accelbyte.sdk.api.sessionbrowser.models.ModelsAdminSessionResponse;
 import net.accelbyte.sdk.api.sessionbrowser.models.ModelsCreateSessionRequest;
 import net.accelbyte.sdk.api.sessionbrowser.models.ModelsGameSessionSetting;
 import net.accelbyte.sdk.api.sessionbrowser.models.ModelsSessionResponse;
+import net.accelbyte.sdk.api.sessionbrowser.operations.session.AdminDeleteSession;
 import net.accelbyte.sdk.api.sessionbrowser.operations.session.CreateSession;
-import net.accelbyte.sdk.api.sessionbrowser.operations.session.DeleteSession;
 import net.accelbyte.sdk.api.sessionbrowser.wrappers.Session;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
@@ -82,7 +83,7 @@ class TestIntegrationServiceDsmc extends TestIntegration {
 
     final ModelsCreateSessionRequest createSessionBody =
         ModelsCreateSessionRequest.builder()
-            .sessionType("p2p")
+            .sessionType("dedicated")
             .gameVersion(version)
             .namespace(targetNamespace)
             .username(targetUsername)
@@ -245,9 +246,10 @@ class TestIntegrationServiceDsmc extends TestIntegration {
 
     // Delete session (SessionBrowser)
 
-    ModelsSessionResponse deleteSessionResult =
-        sessionBrowserWrapper.deleteSession(
-            DeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build());
+    ModelsAdminSessionResponse deleteSessionResult =
+        sessionBrowserWrapper.adminDeleteSession(
+            AdminDeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build());
+
 
     assertNotNull(deleteSessionResult);
   }
