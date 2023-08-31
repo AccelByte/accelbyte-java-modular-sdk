@@ -286,6 +286,7 @@ import picocli.CommandLine.Command;
       PublicForcePlatformLinkV3.class,
       PublicWebLinkPlatform.class,
       PublicWebLinkPlatformEstablish.class,
+      PublicProcessWebLinkPlatformV3.class,
       ResetPasswordV3.class,
       PublicGetUserByUserIdV3.class,
       PublicGetUserBanHistoryV3.class,
@@ -309,6 +310,7 @@ import picocli.CommandLine.Command;
       LoginSSOClient.class,
       LogoutSSOClient.class,
       RequestGameTokenResponseV3.class,
+      PlatformTokenRefreshV3.class,
       AdminGetDevicesByUserV4.class,
       AdminGetBannedDevicesV4.class,
       AdminGetUserDeviceBansV4.class,
@@ -378,6 +380,7 @@ import picocli.CommandLine.Command;
       PublicEnableMyEmailV4.class,
       PublicGetMyEnabledFactorsV4.class,
       PublicMakeFactorMyDefaultV4.class,
+      PublicGetUserPublicInfoByUserIdV4.class,
       PublicInviteUserV4.class,
     })
 public class Iam implements Runnable {

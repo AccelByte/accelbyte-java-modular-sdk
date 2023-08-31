@@ -10,11 +10,13 @@ package net.accelbyte.sdk.cli.wrapper;
 
 import net.accelbyte.sdk.cli.api.session.configuration_template.*;
 import net.accelbyte.sdk.cli.api.session.dsmc_default_configuration.*;
+import net.accelbyte.sdk.cli.api.session.environment_variable.*;
 import net.accelbyte.sdk.cli.api.session.game_session.*;
 import net.accelbyte.sdk.cli.api.session.operations.*;
 import net.accelbyte.sdk.cli.api.session.party.*;
 import net.accelbyte.sdk.cli.api.session.platform_credential.*;
 import net.accelbyte.sdk.cli.api.session.player.*;
+import net.accelbyte.sdk.cli.api.session.session_storage.*;
 import picocli.CommandLine.Command;
 
 @Command(
@@ -24,6 +26,7 @@ import picocli.CommandLine.Command;
       GetHealthcheckInfo.class,
       GetHealthcheckInfoV1.class,
       AdminGetDSMCConfigurationDefault.class,
+      AdminListEnvironmentVariables.class,
       AdminGetConfigurationAlertV1.class,
       AdminUpdateConfigurationAlertV1.class,
       AdminCreateConfigurationAlertV1.class,
@@ -42,6 +45,9 @@ import picocli.CommandLine.Command;
       AdminGetPlatformCredentials.class,
       AdminUpdatePlatformCredentials.class,
       AdminDeletePlatformCredentials.class,
+      AdminReadSessionStorage.class,
+      AdminDeleteUserSessionStorage.class,
+      AdminReadUserSessionStorage.class,
       AdminQueryPlayerAttributes.class,
       AdminGetPlayerAttributes.class,
       CreateGameSession.class,
@@ -74,6 +80,8 @@ import picocli.CommandLine.Command;
       PublicPartyReject.class,
       PublicPartyKick.class,
       PublicCreateParty.class,
+      PublicUpdateInsertSessionStorageLeader.class,
+      PublicUpdateInsertSessionStorage.class,
       PublicGetBulkPlayerCurrentPlatform.class,
       PublicGetPlayerAttributes.class,
       PublicStorePlayerAttributes.class,

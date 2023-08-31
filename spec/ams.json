@@ -3,7 +3,7 @@
   "info": {
     "description": "Manage AMS Fleets",
     "title": "fleet-commander",
-    "version": "0.2.0"
+    "version": "1.0.1"
   },
   "schemes": [
     "https"
@@ -46,6 +46,71 @@
   },
   "swagger": "2.0",
   "paths": {
+    "/ams/auth": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "AuthCheck",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Check if fleet commander is authorized to talk to AMS with this IAM",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/ams/healthz": {
+      "get": {
+        "operationId": "PortalHealthCheck",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Health check",
+        "tags": [
+          "Fleet Commander"
+        ]
+      }
+    },
     "/ams/v1/admin/namespaces/{namespace}/account": {
       "get": {
         "consumes": [
@@ -725,7 +790,7 @@
         "operationId": "FleetServerHistory",
         "parameters": [
           {
-            "description": "the id of the fleet",
+            "description": "ID of the fleet",
             "in": "path",
             "name": "fleetID",
             "required": true,
@@ -749,6 +814,36 @@
             "in": "query",
             "name": "offset",
             "type": "integer"
+          },
+          {
+            "description": "Exit reason",
+            "in": "query",
+            "name": "reason",
+            "type": "string"
+          },
+          {
+            "description": "Region",
+            "in": "query",
+            "name": "region",
+            "type": "string"
+          },
+          {
+            "description": "Dedicated server ID",
+            "in": "query",
+            "name": "serverId",
+            "type": "string"
+          },
+          {
+            "description": "The direction of the sort on the 'createdAt' column, 'asc' for ascending and 'desc' for descending. Defaults to 'asc' when not provided.",
+            "in": "query",
+            "name": "sortDirection",
+            "type": "string"
+          },
+          {
+            "description": "Status of the dedicated server",
+            "in": "query",
+            "name": "status",
+            "type": "string"
           }
         ],
         "produces": [
@@ -1522,7 +1617,10 @@
             "authorization": []
           }
         ],
-        "summary": "health check"
+        "summary": "Health check",
+        "tags": [
+          "Fleet Commander"
+        ]
       }
     }
   },
@@ -2017,6 +2115,12 @@
           },
           "type": "array"
         },
+        "ports": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
         "region": {
           "type": "string"
         },
@@ -2036,6 +2140,7 @@
         "instanceType",
         "ipAddress",
         "portConfiguration",
+        "ports",
         "region",
         "serverId",
         "status"
@@ -2088,6 +2193,9 @@
     },
     "api.ImageDetails": {
       "properties": {
+        "createdAt": {
+          "$ref": "#/definitions/time.Time"
+        },
         "id": {
           "type": "string"
         },
@@ -2118,15 +2226,14 @@
           "type": "array"
         },
         "uploadedAt": {
-          "format": "date-time",
-          "type": "string",
-          "x-nullable": false
+          "$ref": "#/definitions/time.Time"
         },
         "uploadedBy": {
           "type": "string"
         }
       },
       "required": [
+        "createdAt",
         "id",
         "isProtected",
         "name",
@@ -2153,6 +2260,9 @@
     },
     "api.ImageListItem": {
       "properties": {
+        "createdAt": {
+          "$ref": "#/definitions/time.Time"
+        },
         "id": {
           "type": "string"
         },
@@ -2181,15 +2291,14 @@
           "type": "array"
         },
         "uploadedAt": {
-          "format": "date-time",
-          "type": "string",
-          "x-nullable": false
+          "$ref": "#/definitions/time.Time"
         },
         "uploadedBy": {
           "type": "string"
         }
       },
       "required": [
+        "createdAt",
         "id",
         "isProtected",
         "name",
@@ -2430,10 +2539,10 @@
     "path": "/ams/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2023-06-30T15:17:47+00:00",
-    "gitHash": "29d45eaade1fffbf813b974d48518bf57b7257f4",
+    "buildDate": "2023-08-28T06:05:32+00:00",
+    "gitHash": "097af1d16471601b6da5fd4ac58c2d705836651e",
     "name": "fleet-commander",
-    "version": "0.2.0",
+    "version": "1.0.1",
     "version-roles-seeding": "0.0.24"
   }
 }

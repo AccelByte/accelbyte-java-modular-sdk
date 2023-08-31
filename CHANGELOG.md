@@ -6,6 +6,18 @@
 - **integration:** fix matchv2
 ### fix
 - **:** integration test unable to delete session
+### chore
+- **sdk:** generated from openapi spec commit: f131e5930c5a8dc3e43bb4f3306baafe7080c3cf
+
+
+<a name="v0.34.0"></a>
+## [v0.34.0]
+### feat
+- **mock-server:** change jenkinfile for new mock-server path
+### test
+- **integration:** fix matchv2
+### fix
+- **:** integration test unable to delete session
 
 
 <a name="v0.32.0"></a>

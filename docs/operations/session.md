@@ -15,6 +15,11 @@
 |---|---|---|---|---|
 | `/session/v1/admin/dsconfigs/default` | GET | AdminGetDSMCConfigurationDefault | [AdminGetDSMCConfigurationDefault](../../src/main/java/net/accelbyte/sdk/api/session/operations/dsmc_default_configuration/AdminGetDSMCConfigurationDefault.java) | [AdminGetDSMCConfigurationDefault](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/dsmc_default_configuration/AdminGetDSMCConfigurationDefault.java) |
 
+### Environment Variable Wrapper:  [EnvironmentVariable](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/EnvironmentVariable.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/admin/environment-variables` | GET | AdminListEnvironmentVariables | [AdminListEnvironmentVariables](../../src/main/java/net/accelbyte/sdk/api/session/operations/environment_variable/AdminListEnvironmentVariables.java) | [AdminListEnvironmentVariables](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/environment_variable/AdminListEnvironmentVariables.java) |
+
 ### Configuration Template Wrapper:  [ConfigurationTemplate](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/ConfigurationTemplate.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -81,6 +86,15 @@
 | `/session/v1/admin/namespaces/{namespace}/platform-credentials` | PUT | AdminUpdatePlatformCredentials | [AdminUpdatePlatformCredentials](../../src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminUpdatePlatformCredentials.java) | [AdminUpdatePlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminUpdatePlatformCredentials.java) |
 | `/session/v1/admin/namespaces/{namespace}/platform-credentials` | DELETE | AdminDeletePlatformCredentials | [AdminDeletePlatformCredentials](../../src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminDeletePlatformCredentials.java) | [AdminDeletePlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminDeletePlatformCredentials.java) |
 
+### Session Storage Wrapper:  [SessionStorage](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/SessionStorage.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage` | GET | AdminReadSessionStorage | [AdminReadSessionStorage](../../src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/AdminReadSessionStorage.java) | [AdminReadSessionStorage](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/session_storage/AdminReadSessionStorage.java) |
+| `/session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage` | DELETE | AdminDeleteUserSessionStorage | [AdminDeleteUserSessionStorage](../../src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/AdminDeleteUserSessionStorage.java) | [AdminDeleteUserSessionStorage](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/session_storage/AdminDeleteUserSessionStorage.java) |
+| `/session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}` | GET | AdminReadUserSessionStorage | [AdminReadUserSessionStorage](../../src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/AdminReadUserSessionStorage.java) | [AdminReadUserSessionStorage](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/session_storage/AdminReadUserSessionStorage.java) |
+| `/session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader` | PATCH | PublicUpdateInsertSessionStorageLeader | [PublicUpdateInsertSessionStorageLeader](../../src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicUpdateInsertSessionStorageLeader.java) | [PublicUpdateInsertSessionStorageLeader](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/session_storage/PublicUpdateInsertSessionStorageLeader.java) |
+| `/session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}` | PATCH | PublicUpdateInsertSessionStorage | [PublicUpdateInsertSessionStorage](../../src/main/java/net/accelbyte/sdk/api/session/operations/session_storage/PublicUpdateInsertSessionStorage.java) | [PublicUpdateInsertSessionStorage](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/session_storage/PublicUpdateInsertSessionStorage.java) |
+
 ### Player Wrapper:  [Player](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/Player.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -109,6 +123,8 @@
 | `apimodels.DSInformationResponse` | [ApimodelsDSInformationResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDSInformationResponse.java) |
 | `apimodels.DeleteBulkGameSessionRequest` | [ApimodelsDeleteBulkGameSessionRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkGameSessionRequest.java) |
 | `apimodels.DeleteBulkGameSessionsAPIResponse` | [ApimodelsDeleteBulkGameSessionsAPIResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkGameSessionsAPIResponse.java) |
+| `apimodels.EnvironmentVariableListResponse` | [ApimodelsEnvironmentVariableListResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsEnvironmentVariableListResponse.java) |
+| `apimodels.EnvironmentVariableResponse` | [ApimodelsEnvironmentVariableResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsEnvironmentVariableResponse.java) |
 | `apimodels.GameSessionQueryResponse` | [ApimodelsGameSessionQueryResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGameSessionQueryResponse.java) |
 | `apimodels.GameSessionResponse` | [ApimodelsGameSessionResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGameSessionResponse.java) |
 | `apimodels.JoinByCodeRequest` | [ApimodelsJoinByCodeRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsJoinByCodeRequest.java) |

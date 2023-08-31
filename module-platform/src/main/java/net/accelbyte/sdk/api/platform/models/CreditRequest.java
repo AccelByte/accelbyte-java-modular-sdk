@@ -32,6 +32,10 @@ public class CreditRequest extends Model {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String expireAt;
 
+  @JsonProperty("metadata")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> metadata;
+
   @JsonProperty("origin")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String origin;
@@ -121,9 +125,11 @@ public class CreditRequest extends Model {
 
   public enum Source {
     ACHIEVEMENT("ACHIEVEMENT"),
+    CONSUMEENTITLEMENT("CONSUME_ENTITLEMENT"),
     DLC("DLC"),
     GIFT("GIFT"),
     IAP("IAP"),
+    IAPCHARGEBACKREVERSED("IAP_CHARGEBACK_REVERSED"),
     OTHER("OTHER"),
     PROMOTION("PROMOTION"),
     PURCHASE("PURCHASE"),

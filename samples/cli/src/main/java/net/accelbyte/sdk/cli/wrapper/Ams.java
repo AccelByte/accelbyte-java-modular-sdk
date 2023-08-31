@@ -10,10 +10,10 @@ package net.accelbyte.sdk.cli.wrapper;
 
 import net.accelbyte.sdk.cli.api.ams.account.*;
 import net.accelbyte.sdk.cli.api.ams.ams_info.*;
+import net.accelbyte.sdk.cli.api.ams.auth.*;
 import net.accelbyte.sdk.cli.api.ams.fleet_commander.*;
 import net.accelbyte.sdk.cli.api.ams.fleets.*;
 import net.accelbyte.sdk.cli.api.ams.images.*;
-import net.accelbyte.sdk.cli.api.ams.operations.*;
 import net.accelbyte.sdk.cli.api.ams.servers.*;
 import net.accelbyte.sdk.cli.api.ams.watchdogs.*;
 import picocli.CommandLine.Command;
@@ -22,6 +22,8 @@ import picocli.CommandLine.Command;
     name = "ams",
     mixinStandardHelpOptions = true,
     subcommands = {
+      AuthCheck.class,
+      PortalHealthCheck.class,
       AccountGet.class,
       AccountCreate.class,
       AccountLinkTokenGet.class,
