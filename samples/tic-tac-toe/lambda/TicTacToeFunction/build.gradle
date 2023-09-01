@@ -19,6 +19,7 @@ dependencies {
     implementation 'net.accelbyte.sdk:module-gdpr:+'
     implementation 'net.accelbyte.sdk:module-group:+'
     implementation 'net.accelbyte.sdk:module-iam:+'
+    implementation 'net.accelbyte.sdk:module-inventory:+'
     implementation 'net.accelbyte.sdk:module-leaderboard:+'
     implementation 'net.accelbyte.sdk:module-legal:+'
     implementation 'net.accelbyte.sdk:module-lobby:+'

@@ -11,6 +11,7 @@ includeBuild("../../") {
         substitute module('net.accelbyte.sdk:module-gdpr') using project(':module-gdpr')
         substitute module('net.accelbyte.sdk:module-group') using project(':module-group')
         substitute module('net.accelbyte.sdk:module-iam') using project(':module-iam')
+        substitute module('net.accelbyte.sdk:module-inventory') using project(':module-inventory')
         substitute module('net.accelbyte.sdk:module-leaderboard') using project(':module-leaderboard')
         substitute module('net.accelbyte.sdk:module-legal') using project(':module-legal')
         substitute module('net.accelbyte.sdk:module-lobby') using project(':module-lobby')

@@ -32,6 +32,7 @@ import picocli.CommandLine;
       Gdpr.class,
       Group.class,
       Iam.class,
+      Inventory.class,
       Leaderboard.class,
       Legal.class,
       Lobby.class,
