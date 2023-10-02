@@ -308,3 +308,6 @@ gradle-app.setting
 
 # env files
 *.env
+
+# generated bin files
+**/**/bin
