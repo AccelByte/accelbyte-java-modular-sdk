@@ -28,6 +28,9 @@ public class ModelsCreateImageRequest extends Model {
   @JsonProperty("artifactPath")
   private String artifactPath;
 
+  @JsonProperty("coreDumpEnabled")
+  private Boolean coreDumpEnabled;
+
   @JsonProperty("dockerPath")
   private String dockerPath;
 
@@ -42,6 +45,9 @@ public class ModelsCreateImageRequest extends Model {
 
   @JsonProperty("persistent")
   private Boolean persistent;
+
+  @JsonProperty("ulimitFileSize")
+  private Integer ulimitFileSize;
 
   @JsonProperty("version")
   private String version;

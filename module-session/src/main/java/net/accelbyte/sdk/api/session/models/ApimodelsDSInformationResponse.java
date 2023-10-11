@@ -25,6 +25,9 @@ import net.accelbyte.sdk.core.Model;
 @NoArgsConstructor
 public class ApimodelsDSInformationResponse extends Model {
 
+  @JsonProperty("CreatedAt")
+  private String createdAt;
+
   @JsonProperty("RequestedAt")
   private String requestedAt;
 
@@ -33,9 +36,11 @@ public class ApimodelsDSInformationResponse extends Model {
   private ModelsGameServer server;
 
   @JsonProperty("Status")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String status;
 
   @JsonProperty("StatusV2")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String statusV2;
 
   @JsonIgnore

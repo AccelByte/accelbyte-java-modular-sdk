@@ -116,6 +116,16 @@ public class AdminContent {
   }
 
   /**
+   * @see AdminGetContentBulkByShareCodes
+   */
+  public List<ModelsContentDownloadResponse> adminGetContentBulkByShareCodes(
+      AdminGetContentBulkByShareCodes input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminGetUserContentByShareCode
    */
   public ModelsContentDownloadResponse adminGetUserContentByShareCode(
@@ -140,6 +150,16 @@ public class AdminContent {
    */
   public ModelsGetContentPreviewResponse adminDownloadContentPreview(
       AdminDownloadContentPreview input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see RollbackContentVersion
+   */
+  public ModelsContentDownloadResponse rollbackContentVersion(RollbackContentVersion input)
+      throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -171,6 +191,16 @@ public class AdminContent {
   public void adminDeleteContentScreenshot(AdminDeleteContentScreenshot input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see ListContentVersions
+   */
+  public ModelsListContentVersionsResponse listContentVersions(ListContentVersions input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 

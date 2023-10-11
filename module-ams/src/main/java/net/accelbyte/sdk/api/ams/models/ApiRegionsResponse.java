@@ -25,6 +25,10 @@ import net.accelbyte.sdk.core.Model;
 @NoArgsConstructor
 public class ApiRegionsResponse extends Model {
 
+  @JsonProperty("qosServers")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<ApiQOSServer> qosServers;
+
   @JsonProperty("regions")
   private List<String> regions;
 

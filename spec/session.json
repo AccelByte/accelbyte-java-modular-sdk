@@ -3,14 +3,14 @@
   "info": {
     "description": "Justice Session Service",
     "title": "justice-session-service",
-    "version": "3.1.0"
+    "version": "3.8.1"
   },
   "schemes": [
     "https"
   ],
   "externalDocs": {
     "description": "API Docs",
-    "url": "https://stage.accelbyte.io/session/apidocs"
+    "url": "https://demo.accelbyte.io/session/apidocs"
   },
   "securityDefinitions": {
     "HasPermission": {
@@ -1145,6 +1145,78 @@
           }
         ],
         "summary": "Get all game sessions.",
+        "tags": [
+          "Game Session"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Query game sessions by admin.\n\nBy default, API will return a list of available game sessions (joinability: open).\nSession service has several DSInformation status to track DS request to DSMC:\n   - NEED_TO_REQUEST: number of active players hasn\u0026#39;t reached session\u0026#39;s minPlayers therefore DS has not yet requested.\n   - REQUESTED: DS is being requested to DSMC.\n   - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.\n   - FAILED_TO_REQUEST: DSMC fails to create the DS.\n\nquery parameter \\\u0026#34;availability\\\u0026#34; to filter sessions\u0026#39; availability:\nall: return all sessions regardless it\u0026#39;s full\nfull: only return active sessions\ndefault behavior (unset or else): return only available sessions (not full)\n",
+        "operationId": "adminQueryGameSessionsByAttributes",
+        "parameters": [
+          {
+            "description": "a list of attributes to filter from available sessions",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "type": "object"
+            }
+          },
+          {
+            "description": "namespace of the game",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/apimodels.GameSessionQueryResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Query game sessions by admin",
         "tags": [
           "Game Session"
         ]
@@ -2443,7 +2515,7 @@
         "operationId": "patchUpdateGameSession",
         "parameters": [
           {
-            "description": "Update game session request",
+            "description": "Patch update game session request",
             "in": "body",
             "name": "body",
             "required": true,
@@ -2705,11 +2777,8 @@
           "application/json"
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/apimodels.GameSessionResponse"
-            }
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
@@ -3607,11 +3676,8 @@
           "application/json"
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/apimodels.PartySessionResponse"
-            }
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
@@ -5282,6 +5348,9 @@
     },
     "apimodels.DSInformationResponse": {
       "properties": {
+        "CreatedAt": {
+          "type": "string"
+        },
         "RequestedAt": {
           "type": "string"
         },
@@ -5296,9 +5365,8 @@
         }
       },
       "required": [
-        "RequestedAt",
-        "Status",
-        "StatusV2"
+        "CreatedAt",
+        "RequestedAt"
       ]
     },
     "apimodels.DeleteBulkGameSessionRequest": {
@@ -6242,6 +6310,12 @@
           },
           "type": "array"
         },
+        "ams_protocol": {
+          "items": {
+            "$ref": "#/definitions/models.PortConfigurationAMS"
+          },
+          "type": "array"
+        },
         "custom_attribute": {
           "type": "string"
         },
@@ -6303,18 +6377,12 @@
       },
       "required": [
         "custom_attribute",
-        "deployment",
-        "game_version",
         "image_version",
         "ip",
         "is_override_game_version",
         "last_update",
         "namespace",
         "pod_name",
-        "port",
-        "ports",
-        "protocol",
-        "provider",
         "region",
         "session_id",
         "source",
@@ -6406,6 +6474,20 @@
         "updatedAt"
       ]
     },
+    "models.PortConfigurationAMS": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "protocol"
+      ]
+    },
     "models.Team": {
       "properties": {
         "UserIDs": {
@@ -6472,13 +6554,13 @@
   },
   "x-docs": {
     "alias": "session",
-    "host": "https://stage.accelbyte.io",
+    "host": "https://demo.accelbyte.io",
     "path": "/session/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2023-08-28T05:46:26+00:00",
-    "gitHash": "62b990761150576d8335961c48fb0d749a2b8067",
-    "version": "3.1.0",
-    "version-roles-seeding": "0.0.40"
+    "buildDate": "2023-10-03T10:43:51+00:00",
+    "gitHash": "ac4bc414248416f7456cf920443972028329863c",
+    "version": "3.8.1",
+    "version-roles-seeding": "0.0.49"
   }
 }

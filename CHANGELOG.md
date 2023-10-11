@@ -2,6 +2,28 @@
 ## [v0.34.0]
 ### feat
 - **mock-server:** change jenkinfile for new mock-server path
+- **api:** inventory - initial integration
+### test
+- **integration:** fix matchv2
+- **integration:** public and confidential client test
+- **integration:** reword warning about login client public oauth
+- **integration:** remove test health in match2 and session
+### fix
+- **:** integration test unable to delete session
+### chore
+- **sdk:** generated from openapi spec commit: f131e5930c5a8dc3e43bb4f3306baafe7080c3cf
+- **sdk:** generated from openapi spec commit: b236ce2b8f0fea378a60030292e16c84596df70f
+### ci
+- **generate:** use demo_extend-sdk
+### docs
+- **getting-started:** no need warning because prerequisites already mention that this needs confidential oauth client
+- **readme:** reword warning about login client public oauth
+
+
+<a name="v0.34.0"></a>
+## [v0.34.0]
+### feat
+- **mock-server:** change jenkinfile for new mock-server path
 ### test
 - **integration:** fix matchv2
 ### fix
