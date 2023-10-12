@@ -1,4 +1,4 @@
-package net.accelbyte.sdk.api.achievement;
+package net.accelbyte.sdk.api.inventory;
 
 import net.accelbyte.sdk.core.BaseModuleInfo;
 
