@@ -76,7 +76,7 @@ version:
 			VERSION_NEW=$$(awk -v part=$$VERSION_PART -F. "{OFS=\".\"; \$$part+=1; print \$$0}" version.txt) && \
 			echo $${VERSION_NEW} > version.txt &&	# Bump version.txt \
 			sed -i "s/version = '[0-9]\+\.[0-9]\+\.[0-9]\+'/version = '$$VERSION_NEW'/" build.gradle &&		# Bump build.gradle \
-			sed -i "s/private String sdkVersion = \"[0-9]\+\.[0-9]\+\.[0-9]\+\";\+/private String sdkVersion = \"$$VERSION_NEW\";/" src/main/java/net/accelbyte/sdk/core/SDKInfo.java 		# Bump SDK
+			sed -i "s/private String sdkVersion = \"[0-9]\+\.[0-9]\+\.[0-9]\+\";\+/private String sdkVersion = \"$$VERSION_NEW\";/" module-common/src/main/java/net/accelbyte/sdk/core/SDKInfo.java 		# Bump SDK
 
 outstanding_deprecation:
 	find * -type f -iname '*.java' \
