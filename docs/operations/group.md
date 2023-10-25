@@ -1,6 +1,6 @@
 # Group Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -98,7 +98,7 @@
 | `/group/v2/public/namespaces/{namespace}/users/me/join/request` | GET | GetMyGroupJoinRequestV2 | [GetMyGroupJoinRequestV2](../../src/main/java/net/accelbyte/sdk/api/group/operations/member_request/GetMyGroupJoinRequestV2.java) | [GetMyGroupJoinRequestV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/group/member_request/GetMyGroupJoinRequestV2.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

@@ -1,6 +1,6 @@
 # Achievement Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -51,7 +51,7 @@
 | `/achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements` | DELETE | AdminAnonymizeUserAchievement | [AdminAnonymizeUserAchievement](../../src/main/java/net/accelbyte/sdk/api/achievement/operations/anonymization/AdminAnonymizeUserAchievement.java) | [AdminAnonymizeUserAchievement](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/achievement/anonymization/AdminAnonymizeUserAchievement.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

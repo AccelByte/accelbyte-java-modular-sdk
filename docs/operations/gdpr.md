@@ -1,6 +1,6 @@
 # Gdpr Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -43,7 +43,7 @@
 | `/gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` | POST | PublicGeneratePersonalDataURL | [PublicGeneratePersonalDataURL](../../src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval/PublicGeneratePersonalDataURL.java) | [PublicGeneratePersonalDataURL](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gdpr/data_retrieval/PublicGeneratePersonalDataURL.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

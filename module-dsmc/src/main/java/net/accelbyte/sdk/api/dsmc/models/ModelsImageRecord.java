@@ -26,9 +26,11 @@ import net.accelbyte.sdk.core.Model;
 public class ModelsImageRecord extends Model {
 
   @JsonProperty("artifactPath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String artifactPath;
 
   @JsonProperty("coreDumpEnabled")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean coreDumpEnabled;
 
   @JsonProperty("createdAt")
@@ -41,9 +43,11 @@ public class ModelsImageRecord extends Model {
   private String image;
 
   @JsonProperty("imageReplications")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ModelsImageReplication> imageReplications;
 
   @JsonProperty("imageReplicationsMap")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, ModelsImageReplication> imageReplicationsMap;
 
   @JsonProperty("imageSize")
@@ -59,6 +63,7 @@ public class ModelsImageRecord extends Model {
   private Boolean persistent;
 
   @JsonProperty("ulimitFileSize")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Integer ulimitFileSize;
 
   @JsonProperty("updatedAt")

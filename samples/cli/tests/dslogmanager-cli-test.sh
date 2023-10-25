@@ -7,8 +7,8 @@
 # Code generated. DO NOT EDIT.
 
 # Meta:
-# - random seed: 256
-# - template file: cli_test.j2
+# - random seed: 
+# - template file: 
 
 # Instructions:
 # - Run the Justice SDK Mock Server first before running this script.
@@ -56,71 +56,71 @@ touch "tmp.dat"
 #- 2 GetServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager getServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName 'EAxcVpFrttufHIRd' \
-    --logType 'H9UzVRiXbqlAw7r6' \
-    --offset '100' \
-    --origin '7eHpzSn3ZPUdc0qh' \
+    --podName 'rgfsqb7Y' \
+    --logType '5UQHDHGS' \
+    --offset '45' \
+    --origin 'fejZm6cT' \
     > test.out 2>&1
 eval_tap $? 2 'GetServerLogs' test.out
 
 #- 3 ListTerminatedServers
 ./ng net.accelbyte.sdk.cli.Main dslogmanager listTerminatedServers \
     --namespace "$AB_NAMESPACE" \
-    --deployment '4n8mzZ0m8SAMTwE6' \
-    --endDate 'I56IaRDBXxyaNoMR' \
-    --gameMode '6hkspInrAip6lyzS' \
-    --limit '47' \
-    --next 'dwpzS6DaDpv8N7ZQ' \
-    --partyId 'VqGj6oDLjWjkY1aX' \
-    --podName 'lFcDtgOjchIua5tW' \
-    --previous 'EIC32ogW7olvbTgr' \
-    --provider 'hRTcPiSuL0Sly6XM' \
-    --region '4OI18mAQLnzjMf8G' \
-    --sessionId 'Z2WBZqxYG3aREAu2' \
-    --source 'D6QVKNCWP75TB0i7' \
-    --startDate 'pKxR8dl0zRVW4EZG' \
-    --status '9m0XcgGVbMqSszE8' \
-    --userId 'GHavj7AorKsxwkos' \
+    --deployment 'bfu6YEvk' \
+    --endDate 'k4Kiioh7' \
+    --gameMode 'bote5xOD' \
+    --limit '44' \
+    --next 'xnptc0r7' \
+    --partyId 'pwfv82Ik' \
+    --podName 'r2MiEd9w' \
+    --previous 'z8lcOnpC' \
+    --provider 'xOIol6ur' \
+    --region '9ZPzwXM5' \
+    --sessionId '9YXUNAE4' \
+    --source '6nsL8ZBb' \
+    --startDate 'LcLak1th' \
+    --status 'X0PcR7hn' \
+    --userId 'zesYZlPN' \
     > test.out 2>&1
 eval_tap $? 3 'ListTerminatedServers' test.out
 
 #- 4 DownloadServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager downloadServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName 'AVerXpc1C8XfwHuK' \
+    --podName 'vT2HxOr5' \
     > test.out 2>&1
 eval_tap $? 4 'DownloadServerLogs' test.out
 
 #- 5 CheckServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager checkServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName 'eb9l3rGN9A3sNm84' \
+    --podName 'TTssmMdk' \
     > test.out 2>&1
 eval_tap $? 5 'CheckServerLogs' test.out
 
 #- 6 BatchDownloadServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager batchDownloadServerLogs \
-    --body '{"Downloads": [{"alloc_id": "hddSpHt0P7MIIR7C", "namespace": "kyF6C7duuyZ0GhDo", "pod_name": "gqrhBRd8lDR6qVNP"}, {"alloc_id": "RZYdFLIAjGGJddVC", "namespace": "vu9vx5KQ7KYnIuMB", "pod_name": "vaO35llzQRaT5kPx"}, {"alloc_id": "UfofvnnSuB0y5WUl", "namespace": "rMdI4sNveabntBSx", "pod_name": "TeIv53HGCiljvjKo"}]}' \
+    --body '{"Downloads": [{"alloc_id": "U7feFGfy", "namespace": "kgqBJhCw", "pod_name": "vX85hWbP"}, {"alloc_id": "MN51wHBp", "namespace": "CzuvXjHL", "pod_name": "6NyhgfEf"}, {"alloc_id": "CagLMtr5", "namespace": "UCg8pUsL", "pod_name": "bVfXoKkp"}]}' \
     > test.out 2>&1
 eval_tap $? 6 'BatchDownloadServerLogs' test.out
 
 #- 7 ListAllTerminatedServers
 ./ng net.accelbyte.sdk.cli.Main dslogmanager listAllTerminatedServers \
-    --deployment 'yD6SCwGrncqmLtjQ' \
-    --endDate 'HAf8TgoNm03VLisV' \
-    --gameMode '6zwPuo3td6TC6I3l' \
-    --limit '79' \
+    --deployment 'SFNuS3uH' \
+    --endDate 'kF2VvPoz' \
+    --gameMode '3HDH5tEA' \
+    --limit '68' \
     --namespace "$AB_NAMESPACE" \
-    --next 'x4rt69lna7qxNeIx' \
-    --partyId 'Pz6MbwL6IY69z1Ua' \
-    --podName 'LqYSYWytLPziZMdj' \
-    --previous 'xcBZufQxGiHPllG4' \
-    --provider 'cYEzfTD1ZBm3MqHc' \
-    --region 'UmLZZbSqb8RwNmn9' \
-    --sessionId 'HrNQy4uZAAiE0mit' \
-    --startDate '9RGCCHYzUOcEdscK' \
-    --status 'HPEqgA8yu7Vk6Jt4' \
-    --userId 'Ymos9Jcdos4fYcTV' \
+    --next '9A5AMowZ' \
+    --partyId 'I4OGoWkA' \
+    --podName 'sIfLC7ZD' \
+    --previous 'ArSuk1m9' \
+    --provider 'OOwVnXYa' \
+    --region 'DiFIQ88n' \
+    --sessionId '2aWIpuFh' \
+    --startDate 'LHTfcE57' \
+    --status 'hwfJh1Mn' \
+    --userId 'FXWuUNdd' \
     > test.out 2>&1
 eval_tap $? 7 'ListAllTerminatedServers' test.out
 

@@ -1,6 +1,6 @@
 # Match2 Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -63,7 +63,7 @@
 | `/match2/v1/namespaces/{namespace}/rulesets/{ruleset}` | DELETE | DeleteRuleSet | [DeleteRuleSet](../../src/main/java/net/accelbyte/sdk/api/match2/operations/rule_sets/DeleteRuleSet.java) | [DeleteRuleSet](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/rule_sets/DeleteRuleSet.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

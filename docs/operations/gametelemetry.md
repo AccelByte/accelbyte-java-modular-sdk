@@ -1,6 +1,6 @@
 # Gametelemetry Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -17,7 +17,7 @@
 | `/game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}` | PUT | ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut | [ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut](../../src/main/java/net/accelbyte/sdk/api/gametelemetry/operations/gametelemetry_operations/ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.java) | [ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gametelemetry/gametelemetry_operations/ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

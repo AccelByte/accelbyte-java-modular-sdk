@@ -26,9 +26,11 @@ import net.accelbyte.sdk.core.Model;
 public class ModelsCreateImageRequest extends Model {
 
   @JsonProperty("artifactPath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String artifactPath;
 
   @JsonProperty("coreDumpEnabled")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean coreDumpEnabled;
 
   @JsonProperty("dockerPath")
@@ -47,6 +49,7 @@ public class ModelsCreateImageRequest extends Model {
   private Boolean persistent;
 
   @JsonProperty("ulimitFileSize")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Integer ulimitFileSize;
 
   @JsonProperty("version")

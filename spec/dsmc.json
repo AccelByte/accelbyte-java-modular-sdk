@@ -6276,15 +6276,12 @@
         }
       },
       "required": [
-        "artifactPath",
-        "coreDumpEnabled",
         "dockerPath",
         "image",
         "imageSize",
         "namespace",
         "patchVersion",
         "persistent",
-        "ulimitFileSize",
         "uploaderFlag",
         "version"
       ]
@@ -6324,14 +6321,11 @@
         }
       },
       "required": [
-        "artifactPath",
-        "coreDumpEnabled",
         "dockerPath",
         "image",
         "imageSize",
         "namespace",
         "persistent",
-        "ulimitFileSize",
         "version"
       ]
     },
@@ -6895,18 +6889,13 @@
         }
       },
       "required": [
-        "artifactPath",
-        "coreDumpEnabled",
         "createdAt",
         "dockerPath",
         "image",
-        "imageReplications",
-        "imageReplicationsMap",
         "imageSize",
         "modifiedBy",
         "namespace",
         "persistent",
-        "ulimitFileSize",
         "updatedAt",
         "version"
       ]
@@ -6944,10 +6933,7 @@
         }
       },
       "required": [
-        "artifactPath",
-        "coreDumpEnabled",
         "image",
-        "imageReplicationsMap",
         "namespace",
         "patchVersion",
         "persistent",
@@ -7202,19 +7188,14 @@
         }
       },
       "required": [
-        "artifactPath",
-        "coreDumpEnabled",
         "createdAt",
         "dockerPath",
         "image",
-        "imageReplications",
-        "imageReplicationsMap",
         "imageSize",
         "modifiedBy",
         "namespace",
         "patchVersion",
         "persistent",
-        "ulimitFileSize",
         "updatedAt",
         "uploaderFlag",
         "version"
@@ -7534,7 +7515,6 @@
         "game_version",
         "image_version",
         "ip",
-        "is_core_dump_enabled",
         "is_override_game_version",
         "job_id",
         "last_update",

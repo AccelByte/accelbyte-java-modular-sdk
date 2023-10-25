@@ -1,6 +1,6 @@
 # Iam Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -427,7 +427,7 @@
 | `/iam/v4/public/users/invite` | POST | PublicInviteUserV4 | [PublicInviteUserV4](../../src/main/java/net/accelbyte/sdk/api/iam/operations/users_v4/PublicInviteUserV4.java) | [PublicInviteUserV4](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/users_v4/PublicInviteUserV4.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

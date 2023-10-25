@@ -1,6 +1,6 @@
 # Legal Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -132,7 +132,7 @@
 | `/agreement/public/readiness` | GET | CheckReadiness | [CheckReadiness](../../src/main/java/net/accelbyte/sdk/api/legal/operations/utility/CheckReadiness.java) | [CheckReadiness](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/utility/CheckReadiness.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

@@ -26,15 +26,18 @@ import net.accelbyte.sdk.core.Model;
 public class ModelsImageRecordUpdate extends Model {
 
   @JsonProperty("artifactPath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private String artifactPath;
 
   @JsonProperty("coreDumpEnabled")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean coreDumpEnabled;
 
   @JsonProperty("image")
   private String image;
 
   @JsonProperty("imageReplicationsMap")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, ModelsImageReplication> imageReplicationsMap;
 
   @JsonProperty("namespace")

@@ -1,6 +1,6 @@
 # Sessionbrowser Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -29,7 +29,7 @@
 | `/sessionbrowser/namespaces/{namespace}/recentplayer/{userID}` | GET | GetRecentPlayer | [GetRecentPlayer](../../src/main/java/net/accelbyte/sdk/api/sessionbrowser/operations/session/GetRecentPlayer.java) | [GetRecentPlayer](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/sessionbrowser/session/GetRecentPlayer.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

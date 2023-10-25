@@ -1,6 +1,6 @@
 # Cloudsave Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -146,7 +146,7 @@
 | `/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public` | POST | PostPlayerPublicRecordHandlerV1 | [PostPlayerPublicRecordHandlerV1](../../src/main/java/net/accelbyte/sdk/api/cloudsave/operations/public_player_record/PostPlayerPublicRecordHandlerV1.java) | [PostPlayerPublicRecordHandlerV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/public_player_record/PostPlayerPublicRecordHandlerV1.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

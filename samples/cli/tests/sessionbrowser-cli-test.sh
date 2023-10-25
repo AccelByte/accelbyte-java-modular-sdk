@@ -7,8 +7,8 @@
 # Code generated. DO NOT EDIT.
 
 # Meta:
-# - random seed: 256
-# - template file: cli_test.j2
+# - random seed: 
+# - template file: 
 
 # Instructions:
 # - Run the Justice SDK Mock Server first before running this script.
@@ -56,79 +56,79 @@ touch "tmp.dat"
 #- 2 AdminQuerySession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser adminQuerySession \
     --namespace "$AB_NAMESPACE" \
-    --gameMode 'EAxcVpFrttufHIRd' \
-    --gameVersion 'H9UzVRiXbqlAw7r6' \
-    --joinable 'W2ktQG0h5JAav5kR' \
-    --limit '0' \
-    --matchExist '4n8mzZ0m8SAMTwE6' \
-    --matchId 'I56IaRDBXxyaNoMR' \
-    --offset '87' \
-    --serverStatus 'hkspInrAip6lyzSx' \
-    --userId 'wElFHHdgs21Jub74' \
-    --sessionType 'CUkNmKJfh5pUkHOD' \
+    --gameMode 'S5HvC37Y' \
+    --gameVersion 'BG7NEJPx' \
+    --joinable 'enZP6JH1' \
+    --limit '15' \
+    --matchExist 'xWQqP1WZ' \
+    --matchId 'MjzdtqlM' \
+    --offset '2' \
+    --serverStatus '77xon0kX' \
+    --userId 'evHFQeh0' \
+    --sessionType '01io84jf' \
     > test.out 2>&1
 eval_tap $? 2 'AdminQuerySession' test.out
 
 #- 3 GetTotalActiveSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getTotalActiveSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionType 'poMF78NY4YkHs1cn' \
+    --sessionType 'Bgd5iMvQ' \
     > test.out 2>&1
 eval_tap $? 3 'GetTotalActiveSession' test.out
 
 #- 4 GetActiveCustomGameSessions
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getActiveCustomGameSessions \
     --namespace "$AB_NAMESPACE" \
-    --limit '52' \
-    --offset '71' \
-    --serverRegion '1JSDgY1TXp38zsCT' \
-    --sessionId 'CrbCbPOyNQkT7Nvy' \
+    --limit '16' \
+    --offset '50' \
+    --serverRegion 'omwZOG61' \
+    --sessionId 'avCJAQCW' \
     > test.out 2>&1
 eval_tap $? 4 'GetActiveCustomGameSessions' test.out
 
 #- 5 GetActiveMatchmakingGameSessions
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getActiveMatchmakingGameSessions \
     --namespace "$AB_NAMESPACE" \
-    --limit '63' \
-    --matchId 'I18mAQLnzjMf8GZ2' \
-    --offset '100' \
-    --serverRegion 'gSrjJW2OQNOs1PXh' \
-    --sessionId 'T5FvdiRilZ7oFgx4' \
+    --limit '62' \
+    --matchId '5lOCh9M6' \
+    --offset '0' \
+    --serverRegion 'kkA3W9K2' \
+    --sessionId 'dhiUEM79' \
     > test.out 2>&1
 eval_tap $? 5 'GetActiveMatchmakingGameSessions' test.out
 
 #- 6 AdminGetSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser adminGetSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'c8OumKtPDKJDXn7Z' \
+    --sessionID 'fL7i9gmZ' \
     > test.out 2>&1
 eval_tap $? 6 'AdminGetSession' test.out
 
 #- 7 AdminDeleteSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser adminDeleteSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID '4U68su8XfqlqNiTv' \
+    --sessionID 'dNIvSBM2' \
     > test.out 2>&1
 eval_tap $? 7 'AdminDeleteSession' test.out
 
 #- 8 AdminSearchSessionsV2
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser adminSearchSessionsV2 \
     --namespace "$AB_NAMESPACE" \
-    --channel 'B6SdAdIhUDrwoZ5M' \
+    --channel 'aprp9d3C' \
     --deleted  \
-    --matchID 'ecdKi5r6QEa1ysLE' \
-    --partyID 'zth6mXhzkzWkFeZS' \
-    --sessionType 'oEAcBdW19m4eu6d5' \
-    --status 'tA5jUmiTqpyhPFdx' \
-    --userID 'LzFQN05MYzYiKWe5' \
-    --limit '7' \
-    --offset '6' \
+    --matchID 'XyMduAKI' \
+    --partyID 'QJUxwNPa' \
+    --sessionType 'sIDp4yf3' \
+    --status 'laDx182M' \
+    --userID 'bBL5iHhd' \
+    --limit '59' \
+    --offset '64' \
     > test.out 2>&1
 eval_tap $? 8 'AdminSearchSessionsV2' test.out
 
 #- 9 GetSessionHistoryDetailed
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getSessionHistoryDetailed \
-    --matchID 'NRljv7IPrDQQRgat' \
+    --matchID '7bWKwmkx' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 9 'GetSessionHistoryDetailed' test.out
@@ -136,90 +136,90 @@ eval_tap $? 9 'GetSessionHistoryDetailed' test.out
 #- 10 UserQuerySession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser userQuerySession \
     --namespace "$AB_NAMESPACE" \
-    --gameMode '0SevkLGMS0lyuI9a' \
-    --gameVersion '2I9u6Vpbsx5w8hqU' \
-    --joinable 'I06UpOXGSLmCVuHO' \
-    --limit '86' \
-    --matchExist '4sNveabntBSxTeIv' \
-    --matchId '53HGCiljvjKoyD6S' \
-    --offset '59' \
-    --serverStatus 'okahFjkQsfCaTmt1' \
-    --userId 'd67FXGk2s9Q0mPVo' \
-    --sessionType '3twu0MesTCf9x4rt' \
+    --gameMode 'VlwBUIxG' \
+    --gameVersion 'YZUhd1uj' \
+    --joinable 'iKdNNTNc' \
+    --limit '20' \
+    --matchExist '3oRbCAgi' \
+    --matchId 'PtTbsCIw' \
+    --offset '70' \
+    --serverStatus 'y9yKaWSY' \
+    --userId '9jsygY8C' \
+    --sessionType 'VLprugFx' \
     > test.out 2>&1
 eval_tap $? 10 'UserQuerySession' test.out
 
 #- 11 CreateSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser createSession \
     --namespace "$AB_NAMESPACE" \
-    --body '{"game_session_setting": {"allow_join_in_progress": false, "current_internal_player": 23, "current_player": 27, "map_name": "aRlxfcjHfYakUCTq", "max_internal_player": 67, "max_player": 70, "mode": "kE7wcWfDslpJSqGA", "num_bot": 85, "password": "Q0yYoNRKd3IL5TAQ", "settings": {"6iiPlSC2uE4o5Vwd": {}, "o3fePqIJA8IHtrkm": {}, "u0hpDDWVAla2l5BY": {}}}, "game_version": "NtIuS5S5XUdjsoqw", "namespace": "GyzzWi9gwQYv7t1o", "session_type": "7TTr1DmrhZv15T7q", "username": "uIOvBMcaYmvCkGZ5"}' \
+    --body '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 27, "current_player": 57, "map_name": "3r46JRW5", "max_internal_player": 57, "max_player": 57, "mode": "5MsDdH91", "num_bot": 3, "password": "hDTl79lC", "settings": {"ofIx9x6R": {}, "Xn9zsJG4": {}, "yr6QqlCF": {}}}, "game_version": "SuibC5ew", "namespace": "1ku4d58y", "session_type": "hhsvfV3D", "username": "gPbnWPew"}' \
     > test.out 2>&1
 eval_tap $? 11 'CreateSession' test.out
 
 #- 12 GetSessionByUserIDs
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getSessionByUserIDs \
     --namespace "$AB_NAMESPACE" \
-    --userIds 'dAgqxpBFmaLoxozr' \
+    --userIds 'AyNICnR6' \
     > test.out 2>&1
 eval_tap $? 12 'GetSessionByUserIDs' test.out
 
 #- 13 GetSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID '6wfNPX2bOItRMvqt' \
+    --sessionID 'oACBeJL2' \
     > test.out 2>&1
 eval_tap $? 13 'GetSession' test.out
 
 #- 14 UpdateSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser updateSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'lB2jJCSQT279ZZPY' \
-    --body '{"game_max_player": 66}' \
+    --sessionID 'PcApHEep' \
+    --body '{"game_max_player": 96}' \
     > test.out 2>&1
 eval_tap $? 14 'UpdateSession' test.out
 
 #- 15 DeleteSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser deleteSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID '6Q9lNmqRBaAkLnvx' \
+    --sessionID '4JRnkPAU' \
     > test.out 2>&1
 eval_tap $? 15 'DeleteSession' test.out
 
 #- 16 JoinSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser joinSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'kT1X68cmDc3fxU8M' \
-    --body '{"password": "yKrQpM4hkkK6KKXN"}' \
+    --sessionID 'OSEW4CWf' \
+    --body '{"password": "TIUD66Cv"}' \
     > test.out 2>&1
 eval_tap $? 16 'JoinSession' test.out
 
 #- 17 DeleteSessionLocalDS
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser deleteSessionLocalDS \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'B3Gv0IqmF51TkhjY' \
+    --sessionID 'Zo0hoSom' \
     > test.out 2>&1
 eval_tap $? 17 'DeleteSessionLocalDS' test.out
 
 #- 18 AddPlayerToSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser addPlayerToSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'naq6foWvXa3bMrXs' \
-    --body '{"as_spectator": true, "user_id": "tGeoyIPa8ZRrvjj7"}' \
+    --sessionID 'Pvcllh1J' \
+    --body '{"as_spectator": true, "user_id": "4qkOke6n"}' \
     > test.out 2>&1
 eval_tap $? 18 'AddPlayerToSession' test.out
 
 #- 19 RemovePlayerFromSession
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser removePlayerFromSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'il35MXbN9oCMNqq9' \
-    --userID '8SjTvhZNkSQ70D0H' \
+    --sessionID '8fGiNpUY' \
+    --userID 'B8Se4Xig' \
     > test.out 2>&1
 eval_tap $? 19 'RemovePlayerFromSession' test.out
 
 #- 20 UpdateSettings
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser updateSettings \
     --namespace "$AB_NAMESPACE" \
-    --sessionID '6BXksUC9b6i5lZC9' \
+    --sessionID '3GhB7hFl' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 20 'UpdateSettings' test.out
@@ -227,7 +227,7 @@ eval_tap $? 20 'UpdateSettings' test.out
 #- 21 GetRecentPlayer
 ./ng net.accelbyte.sdk.cli.Main sessionbrowser getRecentPlayer \
     --namespace "$AB_NAMESPACE" \
-    --userID 'xv32e8c5csSovoqs' \
+    --userID 'al0DBDx0' \
     > test.out 2>&1
 eval_tap $? 21 'GetRecentPlayer' test.out
 

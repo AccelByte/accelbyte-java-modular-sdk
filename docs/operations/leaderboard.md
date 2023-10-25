@@ -1,6 +1,6 @@
 # Leaderboard Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -102,7 +102,7 @@
 | `/leaderboard/v3/admin/namespaces/{namespace}/users/{userId}/leaderboards` | GET | GetUserLeaderboardRankingsAdminV3 | [GetUserLeaderboardRankingsAdminV3](../../src/main/java/net/accelbyte/sdk/api/leaderboard/operations/user_data_v3/GetUserLeaderboardRankingsAdminV3.java) | [GetUserLeaderboardRankingsAdminV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/leaderboard/user_data_v3/GetUserLeaderboardRankingsAdminV3.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

@@ -1,6 +1,6 @@
 # Matchmaking Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -59,7 +59,7 @@
 | `/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks/tickets/query` | POST | GetMockTicketsByTimestamp | [GetMockTicketsByTimestamp](../../src/main/java/net/accelbyte/sdk/api/matchmaking/operations/mock_matchmaking/GetMockTicketsByTimestamp.java) | [GetMockTicketsByTimestamp](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/matchmaking/mock_matchmaking/GetMockTicketsByTimestamp.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

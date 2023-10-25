@@ -1,6 +1,6 @@
 # Dsmc Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -122,7 +122,7 @@
 | `/dsmcontroller/v1/messages` | GET | PublicGetMessages | [PublicGetMessages](../../src/main/java/net/accelbyte/sdk/api/dsmc/operations/dsmc_operations/PublicGetMessages.java) | [PublicGetMessages](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/dsmc/dsmc_operations/PublicGetMessages.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

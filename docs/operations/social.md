@@ -1,6 +1,6 @@
 # Social Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -131,7 +131,7 @@
 | `/social/v1/public/namespaces/{namespace}/users/{userId}/statCycles/{cycleId}/statCycleitems` | GET | GetUserStatCycleItems1 | [GetUserStatCycleItems1](../../src/main/java/net/accelbyte/sdk/api/social/operations/user_statistic_cycle/GetUserStatCycleItems1.java) | [GetUserStatCycleItems1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/social/user_statistic_cycle/GetUserStatCycleItems1.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

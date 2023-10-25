@@ -1,6 +1,6 @@
 # Seasonpass Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -69,7 +69,7 @@
 | `/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers` | POST | GrantUserTier | [GrantUserTier](../../src/main/java/net/accelbyte/sdk/api/seasonpass/operations/tier/GrantUserTier.java) | [GrantUserTier](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/seasonpass/tier/GrantUserTier.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

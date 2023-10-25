@@ -1,6 +1,6 @@
 # Qosm Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -23,7 +23,7 @@
 | `/qosm/servers/heartbeat` | POST | Heartbeat | [Heartbeat](../../src/main/java/net/accelbyte/sdk/api/qosm/operations/server/Heartbeat.java) | [Heartbeat](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/qosm/server/Heartbeat.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

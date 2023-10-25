@@ -7,8 +7,8 @@
 # Code generated. DO NOT EDIT.
 
 # Meta:
-# - random seed: 256
-# - template file: cli_test.j2
+# - random seed: 
+# - template file: 
 
 # Instructions:
 # - Run the Justice SDK Mock Server first before running this script.
@@ -56,28 +56,28 @@ touch "tmp.dat"
 #- 2 UpdateServerConfig
 ./ng net.accelbyte.sdk.cli.Main qosm updateServerConfig \
     --namespace "$AB_NAMESPACE" \
-    --region 'EAxcVpFrttufHIRd' \
-    --body '{"status": "H9UzVRiXbqlAw7r6"}' \
+    --region 'gx0wqSwm' \
+    --body '{"status": "qYOE4tw9"}' \
     > test.out 2>&1
 eval_tap $? 2 'UpdateServerConfig' test.out
 
 #- 3 DeleteServer
 ./ng net.accelbyte.sdk.cli.Main qosm deleteServer \
-    --region 'W2ktQG0h5JAav5kR' \
+    --region 'OAeWdqrb' \
     > test.out 2>&1
 eval_tap $? 3 'DeleteServer' test.out
 
 #- 4 SetServerAlias
 ./ng net.accelbyte.sdk.cli.Main qosm setServerAlias \
-    --region 'a62WopBJHPtcDs8b' \
-    --body '{"alias": "BZLCXLx8bbgorQeF"}' \
+    --region '0bkytEDo' \
+    --body '{"alias": "t1MwLM42"}' \
     > test.out 2>&1
 eval_tap $? 4 'SetServerAlias' test.out
 
 #- 5 ListServerPerNamespace
 ./ng net.accelbyte.sdk.cli.Main qosm listServerPerNamespace \
     --namespace "$AB_NAMESPACE" \
-    --status 'bQ1g7qbPngUNB1vR' \
+    --status 'cNzL8H7x' \
     > test.out 2>&1
 eval_tap $? 5 'ListServerPerNamespace' test.out
 
@@ -88,7 +88,7 @@ eval_tap $? 6 'ListServer' test.out
 
 #- 7 Heartbeat
 ./ng net.accelbyte.sdk.cli.Main qosm heartbeat \
-    --body '{"ip": "odwpzS6DaDpv8N7Z", "port": 87, "region": "4CUkNmKJfh5pUkHO"}' \
+    --body '{"ip": "Up42xOgf", "port": 29, "region": "NIP6vpNP"}' \
     > test.out 2>&1
 eval_tap $? 7 'Heartbeat' test.out
 

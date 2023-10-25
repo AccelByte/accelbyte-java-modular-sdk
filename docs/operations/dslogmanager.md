@@ -1,6 +1,6 @@
 # Dslogmanager Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -28,7 +28,7 @@
 | `/dslogmanager/v1/messages` | GET | PublicGetMessages | [PublicGetMessages](../../src/main/java/net/accelbyte/sdk/api/dslogmanager/operations/dslogmanager_operations/PublicGetMessages.java) | [PublicGetMessages](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/dslogmanager/dslogmanager_operations/PublicGetMessages.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

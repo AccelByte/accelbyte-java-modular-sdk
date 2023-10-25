@@ -1,6 +1,6 @@
 # Basic Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -104,7 +104,7 @@
 | `/basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles` | DELETE | AnonymizeUserProfile | [AnonymizeUserProfile](../../src/main/java/net/accelbyte/sdk/api/basic/operations/anonymization/AnonymizeUserProfile.java) | [AnonymizeUserProfile](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/basic/anonymization/AnonymizeUserProfile.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

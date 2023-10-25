@@ -1,6 +1,6 @@
 # Eventlog Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -57,7 +57,7 @@
 | `/event/v2/public/namespaces/{namespace}/users/{userId}/event` | GET | GetUserEventsV2Public | [GetUserEventsV2Public](../../src/main/java/net/accelbyte/sdk/api/eventlog/operations/event_v2/GetUserEventsV2Public.java) | [GetUserEventsV2Public](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/eventlog/event_v2/GetUserEventsV2Public.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

@@ -1,6 +1,6 @@
 # Reporting Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -72,7 +72,7 @@
 | `/reporting/v1/public/namespaces/{namespace}/reports` | POST | SubmitReport | [SubmitReport](../../src/main/java/net/accelbyte/sdk/api/reporting/operations/public_reports/SubmitReport.java) | [SubmitReport](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/reporting/public_reports/SubmitReport.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 

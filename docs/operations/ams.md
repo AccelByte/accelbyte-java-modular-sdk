@@ -1,6 +1,6 @@
 # Ams Service Index
 
-&nbsp;  
+&nbsp;
 
 ## Operations
 
@@ -63,7 +63,7 @@
 | `/ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect` | GET | WatchdogConnect | [WatchdogConnect](../../src/main/java/net/accelbyte/sdk/api/ams/operations/watchdogs/WatchdogConnect.java) | [WatchdogConnect](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/watchdogs/WatchdogConnect.java) |
 
 
-&nbsp;  
+&nbsp;
 
 ## Models
 
