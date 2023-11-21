@@ -28,31 +28,11 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
     implementation 'commons-io:commons-io:2.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'
-    implementation 'net.accelbyte.sdk:module-achievement:+'
-    implementation 'net.accelbyte.sdk:module-ams:+'
-    implementation 'net.accelbyte.sdk:module-basic:+'
-    implementation 'net.accelbyte.sdk:module-cloudsave:+'
-    implementation 'net.accelbyte.sdk:module-dslogmanager:+'
-    implementation 'net.accelbyte.sdk:module-dsmc:+'
-    implementation 'net.accelbyte.sdk:module-eventlog:+'
-    implementation 'net.accelbyte.sdk:module-gametelemetry:+'
-    implementation 'net.accelbyte.sdk:module-gdpr:+'
-    implementation 'net.accelbyte.sdk:module-group:+'
-    implementation 'net.accelbyte.sdk:module-iam:+'
-    implementation 'net.accelbyte.sdk:module-inventory:+'
-    implementation 'net.accelbyte.sdk:module-leaderboard:+'
-    implementation 'net.accelbyte.sdk:module-legal:+'
-    implementation 'net.accelbyte.sdk:module-lobby:+'
-    implementation 'net.accelbyte.sdk:module-match2:+'
-    implementation 'net.accelbyte.sdk:module-matchmaking:+'
-    implementation 'net.accelbyte.sdk:module-platform:+'
-    implementation 'net.accelbyte.sdk:module-qosm:+'
-    implementation 'net.accelbyte.sdk:module-reporting:+'
-    implementation 'net.accelbyte.sdk:module-seasonpass:+'
-    implementation 'net.accelbyte.sdk:module-session:+'
-    implementation 'net.accelbyte.sdk:module-sessionbrowser:+'
-    implementation 'net.accelbyte.sdk:module-social:+'
-    implementation 'net.accelbyte.sdk:module-ugc:+'
+
+    // Include all modules in the root project (i.e :module-* )
+    gradle.includedModules.each { moduleName ->
+        implementation "net.accelbyte.sdk:$moduleName:+"
+    }
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'

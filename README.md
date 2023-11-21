@@ -14,8 +14,6 @@ Add the required configuration in `gradle.build`. Replace `{VERSION}` with
 a specific release version tag from [releases](https://github.com/AccelByte/accelbyte-java-sdk/releases) 
 without the leading `v` character.
 
-#### For v0.18.0 and later
-
 The artifacts are published in Maven Central.
 
 ```java
@@ -24,29 +22,36 @@ repositories {
 }
 
 dependencies {
-   implementation 'net.accelbyte.sdk:sdk:{VERSION}'
+    ...
+    implementation 'net.accelbyte.sdk:module-iam:{VERSION}'
 }
 ```
 
-#### For v0.17.0 and earlier
+PS. `module-iam` is the minimum dependency to use AGS, which is an SDK that wraps AGS IAM service. For more detail please refer to the [samples](./samples)
 
-The artifacts are moved to AccelByte Internal Nexus. You need to request for `{USERNAME}` and `{PASSWORD}` to be able to access it.
+#### Migrating from monolithic to modular SDK
 
-```java
-repositories {
-   mavenCentral()
-   maven {
-      url 'https://nexus.tools.accelbyte.net/repository/maven-releases/'
-      credentials {
-         username = '{USERNAME}'
-         password = '{PASSWORD}'
-      }
-   }
-}
+To migrate from monolitic SDK  you need to replace the gradle include statement, from this
+
+```groovy
 
 dependencies {
-   implementation 'net.accelbyte.sdk:sdk:{VERSION}'
+    ...
+    implementation 'net.accelbyte.sdk:sdk:{VERSION}'
 }
+
+```
+
+into this
+
+```groovy
+dependencies {
+    ...
+    implementation 'net.accelbyte.sdk:module-iam:{VERSION}'
+    // also define other module that you needed 
+    implementation 'net.accelbyte.sdk:module-{SERVICE_NAME}:{VERSION}'
+}
+
 ```
 
 ### Environment Variables

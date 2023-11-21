@@ -65,9 +65,11 @@ repositories {
 
 dependencies {
     ...
-    implementation 'net.accelbyte.sdk:sdk:{VERSION}'
+    implementation 'net.accelbyte.sdk:module-iam:{VERSION}'
 }
 ```
+
+PS. `module-iam` is the minimum dependency to use AGS, which is an SDK that wraps AGS IAM service. For more detail please refer to the [samples](./samples)
 
 ### 3. Use in Code
 

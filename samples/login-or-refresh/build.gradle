@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.accelbyte.sdk:sdk:+'
+    implementation 'net.accelbyte.sdk:module-iam:+'
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.14.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'

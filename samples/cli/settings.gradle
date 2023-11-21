@@ -1,29 +1,29 @@
-includeBuild("../../") {
+
+// Define a map for modules with custom project names
+// Map directory names to custom project names
+def customNamedProjects = [
+    'all-module': 'sdk'
+]
+
+gradle.ext.includedModules = []
+
+def rootProjectDir = new File('../..')
+
+includeBuild(rootProjectDir) {
     dependencySubstitution {
-        substitute module('net.accelbyte.sdk:module-achievement') using project(':module-achievement')
-        substitute module('net.accelbyte.sdk:module-ams') using project(':module-ams')
-        substitute module('net.accelbyte.sdk:module-basic') using project(':module-basic')
-        substitute module('net.accelbyte.sdk:module-cloudsave') using project(':module-cloudsave')
-        substitute module('net.accelbyte.sdk:module-dslogmanager') using project(':module-dslogmanager')
-        substitute module('net.accelbyte.sdk:module-dsmc') using project(':module-dsmc')
-        substitute module('net.accelbyte.sdk:module-eventlog') using project(':module-eventlog')
-        substitute module('net.accelbyte.sdk:module-gametelemetry') using project(':module-gametelemetry')
-        substitute module('net.accelbyte.sdk:module-gdpr') using project(':module-gdpr')
-        substitute module('net.accelbyte.sdk:module-group') using project(':module-group')
-        substitute module('net.accelbyte.sdk:module-iam') using project(':module-iam')
-        substitute module('net.accelbyte.sdk:module-inventory') using project(':module-inventory')
-        substitute module('net.accelbyte.sdk:module-leaderboard') using project(':module-leaderboard')
-        substitute module('net.accelbyte.sdk:module-legal') using project(':module-legal')
-        substitute module('net.accelbyte.sdk:module-lobby') using project(':module-lobby')
-        substitute module('net.accelbyte.sdk:module-match2') using project(':module-match2')
-        substitute module('net.accelbyte.sdk:module-matchmaking') using project(':module-matchmaking')
-        substitute module('net.accelbyte.sdk:module-platform') using project(':module-platform')
-        substitute module('net.accelbyte.sdk:module-qosm') using project(':module-qosm')
-        substitute module('net.accelbyte.sdk:module-reporting') using project(':module-reporting')
-        substitute module('net.accelbyte.sdk:module-seasonpass') using project(':module-seasonpass')
-        substitute module('net.accelbyte.sdk:module-session') using project(':module-session')
-        substitute module('net.accelbyte.sdk:module-sessionbrowser') using project(':module-sessionbrowser')
-        substitute module('net.accelbyte.sdk:module-social') using project(':module-social')
-        substitute module('net.accelbyte.sdk:module-ugc') using project(':module-ugc')
+        rootProjectDir.eachDir { File dir ->
+            if (new File(dir, "build.gradle").exists()) {
+                String projectName
+
+                if (customNamedProjects.containsKey(dir.name)) {
+                    projectName = customNamedProjects[dir.name]
+                } else {
+                    projectName = dir.name // Default to directory name
+                }
+
+                substitute module("net.accelbyte.sdk:$projectName") using project(":$projectName")
+                gradle.ext.includedModules.add(projectName)
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ dependencies {
     implementation 'com.google.guava:guava:31.0.1-jre'
 
     // Use the latest published monolithic SDK
-    implementation 'net.accelbyte.sdk:sdk:+'
+    implementation 'net.accelbyte.sdk:module-iam:+'
 }
 
 application {

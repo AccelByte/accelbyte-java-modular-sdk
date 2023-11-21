@@ -9,3 +9,11 @@
 
 rootProject.name = 'getting-started'
 include('app')
+
+// remove all codes bellow if you want to run this sample outside of this project
+includeBuild("../..") {
+    dependencySubstitution {
+        substitute module('net.accelbyte.sdk:module-iam') using project(':module-iam')
+    }
+}
+
