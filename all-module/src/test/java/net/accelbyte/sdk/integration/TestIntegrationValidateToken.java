@@ -42,6 +42,10 @@ public class TestIntegrationValidateToken extends TestIntegration {
   @ValueSource(booleans = {true, false})
   @Order(1)
   public void testClientToken(boolean localTokenValidationEnabled) throws Exception {
+    if (isUsingAGSStarter()) {
+      return; // SKIP
+    }
+
     // Setup
 
     final DefaultConfigRepository configRepo1 = new DefaultConfigRepository();
@@ -90,6 +94,10 @@ public class TestIntegrationValidateToken extends TestIntegration {
   @ValueSource(booleans = {true, false})
   @Order(1)
   public void testUserToken(boolean localTokenValidationEnabled) throws Exception {
+    if (isUsingAGSStarter()) {
+      return; // SKIP
+    }
+
     // Setup
 
     final DefaultConfigRepository configRepo1 = new DefaultConfigRepository();
@@ -137,6 +145,10 @@ public class TestIntegrationValidateToken extends TestIntegration {
   @Test
   @Order(1)
   public void testPermission() throws Exception {
+    if (isUsingAGSStarter()) {
+      return; // SKIP
+    }
+
     final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
     final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
 
