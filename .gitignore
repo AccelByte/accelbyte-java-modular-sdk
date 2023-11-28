@@ -311,3 +311,6 @@ gradle-app.setting
 
 # generated bin files
 **/**/bin
+
+# macOS Files
+.DS_Store
