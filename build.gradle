@@ -38,6 +38,7 @@ subprojects {
             junitXml.required = true
             html.required = false
         }
+        outputs.upToDateWhen { false }
     }
 
     task javadocJar(type: Jar) {
