@@ -77,7 +77,7 @@ pipeline {
           }
           post {
             always {
-              junit 'build/test-results/testIntegration/*.xml'
+              junit 'all-module/build/test-results/testIntegration/*.xml'
             }
           }
         }
