@@ -26,4 +26,5 @@ dependencies {
     api project(':module-social')
     api project(':module-ugc')
     api project(':module-ams')
+    api project(':module-chat')
 }
