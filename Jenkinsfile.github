@@ -1,20 +1,39 @@
-library(
-  identifier: 'jenkins-shared-library@master',
-  retriever: modernSCM(
-    [
-      $class: 'GitSCMSource',
-      remote: 'https://github.com/dhanarab/jenkins-pipeline-library.git'
-    ]
-  )
-)
+import groovy.json.JsonOutput
 
-githubOwner = 'AccelByte'
-githubRepo = 'accelbyte-java-sdk'
-githubSsh = 'dhanarab-sdkbuild-ssh'
-githubPat = 'dhanarab-sdkbuild-pat-github'
 bitbucketSsh = 'bitbucket-build-extend-ssh'
-
+githubOwner = 'AccelByte'
+githubRepo = 'accelbyte-java-modular-sdk'
+githubSsh = 'accelbyte-sdk-sdkbuild-ssh'
+githubPat = 'accelbyte-sdk-sdkbuild-pat-github'
 githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
+sdkName = "AccelByte Java Extend Modular SDK"
+
+def createGithubRelease(tag_name, prerelease = false, name = null, body = null) {
+  def request = ['tag_name': tag_name]
+  if (name) {
+    request['name'] = name
+  }
+  if (body) {
+    request['body'] = body
+  }
+  request['prerelease'] = prerelease
+
+  def requestBody = JsonOutput.toJson(request)
+  echo "Request Body: ${requestBody}"
+
+  def response = httpRequest(
+    url : "https://api.github.com/repos/${githubOwner}/${githubRepo}/releases",
+    httpMode: 'POST',
+    requestBody: requestBody,
+    contentType: 'APPLICATION_JSON',
+    authentication: githubPat,
+    validResponseCodes: '200:201,422'
+  )
+
+ if (response.getStatus() != 201) {
+    error("Failed to create GitHub release. Response code: ${response.getStatus()}. Response message: ${response.getContent()}")
+  }
+}
 
 pipeline {
   agent {
@@ -38,9 +57,8 @@ pipeline {
       }
       steps {
         script {
-          sh "git checkout master"
-          sshagent(credentials: [githubSsh])
-          {
+          sh 'git checkout master'
+          sshagent(credentials: [githubSsh]) {
             sh "git push ${githubUrl} HEAD:main"
           }
         }
@@ -59,24 +77,56 @@ pipeline {
       }
       steps {
         script {
-          if (params.RELEASE_NOTE ==~ /(?s).*@[A-Za-z0-9_-]+@.*/)
-          {
+          releaseNote = params.RELEASE_NOTE
+
+          if (params.AGS_VERSION != "None") {
+            releaseNote = releaseNote.replace('@VERSION@', params.AGS_VERSION)
+          }
+
+          if (releaseNote ==~ /(?s).*@[A-Za-z0-9_-]+@.*/) {
             echo 'Release note still contains one or more template placeholders e.g. @VERSION@, etc. Please check.'
             sh 'false' // Fail this job
           }
+
           sh "git checkout ${params.RELEASE_BRANCH}"
-          sshagent(credentials: [githubSsh])
-          {
-            if (params.RELEASE_BRANCH == "master") {
+          sshagent(credentials: [githubSsh]) {
+            if (params.RELEASE_BRANCH == 'master') {
+
+              echo "Check if tag `ags/v${params.AGS_VERSION}` is exists"
+              def tagCheck = sh(script: "git tag | grep 'ags/v${params.AGS_VERSION}'", returnStdout: true, returnStatus: true)
+              if (tagCheck == "") {
+                echo "AGS version tag 'ags/v${params.AGS_VERSION}' does not exists in source repository."
+                sh 'false' // Fail this job
+              }
+
+              echo 'Push bitbucket master to github main'
               sh "git push ${githubUrl} HEAD:main"
-            }
-            else {
+
+              echo "Tag github main with ags version"
+              sh "git push ${githubUrl} 'ags/v${params.AGS_VERSION}'"
+
+              echo "Get all tags related to `ags/v${params.AGS_VERSION}` and push them"
+              sh "git tag --contains \$(git rev-list -n 1 'ags/v${params.AGS_VERSION}') | grep -v 'ags/v${params.AGS_VERSION}' | xargs -I{} sh -c 'git push ${githubUrl} '{}' || exit 255'"
+
+              //do github release
+              releaseName = "${sdkName} for AGS v${params.AGS_VERSION}"
+              createGithubRelease("ags/v${params.AGS_VERSION}", params.IS_PRERELEASE, releaseName, releaseNote)
+
+              // Publish modules
+              sh """
+              make publish AGS_VER=${params.AGS_VERSION} \
+                PUBLISH_OSSRH_USERNAME=\"$PUBLISH_OSSRH_USR\" \
+                PUBLISH_OSSRH_PASSWORD=\"$PUBLISH_OSSRH_PSW\" \
+                PUBLISH_ASC_KEY=\"\$(cat \"$PUBLISH_ASC_KEY_FILE_PATH\")\" \
+                PUBLISH_ASC_KEY_PASSWORD=\"$PUBLISH_ASC_KEY_PASSWORD\"
+              """
+
+              echo "Clear"
+            } else {
               sh "git push ${githubUrl} HEAD:${params.RELEASE_BRANCH}"
+              //Point release will be implemented later.
             }
-            sh "git push ${githubUrl} ${params.RELEASE_TAG}"
           }
-          github.createRelease(githubPat, githubOwner, githubRepo, params.RELEASE_TAG, params.RELEASE_TAG, params.RELEASE_NOTE)
-          sh 'make publish PUBLISH_OSSRH_USERNAME="$PUBLISH_OSSRH_USR" PUBLISH_OSSRH_PASSWORD="$PUBLISH_OSSRH_PSW" PUBLISH_ASC_KEY="$(cat "$PUBLISH_ASC_KEY_FILE_PATH")" PUBLISH_ASC_KEY_PASSWORD="$PUBLISH_ASC_KEY_PASSWORD"'
         }
       }
     }
@@ -88,31 +138,31 @@ pipeline {
       }
       steps {
         script {
-          sh "git checkout master"
+          sh 'git checkout master'
           sshagent(credentials: [githubSsh])
           {
             sh "git pull ${githubUrl} main"
           }
           sshagent(credentials: [bitbucketSsh])
           {
-            sh "git push"
+            sh 'git push'
           }
         }
       }
     }
   }
-  post {
-    failure {
-      script {
-        message = """
-            :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
-
-            |*Action*
-            |${params.ACTION}
-
-            |""".stripMargin()
-        slackSend(channel: "#activity-justice-codegen-modular-sdk", color: '#FF0000', message: message)
-      }
-    }
-  }
+//  post {
+//    failure {
+//      script {
+//        message = """
+//            :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
+//
+//            |*Action*
+//            |${params.ACTION}
+//
+//            |""".stripMargin()
+//        slackSend(channel: '#activity-justice-codegen-modular-sdk', color: '#FF0000', message: message)
+//      }
+//    }
+//  }
 }

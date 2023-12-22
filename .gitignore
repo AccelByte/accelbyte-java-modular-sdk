@@ -314,3 +314,11 @@ gradle-app.setting
 
 # macOS Files
 .DS_Store
+
+# vscode
+.vscode
+
+# Oher
+!.env.template
+.env*
+.run/

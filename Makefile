@@ -54,10 +54,21 @@ test_cli:
 	[ ! -f test.err ]
 
 publish:
-	docker run -t --rm -u  $$(id -u):$$(id -g) -v $$(pwd):/data/ -w /data/ -e GRADLE_USER_HOME=/data/.gradle \
-			-e PUBLISH_OSSRH_USERNAME="$$PUBLISH_OSSRH_USERNAME" -e PUBLISH_OSSRH_PASSWORD="$$PUBLISH_OSSRH_PASSWORD" \
-			-e PUBLISH_ASC_KEY="$$(cat "$$PUBLISH_ASC_KEY_FILE_PATH")" -e PUBLISH_ASC_KEY_PASSWORD="$$PUBLISH_ASC_KEY_PASSWORD" \
-			gradle:7.5.1-jdk8 gradle --console=plain -i --no-daemon publishToSonatype closeAndReleaseSonatypeStagingRepository
+	@test -n "$(AGS_VER)" || (echo "AGS_VER is not set" ; exit 1)
+	@echo "AGS version: "$(AGS_VER)
+	publish_modules=$$(./scripts/gradle-modules-by-ags-tag.sh $(AGS_VER)); \
+	if [ -z "$$publish_modules" ]; then \
+		echo "No modules to publish for AGS_VER: $(AGS_VER)"; \
+		exit 1; \
+	fi; \
+	docker run -t --rm -u  $$(id -u):$$(id -g) \
+			-v $$(pwd):/data/ -w /data/ \
+			-e GRADLE_USER_HOME=/data/.gradle \
+			-e PUBLISH_OSSRH_USERNAME="$$PUBLISH_OSSRH_USERNAME" \
+			-e PUBLISH_OSSRH_PASSWORD="$$PUBLISH_OSSRH_PASSWORD" \
+			-e PUBLISH_ASC_KEY="$$(cat "$$PUBLISH_ASC_KEY_FILE_PATH")" \
+			-e PUBLISH_ASC_KEY_PASSWORD="$$PUBLISH_ASC_KEY_PASSWORD" \
+			gradle:7.5.1-jdk8 gradle --console=plain -i --no-daemon  $$publish_modules closeAndReleaseSonatypeStagingRepository
 
 test_broken_link:
 	@test -n "$(SDK_MD_CRAWLER_PATH)" || (echo "SDK_MD_CRAWLER_PATH is not set" ; exit 1)
@@ -71,12 +82,43 @@ test_broken_link:
 	[ ! -f test.err ]
 
 version:
-	if [ -n "$$MAJOR" ]; then VERSION_PART=1; elif [ -n "$$PATCH" ]; then VERSION_PART=3; else VERSION_PART=2; fi &&	# Bump minor version if MAJOR or MINOR is not set \
-			VERSION_OLD=$$(cat version.txt | tr -d '\n') && \
-			VERSION_NEW=$$(awk -v part=$$VERSION_PART -F. "{OFS=\".\"; \$$part+=1; print \$$0}" version.txt) && \
-			echo $${VERSION_NEW} > version.txt &&	# Bump version.txt \
-			sed -i "s/version = '[0-9]\+\.[0-9]\+\.[0-9]\+'/version = '$$VERSION_NEW'/" build.gradle &&		# Bump build.gradle \
-			sed -i "s/private String sdkVersion = \"[0-9]\+\.[0-9]\+\.[0-9]\+\";\+/private String sdkVersion = \"$$VERSION_NEW\";/" module-common/src/main/java/net/accelbyte/sdk/core/SDKInfo.java 		# Bump SDK
+	find spec -type f -iname '*.json' | grep -oP '(?<=/)\w+(?=.json)' | xargs -I{} sh -c './scripts/bump-version.sh {} || exit 255'
+
+tag_modules:
+	find spec -type f -iname '*.json' | grep -oP '(?<=/)\w+(?=.json)' | xargs -I{} sh -c './scripts/tag-module.sh {} || exit 255'
+
+tag_ags:
+	@test -n "$(AGS_VER)" || (echo "AGS_VER is not set" ; exit 1)
+	@echo "AGS version: "$(AGS_VER)
+	git fetch origin
+	@if git rev-parse "ags/v$(AGS_VER)" >/dev/null 2>&1; then \
+		echo "AGS tag already exists!"; exit 1; \
+		else \
+			LAST_COMMIT=$(git log --format="%H" -n 1); \
+			git tag "ags/v$(AGS_VER)" $$LAST_COMMIT; \
+	fi
+
+push_tag:
+	@test -n "$(AGS_VER)" || (echo "AGS_VER is not set" ; exit 1)
+	@echo "AGS version: "$(AGS_VER)
+	@if git rev-parse "ags/v$(AGS_VER)" >/dev/null 2>&1; then \
+		git tag --contains $$(git rev-list -n 1 'ags/v$(AGS_VER)') | \
+			grep -v 'ags/v$(AGS_VER)' | \
+			xargs -I{} sh -c 'git push origin {} || exit 255'; \
+	else \
+		echo "AGS tag does not exists!"; exit 1; \
+	fi
+
+push_tags:
+	@test -n "$(AGS_VER)" || (echo "AGS_VER is not set" ; exit 1)
+	@echo "AGS version: "$(AGS_VER)
+	@if git rev-parse "ags/v$(AGS_VER)" >/dev/null 2>&1; then \
+		git tag --contains $$(git rev-list -n 1 'ags/v$(AGS_VER)') | \
+			grep -v 'ags/v$(AGS_VER)' | \
+			xargs -I{} sh -c 'git push origin {} || exit 255'; \
+	else \
+		echo "AGS tag does not exists!"; exit 1; \
+	fi
 
 outstanding_deprecation:
 	find * -type f -iname '*.java' \

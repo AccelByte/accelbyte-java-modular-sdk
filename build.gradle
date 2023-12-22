@@ -3,13 +3,28 @@ plugins {
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0' apply false
 }
 
+
+
+group = 'net.accelbyte.sdk'
+
+// https://github.com/gradle-nexus/publish-plugin/issues/81
+apply plugin: "io.github.gradle-nexus.publish-plugin"
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username = System.getenv("PUBLISH_OSSRH_USERNAME")
+            password = System.getenv("PUBLISH_OSSRH_PASSWORD")
+        }
+    }
+}
+
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'io.freefair.lombok'
     apply plugin: 'maven-publish'
     apply plugin: 'signing'
-
-    group = 'net.accelbyte.sdk'
 
     compileJava.options.encoding = 'UTF-8'
     sourceCompatibility = 1.8
@@ -41,7 +56,7 @@ subprojects {
     }
 
     task javadocJar(type: Jar) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from 'jd'
     }
 
@@ -88,22 +103,6 @@ subprojects {
             }
         }
 
-        if ('publishToSonatype' in gradle.startParameter.taskNames) {
-            // https://github.com/gradle-nexus/publish-plugin/issues/81
-
-            apply plugin: 'io.github.gradle-nexus.publish-plugin'
-
-            nexusPublishing {
-                repositories {
-                    sonatype {
-                        nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-                        snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-                        username = System.getenv("PUBLISH_OSSRH_USERNAME")
-                        password = System.getenv("PUBLISH_OSSRH_PASSWORD")
-                    }
-                }
-            }
-        }
 
         signing {
             def signingKey = System.getenv("PUBLISH_ASC_KEY")
@@ -132,4 +131,3 @@ subprojects {
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     }
 }
-
