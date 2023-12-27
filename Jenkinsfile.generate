@@ -109,7 +109,7 @@ pipeline {
 
         // Bump SDK version and commit the generated code to generate branch (overwrite existing)
         dir(sdkRepoName) {
-          git ls-files | grep -E '^module[^/]*/.*(version.txt)$' | xargs git restore
+          sh '''git ls-files | grep -E '^module[^/]*/.*(version.txt)$' | xargs git restore'''
           sh "make version"
           sh "git add --all"
           sh "git commit -m 'chore(sdk): generate java extend sdk (${getTimestampUtc()})' -m 'generated from openapi spec commit: ${sdkSpecCommitHash}'"
