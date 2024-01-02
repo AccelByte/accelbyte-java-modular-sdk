@@ -1,3 +1,5 @@
+[//]: # (Code generated. DO NOT EDIT.)
+
 # Seasonpass Service Index
 
 &nbsp;

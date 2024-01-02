@@ -52,6 +52,15 @@ public class GameSession {
   }
 
   /**
+   * @see AdminSetDSReady
+   */
+  public void adminSetDSReady(AdminSetDSReady input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminUpdateGameSessionMember
    */
   public ApimodelsUpdateGameSessionMemberStatusResponse adminUpdateGameSessionMember(
@@ -209,6 +218,16 @@ public class GameSession {
   public void publicGameSessionReject(PublicGameSessionReject input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see GetSessionServerSecret
+   */
+  public ApimodelsServerSecret getSessionServerSecret(GetSessionServerSecret input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 

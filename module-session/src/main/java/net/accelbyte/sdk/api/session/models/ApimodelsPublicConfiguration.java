@@ -29,6 +29,10 @@ public class ApimodelsPublicConfiguration extends Model {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String psnBaseURL;
 
+  @JsonProperty("attributes")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> attributes;
+
   @JsonProperty("autoJoin")
   private Boolean autoJoin;
 
@@ -37,6 +41,14 @@ public class ApimodelsPublicConfiguration extends Model {
 
   @JsonProperty("deployment")
   private String deployment;
+
+  @JsonProperty("disableCodeGeneration")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean disableCodeGeneration;
+
+  @JsonProperty("dsManualSetReady")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean dsManualSetReady;
 
   @JsonProperty("dsSource")
   @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -58,6 +70,10 @@ public class ApimodelsPublicConfiguration extends Model {
 
   @JsonProperty("joinability")
   private String joinability;
+
+  @JsonProperty("leaderElectionGracePeriod")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Integer leaderElectionGracePeriod;
 
   @JsonProperty("maxActiveSession")
   @JsonInclude(JsonInclude.Include.NON_NULL)

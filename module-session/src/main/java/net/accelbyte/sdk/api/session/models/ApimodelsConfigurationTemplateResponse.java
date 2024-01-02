@@ -29,6 +29,10 @@ public class ApimodelsConfigurationTemplateResponse extends Model {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String psnBaseUrl;
 
+  @JsonProperty("attributes")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> attributes;
+
   @JsonProperty("autoJoin")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean autoJoin;
@@ -42,9 +46,21 @@ public class ApimodelsConfigurationTemplateResponse extends Model {
   @JsonProperty("deployment")
   private String deployment;
 
+  @JsonProperty("disableCodeGeneration")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean disableCodeGeneration;
+
+  @JsonProperty("dsManualSetReady")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean dsManualSetReady;
+
   @JsonProperty("dsSource")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private String dsSource;
+
+  @JsonProperty("enableSecret")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean enableSecret;
 
   @JsonProperty("fallbackClaimKeys")
   @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -65,6 +81,10 @@ public class ApimodelsConfigurationTemplateResponse extends Model {
 
   @JsonProperty("last")
   private String last;
+
+  @JsonProperty("leaderElectionGracePeriod")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Integer leaderElectionGracePeriod;
 
   @JsonProperty("maxActiveSessions")
   @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -1,3 +1,5 @@
+[//]: # (Code generated. DO NOT EDIT.)
+
 # Session Service Index
 
 &nbsp;
@@ -42,12 +44,24 @@
 | `/session/v1/admin/namespaces/{namespace}/dsconfigs` | GET | AdminGetDSMCConfiguration | [AdminGetDSMCConfiguration](../../src/main/java/net/accelbyte/sdk/api/session/operations/configuration_template/AdminGetDSMCConfiguration.java) | [AdminGetDSMCConfiguration](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/configuration_template/AdminGetDSMCConfiguration.java) |
 | `/session/v1/admin/namespaces/{namespace}/dsconfigs/sync` | GET | AdminSyncDSMCConfiguration | [AdminSyncDSMCConfiguration](../../src/main/java/net/accelbyte/sdk/api/session/operations/configuration_template/AdminSyncDSMCConfiguration.java) | [AdminSyncDSMCConfiguration](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/configuration_template/AdminSyncDSMCConfiguration.java) |
 
+### Certificate Wrapper:  [Certificate](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/Certificate.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl` | PUT | HandleUploadXboxPFXCertificate | [HandleUploadXboxPFXCertificate](../../src/main/java/net/accelbyte/sdk/api/session/operations/certificate/HandleUploadXboxPFXCertificate.java) | [HandleUploadXboxPFXCertificate](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/certificate/HandleUploadXboxPFXCertificate.java) |
+
+### Max Active Wrapper:  [MaxActive](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/MaxActive.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/admin/namespaces/{namespace}/configurations/{name}/memberactivesession/{userId}` | GET | AdminGetMemberActiveSession | [AdminGetMemberActiveSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/max_active/AdminGetMemberActiveSession.java) | [AdminGetMemberActiveSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/max_active/AdminGetMemberActiveSession.java) |
+| `/session/v1/admin/namespaces/{namespace}/configurations/{name}/reconcile` | POST | AdminReconcileMaxActiveSession | [AdminReconcileMaxActiveSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/max_active/AdminReconcileMaxActiveSession.java) | [AdminReconcileMaxActiveSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/max_active/AdminReconcileMaxActiveSession.java) |
+
 ### Game Session Wrapper:  [GameSession](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/GameSession.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
 | `/session/v1/admin/namespaces/{namespace}/gamesessions` | GET | AdminQueryGameSessions | [AdminQueryGameSessions](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AdminQueryGameSessions.java) | [AdminQueryGameSessions](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AdminQueryGameSessions.java) |
 | `/session/v1/admin/namespaces/{namespace}/gamesessions` | POST | AdminQueryGameSessionsByAttributes | [AdminQueryGameSessionsByAttributes](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AdminQueryGameSessionsByAttributes.java) | [AdminQueryGameSessionsByAttributes](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AdminQueryGameSessionsByAttributes.java) |
 | `/session/v1/admin/namespaces/{namespace}/gamesessions/bulk` | DELETE | AdminDeleteBulkGameSessions | [AdminDeleteBulkGameSessions](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AdminDeleteBulkGameSessions.java) | [AdminDeleteBulkGameSessions](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AdminDeleteBulkGameSessions.java) |
+| `/session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/ds` | PUT | AdminSetDSReady | [AdminSetDSReady](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AdminSetDSReady.java) | [AdminSetDSReady](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AdminSetDSReady.java) |
 | `/session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType}` | PUT | AdminUpdateGameSessionMember | [AdminUpdateGameSessionMember](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AdminUpdateGameSessionMember.java) | [AdminUpdateGameSessionMember](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AdminUpdateGameSessionMember.java) |
 | `/session/v1/public/namespaces/{namespace}/gamesession` | POST | CreateGameSession | [CreateGameSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/CreateGameSession.java) | [CreateGameSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/CreateGameSession.java) |
 | `/session/v1/public/namespaces/{namespace}/gamesessions` | POST | PublicQueryGameSessionsByAttributes | [PublicQueryGameSessionsByAttributes](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicQueryGameSessionsByAttributes.java) | [PublicQueryGameSessionsByAttributes](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/PublicQueryGameSessionsByAttributes.java) |
@@ -65,8 +79,14 @@
 | `/session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leader` | POST | PublicPromoteGameSessionLeader | [PublicPromoteGameSessionLeader](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicPromoteGameSessionLeader.java) | [PublicPromoteGameSessionLeader](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/PublicPromoteGameSessionLeader.java) |
 | `/session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave` | DELETE | LeaveGameSession | [LeaveGameSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/LeaveGameSession.java) | [LeaveGameSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/LeaveGameSession.java) |
 | `/session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject` | DELETE | PublicGameSessionReject | [PublicGameSessionReject](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicGameSessionReject.java) | [PublicGameSessionReject](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/PublicGameSessionReject.java) |
+| `/session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/secret` | GET | GetSessionServerSecret | [GetSessionServerSecret](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/GetSessionServerSecret.java) | [GetSessionServerSecret](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/GetSessionServerSecret.java) |
 | `/session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams` | POST | AppendTeamGameSession | [AppendTeamGameSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/AppendTeamGameSession.java) | [AppendTeamGameSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/AppendTeamGameSession.java) |
 | `/session/v1/public/namespaces/{namespace}/users/me/gamesessions` | GET | PublicQueryMyGameSessions | [PublicQueryMyGameSessions](../../src/main/java/net/accelbyte/sdk/api/session/operations/game_session/PublicQueryMyGameSessions.java) | [PublicQueryMyGameSessions](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/game_session/PublicQueryMyGameSessions.java) |
+
+### Native Session Wrapper:  [NativeSession](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/NativeSession.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/admin/namespaces/{namespace}/native-sessions` | GET | AdminGetListNativeSession | [AdminGetListNativeSession](../../src/main/java/net/accelbyte/sdk/api/session/operations/native_session/AdminGetListNativeSession.java) | [AdminGetListNativeSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/native_session/AdminGetListNativeSession.java) |
 
 ### Party Wrapper:  [Party](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/Party.java)
 | Endpoint | Method | ID | Class | Example |
@@ -113,6 +133,11 @@
 | `/session/v1/public/namespaces/{namespace}/users/me/attributes` | POST | PublicStorePlayerAttributes | [PublicStorePlayerAttributes](../../src/main/java/net/accelbyte/sdk/api/session/operations/player/PublicStorePlayerAttributes.java) | [PublicStorePlayerAttributes](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/player/PublicStorePlayerAttributes.java) |
 | `/session/v1/public/namespaces/{namespace}/users/me/attributes` | DELETE | PublicDeletePlayerAttributes | [PublicDeletePlayerAttributes](../../src/main/java/net/accelbyte/sdk/api/session/operations/player/PublicDeletePlayerAttributes.java) | [PublicDeletePlayerAttributes](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/player/PublicDeletePlayerAttributes.java) |
 
+### Recent Player Wrapper:  [RecentPlayer](../../src/main/java/net/accelbyte/sdk/api/session/wrappers/RecentPlayer.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/session/v1/public/namespaces/{namespace}/recent-player` | GET | PublicGetRecentPlayer | [PublicGetRecentPlayer](../../src/main/java/net/accelbyte/sdk/api/session/operations/recent_player/PublicGetRecentPlayer.java) | [PublicGetRecentPlayer](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/recent_player/PublicGetRecentPlayer.java) |
+
 
 &nbsp;
 
@@ -138,6 +163,7 @@
 | `apimodels.GlobalConfigurationResponse` | [ApimodelsGlobalConfigurationResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGlobalConfigurationResponse.java) |
 | `apimodels.JoinByCodeRequest` | [ApimodelsJoinByCodeRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsJoinByCodeRequest.java) |
 | `apimodels.KickResponse` | [ApimodelsKickResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsKickResponse.java) |
+| `apimodels.NativeSessionPagingResponse` | [ApimodelsNativeSessionPagingResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsNativeSessionPagingResponse.java) |
 | `apimodels.Pagination` | [ApimodelsPagination](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPagination.java) |
 | `apimodels.PartyQueryResponse` | [ApimodelsPartyQueryResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPartyQueryResponse.java) |
 | `apimodels.PartySessionResponse` | [ApimodelsPartySessionResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPartySessionResponse.java) |
@@ -152,21 +178,30 @@
 | `apimodels.PutPlatformCredentialsRequest` | [ApimodelsPutPlatformCredentialsRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPutPlatformCredentialsRequest.java) |
 | `apimodels.RequestMember` | [ApimodelsRequestMember](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsRequestMember.java) |
 | `apimodels.ResponseDeleteBulkGameSessions` | [ApimodelsResponseDeleteBulkGameSessions](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsResponseDeleteBulkGameSessions.java) |
+| `apimodels.ServerSecret` | [ApimodelsServerSecret](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsServerSecret.java) |
 | `apimodels.SessionInviteRequest` | [ApimodelsSessionInviteRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsSessionInviteRequest.java) |
+| `apimodels.SessionInviteResponse` | [ApimodelsSessionInviteResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsSessionInviteResponse.java) |
+| `apimodels.SetDSReadyRequest` | [ApimodelsSetDSReadyRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsSetDSReadyRequest.java) |
 | `apimodels.UpdateConfigurationTemplateRequest` | [ApimodelsUpdateConfigurationTemplateRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdateConfigurationTemplateRequest.java) |
 | `apimodels.UpdateGameSessionBackfillRequest` | [ApimodelsUpdateGameSessionBackfillRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdateGameSessionBackfillRequest.java) |
 | `apimodels.UpdateGameSessionMemberStatusResponse` | [ApimodelsUpdateGameSessionMemberStatusResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdateGameSessionMemberStatusResponse.java) |
 | `apimodels.UpdateGameSessionRequest` | [ApimodelsUpdateGameSessionRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdateGameSessionRequest.java) |
 | `apimodels.UpdatePartyRequest` | [ApimodelsUpdatePartyRequest](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdatePartyRequest.java) |
 | `apimodels.UserResponse` | [ApimodelsUserResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUserResponse.java) |
+| `model.NativeSession` | [ModelNativeSession](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelNativeSession.java) |
+| `model.NativeSessionMember` | [ModelNativeSessionMember](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelNativeSessionMember.java) |
 | `models.DSMConfigRecord` | [ModelsDSMConfigRecord](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsDSMConfigRecord.java) |
 | `models.DefaultDSMCConfig` | [ModelsDefaultDSMCConfig](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsDefaultDSMCConfig.java) |
 | `models.GameServer` | [ModelsGameServer](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsGameServer.java) |
+| `models.MemberActiveSession` | [ModelsMemberActiveSession](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsMemberActiveSession.java) |
 | `models.NativeSessionSetting` | [ModelsNativeSessionSetting](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsNativeSessionSetting.java) |
 | `models.PSNAppServerCredentials` | [ModelsPSNAppServerCredentials](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsPSNAppServerCredentials.java) |
 | `models.PartyMembers` | [ModelsPartyMembers](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsPartyMembers.java) |
 | `models.PlatformCredentials` | [ModelsPlatformCredentials](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsPlatformCredentials.java) |
 | `models.PortConfigurationAMS` | [ModelsPortConfigurationAMS](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsPortConfigurationAMS.java) |
+| `models.RecentPlayerQueryResponse` | [ModelsRecentPlayerQueryResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsRecentPlayerQueryResponse.java) |
+| `models.RequestReconcileMaxActiveSession` | [ModelsRequestReconcileMaxActiveSession](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsRequestReconcileMaxActiveSession.java) |
 | `models.Team` | [ModelsTeam](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsTeam.java) |
+| `models.UserInfoResponse` | [ModelsUserInfoResponse](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsUserInfoResponse.java) |
 | `models.UserPlatformInfo` | [ModelsUserPlatformInfo](../../src/main/java/net/accelbyte/sdk/api/session/models/ModelsUserPlatformInfo.java) |
 | `response.Error` | [ResponseError](../../src/main/java/net/accelbyte/sdk/api/session/models/ResponseError.java) |

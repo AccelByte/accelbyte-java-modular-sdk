@@ -39,7 +39,7 @@ for JAR in build/install/cli/lib/*.jar; do ./ng ng-cp $JAR 1>&2; done
 ./ng ng-cp 1>&2
 
 echo "TAP version 13"
-echo "1..5"
+echo "1..6"
 
 #- 1 Login
 ./ng net.accelbyte.sdk.cli.Main loginClient \
@@ -53,37 +53,44 @@ fi
 
 touch "tmp.dat"
 
-#- 2 GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet
+#- 2 GetNamespacesGameTelemetryV1AdminNamespacesGet
+./ng net.accelbyte.sdk.cli.Main gametelemetry getNamespacesGameTelemetryV1AdminNamespacesGet \
+    > test.out 2>&1
+eval_tap $? 2 'GetNamespacesGameTelemetryV1AdminNamespacesGet' test.out
+
+#- 3 GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet
 ./ng net.accelbyte.sdk.cli.Main gametelemetry getEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet \
     --namespace "$AB_NAMESPACE" \
-    --endTime 'TSj8F7e7' \
-    --eventId 'IZ4Kl8Lo' \
-    --eventName 'PRqgMBJa' \
-    --eventPayload '81cmpItc' \
-    --limit '82' \
-    --offset '35' \
-    --startTime 'FiD4zTEG' \
+    --endTime 'QIe5yWYV' \
+    --eventId 'RdCFILqM' \
+    --eventName '7Ejekjii' \
+    --eventPayload 'Ds3HLMg6' \
+    --flightId 'X1DoZORZ' \
+    --limit '58' \
+    --offset '52' \
+    --startTime 'wdQKX6oc' \
+    --userId 'TEBypZMD' \
     > test.out 2>&1
-eval_tap $? 2 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet' test.out
+eval_tap $? 3 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet' test.out
 
-#- 3 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
+#- 4 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedSaveEventsGameTelemetryV1ProtectedEventsPost \
-    --body '[{"ClientTimestamp": "1985-01-09T00:00:00Z", "EventId": "sCW9Iou0", "EventName": "ZYW0ecBt", "EventNamespace": "uMHybUCj", "EventTimestamp": "1998-12-03T00:00:00Z", "Payload": {"m7vBCgwA": {}, "Me4UZA7G": {}, "q36Z5PuC": {}}}, {"ClientTimestamp": "1996-04-04T00:00:00Z", "EventId": "xEtdrE5x", "EventName": "GThlGAoR", "EventNamespace": "B8JrHJUK", "EventTimestamp": "1979-05-22T00:00:00Z", "Payload": {"e44ieYku": {}, "2DTLUE91": {}, "WVR8s3j9": {}}}, {"ClientTimestamp": "1997-06-07T00:00:00Z", "EventId": "PfO7LcPr", "EventName": "yVZvAHhU", "EventNamespace": "BE86RuJS", "EventTimestamp": "1997-11-06T00:00:00Z", "Payload": {"rQTWp3b6": {}, "NAntGNkh": {}, "O5uzasb4": {}}}]' \
+    --body '[{"ClientTimestamp": "1983-08-12T00:00:00Z", "EventId": "YJZk7TDO", "EventName": "C0Cmfmmk", "EventNamespace": "jtbbltkv", "EventTimestamp": "1983-07-20T00:00:00Z", "Payload": {"ZvGsMi5z": {}, "a60Ek60y": {}, "yOJJO7cr": {}}}, {"ClientTimestamp": "1983-11-27T00:00:00Z", "EventId": "IIzDMNdK", "EventName": "u3yTgK08", "EventNamespace": "Eictpf0e", "EventTimestamp": "1977-11-20T00:00:00Z", "Payload": {"QHmbCDGw": {}, "1uDyoorV": {}, "KuWMgv4U": {}}}, {"ClientTimestamp": "1998-03-18T00:00:00Z", "EventId": "BlBAe77B", "EventName": "yXpLOGEF", "EventNamespace": "PEDdV4Ki", "EventTimestamp": "1992-04-04T00:00:00Z", "Payload": {"cOpgAbnS": {}, "m0N1Rp6f": {}, "lF6wo1I2": {}}}]' \
     > test.out 2>&1
-eval_tap $? 3 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost' test.out
+eval_tap $? 4 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost' test.out
 
-#- 4 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
+#- 5 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet \
-    --steamId 'TcXMK3g9' \
+    --steamId 'inzmMAiQ' \
     > test.out 2>&1
-eval_tap $? 4 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet' test.out
+eval_tap $? 5 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet' test.out
 
-#- 5 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+#- 6 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut \
-    --playtime 'SNVJoTe0' \
-    --steamId '2K8g65BG' \
+    --playtime 'VIS5FSer' \
+    --steamId 'i7LG07KB' \
     > test.out 2>&1
-eval_tap $? 5 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut' test.out
+eval_tap $? 6 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut' test.out
 
 
 rm -f "tmp.dat"

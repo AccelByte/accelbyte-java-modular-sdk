@@ -83,6 +83,15 @@ public class Wallet {
   }
 
   /**
+   * @see CheckBalance
+   */
+  public void checkBalance(CheckBalance input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see CheckWallet
    * @deprecated
    */
@@ -97,6 +106,15 @@ public class Wallet {
    * @see CreditUserWallet
    */
   public WalletInfo creditUserWallet(CreditUserWallet input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see DebitByWalletPlatform
+   */
+  public PlatformWallet debitByWalletPlatform(DebitByWalletPlatform input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

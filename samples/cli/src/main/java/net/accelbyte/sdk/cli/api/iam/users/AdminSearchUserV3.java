@@ -46,6 +46,11 @@ public class AdminSearchUserV3 implements Callable<Integer> {
   String endDate;
 
   @Option(
+      names = {"--includeTotal"},
+      description = "includeTotal")
+  Boolean includeTotal;
+
+  @Option(
       names = {"--limit"},
       description = "limit")
   Integer limit;
@@ -76,6 +81,11 @@ public class AdminSearchUserV3 implements Callable<Integer> {
   String startDate;
 
   @Option(
+      names = {"--testAccount"},
+      description = "testAccount")
+  Boolean testAccount;
+
+  @Option(
       names = {"--logging"},
       description = "logger")
   boolean logging;
@@ -101,12 +111,14 @@ public class AdminSearchUserV3 implements Callable<Integer> {
               .namespace(namespace)
               .by(by)
               .endDate(endDate)
+              .includeTotal(includeTotal)
               .limit(limit)
               .offset(offset)
               .platformBy(platformBy)
               .platformId(platformId)
               .query(query)
               .startDate(startDate)
+              .testAccount(testAccount)
               .build();
       final ModelSearchUsersResponseWithPaginationV3 response =
           wrapper.adminSearchUserV3(operation);

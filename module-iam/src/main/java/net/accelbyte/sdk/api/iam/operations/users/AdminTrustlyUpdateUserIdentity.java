@@ -21,13 +21,10 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminTrustlyUpdateUserIdentity
  *
- * <p>Required permission 'ADMIN:NAMESPACE:{namespace}:IDENTITY [UPDATE]'
+ * <p>This endpoint ONLY accept **Client Token** This endpoint is utilized for specific scenarios
+ * where **email notifications are disabled** The user's email will be marked as verified
  *
- * <p>This endpoint ONLY accept Client Token
- *
- * <p>This endpoint is utilized for specific scenarios where email notifications are disabled
- *
- * <p>The user's email will be marked as verified
+ * <p>Note: - emailAddress or password field are optional - request body can't be empty
  *
  * <p>action code : 10103
  */

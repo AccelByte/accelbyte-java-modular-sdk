@@ -21,9 +21,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * PublicGetPublisherUserV3
  *
- * <p>Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
- *
- * <p>Restriction: Path Parameter namespace can be provided only with game namespace
+ * <p>**Restriction:** Path Parameter **namespace** can be provided only with game namespace
  */
 @Getter
 @Setter
@@ -78,13 +76,13 @@ public class PublicGetPublisherUserV3 extends Operation {
     return true;
   }
 
-  public ModelGetPublisherUserV3Response parseResponse(
+  public ModelGetPublisherUserResponse parseResponse(
       int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
     if (code != 200) {
       final String json = Helper.convertInputStreamToString(payload);
       throw new HttpResponseException(code, json);
     }
     final String json = Helper.convertInputStreamToString(payload);
-    return new ModelGetPublisherUserV3Response().createFromJson(json);
+    return new ModelGetPublisherUserResponse().createFromJson(json);
   }
 }

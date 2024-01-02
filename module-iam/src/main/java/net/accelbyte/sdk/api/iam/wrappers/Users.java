@@ -1142,6 +1142,16 @@ public class Users {
   }
 
   /**
+   * @see AdminDeleteUserLinkingHistoryByPlatformIDV3
+   */
+  public void adminDeleteUserLinkingHistoryByPlatformIDV3(
+      AdminDeleteUserLinkingHistoryByPlatformIDV3 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminGetThirdPartyPlatformTokenLinkStatusV3
    */
   public ModelTokenThirdPartyLinkStatusResponse adminGetThirdPartyPlatformTokenLinkStatusV3(
@@ -1500,6 +1510,16 @@ public class Users {
   }
 
   /**
+   * @see PublicGetUsersPlatformInfosV3
+   */
+  public ModelUsersPlatformInfosResponse publicGetUsersPlatformInfosV3(
+      PublicGetUsersPlatformInfosV3 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see ResetPasswordV3
    */
   public void resetPasswordV3(ResetPasswordV3 input) throws Exception {
@@ -1602,7 +1622,7 @@ public class Users {
   /**
    * @see PublicGetPublisherUserV3
    */
-  public ModelGetPublisherUserV3Response publicGetPublisherUserV3(PublicGetPublisherUserV3 input)
+  public ModelGetPublisherUserResponse publicGetPublisherUserV3(PublicGetPublisherUserV3 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(

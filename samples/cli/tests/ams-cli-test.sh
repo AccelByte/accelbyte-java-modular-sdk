@@ -39,7 +39,7 @@ for JAR in build/install/cli/lib/*.jar; do ./ng ng-cp $JAR 1>&2; done
 ./ng ng-cp 1>&2
 
 echo "TAP version 13"
-echo "1..27"
+echo "1..35"
 
 #- 1 Login
 ./ng net.accelbyte.sdk.cli.Main loginClient \
@@ -72,7 +72,7 @@ eval_tap $? 4 'AccountGet' test.out
 #- 5 AccountCreate
 ./ng net.accelbyte.sdk.cli.Main ams accountCreate \
     --namespace "$AB_NAMESPACE" \
-    --body '{"name": "KwcDzoWL"}' \
+    --body '{"name": "NCFsP7HY"}' \
     > test.out 2>&1
 eval_tap $? 5 'AccountCreate' test.out
 
@@ -85,151 +85,216 @@ eval_tap $? 6 'AccountLinkTokenGet' test.out
 #- 7 AccountLink
 ./ng net.accelbyte.sdk.cli.Main ams accountLink \
     --namespace "$AB_NAMESPACE" \
-    --body '{"token": "Sn4ccTpf"}' \
+    --body '{"token": "2FixlpUu"}' \
     > test.out 2>&1
 eval_tap $? 7 'AccountLink' test.out
 
-#- 8 FleetList
+#- 8 ArtifactGet
+./ng net.accelbyte.sdk.cli.Main ams artifactGet \
+    --namespace "$AB_NAMESPACE" \
+    --artifactType 'F1LWZYbm' \
+    --endDate 's6Z90mhH' \
+    --fleetID '3FCNA3JS' \
+    --imageID 'PaRcxL1V' \
+    --maxSize '82' \
+    --minSize '60' \
+    --region 'C5zWLlpq' \
+    --startDate 'imHMCCtN' \
+    --status 'sB6zwGUG' \
+    > test.out 2>&1
+eval_tap $? 8 'ArtifactGet' test.out
+
+#- 9 ArtifactUsageGet
+./ng net.accelbyte.sdk.cli.Main ams artifactUsageGet \
+    --namespace "$AB_NAMESPACE" \
+    > test.out 2>&1
+eval_tap $? 9 'ArtifactUsageGet' test.out
+
+#- 10 ArtifactDelete
+./ng net.accelbyte.sdk.cli.Main ams artifactDelete \
+    --artifactID 'sY76UN4c' \
+    --namespace "$AB_NAMESPACE" \
+    > test.out 2>&1
+eval_tap $? 10 'ArtifactDelete' test.out
+
+#- 11 ArtifactGetURL
+./ng net.accelbyte.sdk.cli.Main ams artifactGetURL \
+    --artifactID '35agfEg4' \
+    --namespace "$AB_NAMESPACE" \
+    > test.out 2>&1
+eval_tap $? 11 'ArtifactGetURL' test.out
+
+#- 12 FleetList
 ./ng net.accelbyte.sdk.cli.Main ams fleetList \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 8 'FleetList' test.out
+eval_tap $? 12 'FleetList' test.out
 
-#- 9 FleetCreate
+#- 13 FleetCreate
 ./ng net.accelbyte.sdk.cli.Main ams fleetCreate \
     --namespace "$AB_NAMESPACE" \
-    --body '{"active": true, "claimKeys": ["WHREtEib", "jFHNx5wo", "CQqMNKLe"], "dsHostConfiguration": {"instanceId": "FJhrRtQt", "instanceType": "FVqPPgyu", "serversPerVm": 44}, "imageDeploymentProfile": {"commandLine": "aizYMLIK", "imageId": "0FMJTfFB", "portConfigurations": [{"name": "kWjPRD2s", "protocol": "j81ciOPP"}, {"name": "XDPQERYm", "protocol": "m779pjx3"}, {"name": "ZanjJsDM", "protocol": "91oafhl7"}], "timeout": {"creation": 49, "drain": 80, "session": 34, "unresponsive": 77}}, "name": "Xwo7Qb34", "regions": [{"bufferSize": 87, "maxServerCount": 74, "minServerCount": 8, "region": "0chDIYxC"}, {"bufferSize": 25, "maxServerCount": 21, "minServerCount": 93, "region": "WHkh4uAL"}, {"bufferSize": 99, "maxServerCount": 16, "minServerCount": 42, "region": "q3jnI0NH"}]}' \
+    --body '{"active": false, "claimKeys": ["mUtSisEI", "QCv6Iu8c", "zNEMOGdY"], "dsHostConfiguration": {"instanceId": "VijPibUr", "instanceType": "yipPHKSX", "serversPerVm": 31}, "imageDeploymentProfile": {"commandLine": "WIKP8ua2", "imageId": "EoZoZmhU", "portConfigurations": [{"name": "Mb0GPtpM", "protocol": "9SRjOyc1"}, {"name": "NyfXWE7H", "protocol": "6GPsF5iT"}, {"name": "7hFjWnR4", "protocol": "SdIVQ62a"}], "timeout": {"creation": 50, "drain": 42, "session": 53, "unresponsive": 66}}, "name": "s7QwiKfo", "regions": [{"bufferSize": 26, "maxServerCount": 64, "minServerCount": 70, "region": "qePz9Tey"}, {"bufferSize": 16, "maxServerCount": 65, "minServerCount": 75, "region": "xwHst1mT"}, {"bufferSize": 66, "maxServerCount": 66, "minServerCount": 24, "region": "9BKoMAIz"}], "samplingRules": {"coredumps": {"crashed": {"collect": false, "percentage": 12}, "success": {"collect": false, "percentage": 54}}, "logs": {"crashed": {"collect": false, "percentage": 36}, "success": {"collect": false, "percentage": 100}}}}' \
     > test.out 2>&1
-eval_tap $? 9 'FleetCreate' test.out
+eval_tap $? 13 'FleetCreate' test.out
 
-#- 10 FleetGet
+#- 14 FleetGet
 ./ng net.accelbyte.sdk.cli.Main ams fleetGet \
-    --fleetID 'celDYMyI' \
+    --fleetID 'GWus8alq' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 10 'FleetGet' test.out
+eval_tap $? 14 'FleetGet' test.out
 
-#- 11 FleetUpdate
+#- 15 FleetUpdate
 ./ng net.accelbyte.sdk.cli.Main ams fleetUpdate \
-    --fleetID 'wfHTWUp2' \
+    --fleetID 'gtjTkCa0' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"active": true, "claimKeys": ["X4q3ruPl", "BQnMeiO2", "ALG33PdU"], "dsHostConfiguration": {"instanceId": "Q5BTb54n", "instanceType": "8o1Ks1AO", "serversPerVm": 54}, "imageDeploymentProfile": {"commandLine": "BejeyKnw", "imageId": "AlfUAZCD", "portConfigurations": [{"name": "n3tmMeAv", "protocol": "SQDRevIt"}, {"name": "nYMVkk0D", "protocol": "iwwUFaBf"}, {"name": "vLFfhh21", "protocol": "1AnYkHJS"}], "timeout": {"creation": 50, "drain": 15, "session": 36, "unresponsive": 7}}, "name": "PNvxLQDi", "regions": [{"bufferSize": 38, "maxServerCount": 91, "minServerCount": 95, "region": "hq8qRqoe"}, {"bufferSize": 10, "maxServerCount": 82, "minServerCount": 56, "region": "sNJr0MDq"}, {"bufferSize": 37, "maxServerCount": 95, "minServerCount": 82, "region": "jbBPqel0"}]}' \
+    --body '{"active": false, "claimKeys": ["UgvfklwP", "Twbjtpqr", "wDSoHeay"], "dsHostConfiguration": {"instanceId": "JxiwOykZ", "instanceType": "mYmBOgla", "serversPerVm": 33}, "imageDeploymentProfile": {"commandLine": "FJHpjDSk", "imageId": "mzEfcAxC", "portConfigurations": [{"name": "twmDfeIt", "protocol": "dxXay0LO"}, {"name": "UVeHdQFy", "protocol": "dshHcTdQ"}, {"name": "8xogT8wr", "protocol": "QEVVbsqd"}], "timeout": {"creation": 10, "drain": 50, "session": 23, "unresponsive": 97}}, "name": "jz7TNu0k", "regions": [{"bufferSize": 22, "maxServerCount": 35, "minServerCount": 11, "region": "5nNvNkfV"}, {"bufferSize": 24, "maxServerCount": 22, "minServerCount": 87, "region": "ZiByUcyW"}, {"bufferSize": 96, "maxServerCount": 19, "minServerCount": 50, "region": "J5OGAHul"}], "samplingRules": {"coredumps": {"crashed": {"collect": true, "percentage": 58}, "success": {"collect": true, "percentage": 10}}, "logs": {"crashed": {"collect": false, "percentage": 67}, "success": {"collect": false, "percentage": 33}}}}' \
     > test.out 2>&1
-eval_tap $? 11 'FleetUpdate' test.out
+eval_tap $? 15 'FleetUpdate' test.out
 
-#- 12 FleetDelete
+#- 16 FleetDelete
 ./ng net.accelbyte.sdk.cli.Main ams fleetDelete \
-    --fleetID 'nI3m0ylR' \
+    --fleetID '0OdW01rT' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 12 'FleetDelete' test.out
+eval_tap $? 16 'FleetDelete' test.out
 
-#- 13 FleetServers
+#- 17 FleetArtifactSamplingRulesGet
+./ng net.accelbyte.sdk.cli.Main ams fleetArtifactSamplingRulesGet \
+    --fleetID 'T0zEvPhf' \
+    --namespace "$AB_NAMESPACE" \
+    > test.out 2>&1
+eval_tap $? 17 'FleetArtifactSamplingRulesGet' test.out
+
+#- 18 FleetArtifactSamplingRulesSet
+./ng net.accelbyte.sdk.cli.Main ams fleetArtifactSamplingRulesSet \
+    --fleetID 'ZezjCsAR' \
+    --namespace "$AB_NAMESPACE" \
+    --body '{"coredumps": {"crashed": {"collect": false, "percentage": 78}, "success": {"collect": true, "percentage": 90}}, "logs": {"crashed": {"collect": false, "percentage": 84}, "success": {"collect": true, "percentage": 77}}}' \
+    > test.out 2>&1
+eval_tap $? 18 'FleetArtifactSamplingRulesSet' test.out
+
+#- 19 FleetServers
 ./ng net.accelbyte.sdk.cli.Main ams fleetServers \
-    --fleetID 'DL2Q3K5O' \
+    --fleetID 'IedAZbei' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 13 'FleetServers' test.out
+eval_tap $? 19 'FleetServers' test.out
 
-#- 14 FleetServerHistory
+#- 20 FleetServerHistory
 ./ng net.accelbyte.sdk.cli.Main ams fleetServerHistory \
-    --fleetID 'jb8ERyM7' \
+    --fleetID '4Nkr2xKb' \
     --namespace "$AB_NAMESPACE" \
-    --count '53' \
-    --offset '75' \
-    --reason 't7SDI6Hc' \
-    --region 'cwrMVl2W' \
-    --serverId 'd9LbH45e' \
-    --sortDirection 'y6SpzSbG' \
-    --status 'sfuWR8oe' \
+    --count '45' \
+    --offset '70' \
+    --reason 'Z29uN8oj' \
+    --region 'zRu5GOrM' \
+    --serverId '8UBcyIvX' \
+    --sortDirection 'nlpjqQCG' \
+    --status 'BFgrOCVd' \
     > test.out 2>&1
-eval_tap $? 14 'FleetServerHistory' test.out
+eval_tap $? 20 'FleetServerHistory' test.out
 
-#- 15 ImageList
+#- 21 ImageList
 ./ng net.accelbyte.sdk.cli.Main ams imageList \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 15 'ImageList' test.out
+eval_tap $? 21 'ImageList' test.out
 
-#- 16 ImageGet
+#- 22 ImageGet
 ./ng net.accelbyte.sdk.cli.Main ams imageGet \
-    --imageID 'XL7oqIFb' \
+    --imageID 'MkLL6m3U' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 16 'ImageGet' test.out
+eval_tap $? 22 'ImageGet' test.out
 
-#- 17 ImagePatch
+#- 23 ImagePatch
 ./ng net.accelbyte.sdk.cli.Main ams imagePatch \
-    --imageID 'ZpnPUDZ3' \
+    --imageID 'oqNajreS' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"addedTags": ["1pFFo2th", "IuaO053N", "mdsAaIZR"], "isProtected": false, "name": "qo2ppupX", "removedTags": ["ouN3gtby", "TyHy4OHg", "1MrQKI1L"]}' \
+    --body '{"addedTags": ["C1lwJjOw", "0qZsZXPM", "mi98rl34"], "isProtected": false, "name": "mLXaaLoS", "removedTags": ["Mb4iNYGY", "p95LGmSi", "wTng20QV"]}' \
     > test.out 2>&1
-eval_tap $? 17 'ImagePatch' test.out
+eval_tap $? 23 'ImagePatch' test.out
 
-#- 18 InfoRegions
+#- 24 QoSRegionsGet
+./ng net.accelbyte.sdk.cli.Main ams qoSRegionsGet \
+    --namespace "$AB_NAMESPACE" \
+    --status 'w07Mz4jP' \
+    > test.out 2>&1
+eval_tap $? 24 'QoSRegionsGet' test.out
+
+#- 25 QoSRegionsUpdate
+./ng net.accelbyte.sdk.cli.Main ams qoSRegionsUpdate \
+    --namespace "$AB_NAMESPACE" \
+    --region 'gjJH4WNP' \
+    --body '{"status": "7BaFIjPh"}' \
+    > test.out 2>&1
+eval_tap $? 25 'QoSRegionsUpdate' test.out
+
+#- 26 InfoRegions
 ./ng net.accelbyte.sdk.cli.Main ams infoRegions \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 18 'InfoRegions' test.out
+eval_tap $? 26 'InfoRegions' test.out
 
-#- 19 FleetServerInfo
+#- 27 FleetServerInfo
 ./ng net.accelbyte.sdk.cli.Main ams fleetServerInfo \
     --namespace "$AB_NAMESPACE" \
-    --serverID '9ZZhPRi9' \
+    --serverID 'SUGf6i31' \
     > test.out 2>&1
-eval_tap $? 19 'FleetServerInfo' test.out
+eval_tap $? 27 'FleetServerInfo' test.out
 
-#- 20 ServerHistory
+#- 28 ServerHistory
 ./ng net.accelbyte.sdk.cli.Main ams serverHistory \
     --namespace "$AB_NAMESPACE" \
-    --serverID 'ZI7rU3az' \
+    --serverID 'TU8YMRCR' \
     > test.out 2>&1
-eval_tap $? 20 'ServerHistory' test.out
+eval_tap $? 28 'ServerHistory' test.out
 
-#- 21 InfoSupportedInstances
+#- 29 InfoSupportedInstances
 ./ng net.accelbyte.sdk.cli.Main ams infoSupportedInstances \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 21 'InfoSupportedInstances' test.out
+eval_tap $? 29 'InfoSupportedInstances' test.out
 
-#- 22 FleetClaimByID
+#- 30 FleetClaimByID
 ./ng net.accelbyte.sdk.cli.Main ams fleetClaimByID \
-    --fleetID 'gF9rEJED' \
+    --fleetID 'fQP4iEDL' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"region": "5Jeu0jN7"}' \
+    --body '{"region": "lc1lBgu9"}' \
     > test.out 2>&1
-eval_tap $? 22 'FleetClaimByID' test.out
+eval_tap $? 30 'FleetClaimByID' test.out
 
-#- 23 LocalWatchdogConnect
+#- 31 LocalWatchdogConnect
 ./ng net.accelbyte.sdk.cli.Main ams localWatchdogConnect \
     --namespace "$AB_NAMESPACE" \
-    --watchdogID 'tVvL2GQX' \
+    --watchdogID '8vh84jYw' \
     > test.out 2>&1
-eval_tap $? 23 'LocalWatchdogConnect' test.out
+eval_tap $? 31 'LocalWatchdogConnect' test.out
 
-#- 24 FleetClaimByKeys
+#- 32 FleetClaimByKeys
 ./ng net.accelbyte.sdk.cli.Main ams fleetClaimByKeys \
     --namespace "$AB_NAMESPACE" \
-    --body '{"claimKeys": ["HqUL8kpa", "4Rot5oHj", "zjsdGK6W"], "regions": ["dIZe1T7u", "t95FtDF4", "vDNavu2G"]}' \
+    --body '{"claimKeys": ["uD52K0wU", "EfVAlbzv", "NJ09dHri"], "regions": ["KAJDlgoO", "bSEsezSK", "VrTENTTd"]}' \
     > test.out 2>&1
-eval_tap $? 24 'FleetClaimByKeys' test.out
+eval_tap $? 32 'FleetClaimByKeys' test.out
 
-#- 25 WatchdogConnect
+#- 33 WatchdogConnect
 ./ng net.accelbyte.sdk.cli.Main ams watchdogConnect \
     --namespace "$AB_NAMESPACE" \
-    --watchdogID '5mY0GCPK' \
+    --watchdogID '3qWMt46V' \
     > test.out 2>&1
-eval_tap $? 25 'WatchdogConnect' test.out
+eval_tap $? 33 'WatchdogConnect' test.out
 
-#- 26 Func1
+#- 34 Func1
 ./ng net.accelbyte.sdk.cli.Main ams func1 \
     > test.out 2>&1
-eval_tap $? 26 'Func1' test.out
+eval_tap $? 34 'Func1' test.out
 
-#- 27 BasicHealthCheck
+#- 35 BasicHealthCheck
 ./ng net.accelbyte.sdk.cli.Main ams basicHealthCheck \
     > test.out 2>&1
-eval_tap $? 27 'BasicHealthCheck' test.out
+eval_tap $? 35 'BasicHealthCheck' test.out
 
 
 rm -f "tmp.dat"
