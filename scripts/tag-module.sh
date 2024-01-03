@@ -7,7 +7,7 @@ MODULE_NAME=$1
 test -n "$MODULE_NAME" || (echo "MODULE_NAME is not set"; exit 1)
 
 MODULE_NAME="module-$MODULE_NAME"
-LAST_TAG=$(git tag --list "$MODULE_NAME/*" --sort -version:refname | tail -n 1)
+LAST_TAG=$(git tag --list "$MODULE_NAME/*" --sort -version:refname | head -n 1)
 LAST_COMMIT=$(git log --format="%H" -n 1)
 
 CHANGE_COUNT=$(git diff --name-only "$LAST_TAG" | { grep -c "$MODULE_NAME/version.txt" || test $? = 1; } | { grep -v grep || test $? = 1; })
