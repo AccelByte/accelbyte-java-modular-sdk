@@ -21,9 +21,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * putPlayerBinaryRecordV1
  *
- * <p>Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]` Required
- * scope: `social`
- *
  * <p>Update a player binary record file by its key
  */
 @Getter

@@ -56,29 +56,29 @@ touch "tmp.dat"
 #- 2 AdminListAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminListAdminGameRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '49' \
-    --offset '8' \
-    --query 'tsERUSZN' \
+    --limit '21' \
+    --offset '66' \
+    --query 'zJXS1ew5' \
     > test.out 2>&1
 eval_tap $? 2 'AdminListAdminGameRecordV1' test.out
 
 #- 3 AdminBulkGetAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminBulkGetAdminGameRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"keys": ["WhRvgIBc", "FeeTRzsb", "X2zWGdjZ"]}' \
+    --body '{"keys": ["j1wEKlWl", "XUyf3rYJ", "tZum5JPt"]}' \
     > test.out 2>&1
 eval_tap $? 3 'AdminBulkGetAdminGameRecordV1' test.out
 
 #- 4 AdminGetAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetAdminGameRecordV1 \
-    --key 'FuCb4g7d' \
+    --key 'SKWAelXu' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 4 'AdminGetAdminGameRecordV1' test.out
 
 #- 5 AdminPutAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutAdminGameRecordV1 \
-    --key 'CdDNvNJl' \
+    --key '4U9qgHZq' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -86,7 +86,7 @@ eval_tap $? 5 'AdminPutAdminGameRecordV1' test.out
 
 #- 6 AdminPostAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostAdminGameRecordV1 \
-    --key 'zQm4aNAA' \
+    --key 'wcgu86sk' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -94,7 +94,7 @@ eval_tap $? 6 'AdminPostAdminGameRecordV1' test.out
 
 #- 7 AdminDeleteAdminGameRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeleteAdminGameRecordV1 \
-    --key '55UMauST' \
+    --key 'qZxEuDJq' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 7 'AdminDeleteAdminGameRecordV1' test.out
@@ -102,70 +102,70 @@ eval_tap $? 7 'AdminDeleteAdminGameRecordV1' test.out
 #- 8 AdminListGameBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminListGameBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '63' \
-    --offset '40' \
-    --query 'fffHYRi8' \
+    --limit '100' \
+    --offset '99' \
+    --query 'TeWs4Mu9' \
     > test.out 2>&1
 eval_tap $? 8 'AdminListGameBinaryRecordsV1' test.out
 
 #- 9 AdminPostGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostGameBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"file_type": "onWCHIZS", "key": "8R2juu4i", "set_by": "ahIl15JB"}' \
+    --body '{"file_type": "6OUKHyQv", "key": "NU0YBtXS", "set_by": "CLIENT"}' \
     > test.out 2>&1
 eval_tap $? 9 'AdminPostGameBinaryRecordV1' test.out
 
 #- 10 AdminGetGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetGameBinaryRecordV1 \
-    --key 'cVcstrHP' \
+    --key 'E48TeUn7' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 10 'AdminGetGameBinaryRecordV1' test.out
 
 #- 11 AdminPutGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutGameBinaryRecordV1 \
-    --key 'ZLt5N2I8' \
+    --key 'cSI2QrP9' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"content_type": "P1JpwABS", "file_location": "UNq5froa"}' \
+    --body '{"content_type": "piGit6G5", "file_location": "gWfFiFHy"}' \
     > test.out 2>&1
 eval_tap $? 11 'AdminPutGameBinaryRecordV1' test.out
 
 #- 12 AdminDeleteGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeleteGameBinaryRecordV1 \
-    --key 'D5gxiJV8' \
+    --key 'fkGmxDuW' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 12 'AdminDeleteGameBinaryRecordV1' test.out
 
 #- 13 AdminPutGameBinaryRecorMetadataV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutGameBinaryRecorMetadataV1 \
-    --key 'kxVbhkYE' \
+    --key 'uoS0Mi2e' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"set_by": "OZXZo3kY"}' \
+    --body '{"set_by": "SERVER"}' \
     > test.out 2>&1
 eval_tap $? 13 'AdminPutGameBinaryRecorMetadataV1' test.out
 
 #- 14 AdminPostGameBinaryPresignedURLV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostGameBinaryPresignedURLV1 \
-    --key 'NejvGyNn' \
+    --key '9PUA4cik' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"file_type": "2RWndDRB"}' \
+    --body '{"file_type": "6RfOCUln"}' \
     > test.out 2>&1
 eval_tap $? 14 'AdminPostGameBinaryPresignedURLV1' test.out
 
 #- 15 AdminPutAdminGameRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutAdminGameRecordConcurrentHandlerV1 \
-    --key 'JhFY9w2k' \
+    --key '74Y5w7AM' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"updatedAt": "owRjqiME", "value": {"dN7UyufT": {}, "9D7ULknu": {}, "Ba6ERMdX": {}}}' \
+    --body '{"updatedAt": "grtbCWHD", "value": {"u3p5mfDa": {}, "oOo1tgpO": {}, "GDJ4aOOi": {}}}' \
     > test.out 2>&1
 eval_tap $? 15 'AdminPutAdminGameRecordConcurrentHandlerV1' test.out
 
 #- 16 AdminPutGameRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutGameRecordConcurrentHandlerV1 \
-    --key 'YJkeJIUl' \
+    --key 'L21NdkE4' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"set_by": "MSqp1rk7", "updatedAt": "QmigIgnh", "value": {"WvszZezd": {}, "2PNPDYlJ": {}, "2b9xR96h": {}}}' \
+    --body '{"set_by": "CLIENT", "updatedAt": "WamsB1MB", "value": {"KcUkXpcX": {}, "rRjaGM6L": {}, "B5bqKdf9": {}}}' \
     > test.out 2>&1
 eval_tap $? 16 'AdminPutGameRecordConcurrentHandlerV1' test.out
 
@@ -178,7 +178,7 @@ eval_tap $? 17 'GetPluginConfig' test.out
 #- 18 CreatePluginConfig
 ./ng net.accelbyte.sdk.cli.Main cloudsave createPluginConfig \
     --namespace "$AB_NAMESPACE" \
-    --body '{"appConfig": {"appName": "tbzuaA9W"}, "customConfig": {"GRPCAddress": "MCODl4tW"}, "customFunction": {"afterBulkReadGameRecord": true, "afterBulkReadPlayerRecord": true, "afterReadGameRecord": false, "afterReadPlayerRecord": false, "beforeWriteAdminGameRecord": true, "beforeWriteAdminPlayerRecord": true, "beforeWriteGameRecord": false, "beforeWritePlayerRecord": false}, "extendType": "APP"}' \
+    --body '{"appConfig": {"appName": "OEt3Ejl9"}, "customConfig": {"GRPCAddress": "zeismPr6"}, "customFunction": {"afterBulkReadGameBinaryRecord": true, "afterBulkReadGameRecord": true, "afterBulkReadPlayerBinaryRecord": true, "afterBulkReadPlayerRecord": true, "afterReadGameBinaryRecord": true, "afterReadGameRecord": false, "afterReadPlayerBinaryRecord": false, "afterReadPlayerRecord": false, "beforeWriteAdminGameRecord": false, "beforeWriteAdminPlayerRecord": true, "beforeWriteGameBinaryRecord": true, "beforeWriteGameRecord": false, "beforeWritePlayerBinaryRecord": false, "beforeWritePlayerRecord": true}, "extendType": "CUSTOM"}' \
     > test.out 2>&1
 eval_tap $? 18 'CreatePluginConfig' test.out
 
@@ -191,29 +191,29 @@ eval_tap $? 19 'DeletePluginConfig' test.out
 #- 20 UpdatePluginConfig
 ./ng net.accelbyte.sdk.cli.Main cloudsave updatePluginConfig \
     --namespace "$AB_NAMESPACE" \
-    --body '{"appConfig": {"appName": "VGMOKHgJ"}, "customConfig": {"GRPCAddress": "dKdLBljF"}, "customFunction": {"afterBulkReadGameRecord": true, "afterBulkReadPlayerRecord": false, "afterReadGameRecord": false, "afterReadPlayerRecord": false, "beforeWriteAdminGameRecord": true, "beforeWriteAdminPlayerRecord": true, "beforeWriteGameRecord": false, "beforeWritePlayerRecord": true}, "extendType": "APP"}' \
+    --body '{"appConfig": {"appName": "0prs5KnC"}, "customConfig": {"GRPCAddress": "dlIxAqSr"}, "customFunction": {"afterBulkReadGameBinaryRecord": false, "afterBulkReadGameRecord": false, "afterBulkReadPlayerBinaryRecord": true, "afterBulkReadPlayerRecord": true, "afterReadGameBinaryRecord": false, "afterReadGameRecord": true, "afterReadPlayerBinaryRecord": true, "afterReadPlayerRecord": true, "beforeWriteAdminGameRecord": false, "beforeWriteAdminPlayerRecord": false, "beforeWriteGameBinaryRecord": true, "beforeWriteGameRecord": false, "beforeWritePlayerBinaryRecord": false, "beforeWritePlayerRecord": false}, "extendType": "CUSTOM"}' \
     > test.out 2>&1
 eval_tap $? 20 'UpdatePluginConfig' test.out
 
 #- 21 ListGameRecordsHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave listGameRecordsHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --query 'vK8aHXLo' \
-    --limit '62' \
-    --offset '32' \
+    --query 'mC5tmJz6' \
+    --limit '85' \
+    --offset '28' \
     > test.out 2>&1
 eval_tap $? 21 'ListGameRecordsHandlerV1' test.out
 
 #- 22 AdminGetGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetGameRecordHandlerV1 \
-    --key 'Ifn2vVbL' \
+    --key 'EKd27T70' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 22 'AdminGetGameRecordHandlerV1' test.out
 
 #- 23 AdminPutGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutGameRecordHandlerV1 \
-    --key 'K8JRJeqn' \
+    --key 'eb4tvO2v' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -221,7 +221,7 @@ eval_tap $? 23 'AdminPutGameRecordHandlerV1' test.out
 
 #- 24 AdminPostGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostGameRecordHandlerV1 \
-    --key '6giiWCkb' \
+    --key '3Q0fqAEs' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -229,23 +229,23 @@ eval_tap $? 24 'AdminPostGameRecordHandlerV1' test.out
 
 #- 25 AdminDeleteGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeleteGameRecordHandlerV1 \
-    --key 'mcpHfLVj' \
+    --key 'BNzgyUPP' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 25 'AdminDeleteGameRecordHandlerV1' test.out
 
 #- 26 BulkGetAdminPlayerRecordByUserIdsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetAdminPlayerRecordByUserIdsV1 \
-    --key 'HEYDCLCM' \
+    --key '6clL7G4S' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userIds": ["Xmjnsfyw", "eQWO7kzH", "fZSqxbGt"]}' \
+    --body '{"userIds": ["LWMBwnyB", "UeUlIVIp", "ljVScR4W"]}' \
     > test.out 2>&1
 eval_tap $? 26 'BulkGetAdminPlayerRecordByUserIdsV1' test.out
 
 #- 27 BulkGetPlayerRecordSizeHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetPlayerRecordSizeHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"data": [{"keys": ["57NlIMZ9", "Q6pQixJQ", "tfTagGl0"], "user_id": "1JeJZcmG"}, {"keys": ["jd3Wgy8c", "Mb8KpIV7", "MsYW12rg"], "user_id": "dXQbva3Z"}, {"keys": ["7lWKgfGI", "1qfxzKf0", "fUloXzC7"], "user_id": "PjJWQKo5"}]}' \
+    --body '{"data": [{"keys": ["yc1U6EPO", "TthbIHb8", "cCRJu4q4"], "user_id": "Nmp4Pn04"}, {"keys": ["t24gyqE1", "STw4KM8B", "expcz8LL"], "user_id": "ltm6279s"}, {"keys": ["QZVbhaFA", "blTQboL6", "j0hqRZYk"], "user_id": "yvjNCCJE"}]}' \
     > test.out 2>&1
 eval_tap $? 27 'BulkGetPlayerRecordSizeHandlerV1' test.out
 
@@ -255,324 +255,324 @@ eval_tap 0 28 'ListPlayerRecordHandlerV1 # SKIP deprecated' test.out
 #- 29 AdminListAdminUserRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminListAdminUserRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'jGX1121d' \
-    --limit '86' \
-    --offset '26' \
+    --userId 'rUVKM5yg' \
+    --limit '74' \
+    --offset '17' \
     > test.out 2>&1
 eval_tap $? 29 'AdminListAdminUserRecordsV1' test.out
 
 #- 30 AdminBulkGetAdminPlayerRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminBulkGetAdminPlayerRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'H9BvhzwK' \
-    --body '{"keys": ["mwWUMyPR", "woRGbfgf", "iyDiBd7N"]}' \
+    --userId 'NaaBxS14' \
+    --body '{"keys": ["4Xp5eqMI", "XpXrF2xc", "bjz1gnlp"]}' \
     > test.out 2>&1
 eval_tap $? 30 'AdminBulkGetAdminPlayerRecordV1' test.out
 
 #- 31 AdminGetAdminPlayerRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetAdminPlayerRecordV1 \
-    --key 'VWELMAlH' \
+    --key 'm8WZtCyy' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'yKtWRdTe' \
+    --userId 'EwlaqU3p' \
     > test.out 2>&1
 eval_tap $? 31 'AdminGetAdminPlayerRecordV1' test.out
 
 #- 32 AdminPutAdminPlayerRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutAdminPlayerRecordV1 \
-    --key 'QsgrNSrs' \
+    --key 'i05Aj2Zo' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'isTJHxwo' \
+    --userId 'CnDwAwXX' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 32 'AdminPutAdminPlayerRecordV1' test.out
 
 #- 33 AdminPostPlayerAdminRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostPlayerAdminRecordV1 \
-    --key 'ppJgQ85D' \
+    --key '6FyfsBTB' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'mip62Fkx' \
+    --userId 'IFS74Vfs' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 33 'AdminPostPlayerAdminRecordV1' test.out
 
 #- 34 AdminDeleteAdminPlayerRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeleteAdminPlayerRecordV1 \
-    --key 'UfMfOzpq' \
+    --key 'DNQfXuAn' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'yWdQ2e0S' \
+    --userId 'FtjoGMbD' \
     > test.out 2>&1
 eval_tap $? 34 'AdminDeleteAdminPlayerRecordV1' test.out
 
 #- 35 AdminListPlayerBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminListPlayerBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId '0fBxymrm' \
-    --limit '21' \
-    --offset '25' \
-    --query 'KOTaAwpW' \
+    --userId '9DnGieCg' \
+    --limit '99' \
+    --offset '30' \
+    --query 'FzcH6T1r' \
     > test.out 2>&1
 eval_tap $? 35 'AdminListPlayerBinaryRecordsV1' test.out
 
 #- 36 AdminPostPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostPlayerBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'IdKiZfev' \
-    --body '{"file_type": "243IrESh", "is_public": true, "key": "23bExiIn", "set_by": "Urn6NKtc"}' \
+    --userId 'V16OqmKA' \
+    --body '{"file_type": "mjlqtsv6", "is_public": false, "key": "Bpzw85sy", "set_by": "SERVER"}' \
     > test.out 2>&1
 eval_tap $? 36 'AdminPostPlayerBinaryRecordV1' test.out
 
 #- 37 AdminGetPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetPlayerBinaryRecordV1 \
-    --key 'fqV9Ya4p' \
+    --key '6R1WBqS8' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'bHMOJcdd' \
+    --userId 'HWsQxt1N' \
     > test.out 2>&1
 eval_tap $? 37 'AdminGetPlayerBinaryRecordV1' test.out
 
 #- 38 AdminPutPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerBinaryRecordV1 \
-    --key 'FxsN9K86' \
+    --key 'TkmHroWQ' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'XPuWVBRW' \
-    --body '{"content_type": "sAKYM0PN", "file_location": "hb1V8rDr"}' \
+    --userId 'dIZxg1sl' \
+    --body '{"content_type": "PdHvVq8n", "file_location": "8KOMbC11"}' \
     > test.out 2>&1
 eval_tap $? 38 'AdminPutPlayerBinaryRecordV1' test.out
 
 #- 39 AdminDeletePlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeletePlayerBinaryRecordV1 \
-    --key 'k5RjO2l3' \
+    --key 'tYM35GIJ' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'QRYYyotD' \
+    --userId 'IYXPKLeY' \
     > test.out 2>&1
 eval_tap $? 39 'AdminDeletePlayerBinaryRecordV1' test.out
 
 #- 40 AdminPutPlayerBinaryRecorMetadataV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerBinaryRecorMetadataV1 \
-    --key 'C5JOtYjQ' \
+    --key 'FmfIzYbG' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'r0p1tguF' \
-    --body '{"is_public": true, "set_by": "Sx7iot36"}' \
+    --userId 'UIlamh3H' \
+    --body '{"is_public": false, "set_by": "CLIENT"}' \
     > test.out 2>&1
 eval_tap $? 40 'AdminPutPlayerBinaryRecorMetadataV1' test.out
 
 #- 41 AdminPostPlayerBinaryPresignedURLV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostPlayerBinaryPresignedURLV1 \
-    --key '6tsNlDKg' \
+    --key 'phtpYeWz' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'BaJg7upm' \
-    --body '{"file_type": "cSk2BjP2"}' \
+    --userId 'qSDRMcWk' \
+    --body '{"file_type": "P9TCWoIo"}' \
     > test.out 2>&1
 eval_tap $? 41 'AdminPostPlayerBinaryPresignedURLV1' test.out
 
 #- 42 AdminPutAdminPlayerRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutAdminPlayerRecordConcurrentHandlerV1 \
-    --key 'CvJo2PdG' \
+    --key 'Quoz9KGM' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'jofo2IYq' \
+    --userId 'lndZQErW' \
     --responseBody  \
-    --body '{"updatedAt": "gFdycFsg", "value": {"Xz7xy5WK": {}, "ioldS8l3": {}, "szyxjG07": {}}}' \
+    --body '{"updatedAt": "hpAUNYVy", "value": {"Vur36rU5": {}, "sWFpNRTy": {}, "Mzj1h6rp": {}}}' \
     > test.out 2>&1
 eval_tap $? 42 'AdminPutAdminPlayerRecordConcurrentHandlerV1' test.out
 
 #- 43 AdminPutPlayerRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerRecordConcurrentHandlerV1 \
-    --key 'HQYBIAOs' \
+    --key '83mEDB5X' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'bxURRMEw' \
+    --userId 'DUKtnifL' \
     --responseBody  \
-    --body '{"set_by": "U0skoiiW", "updatedAt": "QUGh5KwU", "value": {"aW1QaKJO": {}, "L7Rvk13n": {}, "Yffhu7Cd": {}}}' \
+    --body '{"set_by": "SERVER", "updatedAt": "t5Bn8W2C", "value": {"Xx1UpV5z": {}, "cheQsCrc": {}, "hVxDQ9ek": {}}}' \
     > test.out 2>&1
 eval_tap $? 43 'AdminPutPlayerRecordConcurrentHandlerV1' test.out
 
 #- 44 AdminPutPlayerPublicRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerPublicRecordConcurrentHandlerV1 \
-    --key 'QmmOPBlW' \
+    --key '1vpkuIAH' \
     --namespace "$AB_NAMESPACE" \
-    --userId '6F8mNPH4' \
+    --userId 'OU9G7tz9' \
     --responseBody  \
-    --body '{"set_by": "Wo6Bbljw", "updatedAt": "BBK0eOZy", "value": {"sACirRvz": {}, "zlAnGMd1": {}, "zP6rX9Mm": {}}}' \
+    --body '{"set_by": "CLIENT", "updatedAt": "1ycPpW1U", "value": {"E7a5tUCZ": {}, "InliOpeD": {}, "3EYBNtfd": {}}}' \
     > test.out 2>&1
 eval_tap $? 44 'AdminPutPlayerPublicRecordConcurrentHandlerV1' test.out
 
 #- 45 AdminRetrievePlayerRecords
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminRetrievePlayerRecords \
     --namespace "$AB_NAMESPACE" \
-    --userId 'bKYYZ7vj' \
-    --limit '14' \
-    --offset '78' \
+    --userId 'j2MvlrW7' \
+    --limit '10' \
+    --offset '9' \
     > test.out 2>&1
 eval_tap $? 45 'AdminRetrievePlayerRecords' test.out
 
 #- 46 AdminPutPlayerRecordsHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerRecordsHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'RKjXoDkr' \
-    --body '{"data": [{"key": "fCGfKthU", "value": {"zrWJ5fNO": {}, "pPpz54lO": {}, "Q3ar2Sso": {}}}, {"key": "zADvnqNr", "value": {"EvGFmYgc": {}, "T23JL9jz": {}, "mfPOrdKm": {}}}, {"key": "Zaubxpg5", "value": {"aAoFVRvR": {}, "TNAPby19": {}, "JPaHipzZ": {}}}]}' \
+    --userId '27kxuCRX' \
+    --body '{"data": [{"key": "GjZeL9AW", "value": {"ULyvQIrh": {}, "Q6CdILJW": {}, "OoXvd9j1": {}}}, {"key": "ILSEqa1R", "value": {"FpaeoHsl": {}, "BefATGK0": {}, "Ltc0uY1J": {}}}, {"key": "NIhwHM9I", "value": {"pVX1kHr7": {}, "wVcHKRvt": {}, "15VTeHGC": {}}}]}' \
     > test.out 2>&1
 eval_tap $? 46 'AdminPutPlayerRecordsHandlerV1' test.out
 
 #- 47 AdminGetPlayerRecordsHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetPlayerRecordsHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'hSEWSd4K' \
-    --body '{"keys": ["qYXlRaPJ", "AI8QIzmY", "qUTbZxck"]}' \
+    --userId '5VZx1lKw' \
+    --body '{"keys": ["uqRXHoXk", "4XXO6Hio", "Oczx9Evr"]}' \
     > test.out 2>&1
 eval_tap $? 47 'AdminGetPlayerRecordsHandlerV1' test.out
 
 #- 48 AdminGetPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetPlayerRecordHandlerV1 \
-    --key '3Nk63FMC' \
+    --key 'iqzgykUF' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'nSjNp4jA' \
+    --userId 'gM8INRux' \
     > test.out 2>&1
 eval_tap $? 48 'AdminGetPlayerRecordHandlerV1' test.out
 
 #- 49 AdminPutPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerRecordHandlerV1 \
-    --key 'sUNiq3cE' \
+    --key 'geARYz5W' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'InNmB5SM' \
+    --userId 'dM6GeG7I' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 49 'AdminPutPlayerRecordHandlerV1' test.out
 
 #- 50 AdminPostPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostPlayerRecordHandlerV1 \
-    --key '29cZVwY9' \
+    --key 'XIFownWm' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'UYoO5UOE' \
+    --userId 'vlkBldrL' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 50 'AdminPostPlayerRecordHandlerV1' test.out
 
 #- 51 AdminDeletePlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeletePlayerRecordHandlerV1 \
-    --key '7KTxZK17' \
+    --key 'OSDiY3L8' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'Q7yhnIcw' \
+    --userId 'k8LND3Be' \
     > test.out 2>&1
 eval_tap $? 51 'AdminDeletePlayerRecordHandlerV1' test.out
 
 #- 52 AdminGetPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetPlayerPublicRecordHandlerV1 \
-    --key 'SbjCl7ku' \
+    --key 'T2JrgocF' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'wWqT0UXn' \
+    --userId 'ZzKAIva0' \
     > test.out 2>&1
 eval_tap $? 52 'AdminGetPlayerPublicRecordHandlerV1' test.out
 
 #- 53 AdminPutPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPutPlayerPublicRecordHandlerV1 \
-    --key 'mdjHiEMC' \
+    --key 'v8ABAAKE' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'Yvn83tlD' \
+    --userId 'T3k3gwr6' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 53 'AdminPutPlayerPublicRecordHandlerV1' test.out
 
 #- 54 AdminPostPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminPostPlayerPublicRecordHandlerV1 \
-    --key 'ursKC21L' \
+    --key 'wwDg60qM' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'nlNLRLRY' \
+    --userId 'X1ZVSnGS' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 54 'AdminPostPlayerPublicRecordHandlerV1' test.out
 
 #- 55 AdminDeletePlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminDeletePlayerPublicRecordHandlerV1 \
-    --key '78RFwvTC' \
+    --key 'Q5JL0qD1' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'cy187AJq' \
+    --userId 'LGk71iOF' \
     > test.out 2>&1
 eval_tap $? 55 'AdminDeletePlayerPublicRecordHandlerV1' test.out
 
 #- 56 AdminGetPlayerRecordSizeHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave adminGetPlayerRecordSizeHandlerV1 \
-    --key 'TE7quLeu' \
+    --key 'WyxNPGYR' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'xhFBAv1b' \
+    --userId 'yuXY2nDo' \
     > test.out 2>&1
 eval_tap $? 56 'AdminGetPlayerRecordSizeHandlerV1' test.out
 
 #- 57 ListGameBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave listGameBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '52' \
-    --offset '36' \
-    --query 'tBA5xD0N' \
+    --limit '49' \
+    --offset '16' \
+    --query 'MLImUo8b' \
     > test.out 2>&1
 eval_tap $? 57 'ListGameBinaryRecordsV1' test.out
 
 #- 58 PostGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postGameBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"file_type": "frwfU6Kr", "key": "0kHAuBXa"}' \
+    --body '{"file_type": "BbJ34ZU6", "key": "kkMCL6aN"}' \
     > test.out 2>&1
 eval_tap $? 58 'PostGameBinaryRecordV1' test.out
 
 #- 59 BulkGetGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetGameBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"keys": ["4CM6mOfa", "27HVGR7n", "fRnvEePA"]}' \
+    --body '{"keys": ["aQrwHOoO", "S9pizZHi", "YJSCTcTd"]}' \
     > test.out 2>&1
 eval_tap $? 59 'BulkGetGameBinaryRecordV1' test.out
 
 #- 60 GetGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getGameBinaryRecordV1 \
-    --key 'D3yhraWY' \
+    --key 'G7FCQWRJ' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 60 'GetGameBinaryRecordV1' test.out
 
 #- 61 PutGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putGameBinaryRecordV1 \
-    --key '9jye4ZUm' \
+    --key 'b4rSlPX1' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"content_type": "DcfYXnye", "file_location": "KmuGO5YF"}' \
+    --body '{"content_type": "oAvjleX3", "file_location": "3V0Oiv01"}' \
     > test.out 2>&1
 eval_tap $? 61 'PutGameBinaryRecordV1' test.out
 
 #- 62 DeleteGameBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave deleteGameBinaryRecordV1 \
-    --key 'tv7cMW9r' \
+    --key '7YIE6M22' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 62 'DeleteGameBinaryRecordV1' test.out
 
 #- 63 PostGameBinaryPresignedURLV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postGameBinaryPresignedURLV1 \
-    --key 'vPoRBaKf' \
+    --key '55B9mifH' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"file_type": "Owk4JfpI"}' \
+    --body '{"file_type": "0BppYIyA"}' \
     > test.out 2>&1
 eval_tap $? 63 'PostGameBinaryPresignedURLV1' test.out
 
 #- 64 PutGameRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putGameRecordConcurrentHandlerV1 \
-    --key 'w0fPdlwu' \
+    --key 'p4SLodN7' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"updatedAt": "1PIz3jB9", "value": {"YvVvnXxp": {}, "msAzYFMV": {}, "7XFXQfCO": {}}}' \
+    --body '{"updatedAt": "yKMkmlqQ", "value": {"JfDd346S": {}, "EsGkDzFx": {}, "9eXdpfYZ": {}}}' \
     > test.out 2>&1
 eval_tap $? 64 'PutGameRecordConcurrentHandlerV1' test.out
 
 #- 65 GetGameRecordsBulk
 ./ng net.accelbyte.sdk.cli.Main cloudsave getGameRecordsBulk \
     --namespace "$AB_NAMESPACE" \
-    --body '{"keys": ["EFQHecPG", "4hxtKb2R", "MZtoqa66"]}' \
+    --body '{"keys": ["tdVekZ8f", "XzLLdSc7", "S3hh2wDR"]}' \
     > test.out 2>&1
 eval_tap $? 65 'GetGameRecordsBulk' test.out
 
 #- 66 GetGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getGameRecordHandlerV1 \
-    --key 'TDN7rAza' \
+    --key 'yAp4PQIh' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 66 'GetGameRecordHandlerV1' test.out
 
 #- 67 PutGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putGameRecordHandlerV1 \
-    --key 'ngWJ9UA5' \
+    --key 'sBdb3RTi' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -580,7 +580,7 @@ eval_tap $? 67 'PutGameRecordHandlerV1' test.out
 
 #- 68 PostGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postGameRecordHandlerV1 \
-    --key 'GXTravga' \
+    --key 'rSlCkfr9' \
     --namespace "$AB_NAMESPACE" \
     --body '{}' \
     > test.out 2>&1
@@ -588,61 +588,61 @@ eval_tap $? 68 'PostGameRecordHandlerV1' test.out
 
 #- 69 DeleteGameRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave deleteGameRecordHandlerV1 \
-    --key 'wHfrM7wP' \
+    --key 'MywrrLHb' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 69 'DeleteGameRecordHandlerV1' test.out
 
 #- 70 BulkGetPlayerPublicBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetPlayerPublicBinaryRecordsV1 \
-    --key 'G2WiEFtg' \
+    --key '4rP2wf4I' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userIds": ["x35w9dJN", "ogPWZMjz", "Z7hAtm9z"]}' \
+    --body '{"userIds": ["Chayk2Gs", "JqN0gNat", "AA7CCIRF"]}' \
     > test.out 2>&1
 eval_tap $? 70 'BulkGetPlayerPublicBinaryRecordsV1' test.out
 
 #- 71 BulkGetPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetPlayerPublicRecordHandlerV1 \
-    --key 'mOBeK5bR' \
+    --key 't6yM3ae8' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userIds": ["b52wGPDl", "MtX6v6Xt", "wNaqsNSS"]}' \
+    --body '{"userIds": ["AbFhVaGC", "It7atFxn", "oytHPH8j"]}' \
     > test.out 2>&1
 eval_tap $? 71 'BulkGetPlayerPublicRecordHandlerV1' test.out
 
 #- 72 ListMyBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave listMyBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '40' \
-    --offset '28' \
-    --query 'L0tLm5L0' \
+    --limit '4' \
+    --offset '88' \
+    --query 'KmnU2niK' \
     > test.out 2>&1
 eval_tap $? 72 'ListMyBinaryRecordsV1' test.out
 
 #- 73 BulkGetMyBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetMyBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"keys": ["6ZEBqXnB", "x6eV2yuD", "Y7JeMaHz"]}' \
+    --body '{"keys": ["uYFKbV0I", "sQlibuwW", "74KOJ9lk"]}' \
     > test.out 2>&1
 eval_tap $? 73 'BulkGetMyBinaryRecordV1' test.out
 
 #- 74 RetrievePlayerRecords
 ./ng net.accelbyte.sdk.cli.Main cloudsave retrievePlayerRecords \
     --namespace "$AB_NAMESPACE" \
-    --limit '30' \
-    --offset '37' \
+    --limit '47' \
+    --offset '12' \
     > test.out 2>&1
 eval_tap $? 74 'RetrievePlayerRecords' test.out
 
 #- 75 GetPlayerRecordsBulkHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getPlayerRecordsBulkHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"keys": ["6ixNu14G", "GIcBZrkR", "JNh6eIuB"]}' \
+    --body '{"keys": ["WbCBOCpz", "2lExwp85", "Qc85V2MH"]}' \
     > test.out 2>&1
 eval_tap $? 75 'GetPlayerRecordsBulkHandlerV1' test.out
 
 #- 76 PublicDeletePlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave publicDeletePlayerPublicRecordHandlerV1 \
-    --key 'Mwr1WCXH' \
+    --key 'fphMJHW0' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 76 'PublicDeletePlayerPublicRecordHandlerV1' test.out
@@ -650,172 +650,172 @@ eval_tap $? 76 'PublicDeletePlayerPublicRecordHandlerV1' test.out
 #- 77 PostPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postPlayerBinaryRecordV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'qWGLecZb' \
-    --body '{"file_type": "slEovQfh", "is_public": true, "key": "yAFBf0Kv"}' \
+    --userId 'v0xNTiD1' \
+    --body '{"file_type": "UgsTNXcr", "is_public": false, "key": "pekVflaW"}' \
     > test.out 2>&1
 eval_tap $? 77 'PostPlayerBinaryRecordV1' test.out
 
 #- 78 ListOtherPlayerPublicBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave listOtherPlayerPublicBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'Si3jJ2jc' \
-    --limit '63' \
-    --offset '42' \
+    --userId 'HGHwaSRW' \
+    --limit '89' \
+    --offset '13' \
     > test.out 2>&1
 eval_tap $? 78 'ListOtherPlayerPublicBinaryRecordsV1' test.out
 
 #- 79 BulkGetOtherPlayerPublicBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave bulkGetOtherPlayerPublicBinaryRecordsV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'dzCYZcqE' \
-    --body '{"keys": ["ScFILfaM", "JyXTVf4d", "X1yYtMIV"]}' \
+    --userId 'MMvh4tA0' \
+    --body '{"keys": ["Pv7kQiaO", "ssjWItvx", "xhEa8qd6"]}' \
     > test.out 2>&1
 eval_tap $? 79 'BulkGetOtherPlayerPublicBinaryRecordsV1' test.out
 
 #- 80 GetPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getPlayerBinaryRecordV1 \
-    --key 'qwulAAGL' \
+    --key 'yKiaeFc6' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'k2lOeUkL' \
+    --userId 'CVvdZWzO' \
     > test.out 2>&1
 eval_tap $? 80 'GetPlayerBinaryRecordV1' test.out
 
 #- 81 PutPlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerBinaryRecordV1 \
-    --key 'guCDEbly' \
+    --key 'IRvxvLlF' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'k419TRAO' \
-    --body '{"content_type": "HaseyKBm", "file_location": "IJgrlAfh"}' \
+    --userId 'GZNxGoio' \
+    --body '{"content_type": "9K9roKDr", "file_location": "oJMPpzTR"}' \
     > test.out 2>&1
 eval_tap $? 81 'PutPlayerBinaryRecordV1' test.out
 
 #- 82 DeletePlayerBinaryRecordV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave deletePlayerBinaryRecordV1 \
-    --key 'GktYXUjx' \
+    --key 'vc4oyAu9' \
     --namespace "$AB_NAMESPACE" \
-    --userId '9moD3PVV' \
+    --userId 'f4xeoArK' \
     > test.out 2>&1
 eval_tap $? 82 'DeletePlayerBinaryRecordV1' test.out
 
 #- 83 PutPlayerBinaryRecorMetadataV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerBinaryRecorMetadataV1 \
-    --key '77zBTGTW' \
+    --key 'F5lwDi5V' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'XQGMfpzi' \
-    --body '{"is_public": false}' \
+    --userId 'wRpPrGgu' \
+    --body '{"is_public": true}' \
     > test.out 2>&1
 eval_tap $? 83 'PutPlayerBinaryRecorMetadataV1' test.out
 
 #- 84 PostPlayerBinaryPresignedURLV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postPlayerBinaryPresignedURLV1 \
-    --key 'Z06ciBmw' \
+    --key '25wfERoK' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'hQDGPKe8' \
-    --body '{"file_type": "u1KSGEcP"}' \
+    --userId 'l228aBiS' \
+    --body '{"file_type": "ouBiw3Up"}' \
     > test.out 2>&1
 eval_tap $? 84 'PostPlayerBinaryPresignedURLV1' test.out
 
 #- 85 GetPlayerPublicBinaryRecordsV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getPlayerPublicBinaryRecordsV1 \
-    --key 'F0owM9CF' \
+    --key 'iPlTqFvT' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'AOyTpkG0' \
+    --userId 'dngVvPL0' \
     > test.out 2>&1
 eval_tap $? 85 'GetPlayerPublicBinaryRecordsV1' test.out
 
 #- 86 PutPlayerRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerRecordConcurrentHandlerV1 \
-    --key 'Qsr9L1ab' \
+    --key 'xCVFMdHR' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'nSYBUwlu' \
+    --userId 'sPMzdrr0' \
     --responseBody  \
-    --body '{"updatedAt": "ySvvpWmf", "value": {"9aYuKR24": {}, "azthaHQ2": {}, "M1ZNWMXh": {}}}' \
+    --body '{"updatedAt": "bty2advN", "value": {"nrI9bzKt": {}, "0wDesSXf": {}, "8q9dh3wN": {}}}' \
     > test.out 2>&1
 eval_tap $? 86 'PutPlayerRecordConcurrentHandlerV1' test.out
 
 #- 87 PutPlayerPublicRecordConcurrentHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerPublicRecordConcurrentHandlerV1 \
-    --key 'mikcTrwK' \
+    --key 'fcOoesqy' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'QAFddDHj' \
+    --userId 'WLOSHNRw' \
     --responseBody  \
-    --body '{"updatedAt": "5QycKQiB", "value": {"gucDBlPG": {}, "o53IyYz6": {}, "5Ll1doA4": {}}}' \
+    --body '{"updatedAt": "YCQZKEER", "value": {"ahxWpqim": {}, "a2YH1xYY": {}, "NKcoiXBS": {}}}' \
     > test.out 2>&1
 eval_tap $? 87 'PutPlayerPublicRecordConcurrentHandlerV1' test.out
 
 #- 88 GetOtherPlayerPublicRecordKeyHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getOtherPlayerPublicRecordKeyHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'HMilfYJo' \
-    --limit '13' \
-    --offset '65' \
+    --userId 'SVWe1pf2' \
+    --limit '35' \
+    --offset '79' \
     > test.out 2>&1
 eval_tap $? 88 'GetOtherPlayerPublicRecordKeyHandlerV1' test.out
 
 #- 89 GetOtherPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getOtherPlayerPublicRecordHandlerV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'oYAZO7i0' \
-    --body '{"keys": ["RUV5iDxZ", "kSa6ALdp", "2MLzctbc"]}' \
+    --userId 'QLuPLtBS' \
+    --body '{"keys": ["idmBW8wJ", "6j5ZKhgF", "16NdYPmn"]}' \
     > test.out 2>&1
 eval_tap $? 89 'GetOtherPlayerPublicRecordHandlerV1' test.out
 
 #- 90 GetPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getPlayerRecordHandlerV1 \
-    --key 'rZZ8rFVd' \
+    --key 'Zo0l06rC' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'd6NJhc9Z' \
+    --userId 'vFWm923E' \
     > test.out 2>&1
 eval_tap $? 90 'GetPlayerRecordHandlerV1' test.out
 
 #- 91 PutPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerRecordHandlerV1 \
-    --key 'iFrja1rg' \
+    --key 'cRQkKYOe' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'N807ItR5' \
+    --userId 'gKzyoeUj' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 91 'PutPlayerRecordHandlerV1' test.out
 
 #- 92 PostPlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postPlayerRecordHandlerV1 \
-    --key 'DUT7zysQ' \
+    --key '8vqlXOJn' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'TAbUCUvC' \
+    --userId 'ny7JE9ie' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 92 'PostPlayerRecordHandlerV1' test.out
 
 #- 93 DeletePlayerRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave deletePlayerRecordHandlerV1 \
-    --key '3Sz1CFcv' \
+    --key 'CVUlmdTm' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'VTEUPidS' \
+    --userId 'cbHhcqfc' \
     > test.out 2>&1
 eval_tap $? 93 'DeletePlayerRecordHandlerV1' test.out
 
 #- 94 GetPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave getPlayerPublicRecordHandlerV1 \
-    --key 'IkISMhLn' \
+    --key 'lUlylqsD' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'daCu4QDN' \
+    --userId 'WeukQ0Yr' \
     > test.out 2>&1
 eval_tap $? 94 'GetPlayerPublicRecordHandlerV1' test.out
 
 #- 95 PutPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave putPlayerPublicRecordHandlerV1 \
-    --key 'Zy2G2Wpj' \
+    --key 'tAP7MSiv' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'kok2iBUj' \
+    --userId 'tHzd6l8A' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 95 'PutPlayerPublicRecordHandlerV1' test.out
 
 #- 96 PostPlayerPublicRecordHandlerV1
 ./ng net.accelbyte.sdk.cli.Main cloudsave postPlayerPublicRecordHandlerV1 \
-    --key 'A6c4Emgu' \
+    --key 'gQuWv7x0' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'HjIVorh9' \
+    --userId 'y3It043C' \
     --body '{}' \
     > test.out 2>&1
 eval_tap $? 96 'PostPlayerPublicRecordHandlerV1' test.out

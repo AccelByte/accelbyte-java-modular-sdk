@@ -61,34 +61,34 @@ eval_tap $? 2 'GetNamespacesGameTelemetryV1AdminNamespacesGet' test.out
 #- 3 GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet
 ./ng net.accelbyte.sdk.cli.Main gametelemetry getEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet \
     --namespace "$AB_NAMESPACE" \
-    --endTime 'QIe5yWYV' \
-    --eventId 'RdCFILqM' \
-    --eventName '7Ejekjii' \
-    --eventPayload 'Ds3HLMg6' \
-    --flightId 'X1DoZORZ' \
-    --limit '58' \
-    --offset '52' \
-    --startTime 'wdQKX6oc' \
-    --userId 'TEBypZMD' \
+    --endTime 'HXT4JCk9' \
+    --eventId 'yAAv6O3s' \
+    --eventName 'ncNpsXjG' \
+    --eventPayload 'Tc1UwVE3' \
+    --flightId 'n3LNGAZY' \
+    --limit '77' \
+    --offset '55' \
+    --startTime '3VeIJV3b' \
+    --userId 'eCeyMUr9' \
     > test.out 2>&1
 eval_tap $? 3 'GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet' test.out
 
 #- 4 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedSaveEventsGameTelemetryV1ProtectedEventsPost \
-    --body '[{"ClientTimestamp": "1983-08-12T00:00:00Z", "EventId": "YJZk7TDO", "EventName": "C0Cmfmmk", "EventNamespace": "jtbbltkv", "EventTimestamp": "1983-07-20T00:00:00Z", "Payload": {"ZvGsMi5z": {}, "a60Ek60y": {}, "yOJJO7cr": {}}}, {"ClientTimestamp": "1983-11-27T00:00:00Z", "EventId": "IIzDMNdK", "EventName": "u3yTgK08", "EventNamespace": "Eictpf0e", "EventTimestamp": "1977-11-20T00:00:00Z", "Payload": {"QHmbCDGw": {}, "1uDyoorV": {}, "KuWMgv4U": {}}}, {"ClientTimestamp": "1998-03-18T00:00:00Z", "EventId": "BlBAe77B", "EventName": "yXpLOGEF", "EventNamespace": "PEDdV4Ki", "EventTimestamp": "1992-04-04T00:00:00Z", "Payload": {"cOpgAbnS": {}, "m0N1Rp6f": {}, "lF6wo1I2": {}}}]' \
+    --body '[{"ClientTimestamp": "1983-03-07T00:00:00Z", "EventId": "PPfIyTJw", "EventName": "p1YJ7Kjo", "EventNamespace": "DzGsn5Pi", "EventTimestamp": "1975-02-18T00:00:00Z", "Payload": {"85VUCJRP": {}, "WLDPoiE4": {}, "tpmvAjFV": {}}}, {"ClientTimestamp": "1994-03-03T00:00:00Z", "EventId": "qH3rsKQ0", "EventName": "M1btOUXC", "EventNamespace": "rBe8ObuN", "EventTimestamp": "1971-11-25T00:00:00Z", "Payload": {"GSDAIkDy": {}, "YTA2ITVc": {}, "7jVJgJ7g": {}}}, {"ClientTimestamp": "1988-08-12T00:00:00Z", "EventId": "v1Jmgm4M", "EventName": "VdG3hB2d", "EventNamespace": "0xJKwbN0", "EventTimestamp": "1984-09-25T00:00:00Z", "Payload": {"h8k7594v": {}, "DtmXUECN": {}, "pdHBKWLp": {}}}]' \
     > test.out 2>&1
 eval_tap $? 4 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost' test.out
 
 #- 5 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet \
-    --steamId 'inzmMAiQ' \
+    --steamId 'c0zXpZtL' \
     > test.out 2>&1
 eval_tap $? 5 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet' test.out
 
 #- 6 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
 ./ng net.accelbyte.sdk.cli.Main gametelemetry protectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut \
-    --playtime 'VIS5FSer' \
-    --steamId 'i7LG07KB' \
+    --playtime 'wwno46Lv' \
+    --steamId 'n8QmMl0a' \
     > test.out 2>&1
 eval_tap $? 6 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut' test.out
 
