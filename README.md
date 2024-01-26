@@ -1,8 +1,17 @@
-# AccelByte Java SDK
+# AccelByte Modular Java SDK
 
-A software development kit (SDK) for interacting with AccelByte services written in Java.
+> :warning: **This [accelbyte-java-modular-sdk](https://github.com/AccelByte/accelbyte-java-modular-sdk) 
+> is not to be confused with [accelbyte-java-sdk](https://github.com/AccelByte/accelbyte-java-sdk):** 
+> * The former (modular SDK) is planned to be the sucessor for the latter (monolithic SDK).
+> * The modular SDK allows developers to include only the required modules in projects.
+> * If you are starting a new project, you may experiment with modular SDK.
+> * If you use monolithic SDK in an existing project, a migration path is available via compatibility layer in modular SDK.
+> * Both monolithic and modular SDK will be maintained for some time to give time for migration until monolithic SDK is deprecated in the future.
 
-This SDK was generated from OpenAPI spec included in the [spec](spec) directory.
+A software development kit (SDK) for interacting with AccelByte Gaming Services (AGS) written in Java.
+
+This SDK was generated from AGS OpenAPI spec files included in the [spec](spec) directory.
+
 
 ## Setup
 
