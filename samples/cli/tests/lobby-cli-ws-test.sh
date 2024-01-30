@@ -52,132 +52,132 @@ if [ $EXIT_CODE -ne 0 ]; then
 fi
 
 #- 2 AcceptFriendsNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsNotif\nfriendId: qvh2CwiS' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsNotif\nfriendId: z0FBcFn6' -u \
     > test.out 2>&1
 eval_tap $? 2 'AcceptFriendsNotif' test.out
 
 #- 3 AcceptFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsRequest\nid: siLtYCwC\nfriendId: O9I4R4Hv' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsRequest\nid: KLtsRTCG\nfriendId: tEDLX2az' -u \
     > test.out 2>&1
 eval_tap $? 3 'AcceptFriendsRequest' test.out
 
 #- 4 AcceptFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsResponse\nid: Dxw4j7fm\ncode: 50' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: acceptFriendsResponse\nid: Hrgrm8A5\ncode: 53' -u \
     > test.out 2>&1
 eval_tap $? 4 'AcceptFriendsResponse' test.out
 
 #- 5 BlockPlayerNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerNotif\nblockedUserId: SINB7yN9\nuserId: n0tjRSMl' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerNotif\nblockedUserId: GFDLYrcx\nuserId: eusZRSja' -u \
     > test.out 2>&1
 eval_tap $? 5 'BlockPlayerNotif' test.out
 
 #- 6 BlockPlayerRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerRequest\nid: 29B9bFgd\nblockUserId: 3AE25RGp\nnamespace: I1fYwhsf' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerRequest\nid: npB2lfKg\nblockUserId: ng69y0OC\nnamespace: JMvmRhBg' -u \
     > test.out 2>&1
 eval_tap $? 6 'BlockPlayerRequest' test.out
 
 #- 7 BlockPlayerResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerResponse\nid: NVeyN9vo\nblockUserId: AQQEBwsq\ncode: 98\nnamespace: 9bcUE1bV' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: blockPlayerResponse\nid: osYj30Xd\nblockUserId: IAPYgkzG\ncode: 88\nnamespace: rNzZ8mYO' -u \
     > test.out 2>&1
 eval_tap $? 7 'BlockPlayerResponse' test.out
 
 #- 8 CancelFriendsNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsNotif\nuserId: xCuGs7CP' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsNotif\nuserId: 7UHIW6N3' -u \
     > test.out 2>&1
 eval_tap $? 8 'CancelFriendsNotif' test.out
 
 #- 9 CancelFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsRequest\nid: 9g7pkQxc\nfriendId: vrtN2AUG' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsRequest\nid: o7edoTuy\nfriendId: qJnTPmg8' -u \
     > test.out 2>&1
 eval_tap $? 9 'CancelFriendsRequest' test.out
 
 #- 10 CancelFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsResponse\nid: hxQGYd98\ncode: 54' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelFriendsResponse\nid: LHAOQ8C6\ncode: 74' -u \
     > test.out 2>&1
 eval_tap $? 10 'CancelFriendsResponse' test.out
 
 #- 11 CancelMatchmakingRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelMatchmakingRequest\nid: VdSCmtB4\ngameMode: zl7j1sVw\nisTempParty: False' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelMatchmakingRequest\nid: OMToJdME\ngameMode: AhtTTwP4\nisTempParty: False' -u \
     > test.out 2>&1
 eval_tap $? 11 'CancelMatchmakingRequest' test.out
 
 #- 12 CancelMatchmakingResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelMatchmakingResponse\nid: l4o9aPN4\ncode: 80' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: cancelMatchmakingResponse\nid: XveHX6Fz\ncode: 8' -u \
     > test.out 2>&1
 eval_tap $? 12 'CancelMatchmakingResponse' test.out
 
 #- 13 ChannelChatNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: channelChatNotif\nchannelSlug: ONe19Whx\nfrom: XISTrcYa\npayload: DBRBjgfr\nsentAt: wZhZZ53V' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: channelChatNotif\nchannelSlug: smyz2Jpq\nfrom: ELytJgpq\npayload: b1wR5cQq\nsentAt: zgGJNl6x' -u \
     > test.out 2>&1
 eval_tap $? 13 'ChannelChatNotif' test.out
 
 #- 14 ClientResetRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: clientResetRequest\nnamespace: 1fVbbu29\nuserId: 7RgjcCNa' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: clientResetRequest\nnamespace: OyRzRyQU\nuserId: 04WK7JZB' -u \
     > test.out 2>&1
 eval_tap $? 14 'ClientResetRequest' test.out
 
 #- 15 ConnectNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: connectNotif\nlobbySessionId: hMDYHtqH' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: connectNotif\nlobbySessionId: WtTuxo7s' -u \
     > test.out 2>&1
 eval_tap $? 15 'ConnectNotif' test.out
 
 #- 16 DisconnectNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: disconnectNotif\nconnectionId: 6zb7wSGG\nnamespace: r6eolGT7' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: disconnectNotif\nconnectionId: PZ4t5aTz\nnamespace: q5tDJtyO' -u \
     > test.out 2>&1
 eval_tap $? 16 'DisconnectNotif' test.out
 
 #- 17 DsNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: dsNotif\nalternateIps: [vbqDxG27,v2qKpug3,gQpbEjbY]\ncustomAttribute: Lm9gbPwi\ndeployment: h8whE3r5\ngameVersion: 5Bq4N9FV\nimageVersion: GUOFXdyW\nip: OTWvc2OB\nisOK: True\nisOverrideGameVersion: True\nlastUpdate: 5UL9Jklr\nmatchId: kdjDhDqt\nmessage: fskL2YHh\nnamespace: a1nEKSvg\npodName: EdjVmtmN\nport: 75\nports: {"nu9sLzxs":0,"EoAWEYnV":0,"bKw6ucuS":68}\nprotocol: VRzCQpZK\nprovider: UZevPXkr\nregion: h5QZlm5b\nsessionId: ZOYEdoIz\nstatus: P35qrHlZ' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: dsNotif\nalternateIps: [9GkCQ2Mn,iOuiqgZ6,nxivQ9w8]\ncustomAttribute: zpxffk9P\ndeployment: p3ZRWHTA\ngameVersion: pqrVcGYc\nimageVersion: 0Jmz4Ttt\nip: 1SRM2bid\nisOK: True\nisOverrideGameVersion: True\nlastUpdate: aYqtvHa5\nmatchId: nvxAOnbk\nmessage: LQkDspzG\nnamespace: 3IphPx1U\npodName: 29Zj10zu\nport: 2\nports: {"PahlRvTg":48,"QOHpzgbW":97,"favkgEul":36}\nprotocol: yB4rmyjy\nprovider: WLnlEJv9\nregion: cJOW0C9r\nsessionId: UKgeKtl8\nstatus: vV6ofrFY' -u \
     > test.out 2>&1
 eval_tap $? 17 'DsNotif' test.out
 
 #- 18 ErrorNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: errorNotif\nmessage: P2PL1m2x' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: errorNotif\nmessage: dj0JEavM' -u \
     > test.out 2>&1
 eval_tap $? 18 'ErrorNotif' test.out
 
 #- 19 ExitAllChannel
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: exitAllChannel\nnamespace: Qg0CI9hv\nuserId: ta0Tfaox' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: exitAllChannel\nnamespace: 0jZhv9Gt\nuserId: AvVLqcHo' -u \
     > test.out 2>&1
 eval_tap $? 19 'ExitAllChannel' test.out
 
 #- 20 FriendsStatusRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: friendsStatusRequest\nid: FPCdWsrQ' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: friendsStatusRequest\nid: uyG2ilLB' -u \
     > test.out 2>&1
 eval_tap $? 20 'FriendsStatusRequest' test.out
 
 #- 21 FriendsStatusResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: friendsStatusResponse\nid: ugMa3FAh\nactivity: [KoebMwe0,SNEH3d4a,E3Kouzmj]\navailability: [tZLRbmb3,RpMiAy2O,LGCAJoPO]\ncode: 79\nfriendIds: [JneZa5li,7bMkezcu,keKE4eqU]\nlastSeenAt: [lvfRExWj,EMnoSaU7,DiAuiVjn]' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: friendsStatusResponse\nid: x2FXhZdS\nactivity: [fINwMGmj,hRsHFMzU,yr49o4zg]\navailability: [hwUBbOxy,BQGW52Ee,gDq7298g]\ncode: 79\nfriendIds: [hIO2xvbF,KcOnwuTg,dpi41Qmb]\nlastSeenAt: [q0sarlzg,QuvyxZip,pdCLfm0C]' -u \
     > test.out 2>&1
 eval_tap $? 21 'FriendsStatusResponse' test.out
 
 #- 22 GetAllSessionAttributeRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getAllSessionAttributeRequest\nid: fzdV7Mjr' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getAllSessionAttributeRequest\nid: wMrwsCJc' -u \
     > test.out 2>&1
 eval_tap $? 22 'GetAllSessionAttributeRequest' test.out
 
 #- 23 GetAllSessionAttributeResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getAllSessionAttributeResponse\nid: B8wRSJwH\nattributes: {"n8vtHvRI":"pSsIN31m","mW9O4ZGN":"CTbajiBZ","CKgj6MKc":"jeaNqQ7j"}\ncode: 76' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getAllSessionAttributeResponse\nid: l3NliVns\nattributes: {"0NKivwg0":"EJIIjGFJ","tNZB0Wgo":"L8k9E7Xd","0iV3Mei3":"PiUEh6Zw"}\ncode: 85' -u \
     > test.out 2>&1
 eval_tap $? 23 'GetAllSessionAttributeResponse' test.out
 
 #- 24 GetFriendshipStatusRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getFriendshipStatusRequest\nid: OOFkgoBP\nfriendId: DerMEBsi' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getFriendshipStatusRequest\nid: RNsPWwV5\nfriendId: 8s6TBkRx' -u \
     > test.out 2>&1
 eval_tap $? 24 'GetFriendshipStatusRequest' test.out
 
 #- 25 GetFriendshipStatusResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getFriendshipStatusResponse\nid: 6JVFgCOj\ncode: 30\nfriendshipStatus: 8M8rhbAW' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getFriendshipStatusResponse\nid: maH5ypXW\ncode: 3\nfriendshipStatus: 8Js86yc7' -u \
     > test.out 2>&1
 eval_tap $? 25 'GetFriendshipStatusResponse' test.out
 
 #- 26 GetSessionAttributeRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getSessionAttributeRequest\nid: Rv8cO4PW\nkey: X0hHZVTd' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getSessionAttributeRequest\nid: NeUD3JJL\nkey: 1OhzGZwE' -u \
     > test.out 2>&1
 eval_tap $? 26 'GetSessionAttributeRequest' test.out
 
 #- 27 GetSessionAttributeResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getSessionAttributeResponse\nid: C1FeIuCV\ncode: 12\nvalue: bsJdrOab' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: getSessionAttributeResponse\nid: XH2LCvSs\ncode: 3\nvalue: Io5AkS5x' -u \
     > test.out 2>&1
 eval_tap $? 27 'GetSessionAttributeResponse' test.out
 
@@ -187,367 +187,367 @@ eval_tap $? 27 'GetSessionAttributeResponse' test.out
 eval_tap $? 28 'Heartbeat' test.out
 
 #- 29 JoinDefaultChannelRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: joinDefaultChannelRequest\nid: UannwfqP' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: joinDefaultChannelRequest\nid: 88DPPvHH' -u \
     > test.out 2>&1
 eval_tap $? 29 'JoinDefaultChannelRequest' test.out
 
 #- 30 JoinDefaultChannelResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: joinDefaultChannelResponse\nid: EJaDScn9\nchannelSlug: TNkXYdwZ\ncode: 81' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: joinDefaultChannelResponse\nid: AwsTa8Ru\nchannelSlug: 0pNgmZQc\ncode: 28' -u \
     > test.out 2>&1
 eval_tap $? 30 'JoinDefaultChannelResponse' test.out
 
 #- 31 ListIncomingFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listIncomingFriendsRequest\nid: R3lBPvwc' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listIncomingFriendsRequest\nid: qoza2crN' -u \
     > test.out 2>&1
 eval_tap $? 31 'ListIncomingFriendsRequest' test.out
 
 #- 32 ListIncomingFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listIncomingFriendsResponse\nid: ZacCxVK9\ncode: 41\nuserIds: [harBEpkY,DaKRuSAG,OLrJ2V2H]' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listIncomingFriendsResponse\nid: TTbE8MJa\ncode: 94\nuserIds: [aNMgGogF,gdl619Nn,DkQ7GXkA]' -u \
     > test.out 2>&1
 eval_tap $? 32 'ListIncomingFriendsResponse' test.out
 
 #- 33 ListOfFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOfFriendsRequest\nid: u3ohasZC\nfriendId: qFD6c02v' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOfFriendsRequest\nid: UDLgtBMG\nfriendId: 3vF5qpV0' -u \
     > test.out 2>&1
 eval_tap $? 33 'ListOfFriendsRequest' test.out
 
 #- 34 ListOfFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOfFriendsResponse\nid: MoNoi5BN\ncode: 52\nfriendIds: [k2El9cSi,1bmzh4PC,tesKND4n]' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOfFriendsResponse\nid: UCQBsr1R\ncode: 18\nfriendIds: [2F0H0iom,vxw12QfY,sjn5ij37]' -u \
     > test.out 2>&1
 eval_tap $? 34 'ListOfFriendsResponse' test.out
 
 #- 35 ListOnlineFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOnlineFriendsRequest\nid: 9l7NtBC2' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOnlineFriendsRequest\nid: jcbH826K' -u \
     > test.out 2>&1
 eval_tap $? 35 'ListOnlineFriendsRequest' test.out
 
 #- 36 ListOutgoingFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOutgoingFriendsRequest\nid: FiyrJbBP' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOutgoingFriendsRequest\nid: 0HUQC3gs' -u \
     > test.out 2>&1
 eval_tap $? 36 'ListOutgoingFriendsRequest' test.out
 
 #- 37 ListOutgoingFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOutgoingFriendsResponse\nid: 3Sdrj1Pg\ncode: 16\nfriendIds: [tdZXMjxx,HUrQSh3H,AfUvLmqa]' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: listOutgoingFriendsResponse\nid: 3pVniT6u\ncode: 97\nfriendIds: [Cps7kaqp,PdA4PNeR,SMUMePVr]' -u \
     > test.out 2>&1
 eval_tap $? 37 'ListOutgoingFriendsResponse' test.out
 
 #- 38 MatchmakingNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: matchmakingNotif\ncounterPartyMember: [qf0LUJAx,HZh3ptu4,gJcattD5]\nmatchId: XUvEP0oG\nmessage: 23Bx69AG\npartyMember: [DkSrZMpo,ooG0Xwft,4IDaneWG]\nreadyDuration: 88\nstatus: Hf1oKVKJ' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: matchmakingNotif\ncounterPartyMember: [1f6ArhMh,zuc70zCk,msKp8hfx]\nmatchId: ZbRjxbHD\nmessage: QjWUlC1S\npartyMember: [DcsAUrXo,6lRfQEaD,lsC0cN4r]\nreadyDuration: 50\nstatus: hFqEgXgV' -u \
     > test.out 2>&1
 eval_tap $? 38 'MatchmakingNotif' test.out
 
 #- 39 MessageNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: messageNotif\nid: T5443lKX\nfrom: 9ihwrIKQ\npayload: kvb66yID\nsentAt: 16\nto: Ic37hABP\ntopic: 3hr2OnD4' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: messageNotif\nid: SBaDzk05\nfrom: IJJHd1rh\npayload: appYqRfR\nsentAt: 96\nto: BhTeHeZu\ntopic: 6v3wr7JZ' -u \
     > test.out 2>&1
 eval_tap $? 39 'MessageNotif' test.out
 
 #- 40 OfflineNotificationRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: offlineNotificationRequest\nid: Jls2CPTc' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: offlineNotificationRequest\nid: C6P0dclI' -u \
     > test.out 2>&1
 eval_tap $? 40 'OfflineNotificationRequest' test.out
 
 #- 41 OfflineNotificationResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: offlineNotificationResponse\nid: ZwYagKEo\ncode: 21' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: offlineNotificationResponse\nid: iljFyVuF\ncode: 14' -u \
     > test.out 2>&1
 eval_tap $? 41 'OfflineNotificationResponse' test.out
 
 #- 42 OnlineFriends
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: onlineFriends\nid: BuSarMXj\ncode: 25\nonlineFriendIds: [59whglaD,FBaau67O,YLWhEA5p]' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: onlineFriends\nid: f3dNOEFz\ncode: 62\nonlineFriendIds: [3CsVPoTC,QZZxHfYM,4jKHivJ4]' -u \
     > test.out 2>&1
 eval_tap $? 42 'OnlineFriends' test.out
 
 #- 43 PartyChatNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatNotif\nid: eLGJZU8C\nfrom: 8oDCIdt8\npayload: b4L8pB9g\nreceivedAt: 19\nto: MuLb8I75' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatNotif\nid: iSmHHLro\nfrom: sNC0svHg\npayload: k5j6B3mI\nreceivedAt: 97\nto: HQjSI6f5' -u \
     > test.out 2>&1
 eval_tap $? 43 'PartyChatNotif' test.out
 
 #- 44 PartyChatRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatRequest\nid: Jda66mzl\nfrom: dCWdZabm\npayload: tE3K88pw\nreceivedAt: 92\nto: tJLPnJmO' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatRequest\nid: btj8vMw4\nfrom: 7qHXu3Zd\npayload: TkpuINO4\nreceivedAt: 2\nto: DBMSHbg8' -u \
     > test.out 2>&1
 eval_tap $? 44 'PartyChatRequest' test.out
 
 #- 45 PartyChatResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatResponse\nid: JWocmwYY\ncode: 99' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyChatResponse\nid: sgeJQUGB\ncode: 63' -u \
     > test.out 2>&1
 eval_tap $? 45 'PartyChatResponse' test.out
 
 #- 46 PartyCreateRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyCreateRequest\nid: nwcZmnue' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyCreateRequest\nid: ilvl05Cp' -u \
     > test.out 2>&1
 eval_tap $? 46 'PartyCreateRequest' test.out
 
 #- 47 PartyCreateResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyCreateResponse\nid: ukpXkqTJ\ncode: 68\ninvitationToken: cwVEORmR\ninvitees: qFIcNhya\nleaderId: aIk1Qnc2\nmembers: J8pKS6by\npartyId: iDvizLDY' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyCreateResponse\nid: W2uZ7if6\ncode: 86\ninvitationToken: NLcidZcb\ninvitees: UeoWwBpx\nleaderId: x0nxwMp6\nmembers: sgghbsIE\npartyId: zdp3gUY4' -u \
     > test.out 2>&1
 eval_tap $? 47 'PartyCreateResponse' test.out
 
 #- 48 PartyDataUpdateNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyDataUpdateNotif\ncustomAttributes: {"FVpHTl8N":{},"c1sJnnPk":{},"WE63IMLd":{}}\ninvitees: [3S4rmCq0,kRnKeiqx,SWbicBQf]\nleader: w2MmPHou\nmembers: [8G6wYpaC,bBehg3r6,59iXHSCf]\nnamespace: ZH5hIhOJ\npartyId: S8Ai1io6\nupdatedAt: 6' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyDataUpdateNotif\ncustomAttributes: {"Rikj96vx":{},"cXZuotEt":{},"rjhZ1aTM":{}}\ninvitees: [sqOTCH19,ZLhosbR4,vY7KGSXX]\nleader: U6Sc4iPx\nmembers: [h4cH9afR,KpFQpzxV,88EVJOuf]\nnamespace: yk5xJyjF\npartyId: qy1Q15Lo\nupdatedAt: 38' -u \
     > test.out 2>&1
 eval_tap $? 48 'PartyDataUpdateNotif' test.out
 
 #- 49 PartyGetInvitedNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyGetInvitedNotif\nfrom: 2BVxuWwq\ninvitationToken: mAibHcCq\npartyId: HPaoJunr' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyGetInvitedNotif\nfrom: bZZMkcCF\ninvitationToken: iBgZf0iB\npartyId: HpFCXxgS' -u \
     > test.out 2>&1
 eval_tap $? 49 'PartyGetInvitedNotif' test.out
 
 #- 50 PartyInfoRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInfoRequest\nid: t2Rj0yQ3' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInfoRequest\nid: 5oKAbjDt' -u \
     > test.out 2>&1
 eval_tap $? 50 'PartyInfoRequest' test.out
 
 #- 51 PartyInfoResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInfoResponse\nid: etXyLVFn\ncode: 55\ncustomAttributes: {"b1LihqCp":{},"E5PrYL0T":{},"SWSaMmwA":{}}\ninvitationToken: 70WpXGt9\ninvitees: EYlBmxx2\nleaderId: lCFRX4vQ\nmembers: 5BTQIS1Q\npartyId: M0rxZFI3' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInfoResponse\nid: P68yzBuF\ncode: 12\ncustomAttributes: {"NG1LDpgX":{},"sssV1u7I":{},"4jxiKbF1":{}}\ninvitationToken: wEcXDAHw\ninvitees: A4Dff89k\nleaderId: ihiAzCDb\nmembers: 0PWXGbBe\npartyId: 8AevP391' -u \
     > test.out 2>&1
 eval_tap $? 51 'PartyInfoResponse' test.out
 
 #- 52 PartyInviteNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteNotif\ninviteeId: 2N3EOZij\ninviterId: 1oBdAN6k' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteNotif\ninviteeId: yOBvF2LE\ninviterId: VWrSYwrh' -u \
     > test.out 2>&1
 eval_tap $? 52 'PartyInviteNotif' test.out
 
 #- 53 PartyInviteRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteRequest\nid: 9xowrAQ0\nfriendId: 5jCqLm3A' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteRequest\nid: rmPGR18Y\nfriendId: QIJc4TOS' -u \
     > test.out 2>&1
 eval_tap $? 53 'PartyInviteRequest' test.out
 
 #- 54 PartyInviteResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteResponse\nid: xuIQLob0\ncode: 56' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyInviteResponse\nid: 44CHfQsv\ncode: 30' -u \
     > test.out 2>&1
 eval_tap $? 54 'PartyInviteResponse' test.out
 
 #- 55 PartyJoinNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinNotif\nuserId: Af8mVPhJ' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinNotif\nuserId: b5jhFrJG' -u \
     > test.out 2>&1
 eval_tap $? 55 'PartyJoinNotif' test.out
 
 #- 56 PartyJoinRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinRequest\nid: c27JxFKa\ninvitationToken: IIcS3pqh\npartyId: tIv7TZ0l' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinRequest\nid: UVoYJn3i\ninvitationToken: OxhOOnYb\npartyId: ESBZqacP' -u \
     > test.out 2>&1
 eval_tap $? 56 'PartyJoinRequest' test.out
 
 #- 57 PartyJoinResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinResponse\nid: c6XqbW77\ncode: 59\ninvitationToken: 4yXX8Ikr\ninvitees: 1ViWNpKw\nleaderId: hH4c71Qi\nmembers: RC0REjJb\npartyId: YgMjWUjy' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyJoinResponse\nid: iccLflCX\ncode: 29\ninvitationToken: bVNKilTx\ninvitees: t3AELQje\nleaderId: SvuXH5MC\nmembers: fvZCLmW9\npartyId: leVSbFAg' -u \
     > test.out 2>&1
 eval_tap $? 57 'PartyJoinResponse' test.out
 
 #- 58 PartyKickNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickNotif\nleaderId: E2PPNLFB\npartyId: G9RNDpJm\nuserId: iyRLDdIK' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickNotif\nleaderId: Njd2SCZ5\npartyId: s3YcXnSF\nuserId: CkCJgDWQ' -u \
     > test.out 2>&1
 eval_tap $? 58 'PartyKickNotif' test.out
 
 #- 59 PartyKickRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickRequest\nid: K6c5zMHc\nmemberId: f6W3M49N' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickRequest\nid: dvll08yg\nmemberId: AC1vdRTh' -u \
     > test.out 2>&1
 eval_tap $? 59 'PartyKickRequest' test.out
 
 #- 60 PartyKickResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickResponse\nid: tlOOwc5S\ncode: 44' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyKickResponse\nid: NnK1XLbN\ncode: 31' -u \
     > test.out 2>&1
 eval_tap $? 60 'PartyKickResponse' test.out
 
 #- 61 PartyLeaveNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveNotif\nleaderId: tu1eRf7n\nuserId: ALNvIDxA' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveNotif\nleaderId: 79iK8iqI\nuserId: 3iYunhus' -u \
     > test.out 2>&1
 eval_tap $? 61 'PartyLeaveNotif' test.out
 
 #- 62 PartyLeaveRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveRequest\nid: WqErrZ8V\nignoreUserRegistry: False' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveRequest\nid: QeKgJoBT\nignoreUserRegistry: True' -u \
     > test.out 2>&1
 eval_tap $? 62 'PartyLeaveRequest' test.out
 
 #- 63 PartyLeaveResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveResponse\nid: GdeqCCiV\ncode: 51' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyLeaveResponse\nid: vKvRo6eo\ncode: 79' -u \
     > test.out 2>&1
 eval_tap $? 63 'PartyLeaveResponse' test.out
 
 #- 64 PartyPromoteLeaderRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyPromoteLeaderRequest\nid: Jw0RGGtw\nnewLeaderUserId: YrLCRSkT' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyPromoteLeaderRequest\nid: OpLFmvJx\nnewLeaderUserId: H5y25yfp' -u \
     > test.out 2>&1
 eval_tap $? 64 'PartyPromoteLeaderRequest' test.out
 
 #- 65 PartyPromoteLeaderResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyPromoteLeaderResponse\nid: cbmruKu3\ncode: 45\ninvitationToken: VdbetvpZ\ninvitees: AFLCqrIW\nleaderId: qbqElaIF\nmembers: iabfu10x\npartyId: 4D1jHclJ' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyPromoteLeaderResponse\nid: go8uW94o\ncode: 21\ninvitationToken: YZlBp9i6\ninvitees: PkwXMJI7\nleaderId: BPGooP4H\nmembers: D0mAaI8h\npartyId: HJIbizSh' -u \
     > test.out 2>&1
 eval_tap $? 65 'PartyPromoteLeaderResponse' test.out
 
 #- 66 PartyRejectNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectNotif\nleaderId: SuAYr6bT\npartyId: B42S8yG3\nuserId: truTOQzM' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectNotif\nleaderId: FJrqORuo\npartyId: YXkDtTsM\nuserId: 8sJSP3TN' -u \
     > test.out 2>&1
 eval_tap $? 66 'PartyRejectNotif' test.out
 
 #- 67 PartyRejectRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectRequest\nid: lTfb2RyY\ninvitationToken: lMTlOvMA\npartyId: ueA7sued' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectRequest\nid: SyWIuJQC\ninvitationToken: Owt5ucAT\npartyId: PW2g3PgT' -u \
     > test.out 2>&1
 eval_tap $? 67 'PartyRejectRequest' test.out
 
 #- 68 PartyRejectResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectResponse\nid: SwaYNbPC\ncode: 99\npartyId: 7eFbpf6P' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: partyRejectResponse\nid: CRnnXsPG\ncode: 23\npartyId: FAmkvNOG' -u \
     > test.out 2>&1
 eval_tap $? 68 'PartyRejectResponse' test.out
 
 #- 69 PersonalChatHistoryRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatHistoryRequest\nid: BqfjBMRu\nfriendId: QEtSwycb' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatHistoryRequest\nid: HDvRrOt5\nfriendId: yPTB6InU' -u \
     > test.out 2>&1
 eval_tap $? 69 'PersonalChatHistoryRequest' test.out
 
 #- 70 PersonalChatHistoryResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatHistoryResponse\nid: I1xuKaqI\nchat: oFaIPPUQ\ncode: 47\nfriendId: UhmOtrf6' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatHistoryResponse\nid: ncvFBUUL\nchat: pZRxYwpn\ncode: 94\nfriendId: EsAnKwNe' -u \
     > test.out 2>&1
 eval_tap $? 70 'PersonalChatHistoryResponse' test.out
 
 #- 71 PersonalChatNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatNotif\nid: mSP4KJTR\nfrom: PKBriOSM\npayload: hAyAC1I0\nreceivedAt: 34\nto: piYiZrB8' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatNotif\nid: rYGuwC2D\nfrom: KzEwQvDS\npayload: x0MRh7oa\nreceivedAt: 84\nto: BTY7GZR0' -u \
     > test.out 2>&1
 eval_tap $? 71 'PersonalChatNotif' test.out
 
 #- 72 PersonalChatRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatRequest\nid: rqcjq1le\nfrom: cu8eFyhz\npayload: pFPctszg\nreceivedAt: 26\nto: iXcR6s1S' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatRequest\nid: HhQewlMR\nfrom: 3eL1sEeH\npayload: cpVvL90h\nreceivedAt: 26\nto: vS8sXJjg' -u \
     > test.out 2>&1
 eval_tap $? 72 'PersonalChatRequest' test.out
 
 #- 73 PersonalChatResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatResponse\nid: 3i0gvanA\ncode: 85' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: personalChatResponse\nid: ZUH8tuxC\ncode: 76' -u \
     > test.out 2>&1
 eval_tap $? 73 'PersonalChatResponse' test.out
 
 #- 74 RefreshTokenRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: refreshTokenRequest\nid: 3c3PBxJr\ntoken: 2NoTdLMf' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: refreshTokenRequest\nid: IIBbwlVI\ntoken: hIl1iANJ' -u \
     > test.out 2>&1
 eval_tap $? 74 'RefreshTokenRequest' test.out
 
 #- 75 RefreshTokenResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: refreshTokenResponse\nid: JLo8I7xH\ncode: 16' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: refreshTokenResponse\nid: UDr6EkXH\ncode: 21' -u \
     > test.out 2>&1
 eval_tap $? 75 'RefreshTokenResponse' test.out
 
 #- 76 RejectFriendsNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsNotif\nuserId: jlXiwltc' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsNotif\nuserId: 7O1sLvhH' -u \
     > test.out 2>&1
 eval_tap $? 76 'RejectFriendsNotif' test.out
 
 #- 77 RejectFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsRequest\nid: 5dAnw1se\nfriendId: ArsZUqlj' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsRequest\nid: TlmH8TEl\nfriendId: job2y83w' -u \
     > test.out 2>&1
 eval_tap $? 77 'RejectFriendsRequest' test.out
 
 #- 78 RejectFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsResponse\nid: JpneIGft\ncode: 15' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rejectFriendsResponse\nid: b4kzhXl2\ncode: 47' -u \
     > test.out 2>&1
 eval_tap $? 78 'RejectFriendsResponse' test.out
 
 #- 79 RematchmakingNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rematchmakingNotif\nbanDuration: 53' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: rematchmakingNotif\nbanDuration: 26' -u \
     > test.out 2>&1
 eval_tap $? 79 'RematchmakingNotif' test.out
 
 #- 80 RequestFriendsNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsNotif\nfriendId: nSgyPZdu' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsNotif\nfriendId: cu5BUtly' -u \
     > test.out 2>&1
 eval_tap $? 80 'RequestFriendsNotif' test.out
 
 #- 81 RequestFriendsRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsRequest\nid: bJ39JF6P\nfriendId: YJ94aPIv' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsRequest\nid: LYuzHLI5\nfriendId: XkT9WavO' -u \
     > test.out 2>&1
 eval_tap $? 81 'RequestFriendsRequest' test.out
 
 #- 82 RequestFriendsResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsResponse\nid: 7iSE3Wd2\ncode: 34' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: requestFriendsResponse\nid: BZ5yj2Aa\ncode: 64' -u \
     > test.out 2>&1
 eval_tap $? 82 'RequestFriendsResponse' test.out
 
 #- 83 SendChannelChatRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: sendChannelChatRequest\nid: VGu1Bp5Z\nchannelSlug: TnFCbjMn\npayload: D7iv6SG7' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: sendChannelChatRequest\nid: sVgzURfz\nchannelSlug: Km4HbfTM\npayload: wUzEyk2L' -u \
     > test.out 2>&1
 eval_tap $? 83 'SendChannelChatRequest' test.out
 
 #- 84 SendChannelChatResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: sendChannelChatResponse\nid: RUBTz7qV\ncode: 77' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: sendChannelChatResponse\nid: RQj5y7fG\ncode: 73' -u \
     > test.out 2>&1
 eval_tap $? 84 'SendChannelChatResponse' test.out
 
 #- 85 SetReadyConsentNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentNotif\nmatchId: Zy18Owot\nuserId: Gg556r7f' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentNotif\nmatchId: l3AL6cnU\nuserId: yWUBm7Ym' -u \
     > test.out 2>&1
 eval_tap $? 85 'SetReadyConsentNotif' test.out
 
 #- 86 SetReadyConsentRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentRequest\nid: SK53gqjE\nmatchId: KGivlOA7' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentRequest\nid: B6bOwi0M\nmatchId: oEM8W8Wh' -u \
     > test.out 2>&1
 eval_tap $? 86 'SetReadyConsentRequest' test.out
 
 #- 87 SetReadyConsentResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentResponse\nid: cWgmpUaB\ncode: 80' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setReadyConsentResponse\nid: knfZMZ18\ncode: 90' -u \
     > test.out 2>&1
 eval_tap $? 87 'SetReadyConsentResponse' test.out
 
 #- 88 SetSessionAttributeRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setSessionAttributeRequest\nid: Wmxzz3mg\nkey: 6r0Gy3mk\nnamespace: FtNsB4AH\nvalue: 9eFKfGF9' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setSessionAttributeRequest\nid: XMYsEX86\nkey: j6UJ1zFW\nnamespace: q560FHuB\nvalue: ZOxh7Ja1' -u \
     > test.out 2>&1
 eval_tap $? 88 'SetSessionAttributeRequest' test.out
 
 #- 89 SetSessionAttributeResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setSessionAttributeResponse\nid: yVRBBT2R\ncode: 15' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setSessionAttributeResponse\nid: iPBiMpvA\ncode: 45' -u \
     > test.out 2>&1
 eval_tap $? 89 'SetSessionAttributeResponse' test.out
 
 #- 90 SetUserStatusRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setUserStatusRequest\nid: 8iT5otNv\nactivity: dMJcxsc0\navailability: 25' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setUserStatusRequest\nid: jt0fCnzk\nactivity: 0RBUJ3E2\navailability: 46' -u \
     > test.out 2>&1
 eval_tap $? 90 'SetUserStatusRequest' test.out
 
 #- 91 SetUserStatusResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setUserStatusResponse\nid: kKsAFiWY\ncode: 52' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: setUserStatusResponse\nid: Wnx8jpLw\ncode: 100' -u \
     > test.out 2>&1
 eval_tap $? 91 'SetUserStatusResponse' test.out
 
 #- 92 ShutdownNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: shutdownNotif\nmessage: GD6BBbqU' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: shutdownNotif\nmessage: hZbfK46i' -u \
     > test.out 2>&1
 eval_tap $? 92 'ShutdownNotif' test.out
 
 #- 93 SignalingP2PNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: signalingP2PNotif\ndestinationId: mf9PoXMu\nmessage: G2LsvDn4' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: signalingP2PNotif\ndestinationId: woRUoaxB\nmessage: fQAUMnVT' -u \
     > test.out 2>&1
 eval_tap $? 93 'SignalingP2PNotif' test.out
 
 #- 94 StartMatchmakingRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: startMatchmakingRequest\nid: 7fAPKZW5\nextraAttributes: b4zCAxbd\ngameMode: TgE7lxgk\npartyAttributes: {"Cz2NypxS":{},"ob37795k":{},"rUqmxbL8":{}}\npriority: 91\ntempParty: TDvQF7mc' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: startMatchmakingRequest\nid: w8bVcBiT\nextraAttributes: 38v0HuzR\ngameMode: JlvD18Qj\npartyAttributes: {"uxy8tHdl":{},"1ch5IeVf":{},"sFlB36sS":{}}\npriority: 25\ntempParty: uTnKV1Tb' -u \
     > test.out 2>&1
 eval_tap $? 94 'StartMatchmakingRequest' test.out
 
 #- 95 StartMatchmakingResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: startMatchmakingResponse\nid: Y6vyls5s\ncode: 55' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: startMatchmakingResponse\nid: iRAjNF4D\ncode: 32' -u \
     > test.out 2>&1
 eval_tap $? 95 'StartMatchmakingResponse' test.out
 
 #- 96 UnblockPlayerNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerNotif\nunblockedUserId: M0ALk37e\nuserId: SmS6Pbif' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerNotif\nunblockedUserId: zhIkbC74\nuserId: M7YVBEbQ' -u \
     > test.out 2>&1
 eval_tap $? 96 'UnblockPlayerNotif' test.out
 
 #- 97 UnblockPlayerRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerRequest\nid: V0jZKN4t\nnamespace: CLhWE34c\nunblockedUserId: 2e454jLh' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerRequest\nid: toY5YdU3\nnamespace: 5fhWivVg\nunblockedUserId: 6TlGyrq9' -u \
     > test.out 2>&1
 eval_tap $? 97 'UnblockPlayerRequest' test.out
 
 #- 98 UnblockPlayerResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerResponse\nid: MGsylAlG\ncode: 32\nnamespace: DJiu9hic\nunblockedUserId: NNZIjgrq' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unblockPlayerResponse\nid: 6pbwPDW6\ncode: 26\nnamespace: FhcSYuMw\nunblockedUserId: rgrPHGjR' -u \
     > test.out 2>&1
 eval_tap $? 98 'UnblockPlayerResponse' test.out
 
 #- 99 UnfriendNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendNotif\nfriendId: 0lijkQA4' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendNotif\nfriendId: x9Xq7P3r' -u \
     > test.out 2>&1
 eval_tap $? 99 'UnfriendNotif' test.out
 
 #- 100 UnfriendRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendRequest\nid: hdWJj9Nv\nfriendId: IUSvwPlc' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendRequest\nid: 3feGjxWW\nfriendId: PtaQKB65' -u \
     > test.out 2>&1
 eval_tap $? 100 'UnfriendRequest' test.out
 
 #- 101 UnfriendResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendResponse\nid: Hk9LVCbV\ncode: 75' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: unfriendResponse\nid: VbBYymvO\ncode: 46' -u \
     > test.out 2>&1
 eval_tap $? 101 'UnfriendResponse' test.out
 
@@ -557,17 +557,17 @@ eval_tap $? 101 'UnfriendResponse' test.out
 eval_tap $? 102 'UserBannedNotification' test.out
 
 #- 103 UserMetricRequest
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userMetricRequest\nid: tVL9rVqt' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userMetricRequest\nid: R5TPfZ4L' -u \
     > test.out 2>&1
 eval_tap $? 103 'UserMetricRequest' test.out
 
 #- 104 UserMetricResponse
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userMetricResponse\nid: 2Fb6wnYN\ncode: 31\nplayerCount: 18' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userMetricResponse\nid: Cn3hC7ng\ncode: 67\nplayerCount: 33' -u \
     > test.out 2>&1
 eval_tap $? 104 'UserMetricResponse' test.out
 
 #- 105 UserStatusNotif
-./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userStatusNotif\nactivity: mnDwhoEs\navailability: 59\nlastSeenAt: zlfbZT8F\nuserId: T7arFjC2' -u \
+./ng net.accelbyte.sdk.cli.Main lobbyWebsocket -m $'type: userStatusNotif\nactivity: Z3dgEpeI\navailability: 39\nlastSeenAt: qUQBAYPH\nuserId: Jy6OtKTB' -u \
     > test.out 2>&1
 eval_tap $? 105 'UserStatusNotif' test.out
 
