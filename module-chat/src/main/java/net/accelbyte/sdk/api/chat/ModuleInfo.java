@@ -1,4 +1,4 @@
-package net.accelbyte.sdk.api.ams;
+package net.accelbyte.sdk.api.chat;
 
 import net.accelbyte.sdk.core.BaseModuleInfo;
 
