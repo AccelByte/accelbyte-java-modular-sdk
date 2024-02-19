@@ -27,6 +27,7 @@ dependencies {
     api project(':module-ugc')
     api project(':module-ams')
     api project(':module-chat')
+    api project(':module-dsartifact')
 
     testImplementation 'com.github.tomakehurst:wiremock-jre8:2.35.1'
 }

@@ -27,6 +27,7 @@ include ":module-ugc"
 include ":module-ams"
 include ":module-inventory"
 include ":module-chat"
+include ":module-dsartifact"
 include ":all-module"
 
 // set project name specifically for all-module to 'sdk'
