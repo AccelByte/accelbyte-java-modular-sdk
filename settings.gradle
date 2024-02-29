@@ -28,6 +28,7 @@ include ":module-ams"
 include ":module-inventory"
 include ":module-chat"
 include ":module-dsartifact"
+include ":module-challenge"
 include ":all-module"
 
 // set project name specifically for all-module to 'sdk'
