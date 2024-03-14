@@ -25,39 +25,24 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
-public class TelemetryBody extends Model {
+public class PagedResponseGetNamespaceEventResponse extends Model {
 
-    @JsonProperty("ClientTimestamp")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String clientTimestamp;
+    @JsonProperty("data")
+    private List<GetNamespaceEventResponse> data;
 
-    @JsonProperty("EventId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String eventId;
-
-    @JsonProperty("EventName")
-    private String eventName;
-
-    @JsonProperty("EventNamespace")
-    private String eventNamespace;
-
-    @JsonProperty("EventTimestamp")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String eventTimestamp;
-
-    @JsonProperty("Payload")
-    private Map<String, ?> payload;
+    @JsonProperty("paging")
+    private Integer paging;
 
 
 
     @JsonIgnore
-    public TelemetryBody createFromJson(String json) throws JsonProcessingException {
+    public PagedResponseGetNamespaceEventResponse createFromJson(String json) throws JsonProcessingException {
         return new ObjectMapper().readValue(json, this.getClass());
     }
 
     @JsonIgnore
-    public List<TelemetryBody> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<TelemetryBody>>() {});
+    public List<PagedResponseGetNamespaceEventResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<PagedResponseGetNamespaceEventResponse>>() {});
     }
 
 

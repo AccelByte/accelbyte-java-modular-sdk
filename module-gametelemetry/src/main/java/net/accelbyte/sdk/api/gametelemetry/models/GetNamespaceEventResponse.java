@@ -25,14 +25,9 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
-public class TelemetryBody extends Model {
-
-    @JsonProperty("ClientTimestamp")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String clientTimestamp;
+public class GetNamespaceEventResponse extends Model {
 
     @JsonProperty("EventId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String eventId;
 
     @JsonProperty("EventName")
@@ -41,23 +36,32 @@ public class TelemetryBody extends Model {
     @JsonProperty("EventNamespace")
     private String eventNamespace;
 
-    @JsonProperty("EventTimestamp")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String eventTimestamp;
+    @JsonProperty("EventTimeStamp")
+    private String eventTimeStamp;
+
+    @JsonProperty("FlightId")
+    private String flightId;
 
     @JsonProperty("Payload")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Map<String, ?> payload;
+
+    @JsonProperty("UserId")
+    private String userId;
+
+    @JsonProperty("UserNamespace")
+    private String userNamespace;
 
 
 
     @JsonIgnore
-    public TelemetryBody createFromJson(String json) throws JsonProcessingException {
+    public GetNamespaceEventResponse createFromJson(String json) throws JsonProcessingException {
         return new ObjectMapper().readValue(json, this.getClass());
     }
 
     @JsonIgnore
-    public List<TelemetryBody> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<TelemetryBody>>() {});
+    public List<GetNamespaceEventResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<GetNamespaceEventResponse>>() {});
     }
 
 

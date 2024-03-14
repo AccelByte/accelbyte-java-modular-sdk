@@ -8,35 +8,40 @@
 
 package net.accelbyte.sdk.api.gametelemetry.wrappers;
 
+
+import net.accelbyte.sdk.api.gametelemetry.models.*;
 import net.accelbyte.sdk.api.gametelemetry.operations.telemetry.*;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Telemetry {
 
-  private AccelByteSDK sdk;
+    private AccelByteSDK sdk;
 
-  public Telemetry(AccelByteSDK sdk) {
-    this.sdk = sdk;
-  }
+    public Telemetry(AccelByteSDK sdk){
+        this.sdk = sdk;
+    }
 
-  /**
-   * @see GetNamespacesGameTelemetryV1AdminNamespacesGet
-   */
-  public void getNamespacesGameTelemetryV1AdminNamespacesGet(
-      GetNamespacesGameTelemetryV1AdminNamespacesGet input) throws Exception {
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetNamespacesGameTelemetryV1AdminNamespacesGet
+     */
+    public ListBaseResponseStr getNamespacesGameTelemetryV1AdminNamespacesGet(GetNamespacesGameTelemetryV1AdminNamespacesGet input) throws Exception {
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input
+            .parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
 
-  /**
-   * @see GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet
-   */
-  public void getEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(
-      GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet input) throws Exception {
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet
+     */
+    public PagedResponseGetNamespaceEventResponse getEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet input) throws Exception {
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input
+            .parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }
