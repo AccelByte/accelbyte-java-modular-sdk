@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.clawback.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Clawback {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Clawback(AccelByteSDK sdk) {
+  public Clawback(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

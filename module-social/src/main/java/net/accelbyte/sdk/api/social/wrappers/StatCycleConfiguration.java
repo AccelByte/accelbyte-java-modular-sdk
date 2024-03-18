@@ -12,14 +12,14 @@ import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.stat_cycle_configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class StatCycleConfiguration {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public StatCycleConfiguration(AccelByteSDK sdk) {
+  public StatCycleConfiguration(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

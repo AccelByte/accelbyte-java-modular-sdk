@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.challenge.wrappers;
 
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.goal_configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class GoalConfiguration {
 
-    private AccelByteSDK sdk;
+    private AccelByteSDKInterface sdk;
 
-    public GoalConfiguration(AccelByteSDK sdk){
+    public GoalConfiguration(AccelByteSDKInterface sdk){
         this.sdk = sdk;
     }
 

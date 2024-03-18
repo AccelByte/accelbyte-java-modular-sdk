@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.ams_info.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AMSInfo {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AMSInfo(AccelByteSDK sdk) {
+  public AMSInfo(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

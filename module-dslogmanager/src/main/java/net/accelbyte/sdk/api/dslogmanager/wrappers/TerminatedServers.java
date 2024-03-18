@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.dslogmanager.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.dslogmanager.models.*;
 import net.accelbyte.sdk.api.dslogmanager.operations.terminated_servers.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 
 public class TerminatedServers {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public TerminatedServers(AccelByteSDK sdk) {
+  public TerminatedServers(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

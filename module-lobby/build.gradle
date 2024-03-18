@@ -1,5 +1,6 @@
 version = '0.3.0'
 
 dependencies {
-    api project(':module-iam') 
+    api project(':module-basic')
+    api project(':module-common')
 }

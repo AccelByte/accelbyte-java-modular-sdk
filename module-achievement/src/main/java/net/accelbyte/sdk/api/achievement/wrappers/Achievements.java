@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.achievement.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.achievement.models.*;
 import net.accelbyte.sdk.api.achievement.operations.achievements.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Achievements {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Achievements(AccelByteSDK sdk) {
+  public Achievements(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

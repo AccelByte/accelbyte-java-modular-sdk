@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.configuration_template.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ConfigurationTemplate {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public ConfigurationTemplate(AccelByteSDK sdk) {
+  public ConfigurationTemplate(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

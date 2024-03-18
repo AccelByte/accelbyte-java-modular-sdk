@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.social.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class StatConfiguration {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public StatConfiguration(AccelByteSDK sdk) {
+  public StatConfiguration(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

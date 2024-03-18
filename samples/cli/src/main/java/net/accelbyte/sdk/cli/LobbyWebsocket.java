@@ -12,7 +12,7 @@ import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.cli.utils.CLIHelper;
 import net.accelbyte.sdk.core.client.OkhttpWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
-import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.abstraction.util.Helper;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import org.apache.logging.log4j.LogManager;

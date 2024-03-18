@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.group.wrappers;
 
 import net.accelbyte.sdk.api.group.models.*;
 import net.accelbyte.sdk.api.group.operations.group_member.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class GroupMember {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public GroupMember(AccelByteSDK sdk) {
+  public GroupMember(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

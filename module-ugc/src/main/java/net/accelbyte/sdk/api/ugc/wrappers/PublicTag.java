@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_tag.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicTag {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PublicTag(AccelByteSDK sdk) {
+  public PublicTag(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

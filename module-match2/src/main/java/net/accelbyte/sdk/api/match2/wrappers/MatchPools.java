@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.match2.wrappers;
 
 import net.accelbyte.sdk.api.match2.models.*;
 import net.accelbyte.sdk.api.match2.operations.match_pools.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class MatchPools {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public MatchPools(AccelByteSDK sdk) {
+  public MatchPools(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

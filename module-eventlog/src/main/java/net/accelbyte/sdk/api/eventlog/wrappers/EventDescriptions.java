@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.eventlog.wrappers;
 
 import net.accelbyte.sdk.api.eventlog.models.*;
 import net.accelbyte.sdk.api.eventlog.operations.event_descriptions.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class EventDescriptions {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public EventDescriptions(AccelByteSDK sdk) {
+  public EventDescriptions(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

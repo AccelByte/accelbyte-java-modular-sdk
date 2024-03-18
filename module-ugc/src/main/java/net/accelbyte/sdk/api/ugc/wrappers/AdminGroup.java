@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.admin_group.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminGroup {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminGroup(AccelByteSDK sdk) {
+  public AdminGroup(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

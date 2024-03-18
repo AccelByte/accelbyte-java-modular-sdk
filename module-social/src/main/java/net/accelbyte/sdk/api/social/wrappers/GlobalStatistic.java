@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.social.wrappers;
 
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.global_statistic.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class GlobalStatistic {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public GlobalStatistic(AccelByteSDK sdk) {
+  public GlobalStatistic(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

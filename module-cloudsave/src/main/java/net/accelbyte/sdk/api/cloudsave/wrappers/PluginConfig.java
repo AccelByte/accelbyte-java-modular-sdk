@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.plugin_config.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PluginConfig {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PluginConfig(AccelByteSDK sdk) {
+  public PluginConfig(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

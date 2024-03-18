@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.dsmc_default_configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DSMCDefaultConfiguration {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public DSMCDefaultConfiguration(AccelByteSDK sdk) {
+  public DSMCDefaultConfiguration(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

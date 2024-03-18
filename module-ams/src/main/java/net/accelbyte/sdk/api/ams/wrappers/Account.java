@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.account.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Account {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Account(AccelByteSDK sdk) {
+  public Account(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

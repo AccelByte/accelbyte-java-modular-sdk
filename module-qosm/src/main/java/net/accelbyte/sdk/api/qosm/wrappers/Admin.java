@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.qosm.wrappers;
 
 import net.accelbyte.sdk.api.qosm.operations.admin.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 
 public class Admin {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Admin(AccelByteSDK sdk) {
+  public Admin(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

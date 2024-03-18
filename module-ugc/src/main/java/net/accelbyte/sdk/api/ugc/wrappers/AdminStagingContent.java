@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.admin_staging_content.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminStagingContent {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminStagingContent(AccelByteSDK sdk) {
+  public AdminStagingContent(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

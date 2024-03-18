@@ -1,6 +1,6 @@
 package ext.sample;
 
-import net.accelbyte.sdk.core.AccelByteConfig;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;

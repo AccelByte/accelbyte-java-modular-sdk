@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import java.util.*;
 import net.accelbyte.sdk.api.session.operations.session_storage.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SessionStorage {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SessionStorage(AccelByteSDK sdk) {
+  public SessionStorage(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

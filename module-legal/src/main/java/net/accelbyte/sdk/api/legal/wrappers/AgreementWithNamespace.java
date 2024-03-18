@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.agreement_with_namespace.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AgreementWithNamespace {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AgreementWithNamespace(AccelByteSDK sdk) {
+  public AgreementWithNamespace(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

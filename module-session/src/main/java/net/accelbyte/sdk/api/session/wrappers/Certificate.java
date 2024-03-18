@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.certificate.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Certificate {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Certificate(AccelByteSDK sdk) {
+  public Certificate(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

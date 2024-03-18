@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_follow.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicFollow {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PublicFollow(AccelByteSDK sdk) {
+  public PublicFollow(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

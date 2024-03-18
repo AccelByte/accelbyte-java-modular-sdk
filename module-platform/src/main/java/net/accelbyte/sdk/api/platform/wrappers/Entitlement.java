@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.entitlement.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Entitlement {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Entitlement(AccelByteSDK sdk) {
+  public Entitlement(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

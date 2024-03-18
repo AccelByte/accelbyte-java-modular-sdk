@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import java.util.*;
 import net.accelbyte.sdk.api.platform.operations.session_platform.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SessionPlatform {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SessionPlatform(AccelByteSDK sdk) {
+  public SessionPlatform(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

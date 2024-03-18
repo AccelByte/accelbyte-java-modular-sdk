@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.native_session.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class NativeSession {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public NativeSession(AccelByteSDK sdk) {
+  public NativeSession(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

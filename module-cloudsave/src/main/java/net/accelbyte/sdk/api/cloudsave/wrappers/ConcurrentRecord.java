@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.concurrent_record.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ConcurrentRecord {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public ConcurrentRecord(AccelByteSDK sdk) {
+  public ConcurrentRecord(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

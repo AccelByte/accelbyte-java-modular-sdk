@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.max_active.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class MaxActive {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public MaxActive(AccelByteSDK sdk) {
+  public MaxActive(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

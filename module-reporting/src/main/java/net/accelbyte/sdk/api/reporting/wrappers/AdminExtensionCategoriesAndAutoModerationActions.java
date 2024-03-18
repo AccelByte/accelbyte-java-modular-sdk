@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.reporting.wrappers;
 
 import net.accelbyte.sdk.api.reporting.models.*;
 import net.accelbyte.sdk.api.reporting.operations.admin_extension_categories_and_auto_moderation_actions.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminExtensionCategoriesAndAutoModerationActions {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminExtensionCategoriesAndAutoModerationActions(AccelByteSDK sdk) {
+  public AdminExtensionCategoriesAndAutoModerationActions(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

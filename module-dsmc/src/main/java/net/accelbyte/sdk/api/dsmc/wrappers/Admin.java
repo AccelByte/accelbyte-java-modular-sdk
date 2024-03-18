@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.admin.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Admin {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Admin(AccelByteSDK sdk) {
+  public Admin(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

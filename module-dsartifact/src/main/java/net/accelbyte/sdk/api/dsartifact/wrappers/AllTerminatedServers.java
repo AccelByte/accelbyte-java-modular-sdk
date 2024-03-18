@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsartifact.wrappers;
 
 import net.accelbyte.sdk.api.dsartifact.models.*;
 import net.accelbyte.sdk.api.dsartifact.operations.all_terminated_servers.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AllTerminatedServers {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AllTerminatedServers(AccelByteSDK sdk) {
+  public AllTerminatedServers(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

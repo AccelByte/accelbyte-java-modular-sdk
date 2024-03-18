@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_content_v2.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicContentV2 {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PublicContentV2(AccelByteSDK sdk) {
+  public PublicContentV2(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

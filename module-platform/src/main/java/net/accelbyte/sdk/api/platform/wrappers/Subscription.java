@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.subscription.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Subscription {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Subscription(AccelByteSDK sdk) {
+  public Subscription(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

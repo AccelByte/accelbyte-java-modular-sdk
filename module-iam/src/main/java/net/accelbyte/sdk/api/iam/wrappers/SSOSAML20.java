@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.operations.sso_saml_2_0.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SSOSAML20 {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SSOSAML20(AccelByteSDK sdk) {
+  public SSOSAML20(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

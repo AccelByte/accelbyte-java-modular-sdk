@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.inventory.wrappers;
 
 import net.accelbyte.sdk.api.inventory.models.*;
 import net.accelbyte.sdk.api.inventory.operations.public_tags.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicTags {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PublicTags(AccelByteSDK sdk) {
+  public PublicTags(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

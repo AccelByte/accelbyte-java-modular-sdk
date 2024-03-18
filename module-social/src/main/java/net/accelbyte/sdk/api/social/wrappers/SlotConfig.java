@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.social.wrappers;
 
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.slot_config.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SlotConfig {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SlotConfig(AccelByteSDK sdk) {
+  public SlotConfig(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.eligibilities.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Eligibilities {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Eligibilities(AccelByteSDK sdk) {
+  public Eligibilities(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

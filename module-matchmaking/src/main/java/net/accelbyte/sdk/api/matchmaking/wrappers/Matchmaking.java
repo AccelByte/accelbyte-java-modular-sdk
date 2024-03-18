@@ -12,14 +12,14 @@ import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.matchmaking.models.*;
 import net.accelbyte.sdk.api.matchmaking.operations.matchmaking.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Matchmaking {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Matchmaking(AccelByteSDK sdk) {
+  public Matchmaking(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

@@ -12,14 +12,14 @@ import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.slot.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Slot {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Slot(AccelByteSDK sdk) {
+  public Slot(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

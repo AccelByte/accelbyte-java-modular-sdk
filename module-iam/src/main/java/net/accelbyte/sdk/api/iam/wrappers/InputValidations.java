@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.input_validations.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class InputValidations {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public InputValidations(AccelByteSDK sdk) {
+  public InputValidations(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

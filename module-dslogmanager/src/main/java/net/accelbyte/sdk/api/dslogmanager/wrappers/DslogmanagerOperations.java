@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.dslogmanager.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.dslogmanager.models.*;
 import net.accelbyte.sdk.api.dslogmanager.operations.dslogmanager_operations.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DslogmanagerOperations {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public DslogmanagerOperations(AccelByteSDK sdk) {
+  public DslogmanagerOperations(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

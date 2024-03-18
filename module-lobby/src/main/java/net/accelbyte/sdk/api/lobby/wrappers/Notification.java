@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.notification.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Notification {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Notification(AccelByteSDK sdk) {
+  public Notification(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

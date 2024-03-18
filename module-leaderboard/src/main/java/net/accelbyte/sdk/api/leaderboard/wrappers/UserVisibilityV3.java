@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.leaderboard.wrappers;
 
 import net.accelbyte.sdk.api.leaderboard.models.*;
 import net.accelbyte.sdk.api.leaderboard.operations.user_visibility_v3.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserVisibilityV3 {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public UserVisibilityV3(AccelByteSDK sdk) {
+  public UserVisibilityV3(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

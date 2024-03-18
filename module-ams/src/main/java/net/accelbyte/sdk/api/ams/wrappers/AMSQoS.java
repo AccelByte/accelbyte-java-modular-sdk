@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.ams_qo_s.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AMSQoS {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AMSQoS(AccelByteSDK sdk) {
+  public AMSQoS(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

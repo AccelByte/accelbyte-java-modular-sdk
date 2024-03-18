@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.operations.watchdogs.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 
 public class Watchdogs {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Watchdogs(AccelByteSDK sdk) {
+  public Watchdogs(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

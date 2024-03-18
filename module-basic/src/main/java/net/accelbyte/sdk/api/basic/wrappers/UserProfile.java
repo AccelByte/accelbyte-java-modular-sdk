@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.basic.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.basic.models.*;
 import net.accelbyte.sdk.api.basic.operations.user_profile.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserProfile {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public UserProfile(AccelByteSDK sdk) {
+  public UserProfile(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

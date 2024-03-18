@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.revocation.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Revocation {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Revocation(AccelByteSDK sdk) {
+  public Revocation(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

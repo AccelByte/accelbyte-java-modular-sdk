@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicGameRecord {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PublicGameRecord(AccelByteSDK sdk) {
+  public PublicGameRecord(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

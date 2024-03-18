@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.achievement.wrappers;
 
 import net.accelbyte.sdk.api.achievement.models.*;
 import net.accelbyte.sdk.api.achievement.operations.user_achievements.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserAchievements {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public UserAchievements(AccelByteSDK sdk) {
+  public UserAchievements(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

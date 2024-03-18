@@ -12,14 +12,14 @@ import java.util.*;
 
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.challenge_list.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ChallengeList {
 
-    private AccelByteSDK sdk;
+    private AccelByteSDKInterface sdk;
 
-    public ChallengeList(AccelByteSDK sdk){
+    public ChallengeList(AccelByteSDKInterface sdk){
         this.sdk = sdk;
     }
 

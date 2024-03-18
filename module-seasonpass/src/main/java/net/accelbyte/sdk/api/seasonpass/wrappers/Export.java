@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.seasonpass.wrappers;
 
 import java.io.*;
 import net.accelbyte.sdk.api.seasonpass.operations.export.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Export {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Export(AccelByteSDK sdk) {
+  public Export(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

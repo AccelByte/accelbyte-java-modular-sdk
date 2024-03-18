@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.reporting.wrappers;
 
 import net.accelbyte.sdk.api.reporting.models.*;
 import net.accelbyte.sdk.api.reporting.operations.admin_moderation_rule.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminModerationRule {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminModerationRule(AccelByteSDK sdk) {
+  public AdminModerationRule(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

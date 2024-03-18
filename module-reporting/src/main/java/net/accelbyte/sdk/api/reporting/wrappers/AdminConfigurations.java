@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.reporting.wrappers;
 
 import net.accelbyte.sdk.api.reporting.models.*;
 import net.accelbyte.sdk.api.reporting.operations.admin_configurations.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminConfigurations {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminConfigurations(AccelByteSDK sdk) {
+  public AdminConfigurations(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

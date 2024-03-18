@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.chat.wrappers;
 
 import net.accelbyte.sdk.api.chat.models.*;
 import net.accelbyte.sdk.api.chat.operations.moderation.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Moderation {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Moderation(AccelByteSDK sdk) {
+  public Moderation(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

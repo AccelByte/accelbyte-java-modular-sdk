@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.leaderboard.wrappers;
 
 import net.accelbyte.sdk.api.leaderboard.models.*;
 import net.accelbyte.sdk.api.leaderboard.operations.leaderboard_configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class LeaderboardConfiguration {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public LeaderboardConfiguration(AccelByteSDK sdk) {
+  public LeaderboardConfiguration(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

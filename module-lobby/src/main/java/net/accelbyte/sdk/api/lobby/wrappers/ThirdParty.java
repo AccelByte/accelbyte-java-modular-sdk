@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.third_party.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ThirdParty {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public ThirdParty(AccelByteSDK sdk) {
+  public ThirdParty(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

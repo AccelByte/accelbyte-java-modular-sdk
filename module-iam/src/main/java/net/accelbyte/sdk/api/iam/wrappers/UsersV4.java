@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.users_v4.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UsersV4 {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public UsersV4(AccelByteSDK sdk) {
+  public UsersV4(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

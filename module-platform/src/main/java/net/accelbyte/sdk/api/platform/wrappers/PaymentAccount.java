@@ -9,16 +9,16 @@
 package net.accelbyte.sdk.api.platform.wrappers;
 
 import java.util.*;
-import net.accelbyte.sdk.api.platform.models.*;
+
 import net.accelbyte.sdk.api.platform.operations.payment_account.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PaymentAccount {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PaymentAccount(AccelByteSDK sdk) {
+  public PaymentAccount(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

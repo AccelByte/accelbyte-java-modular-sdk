@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.player.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 
 public class Player {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Player(AccelByteSDK sdk) {
+  public Player(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

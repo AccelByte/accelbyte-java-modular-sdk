@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.achievement.wrappers;
 
 import net.accelbyte.sdk.api.achievement.models.*;
 import net.accelbyte.sdk.api.achievement.operations.tags.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Tags {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Tags(AccelByteSDK sdk) {
+  public Tags(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

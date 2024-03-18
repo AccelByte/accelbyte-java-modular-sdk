@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.dsartifact.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.dsartifact.models.*;
 import net.accelbyte.sdk.api.dsartifact.operations.operations.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Operations {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Operations(AccelByteSDK sdk) {
+  public Operations(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.sso_credential.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SSOCredential {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SSOCredential(AccelByteSDK sdk) {
+  public SSOCredential(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

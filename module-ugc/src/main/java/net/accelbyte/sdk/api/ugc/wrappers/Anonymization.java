@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.operations.anonymization.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Anonymization {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Anonymization(AccelByteSDK sdk) {
+  public Anonymization(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

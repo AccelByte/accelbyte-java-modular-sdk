@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.chat.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.chat.models.*;
 import net.accelbyte.sdk.api.chat.operations.topic.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Topic {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Topic(AccelByteSDK sdk) {
+  public Topic(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

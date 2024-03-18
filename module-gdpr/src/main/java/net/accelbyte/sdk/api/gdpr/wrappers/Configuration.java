@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.gdpr.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Configuration {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Configuration(AccelByteSDK sdk) {
+  public Configuration(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

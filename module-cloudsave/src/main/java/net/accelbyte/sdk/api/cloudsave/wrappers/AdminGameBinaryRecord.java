@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.admin_game_binary_record.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminGameBinaryRecord {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminGameBinaryRecord(AccelByteSDK sdk) {
+  public AdminGameBinaryRecord(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

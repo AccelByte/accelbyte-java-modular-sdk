@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.dlc.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DLC {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public DLC(AccelByteSDK sdk) {
+  public DLC(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

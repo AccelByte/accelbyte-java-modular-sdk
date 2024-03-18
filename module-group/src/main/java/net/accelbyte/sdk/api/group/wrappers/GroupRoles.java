@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.group.wrappers;
 
 import net.accelbyte.sdk.api.group.models.*;
 import net.accelbyte.sdk.api.group.operations.group_roles.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class GroupRoles {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public GroupRoles(AccelByteSDK sdk) {
+  public GroupRoles(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.match2.wrappers;
 
 import net.accelbyte.sdk.api.match2.models.*;
 import net.accelbyte.sdk.api.match2.operations.rule_sets.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class RuleSets {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public RuleSets(AccelByteSDK sdk) {
+  public RuleSets(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

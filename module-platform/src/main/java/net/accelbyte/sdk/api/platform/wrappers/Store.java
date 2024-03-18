@@ -12,14 +12,14 @@ import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.store.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Store {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Store(AccelByteSDK sdk) {
+  public Store(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

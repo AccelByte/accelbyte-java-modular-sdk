@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.o_auth.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class OAuth {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public OAuth(AccelByteSDK sdk) {
+  public OAuth(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

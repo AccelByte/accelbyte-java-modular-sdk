@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.config.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Config {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public Config(AccelByteSDK sdk) {
+  public Config(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

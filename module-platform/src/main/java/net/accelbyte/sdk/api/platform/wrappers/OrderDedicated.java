@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.order_dedicated.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class OrderDedicated {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public OrderDedicated(AccelByteSDK sdk) {
+  public OrderDedicated(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

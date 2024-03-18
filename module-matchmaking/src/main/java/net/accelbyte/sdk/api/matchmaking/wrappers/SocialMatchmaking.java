@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.matchmaking.wrappers;
 
 import net.accelbyte.sdk.api.matchmaking.models.*;
 import net.accelbyte.sdk.api.matchmaking.operations.social_matchmaking.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SocialMatchmaking {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SocialMatchmaking(AccelByteSDK sdk) {
+  public SocialMatchmaking(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

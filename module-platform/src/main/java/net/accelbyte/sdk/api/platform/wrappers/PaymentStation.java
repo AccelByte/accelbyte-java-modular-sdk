@@ -12,14 +12,14 @@ import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.payment_station.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PaymentStation {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PaymentStation(AccelByteSDK sdk) {
+  public PaymentStation(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

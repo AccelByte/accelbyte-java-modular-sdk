@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.operations.fleet_commander.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class FleetCommander {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public FleetCommander(AccelByteSDK sdk) {
+  public FleetCommander(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

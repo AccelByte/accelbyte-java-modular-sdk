@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.admin_user_eligibilities.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminUserEligibilities {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public AdminUserEligibilities(AccelByteSDK sdk) {
+  public AdminUserEligibilities(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

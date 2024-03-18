@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.legal.wrappers;
 
 import net.accelbyte.sdk.api.legal.operations.policies_with_namespace.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PoliciesWithNamespace {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public PoliciesWithNamespace(AccelByteSDK sdk) {
+  public PoliciesWithNamespace(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 

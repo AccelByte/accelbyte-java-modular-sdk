@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.operations.sso.*;
-import net.accelbyte.sdk.core.AccelByteSDK;
+import net.accelbyte.sdk.core.AccelByteSDKInterface;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class SSO {
 
-  private AccelByteSDK sdk;
+  private AccelByteSDKInterface sdk;
 
-  public SSO(AccelByteSDK sdk) {
+  public SSO(AccelByteSDKInterface sdk) {
     this.sdk = sdk;
   }
 
