@@ -392,7 +392,7 @@ public class AccelByteSDK implements AccelByteSDKInterface {
     if (this.sdkConfiguration.getConfigRepository() instanceof TokenValidation) {
       final TokenValidation tokenValidation =
           (TokenValidation) this.sdkConfiguration.getConfigRepository();
-      this.namespaceContextCache = buildNamespaceContextCache(this, tokenValidation.getJwksRefreshInterval());
+      this.namespaceContextCache = buildNamespaceContextCache(this, tokenValidation.getNamespaceContextRefreshInterval());
       if (tokenValidation.getLocalTokenValidationEnabled()) {
         this.jwksCache = buildJWKSLoadingCache(this, tokenValidation.getJwksRefreshInterval());
         this.revocationListCache =
