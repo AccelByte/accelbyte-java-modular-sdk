@@ -35,6 +35,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
+import net.accelbyte.sdk.api.basic.models.NamespaceContext;
+import net.accelbyte.sdk.api.basic.operations.namespace.GetNamespaceContext;
+import net.accelbyte.sdk.api.basic.wrappers.Namespace;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0.AuthorizeV3;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0.AuthorizeV3.CodeChallengeMethod;
@@ -79,6 +82,7 @@ public class AccelByteSDK implements AccelByteSDKInterface {
 
   private LoadingCache<String, Map<String, RSAPublicKey>> jwksCache;
   private LoadingCache<String, OauthapiRevocationList> revocationListCache;
+  private LoadingCache<String, NamespaceContext> namespaceContextCache;
 
   private LoadingCache<RoleCacheKey, List<Permission>> rolePermissionsCache;
   private static final BloomFilter bloomFilter = new BloomFilter();
@@ -257,7 +261,7 @@ public class AccelByteSDK implements AccelByteSDKInterface {
       boolean isResMatches =
           IntStream.range(0, minResLen)
               .allMatch(
-                  i -> isResourceElementMatch(ownedResourceElem[i], requestedResourceElem[i]));
+                  i -> isResourceElementMatch(i, ownedResourceElem, requestedResourceElem));
 
       if (!isResMatches) {
         continue;
@@ -316,8 +320,41 @@ public class AccelByteSDK implements AccelByteSDKInterface {
     return false;
   }
 
-  private boolean isResourceElementMatch(String resElem1, String resElem2) {
-    return resElem1.equals(resElem2) || resElem1.equals("*");
+  private boolean isResourceElementMatch(int index, String[] ownedResourceElem, String[] requestedResourceElem) {
+    String ownElem = ownedResourceElem[index];
+    String reqElem = requestedResourceElem[index];
+
+    if (!ownElem.equals(reqElem) && !ownElem.equals("*")) {
+      if (index > 0 && ownElem.endsWith("-")) {
+        String prevOwnElem = ownedResourceElem[index - 1];
+        if (prevOwnElem.endsWith("NAMESPACE") ) {
+          if (reqElem.contains("-") && reqElem.split("-").length == 2 && reqElem.startsWith(ownElem)) {
+            return true;
+          }
+
+          if (reqElem.equals(ownElem + "-")) {
+            return true;
+          }
+
+          NamespaceContext namespaceContext = null;
+          try {
+            if (namespaceContextCache != null) {
+              namespaceContext = namespaceContextCache.get(reqElem);
+            }
+          } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+          }
+          if (namespaceContext != null
+                  && namespaceContext.getType().equals("Game")
+                  && reqElem.startsWith(namespaceContext.getStudioNamespace())) {
+            return true;
+          }
+
+        }
+      }
+      return false;
+    }
+    return true;
   }
 
   private String expandResource(String resource, String namespace, String userId) {
@@ -355,6 +392,7 @@ public class AccelByteSDK implements AccelByteSDKInterface {
     if (this.sdkConfiguration.getConfigRepository() instanceof TokenValidation) {
       final TokenValidation tokenValidation =
           (TokenValidation) this.sdkConfiguration.getConfigRepository();
+      this.namespaceContextCache = buildNamespaceContextCache(this, tokenValidation.getJwksRefreshInterval());
       if (tokenValidation.getLocalTokenValidationEnabled()) {
         this.jwksCache = buildJWKSLoadingCache(this, tokenValidation.getJwksRefreshInterval());
         this.revocationListCache =
@@ -948,5 +986,24 @@ public class AccelByteSDK implements AccelByteSDKInterface {
     return CacheBuilder.newBuilder()
         .refreshAfterWrite(refreshIntervalSeconds, TimeUnit.SECONDS)
         .build(revocationLoader);
+  }
+
+  private LoadingCache<String, NamespaceContext> buildNamespaceContextCache(
+          AccelByteSDK sdk, int refreshIntervalSeconds) {
+    final CacheLoader<String, NamespaceContext> revocationLoader =
+            new CacheLoader<String, NamespaceContext>() {
+              @Override
+              public NamespaceContext load(String key) throws Exception {
+                final Namespace namespaceWrapper = new Namespace(sdk);
+                final NamespaceContext namespaceContext =
+                        namespaceWrapper.getNamespaceContext(GetNamespaceContext.builder().namespace(key).build());
+
+                return namespaceContext;
+              }
+            };
+
+    return CacheBuilder.newBuilder()
+            .refreshAfterWrite(refreshIntervalSeconds, TimeUnit.SECONDS)
+            .build(revocationLoader);
   }
 }
