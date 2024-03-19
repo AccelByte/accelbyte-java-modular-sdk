@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.admin_record.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminRecord {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public AdminRecord(AccelByteSDKInterface sdk) {
+  public AdminRecord(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

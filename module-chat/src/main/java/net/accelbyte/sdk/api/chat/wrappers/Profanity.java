@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.chat.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.chat.models.*;
 import net.accelbyte.sdk.api.chat.operations.profanity.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Profanity {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Profanity(AccelByteSDKInterface sdk) {
+  public Profanity(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

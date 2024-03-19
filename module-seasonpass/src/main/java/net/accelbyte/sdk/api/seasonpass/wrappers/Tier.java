@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.seasonpass.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.seasonpass.models.*;
 import net.accelbyte.sdk.api.seasonpass.operations.tier.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Tier {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Tier(AccelByteSDKInterface sdk) {
+  public Tier(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

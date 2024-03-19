@@ -11,13 +11,13 @@ package net.accelbyte.sdk.api.session.wrappers;
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.party.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Party {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Party(AccelByteSDKInterface sdk) {
+  public Party(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

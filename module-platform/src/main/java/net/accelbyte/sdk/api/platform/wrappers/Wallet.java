@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.wallet.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Wallet {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Wallet(AccelByteSDKInterface sdk) {
+  public Wallet(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

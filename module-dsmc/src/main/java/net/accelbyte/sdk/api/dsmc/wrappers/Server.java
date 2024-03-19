@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.server.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Server {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Server(AccelByteSDKInterface sdk) {
+  public Server(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

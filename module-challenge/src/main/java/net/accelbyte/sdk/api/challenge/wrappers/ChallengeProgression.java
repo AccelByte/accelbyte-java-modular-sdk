@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.challenge.wrappers;
 
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.challenge_progression.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ChallengeProgression {
 
-    private AccelByteSDKInterface sdk;
+    private RequestRunner sdk;
 
-    public ChallengeProgression(AccelByteSDKInterface sdk){
+    public ChallengeProgression(RequestRunner sdk){
         this.sdk = sdk;
     }
 

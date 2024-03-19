@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.artifacts.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Artifacts {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Artifacts(AccelByteSDKInterface sdk) {
+  public Artifacts(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

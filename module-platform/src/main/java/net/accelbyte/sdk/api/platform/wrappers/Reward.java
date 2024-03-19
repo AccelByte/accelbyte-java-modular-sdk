@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.reward.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Reward {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Reward(AccelByteSDKInterface sdk) {
+  public Reward(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

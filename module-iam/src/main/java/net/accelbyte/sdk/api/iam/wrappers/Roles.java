@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.roles.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Roles {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Roles(AccelByteSDKInterface sdk) {
+  public Roles(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

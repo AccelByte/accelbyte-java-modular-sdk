@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.matchmaking.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.matchmaking.models.*;
 import net.accelbyte.sdk.api.matchmaking.operations.mock_matchmaking.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class MockMatchmaking {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public MockMatchmaking(AccelByteSDKInterface sdk) {
+  public MockMatchmaking(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

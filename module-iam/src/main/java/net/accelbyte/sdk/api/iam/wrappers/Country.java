@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.country.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Country {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Country(AccelByteSDKInterface sdk) {
+  public Country(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

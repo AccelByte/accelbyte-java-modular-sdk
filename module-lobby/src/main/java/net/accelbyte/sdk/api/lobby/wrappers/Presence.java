@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.presence.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Presence {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Presence(AccelByteSDKInterface sdk) {
+  public Presence(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

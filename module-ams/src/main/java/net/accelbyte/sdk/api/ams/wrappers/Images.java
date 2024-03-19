@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.images.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Images {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Images(AccelByteSDKInterface sdk) {
+  public Images(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

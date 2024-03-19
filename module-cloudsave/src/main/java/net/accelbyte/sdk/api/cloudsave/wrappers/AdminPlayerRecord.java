@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.admin_player_record.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminPlayerRecord {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public AdminPlayerRecord(AccelByteSDKInterface sdk) {
+  public AdminPlayerRecord(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

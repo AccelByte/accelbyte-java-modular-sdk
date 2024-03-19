@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.basic.wrappers;
 
 import net.accelbyte.sdk.api.basic.models.*;
 import net.accelbyte.sdk.api.basic.operations.config.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Config {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Config(AccelByteSDKInterface sdk) {
+  public Config(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

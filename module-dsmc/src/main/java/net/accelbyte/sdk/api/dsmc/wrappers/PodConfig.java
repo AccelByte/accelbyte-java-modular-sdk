@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.pod_config.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PodConfig {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PodConfig(AccelByteSDKInterface sdk) {
+  public PodConfig(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

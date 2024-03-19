@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsartifact.wrappers;
 
 import net.accelbyte.sdk.api.dsartifact.models.*;
 import net.accelbyte.sdk.api.dsartifact.operations.download_server_artifact.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DownloadServerArtifact {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public DownloadServerArtifact(AccelByteSDKInterface sdk) {
+  public DownloadServerArtifact(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

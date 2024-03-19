@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dslogmanager.wrappers;
 
 import net.accelbyte.sdk.api.dslogmanager.models.*;
 import net.accelbyte.sdk.api.dslogmanager.operations.admin.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Admin {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Admin(AccelByteSDKInterface sdk) {
+  public Admin(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

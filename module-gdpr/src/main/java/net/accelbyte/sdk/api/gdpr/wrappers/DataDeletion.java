@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.gdpr.wrappers;
 
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DataDeletion {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public DataDeletion(AccelByteSDKInterface sdk) {
+  public DataDeletion(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

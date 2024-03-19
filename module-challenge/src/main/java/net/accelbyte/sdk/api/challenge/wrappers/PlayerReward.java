@@ -12,14 +12,14 @@ import java.util.*;
 
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.player_reward.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PlayerReward {
 
-    private AccelByteSDKInterface sdk;
+    private RequestRunner sdk;
 
-    public PlayerReward(AccelByteSDKInterface sdk){
+    public PlayerReward(RequestRunner sdk){
         this.sdk = sdk;
     }
 

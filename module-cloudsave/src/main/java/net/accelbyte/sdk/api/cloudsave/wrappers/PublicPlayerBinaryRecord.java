@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.public_player_binary_record.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicPlayerBinaryRecord {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicPlayerBinaryRecord(AccelByteSDKInterface sdk) {
+  public PublicPlayerBinaryRecord(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

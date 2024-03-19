@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.basic.wrappers;
 
 import net.accelbyte.sdk.api.basic.models.*;
 import net.accelbyte.sdk.api.basic.operations.file_upload.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class FileUpload {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public FileUpload(AccelByteSDKInterface sdk) {
+  public FileUpload(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

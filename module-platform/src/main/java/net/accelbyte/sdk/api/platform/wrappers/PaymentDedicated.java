@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.payment_dedicated.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PaymentDedicated {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PaymentDedicated(AccelByteSDKInterface sdk) {
+  public PaymentDedicated(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

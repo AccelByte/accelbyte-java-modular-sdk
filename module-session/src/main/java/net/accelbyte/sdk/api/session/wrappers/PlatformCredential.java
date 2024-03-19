@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.platform_credential.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PlatformCredential {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PlatformCredential(AccelByteSDKInterface sdk) {
+  public PlatformCredential(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

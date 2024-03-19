@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.player.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Player {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Player(AccelByteSDKInterface sdk) {
+  public Player(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

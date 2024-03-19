@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.localized_policy_versions.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class LocalizedPolicyVersions {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public LocalizedPolicyVersions(AccelByteSDKInterface sdk) {
+  public LocalizedPolicyVersions(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

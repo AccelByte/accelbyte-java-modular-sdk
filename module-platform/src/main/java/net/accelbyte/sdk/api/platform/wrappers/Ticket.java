@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.ticket.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Ticket {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Ticket(AccelByteSDKInterface sdk) {
+  public Ticket(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

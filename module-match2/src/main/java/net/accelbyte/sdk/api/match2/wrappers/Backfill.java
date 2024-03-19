@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.match2.wrappers;
 
 import net.accelbyte.sdk.api.match2.models.*;
 import net.accelbyte.sdk.api.match2.operations.backfill.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Backfill {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Backfill(AccelByteSDKInterface sdk) {
+  public Backfill(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.social.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.user_statistic.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserStatistic {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public UserStatistic(AccelByteSDKInterface sdk) {
+  public UserStatistic(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

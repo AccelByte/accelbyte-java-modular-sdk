@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.friends.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Friends {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Friends(AccelByteSDKInterface sdk) {
+  public Friends(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

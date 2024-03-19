@@ -12,13 +12,13 @@ import java.io.*;
 import net.accelbyte.sdk.api.dslogmanager.models.*;
 import net.accelbyte.sdk.api.dslogmanager.operations.terminated_servers.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class TerminatedServers {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public TerminatedServers(AccelByteSDKInterface sdk) {
+  public TerminatedServers(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

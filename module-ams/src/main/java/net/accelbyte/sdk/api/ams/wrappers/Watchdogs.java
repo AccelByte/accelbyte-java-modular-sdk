@@ -10,13 +10,13 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.operations.watchdogs.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Watchdogs {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Watchdogs(AccelByteSDKInterface sdk) {
+  public Watchdogs(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

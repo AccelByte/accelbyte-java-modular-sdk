@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.inventory.wrappers;
 
 import net.accelbyte.sdk.api.inventory.models.*;
 import net.accelbyte.sdk.api.inventory.operations.admin_inventories.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminInventories {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public AdminInventories(AccelByteSDKInterface sdk) {
+  public AdminInventories(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_creator.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicCreator {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicCreator(AccelByteSDKInterface sdk) {
+  public PublicCreator(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

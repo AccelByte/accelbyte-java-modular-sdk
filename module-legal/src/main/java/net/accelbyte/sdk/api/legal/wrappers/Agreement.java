@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.agreement.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Agreement {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Agreement(AccelByteSDKInterface sdk) {
+  public Agreement(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

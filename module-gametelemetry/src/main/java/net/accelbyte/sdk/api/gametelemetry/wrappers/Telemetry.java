@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.gametelemetry.wrappers;
 
 import net.accelbyte.sdk.api.gametelemetry.models.*;
 import net.accelbyte.sdk.api.gametelemetry.operations.telemetry.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Telemetry {
 
-    private AccelByteSDKInterface sdk;
+    private RequestRunner sdk;
 
-    public Telemetry(AccelByteSDKInterface sdk){
+    public Telemetry(RequestRunner sdk){
         this.sdk = sdk;
     }
 

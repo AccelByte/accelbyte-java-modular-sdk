@@ -62,7 +62,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 
 @Log
-public class AccelByteSDK implements AccelByteSDKInterface {
+public class AccelByteSDK implements RequestRunner {
   private static final String COOKIE_KEY_ACCESS_TOKEN = "access_token";
   private static final String DEFAULT_LOGIN_USER_SCOPE =
       "commerce account social publishing analytics";

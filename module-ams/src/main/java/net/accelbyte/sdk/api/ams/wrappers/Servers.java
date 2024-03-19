@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.servers.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Servers {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Servers(AccelByteSDKInterface sdk) {
+  public Servers(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

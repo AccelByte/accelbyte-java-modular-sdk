@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.leaderboard.wrappers;
 
 import net.accelbyte.sdk.api.leaderboard.models.*;
 import net.accelbyte.sdk.api.leaderboard.operations.user_data.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserData {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public UserData(AccelByteSDKInterface sdk) {
+  public UserData(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

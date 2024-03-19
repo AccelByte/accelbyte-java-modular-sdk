@@ -1,5 +1,5 @@
 package net.accelbyte.sdk.core;
 
-public interface AccelByteSDKInterface {
+public interface RequestRunner {
     HttpResponse runRequest(Operation operation) throws Exception;
 }

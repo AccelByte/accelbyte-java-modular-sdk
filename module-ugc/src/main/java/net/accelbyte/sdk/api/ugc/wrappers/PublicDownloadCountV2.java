@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_download_count_v2.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicDownloadCountV2 {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicDownloadCountV2(AccelByteSDKInterface sdk) {
+  public PublicDownloadCountV2(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

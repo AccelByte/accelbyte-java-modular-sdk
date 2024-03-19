@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.user_info.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserInfo {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public UserInfo(AccelByteSDKInterface sdk) {
+  public UserInfo(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.group.wrappers;
 
 import net.accelbyte.sdk.api.group.models.*;
 import net.accelbyte.sdk.api.group.operations.member_request.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class MemberRequest {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public MemberRequest(AccelByteSDKInterface sdk) {
+  public MemberRequest(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

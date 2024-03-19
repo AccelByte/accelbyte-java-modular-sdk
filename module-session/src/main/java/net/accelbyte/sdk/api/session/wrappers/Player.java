@@ -12,13 +12,13 @@ import java.util.*;
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.operations.player.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Player {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Player(AccelByteSDKInterface sdk) {
+  public Player(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.sessionbrowser.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.sessionbrowser.models.*;
 import net.accelbyte.sdk.api.sessionbrowser.operations.session.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Session {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Session(AccelByteSDKInterface sdk) {
+  public Session(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

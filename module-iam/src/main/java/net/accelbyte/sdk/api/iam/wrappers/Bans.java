@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.bans.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Bans {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Bans(AccelByteSDKInterface sdk) {
+  public Bans(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

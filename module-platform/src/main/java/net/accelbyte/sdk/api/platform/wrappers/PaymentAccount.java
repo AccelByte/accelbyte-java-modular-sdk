@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.util.*;
 
 import net.accelbyte.sdk.api.platform.operations.payment_account.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PaymentAccount {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PaymentAccount(AccelByteSDKInterface sdk) {
+  public PaymentAccount(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

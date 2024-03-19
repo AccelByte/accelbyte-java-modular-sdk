@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.lobby_operations.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class LobbyOperations {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public LobbyOperations(AccelByteSDKInterface sdk) {
+  public LobbyOperations(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

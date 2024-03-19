@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.reporting.wrappers;
 
 import net.accelbyte.sdk.api.reporting.models.*;
 import net.accelbyte.sdk.api.reporting.operations.public_reports.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PublicReports {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicReports(AccelByteSDKInterface sdk) {
+  public PublicReports(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

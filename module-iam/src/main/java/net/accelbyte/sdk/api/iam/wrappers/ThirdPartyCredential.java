@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.third_party_credential.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ThirdPartyCredential {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public ThirdPartyCredential(AccelByteSDKInterface sdk) {
+  public ThirdPartyCredential(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

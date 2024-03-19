@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.basic.wrappers;
 
 import net.accelbyte.sdk.api.basic.models.*;
 import net.accelbyte.sdk.api.basic.operations.equ8_config.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class EQU8Config {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public EQU8Config(AccelByteSDKInterface sdk) {
+  public EQU8Config(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

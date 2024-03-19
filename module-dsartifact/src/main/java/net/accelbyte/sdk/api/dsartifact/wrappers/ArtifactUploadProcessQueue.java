@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsartifact.wrappers;
 
 import net.accelbyte.sdk.api.dsartifact.models.*;
 import net.accelbyte.sdk.api.dsartifact.operations.artifact_upload_process_queue.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class ArtifactUploadProcessQueue {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public ArtifactUploadProcessQueue(AccelByteSDKInterface sdk) {
+  public ArtifactUploadProcessQueue(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

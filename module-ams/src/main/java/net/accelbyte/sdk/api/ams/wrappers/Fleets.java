@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.fleets.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Fleets {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Fleets(AccelByteSDKInterface sdk) {
+  public Fleets(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

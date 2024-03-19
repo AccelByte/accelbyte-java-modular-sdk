@@ -11,13 +11,13 @@ package net.accelbyte.sdk.api.reporting.wrappers;
 import net.accelbyte.sdk.api.reporting.models.*;
 import net.accelbyte.sdk.api.reporting.operations.public_reasons.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class PublicReasons {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicReasons(AccelByteSDKInterface sdk) {
+  public PublicReasons(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

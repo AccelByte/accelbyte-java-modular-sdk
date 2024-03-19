@@ -11,13 +11,13 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_like_v2.*;
 import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class PublicLikeV2 {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PublicLikeV2(AccelByteSDKInterface sdk) {
+  public PublicLikeV2(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

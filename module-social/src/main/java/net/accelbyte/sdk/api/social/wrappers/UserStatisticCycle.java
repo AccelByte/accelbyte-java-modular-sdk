@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.social.wrappers;
 
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.user_statistic_cycle.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class UserStatisticCycle {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public UserStatisticCycle(AccelByteSDKInterface sdk) {
+  public UserStatisticCycle(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

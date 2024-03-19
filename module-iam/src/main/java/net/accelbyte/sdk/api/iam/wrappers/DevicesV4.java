@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.devices_v4.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DevicesV4 {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public DevicesV4(AccelByteSDKInterface sdk) {
+  public DevicesV4(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

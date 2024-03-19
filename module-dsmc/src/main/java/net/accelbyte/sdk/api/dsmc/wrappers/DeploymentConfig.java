@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.deployment_config.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DeploymentConfig {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public DeploymentConfig(AccelByteSDKInterface sdk) {
+  public DeploymentConfig(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

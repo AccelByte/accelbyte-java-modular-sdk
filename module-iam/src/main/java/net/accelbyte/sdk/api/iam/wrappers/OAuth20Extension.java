@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class OAuth20Extension {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public OAuth20Extension(AccelByteSDKInterface sdk) {
+  public OAuth20Extension(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

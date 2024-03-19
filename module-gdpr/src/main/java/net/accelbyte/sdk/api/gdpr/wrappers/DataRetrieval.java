@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.gdpr.wrappers;
 
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class DataRetrieval {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public DataRetrieval(AccelByteSDKInterface sdk) {
+  public DataRetrieval(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.operations.auth.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Auth {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Auth(AccelByteSDKInterface sdk) {
+  public Auth(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

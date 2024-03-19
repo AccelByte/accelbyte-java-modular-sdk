@@ -11,14 +11,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.policy_versions_with_namespace.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class PolicyVersionsWithNamespace {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public PolicyVersionsWithNamespace(AccelByteSDKInterface sdk) {
+  public PolicyVersionsWithNamespace(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

@@ -10,14 +10,14 @@ package net.accelbyte.sdk.api.legal.wrappers;
 
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.utility.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Utility {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Utility(AccelByteSDKInterface sdk) {
+  public Utility(RequestRunner sdk) {
     this.sdk = sdk;
   }
 

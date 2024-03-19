@@ -9,14 +9,14 @@
 package net.accelbyte.sdk.api.session.wrappers;
 
 import net.accelbyte.sdk.api.session.operations.operations.*;
-import net.accelbyte.sdk.core.AccelByteSDKInterface;
+import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
 
 public class Operations {
 
-  private AccelByteSDKInterface sdk;
+  private RequestRunner sdk;
 
-  public Operations(AccelByteSDKInterface sdk) {
+  public Operations(RequestRunner sdk) {
     this.sdk = sdk;
   }
 
