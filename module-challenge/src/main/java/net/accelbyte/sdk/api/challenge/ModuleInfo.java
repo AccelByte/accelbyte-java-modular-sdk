@@ -1,4 +1,4 @@
-package net.accelbyte.sdk.api.dsartifact;
+package net.accelbyte.sdk.api.challenge;
 
 import net.accelbyte.sdk.core.BaseModuleInfo;
 
