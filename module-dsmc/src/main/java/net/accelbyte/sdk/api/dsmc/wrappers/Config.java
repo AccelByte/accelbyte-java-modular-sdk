@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.dsmc.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.operations.config.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Config {
 

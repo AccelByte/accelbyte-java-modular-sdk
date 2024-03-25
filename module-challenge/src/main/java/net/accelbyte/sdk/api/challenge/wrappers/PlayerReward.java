@@ -9,51 +9,46 @@
 package net.accelbyte.sdk.api.challenge.wrappers;
 
 import java.util.*;
-
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.player_reward.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class PlayerReward {
 
-    private RequestRunner sdk;
+  private RequestRunner sdk;
 
-    public PlayerReward(RequestRunner sdk){
-        this.sdk = sdk;
-    }
+  public PlayerReward(RequestRunner sdk) {
+    this.sdk = sdk;
+  }
 
-    /**
-     * @see AdminGetUserRewards
-     */
-    public ModelListUserRewardsResponse adminGetUserRewards(AdminGetUserRewards input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input
-            .parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
+  /**
+   * @see AdminGetUserRewards
+   */
+  public ModelListUserRewardsResponse adminGetUserRewards(AdminGetUserRewards input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-    /**
-     * @see PublicGetUserRewards
-     */
-    public ModelListUserRewardsResponse publicGetUserRewards(PublicGetUserRewards input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input
-            .parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
+  /**
+   * @see PublicGetUserRewards
+   */
+  public ModelListUserRewardsResponse publicGetUserRewards(PublicGetUserRewards input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-    /**
-     * @see PublicClaimUserRewards
-     */
-    public List<ModelUserReward> publicClaimUserRewards(PublicClaimUserRewards input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input
-            .parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+  /**
+   * @see PublicClaimUserRewards
+   */
+  public List<ModelUserReward> publicClaimUserRewards(PublicClaimUserRewards input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

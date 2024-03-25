@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.key_group.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class KeyGroup {
 

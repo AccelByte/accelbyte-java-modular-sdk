@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.dsartifact.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.dsartifact.models.*;
 import net.accelbyte.sdk.api.dsartifact.operations.operations.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Operations {
 

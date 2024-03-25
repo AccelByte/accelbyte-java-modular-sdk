@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.match2.wrappers;
 
 import net.accelbyte.sdk.api.match2.models.*;
 import net.accelbyte.sdk.api.match2.operations.rule_sets.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class RuleSets {
 

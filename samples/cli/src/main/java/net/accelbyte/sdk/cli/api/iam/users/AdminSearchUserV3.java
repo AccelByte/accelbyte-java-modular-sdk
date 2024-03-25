@@ -76,6 +76,16 @@ public class AdminSearchUserV3 implements Callable<Integer> {
   String query;
 
   @Option(
+      names = {"--roleIds"},
+      description = "roleIds")
+  String roleIds;
+
+  @Option(
+      names = {"--skipLoginQueue"},
+      description = "skipLoginQueue")
+  Boolean skipLoginQueue;
+
+  @Option(
       names = {"--startDate"},
       description = "startDate")
   String startDate;
@@ -117,6 +127,8 @@ public class AdminSearchUserV3 implements Callable<Integer> {
               .platformBy(platformBy)
               .platformId(platformId)
               .query(query)
+              .roleIds(roleIds)
+              .skipLoginQueue(skipLoginQueue)
               .startDate(startDate)
               .testAccount(testAccount)
               .build();

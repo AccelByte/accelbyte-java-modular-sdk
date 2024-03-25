@@ -117,9 +117,17 @@ public class ModelUserResponseV3 extends Model {
   @JsonProperty("roles")
   private List<String> roles;
 
+  @JsonProperty("skipLoginQueue")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean skipLoginQueue;
+
   @JsonProperty("testAccount")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean testAccount;
+
+  @JsonProperty("uniqueDisplayName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String uniqueDisplayName;
 
   @JsonProperty("userId")
   private String userId;

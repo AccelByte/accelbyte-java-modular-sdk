@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class OAuth20Extension {
 
@@ -133,18 +133,6 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 requestTargetTokenResponseV3(RequestTargetTokenResponseV3 input)
       throws Exception {
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see PlatformTokenRefreshV3Deprecate
-   * @deprecated
-   */
-  @Deprecated
-  public OauthmodelPlatformTokenRefreshResponseV3 platformTokenRefreshV3Deprecate(
-      PlatformTokenRefreshV3Deprecate input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

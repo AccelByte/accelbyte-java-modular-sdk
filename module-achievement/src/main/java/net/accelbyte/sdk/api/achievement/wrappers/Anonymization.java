@@ -9,8 +9,8 @@
 package net.accelbyte.sdk.api.achievement.wrappers;
 
 import net.accelbyte.sdk.api.achievement.operations.anonymization.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Anonymization {
 

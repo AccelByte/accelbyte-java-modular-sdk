@@ -8,7 +8,7 @@
     },
     "description": "Justice Legal Service",
     "title": "justice-legal-service",
-    "version": "1.36.0"
+    "version": "1.39.0"
   },
   "schemes": [
     "https"
@@ -3129,6 +3129,7 @@
         "consumes": [
           "application/json"
         ],
+        "deprecated": true,
         "description": "Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Required permission\u0026lt;/i\u0026gt;: login user\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
         "operationId": "indirectBulkAcceptVersionedPolicy_1",
         "parameters": [
@@ -3367,6 +3368,31 @@
         "summary": "Retrieve a Localized Version",
         "tags": [
           "Localized Policy Versions With Namespace"
+        ]
+      }
+    },
+    "/agreement/public/policies/countries/list": {
+      "get": {
+        "description": "Retrieve List of Countries that have Active Legal Policies.",
+        "operationId": "retrieveCountryListWithPolicies",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Retrieve List of Countries that have Active Legal Policies",
+        "tags": [
+          "Policies"
         ]
       }
     },
@@ -5182,16 +5208,16 @@
   },
   "x-version": {
     "buildBy": "Gradle 6.9.1",
-    "buildDate": "2024-01-26T10:49:23+00:00",
-    "buildID": "1.36.0",
+    "buildDate": "2024-03-22T09:44:27+00:00",
+    "buildID": "1.39.0",
     "buildJDK": "1.8.0_232 (Eclipse OpenJ9 openj9-0.17.0)",
-    "buildOS": "Linux amd64 5.10.205-195.804.amzn2.x86_64",
+    "buildOS": "Linux amd64 5.10.210-201.852.amzn2.x86_64",
     "gitBranchName": "release-candidate",
-    "gitHash": "a75c42bf76",
-    "gitTag": "1.36.0",
+    "gitHash": "988f29d57d",
+    "gitTag": "1.39.0",
     "name": "justice-legal-service",
     "realm": "production",
-    "version": "1.36.0",
+    "version": "1.39.0",
     "version-roles-seeding": "0.0.3"
   }
 }

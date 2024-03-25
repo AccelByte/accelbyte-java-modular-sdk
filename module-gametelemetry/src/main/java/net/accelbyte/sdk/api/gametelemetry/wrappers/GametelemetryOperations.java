@@ -8,51 +8,49 @@
 
 package net.accelbyte.sdk.api.gametelemetry.wrappers;
 
-
 import net.accelbyte.sdk.api.gametelemetry.models.*;
 import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class GametelemetryOperations {
 
-    private RequestRunner sdk;
+  private RequestRunner sdk;
 
-    public GametelemetryOperations(RequestRunner sdk){
-        this.sdk = sdk;
-    }
+  public GametelemetryOperations(RequestRunner sdk) {
+    this.sdk = sdk;
+  }
 
-    /**
-     * @see ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
-     */
-    public void protectedSaveEventsGameTelemetryV1ProtectedEventsPost(ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        input
-            .handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
+  /**
+   * @see ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
+   */
+  public void protectedSaveEventsGameTelemetryV1ProtectedEventsPost(
+      ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-    /**
-     * @see ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
-     */
-    public PlayTimeResponse protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input
-            .parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
+  /**
+   * @see ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
+   */
+  public PlayTimeResponse protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
+      ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet input)
+      throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-    /**
-     * @see ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
-     */
-    public PlayTimeResponse protectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut input) throws Exception {
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input
-            .parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+  /**
+   * @see ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+   */
+  public PlayTimeResponse
+      protectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(
+          ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut input)
+          throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

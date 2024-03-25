@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.dslogmanager.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.dslogmanager.models.*;
 import net.accelbyte.sdk.api.dslogmanager.operations.all_terminated_servers.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class AllTerminatedServers {
 

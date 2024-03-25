@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.lobby.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.friends.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Friends {
 
@@ -179,6 +179,16 @@ public class Friends {
    */
   public ModelLoadIncomingFriendsWithTimeResponse getIncomingFriendRequests(
       GetIncomingFriendRequests input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminListFriendsOfFriends
+   */
+  public ModelFriendshipConnectionResponse adminListFriendsOfFriends(
+      AdminListFriendsOfFriends input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.ugc.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.ugc.models.*;
 import net.accelbyte.sdk.api.ugc.operations.public_content_v2.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class PublicContentV2 {
 

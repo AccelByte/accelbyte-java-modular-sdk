@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.admin_player_record.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class AdminPlayerRecord {
 
@@ -39,6 +39,26 @@ public class AdminPlayerRecord {
   @Deprecated
   public ModelsListPlayerRecordKeysResponse listPlayerRecordHandlerV1(
       ListPlayerRecordHandlerV1 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminBulkPutPlayerRecordsByKeyHandlerV1
+   */
+  public List<ModelsBulkUpdatePlayerRecordByKeyResponse> adminBulkPutPlayerRecordsByKeyHandlerV1(
+      AdminBulkPutPlayerRecordsByKeyHandlerV1 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminBulkGetPlayerRecordsByUserIDsHandlerV1
+   */
+  public ModelsBulkGetPlayerRecordResponse adminBulkGetPlayerRecordsByUserIDsHandlerV1(
+      AdminBulkGetPlayerRecordsByUserIDsHandlerV1 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

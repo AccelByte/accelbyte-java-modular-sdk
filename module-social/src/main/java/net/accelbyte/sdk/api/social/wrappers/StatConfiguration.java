@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.social.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class StatConfiguration {
 

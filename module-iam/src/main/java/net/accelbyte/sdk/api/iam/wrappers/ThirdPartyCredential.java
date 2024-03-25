@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.third_party_credential.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class ThirdPartyCredential {
 
@@ -101,6 +101,16 @@ public class ThirdPartyCredential {
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminCheckThirdPartyLoginPlatformAvailabilityV3
+   */
+  public ModelCheckAvailabilityResponse adminCheckThirdPartyLoginPlatformAvailabilityV3(
+      AdminCheckThirdPartyLoginPlatformAvailabilityV3 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 

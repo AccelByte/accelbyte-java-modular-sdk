@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.matchmaking.wrappers;
 
 import net.accelbyte.sdk.api.matchmaking.models.*;
 import net.accelbyte.sdk.api.matchmaking.operations.social_matchmaking.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class SocialMatchmaking {
 

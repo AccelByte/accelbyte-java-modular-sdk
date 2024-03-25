@@ -6,13 +6,13 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.cli.api.iam.o_auth2_0_extension;
+package net.accelbyte.sdk.cli.api.iam.users;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.api.iam.wrappers.OAuth20Extension;
+import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponseException;
@@ -25,20 +25,21 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Command(name = "platformTokenRefreshV3Deprecate", mixinStandardHelpOptions = true)
-public class PlatformTokenRefreshV3Deprecate implements Callable<Integer> {
+@Command(name = "adminListUserAllPlatformAccountsDistinctV3", mixinStandardHelpOptions = true)
+public class AdminListUserAllPlatformAccountsDistinctV3 implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(PlatformTokenRefreshV3Deprecate.class);
-
-  @Option(
-      names = {"--platformId"},
-      description = "platformId")
-  String platformId;
+  private static final Logger log =
+      LogManager.getLogger(AdminListUserAllPlatformAccountsDistinctV3.class);
 
   @Option(
-      names = {"--platformToken"},
-      description = "platformToken")
-  String platformToken;
+      names = {"--namespace"},
+      description = "namespace")
+  String namespace;
+
+  @Option(
+      names = {"--userId"},
+      description = "userId")
+  String userId;
 
   @Option(
       names = {"--logging"},
@@ -46,7 +47,7 @@ public class PlatformTokenRefreshV3Deprecate implements Callable<Integer> {
   boolean logging;
 
   public static void main(String[] args) {
-    int exitCode = new CommandLine(new PlatformTokenRefreshV3Deprecate()).execute(args);
+    int exitCode = new CommandLine(new AdminListUserAllPlatformAccountsDistinctV3()).execute(args);
     System.exit(exitCode);
   }
 
@@ -60,16 +61,16 @@ public class PlatformTokenRefreshV3Deprecate implements Callable<Integer> {
       final AccelByteSDK sdk =
           new AccelByteSDK(
               httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final OAuth20Extension wrapper = new OAuth20Extension(sdk);
-      final net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.PlatformTokenRefreshV3Deprecate
+      final Users wrapper = new Users(sdk);
+      final net.accelbyte.sdk.api.iam.operations.users.AdminListUserAllPlatformAccountsDistinctV3
           operation =
-              net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension
-                  .PlatformTokenRefreshV3Deprecate.builder()
-                  .platformId(platformId)
-                  .platformToken(platformToken != null ? platformToken : null)
+              net.accelbyte.sdk.api.iam.operations.users.AdminListUserAllPlatformAccountsDistinctV3
+                  .builder()
+                  .namespace(namespace)
+                  .userId(userId)
                   .build();
-      final OauthmodelPlatformTokenRefreshResponseV3 response =
-          wrapper.platformTokenRefreshV3Deprecate(operation);
+      final AccountcommonDistinctPlatformResponseV3 response =
+          wrapper.adminListUserAllPlatformAccountsDistinctV3(operation);
       final String responseString =
           new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
       log.info("Operation successful\n{}", responseString);

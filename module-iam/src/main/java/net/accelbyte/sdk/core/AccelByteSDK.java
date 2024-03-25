@@ -257,8 +257,7 @@ public class AccelByteSDK implements RequestRunner {
       int minResLen = Math.min(ownedResourceElem.length, requestedResourceElem.length);
       boolean isResMatches =
           IntStream.range(0, minResLen)
-              .allMatch(
-                  i -> isResourceElementMatch(i, ownedResourceElem, requestedResourceElem));
+              .allMatch(i -> isResourceElementMatch(i, ownedResourceElem, requestedResourceElem));
 
       if (!isResMatches) {
         continue;
@@ -317,15 +316,18 @@ public class AccelByteSDK implements RequestRunner {
     return false;
   }
 
-  private boolean isResourceElementMatch(int index, String[] ownedResourceElem, String[] requestedResourceElem) {
+  private boolean isResourceElementMatch(
+      int index, String[] ownedResourceElem, String[] requestedResourceElem) {
     String ownElem = ownedResourceElem[index];
     String reqElem = requestedResourceElem[index];
 
     if (!ownElem.equals(reqElem) && !ownElem.equals("*")) {
       if (index > 0 && ownElem.endsWith("-")) {
         String prevOwnElem = ownedResourceElem[index - 1];
-        if (prevOwnElem.endsWith("NAMESPACE") ) {
-          if (reqElem.contains("-") && reqElem.split("-").length == 2 && reqElem.startsWith(ownElem)) {
+        if (prevOwnElem.endsWith("NAMESPACE")) {
+          if (reqElem.contains("-")
+              && reqElem.split("-").length == 2
+              && reqElem.startsWith(ownElem)) {
             return true;
           }
 
@@ -342,11 +344,10 @@ public class AccelByteSDK implements RequestRunner {
             throw new RuntimeException(e);
           }
           if (namespaceContext != null
-                  && namespaceContext.getType().equals("Game")
-                  && reqElem.startsWith(namespaceContext.getStudioNamespace())) {
+              && namespaceContext.getType().equals("Game")
+              && reqElem.startsWith(namespaceContext.getStudioNamespace())) {
             return true;
           }
-
         }
       }
       return false;
@@ -389,7 +390,8 @@ public class AccelByteSDK implements RequestRunner {
     if (this.sdkConfiguration.getConfigRepository() instanceof TokenValidation) {
       final TokenValidation tokenValidation =
           (TokenValidation) this.sdkConfiguration.getConfigRepository();
-      this.namespaceContextCache = buildNamespaceContextCache(this, tokenValidation.getNamespaceContextRefreshInterval());
+      this.namespaceContextCache =
+          buildNamespaceContextCache(this, tokenValidation.getNamespaceContextRefreshInterval());
       if (tokenValidation.getLocalTokenValidationEnabled()) {
         this.jwksCache = buildJWKSLoadingCache(this, tokenValidation.getJwksRefreshInterval());
         this.revocationListCache =
@@ -986,21 +988,22 @@ public class AccelByteSDK implements RequestRunner {
   }
 
   private LoadingCache<String, NamespaceContext> buildNamespaceContextCache(
-          AccelByteSDK sdk, int refreshIntervalSeconds) {
+      AccelByteSDK sdk, int refreshIntervalSeconds) {
     final CacheLoader<String, NamespaceContext> revocationLoader =
-            new CacheLoader<String, NamespaceContext>() {
-              @Override
-              public NamespaceContext load(String key) throws Exception {
-                final Namespace namespaceWrapper = new Namespace(sdk);
-                final NamespaceContext namespaceContext =
-                        namespaceWrapper.getNamespaceContext(GetNamespaceContext.builder().namespace(key).build());
+        new CacheLoader<String, NamespaceContext>() {
+          @Override
+          public NamespaceContext load(String key) throws Exception {
+            final Namespace namespaceWrapper = new Namespace(sdk);
+            final NamespaceContext namespaceContext =
+                namespaceWrapper.getNamespaceContext(
+                    GetNamespaceContext.builder().namespace(key).build());
 
-                return namespaceContext;
-              }
-            };
+            return namespaceContext;
+          }
+        };
 
     return CacheBuilder.newBuilder()
-            .refreshAfterWrite(refreshIntervalSeconds, TimeUnit.SECONDS)
-            .build(revocationLoader);
+        .refreshAfterWrite(refreshIntervalSeconds, TimeUnit.SECONDS)
+        .build(revocationLoader);
   }
 }

@@ -22,7 +22,7 @@ import net.accelbyte.sdk.core.util.Helper;
  *
  * <p>[Test Facility Only]
  *
- * <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
+ * <p>Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]'
  *
  * <p>This endpoint will delete leaderboard configuration and its data
  *

@@ -10,12 +10,15 @@ package net.accelbyte.sdk.cli.wrapper;
 
 import net.accelbyte.sdk.cli.api.iam.bans.*;
 import net.accelbyte.sdk.cli.api.iam.clients.*;
+import net.accelbyte.sdk.cli.api.iam.clients_config_v3.*;
+import net.accelbyte.sdk.cli.api.iam.config.*;
 import net.accelbyte.sdk.cli.api.iam.country.*;
 import net.accelbyte.sdk.cli.api.iam.devices_v4.*;
 import net.accelbyte.sdk.cli.api.iam.input_validations.*;
 import net.accelbyte.sdk.cli.api.iam.o_auth.*;
 import net.accelbyte.sdk.cli.api.iam.o_auth2_0.*;
 import net.accelbyte.sdk.cli.api.iam.o_auth2_0_extension.*;
+import net.accelbyte.sdk.cli.api.iam.o_auth2_0_v4.*;
 import net.accelbyte.sdk.cli.api.iam.roles.*;
 import net.accelbyte.sdk.cli.api.iam.sso.*;
 import net.accelbyte.sdk.cli.api.iam.sso_credential.*;
@@ -135,6 +138,10 @@ import picocli.CommandLine.Command;
       PublicDeletePlatformLinkV2.class,
       AdminGetBansTypeV3.class,
       AdminGetListBanReasonV3.class,
+      AdminListClientAvailablePermissions.class,
+      AdminUpdateAvailablePermissionsByModule.class,
+      AdminDeleteConfigPermissionsByGroup.class,
+      AdminListClientTemplates.class,
       AdminGetInputValidations.class,
       AdminUpdateInputValidations.class,
       AdminResetInputValidations.class,
@@ -148,6 +155,7 @@ import picocli.CommandLine.Command;
       AdminUnbanUserBulkV3.class,
       AdminGetBansTypeWithNamespaceV3.class,
       AdminGetClientsByNamespaceV3.class,
+      AdminBulkUpdateClientsV3.class,
       AdminCreateClientV3.class,
       AdminGetClientsbyNamespacebyIDV3.class,
       AdminDeleteClientV3.class,
@@ -155,6 +163,7 @@ import picocli.CommandLine.Command;
       AdminUpdateClientPermissionV3.class,
       AdminAddClientPermissionsV3.class,
       AdminDeleteClientPermissionV3.class,
+      AdminGetConfigValueV3.class,
       AdminGetCountryListV3.class,
       AdminGetCountryBlacklistV3.class,
       AdminAddCountryBlacklistV3.class,
@@ -175,6 +184,7 @@ import picocli.CommandLine.Command;
       AdminGetUserByPlatformUserIDV3.class,
       GetAdminUsersByRoleIdV3.class,
       AdminGetUserByEmailAddressV3.class,
+      AdminBulkUpdateUsersV3.class,
       AdminGetBulkUserBanV3.class,
       AdminListUserIDByUserIDsV3.class,
       AdminBulkGetUsersPlatform.class,
@@ -193,6 +203,7 @@ import picocli.CommandLine.Command;
       GetUserVerificationCode.class,
       AdminGetUserDeletionStatusV3.class,
       AdminUpdateUserDeletionStatusV3.class,
+      AdminListUserAllPlatformAccountsDistinctV3.class,
       AdminUpgradeHeadlessAccountV3.class,
       AdminDeleteUserInformationV3.class,
       AdminGetUserLoginHistoriesV3.class,
@@ -207,6 +218,7 @@ import picocli.CommandLine.Command;
       AdminCreateJusticeUser.class,
       AdminLinkPlatformAccount.class,
       AdminPlatformUnlinkV3.class,
+      AdminPlatformUnlinkAllV3.class,
       AdminPlatformLinkV3.class,
       AdminDeleteUserLinkingHistoryByPlatformIDV3.class,
       AdminGetThirdPartyPlatformTokenLinkStatusV3.class,
@@ -219,6 +231,7 @@ import picocli.CommandLine.Command;
       AdminTrustlyUpdateUserIdentity.class,
       AdminVerifyUserWithoutVerificationCodeV3.class,
       AdminUpdateClientSecretV3.class,
+      AdminCheckThirdPartyLoginPlatformAvailabilityV3.class,
       AdminGetRolesV3.class,
       AdminCreateRoleV3.class,
       AdminGetRoleV3.class,
@@ -268,6 +281,7 @@ import picocli.CommandLine.Command;
       PublicGetInputValidations.class,
       PublicGetInputValidationByField.class,
       PublicGetCountryAgeRestrictionV3.class,
+      PublicGetConfigValueV3.class,
       PublicGetCountryListV3.class,
       RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.class,
       RetrieveActiveOIDCClientsPublicV3.class,
@@ -322,7 +336,7 @@ import picocli.CommandLine.Command;
       LoginSSOClient.class,
       LogoutSSOClient.class,
       RequestTargetTokenResponseV3.class,
-      PlatformTokenRefreshV3Deprecate.class,
+      AdminListInvitationHistoriesV4.class,
       AdminGetDevicesByUserV4.class,
       AdminGetBannedDevicesV4.class,
       AdminGetUserDeviceBansV4.class,
@@ -335,6 +349,8 @@ import picocli.CommandLine.Command;
       AdminDecryptDeviceV4.class,
       AdminUnbanDeviceV4.class,
       AdminGetUsersByDeviceV4.class,
+      AdminGetNamespaceInvitationHistoryV4.class,
+      AdminGetNamespaceUserInvitationHistoryV4.class,
       AdminCreateTestUsersV4.class,
       AdminCreateUserV4.class,
       AdminBulkUpdateUserAccountTypeV4.class,
@@ -367,12 +383,22 @@ import picocli.CommandLine.Command;
       AdminDisableMyBackupCodesV4.class,
       AdminDownloadMyBackupCodesV4.class,
       AdminEnableMyBackupCodesV4.class,
+      AdminGetBackupCodesV4.class,
+      AdminGenerateBackupCodesV4.class,
+      AdminEnableBackupCodesV4.class,
       AdminSendMyMFAEmailCodeV4.class,
       AdminDisableMyEmailV4.class,
       AdminEnableMyEmailV4.class,
       AdminGetMyEnabledFactorsV4.class,
       AdminMakeFactorMyDefaultV4.class,
       AdminInviteUserV4.class,
+      AuthenticationWithPlatformLinkV4.class,
+      GenerateTokenByNewHeadlessAccountV4.class,
+      Verify2faCodeV4.class,
+      PlatformTokenGrantV4.class,
+      SimultaneousLoginV4.class,
+      TokenGrantV4.class,
+      RequestTargetTokenResponseV4.class,
       PublicCreateTestUserV4.class,
       PublicCreateUserV4.class,
       CreateUserFromInvitationV4.class,
@@ -388,6 +414,9 @@ import picocli.CommandLine.Command;
       PublicDisableMyBackupCodesV4.class,
       PublicDownloadMyBackupCodesV4.class,
       PublicEnableMyBackupCodesV4.class,
+      PublicGetBackupCodesV4.class,
+      PublicGenerateBackupCodesV4.class,
+      PublicEnableBackupCodesV4.class,
       PublicRemoveTrustedDeviceV4.class,
       PublicSendMyMFAEmailCodeV4.class,
       PublicDisableMyEmailV4.class,

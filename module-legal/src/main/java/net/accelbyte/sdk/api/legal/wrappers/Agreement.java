@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.legal.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.api.legal.operations.agreement.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Agreement {
 
@@ -103,7 +103,9 @@ public class Agreement {
 
   /**
    * @see IndirectBulkAcceptVersionedPolicy1
+   * @deprecated
    */
+  @Deprecated
   public AcceptAgreementResponse indirectBulkAcceptVersionedPolicy1(
       IndirectBulkAcceptVersionedPolicy1 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);

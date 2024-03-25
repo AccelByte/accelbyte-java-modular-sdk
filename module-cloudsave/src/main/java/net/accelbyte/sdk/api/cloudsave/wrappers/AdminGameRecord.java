@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.cloudsave.wrappers;
 
 import net.accelbyte.sdk.api.cloudsave.models.*;
 import net.accelbyte.sdk.api.cloudsave.operations.admin_game_record.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class AdminGameRecord {
 
@@ -34,8 +34,8 @@ public class AdminGameRecord {
   /**
    * @see AdminGetGameRecordHandlerV1
    */
-  public ModelsGameRecordResponse adminGetGameRecordHandlerV1(AdminGetGameRecordHandlerV1 input)
-      throws Exception {
+  public ModelsGameRecordAdminResponse adminGetGameRecordHandlerV1(
+      AdminGetGameRecordHandlerV1 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -44,8 +44,8 @@ public class AdminGameRecord {
   /**
    * @see AdminPutGameRecordHandlerV1
    */
-  public ModelsGameRecordResponse adminPutGameRecordHandlerV1(AdminPutGameRecordHandlerV1 input)
-      throws Exception {
+  public ModelsGameRecordAdminResponse adminPutGameRecordHandlerV1(
+      AdminPutGameRecordHandlerV1 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -54,8 +54,8 @@ public class AdminGameRecord {
   /**
    * @see AdminPostGameRecordHandlerV1
    */
-  public ModelsGameRecordResponse adminPostGameRecordHandlerV1(AdminPostGameRecordHandlerV1 input)
-      throws Exception {
+  public ModelsGameRecordAdminResponse adminPostGameRecordHandlerV1(
+      AdminPostGameRecordHandlerV1 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

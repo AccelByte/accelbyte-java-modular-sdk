@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.platform.wrappers;
 
 import java.util.*;
 import net.accelbyte.sdk.api.platform.operations.session_platform.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class SessionPlatform {
 

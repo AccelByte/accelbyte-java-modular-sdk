@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.platform.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.entitlement.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Entitlement {
 
@@ -469,6 +469,16 @@ public class Entitlement {
   @Deprecated
   public EntitlementInfo publicGetUserEntitlementBySku(PublicGetUserEntitlementBySku input)
       throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicUserEntitlementHistory
+   */
+  public List<UserEntitlementHistoryPagingSlicedResult> publicUserEntitlementHistory(
+      PublicUserEntitlementHistory input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

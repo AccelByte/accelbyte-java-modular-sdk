@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.iam.wrappers;
 import java.io.*;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.users_v4.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class UsersV4 {
 
@@ -20,6 +20,36 @@ public class UsersV4 {
 
   public UsersV4(RequestRunner sdk) {
     this.sdk = sdk;
+  }
+
+  /**
+   * @see AdminListInvitationHistoriesV4
+   */
+  public ModelListInvitationHistoriesV4Response adminListInvitationHistoriesV4(
+      AdminListInvitationHistoriesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetNamespaceInvitationHistoryV4
+   */
+  public ModelInvitationHistoryResponse adminGetNamespaceInvitationHistoryV4(
+      AdminGetNamespaceInvitationHistoryV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetNamespaceUserInvitationHistoryV4
+   */
+  public ModelNamespaceInvitationHistoryUserV4Response adminGetNamespaceUserInvitationHistoryV4(
+      AdminGetNamespaceUserInvitationHistoryV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 
   /**
@@ -176,7 +206,9 @@ public class UsersV4 {
 
   /**
    * @see AdminGetMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 adminGetMyBackupCodesV4(AdminGetMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -186,7 +218,9 @@ public class UsersV4 {
 
   /**
    * @see AdminGenerateMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 adminGenerateMyBackupCodesV4(AdminGenerateMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -205,7 +239,9 @@ public class UsersV4 {
 
   /**
    * @see AdminDownloadMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public InputStream adminDownloadMyBackupCodesV4(AdminDownloadMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -215,11 +251,40 @@ public class UsersV4 {
 
   /**
    * @see AdminEnableMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 adminEnableMyBackupCodesV4(AdminEnableMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetBackupCodesV4
+   */
+  public void adminGetBackupCodesV4(AdminGetBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGenerateBackupCodesV4
+   */
+  public void adminGenerateBackupCodesV4(AdminGenerateBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminEnableBackupCodesV4
+   */
+  public void adminEnableBackupCodesV4(AdminEnableBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 
@@ -379,7 +444,9 @@ public class UsersV4 {
 
   /**
    * @see PublicGetMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 publicGetMyBackupCodesV4(PublicGetMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -389,7 +456,9 @@ public class UsersV4 {
 
   /**
    * @see PublicGenerateMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 publicGenerateMyBackupCodesV4(
       PublicGenerateMyBackupCodesV4 input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -408,7 +477,9 @@ public class UsersV4 {
 
   /**
    * @see PublicDownloadMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public InputStream publicDownloadMyBackupCodesV4(PublicDownloadMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
@@ -418,11 +489,40 @@ public class UsersV4 {
 
   /**
    * @see PublicEnableMyBackupCodesV4
+   * @deprecated
    */
+  @Deprecated
   public ModelBackupCodesResponseV4 publicEnableMyBackupCodesV4(PublicEnableMyBackupCodesV4 input)
       throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicGetBackupCodesV4
+   */
+  public void publicGetBackupCodesV4(PublicGetBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicGenerateBackupCodesV4
+   */
+  public void publicGenerateBackupCodesV4(PublicGenerateBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicEnableBackupCodesV4
+   */
+  public void publicEnableBackupCodesV4(PublicEnableBackupCodesV4 input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 

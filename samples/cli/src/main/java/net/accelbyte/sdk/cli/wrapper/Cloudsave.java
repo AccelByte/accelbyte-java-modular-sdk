@@ -14,12 +14,15 @@ import net.accelbyte.sdk.cli.api.cloudsave.admin_game_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.admin_player_binary_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.admin_player_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.admin_record.*;
+import net.accelbyte.sdk.cli.api.cloudsave.admin_tags.*;
 import net.accelbyte.sdk.cli.api.cloudsave.concurrent_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.plugin_config.*;
 import net.accelbyte.sdk.cli.api.cloudsave.public_game_binary_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.public_game_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.public_player_binary_record.*;
 import net.accelbyte.sdk.cli.api.cloudsave.public_player_record.*;
+import net.accelbyte.sdk.cli.api.cloudsave.public_tags.*;
+import net.accelbyte.sdk.cli.api.cloudsave.ttl_config.*;
 import picocli.CommandLine.Command;
 
 @Command(
@@ -39,6 +42,7 @@ import picocli.CommandLine.Command;
       AdminDeleteGameBinaryRecordV1.class,
       AdminPutGameBinaryRecorMetadataV1.class,
       AdminPostGameBinaryPresignedURLV1.class,
+      DeleteGameBinaryRecordTTLConfig.class,
       AdminPutAdminGameRecordConcurrentHandlerV1.class,
       AdminPutGameRecordConcurrentHandlerV1.class,
       GetPluginConfig.class,
@@ -50,9 +54,15 @@ import picocli.CommandLine.Command;
       AdminPutGameRecordHandlerV1.class,
       AdminPostGameRecordHandlerV1.class,
       AdminDeleteGameRecordHandlerV1.class,
+      DeleteGameRecordTTLConfig.class,
+      AdminListTagsHandlerV1.class,
+      AdminPostTagHandlerV1.class,
+      AdminDeleteTagHandlerV1.class,
       BulkGetAdminPlayerRecordByUserIdsV1.class,
       BulkGetPlayerRecordSizeHandlerV1.class,
       ListPlayerRecordHandlerV1.class,
+      AdminBulkPutPlayerRecordsByKeyHandlerV1.class,
+      AdminBulkGetPlayerRecordsByUserIDsHandlerV1.class,
       AdminListAdminUserRecordsV1.class,
       AdminBulkGetAdminPlayerRecordV1.class,
       AdminGetAdminPlayerRecordV1.class,
@@ -94,6 +104,7 @@ import picocli.CommandLine.Command;
       PutGameRecordHandlerV1.class,
       PostGameRecordHandlerV1.class,
       DeleteGameRecordHandlerV1.class,
+      PublicListTagsHandlerV1.class,
       BulkGetPlayerPublicBinaryRecordsV1.class,
       BulkGetPlayerPublicRecordHandlerV1.class,
       ListMyBinaryRecordsV1.class,

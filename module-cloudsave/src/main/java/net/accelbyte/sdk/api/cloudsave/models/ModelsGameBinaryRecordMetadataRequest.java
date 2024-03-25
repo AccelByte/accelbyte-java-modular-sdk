@@ -28,6 +28,14 @@ public class ModelsGameBinaryRecordMetadataRequest extends Model {
   @JsonProperty("set_by")
   private String setBy;
 
+  @JsonProperty("tags")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> tags;
+
+  @JsonProperty("ttl_config")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ModelsTTLConfigDTO ttlConfig;
+
   @JsonIgnore
   public String getSetBy() {
     return this.setBy;

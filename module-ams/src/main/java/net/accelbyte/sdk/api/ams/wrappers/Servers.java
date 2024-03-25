@@ -10,8 +10,8 @@ package net.accelbyte.sdk.api.ams.wrappers;
 
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.operations.servers.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Servers {
 
@@ -34,6 +34,16 @@ public class Servers {
    * @see FleetServerInfo
    */
   public ApiFleetServerInfoResponse fleetServerInfo(FleetServerInfo input) throws Exception {
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see FleetServerConnectionInfo
+   */
+  public ApiFleetServerConnectionInfoResponse fleetServerConnectionInfo(
+      FleetServerConnectionInfo input) throws Exception {
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

@@ -11,8 +11,8 @@ package net.accelbyte.sdk.api.gdpr.wrappers;
 import java.util.*;
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.*;
-import net.accelbyte.sdk.core.RequestRunner;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class Configuration {
 
