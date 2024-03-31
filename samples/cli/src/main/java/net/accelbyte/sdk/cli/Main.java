@@ -47,8 +47,9 @@ import picocli.CommandLine;
       Seasonpass.class,
       Session.class,
       Sessionbrowser.class,
+      Sessionhistory.class,
       Social.class,
-      Ugc.class,
+      Ugc.class
     })
 public class Main implements Callable<Integer> {
 
