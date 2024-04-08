@@ -53,11 +53,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
   @Test
   @Order(1)
   public void test() throws Exception {
-    if (isUsingAGSStarter()) {
-      return; // SKIP
-    }
-
-    final String reasonTitle = "Java Server SDK Test Reason Title";
+    final String reasonTitle = "Java Server SDK Test Reason Title " + TestHelper.generateRandomId(8);
     final String reasonDescription = "Java Server SDK Test Reason Description";
 
     final AdminReasons adminReasonsWrapper = new AdminReasons(sdk);
