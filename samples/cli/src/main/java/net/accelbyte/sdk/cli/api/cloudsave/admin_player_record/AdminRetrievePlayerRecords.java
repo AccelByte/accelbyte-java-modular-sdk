@@ -51,6 +51,16 @@ public class AdminRetrievePlayerRecords implements Callable<Integer> {
   Integer offset;
 
   @Option(
+      names = {"--query"},
+      description = "query")
+  String query;
+
+  @Option(
+      names = {"--tags"},
+      description = "tags")
+  List<String> tags;
+
+  @Option(
       names = {"--logging"},
       description = "logger")
   boolean logging;
@@ -80,6 +90,8 @@ public class AdminRetrievePlayerRecords implements Callable<Integer> {
                   .userId(userId)
                   .limit(limit)
                   .offset(offset)
+                  .query(query)
+                  .tags(tags)
                   .build();
       final ModelsListPlayerRecordKeysResponse response =
           wrapper.adminRetrievePlayerRecords(operation);

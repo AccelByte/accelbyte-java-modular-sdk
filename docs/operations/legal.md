@@ -46,6 +46,8 @@
 | `/agreement/admin/namespaces/{namespace}/agreements` | POST | RetrieveAcceptedAgreementsForMultiUsers | [RetrieveAcceptedAgreementsForMultiUsers](../../src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAcceptedAgreementsForMultiUsers.java) | [RetrieveAcceptedAgreementsForMultiUsers](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/agreement_with_namespace/RetrieveAcceptedAgreementsForMultiUsers.java) |
 | `/agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId}` | GET | RetrieveAcceptedAgreements1 | [RetrieveAcceptedAgreements1](../../src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAcceptedAgreements1.java) | [RetrieveAcceptedAgreements1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/agreement_with_namespace/RetrieveAcceptedAgreements1.java) |
 | `/agreement/admin/namespaces/{namespace}/agreements/policy-versions/users` | GET | RetrieveAllUsersByPolicyVersion1 | [RetrieveAllUsersByPolicyVersion1](../../src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/RetrieveAllUsersByPolicyVersion1.java) | [RetrieveAllUsersByPolicyVersion1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/agreement_with_namespace/RetrieveAllUsersByPolicyVersion1.java) |
+| `/agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download` | GET | DownloadExportedAgreementsInCSV | [DownloadExportedAgreementsInCSV](../../src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/DownloadExportedAgreementsInCSV.java) | [DownloadExportedAgreementsInCSV](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/agreement_with_namespace/DownloadExportedAgreementsInCSV.java) |
+| `/agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/initiate` | POST | InitiateExportAgreementsToCSV | [InitiateExportAgreementsToCSV](../../src/main/java/net/accelbyte/sdk/api/legal/operations/agreement_with_namespace/InitiateExportAgreementsToCSV.java) | [InitiateExportAgreementsToCSV](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/agreement_with_namespace/InitiateExportAgreementsToCSV.java) |
 
 ### Base Legal Policies With Namespace Wrapper:  [BaseLegalPoliciesWithNamespace](../../src/main/java/net/accelbyte/sdk/api/legal/wrappers/BaseLegalPoliciesWithNamespace.java)
 | Endpoint | Method | ID | Class | Example |
@@ -150,12 +152,15 @@
 | `CreateLocalizedPolicyVersionResponse` | [CreateLocalizedPolicyVersionResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/CreateLocalizedPolicyVersionResponse.java) |
 | `CreatePolicyVersionRequest` | [CreatePolicyVersionRequest](../../src/main/java/net/accelbyte/sdk/api/legal/models/CreatePolicyVersionRequest.java) |
 | `CreatePolicyVersionResponse` | [CreatePolicyVersionResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/CreatePolicyVersionResponse.java) |
+| `DownloadExportedAgreementsInCSVResponse` | [DownloadExportedAgreementsInCSVResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/DownloadExportedAgreementsInCSVResponse.java) |
 | `ErrorEntity` | [ErrorEntity](../../src/main/java/net/accelbyte/sdk/api/legal/models/ErrorEntity.java) |
 | `FieldValidationError` | [FieldValidationError](../../src/main/java/net/accelbyte/sdk/api/legal/models/FieldValidationError.java) |
+| `InitiateExportAgreementsToCSVResponse` | [InitiateExportAgreementsToCSVResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/InitiateExportAgreementsToCSVResponse.java) |
 | `LegalReadinessStatusResponse` | [LegalReadinessStatusResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/LegalReadinessStatusResponse.java) |
 | `LocalizedPolicyVersionObject` | [LocalizedPolicyVersionObject](../../src/main/java/net/accelbyte/sdk/api/legal/models/LocalizedPolicyVersionObject.java) |
 | `PagedRetrieveUserAcceptedAgreementResponse` | [PagedRetrieveUserAcceptedAgreementResponse](../../src/main/java/net/accelbyte/sdk/api/legal/models/PagedRetrieveUserAcceptedAgreementResponse.java) |
 | `Paging` | [Paging](../../src/main/java/net/accelbyte/sdk/api/legal/models/Paging.java) |
+| `Permission` | [Permission](../../src/main/java/net/accelbyte/sdk/api/legal/models/Permission.java) |
 | `PolicyObject` | [PolicyObject](../../src/main/java/net/accelbyte/sdk/api/legal/models/PolicyObject.java) |
 | `PolicyVersionObject` | [PolicyVersionObject](../../src/main/java/net/accelbyte/sdk/api/legal/models/PolicyVersionObject.java) |
 | `PolicyVersionWithLocalizedVersionObject` | [PolicyVersionWithLocalizedVersionObject](../../src/main/java/net/accelbyte/sdk/api/legal/models/PolicyVersionWithLocalizedVersionObject.java) |

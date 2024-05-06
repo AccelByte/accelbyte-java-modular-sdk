@@ -22,15 +22,23 @@ import net.accelbyte.sdk.core.util.Helper;
  * PublicSearchUserV3
  *
  * <p>This endpoint search all users on the specified namespace that match the query on these
- * fields: display name, and username or by 3rd party display name. The query length should greater
- * than 2ï¼otherwise will not query the database. The default limit value is 100. **Note: searching
- * by 3rd party platform display name is exact query** --- When searching by 3rd party platform
- * display name: 1. set __by__ to __thirdPartyPlatform__ 2. set __platformId__ to the supported
- * platform id 3. set __platformBy__ to __platformDisplayName__ --- Supported platform id:
+ * fields: display name, unique display name, username or by 3rd party display name. The query
+ * length should between 3-20, otherwise will not query the database. The default limit value is 20.
  *
- * <p>* steam * steamopenid * facebook * google * oculus * oculusweb * twitch * discord * android *
- * ios * apple * device * epicgames * ps4 * ps5 * ps4web * nintendo * awscognito * live * xblweb *
- * netflix * snapchat * oidc platform id
+ * <p>## Searching by 3rd party platform
+ *
+ * <p>**Note: searching by 3rd party platform display name will use exact query, not fuzzy query.**
+ *
+ * <p>Step when searching by 3rd party platform display name: 1. set __by__ to
+ * __thirdPartyPlatform__ 2. set __platformId__ to the _supported platform id_ 3. set __platformBy__
+ * to __platformDisplayName__
+ *
+ * <p>### Supported platform id: * Steam group(steamnetwork) * steam * steamopenid * PSN group(psn)
+ * * ps4web * ps4 * ps5 * XBOX group(xbox) * live * xblweb * Oculus group(oculusgroup) * oculus *
+ * oculusweb * facebook * google * twitch * discord * android * ios * apple * device * epicgames *
+ * nintendo * awscognito * netflix * snapchat * _oidc platform id_
+ *
+ * <p>Note: you can use either platform ID or platform group as __platformId__ query parameter.
  */
 @Getter
 @Setter
