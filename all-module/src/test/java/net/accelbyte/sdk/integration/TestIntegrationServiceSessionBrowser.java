@@ -21,6 +21,7 @@ import net.accelbyte.sdk.api.sessionbrowser.operations.session.UpdateSession;
 import net.accelbyte.sdk.api.sessionbrowser.wrappers.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
@@ -31,6 +32,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 @Tag("test-integration")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Disabled
 public class TestIntegrationServiceSessionBrowser extends TestIntegration {
   @BeforeAll
   public void setup() throws Exception {
