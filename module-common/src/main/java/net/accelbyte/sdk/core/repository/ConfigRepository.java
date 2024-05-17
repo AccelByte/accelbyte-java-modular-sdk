@@ -34,4 +34,6 @@ public interface ConfigRepository {
   void deactivateClientInfoHeader();
 
   AppInfo getAppInfo();
+
+  String getCustomServiceBasePath(String serviceName);
 }

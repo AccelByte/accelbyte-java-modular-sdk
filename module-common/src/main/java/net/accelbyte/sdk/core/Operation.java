@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
@@ -23,6 +23,7 @@ public abstract class Operation {
   protected String method = "";
   protected List<String> consumes = new ArrayList<>();
   protected List<String> produces = new ArrayList<>();
+  protected String customBasePath = "";
   protected String preferredSecurityMethod = "";
   protected List<String> securities = new ArrayList<>();
   protected String locationQuery = "";
@@ -37,8 +38,26 @@ public abstract class Operation {
   }
 
   public String getFullUrl(String baseUrl) throws UnsupportedEncodingException {
+
+    String newBaseUrl = baseUrl;
+    if (false == customBasePath.equals("")) {
+
+      StringBuilder sb;
+
+      if (customBasePath.startsWith("/")) {
+        sb = new StringBuilder(baseUrl);
+        sb.append(customBasePath);
+      } else {
+        sb = new StringBuilder(customBasePath);
+      }
+
+      newBaseUrl = sb.toString();
+    } else {
+      newBaseUrl = baseUrl;
+    }
+
     return Helper.createFullUrl(
-        baseUrl,
+        newBaseUrl,
         this.getPath(),
         this.getPathParams(),
         this.getQueryParams(),

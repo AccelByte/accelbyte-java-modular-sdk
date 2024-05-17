@@ -63,4 +63,9 @@ class MockServerConfigRepository implements ConfigRepository {
   public AppInfo getAppInfo() {
     return new AppInfo("Java Server SDK Test", "9.9.9");
   }
+
+  @Override
+  public String getCustomServiceBasePath(String serviceName) {
+    return "";
+  };
 }

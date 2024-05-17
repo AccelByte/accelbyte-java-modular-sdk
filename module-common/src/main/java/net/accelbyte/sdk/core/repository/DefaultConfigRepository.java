@@ -129,4 +129,15 @@ public class DefaultConfigRepository implements ConfigRepository, TokenValidatio
   public int getNamespaceContextRefreshInterval() {
     return this.namespaceContextIntervalSeconds;
   }
+
+  @Override
+  public String getCustomServiceBasePath(String serviceName) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("AB_").append(serviceName.trim().toUpperCase()).append("_BASE_PATH").toString();
+    String customPath = System.getenv(stringBuilder.toString());
+    if (customPath == null)
+      return "";
+    else
+      return customPath;
+  }
 }
