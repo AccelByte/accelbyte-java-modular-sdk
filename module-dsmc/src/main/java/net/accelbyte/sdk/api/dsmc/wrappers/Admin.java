@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,15 +16,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Admin {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Admin(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("dsmc");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Admin(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see ListServer
    */
   public ModelsListServerResponse listServer(ListServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -34,6 +49,10 @@ public class Admin {
    * @see CountServer
    */
   public ModelsCountServerResponse countServer(CountServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -44,6 +63,10 @@ public class Admin {
    */
   public ModelsDetailedCountServerResponse countServerDetailed(CountServerDetailed input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -53,6 +76,10 @@ public class Admin {
    * @see ListLocalServer
    */
   public ModelsListServerResponse listLocalServer(ListLocalServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -62,6 +89,10 @@ public class Admin {
    * @see DeleteLocalServer
    */
   public void deleteLocalServer(DeleteLocalServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -71,6 +102,10 @@ public class Admin {
    * @see GetServer
    */
   public ModelsServer getServer(GetServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -80,6 +115,10 @@ public class Admin {
    * @see DeleteServer
    */
   public void deleteServer(DeleteServer input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -89,6 +128,10 @@ public class Admin {
    * @see ListSession
    */
   public ModelsListSessionResponse listSession(ListSession input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -98,6 +141,10 @@ public class Admin {
    * @see CountSession
    */
   public ModelsCountSessionResponse countSession(CountSession input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -107,6 +154,10 @@ public class Admin {
    * @see DeleteSession
    */
   public void deleteSession(DeleteSession input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

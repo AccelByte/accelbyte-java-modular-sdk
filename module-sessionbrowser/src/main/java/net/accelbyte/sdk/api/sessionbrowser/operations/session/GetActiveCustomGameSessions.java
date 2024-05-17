@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class GetActiveCustomGameSessions extends Operation {
   private String path =
       "/sessionbrowser/admin/namespaces/{namespace}/gamesession/active/custom-game";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -50,12 +51,18 @@ public class GetActiveCustomGameSessions extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetActiveCustomGameSessions(
-      String namespace, Integer limit, Integer offset, String serverRegion, String sessionId) {
+      String customBasePath,
+      String namespace,
+      Integer limit,
+      Integer offset,
+      String serverRegion,
+      String sessionId) {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
     this.serverRegion = serverRegion;
     this.sessionId = sessionId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class DeleteUserPermission extends Operation {
   private String path =
       "/iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,11 +56,13 @@ public class DeleteUserPermission extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteUserPermission(Integer action, String namespace, String resource, String userId) {
+  public DeleteUserPermission(
+      String customBasePath, Integer action, String namespace, String resource, String userId) {
     this.action = action;
     this.namespace = namespace;
     this.resource = resource;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

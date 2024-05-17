@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class GetAllSessionsInChannel extends Operation {
   private String path =
       "/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,9 +52,10 @@ public class GetAllSessionsInChannel extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public GetAllSessionsInChannel(String channelName, String namespace) {
+  public GetAllSessionsInChannel(String customBasePath, String channelName, String namespace) {
     this.channelName = channelName;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

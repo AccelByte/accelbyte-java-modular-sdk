@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class ServicePluginConfig {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public ServicePluginConfig(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("platform");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public ServicePluginConfig(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo getLootBoxPluginConfig(GetLootBoxPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo updateLootBoxPluginConfig(UpdateLootBoxPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -45,6 +64,10 @@ public class ServicePluginConfig {
    * @see DeleteLootBoxPluginConfig
    */
   public void deleteLootBoxPluginConfig(DeleteLootBoxPluginConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -55,6 +78,10 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo uplodLootBoxPluginConfigCert(UplodLootBoxPluginConfigCert input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -64,6 +91,10 @@ public class ServicePluginConfig {
    * @see GetLootBoxGrpcInfo
    */
   public GrpcServerInfo getLootBoxGrpcInfo(GetLootBoxGrpcInfo input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -74,6 +105,10 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo getSectionPluginConfig(GetSectionPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -84,6 +119,10 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo updateSectionPluginConfig(UpdateSectionPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -93,6 +132,10 @@ public class ServicePluginConfig {
    * @see DeleteSectionPluginConfig
    */
   public void deleteSectionPluginConfig(DeleteSectionPluginConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -103,6 +146,10 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo uploadSectionPluginConfigCert(UploadSectionPluginConfigCert input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -115,6 +162,10 @@ public class ServicePluginConfig {
   @Deprecated
   public ServicePluginConfigInfo getServicePluginConfig(GetServicePluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -127,6 +178,10 @@ public class ServicePluginConfig {
   @Deprecated
   public ServicePluginConfigInfo updateServicePluginConfig(UpdateServicePluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -138,6 +193,10 @@ public class ServicePluginConfig {
    */
   @Deprecated
   public void deleteServicePluginConfig(DeleteServicePluginConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -148,6 +207,10 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo getRevocationPluginConfig(GetRevocationPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -158,6 +221,10 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo updateRevocationPluginConfig(UpdateRevocationPluginConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -167,6 +234,10 @@ public class ServicePluginConfig {
    * @see DeleteRevocationPluginConfig
    */
   public void deleteRevocationPluginConfig(DeleteRevocationPluginConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -177,6 +248,10 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo uploadRevocationPluginConfigCert(
       UploadRevocationPluginConfigCert input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

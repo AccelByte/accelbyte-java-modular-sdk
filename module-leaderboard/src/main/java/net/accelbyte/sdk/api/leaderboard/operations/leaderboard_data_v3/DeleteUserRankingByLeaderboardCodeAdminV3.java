@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class DeleteUserRankingByLeaderboardCodeAdminV3 extends Operation {
   private String path =
       "/leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -50,9 +51,11 @@ public class DeleteUserRankingByLeaderboardCodeAdminV3 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteUserRankingByLeaderboardCodeAdminV3(String leaderboardCode, String namespace) {
+  public DeleteUserRankingByLeaderboardCodeAdminV3(
+      String customBasePath, String leaderboardCode, String namespace) {
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

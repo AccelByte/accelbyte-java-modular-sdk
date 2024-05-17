@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Eligibilities {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Eligibilities(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("legal");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Eligibilities(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class Eligibilities {
    */
   public List<RetrieveUserEligibilitiesResponse> retrieveEligibilitiesPublic(
       RetrieveEligibilitiesPublic input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -37,6 +52,10 @@ public class Eligibilities {
    */
   public RetrieveUserEligibilitiesIndirectResponse retrieveEligibilitiesPublicIndirect(
       RetrieveEligibilitiesPublicIndirect input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

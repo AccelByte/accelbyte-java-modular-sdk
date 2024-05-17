@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class QueryItems1 extends Operation {
   /** generated field's value */
   private String path = "/platform/v2/admin/namespaces/{namespace}/items/byCriteria";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -68,6 +69,7 @@ public class QueryItems1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryItems1(
+      String customBasePath,
       String namespace,
       String appType,
       String availableDate,
@@ -106,6 +108,7 @@ public class QueryItems1 extends Operation {
     this.tags = tags;
     this.targetNamespace = targetNamespace;
     this.withTotal = withTotal;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

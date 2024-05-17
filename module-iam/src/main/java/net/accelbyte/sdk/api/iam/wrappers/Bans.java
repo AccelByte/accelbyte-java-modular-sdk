@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Bans {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Bans(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Bans(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class Bans {
    */
   @Deprecated
   public AccountcommonBans getBansType(GetBansType input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -38,6 +53,10 @@ public class Bans {
    */
   @Deprecated
   public AccountcommonBanReasons getListBanReason(GetListBanReason input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -47,6 +66,10 @@ public class Bans {
    * @see AdminGetBansTypeV3
    */
   public AccountcommonBansV3 adminGetBansTypeV3(AdminGetBansTypeV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -57,6 +80,10 @@ public class Bans {
    */
   public AccountcommonBanReasonsV3 adminGetListBanReasonV3(AdminGetListBanReasonV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -67,6 +94,10 @@ public class Bans {
    */
   public ModelGetUserBanV3Response adminGetBannedUsersV3(AdminGetBannedUsersV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -77,6 +108,10 @@ public class Bans {
    */
   public ModelListBulkUserBanResponseV3 adminBanUserBulkV3(AdminBanUserBulkV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -87,6 +122,10 @@ public class Bans {
    */
   public ModelListBulkUserBanResponseV3 adminUnbanUserBulkV3(AdminUnbanUserBulkV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -97,6 +136,10 @@ public class Bans {
    */
   public AccountcommonBansV3 adminGetBansTypeWithNamespaceV3(AdminGetBansTypeWithNamespaceV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

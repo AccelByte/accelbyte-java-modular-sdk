@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,15 +17,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Config {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Config(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Config(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see AdminGetAllConfigV1
    */
   public ModelsConfigList adminGetAllConfigV1(AdminGetAllConfigV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -35,6 +50,10 @@ public class Config {
    * @see AdminGetConfigV1
    */
   public ModelsConfigReq adminGetConfigV1(AdminGetConfigV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -44,6 +63,10 @@ public class Config {
    * @see AdminUpdateConfigV1
    */
   public ModelsConfigReq adminUpdateConfigV1(AdminUpdateConfigV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -53,6 +76,10 @@ public class Config {
    * @see AdminExportConfigV1
    */
   public InputStream adminExportConfigV1(AdminExportConfigV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -63,6 +90,10 @@ public class Config {
    */
   public ModelsImportConfigResponse adminImportConfigV1(AdminImportConfigV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

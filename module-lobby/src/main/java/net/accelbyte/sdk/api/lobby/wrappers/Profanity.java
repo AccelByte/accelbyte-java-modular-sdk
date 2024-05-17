@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Profanity {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Profanity(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Profanity(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class Profanity {
    */
   public List<ModelsProfanityFilter> adminDebugProfanityFilters(AdminDebugProfanityFilters input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -37,6 +52,10 @@ public class Profanity {
    */
   public ModelsAdminGetProfanityListFiltersV1Response adminGetProfanityListFiltersV1(
       AdminGetProfanityListFiltersV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -47,6 +66,10 @@ public class Profanity {
    */
   public void adminAddProfanityFilterIntoList(AdminAddProfanityFilterIntoList input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class Profanity {
    * @see AdminAddProfanityFilters
    */
   public void adminAddProfanityFilters(AdminAddProfanityFilters input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class Profanity {
    */
   public void adminImportProfanityFiltersFromFile(AdminImportProfanityFiltersFromFile input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class Profanity {
    */
   public List<ModelsProfanityFilter> adminDeleteProfanityFilter(AdminDeleteProfanityFilter input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -86,6 +121,10 @@ public class Profanity {
    */
   public List<ModelsAdminGetProfanityListsListResponse> adminGetProfanityLists(
       AdminGetProfanityLists input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class Profanity {
    * @see AdminCreateProfanityList
    */
   public void adminCreateProfanityList(AdminCreateProfanityList input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -104,6 +147,10 @@ public class Profanity {
    * @see AdminUpdateProfanityList
    */
   public void adminUpdateProfanityList(AdminUpdateProfanityList input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -113,6 +160,10 @@ public class Profanity {
    * @see AdminDeleteProfanityList
    */
   public void adminDeleteProfanityList(AdminDeleteProfanityList input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -122,6 +173,10 @@ public class Profanity {
    * @see AdminGetProfanityRule
    */
   public ModelsProfanityRule adminGetProfanityRule(AdminGetProfanityRule input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -132,6 +187,10 @@ public class Profanity {
    */
   public void adminSetProfanityRuleForNamespace(AdminSetProfanityRuleForNamespace input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -142,6 +201,10 @@ public class Profanity {
    */
   public ModelsAdminVerifyMessageProfanityResponse adminVerifyMessageProfanityResponse(
       AdminVerifyMessageProfanityResponse input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

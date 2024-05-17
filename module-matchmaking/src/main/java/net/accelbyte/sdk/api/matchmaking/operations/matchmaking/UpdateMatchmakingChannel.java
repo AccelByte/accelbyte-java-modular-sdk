@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class UpdateMatchmakingChannel extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}";
 
+  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,10 +52,14 @@ public class UpdateMatchmakingChannel extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdateMatchmakingChannel(
-      String channelName, String namespace, ModelsUpdateChannelRequest body) {
+      String customBasePath,
+      String channelName,
+      String namespace,
+      ModelsUpdateChannelRequest body) {
     this.channelName = channelName;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

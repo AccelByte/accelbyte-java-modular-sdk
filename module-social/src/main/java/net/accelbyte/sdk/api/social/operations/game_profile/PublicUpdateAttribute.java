@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class PublicUpdateAttribute extends Operation {
   private String path =
       "/social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,12 +56,18 @@ public class PublicUpdateAttribute extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicUpdateAttribute(
-      String attributeName, String namespace, String profileId, String userId, Attribute body) {
+      String customBasePath,
+      String attributeName,
+      String namespace,
+      String profileId,
+      String userId,
+      Attribute body) {
     this.attributeName = attributeName;
     this.namespace = namespace;
     this.profileId = profileId;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

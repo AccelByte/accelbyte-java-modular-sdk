@@ -133,11 +133,13 @@ public class DefaultConfigRepository implements ConfigRepository, TokenValidatio
   @Override
   public String getCustomServiceBasePath(String serviceName) {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("AB_").append(serviceName.trim().toUpperCase()).append("_BASE_PATH").toString();
+    stringBuilder
+        .append("AB_")
+        .append(serviceName.trim().toUpperCase())
+        .append("_BASE_PATH")
+        .toString();
     String customPath = System.getenv(stringBuilder.toString());
-    if (customPath == null)
-      return "";
-    else
-      return customPath;
+    if (customPath == null) return "";
+    else return customPath;
   }
 }

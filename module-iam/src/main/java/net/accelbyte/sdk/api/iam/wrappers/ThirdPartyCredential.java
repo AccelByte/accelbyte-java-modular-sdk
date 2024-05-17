@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class ThirdPartyCredential {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public ThirdPartyCredential(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public ThirdPartyCredential(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -28,6 +39,10 @@ public class ThirdPartyCredential {
   public List<ModelThirdPartyLoginPlatformCredentialResponse>
       retrieveAllThirdPartyLoginPlatformCredentialV3(
           RetrieveAllThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -39,6 +54,10 @@ public class ThirdPartyCredential {
   public List<ModelThirdPartyLoginPlatformCredentialResponse>
       retrieveAllActiveThirdPartyLoginPlatformCredentialV3(
           RetrieveAllActiveThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -49,6 +68,10 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse retrieveThirdPartyLoginPlatformCredentialV3(
       RetrieveThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -59,6 +82,10 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse addThirdPartyLoginPlatformCredentialV3(
       AddThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -69,6 +96,10 @@ public class ThirdPartyCredential {
    */
   public void deleteThirdPartyLoginPlatformCredentialV3(
       DeleteThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -79,6 +110,10 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse updateThirdPartyLoginPlatformCredentialV3(
       UpdateThirdPartyLoginPlatformCredentialV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -89,6 +124,10 @@ public class ThirdPartyCredential {
    */
   public ModelPlatformDomainResponse updateThirdPartyLoginPlatformDomainV3(
       UpdateThirdPartyLoginPlatformDomainV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -99,6 +138,10 @@ public class ThirdPartyCredential {
    */
   public void deleteThirdPartyLoginPlatformDomainV3(DeleteThirdPartyLoginPlatformDomainV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -109,6 +152,10 @@ public class ThirdPartyCredential {
    */
   public ModelCheckAvailabilityResponse adminCheckThirdPartyLoginPlatformAvailabilityV3(
       AdminCheckThirdPartyLoginPlatformAvailabilityV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -120,6 +167,10 @@ public class ThirdPartyCredential {
   public List<ModelPublicThirdPartyPlatformInfo>
       retrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(
           RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -130,6 +181,10 @@ public class ThirdPartyCredential {
    */
   public List<ModelPublicThirdPartyPlatformInfo> retrieveActiveOIDCClientsPublicV3(
       RetrieveActiveOIDCClientsPublicV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

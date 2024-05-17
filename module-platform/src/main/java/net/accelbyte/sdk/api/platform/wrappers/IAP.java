@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,15 +17,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class IAP {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public IAP(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("platform");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public IAP(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see GetAppleIAPConfig
    */
   public AppleIAPConfigInfo getAppleIAPConfig(GetAppleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -35,6 +50,10 @@ public class IAP {
    * @see UpdateAppleIAPConfig
    */
   public AppleIAPConfigInfo updateAppleIAPConfig(UpdateAppleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -44,6 +63,10 @@ public class IAP {
    * @see DeleteAppleIAPConfig
    */
   public void deleteAppleIAPConfig(DeleteAppleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -54,6 +77,10 @@ public class IAP {
    */
   public EpicGamesIAPConfigInfo getEpicGamesIAPConfig(GetEpicGamesIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -64,6 +91,10 @@ public class IAP {
    */
   public EpicGamesIAPConfigInfo updateEpicGamesIAPConfig(UpdateEpicGamesIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -73,6 +104,10 @@ public class IAP {
    * @see DeleteEpicGamesIAPConfig
    */
   public void deleteEpicGamesIAPConfig(DeleteEpicGamesIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -82,6 +117,10 @@ public class IAP {
    * @see GetGoogleIAPConfig
    */
   public GoogleIAPConfigInfo getGoogleIAPConfig(GetGoogleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -91,6 +130,10 @@ public class IAP {
    * @see UpdateGoogleIAPConfig
    */
   public GoogleIAPConfigInfo updateGoogleIAPConfig(UpdateGoogleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -100,6 +143,10 @@ public class IAP {
    * @see DeleteGoogleIAPConfig
    */
   public void deleteGoogleIAPConfig(DeleteGoogleIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -109,6 +156,10 @@ public class IAP {
    * @see UpdateGoogleP12File
    */
   public GoogleIAPConfigInfo updateGoogleP12File(UpdateGoogleP12File input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -118,6 +169,10 @@ public class IAP {
    * @see GetIAPItemConfig
    */
   public IAPItemConfigInfo getIAPItemConfig(GetIAPItemConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -127,6 +182,10 @@ public class IAP {
    * @see UpdateIAPItemConfig
    */
   public IAPItemConfigInfo updateIAPItemConfig(UpdateIAPItemConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -136,6 +195,10 @@ public class IAP {
    * @see DeleteIAPItemConfig
    */
   public void deleteIAPItemConfig(DeleteIAPItemConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -145,6 +208,10 @@ public class IAP {
    * @see GetOculusIAPConfig
    */
   public OculusIAPConfigInfo getOculusIAPConfig(GetOculusIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -154,6 +221,10 @@ public class IAP {
    * @see UpdateOculusIAPConfig
    */
   public OculusIAPConfigInfo updateOculusIAPConfig(UpdateOculusIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -163,6 +234,10 @@ public class IAP {
    * @see DeleteOculusIAPConfig
    */
   public void deleteOculusIAPConfig(DeleteOculusIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -173,6 +248,10 @@ public class IAP {
    */
   public PlayStationIAPConfigInfo getPlayStationIAPConfig(GetPlayStationIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -183,6 +262,10 @@ public class IAP {
    */
   public PlayStationIAPConfigInfo updatePlaystationIAPConfig(UpdatePlaystationIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -192,6 +275,10 @@ public class IAP {
    * @see DeletePlaystationIAPConfig
    */
   public void deletePlaystationIAPConfig(DeletePlaystationIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -202,6 +289,10 @@ public class IAP {
    */
   public TestResult validateExistedPlaystationIAPConfig(ValidateExistedPlaystationIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -212,6 +303,10 @@ public class IAP {
    */
   public TestResult validatePlaystationIAPConfig(ValidatePlaystationIAPConfig input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -221,6 +316,10 @@ public class IAP {
    * @see GetSteamIAPConfig
    */
   public SteamIAPConfig getSteamIAPConfig(GetSteamIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -230,6 +329,10 @@ public class IAP {
    * @see UpdateSteamIAPConfig
    */
   public SteamIAPConfigInfo updateSteamIAPConfig(UpdateSteamIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -239,6 +342,10 @@ public class IAP {
    * @see DeleteSteamIAPConfig
    */
   public void deleteSteamIAPConfig(DeleteSteamIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -248,6 +355,10 @@ public class IAP {
    * @see GetTwitchIAPConfig
    */
   public TwitchIAPConfigInfo getTwitchIAPConfig(GetTwitchIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -257,6 +368,10 @@ public class IAP {
    * @see UpdateTwitchIAPConfig
    */
   public TwitchIAPConfigInfo updateTwitchIAPConfig(UpdateTwitchIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -266,6 +381,10 @@ public class IAP {
    * @see DeleteTwitchIAPConfig
    */
   public void deleteTwitchIAPConfig(DeleteTwitchIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -275,6 +394,10 @@ public class IAP {
    * @see GetXblIAPConfig
    */
   public XblIAPConfigInfo getXblIAPConfig(GetXblIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -284,6 +407,10 @@ public class IAP {
    * @see UpdateXblIAPConfig
    */
   public XblIAPConfigInfo updateXblIAPConfig(UpdateXblIAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -293,6 +420,10 @@ public class IAP {
    * @see DeleteXblAPConfig
    */
   public void deleteXblAPConfig(DeleteXblAPConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -302,6 +433,10 @@ public class IAP {
    * @see UpdateXblBPCertFile
    */
   public XblIAPConfigInfo updateXblBPCertFile(UpdateXblBPCertFile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -311,6 +446,10 @@ public class IAP {
    * @see QueryUserIAPOrders
    */
   public IAPOrderPagingSlicedResult queryUserIAPOrders(QueryUserIAPOrders input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -321,6 +460,10 @@ public class IAP {
    */
   public IAPOrderPagingSlicedResult queryAllUserIAPOrders(QueryAllUserIAPOrders input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -331,6 +474,10 @@ public class IAP {
    */
   public IAPConsumeHistoryPagingSlicedResult queryUserIAPConsumeHistory(
       QueryUserIAPConsumeHistory input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -340,6 +487,10 @@ public class IAP {
    * @see MockFulfillIAPItem
    */
   public void mockFulfillIAPItem(MockFulfillIAPItem input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -349,6 +500,10 @@ public class IAP {
    * @see GetIAPItemMapping
    */
   public IAPItemMappingInfo getIAPItemMapping(GetIAPItemMapping input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -359,6 +514,10 @@ public class IAP {
    */
   public List<TwitchSyncResult> syncTwitchDropsEntitlement(SyncTwitchDropsEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -368,6 +527,10 @@ public class IAP {
    * @see PublicFulfillAppleIAPItem
    */
   public void publicFulfillAppleIAPItem(PublicFulfillAppleIAPItem input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -378,6 +541,10 @@ public class IAP {
    */
   public List<EpicGamesReconcileResult> syncEpicGamesInventory(SyncEpicGamesInventory input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -388,6 +555,10 @@ public class IAP {
    */
   public GoogleReceiptResolveResult publicFulfillGoogleIAPItem(PublicFulfillGoogleIAPItem input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -398,6 +569,10 @@ public class IAP {
    */
   public List<OculusReconcileResult> syncOculusConsumableEntitlements(
       SyncOculusConsumableEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -408,6 +583,10 @@ public class IAP {
    */
   public List<PlayStationReconcileResult> publicReconcilePlayStationStore(
       PublicReconcilePlayStationStore input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -418,6 +597,10 @@ public class IAP {
    */
   public List<PlayStationReconcileResult> publicReconcilePlayStationStoreWithMultipleServiceLabels(
       PublicReconcilePlayStationStoreWithMultipleServiceLabels input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -427,6 +610,10 @@ public class IAP {
    * @see SyncSteamInventory
    */
   public void syncSteamInventory(SyncSteamInventory input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -436,6 +623,10 @@ public class IAP {
    * @see SyncTwitchDropsEntitlement1
    */
   public void syncTwitchDropsEntitlement1(SyncTwitchDropsEntitlement1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -445,6 +636,10 @@ public class IAP {
    * @see SyncXboxInventory
    */
   public List<XblReconcileResult> syncXboxInventory(SyncXboxInventory input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

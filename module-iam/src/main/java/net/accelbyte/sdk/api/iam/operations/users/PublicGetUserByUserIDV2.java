@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class PublicGetUserByUserIDV2 extends Operation {
   /** generated field's value */
   private String path = "/iam/v2/public/namespaces/{namespace}/users/{userId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,9 +53,10 @@ public class PublicGetUserByUserIDV2 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicGetUserByUserIDV2(String namespace, String userId) {
+  public PublicGetUserByUserIDV2(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

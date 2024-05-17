@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class DeleteContentScreenshotV2 extends Operation {
   private String path =
       "/ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,11 +52,16 @@ public class DeleteContentScreenshotV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public DeleteContentScreenshotV2(
-      String contentId, String namespace, String screenshotId, String userId) {
+      String customBasePath,
+      String contentId,
+      String namespace,
+      String screenshotId,
+      String userId) {
     this.contentId = contentId;
     this.namespace = namespace;
     this.screenshotId = screenshotId;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class GetStats extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,6 +52,7 @@ public class GetStats extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetStats(
+      String customBasePath,
       String namespace,
       String cycleIds,
       Boolean isGlobal,
@@ -63,6 +65,7 @@ public class GetStats extends Operation {
     this.isPublic = isPublic;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

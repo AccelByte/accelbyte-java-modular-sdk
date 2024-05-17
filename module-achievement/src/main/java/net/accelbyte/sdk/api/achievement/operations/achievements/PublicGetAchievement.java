@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicGetAchievement extends Operation {
   private String path =
       "/achievement/v1/public/namespaces/{namespace}/achievements/{achievementCode}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,12 @@ public class PublicGetAchievement extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicGetAchievement(String achievementCode, String namespace, String language) {
+  public PublicGetAchievement(
+      String customBasePath, String achievementCode, String namespace, String language) {
     this.achievementCode = achievementCode;
     this.namespace = namespace;
     this.language = language;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

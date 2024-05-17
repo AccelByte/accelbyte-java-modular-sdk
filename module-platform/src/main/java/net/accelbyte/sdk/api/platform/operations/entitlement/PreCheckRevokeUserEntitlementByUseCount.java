@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class PreCheckRevokeUserEntitlementByUseCount extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount/preCheck";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,11 +56,16 @@ public class PreCheckRevokeUserEntitlementByUseCount extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PreCheckRevokeUserEntitlementByUseCount(
-      String entitlementId, String namespace, String userId, Integer quantity) {
+      String customBasePath,
+      String entitlementId,
+      String namespace,
+      String userId,
+      Integer quantity) {
     this.entitlementId = entitlementId;
     this.namespace = namespace;
     this.userId = userId;
     this.quantity = quantity;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

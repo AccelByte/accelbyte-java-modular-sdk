@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -36,6 +36,7 @@ public class PublicGetApp extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/items/{itemId}/app/locale";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,12 +58,18 @@ public class PublicGetApp extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetApp(
-      String itemId, String namespace, String language, String region, String storeId) {
+      String customBasePath,
+      String itemId,
+      String namespace,
+      String language,
+      String region,
+      String storeId) {
     this.itemId = itemId;
     this.namespace = namespace;
     this.language = language;
     this.region = region;
     this.storeId = storeId;
+    this.customBasePath = customBasePath;
   }
 
   @Override

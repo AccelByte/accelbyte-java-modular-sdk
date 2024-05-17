@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -52,6 +52,7 @@ public class AuthorizeV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/oauth/authorize";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -79,6 +80,7 @@ public class AuthorizeV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AuthorizeV3(
+      String customBasePath,
       String codeChallenge,
       String codeChallengeMethod,
       Boolean createHeadless,
@@ -101,6 +103,7 @@ public class AuthorizeV3 extends Operation {
     this.useRedirectUriAsLoginUrlWhenLocked = useRedirectUriAsLoginUrlWhenLocked;
     this.clientId = clientId;
     this.responseType = responseType;
+    this.customBasePath = customBasePath;
 
     securities.add("Basic");
   }

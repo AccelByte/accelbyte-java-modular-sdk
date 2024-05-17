@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class ImportStore1 extends Operation {
   /** generated field's value */
   private String path = "/platform/v2/admin/namespaces/{namespace}/stores/import";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,11 +48,13 @@ public class ImportStore1 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public ImportStore1(String namespace, String storeId, Boolean strictMode, File file) {
+  public ImportStore1(
+      String customBasePath, String namespace, String storeId, Boolean strictMode, File file) {
     this.namespace = namespace;
     this.storeId = storeId;
     this.strictMode = strictMode;
     this.file = file;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

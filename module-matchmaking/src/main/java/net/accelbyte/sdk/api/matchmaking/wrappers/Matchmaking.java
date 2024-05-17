@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -18,9 +18,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Matchmaking {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Matchmaking(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("matchmaking");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Matchmaking(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -28,6 +39,10 @@ public class Matchmaking {
    */
   public ModelsGetChannelsResponse getAllChannelsHandler(GetAllChannelsHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -38,6 +53,10 @@ public class Matchmaking {
    */
   public ModelsCreateChannelResponse createChannelHandler(CreateChannelHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -48,6 +67,10 @@ public class Matchmaking {
    */
   public ModelsTicketMetricResultRecord getMatchPoolMetric(GetMatchPoolMetric input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -57,6 +80,10 @@ public class Matchmaking {
    * @see DeleteChannelHandler
    */
   public void deleteChannelHandler(DeleteChannelHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class Matchmaking {
    * @see StoreMatchResults
    */
   public ModelsMatchResultResponse storeMatchResults(StoreMatchResults input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -75,6 +106,10 @@ public class Matchmaking {
    * @see Rebalance
    */
   public ModelsRebalanceResponse rebalance(Rebalance input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -84,6 +119,10 @@ public class Matchmaking {
    * @see QueueSessionHandler
    */
   public void queueSessionHandler(QueueSessionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -93,6 +132,10 @@ public class Matchmaking {
    * @see DequeueSessionHandler
    */
   public void dequeueSessionHandler(DequeueSessionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -102,6 +145,10 @@ public class Matchmaking {
    * @see QuerySessionHandler
    */
   public ModelsMatchmakingResult querySessionHandler(QuerySessionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -112,6 +159,10 @@ public class Matchmaking {
    */
   public Map<String, List<ModelsMatchingParty>> getAllPartyInAllChannel(
       GetAllPartyInAllChannel input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -121,6 +172,10 @@ public class Matchmaking {
    * @see BulkGetSessions
    */
   public List<ModelsMatchmakingResult> bulkGetSessions(BulkGetSessions input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -130,6 +185,10 @@ public class Matchmaking {
    * @see ExportChannels
    */
   public InputStream exportChannels(ExportChannels input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -139,6 +198,10 @@ public class Matchmaking {
    * @see ImportChannels
    */
   public ModelsImportConfigResponse importChannels(ImportChannels input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -149,6 +212,10 @@ public class Matchmaking {
    */
   public ModelsChannelV1 getSingleMatchmakingChannel(GetSingleMatchmakingChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -158,6 +225,10 @@ public class Matchmaking {
    * @see UpdateMatchmakingChannel
    */
   public void updateMatchmakingChannel(UpdateMatchmakingChannel input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -168,6 +239,10 @@ public class Matchmaking {
    */
   public List<ModelsMatchingParty> getAllPartyInChannel(GetAllPartyInChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -178,6 +253,10 @@ public class Matchmaking {
    */
   public List<ModelsMatchmakingResult> getAllSessionsInChannel(GetAllSessionsInChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -187,6 +266,10 @@ public class Matchmaking {
    * @see AddUserIntoSessionInChannel
    */
   public void addUserIntoSessionInChannel(AddUserIntoSessionInChannel input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -196,6 +279,10 @@ public class Matchmaking {
    * @see DeleteSessionInChannel
    */
   public void deleteSessionInChannel(DeleteSessionInChannel input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -206,6 +293,10 @@ public class Matchmaking {
    */
   public void deleteUserFromSessionInChannel(DeleteUserFromSessionInChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -215,6 +306,10 @@ public class Matchmaking {
    * @see GetStatData
    */
   public ModelsStatResumeResponse getStatData(GetStatData input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -227,6 +322,10 @@ public class Matchmaking {
   @Deprecated
   public ServiceGetSessionHistorySearchResponse searchSessions(SearchSessions input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -239,6 +338,10 @@ public class Matchmaking {
   @Deprecated
   public List<ServiceGetSessionHistoryDetailedResponseItem> getSessionHistoryDetailed(
       GetSessionHistoryDetailed input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -249,6 +352,10 @@ public class Matchmaking {
    */
   public List<ModelsChannelV1> publicGetAllMatchmakingChannel(PublicGetAllMatchmakingChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -259,6 +366,10 @@ public class Matchmaking {
    */
   public ModelsChannelV1 publicGetSingleMatchmakingChannel(PublicGetSingleMatchmakingChannel input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -271,6 +382,10 @@ public class Matchmaking {
   @Deprecated
   public ServiceGetSessionHistorySearchResponseV2 searchSessionsV2(SearchSessionsV2 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

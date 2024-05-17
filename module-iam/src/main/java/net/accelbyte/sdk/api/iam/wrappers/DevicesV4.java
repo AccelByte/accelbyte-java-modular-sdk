@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class DevicesV4 {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public DevicesV4(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public DevicesV4(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class DevicesV4 {
    */
   public ModelDevicesResponseV4 adminGetDevicesByUserV4(AdminGetDevicesByUserV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class DevicesV4 {
    */
   public ModelDeviceBannedResponseV4 adminGetBannedDevicesV4(AdminGetBannedDevicesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class DevicesV4 {
    */
   public ModelDeviceBansResponseV4 adminGetUserDeviceBansV4(AdminGetUserDeviceBansV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -55,6 +78,10 @@ public class DevicesV4 {
    * @see AdminBanDeviceV4
    */
   public void adminBanDeviceV4(AdminBanDeviceV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -64,6 +91,10 @@ public class DevicesV4 {
    * @see AdminGetDeviceBanV4
    */
   public ModelDeviceBanResponseV4 adminGetDeviceBanV4(AdminGetDeviceBanV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -73,6 +104,10 @@ public class DevicesV4 {
    * @see AdminUpdateDeviceBanV4
    */
   public void adminUpdateDeviceBanV4(AdminUpdateDeviceBanV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -82,6 +117,10 @@ public class DevicesV4 {
    * @see AdminGenerateReportV4
    */
   public void adminGenerateReportV4(AdminGenerateReportV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -92,6 +131,10 @@ public class DevicesV4 {
    */
   public ModelDeviceTypesResponseV4 adminGetDeviceTypesV4(AdminGetDeviceTypesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -102,6 +145,10 @@ public class DevicesV4 {
    */
   public ModelDeviceBansResponseV4 adminGetDeviceBansV4(AdminGetDeviceBansV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -112,6 +159,10 @@ public class DevicesV4 {
    */
   public ModelDeviceIDDecryptResponseV4 adminDecryptDeviceV4(AdminDecryptDeviceV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -121,6 +172,10 @@ public class DevicesV4 {
    * @see AdminUnbanDeviceV4
    */
   public void adminUnbanDeviceV4(AdminUnbanDeviceV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -131,6 +186,10 @@ public class DevicesV4 {
    */
   public ModelDeviceUsersResponseV4 adminGetUsersByDeviceV4(AdminGetUsersByDeviceV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

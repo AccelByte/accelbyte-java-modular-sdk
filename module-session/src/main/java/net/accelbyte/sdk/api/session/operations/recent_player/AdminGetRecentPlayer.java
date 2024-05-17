@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class AdminGetRecentPlayer extends Operation {
   /** generated field's value */
   private String path = "/session/v1/admin/namespaces/{namespace}/recent-player";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,10 +53,12 @@ public class AdminGetRecentPlayer extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminGetRecentPlayer(String namespace, Integer limit, String userId) {
+  public AdminGetRecentPlayer(
+      String customBasePath, String namespace, Integer limit, String userId) {
     this.namespace = namespace;
     this.limit = limit;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

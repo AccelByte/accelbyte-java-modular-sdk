@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class AdminRecord {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public AdminRecord(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("cloudsave");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public AdminRecord(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class AdminRecord {
    */
   public ModelsListAdminGameRecordKeysResponse adminListAdminGameRecordV1(
       AdminListAdminGameRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminGameRecordResponse adminBulkGetAdminGameRecordV1(
       AdminBulkGetAdminGameRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminGetAdminGameRecordV1(AdminGetAdminGameRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminPutAdminGameRecordV1(AdminPutAdminGameRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminPostAdminGameRecordV1(AdminPostAdminGameRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -75,6 +106,10 @@ public class AdminRecord {
    * @see AdminDeleteAdminGameRecordV1
    */
   public void adminDeleteAdminGameRecordV1(AdminDeleteAdminGameRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -85,6 +120,10 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminPlayerRecordResponse bulkGetAdminPlayerRecordByUserIdsV1(
       BulkGetAdminPlayerRecordByUserIdsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class AdminRecord {
    */
   public ModelsListAdminPlayerRecordKeysResponse adminListAdminUserRecordsV1(
       AdminListAdminUserRecordsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -105,6 +148,10 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminPlayerRecordResponse adminBulkGetAdminPlayerRecordV1(
       AdminBulkGetAdminPlayerRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -115,6 +162,10 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminGetAdminPlayerRecordV1(
       AdminGetAdminPlayerRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -125,6 +176,10 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminPutAdminPlayerRecordV1(
       AdminPutAdminPlayerRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -135,6 +190,10 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminPostPlayerAdminRecordV1(
       AdminPostPlayerAdminRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -145,6 +204,10 @@ public class AdminRecord {
    */
   public void adminDeleteAdminPlayerRecordV1(AdminDeleteAdminPlayerRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

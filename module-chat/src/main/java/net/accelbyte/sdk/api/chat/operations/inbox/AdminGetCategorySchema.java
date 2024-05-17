@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class AdminGetCategorySchema extends Operation {
   private String path =
       "/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}/schema.json";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,9 +48,10 @@ public class AdminGetCategorySchema extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminGetCategorySchema(String category, String namespace) {
+  public AdminGetCategorySchema(String customBasePath, String category, String namespace) {
     this.category = category;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,15 +16,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class DeploymentConfig {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public DeploymentConfig(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("dsmc");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public DeploymentConfig(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see GetAllDeployment
    */
   public ModelsListDeploymentResponse getAllDeployment(GetAllDeployment input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -34,6 +49,10 @@ public class DeploymentConfig {
    * @see GetDeployment
    */
   public ModelsDeploymentWithOverride getDeployment(GetDeployment input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -43,6 +62,10 @@ public class DeploymentConfig {
    * @see CreateDeployment
    */
   public ModelsDeploymentWithOverride createDeployment(CreateDeployment input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -52,6 +75,10 @@ public class DeploymentConfig {
    * @see DeleteDeployment
    */
   public void deleteDeployment(DeleteDeployment input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -61,6 +88,10 @@ public class DeploymentConfig {
    * @see UpdateDeployment
    */
   public ModelsDeploymentWithOverride updateDeployment(UpdateDeployment input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -71,6 +102,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createRootRegionOverride(CreateRootRegionOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -81,6 +116,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteRootRegionOverride(DeleteRootRegionOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -91,6 +130,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateRootRegionOverride(UpdateRootRegionOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -101,6 +144,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createDeploymentOverride(CreateDeploymentOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -111,6 +158,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteDeploymentOverride(DeleteDeploymentOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -121,6 +172,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateDeploymentOverride(UpdateDeploymentOverride input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -131,6 +186,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createOverrideRegionOverride(
       CreateOverrideRegionOverride input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -141,6 +200,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteOverrideRegionOverride(
       DeleteOverrideRegionOverride input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -151,6 +214,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateOverrideRegionOverride(
       UpdateOverrideRegionOverride input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -161,6 +228,10 @@ public class DeploymentConfig {
    */
   public ModelsListDeploymentResponse getAllDeploymentClient(GetAllDeploymentClient input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -171,6 +242,10 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createDeploymentClient(CreateDeploymentClient input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -180,6 +255,10 @@ public class DeploymentConfig {
    * @see DeleteDeploymentClient
    */
   public void deleteDeploymentClient(DeleteDeploymentClient input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

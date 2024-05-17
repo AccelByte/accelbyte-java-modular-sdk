@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -39,6 +39,7 @@ public class GetAdminUsersByRoleID extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/admin";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -59,12 +60,18 @@ public class GetAdminUsersByRoleID extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetAdminUsersByRoleID(
-      String namespace, Integer after, Integer before, Integer limit, String roleId) {
+      String customBasePath,
+      String namespace,
+      Integer after,
+      Integer before,
+      Integer limit,
+      String roleId) {
     this.namespace = namespace;
     this.after = after;
     this.before = before;
     this.limit = limit;
     this.roleId = roleId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

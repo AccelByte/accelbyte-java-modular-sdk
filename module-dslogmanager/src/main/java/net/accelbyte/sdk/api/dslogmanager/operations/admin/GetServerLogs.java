@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class GetServerLogs extends Operation {
   /** generated field's value */
   private String path = "/dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,12 +55,18 @@ public class GetServerLogs extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetServerLogs(
-      String namespace, String podName, String logType, Integer offset, String origin) {
+      String customBasePath,
+      String namespace,
+      String podName,
+      String logType,
+      Integer offset,
+      String origin) {
     this.namespace = namespace;
     this.podName = podName;
     this.logType = logType;
     this.offset = offset;
     this.origin = origin;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

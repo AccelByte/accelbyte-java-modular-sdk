@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class RetrieveSinglePolicy1 extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class RetrieveSinglePolicy1 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RetrieveSinglePolicy1(String basePolicyId, String namespace) {
+  public RetrieveSinglePolicy1(String customBasePath, String basePolicyId, String namespace) {
     this.basePolicyId = basePolicyId;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

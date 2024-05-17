@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class PublicPartyReject extends Operation {
   private String path =
       "/session/v1/public/namespaces/{namespace}/parties/{partyId}/users/me/reject";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class PublicPartyReject extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicPartyReject(String namespace, String partyId) {
+  public PublicPartyReject(String customBasePath, String namespace, String partyId) {
     this.namespace = namespace;
     this.partyId = partyId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -44,6 +44,7 @@ public class AcceptGroupInvitationPublicV2 extends Operation {
   /** generated field's value */
   private String path = "/group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/accept";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -61,9 +62,10 @@ public class AcceptGroupInvitationPublicV2 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AcceptGroupInvitationPublicV2(String groupId, String namespace) {
+  public AcceptGroupInvitationPublicV2(String customBasePath, String groupId, String namespace) {
     this.groupId = groupId;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

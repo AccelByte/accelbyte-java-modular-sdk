@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class RetrieveEligibilitiesPublicIndirect extends Operation {
   private String path =
       "/agreement/public/eligibilities/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,11 +56,12 @@ public class RetrieveEligibilitiesPublicIndirect extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public RetrieveEligibilitiesPublicIndirect(
-      String clientId, String countryCode, String namespace, String userId) {
+      String customBasePath, String clientId, String countryCode, String namespace, String userId) {
     this.clientId = clientId;
     this.countryCode = countryCode;
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

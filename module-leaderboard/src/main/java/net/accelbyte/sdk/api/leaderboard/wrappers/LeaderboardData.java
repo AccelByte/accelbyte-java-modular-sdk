@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class LeaderboardData {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public LeaderboardData(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("leaderboard");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public LeaderboardData(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -28,6 +39,10 @@ public class LeaderboardData {
   public List<ModelsArchiveLeaderboardSignedURLResponse>
       adminGetArchivedLeaderboardRankingDataV1Handler(
           AdminGetArchivedLeaderboardRankingDataV1Handler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -38,6 +53,10 @@ public class LeaderboardData {
    */
   public void createArchivedLeaderboardRankingDataV1Handler(
       CreateArchivedLeaderboardRankingDataV1Handler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -48,6 +67,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getAllTimeLeaderboardRankingAdminV1(
       GetAllTimeLeaderboardRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -58,6 +81,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentMonthLeaderboardRankingAdminV1(
       GetCurrentMonthLeaderboardRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -68,6 +95,10 @@ public class LeaderboardData {
    */
   public void deleteUserRankingByLeaderboardCodeAdminV1(
       DeleteUserRankingByLeaderboardCodeAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -78,6 +109,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentSeasonLeaderboardRankingAdminV1(
       GetCurrentSeasonLeaderboardRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -88,6 +123,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getTodayLeaderboardRankingAdminV1(
       GetTodayLeaderboardRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -98,6 +137,10 @@ public class LeaderboardData {
    */
   public ModelsUserRankingResponse getUserRankingAdminV1(GetUserRankingAdminV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -108,6 +151,10 @@ public class LeaderboardData {
    */
   public ModelsUpdateUserPointAdminV1Response updateUserPointAdminV1(UpdateUserPointAdminV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -117,6 +164,10 @@ public class LeaderboardData {
    * @see DeleteUserRankingAdminV1
    */
   public void deleteUserRankingAdminV1(DeleteUserRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -127,6 +178,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentWeekLeaderboardRankingAdminV1(
       GetCurrentWeekLeaderboardRankingAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -136,6 +191,10 @@ public class LeaderboardData {
    * @see DeleteUserRankingsAdminV1
    */
   public void deleteUserRankingsAdminV1(DeleteUserRankingsAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -146,6 +205,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getAllTimeLeaderboardRankingPublicV1(
       GetAllTimeLeaderboardRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -156,6 +219,10 @@ public class LeaderboardData {
    */
   public List<ModelsArchiveLeaderboardSignedURLResponse> getArchivedLeaderboardRankingDataV1Handler(
       GetArchivedLeaderboardRankingDataV1Handler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -166,6 +233,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentMonthLeaderboardRankingPublicV1(
       GetCurrentMonthLeaderboardRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -176,6 +247,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentSeasonLeaderboardRankingPublicV1(
       GetCurrentSeasonLeaderboardRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -186,6 +261,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getTodayLeaderboardRankingPublicV1(
       GetTodayLeaderboardRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -196,6 +275,10 @@ public class LeaderboardData {
    */
   public ModelsUserRankingResponse getUserRankingPublicV1(GetUserRankingPublicV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -205,6 +288,10 @@ public class LeaderboardData {
    * @see DeleteUserRankingPublicV1
    */
   public void deleteUserRankingPublicV1(DeleteUserRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -215,6 +302,10 @@ public class LeaderboardData {
    */
   public ModelsGetLeaderboardRankingResp getCurrentWeekLeaderboardRankingPublicV1(
       GetCurrentWeekLeaderboardRankingPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -225,6 +316,10 @@ public class LeaderboardData {
    */
   public V2GetPublicLeaderboardRankingResponse getAllTimeLeaderboardRankingPublicV2(
       GetAllTimeLeaderboardRankingPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

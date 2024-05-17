@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class QueryUncategorizedItems extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/uncategorized";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,6 +55,7 @@ public class QueryUncategorizedItems extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryUncategorizedItems(
+      String customBasePath,
       String namespace,
       Boolean activeOnly,
       Integer limit,
@@ -66,6 +68,7 @@ public class QueryUncategorizedItems extends Operation {
     this.offset = offset;
     this.sortBy = sortBy;
     this.storeId = storeId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

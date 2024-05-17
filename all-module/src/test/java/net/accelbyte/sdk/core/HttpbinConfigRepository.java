@@ -69,5 +69,6 @@ class HttpbinConfigRepository implements ConfigRepository {
   @Override
   public String getCustomServiceBasePath(String serviceName) {
     return "";
-  };
+  }
+  ;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class GetUserActivitiesHandler extends Operation {
   /** generated field's value */
   private String path = "/event/namespaces/{namespace}/users/{userId}/activities";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,11 +54,12 @@ public class GetUserActivitiesHandler extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetUserActivitiesHandler(
-      String namespace, String userId, Integer offset, Integer pageSize) {
+      String customBasePath, String namespace, String userId, Integer offset, Integer pageSize) {
     this.namespace = namespace;
     this.userId = userId;
     this.offset = offset;
     this.pageSize = pageSize;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

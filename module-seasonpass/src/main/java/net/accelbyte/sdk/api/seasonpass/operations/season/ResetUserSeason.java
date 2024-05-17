@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class ResetUserSeason extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,9 +53,10 @@ public class ResetUserSeason extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public ResetUserSeason(String namespace, String userId) {
+  public ResetUserSeason(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

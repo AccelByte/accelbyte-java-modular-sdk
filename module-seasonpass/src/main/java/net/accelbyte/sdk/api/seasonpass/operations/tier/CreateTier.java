@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class CreateTier extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,10 +54,11 @@ public class CreateTier extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public CreateTier(String namespace, String seasonId, TierCreate body) {
+  public CreateTier(String customBasePath, String namespace, String seasonId, TierCreate body) {
     this.namespace = namespace;
     this.seasonId = seasonId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

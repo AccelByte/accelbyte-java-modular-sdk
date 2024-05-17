@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -43,6 +43,7 @@ public class AdminUploadContentS3 extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -63,10 +64,14 @@ public class AdminUploadContentS3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUploadContentS3(
-      String channelId, String namespace, ModelsCreateContentRequestS3 body) {
+      String customBasePath,
+      String channelId,
+      String namespace,
+      ModelsCreateContentRequestS3 body) {
     this.channelId = channelId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

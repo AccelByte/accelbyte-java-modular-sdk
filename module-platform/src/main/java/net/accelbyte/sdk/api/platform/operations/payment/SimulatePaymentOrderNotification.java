@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class SimulatePaymentOrderNotification extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,10 +54,14 @@ public class SimulatePaymentOrderNotification extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public SimulatePaymentOrderNotification(
-      String namespace, String paymentOrderNo, PaymentOrderNotifySimulation body) {
+      String customBasePath,
+      String namespace,
+      String paymentOrderNo,
+      PaymentOrderNotifySimulation body) {
     this.namespace = namespace;
     this.paymentOrderNo = paymentOrderNo;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

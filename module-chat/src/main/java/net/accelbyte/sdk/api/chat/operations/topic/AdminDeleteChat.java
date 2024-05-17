@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -28,6 +28,7 @@ public class AdminDeleteChat extends Operation {
   /** generated field's value */
   private String path = "/chat/admin/namespaces/{namespace}/topic/{topic}/chats/{chatId}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,10 +48,11 @@ public class AdminDeleteChat extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminDeleteChat(String chatId, String namespace, String topic) {
+  public AdminDeleteChat(String customBasePath, String chatId, String namespace, String topic) {
     this.chatId = chatId;
     this.namespace = namespace;
     this.topic = topic;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class BulkFetchOrDefaultStatItems extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,10 +54,12 @@ public class BulkFetchOrDefaultStatItems extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public BulkFetchOrDefaultStatItems(String namespace, String statCode, List<String> userIds) {
+  public BulkFetchOrDefaultStatItems(
+      String customBasePath, String namespace, String statCode, List<String> userIds) {
     this.namespace = namespace;
     this.statCode = statCode;
     this.userIds = userIds;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class Download extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("text/csv");
@@ -49,10 +50,11 @@ public class Download extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public Download(String campaignId, String namespace, Integer batchNo) {
+  public Download(String customBasePath, String campaignId, String namespace, Integer batchNo) {
     this.campaignId = campaignId;
     this.namespace = namespace;
     this.batchNo = batchNo;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

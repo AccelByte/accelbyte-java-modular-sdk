@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class UpdateLocalizedPolicyVersion1 extends Operation {
   private String path =
       "/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,14 @@ public class UpdateLocalizedPolicyVersion1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdateLocalizedPolicyVersion1(
-      String localizedPolicyVersionId, String namespace, UpdateLocalizedPolicyVersionRequest body) {
+      String customBasePath,
+      String localizedPolicyVersionId,
+      String namespace,
+      UpdateLocalizedPolicyVersionRequest body) {
     this.localizedPolicyVersionId = localizedPolicyVersionId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

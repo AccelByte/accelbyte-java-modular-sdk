@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class IndirectBulkAcceptVersionedPolicyV2 extends Operation {
   private String path =
       "/agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,6 +59,7 @@ public class IndirectBulkAcceptVersionedPolicyV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public IndirectBulkAcceptVersionedPolicyV2(
+      String customBasePath,
       String clientId,
       String countryCode,
       String namespace,
@@ -68,6 +70,7 @@ public class IndirectBulkAcceptVersionedPolicyV2 extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

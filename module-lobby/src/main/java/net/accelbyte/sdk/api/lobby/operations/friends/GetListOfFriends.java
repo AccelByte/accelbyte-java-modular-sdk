@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class GetListOfFriends extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,6 +52,7 @@ public class GetListOfFriends extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetListOfFriends(
+      String customBasePath,
       String namespace,
       String userId,
       String friendId,
@@ -63,6 +65,7 @@ public class GetListOfFriends extends Operation {
     this.friendIds = friendIds;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

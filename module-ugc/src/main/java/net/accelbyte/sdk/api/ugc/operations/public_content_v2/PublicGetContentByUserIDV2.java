@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicGetContentByUserIDV2 extends Operation {
   /** generated field's value */
   private String path = "/ugc/v2/public/namespaces/{namespace}/users/{userId}/contents";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,12 +52,18 @@ public class PublicGetContentByUserIDV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetContentByUserIDV2(
-      String namespace, String userId, Integer limit, Integer offset, String sortBy) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      Integer limit,
+      Integer offset,
+      String sortBy) {
     this.namespace = namespace;
     this.userId = userId;
     this.limit = limit;
     this.offset = offset;
     this.sortBy = sortBy;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

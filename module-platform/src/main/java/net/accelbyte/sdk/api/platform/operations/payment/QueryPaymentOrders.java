@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class QueryPaymentOrders extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/payment/orders";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,6 +53,7 @@ public class QueryPaymentOrders extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryPaymentOrders(
+      String customBasePath,
       String namespace,
       String channel,
       String extTxId,
@@ -64,6 +66,7 @@ public class QueryPaymentOrders extends Operation {
     this.limit = limit;
     this.offset = offset;
     this.status = status;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

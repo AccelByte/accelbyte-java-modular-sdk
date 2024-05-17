@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class AdminUpdateIntegrationConfiguration extends Operation {
   private String path =
       "/inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,12 +53,14 @@ public class AdminUpdateIntegrationConfiguration extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUpdateIntegrationConfiguration(
+      String customBasePath,
       String integrationConfigurationId,
       String namespace,
       ApimodelsUpdateIntegrationConfigurationReq body) {
     this.integrationConfigurationId = integrationConfigurationId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

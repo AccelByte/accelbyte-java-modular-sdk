@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class RemovePlayerFromSession extends Operation {
   private String path =
       "/sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player/{userID}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,12 @@ public class RemovePlayerFromSession extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RemovePlayerFromSession(String namespace, String sessionID, String userID) {
+  public RemovePlayerFromSession(
+      String customBasePath, String namespace, String sessionID, String userID) {
     this.namespace = namespace;
     this.sessionID = sessionID;
     this.userID = userID;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

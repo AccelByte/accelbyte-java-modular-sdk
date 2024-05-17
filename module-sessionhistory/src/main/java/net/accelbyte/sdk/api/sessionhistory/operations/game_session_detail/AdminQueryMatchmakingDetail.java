@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminQueryMatchmakingDetail extends Operation {
   /** generated field's value */
   private String path = "/sessionhistory/v1/admin/namespaces/{namespace}/matchmaking";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,6 +53,7 @@ public class AdminQueryMatchmakingDetail extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminQueryMatchmakingDetail(
+      String customBasePath,
       String namespace,
       String gameSessionID,
       Integer limit,
@@ -68,6 +70,7 @@ public class AdminQueryMatchmakingDetail extends Operation {
     this.orderBy = orderBy;
     this.ticketID = ticketID;
     this.userID = userID;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

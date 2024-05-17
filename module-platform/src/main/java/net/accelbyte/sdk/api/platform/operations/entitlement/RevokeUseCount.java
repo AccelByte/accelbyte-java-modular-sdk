@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -36,6 +36,7 @@ public class RevokeUseCount extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revokeByUseCount";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,11 +58,16 @@ public class RevokeUseCount extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public RevokeUseCount(
-      String entitlementId, String namespace, String userId, RevokeUseCountRequest body) {
+      String customBasePath,
+      String entitlementId,
+      String namespace,
+      String userId,
+      RevokeUseCountRequest body) {
     this.entitlementId = entitlementId;
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

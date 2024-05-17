@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class AdminGetGoals extends Operation {
   private String path =
       "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,12 +52,18 @@ public class AdminGetGoals extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminGetGoals(
-      String challengeCode, String namespace, Integer limit, Integer offset, String sortBy) {
+      String customBasePath,
+      String challengeCode,
+      String namespace,
+      Integer limit,
+      Integer offset,
+      String sortBy) {
     this.challengeCode = challengeCode;
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
     this.sortBy = sortBy;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

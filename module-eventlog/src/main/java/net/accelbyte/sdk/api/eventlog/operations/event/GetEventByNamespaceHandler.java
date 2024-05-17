@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class GetEventByNamespaceHandler extends Operation {
   /** generated field's value */
   private String path = "/event/namespaces/{namespace}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,12 +56,18 @@ public class GetEventByNamespaceHandler extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetEventByNamespaceHandler(
-      String namespace, Integer offset, String endDate, Integer pageSize, String startDate) {
+      String customBasePath,
+      String namespace,
+      Integer offset,
+      String endDate,
+      Integer pageSize,
+      String startDate) {
     this.namespace = namespace;
     this.offset = offset;
     this.endDate = endDate;
     this.pageSize = pageSize;
     this.startDate = startDate;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

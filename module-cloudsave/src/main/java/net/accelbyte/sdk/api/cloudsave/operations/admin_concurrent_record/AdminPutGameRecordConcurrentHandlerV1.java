@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -68,6 +68,7 @@ public class AdminPutGameRecordConcurrentHandlerV1 extends Operation {
   /** generated field's value */
   private String path = "/cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -88,10 +89,14 @@ public class AdminPutGameRecordConcurrentHandlerV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminPutGameRecordConcurrentHandlerV1(
-      String key, String namespace, ModelsAdminConcurrentRecordRequest body) {
+      String customBasePath,
+      String key,
+      String namespace,
+      ModelsAdminConcurrentRecordRequest body) {
     this.key = key;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

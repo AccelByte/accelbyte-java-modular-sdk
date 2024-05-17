@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class RecurringChargeSubscription extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,9 +52,11 @@ public class RecurringChargeSubscription extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RecurringChargeSubscription(String namespace, String subscriptionId) {
+  public RecurringChargeSubscription(
+      String customBasePath, String namespace, String subscriptionId) {
     this.namespace = namespace;
     this.subscriptionId = subscriptionId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

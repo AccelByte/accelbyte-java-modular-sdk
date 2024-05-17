@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class UpdateGroupConfigurationAdminV1 extends Operation {
   /** generated field's value */
   private String path = "/group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}";
 
+  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,10 +54,14 @@ public class UpdateGroupConfigurationAdminV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdateGroupConfigurationAdminV1(
-      String configurationCode, String namespace, ModelsUpdateGroupConfigurationRequestV1 body) {
+      String customBasePath,
+      String configurationCode,
+      String namespace,
+      ModelsUpdateGroupConfigurationRequestV1 body) {
     this.configurationCode = configurationCode;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

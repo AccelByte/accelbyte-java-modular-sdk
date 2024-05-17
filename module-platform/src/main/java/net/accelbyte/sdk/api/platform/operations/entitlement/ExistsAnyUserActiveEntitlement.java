@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class ExistsAnyUserActiveEntitlement extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/any";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,6 +53,7 @@ public class ExistsAnyUserActiveEntitlement extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public ExistsAnyUserActiveEntitlement(
+      String customBasePath,
       String namespace,
       String userId,
       List<String> appIds,
@@ -64,6 +66,7 @@ public class ExistsAnyUserActiveEntitlement extends Operation {
     this.itemIds = itemIds;
     this.platform = platform;
     this.skus = skus;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class EventDescriptions {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public EventDescriptions(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("eventlog");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public EventDescriptions(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -28,6 +39,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleAgentType agentTypeDescriptionHandler(AgentTypeDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -40,6 +55,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleAgentType specificAgentTypeDescriptionHandler(
       SpecificAgentTypeDescriptionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -52,6 +71,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventID eventIDDescriptionHandler(EventIDDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -64,6 +87,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventID specificEventIDDescriptionHandler(
       SpecificEventIDDescriptionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +103,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventLevel eventLevelDescriptionHandler(EventLevelDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -88,6 +119,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventLevel specificEventLevelDescriptionHandler(
       SpecificEventLevelDescriptionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -100,6 +135,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventType eventTypeDescriptionHandler(EventTypeDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -112,6 +151,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventType specificEventTypeDescriptionHandler(
       SpecificEventTypeDescriptionHandler input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -124,6 +167,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleUX uxNameDescriptionHandler(UXNameDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -136,6 +183,10 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleUX specificUXDescriptionHandler(SpecificUXDescriptionHandler input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

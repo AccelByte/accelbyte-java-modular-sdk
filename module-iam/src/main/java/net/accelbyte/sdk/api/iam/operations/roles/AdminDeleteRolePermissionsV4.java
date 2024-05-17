@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -24,6 +24,7 @@ public class AdminDeleteRolePermissionsV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/roles/{roleId}/permissions";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -41,9 +42,10 @@ public class AdminDeleteRolePermissionsV4 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminDeleteRolePermissionsV4(String roleId, List<String> body) {
+  public AdminDeleteRolePermissionsV4(String customBasePath, String roleId, List<String> body) {
     this.roleId = roleId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

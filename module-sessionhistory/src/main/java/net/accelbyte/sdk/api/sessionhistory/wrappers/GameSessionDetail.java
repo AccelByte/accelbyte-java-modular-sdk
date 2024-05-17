@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class GameSessionDetail {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public GameSessionDetail(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("sessionhistory");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public GameSessionDetail(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class GameSessionDetail {
    */
   public ApimodelsGameSessionDetailQueryResponse adminQueryGameSessionDetail(
       AdminQueryGameSessionDetail input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class GameSessionDetail {
    */
   public ApimodelsGameSessionDetail getGameSessionDetail(GetGameSessionDetail input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetailQueryResponse adminQueryMatchmakingDetail(
       AdminQueryMatchmakingDetail input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetail adminGetMatchmakingDetailBySessionID(
       AdminGetMatchmakingDetailBySessionID input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetail adminGetMatchmakingDetailByTicketID(
       AdminGetMatchmakingDetailByTicketID input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class GameSessionDetail {
    */
   public ApimodelsPartyDetailQueryResponse adminQueryPartyDetail(AdminQueryPartyDetail input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -85,6 +120,10 @@ public class GameSessionDetail {
    * @see GetPartyDetail
    */
   public ApimodelsPartyDetail getPartyDetail(GetPartyDetail input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class GameSessionDetail {
    */
   public ApimodelsTicketDetailQueryResponse adminQueryTicketDetail(AdminQueryTicketDetail input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -105,6 +148,10 @@ public class GameSessionDetail {
    */
   public ApimodelsTicketObservabilityDetail adminTicketDetailGetByTicketID(
       AdminTicketDetailGetByTicketID input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

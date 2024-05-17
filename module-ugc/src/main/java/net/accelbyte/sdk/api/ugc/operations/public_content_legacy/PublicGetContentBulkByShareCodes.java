@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PublicGetContentBulkByShareCodes extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/public/namespaces/{namespace}/contents/sharecodes/bulk";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,9 +50,10 @@ public class PublicGetContentBulkByShareCodes extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetContentBulkByShareCodes(
-      String namespace, ModelsGetContentBulkByShareCodesRequest body) {
+      String customBasePath, String namespace, ModelsGetContentBulkByShareCodesRequest body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

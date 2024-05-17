@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class LeaderboardConfiguration {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public LeaderboardConfiguration(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("leaderboard");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public LeaderboardConfiguration(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsGetAllLeaderboardConfigsResp getLeaderboardConfigurationsAdminV1(
       GetLeaderboardConfigurationsAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsLeaderboardConfigReq createLeaderboardConfigurationAdminV1(
       CreateLeaderboardConfigurationAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsDeleteBulkLeaderboardsResp deleteBulkLeaderboardConfigurationAdminV1(
       DeleteBulkLeaderboardConfigurationAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsGetLeaderboardConfigResp getLeaderboardConfigurationAdminV1(
       GetLeaderboardConfigurationAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsGetLeaderboardConfigResp updateLeaderboardConfigurationAdminV1(
       UpdateLeaderboardConfigurationAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class LeaderboardConfiguration {
    */
   public void deleteLeaderboardConfigurationAdminV1(DeleteLeaderboardConfigurationAdminV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -85,6 +120,10 @@ public class LeaderboardConfiguration {
    * @see HardDeleteLeaderboardAdminV1
    */
   public void hardDeleteLeaderboardAdminV1(HardDeleteLeaderboardAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsGetAllLeaderboardConfigsPublicResp getLeaderboardConfigurationsPublicV1(
       GetLeaderboardConfigurationsPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -105,6 +148,10 @@ public class LeaderboardConfiguration {
    */
   public ModelsLeaderboardConfigReq createLeaderboardConfigurationPublicV1(
       CreateLeaderboardConfigurationPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -115,6 +162,10 @@ public class LeaderboardConfiguration {
    */
   public V2GetAllLeaderboardConfigsPublicResp getLeaderboardConfigurationsPublicV2(
       GetLeaderboardConfigurationsPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

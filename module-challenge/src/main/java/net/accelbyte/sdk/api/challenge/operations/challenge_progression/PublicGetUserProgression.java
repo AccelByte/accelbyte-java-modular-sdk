@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicGetUserProgression extends Operation {
   private String path =
       "/challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,6 +53,7 @@ public class PublicGetUserProgression extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetUserProgression(
+      String customBasePath,
       String challengeCode,
       String namespace,
       String goalCode,
@@ -64,6 +66,7 @@ public class PublicGetUserProgression extends Operation {
     this.limit = limit;
     this.offset = offset;
     this.tags = tags;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

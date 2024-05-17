@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class UserProfile {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public UserProfile(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("basic");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public UserProfile(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class UserProfile {
    */
   public UserProfileInfo getUserProfileInfoByPublicId(GetUserProfileInfoByPublicId input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -37,6 +52,10 @@ public class UserProfile {
    */
   public List<UserProfilePublicInfo> adminGetUserProfilePublicInfoByIds(
       AdminGetUserProfilePublicInfoByIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class UserProfile {
    * @see GetUserProfileInfo
    */
   public UserProfilePrivateInfo getUserProfileInfo(GetUserProfileInfo input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -55,6 +78,10 @@ public class UserProfile {
    * @see UpdateUserProfile
    */
   public UserProfilePrivateInfo updateUserProfile(UpdateUserProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -64,6 +91,10 @@ public class UserProfile {
    * @see DeleteUserProfile
    */
   public UserProfilePrivateInfo deleteUserProfile(DeleteUserProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -73,6 +104,10 @@ public class UserProfile {
    * @see GetCustomAttributesInfo
    */
   public Map<String, ?> getCustomAttributesInfo(GetCustomAttributesInfo input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -83,6 +118,10 @@ public class UserProfile {
    */
   public Map<String, ?> updateCustomAttributesPartially(UpdateCustomAttributesPartially input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -93,6 +132,10 @@ public class UserProfile {
    */
   public Map<String, ?> getPrivateCustomAttributesInfo(GetPrivateCustomAttributesInfo input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -103,6 +146,10 @@ public class UserProfile {
    */
   public Map<String, ?> updatePrivateCustomAttributesPartially(
       UpdatePrivateCustomAttributesPartially input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -113,6 +160,10 @@ public class UserProfile {
    */
   public UserProfilePrivateInfo updateUserProfileStatus(UpdateUserProfileStatus input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -123,6 +174,10 @@ public class UserProfile {
    */
   public List<UserProfilePublicInfo> publicGetUserProfilePublicInfoByIds(
       PublicGetUserProfilePublicInfoByIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -133,6 +188,10 @@ public class UserProfile {
    */
   public UserProfilePublicInfo publicGetUserProfileInfoByPublicId(
       PublicGetUserProfileInfoByPublicId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -142,6 +201,10 @@ public class UserProfile {
    * @see GetMyProfileInfo
    */
   public UserProfilePrivateInfo getMyProfileInfo(GetMyProfileInfo input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -151,6 +214,10 @@ public class UserProfile {
    * @see UpdateMyProfile
    */
   public UserProfilePrivateInfo updateMyProfile(UpdateMyProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -160,6 +227,10 @@ public class UserProfile {
    * @see CreateMyProfile
    */
   public UserProfilePrivateInfo createMyProfile(CreateMyProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -170,6 +241,10 @@ public class UserProfile {
    */
   public Map<String, ?> getMyPrivateCustomAttributesInfo(GetMyPrivateCustomAttributesInfo input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -180,6 +255,10 @@ public class UserProfile {
    */
   public Map<String, ?> updateMyPrivateCustomAttributesPartially(
       UpdateMyPrivateCustomAttributesPartially input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -189,6 +268,10 @@ public class UserProfile {
    * @see GetMyZipCode
    */
   public UserZipCode getMyZipCode(GetMyZipCode input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -198,6 +281,10 @@ public class UserProfile {
    * @see UpdateMyZipCode
    */
   public UserZipCode updateMyZipCode(UpdateMyZipCode input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -207,6 +294,10 @@ public class UserProfile {
    * @see PublicGetUserProfileInfo
    */
   public UserProfileInfo publicGetUserProfileInfo(PublicGetUserProfileInfo input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -216,6 +307,10 @@ public class UserProfile {
    * @see PublicUpdateUserProfile
    */
   public UserProfileInfo publicUpdateUserProfile(PublicUpdateUserProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -225,6 +320,10 @@ public class UserProfile {
    * @see PublicCreateUserProfile
    */
   public UserProfileInfo publicCreateUserProfile(PublicCreateUserProfile input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -235,6 +334,10 @@ public class UserProfile {
    */
   public Map<String, ?> publicGetCustomAttributesInfo(PublicGetCustomAttributesInfo input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -245,6 +348,10 @@ public class UserProfile {
    */
   public Map<String, ?> publicUpdateCustomAttributesPartially(
       PublicUpdateCustomAttributesPartially input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -255,6 +362,10 @@ public class UserProfile {
    */
   public UserProfilePublicInfo publicGetUserProfilePublicInfo(PublicGetUserProfilePublicInfo input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -265,6 +376,10 @@ public class UserProfile {
    */
   public UserProfileInfo publicUpdateUserProfileStatus(PublicUpdateUserProfileStatus input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -45,6 +45,7 @@ public class CreateNewGroupPublicV1 extends Operation {
   /** generated field's value */
   private String path = "/group/v1/public/namespaces/{namespace}/groups";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,9 +63,11 @@ public class CreateNewGroupPublicV1 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public CreateNewGroupPublicV1(String namespace, ModelsPublicCreateNewGroupRequestV1 body) {
+  public CreateNewGroupPublicV1(
+      String customBasePath, String namespace, ModelsPublicCreateNewGroupRequestV1 body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

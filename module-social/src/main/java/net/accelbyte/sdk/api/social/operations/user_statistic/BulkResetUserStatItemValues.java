@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class BulkResetUserStatItemValues extends Operation {
   private String path =
       "/social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,6 +55,7 @@ public class BulkResetUserStatItemValues extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public BulkResetUserStatItemValues(
+      String customBasePath,
       String namespace,
       String userId,
       String additionalKey,
@@ -62,6 +64,7 @@ public class BulkResetUserStatItemValues extends Operation {
     this.userId = userId;
     this.additionalKey = additionalKey;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

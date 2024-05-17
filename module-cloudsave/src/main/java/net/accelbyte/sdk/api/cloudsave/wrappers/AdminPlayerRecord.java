@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class AdminPlayerRecord {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public AdminPlayerRecord(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("cloudsave");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public AdminPlayerRecord(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class AdminPlayerRecord {
    */
   public ModelsBulkGetPlayerRecordSizeResponse bulkGetPlayerRecordSizeHandlerV1(
       BulkGetPlayerRecordSizeHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -39,6 +54,10 @@ public class AdminPlayerRecord {
   @Deprecated
   public ModelsListPlayerRecordKeysResponse listPlayerRecordHandlerV1(
       ListPlayerRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -49,6 +68,10 @@ public class AdminPlayerRecord {
    */
   public List<ModelsBulkUpdatePlayerRecordByKeyResponse> adminBulkPutPlayerRecordsByKeyHandlerV1(
       AdminBulkPutPlayerRecordsByKeyHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -59,6 +82,10 @@ public class AdminPlayerRecord {
    */
   public ModelsBulkGetPlayerRecordResponse adminBulkGetPlayerRecordsByUserIDsHandlerV1(
       AdminBulkGetPlayerRecordsByUserIDsHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -69,6 +96,10 @@ public class AdminPlayerRecord {
    */
   public ModelsListPlayerRecordKeysResponse adminRetrievePlayerRecords(
       AdminRetrievePlayerRecords input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -79,6 +110,10 @@ public class AdminPlayerRecord {
    */
   public List<ModelsBulkUpdatePlayerRecordResponse> adminPutPlayerRecordsHandlerV1(
       AdminPutPlayerRecordsHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -89,6 +124,10 @@ public class AdminPlayerRecord {
    */
   public ModelsBulkGetAdminPlayerRecordResponse adminGetPlayerRecordsHandlerV1(
       AdminGetPlayerRecordsHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -99,6 +138,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminGetPlayerRecordHandlerV1(
       AdminGetPlayerRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -109,6 +152,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminPutPlayerRecordHandlerV1(
       AdminPutPlayerRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -119,6 +166,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminPostPlayerRecordHandlerV1(
       AdminPostPlayerRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -129,6 +180,10 @@ public class AdminPlayerRecord {
    */
   public void adminDeletePlayerRecordHandlerV1(AdminDeletePlayerRecordHandlerV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -139,6 +194,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminGetPlayerPublicRecordHandlerV1(
       AdminGetPlayerPublicRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -149,6 +208,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminPutPlayerPublicRecordHandlerV1(
       AdminPutPlayerPublicRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -159,6 +222,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordResponse adminPostPlayerPublicRecordHandlerV1(
       AdminPostPlayerPublicRecordHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -169,6 +236,10 @@ public class AdminPlayerRecord {
    */
   public void adminDeletePlayerPublicRecordHandlerV1(AdminDeletePlayerPublicRecordHandlerV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -179,6 +250,10 @@ public class AdminPlayerRecord {
    */
   public ModelsPlayerRecordSizeResponse adminGetPlayerRecordSizeHandlerV1(
       AdminGetPlayerRecordSizeHandlerV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

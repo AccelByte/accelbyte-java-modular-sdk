@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class PublicUpdateInsertSessionStorage extends Operation {
   private String path =
       "/session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}";
 
+  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,11 +57,16 @@ public class PublicUpdateInsertSessionStorage extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicUpdateInsertSessionStorage(
-      String namespace, String sessionId, String userId, Map<String, ?> body) {
+      String customBasePath,
+      String namespace,
+      String sessionId,
+      String userId,
+      Map<String, ?> body) {
     this.namespace = namespace;
     this.sessionId = sessionId;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

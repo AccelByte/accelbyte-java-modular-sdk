@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class AdminUpdateGameSessionMember extends Operation {
   private String path =
       "/session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType}";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,11 +53,16 @@ public class AdminUpdateGameSessionMember extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUpdateGameSessionMember(
-      String memberId, String namespace, String sessionId, String statusType) {
+      String customBasePath,
+      String memberId,
+      String namespace,
+      String sessionId,
+      String statusType) {
     this.memberId = memberId;
     this.namespace = namespace;
     this.sessionId = sessionId;
     this.statusType = statusType;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class DeleteUserStatItems2 extends Operation {
   private String path =
       "/social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,11 +57,16 @@ public class DeleteUserStatItems2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public DeleteUserStatItems2(
-      String namespace, String statCode, String userId, String additionalKey) {
+      String customBasePath,
+      String namespace,
+      String statCode,
+      String userId,
+      String additionalKey) {
     this.namespace = namespace;
     this.statCode = statCode;
     this.userId = userId;
     this.additionalKey = additionalKey;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

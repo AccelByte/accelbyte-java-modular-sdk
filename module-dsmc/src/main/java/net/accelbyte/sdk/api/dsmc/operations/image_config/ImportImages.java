@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -40,6 +40,7 @@ public class ImportImages extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/admin/images/import";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,8 +55,9 @@ public class ImportImages extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public ImportImages(File file) {
+  public ImportImages(String customBasePath, File file) {
     this.file = file;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

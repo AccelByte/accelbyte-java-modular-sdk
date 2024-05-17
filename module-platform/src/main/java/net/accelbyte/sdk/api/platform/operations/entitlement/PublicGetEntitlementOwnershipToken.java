@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -99,6 +99,7 @@ public class PublicGetEntitlementOwnershipToken extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/users/me/entitlements/ownershipToken";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -118,11 +119,16 @@ public class PublicGetEntitlementOwnershipToken extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetEntitlementOwnershipToken(
-      String namespace, List<String> appIds, List<String> itemIds, List<String> skus) {
+      String customBasePath,
+      String namespace,
+      List<String> appIds,
+      List<String> itemIds,
+      List<String> skus) {
     this.namespace = namespace;
     this.appIds = appIds;
     this.itemIds = itemIds;
     this.skus = skus;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

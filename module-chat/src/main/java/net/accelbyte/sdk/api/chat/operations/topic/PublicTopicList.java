@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PublicTopicList extends Operation {
   /** generated field's value */
   private String path = "/chat/public/namespaces/{namespace}/topic";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,11 +50,13 @@ public class PublicTopicList extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicTopicList(String namespace, Integer limit, Integer offset, String topicType) {
+  public PublicTopicList(
+      String customBasePath, String namespace, Integer limit, Integer offset, String topicType) {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
     this.topicType = topicType;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

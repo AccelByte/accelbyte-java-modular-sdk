@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -37,6 +37,7 @@ public class UpdatePatchSingleGroupPublicV1 extends Operation {
   /** generated field's value */
   private String path = "/group/v1/public/namespaces/{namespace}/groups/{groupId}";
 
+  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,10 +58,11 @@ public class UpdatePatchSingleGroupPublicV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdatePatchSingleGroupPublicV1(
-      String groupId, String namespace, ModelsUpdateGroupRequestV1 body) {
+      String customBasePath, String groupId, String namespace, ModelsUpdateGroupRequestV1 body) {
     this.groupId = groupId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

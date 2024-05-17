@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminDeleteClientPermissionV3 extends Operation {
   private String path =
       "/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,11 +52,12 @@ public class AdminDeleteClientPermissionV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminDeleteClientPermissionV3(
-      Integer action, String clientId, String namespace, String resource) {
+      String customBasePath, Integer action, String clientId, String namespace, String resource) {
     this.action = action;
     this.clientId = clientId;
     this.namespace = namespace;
     this.resource = resource;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

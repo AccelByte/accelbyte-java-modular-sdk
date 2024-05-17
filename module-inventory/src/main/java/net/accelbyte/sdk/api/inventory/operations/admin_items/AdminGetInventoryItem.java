@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class AdminGetInventoryItem extends Operation {
   private String path =
       "/inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,11 +55,16 @@ public class AdminGetInventoryItem extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminGetInventoryItem(
-      String inventoryId, String namespace, String slotId, String sourceItemId) {
+      String customBasePath,
+      String inventoryId,
+      String namespace,
+      String slotId,
+      String sourceItemId) {
     this.inventoryId = inventoryId;
     this.namespace = namespace;
     this.slotId = slotId;
     this.sourceItemId = sourceItemId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

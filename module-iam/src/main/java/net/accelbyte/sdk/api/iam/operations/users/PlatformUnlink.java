@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -43,6 +43,7 @@ public class PlatformUnlink extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded", "text/plain");
   private List<String> produces = Arrays.asList("application/json");
@@ -64,11 +65,16 @@ public class PlatformUnlink extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PlatformUnlink(
-      String namespace, String platformId, String userId, String platformNamespace) {
+      String customBasePath,
+      String namespace,
+      String platformId,
+      String userId,
+      String platformNamespace) {
     this.namespace = namespace;
     this.platformId = platformId;
     this.userId = userId;
     this.platformNamespace = platformNamespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

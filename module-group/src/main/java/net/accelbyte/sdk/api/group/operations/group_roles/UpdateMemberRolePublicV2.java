@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class UpdateMemberRolePublicV2 extends Operation {
   private String path =
       "/group/v2/public/namespaces/{namespace}/roles/{memberRoleId}/groups/{groupId}/members";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,6 +57,7 @@ public class UpdateMemberRolePublicV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdateMemberRolePublicV2(
+      String customBasePath,
       String groupId,
       String memberRoleId,
       String namespace,
@@ -64,6 +66,7 @@ public class UpdateMemberRolePublicV2 extends Operation {
     this.memberRoleId = memberRoleId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class RefundUserPaymentOrder extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,11 +53,16 @@ public class RefundUserPaymentOrder extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public RefundUserPaymentOrder(
-      String namespace, String paymentOrderNo, String userId, PaymentOrderRefund body) {
+      String customBasePath,
+      String namespace,
+      String paymentOrderNo,
+      String userId,
+      PaymentOrderRefund body) {
     this.namespace = namespace;
     this.paymentOrderNo = paymentOrderNo;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

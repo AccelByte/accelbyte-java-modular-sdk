@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminAddProfanityFilters extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters/bulk";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,14 @@ public class AdminAddProfanityFilters extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminAddProfanityFilters(
-      String list, String namespace, ModelsAdminAddProfanityFiltersRequest body) {
+      String customBasePath,
+      String list,
+      String namespace,
+      ModelsAdminAddProfanityFiltersRequest body) {
     this.list = list;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

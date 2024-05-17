@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class GetLeaderboardConfigurationsAdminV1 extends Operation {
   /** generated field's value */
   private String path = "/leaderboard/v1/admin/namespaces/{namespace}/leaderboards";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,12 +50,18 @@ public class GetLeaderboardConfigurationsAdminV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetLeaderboardConfigurationsAdminV1(
-      String namespace, Boolean isArchived, Boolean isDeleted, Integer limit, Integer offset) {
+      String customBasePath,
+      String namespace,
+      Boolean isArchived,
+      Boolean isDeleted,
+      Integer limit,
+      Integer offset) {
     this.namespace = namespace;
     this.isArchived = isArchived;
     this.isDeleted = isDeleted;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class SelectAllRecordsByCriteria extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,6 +55,7 @@ public class SelectAllRecordsByCriteria extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public SelectAllRecordsByCriteria(
+      String customBasePath,
       String namespace,
       String storeId,
       String action,
@@ -72,6 +74,7 @@ public class SelectAllRecordsByCriteria extends Operation {
     this.type = type;
     this.updatedAtEnd = updatedAtEnd;
     this.updatedAtStart = updatedAtStart;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

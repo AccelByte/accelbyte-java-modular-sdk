@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PublicSetPartyLimitV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}/limit";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,10 +52,14 @@ public class PublicSetPartyLimitV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicSetPartyLimitV1(
-      String namespace, String partyId, ModelsPartyPUTLimitSizeRequest body) {
+      String customBasePath,
+      String namespace,
+      String partyId,
+      ModelsPartyPUTLimitSizeRequest body) {
     this.namespace = namespace;
     this.partyId = partyId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

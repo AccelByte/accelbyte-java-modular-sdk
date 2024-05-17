@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -36,6 +36,7 @@ public class PublicGetMyEntitlementOwnershipBySku extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,10 +56,11 @@ public class PublicGetMyEntitlementOwnershipBySku extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetMyEntitlementOwnershipBySku(
-      String namespace, String entitlementClazz, String sku) {
+      String customBasePath, String namespace, String entitlementClazz, String sku) {
     this.namespace = namespace;
     this.entitlementClazz = entitlementClazz;
     this.sku = sku;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

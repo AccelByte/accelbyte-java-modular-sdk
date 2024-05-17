@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class GetPaymentTaxValue extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/payment/tax";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,11 +54,16 @@ public class GetPaymentTaxValue extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetPaymentTaxValue(
-      String namespace, String zipCode, String paymentOrderNo, String paymentProvider) {
+      String customBasePath,
+      String namespace,
+      String zipCode,
+      String paymentOrderNo,
+      String paymentProvider) {
     this.namespace = namespace;
     this.zipCode = zipCode;
     this.paymentOrderNo = paymentOrderNo;
     this.paymentProvider = paymentProvider;
+    this.customBasePath = customBasePath;
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class AdminGroup {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public AdminGroup(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("ugc");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public AdminGroup(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class AdminGroup {
    */
   public ModelsPaginatedGroupResponse singleAdminGetAllGroups(SingleAdminGetAllGroups input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -35,6 +50,10 @@ public class AdminGroup {
    * @see AdminCreateGroup
    */
   public ModelsCreateGroupResponse adminCreateGroup(AdminCreateGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -44,6 +63,10 @@ public class AdminGroup {
    * @see SingleAdminGetGroup
    */
   public ModelsCreateGroupResponse singleAdminGetGroup(SingleAdminGetGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -54,6 +77,10 @@ public class AdminGroup {
    */
   public ModelsCreateGroupResponse singleAdminUpdateGroup(SingleAdminUpdateGroup input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -63,6 +90,10 @@ public class AdminGroup {
    * @see SingleAdminDeleteGroup
    */
   public void singleAdminDeleteGroup(SingleAdminDeleteGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -73,6 +104,10 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponse singleAdminGetGroupContents(
       SingleAdminGetGroupContents input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -82,6 +117,10 @@ public class AdminGroup {
    * @see AdminGetAllGroups
    */
   public ModelsPaginatedGroupResponse adminGetAllGroups(AdminGetAllGroups input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -91,6 +130,10 @@ public class AdminGroup {
    * @see AdminGetGroup
    */
   public ModelsCreateGroupResponse adminGetGroup(AdminGetGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -100,6 +143,10 @@ public class AdminGroup {
    * @see AdminUpdateGroup
    */
   public ModelsCreateGroupResponse adminUpdateGroup(AdminUpdateGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -109,6 +156,10 @@ public class AdminGroup {
    * @see AdminDeleteGroup
    */
   public void adminDeleteGroup(AdminDeleteGroup input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -119,6 +170,10 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponse adminGetGroupContents(AdminGetGroupContents input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -129,6 +184,10 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetOfficialGroupContentsV2(
       AdminGetOfficialGroupContentsV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -139,6 +198,10 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetUserGroupContentsV2(
       AdminGetUserGroupContentsV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class QueryMatchHistories extends Operation {
   private String path =
       "/sessionhistory/v2/admin/namespaces/{namespace}/xray/matches/{matchId}/histories";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,11 +50,13 @@ public class QueryMatchHistories extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public QueryMatchHistories(String matchId, String namespace, Integer limit, Integer offset) {
+  public QueryMatchHistories(
+      String customBasePath, String matchId, String namespace, Integer limit, Integer offset) {
     this.matchId = matchId;
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

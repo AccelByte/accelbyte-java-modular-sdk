@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class UpdatePayPalConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/merchant/{id}/paypalconfig";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,11 +50,13 @@ public class UpdatePayPalConfig extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public UpdatePayPalConfig(String id, Boolean sandbox, Boolean validate, PayPalConfig body) {
+  public UpdatePayPalConfig(
+      String customBasePath, String id, Boolean sandbox, Boolean validate, PayPalConfig body) {
     this.id = id;
     this.sandbox = sandbox;
     this.validate = validate;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

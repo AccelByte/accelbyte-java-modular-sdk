@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -44,6 +44,7 @@ public class GetSessionHistoryDetailed extends Operation {
   private String path =
       "/matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,9 +62,10 @@ public class GetSessionHistoryDetailed extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public GetSessionHistoryDetailed(String matchID, String namespace) {
+  public GetSessionHistoryDetailed(String customBasePath, String matchID, String namespace) {
     this.matchID = matchID;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

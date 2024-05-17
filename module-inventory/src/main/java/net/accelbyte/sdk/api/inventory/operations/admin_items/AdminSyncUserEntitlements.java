@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminSyncUserEntitlements extends Operation {
   private String path =
       "/inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class AdminSyncUserEntitlements extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminSyncUserEntitlements(String namespace, String userId) {
+  public AdminSyncUserEntitlements(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

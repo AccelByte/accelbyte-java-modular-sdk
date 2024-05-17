@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicCreateContentV2 extends Operation {
   private String path =
       "/ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,11 +53,16 @@ public class PublicCreateContentV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicCreateContentV2(
-      String channelId, String namespace, String userId, ModelsContentRequestV2 body) {
+      String customBasePath,
+      String channelId,
+      String namespace,
+      String userId,
+      ModelsContentRequestV2 body) {
     this.channelId = channelId;
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

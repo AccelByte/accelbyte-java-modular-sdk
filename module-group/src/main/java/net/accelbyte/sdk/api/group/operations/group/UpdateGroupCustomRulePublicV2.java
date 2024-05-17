@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class UpdateGroupCustomRulePublicV2 extends Operation {
   /** generated field's value */
   private String path = "/group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/custom";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,10 +56,14 @@ public class UpdateGroupCustomRulePublicV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public UpdateGroupCustomRulePublicV2(
-      String groupId, String namespace, ModelsUpdateGroupCustomRuleRequestV1 body) {
+      String customBasePath,
+      String groupId,
+      String namespace,
+      ModelsUpdateGroupCustomRuleRequestV1 body) {
     this.groupId = groupId;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -28,6 +28,7 @@ public class DeleteThirdPartyLoginPlatformCredentialV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -45,9 +46,11 @@ public class DeleteThirdPartyLoginPlatformCredentialV3 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteThirdPartyLoginPlatformCredentialV3(String namespace, String platformId) {
+  public DeleteThirdPartyLoginPlatformCredentialV3(
+      String customBasePath, String namespace, String platformId) {
     this.namespace = namespace;
     this.platformId = platformId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

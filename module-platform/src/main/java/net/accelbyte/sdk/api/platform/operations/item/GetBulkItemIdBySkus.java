@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class GetBulkItemIdBySkus extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/itemId/bySkus";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,10 +53,12 @@ public class GetBulkItemIdBySkus extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public GetBulkItemIdBySkus(String namespace, List<String> sku, String storeId) {
+  public GetBulkItemIdBySkus(
+      String customBasePath, String namespace, List<String> sku, String storeId) {
     this.namespace = namespace;
     this.sku = sku;
     this.storeId = storeId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

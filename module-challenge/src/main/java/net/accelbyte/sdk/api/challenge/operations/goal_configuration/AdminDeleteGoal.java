@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminDeleteGoal extends Operation {
   private String path =
       "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,10 +49,12 @@ public class AdminDeleteGoal extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminDeleteGoal(String challengeCode, String code, String namespace) {
+  public AdminDeleteGoal(
+      String customBasePath, String challengeCode, String code, String namespace) {
     this.challengeCode = challengeCode;
     this.code = code;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

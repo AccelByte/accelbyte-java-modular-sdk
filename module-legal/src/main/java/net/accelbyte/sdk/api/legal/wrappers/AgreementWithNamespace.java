@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class AgreementWithNamespace {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public AgreementWithNamespace(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("legal");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public AgreementWithNamespace(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class AgreementWithNamespace {
    */
   public List<UserAgreementsResponse> retrieveAcceptedAgreementsForMultiUsers(
       RetrieveAcceptedAgreementsForMultiUsers input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -37,6 +52,10 @@ public class AgreementWithNamespace {
    */
   public List<RetrieveAcceptedAgreementResponse> retrieveAcceptedAgreements1(
       RetrieveAcceptedAgreements1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -47,6 +66,10 @@ public class AgreementWithNamespace {
    */
   public PagedRetrieveUserAcceptedAgreementResponse retrieveAllUsersByPolicyVersion1(
       RetrieveAllUsersByPolicyVersion1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -57,6 +80,10 @@ public class AgreementWithNamespace {
    */
   public DownloadExportedAgreementsInCSVResponse downloadExportedAgreementsInCSV(
       DownloadExportedAgreementsInCSV input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -67,6 +94,10 @@ public class AgreementWithNamespace {
    */
   public InitiateExportAgreementsToCSVResponse initiateExportAgreementsToCSV(
       InitiateExportAgreementsToCSV input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

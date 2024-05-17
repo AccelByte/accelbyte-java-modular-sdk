@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class PublicPlayerBinaryRecord {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public PublicPlayerBinaryRecord(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("cloudsave");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public PublicPlayerBinaryRecord(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsBulkGetPlayerBinaryRecordResponse bulkGetPlayerPublicBinaryRecordsV1(
       BulkGetPlayerPublicBinaryRecordsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsListPlayerBinaryRecordsResponse listMyBinaryRecordsV1(ListMyBinaryRecordsV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsBulkGetPlayerBinaryRecordResponse bulkGetMyBinaryRecordV1(
       BulkGetMyBinaryRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse postPlayerBinaryRecordV1(PostPlayerBinaryRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsListPlayerBinaryRecordsResponse listOtherPlayerPublicBinaryRecordsV1(
       ListOtherPlayerPublicBinaryRecordsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsBulkGetPlayerBinaryRecordResponse bulkGetOtherPlayerPublicBinaryRecordsV1(
       BulkGetOtherPlayerPublicBinaryRecordsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -86,6 +121,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsPlayerBinaryRecordResponse getPlayerBinaryRecordV1(GetPlayerBinaryRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -96,6 +135,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsPlayerBinaryRecordResponse putPlayerBinaryRecordV1(PutPlayerBinaryRecordV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -105,6 +148,10 @@ public class PublicPlayerBinaryRecord {
    * @see DeletePlayerBinaryRecordV1
    */
   public void deletePlayerBinaryRecordV1(DeletePlayerBinaryRecordV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -115,6 +162,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsPlayerBinaryRecordResponse putPlayerBinaryRecorMetadataV1(
       PutPlayerBinaryRecorMetadataV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -125,6 +176,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse postPlayerBinaryPresignedURLV1(
       PostPlayerBinaryPresignedURLV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -135,6 +190,10 @@ public class PublicPlayerBinaryRecord {
    */
   public ModelsPlayerBinaryRecordResponse getPlayerPublicBinaryRecordsV1(
       GetPlayerPublicBinaryRecordsV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

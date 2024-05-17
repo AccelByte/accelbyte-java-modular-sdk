@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class DevelopmentServerConfigurationDelete extends Operation {
   private String path =
       "/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,11 @@ public class DevelopmentServerConfigurationDelete extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DevelopmentServerConfigurationDelete(String developmentServerConfigID, String namespace) {
+  public DevelopmentServerConfigurationDelete(
+      String customBasePath, String developmentServerConfigID, String namespace) {
     this.developmentServerConfigID = developmentServerConfigID;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -24,6 +24,7 @@ public class LoginSSOClient extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/sso/{platformId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -40,9 +41,10 @@ public class LoginSSOClient extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public LoginSSOClient(String platformId, String payload) {
+  public LoginSSOClient(String customBasePath, String platformId, String payload) {
     this.platformId = platformId;
     this.payload = payload;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

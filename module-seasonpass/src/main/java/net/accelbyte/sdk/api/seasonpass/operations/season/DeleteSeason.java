@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class DeleteSeason extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,9 +50,10 @@ public class DeleteSeason extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteSeason(String namespace, String seasonId) {
+  public DeleteSeason(String customBasePath, String namespace, String seasonId) {
     this.namespace = namespace;
     this.seasonId = seasonId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

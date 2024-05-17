@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class ListQueue extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/artifacts/queues";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -49,11 +50,13 @@ public class ListQueue extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public ListQueue(Integer limit, String next, String previous, String nodeIP) {
+  public ListQueue(
+      String customBasePath, Integer limit, String next, String previous, String nodeIP) {
     this.limit = limit;
     this.next = next;
     this.previous = previous;
     this.nodeIP = nodeIP;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

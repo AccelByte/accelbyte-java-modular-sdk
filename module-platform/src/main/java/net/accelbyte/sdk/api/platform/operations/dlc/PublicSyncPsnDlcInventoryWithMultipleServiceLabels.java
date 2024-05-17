@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PublicSyncPsnDlcInventoryWithMultipleServiceLabels extends Operatio
   private String path =
       "/platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,10 +51,14 @@ public class PublicSyncPsnDlcInventoryWithMultipleServiceLabels extends Operatio
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicSyncPsnDlcInventoryWithMultipleServiceLabels(
-      String namespace, String userId, PlayStationDLCSyncMultiServiceLabelsRequest body) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      PlayStationDLCSyncMultiServiceLabelsRequest body) {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

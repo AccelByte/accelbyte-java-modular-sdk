@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class AdminHideUserContent extends Operation {
   private String path =
       "/ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,11 +53,16 @@ public class AdminHideUserContent extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminHideUserContent(
-      String contentId, String namespace, String userId, ModelsHideContentRequest body) {
+      String customBasePath,
+      String contentId,
+      String namespace,
+      String userId,
+      ModelsHideContentRequest body) {
     this.contentId = contentId;
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

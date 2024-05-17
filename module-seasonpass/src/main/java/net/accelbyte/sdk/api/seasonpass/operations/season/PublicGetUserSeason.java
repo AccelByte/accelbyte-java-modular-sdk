@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -35,6 +35,7 @@ public class PublicGetUserSeason extends Operation {
   private String path =
       "/seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,10 +55,12 @@ public class PublicGetUserSeason extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicGetUserSeason(String namespace, String seasonId, String userId) {
+  public PublicGetUserSeason(
+      String customBasePath, String namespace, String seasonId, String userId) {
     this.namespace = namespace;
     this.seasonId = seasonId;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

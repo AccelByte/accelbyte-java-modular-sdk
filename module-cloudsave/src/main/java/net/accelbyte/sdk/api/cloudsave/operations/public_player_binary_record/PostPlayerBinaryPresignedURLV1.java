@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class PostPlayerBinaryPresignedURLV1 extends Operation {
   private String path =
       "/cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/presigned";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,11 +57,16 @@ public class PostPlayerBinaryPresignedURLV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PostPlayerBinaryPresignedURLV1(
-      String key, String namespace, String userId, ModelsUploadBinaryRecordRequest body) {
+      String customBasePath,
+      String key,
+      String namespace,
+      String userId,
+      ModelsUploadBinaryRecordRequest body) {
     this.key = key;
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

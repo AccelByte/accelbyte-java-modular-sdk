@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -41,6 +41,7 @@ public class RejectGroupJoinRequestPublicV2 extends Operation {
   private String path =
       "/group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/join/reject";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -60,10 +61,12 @@ public class RejectGroupJoinRequestPublicV2 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RejectGroupJoinRequestPublicV2(String groupId, String namespace, String userId) {
+  public RejectGroupJoinRequestPublicV2(
+      String customBasePath, String groupId, String namespace, String userId) {
     this.groupId = groupId;
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class GetPublicEditHistory extends Operation {
   /** generated field's value */
   private String path = "/event/v2/public/namespaces/{namespace}/users/{userId}/edithistory";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,6 +53,7 @@ public class GetPublicEditHistory extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetPublicEditHistory(
+      String customBasePath,
       String namespace,
       String userId,
       String endDate,
@@ -66,6 +68,7 @@ public class GetPublicEditHistory extends Operation {
     this.pageSize = pageSize;
     this.startDate = startDate;
     this.type = type;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -44,6 +44,7 @@ public class BulkUpdateUserStatItem extends Operation {
   private String path =
       "/social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -64,11 +65,16 @@ public class BulkUpdateUserStatItem extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public BulkUpdateUserStatItem(
-      String namespace, String userId, String additionalKey, List<BulkStatItemUpdate> body) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      String additionalKey,
+      List<BulkStatItemUpdate> body) {
     this.namespace = namespace;
     this.userId = userId;
     this.additionalKey = additionalKey;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

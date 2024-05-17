@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -28,6 +28,7 @@ public class AdminDeleteInboxMessage extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/inbox/namespaces/{namespace}/message/{messageId}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,10 +47,12 @@ public class AdminDeleteInboxMessage extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminDeleteInboxMessage(String messageId, String namespace, Boolean force) {
+  public AdminDeleteInboxMessage(
+      String customBasePath, String messageId, String namespace, Boolean force) {
     this.messageId = messageId;
     this.namespace = namespace;
     this.force = force;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

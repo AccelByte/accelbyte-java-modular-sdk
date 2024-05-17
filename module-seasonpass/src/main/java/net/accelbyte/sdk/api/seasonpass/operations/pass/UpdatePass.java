@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -34,6 +34,7 @@ public class UpdatePass extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}";
 
+  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,11 +55,13 @@ public class UpdatePass extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public UpdatePass(String code, String namespace, String seasonId, PassUpdate body) {
+  public UpdatePass(
+      String customBasePath, String code, String namespace, String seasonId, PassUpdate body) {
     this.code = code;
     this.namespace = namespace;
     this.seasonId = seasonId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -18,15 +18,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class StatCycleConfiguration {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public StatCycleConfiguration(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("social");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public StatCycleConfiguration(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see GetStatCycles
    */
   public StatCyclePagingSlicedResult getStatCycles(GetStatCycles input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class StatCycleConfiguration {
    * @see CreateStatCycle
    */
   public StatCycleInfo createStatCycle(CreateStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -45,6 +64,10 @@ public class StatCycleConfiguration {
    * @see BulkGetStatCycle
    */
   public BulkStatCycleResult bulkGetStatCycle(BulkGetStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -54,6 +77,10 @@ public class StatCycleConfiguration {
    * @see ExportStatCycle
    */
   public InputStream exportStatCycle(ExportStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -63,6 +90,10 @@ public class StatCycleConfiguration {
    * @see ImportStatCycle
    */
   public StatImportInfo importStatCycle(ImportStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -72,6 +103,10 @@ public class StatCycleConfiguration {
    * @see GetStatCycle
    */
   public StatCycleInfo getStatCycle(GetStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -81,6 +116,10 @@ public class StatCycleConfiguration {
    * @see UpdateStatCycle
    */
   public StatCycleInfo updateStatCycle(UpdateStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -90,6 +129,10 @@ public class StatCycleConfiguration {
    * @see DeleteStatCycle
    */
   public void deleteStatCycle(DeleteStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -99,6 +142,10 @@ public class StatCycleConfiguration {
    * @see BulkAddStats
    */
   public List<BulkStatCycleOperationResult> bulkAddStats(BulkAddStats input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -108,6 +155,10 @@ public class StatCycleConfiguration {
    * @see StopStatCycle
    */
   public StatCycleInfo stopStatCycle(StopStatCycle input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -117,6 +168,10 @@ public class StatCycleConfiguration {
    * @see GetStatCycles1
    */
   public StatCyclePagingSlicedResult getStatCycles1(GetStatCycles1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -126,6 +181,10 @@ public class StatCycleConfiguration {
    * @see BulkGetStatCycle1
    */
   public BulkStatCycleResult bulkGetStatCycle1(BulkGetStatCycle1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -135,6 +194,10 @@ public class StatCycleConfiguration {
    * @see GetStatCycle1
    */
   public StatCycleInfo getStatCycle1(GetStatCycle1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

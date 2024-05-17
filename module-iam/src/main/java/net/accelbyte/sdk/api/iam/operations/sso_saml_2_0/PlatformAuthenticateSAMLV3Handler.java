@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PlatformAuthenticateSAMLV3Handler extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/sso/saml/platforms/{platformId}/authenticate";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList();
@@ -51,11 +52,12 @@ public class PlatformAuthenticateSAMLV3Handler extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PlatformAuthenticateSAMLV3Handler(
-      String platformId, String code, String error, String state) {
+      String customBasePath, String platformId, String code, String error, String state) {
     this.platformId = platformId;
     this.code = code;
     this.error = error;
     this.state = state;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

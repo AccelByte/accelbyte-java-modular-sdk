@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class QueryTotalMatchmakingCanceled extends Operation {
   private String path =
       "/sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/total-ticket-canceled";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,11 +52,12 @@ public class QueryTotalMatchmakingCanceled extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryTotalMatchmakingCanceled(
-      String namespace, String matchPool, String endDate, String startDate) {
+      String customBasePath, String namespace, String matchPool, String endDate, String startDate) {
     this.namespace = namespace;
     this.matchPool = matchPool;
     this.endDate = endDate;
     this.startDate = startDate;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

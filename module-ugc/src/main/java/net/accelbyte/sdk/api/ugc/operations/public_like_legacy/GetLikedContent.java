@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -42,6 +42,7 @@ public class GetLikedContent extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/public/namespaces/{namespace}/contents/liked";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -67,6 +68,7 @@ public class GetLikedContent extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetLikedContent(
+      String customBasePath,
       String namespace,
       Boolean isofficial,
       Integer limit,
@@ -87,6 +89,7 @@ public class GetLikedContent extends Operation {
     this.subtype = subtype;
     this.tags = tags;
     this.type = type;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

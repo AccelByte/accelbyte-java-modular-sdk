@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class GetModerationRules extends Operation {
   /** generated field's value */
   private String path = "/reporting/v1/admin/namespaces/{namespace}/rules";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,12 +50,18 @@ public class GetModerationRules extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetModerationRules(
-      String namespace, String category, String extensionCategory, Integer limit, Integer offset) {
+      String customBasePath,
+      String namespace,
+      String category,
+      String extensionCategory,
+      Integer limit,
+      Integer offset) {
     this.namespace = namespace;
     this.category = category;
     this.extensionCategory = extensionCategory;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

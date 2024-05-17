@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class QueryTotalMatchmakingMatch extends Operation {
   /** generated field's value */
   private String path = "/sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/total-match";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,11 +51,12 @@ public class QueryTotalMatchmakingMatch extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryTotalMatchmakingMatch(
-      String namespace, String matchPool, String endDate, String startDate) {
+      String customBasePath, String namespace, String matchPool, String endDate, String startDate) {
     this.namespace = namespace;
     this.matchPool = matchPool;
     this.endDate = endDate;
     this.startDate = startDate;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

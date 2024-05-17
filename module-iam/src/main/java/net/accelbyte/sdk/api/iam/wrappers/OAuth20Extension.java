@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,15 +16,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class OAuth20Extension {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public OAuth20Extension(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public OAuth20Extension(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see UserAuthenticationV3
    */
   public String userAuthenticationV3(UserAuthenticationV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -35,6 +50,10 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 authenticationWithPlatformLinkV3(
       AuthenticationWithPlatformLinkV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -45,6 +64,10 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 generateTokenByNewHeadlessAccountV3(
       GenerateTokenByNewHeadlessAccountV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -55,6 +78,10 @@ public class OAuth20Extension {
    */
   public OauthmodelOneTimeLinkingCodeResponse requestOneTimeLinkingCodeV3(
       RequestOneTimeLinkingCodeV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -65,6 +92,10 @@ public class OAuth20Extension {
    */
   public OauthmodelOneTimeLinkingCodeValidationResponse validateOneTimeLinkingCodeV3(
       ValidateOneTimeLinkingCodeV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -75,6 +106,10 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 requestTokenByOneTimeLinkCodeResponseV3(
       RequestTokenByOneTimeLinkCodeResponseV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -85,6 +120,10 @@ public class OAuth20Extension {
    */
   public OauthmodelCountryLocationResponse getCountryLocationV3(GetCountryLocationV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -94,6 +133,10 @@ public class OAuth20Extension {
    * @see Logout
    */
   public void logout(Logout input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -104,6 +147,10 @@ public class OAuth20Extension {
    */
   public OauthmodelTargetTokenCodeResponse requestTokenExchangeCodeV3(
       RequestTokenExchangeCodeV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -113,6 +160,10 @@ public class OAuth20Extension {
    * @see PlatformAuthenticationV3
    */
   public String platformAuthenticationV3(PlatformAuthenticationV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -123,6 +174,10 @@ public class OAuth20Extension {
    */
   public OauthmodelPlatformTokenRefreshResponseV3 platformTokenRefreshV3(
       PlatformTokenRefreshV3 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -133,6 +188,10 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 requestTargetTokenResponseV3(RequestTargetTokenResponseV3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

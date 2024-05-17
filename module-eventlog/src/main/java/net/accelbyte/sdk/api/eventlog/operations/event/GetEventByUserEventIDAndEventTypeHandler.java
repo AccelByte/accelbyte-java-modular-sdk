@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class GetEventByUserEventIDAndEventTypeHandler extends Operation {
   private String path =
       "/event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -62,6 +63,7 @@ public class GetEventByUserEventIDAndEventTypeHandler extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetEventByUserEventIDAndEventTypeHandler(
+      String customBasePath,
       Float eventId,
       Float eventType,
       String namespace,
@@ -78,6 +80,7 @@ public class GetEventByUserEventIDAndEventTypeHandler extends Operation {
     this.endDate = endDate;
     this.pageSize = pageSize;
     this.startDate = startDate;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

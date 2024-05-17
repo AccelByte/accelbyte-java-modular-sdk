@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class SendSpecificUserFreeformNotificationV1Admin extends Operation {
   private String path =
       "/lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,10 +51,14 @@ public class SendSpecificUserFreeformNotificationV1Admin extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public SendSpecificUserFreeformNotificationV1Admin(
-      String namespace, String userId, ModelFreeFormNotificationRequestV1 body) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      ModelFreeFormNotificationRequestV1 body) {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

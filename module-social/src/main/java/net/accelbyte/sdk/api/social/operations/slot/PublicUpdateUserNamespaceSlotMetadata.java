@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -37,6 +37,7 @@ public class PublicUpdateUserNamespaceSlotMetadata extends Operation {
   private String path =
       "/social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,11 +59,16 @@ public class PublicUpdateUserNamespaceSlotMetadata extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicUpdateUserNamespaceSlotMetadata(
-      String namespace, String slotId, String userId, SlotMetadataUpdate body) {
+      String customBasePath,
+      String namespace,
+      String slotId,
+      String userId,
+      SlotMetadataUpdate body) {
     this.namespace = namespace;
     this.slotId = slotId;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

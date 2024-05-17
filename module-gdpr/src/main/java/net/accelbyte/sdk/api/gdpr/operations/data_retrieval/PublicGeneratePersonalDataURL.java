@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicGeneratePersonalDataURL extends Operation {
   private String path =
       "/gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,11 +53,12 @@ public class PublicGeneratePersonalDataURL extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGeneratePersonalDataURL(
-      String namespace, String requestDate, String userId, String password) {
+      String customBasePath, String namespace, String requestDate, String userId, String password) {
     this.namespace = namespace;
     this.requestDate = requestDate;
     this.userId = userId;
     this.password = password;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

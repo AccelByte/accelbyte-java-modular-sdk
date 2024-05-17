@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -51,6 +51,7 @@ public class AuthCodeRequestV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/oauth/platforms/{platformId}/authorize";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -71,11 +72,16 @@ public class AuthCodeRequestV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AuthCodeRequestV3(
-      String platformId, String clientId, String redirectUri, String requestId) {
+      String customBasePath,
+      String platformId,
+      String clientId,
+      String redirectUri,
+      String requestId) {
     this.platformId = platformId;
     this.clientId = clientId;
     this.redirectUri = redirectUri;
     this.requestId = requestId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

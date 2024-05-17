@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class QueryPaymentNotifications extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/payment/notifications";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,6 +57,7 @@ public class QueryPaymentNotifications extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryPaymentNotifications(
+      String customBasePath,
       String namespace,
       String endDate,
       String externalId,
@@ -76,6 +78,7 @@ public class QueryPaymentNotifications extends Operation {
     this.paymentOrderNo = paymentOrderNo;
     this.startDate = startDate;
     this.status = status;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

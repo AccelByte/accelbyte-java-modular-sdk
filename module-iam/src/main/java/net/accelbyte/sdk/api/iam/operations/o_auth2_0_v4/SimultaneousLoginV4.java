@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -61,6 +61,7 @@ public class SimultaneousLoginV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/oauth/simultaneousLogin";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -83,6 +84,7 @@ public class SimultaneousLoginV4 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public SimultaneousLoginV4(
+      String customBasePath,
       String codeChallenge,
       String codeChallengeMethod,
       String simultaneousPlatform,
@@ -95,6 +97,7 @@ public class SimultaneousLoginV4 extends Operation {
     this.simultaneousTicket = simultaneousTicket;
     this.nativePlatform = nativePlatform;
     this.nativePlatformTicket = nativePlatformTicket;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

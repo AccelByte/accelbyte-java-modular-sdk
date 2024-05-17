@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,15 +17,30 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class Entitlement {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public Entitlement(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("platform");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public Entitlement(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
    * @see QueryEntitlements
    */
   public EntitlementPagingSlicedResult queryEntitlements(QueryEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class Entitlement {
    */
   public EntitlementPagingSlicedResult queryEntitlements1(QueryEntitlements1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class Entitlement {
    */
   public EntitlementConfigInfo enableEntitlementOriginFeature(EnableEntitlementOriginFeature input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class Entitlement {
    */
   public EntitlementConfigInfo getEntitlementConfigInfo(GetEntitlementConfigInfo input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -65,6 +92,10 @@ public class Entitlement {
    * @see GrantEntitlements
    */
   public BulkEntitlementGrantResult grantEntitlements(GrantEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -74,6 +105,10 @@ public class Entitlement {
    * @see RevokeEntitlements
    */
   public BulkEntitlementRevokeResult revokeEntitlements(RevokeEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -83,6 +118,10 @@ public class Entitlement {
    * @see GetEntitlement
    */
   public EntitlementInfo getEntitlement(GetEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -93,6 +132,10 @@ public class Entitlement {
    */
   public EntitlementPlatformConfigInfo getPlatformEntitlementConfig(
       GetPlatformEntitlementConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -103,6 +146,10 @@ public class Entitlement {
    */
   public EntitlementPlatformConfigInfo updatePlatformEntitlementConfig(
       UpdatePlatformEntitlementConfig input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -113,6 +160,10 @@ public class Entitlement {
    */
   public EntitlementPagingSlicedResult queryUserEntitlements(QueryUserEntitlements input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -123,6 +174,10 @@ public class Entitlement {
    */
   public List<StackableEntitlementInfo> grantUserEntitlement(GrantUserEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -133,6 +188,10 @@ public class Entitlement {
    */
   public AppEntitlementInfo getUserAppEntitlementByAppId(GetUserAppEntitlementByAppId input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -143,6 +202,10 @@ public class Entitlement {
    */
   public AppEntitlementPagingSlicedResult queryUserEntitlementsByAppType(
       QueryUserEntitlementsByAppType input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -153,6 +216,10 @@ public class Entitlement {
    */
   public EntitlementInfo getUserEntitlementByItemId(GetUserEntitlementByItemId input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -163,6 +230,10 @@ public class Entitlement {
    */
   public List<EntitlementInfo> getUserActiveEntitlementsByItemIds(
       GetUserActiveEntitlementsByItemIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -172,6 +243,10 @@ public class Entitlement {
    * @see GetUserEntitlementBySku
    */
   public EntitlementInfo getUserEntitlementBySku(GetUserEntitlementBySku input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -182,6 +257,10 @@ public class Entitlement {
    */
   public Ownership existsAnyUserActiveEntitlement(ExistsAnyUserActiveEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -192,6 +271,10 @@ public class Entitlement {
    */
   public Ownership existsAnyUserActiveEntitlementByItemIds(
       ExistsAnyUserActiveEntitlementByItemIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -202,6 +285,10 @@ public class Entitlement {
    */
   public Ownership getUserAppEntitlementOwnershipByAppId(
       GetUserAppEntitlementOwnershipByAppId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -212,6 +299,10 @@ public class Entitlement {
    */
   public TimedOwnership getUserEntitlementOwnershipByItemId(
       GetUserEntitlementOwnershipByItemId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -222,6 +313,10 @@ public class Entitlement {
    */
   public List<EntitlementOwnership> getUserEntitlementOwnershipByItemIds(
       GetUserEntitlementOwnershipByItemIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -232,6 +327,10 @@ public class Entitlement {
    */
   public TimedOwnership getUserEntitlementOwnershipBySku(GetUserEntitlementOwnershipBySku input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -241,6 +340,10 @@ public class Entitlement {
    * @see RevokeAllEntitlements
    */
   public BulkOperationResult revokeAllEntitlements(RevokeAllEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -250,6 +353,10 @@ public class Entitlement {
    * @see RevokeUserEntitlements
    */
   public BulkOperationResult revokeUserEntitlements(RevokeUserEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -259,6 +366,10 @@ public class Entitlement {
    * @see GetUserEntitlement
    */
   public EntitlementInfo getUserEntitlement(GetUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -268,6 +379,10 @@ public class Entitlement {
    * @see UpdateUserEntitlement
    */
   public EntitlementInfo updateUserEntitlement(UpdateUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -278,6 +393,10 @@ public class Entitlement {
    */
   public EntitlementDecrementResult consumeUserEntitlement(ConsumeUserEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -287,6 +406,10 @@ public class Entitlement {
    * @see DisableUserEntitlement
    */
   public EntitlementInfo disableUserEntitlement(DisableUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -296,6 +419,10 @@ public class Entitlement {
    * @see EnableUserEntitlement
    */
   public EntitlementInfo enableUserEntitlement(EnableUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -306,6 +433,10 @@ public class Entitlement {
    */
   public List<EntitlementHistoryInfo> getUserEntitlementHistories(GetUserEntitlementHistories input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -315,6 +446,10 @@ public class Entitlement {
    * @see RevokeUserEntitlement
    */
   public EntitlementInfo revokeUserEntitlement(RevokeUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -325,6 +460,10 @@ public class Entitlement {
    */
   public EntitlementIfc revokeUserEntitlementByUseCount(RevokeUserEntitlementByUseCount input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -335,6 +474,10 @@ public class Entitlement {
    */
   public EntitlementPrechekResult preCheckRevokeUserEntitlementByUseCount(
       PreCheckRevokeUserEntitlementByUseCount input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -346,6 +489,10 @@ public class Entitlement {
    */
   @Deprecated
   public EntitlementInfo revokeUseCount(RevokeUseCount input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -355,6 +502,10 @@ public class Entitlement {
    * @see SellUserEntitlement
    */
   public EntitlementSoldResult sellUserEntitlement(SellUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -365,6 +516,10 @@ public class Entitlement {
    */
   public Ownership publicExistsAnyMyActiveEntitlement(PublicExistsAnyMyActiveEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -375,6 +530,10 @@ public class Entitlement {
    */
   public Ownership publicGetMyAppEntitlementOwnershipByAppId(
       PublicGetMyAppEntitlementOwnershipByAppId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -385,6 +544,10 @@ public class Entitlement {
    */
   public TimedOwnership publicGetMyEntitlementOwnershipByItemId(
       PublicGetMyEntitlementOwnershipByItemId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -395,6 +558,10 @@ public class Entitlement {
    */
   public TimedOwnership publicGetMyEntitlementOwnershipBySku(
       PublicGetMyEntitlementOwnershipBySku input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -405,6 +572,10 @@ public class Entitlement {
    */
   public OwnershipToken publicGetEntitlementOwnershipToken(PublicGetEntitlementOwnershipToken input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -415,6 +586,10 @@ public class Entitlement {
    */
   public EntitlementPagingSlicedResult publicQueryUserEntitlements(
       PublicQueryUserEntitlements input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -425,6 +600,10 @@ public class Entitlement {
    */
   public AppEntitlementInfo publicGetUserAppEntitlementByAppId(
       PublicGetUserAppEntitlementByAppId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -435,6 +614,10 @@ public class Entitlement {
    */
   public AppEntitlementPagingSlicedResult publicQueryUserEntitlementsByAppType(
       PublicQueryUserEntitlementsByAppType input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -445,6 +628,10 @@ public class Entitlement {
    */
   public List<EntitlementInfo> publicGetUserEntitlementsByIds(PublicGetUserEntitlementsByIds input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -457,6 +644,10 @@ public class Entitlement {
   @Deprecated
   public EntitlementInfo publicGetUserEntitlementByItemId(PublicGetUserEntitlementByItemId input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -469,6 +660,10 @@ public class Entitlement {
   @Deprecated
   public EntitlementInfo publicGetUserEntitlementBySku(PublicGetUserEntitlementBySku input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -479,6 +674,10 @@ public class Entitlement {
    */
   public List<UserEntitlementHistoryPagingSlicedResult> publicUserEntitlementHistory(
       PublicUserEntitlementHistory input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -489,6 +688,10 @@ public class Entitlement {
    */
   public Ownership publicExistsAnyUserActiveEntitlement(PublicExistsAnyUserActiveEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -499,6 +702,10 @@ public class Entitlement {
    */
   public Ownership publicGetUserAppEntitlementOwnershipByAppId(
       PublicGetUserAppEntitlementOwnershipByAppId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -509,6 +716,10 @@ public class Entitlement {
    */
   public TimedOwnership publicGetUserEntitlementOwnershipByItemId(
       PublicGetUserEntitlementOwnershipByItemId input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -519,6 +730,10 @@ public class Entitlement {
    */
   public List<EntitlementOwnership> publicGetUserEntitlementOwnershipByItemIds(
       PublicGetUserEntitlementOwnershipByItemIds input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -529,6 +744,10 @@ public class Entitlement {
    */
   public TimedOwnership publicGetUserEntitlementOwnershipBySku(
       PublicGetUserEntitlementOwnershipBySku input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -538,6 +757,10 @@ public class Entitlement {
    * @see PublicGetUserEntitlement
    */
   public EntitlementInfo publicGetUserEntitlement(PublicGetUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -548,6 +771,10 @@ public class Entitlement {
    */
   public EntitlementDecrementResult publicConsumeUserEntitlement(PublicConsumeUserEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -558,6 +785,10 @@ public class Entitlement {
    */
   public EntitlementSoldResult publicSellUserEntitlement(PublicSellUserEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -568,6 +799,10 @@ public class Entitlement {
    */
   public EntitlementSplitResult publicSplitUserEntitlement(PublicSplitUserEntitlement input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -578,6 +813,10 @@ public class Entitlement {
    */
   public EntitlementTransferResult publicTransferUserEntitlement(
       PublicTransferUserEntitlement input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

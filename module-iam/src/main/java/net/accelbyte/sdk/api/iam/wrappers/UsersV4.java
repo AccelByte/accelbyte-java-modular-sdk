@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class UsersV4 {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public UsersV4(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public UsersV4(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -27,6 +38,10 @@ public class UsersV4 {
    */
   public ModelListInvitationHistoriesV4Response adminListInvitationHistoriesV4(
       AdminListInvitationHistoriesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -37,6 +52,10 @@ public class UsersV4 {
    */
   public ModelInvitationHistoryResponse adminGetNamespaceInvitationHistoryV4(
       AdminGetNamespaceInvitationHistoryV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -47,6 +66,10 @@ public class UsersV4 {
    */
   public ModelNamespaceInvitationHistoryUserV4Response adminGetNamespaceUserInvitationHistoryV4(
       AdminGetNamespaceUserInvitationHistoryV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -57,6 +80,10 @@ public class UsersV4 {
    */
   public AccountCreateTestUsersResponseV4 adminCreateTestUsersV4(AdminCreateTestUsersV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class UsersV4 {
    * @see AdminCreateUserV4
    */
   public AccountCreateUserResponseV4 adminCreateUserV4(AdminCreateUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class UsersV4 {
    */
   public void adminBulkUpdateUserAccountTypeV4(AdminBulkUpdateUserAccountTypeV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -86,6 +121,10 @@ public class UsersV4 {
    */
   public ModelListValidUserIDResponseV4 adminBulkCheckValidUserIDV4(
       AdminBulkCheckValidUserIDV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class UsersV4 {
    * @see AdminUpdateUserV4
    */
   public ModelUserResponseV3 adminUpdateUserV4(AdminUpdateUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -104,6 +147,10 @@ public class UsersV4 {
    * @see AdminUpdateUserEmailAddressV4
    */
   public void adminUpdateUserEmailAddressV4(AdminUpdateUserEmailAddressV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -113,6 +160,10 @@ public class UsersV4 {
    * @see AdminDisableUserMFAV4
    */
   public void adminDisableUserMFAV4(AdminDisableUserMFAV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -123,6 +174,10 @@ public class UsersV4 {
    */
   public ModelListUserRolesV4Response adminListUserRolesV4(AdminListUserRolesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -133,6 +188,10 @@ public class UsersV4 {
    */
   public ModelListUserRolesV4Response adminUpdateUserRoleV4(AdminUpdateUserRoleV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -143,6 +202,10 @@ public class UsersV4 {
    */
   public ModelListUserRolesV4Response adminAddUserRoleV4(AdminAddUserRoleV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -152,6 +215,10 @@ public class UsersV4 {
    * @see AdminRemoveUserRoleV4
    */
   public void adminRemoveUserRoleV4(AdminRemoveUserRoleV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -162,6 +229,10 @@ public class UsersV4 {
    */
   public ModelInviteUserResponseV3 adminInviteUserNewV4(AdminInviteUserNewV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -171,6 +242,10 @@ public class UsersV4 {
    * @see AdminUpdateMyUserV4
    */
   public ModelUserResponseV3 adminUpdateMyUserV4(AdminUpdateMyUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -180,6 +255,10 @@ public class UsersV4 {
    * @see AdminDisableMyAuthenticatorV4
    */
   public void adminDisableMyAuthenticatorV4(AdminDisableMyAuthenticatorV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -189,6 +268,10 @@ public class UsersV4 {
    * @see AdminEnableMyAuthenticatorV4
    */
   public void adminEnableMyAuthenticatorV4(AdminEnableMyAuthenticatorV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -199,6 +282,10 @@ public class UsersV4 {
    */
   public ModelAuthenticatorKeyResponseV4 adminGenerateMyAuthenticatorKeyV4(
       AdminGenerateMyAuthenticatorKeyV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -211,6 +298,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 adminGetMyBackupCodesV4(AdminGetMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -223,6 +314,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 adminGenerateMyBackupCodesV4(AdminGenerateMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -232,6 +327,10 @@ public class UsersV4 {
    * @see AdminDisableMyBackupCodesV4
    */
   public void adminDisableMyBackupCodesV4(AdminDisableMyBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -244,6 +343,10 @@ public class UsersV4 {
   @Deprecated
   public InputStream adminDownloadMyBackupCodesV4(AdminDownloadMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -256,6 +359,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 adminEnableMyBackupCodesV4(AdminEnableMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -265,6 +372,10 @@ public class UsersV4 {
    * @see AdminGetBackupCodesV4
    */
   public void adminGetBackupCodesV4(AdminGetBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -274,6 +385,10 @@ public class UsersV4 {
    * @see AdminGenerateBackupCodesV4
    */
   public void adminGenerateBackupCodesV4(AdminGenerateBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -283,6 +398,10 @@ public class UsersV4 {
    * @see AdminEnableBackupCodesV4
    */
   public void adminEnableBackupCodesV4(AdminEnableBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -292,6 +411,10 @@ public class UsersV4 {
    * @see AdminSendMyMFAEmailCodeV4
    */
   public void adminSendMyMFAEmailCodeV4(AdminSendMyMFAEmailCodeV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -301,6 +424,10 @@ public class UsersV4 {
    * @see AdminDisableMyEmailV4
    */
   public void adminDisableMyEmailV4(AdminDisableMyEmailV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -310,6 +437,10 @@ public class UsersV4 {
    * @see AdminEnableMyEmailV4
    */
   public void adminEnableMyEmailV4(AdminEnableMyEmailV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -320,6 +451,10 @@ public class UsersV4 {
    */
   public ModelEnabledFactorsResponseV4 adminGetMyEnabledFactorsV4(AdminGetMyEnabledFactorsV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -329,6 +464,10 @@ public class UsersV4 {
    * @see AdminMakeFactorMyDefaultV4
    */
   public void adminMakeFactorMyDefaultV4(AdminMakeFactorMyDefaultV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -340,6 +479,10 @@ public class UsersV4 {
    */
   @Deprecated
   public ModelInviteUserResponseV3 adminInviteUserV4(AdminInviteUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -350,6 +493,10 @@ public class UsersV4 {
    */
   public AccountCreateUserResponseV4 publicCreateTestUserV4(PublicCreateTestUserV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -359,6 +506,10 @@ public class UsersV4 {
    * @see PublicCreateUserV4
    */
   public AccountCreateUserResponseV4 publicCreateUserV4(PublicCreateUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -369,6 +520,10 @@ public class UsersV4 {
    */
   public AccountCreateUserResponseV4 createUserFromInvitationV4(CreateUserFromInvitationV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -378,6 +533,10 @@ public class UsersV4 {
    * @see PublicUpdateUserV4
    */
   public ModelUserResponseV3 publicUpdateUserV4(PublicUpdateUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -388,6 +547,10 @@ public class UsersV4 {
    */
   public void publicUpdateUserEmailAddressV4(PublicUpdateUserEmailAddressV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -398,6 +561,10 @@ public class UsersV4 {
    */
   public AccountUserResponseV4 publicUpgradeHeadlessAccountWithVerificationCodeV4(
       PublicUpgradeHeadlessAccountWithVerificationCodeV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -408,6 +575,10 @@ public class UsersV4 {
    */
   public AccountUserResponseV4 publicUpgradeHeadlessAccountV4(PublicUpgradeHeadlessAccountV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -418,6 +589,10 @@ public class UsersV4 {
    */
   public void publicDisableMyAuthenticatorV4(PublicDisableMyAuthenticatorV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -427,6 +602,10 @@ public class UsersV4 {
    * @see PublicEnableMyAuthenticatorV4
    */
   public void publicEnableMyAuthenticatorV4(PublicEnableMyAuthenticatorV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -437,6 +616,10 @@ public class UsersV4 {
    */
   public ModelAuthenticatorKeyResponseV4 publicGenerateMyAuthenticatorKeyV4(
       PublicGenerateMyAuthenticatorKeyV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -449,6 +632,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 publicGetMyBackupCodesV4(PublicGetMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -461,6 +648,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 publicGenerateMyBackupCodesV4(
       PublicGenerateMyBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -470,6 +661,10 @@ public class UsersV4 {
    * @see PublicDisableMyBackupCodesV4
    */
   public void publicDisableMyBackupCodesV4(PublicDisableMyBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -482,6 +677,10 @@ public class UsersV4 {
   @Deprecated
   public InputStream publicDownloadMyBackupCodesV4(PublicDownloadMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -494,6 +693,10 @@ public class UsersV4 {
   @Deprecated
   public ModelBackupCodesResponseV4 publicEnableMyBackupCodesV4(PublicEnableMyBackupCodesV4 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -503,6 +706,10 @@ public class UsersV4 {
    * @see PublicGetBackupCodesV4
    */
   public void publicGetBackupCodesV4(PublicGetBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -512,6 +719,10 @@ public class UsersV4 {
    * @see PublicGenerateBackupCodesV4
    */
   public void publicGenerateBackupCodesV4(PublicGenerateBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -521,6 +732,10 @@ public class UsersV4 {
    * @see PublicEnableBackupCodesV4
    */
   public void publicEnableBackupCodesV4(PublicEnableBackupCodesV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -530,6 +745,10 @@ public class UsersV4 {
    * @see PublicRemoveTrustedDeviceV4
    */
   public void publicRemoveTrustedDeviceV4(PublicRemoveTrustedDeviceV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -539,6 +758,10 @@ public class UsersV4 {
    * @see PublicSendMyMFAEmailCodeV4
    */
   public void publicSendMyMFAEmailCodeV4(PublicSendMyMFAEmailCodeV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -548,6 +771,10 @@ public class UsersV4 {
    * @see PublicDisableMyEmailV4
    */
   public void publicDisableMyEmailV4(PublicDisableMyEmailV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -557,6 +784,10 @@ public class UsersV4 {
    * @see PublicEnableMyEmailV4
    */
   public void publicEnableMyEmailV4(PublicEnableMyEmailV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -567,6 +798,10 @@ public class UsersV4 {
    */
   public ModelEnabledFactorsResponseV4 publicGetMyEnabledFactorsV4(
       PublicGetMyEnabledFactorsV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -576,6 +811,10 @@ public class UsersV4 {
    * @see PublicMakeFactorMyDefaultV4
    */
   public void publicMakeFactorMyDefaultV4(PublicMakeFactorMyDefaultV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -586,6 +825,10 @@ public class UsersV4 {
    */
   public ModelUserPublicInfoResponseV4 publicGetUserPublicInfoByUserIdV4(
       PublicGetUserPublicInfoByUserIdV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -595,6 +838,10 @@ public class UsersV4 {
    * @see PublicInviteUserV4
    */
   public ModelInviteUserResponseV3 publicInviteUserV4(PublicInviteUserV4 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

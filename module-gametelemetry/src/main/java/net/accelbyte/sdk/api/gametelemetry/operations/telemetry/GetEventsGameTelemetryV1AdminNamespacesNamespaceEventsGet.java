@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet extends O
   /** generated field's value */
   private String path = "/game-telemetry/v1/admin/namespaces/{namespace}/events";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,6 +56,7 @@ public class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet extends O
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(
+      String customBasePath,
       String namespace,
       String endTime,
       String eventId,
@@ -75,6 +77,7 @@ public class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet extends O
     this.offset = offset;
     this.startTime = startTime;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
     securities.add("Cookie");

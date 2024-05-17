@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminUpdateServicesConfiguration extends Operation {
   /** generated field's value */
   private String path = "/gdpr/admin/namespaces/{namespace}/services/configurations";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,9 +48,10 @@ public class AdminUpdateServicesConfiguration extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUpdateServicesConfiguration(
-      String namespace, DtoServiceConfigurationUpdateRequest body) {
+      String customBasePath, String namespace, DtoServiceConfigurationUpdateRequest body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

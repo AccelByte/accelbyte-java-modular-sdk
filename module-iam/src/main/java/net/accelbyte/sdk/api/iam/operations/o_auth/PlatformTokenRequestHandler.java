@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -45,6 +45,7 @@ public class PlatformTokenRequestHandler extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/namespaces/{namespace}/platforms/{platformId}/token";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -66,6 +67,7 @@ public class PlatformTokenRequestHandler extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PlatformTokenRequestHandler(
+      String customBasePath,
       String namespace,
       String platformId,
       String deviceId,
@@ -76,6 +78,7 @@ public class PlatformTokenRequestHandler extends Operation {
     this.deviceId = deviceId;
     this.macAddress = macAddress;
     this.platformToken = platformToken;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

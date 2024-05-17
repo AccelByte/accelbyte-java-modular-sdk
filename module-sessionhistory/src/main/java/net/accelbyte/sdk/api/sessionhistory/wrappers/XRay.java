@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class XRay {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public XRay(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("sessionhistory");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public XRay(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchPoolQueryResponse queryXrayMatchPool(QueryXrayMatchPool input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchPoolPodTickQueryResponse queryDetailTickMatchPool(
       QueryDetailTickMatchPool input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchPoolPodTickMatchResponse queryDetailTickMatchPoolMatches(
       QueryDetailTickMatchPoolMatches input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -56,6 +79,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchPoolPodTickTicketResponse queryDetailTickMatchPoolTicket(
       QueryDetailTickMatchPoolTicket input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -66,6 +93,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchHistorQueryResponse queryMatchHistories(QueryMatchHistories input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -76,6 +107,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchTicketHistoryQueryResponse queryMatchTicketHistories(
       QueryMatchTicketHistories input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -85,6 +120,10 @@ public class XRay {
    * @see QueryXrayMatch
    */
   public ApimodelsXRayMatchesQueryResponse queryXrayMatch(QueryXrayMatch input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -95,6 +134,10 @@ public class XRay {
    */
   public ApimodelsXRayAcquiringDsQueryResponse queryAcquiringDS(QueryAcquiringDS input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -105,6 +148,10 @@ public class XRay {
    */
   public ApimodelsXRayAcquiringDsWaitTimeQueryResponse queryAcquiringDSWaitTimeAvg(
       QueryAcquiringDSWaitTimeAvg input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -115,6 +162,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchLengthDurationQueryResponse queryMatchLengthDurationpAvg(
       QueryMatchLengthDurationpAvg input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -125,6 +176,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchLengthDurationQueryResponse queryMatchLengthDurationp99(
       QueryMatchLengthDurationp99 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -135,6 +190,10 @@ public class XRay {
    */
   public ApimodelsXRayTotalActiveSessionQueryResponse queryTotalActiveSession(
       QueryTotalActiveSession input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -145,6 +204,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchMatchmakingQueryResponse queryTotalMatchmakingMatch(
       QueryTotalMatchmakingMatch input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -155,6 +218,10 @@ public class XRay {
    */
   public ApimodelsXRayTotalPlayerPersessionAVGQueryResponse queryTotalPlayerPersession(
       QueryTotalPlayerPersession input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -165,6 +232,10 @@ public class XRay {
    */
   public ApimodelsXRayCanceledMatchmakingTicketQueryResponse queryTotalMatchmakingCanceled(
       QueryTotalMatchmakingCanceled input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -175,6 +246,10 @@ public class XRay {
    */
   public ApimodelsXRayCreatedMatchmakingTicketQueryResponse queryTotalMatchmakingCreated(
       QueryTotalMatchmakingCreated input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -185,6 +260,10 @@ public class XRay {
    */
   public ApimodelsXRayExpiredMatchmakingTicketQueryResponse queryTotalMatchmakingExpired(
       QueryTotalMatchmakingExpired input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -195,6 +274,10 @@ public class XRay {
    */
   public ApimodelsXRayMatchMatchmakingTicketQueryResponse queryTotalMatchmakingMatchTicket(
       QueryTotalMatchmakingMatchTicket input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -205,6 +288,10 @@ public class XRay {
    */
   public ApimodelsXRayTicketQueryResponse queryXrayTimelineByTicketID(
       QueryXrayTimelineByTicketID input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -215,6 +302,10 @@ public class XRay {
    */
   public ApimodelsXRayTicketQueryResponse queryXrayTimelineByUserID(QueryXrayTimelineByUserID input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

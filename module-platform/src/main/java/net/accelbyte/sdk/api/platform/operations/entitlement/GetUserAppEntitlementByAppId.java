@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class GetUserAppEntitlementByAppId extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byAppId";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,11 +52,12 @@ public class GetUserAppEntitlementByAppId extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetUserAppEntitlementByAppId(
-      String namespace, String userId, Boolean activeOnly, String appId) {
+      String customBasePath, String namespace, String userId, Boolean activeOnly, String appId) {
     this.namespace = namespace;
     this.userId = userId;
     this.activeOnly = activeOnly;
     this.appId = appId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

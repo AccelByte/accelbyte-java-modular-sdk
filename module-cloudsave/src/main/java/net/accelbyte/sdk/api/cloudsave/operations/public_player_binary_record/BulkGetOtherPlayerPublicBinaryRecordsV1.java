@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class BulkGetOtherPlayerPublicBinaryRecordsV1 extends Operation {
   /** generated field's value */
   private String path = "/cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public/bulk";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,10 +51,14 @@ public class BulkGetOtherPlayerPublicBinaryRecordsV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public BulkGetOtherPlayerPublicBinaryRecordsV1(
-      String namespace, String userId, ModelsBulkGetPlayerRecordsRequest body) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      ModelsBulkGetPlayerRecordsRequest body) {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

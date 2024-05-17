@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class PublishTemplate extends Operation {
   private String path =
       "/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -48,10 +49,12 @@ public class PublishTemplate extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublishTemplate(String namespace, String templateLanguage, String templateSlug) {
+  public PublishTemplate(
+      String customBasePath, String namespace, String templateLanguage, String templateSlug) {
     this.namespace = namespace;
     this.templateLanguage = templateLanguage;
     this.templateSlug = templateSlug;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

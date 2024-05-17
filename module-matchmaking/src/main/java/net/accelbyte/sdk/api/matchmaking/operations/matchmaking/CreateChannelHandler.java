@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -45,6 +45,7 @@ public class CreateChannelHandler extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/namespaces/{namespace}/channels";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,9 +63,10 @@ public class CreateChannelHandler extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public CreateChannelHandler(String namespace, ModelsChannelRequest body) {
+  public CreateChannelHandler(String customBasePath, String namespace, ModelsChannelRequest body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

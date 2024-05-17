@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -52,6 +52,7 @@ public class PublicPlatformLinkV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -73,11 +74,16 @@ public class PublicPlatformLinkV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicPlatformLinkV3(
-      String namespace, String platformId, String redirectUri, String ticket) {
+      String customBasePath,
+      String namespace,
+      String platformId,
+      String redirectUri,
+      String ticket) {
     this.namespace = namespace;
     this.platformId = platformId;
     this.redirectUri = redirectUri;
     this.ticket = ticket;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

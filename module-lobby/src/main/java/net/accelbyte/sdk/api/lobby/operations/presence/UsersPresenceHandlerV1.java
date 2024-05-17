@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class UsersPresenceHandlerV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/public/presence/namespaces/{namespace}/users/presence";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,10 +48,12 @@ public class UsersPresenceHandlerV1 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public UsersPresenceHandlerV1(String namespace, Boolean countOnly, String userIds) {
+  public UsersPresenceHandlerV1(
+      String customBasePath, String namespace, Boolean countOnly, String userIds) {
     this.namespace = namespace;
     this.countOnly = countOnly;
     this.userIds = userIds;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

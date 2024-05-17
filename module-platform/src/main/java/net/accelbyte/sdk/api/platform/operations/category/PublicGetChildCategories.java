@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -38,6 +38,7 @@ public class PublicGetChildCategories extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/categories/{categoryPath}/children";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,11 +59,16 @@ public class PublicGetChildCategories extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetChildCategories(
-      String categoryPath, String namespace, String language, String storeId) {
+      String customBasePath,
+      String categoryPath,
+      String namespace,
+      String language,
+      String storeId) {
     this.categoryPath = categoryPath;
     this.namespace = namespace;
     this.language = language;
     this.storeId = storeId;
+    this.customBasePath = customBasePath;
   }
 
   @Override

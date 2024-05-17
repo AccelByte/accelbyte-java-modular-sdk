@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class DeleteGroupConfigurationGlobalRuleAdminV1 extends Operation {
   private String path =
       "/group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,10 +54,11 @@ public class DeleteGroupConfigurationGlobalRuleAdminV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public DeleteGroupConfigurationGlobalRuleAdminV1(
-      String allowedAction, String configurationCode, String namespace) {
+      String customBasePath, String allowedAction, String configurationCode, String namespace) {
     this.allowedAction = allowedAction;
     this.configurationCode = configurationCode;
     this.namespace = namespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

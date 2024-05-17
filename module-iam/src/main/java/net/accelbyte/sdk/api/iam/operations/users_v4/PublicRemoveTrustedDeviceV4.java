@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class PublicRemoveTrustedDeviceV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/device";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class PublicRemoveTrustedDeviceV4 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicRemoveTrustedDeviceV4(String namespace, String deviceToken) {
+  public PublicRemoveTrustedDeviceV4(String customBasePath, String namespace, String deviceToken) {
     this.namespace = namespace;
     this.deviceToken = deviceToken;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

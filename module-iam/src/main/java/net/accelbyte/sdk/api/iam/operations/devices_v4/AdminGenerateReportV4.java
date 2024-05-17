@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -28,6 +28,7 @@ public class AdminGenerateReportV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/namespaces/{namespace}/devices/report";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -48,11 +49,16 @@ public class AdminGenerateReportV4 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminGenerateReportV4(
-      String namespace, String endDate, String startDate, String deviceType) {
+      String customBasePath,
+      String namespace,
+      String endDate,
+      String startDate,
+      String deviceType) {
     this.namespace = namespace;
     this.endDate = endDate;
     this.startDate = startDate;
     this.deviceType = deviceType;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

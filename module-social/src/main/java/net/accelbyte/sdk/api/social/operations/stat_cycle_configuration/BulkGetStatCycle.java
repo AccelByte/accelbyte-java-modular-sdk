@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class BulkGetStatCycle extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/statCycles/bulk";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class BulkGetStatCycle extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public BulkGetStatCycle(String namespace, BulkStatCycleRequest body) {
+  public BulkGetStatCycle(String customBasePath, String namespace, BulkStatCycleRequest body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class PublicChatHistory extends Operation {
   /** generated field's value */
   private String path = "/chat/public/namespaces/{namespace}/topic/{topic}/chats";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,12 +53,18 @@ public class PublicChatHistory extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicChatHistory(
-      String namespace, String topic, Integer limit, String order, Integer startCreatedAt) {
+      String customBasePath,
+      String namespace,
+      String topic,
+      Integer limit,
+      String order,
+      Integer startCreatedAt) {
     this.namespace = namespace;
     this.topic = topic;
     this.limit = limit;
     this.order = order;
     this.startCreatedAt = startCreatedAt;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

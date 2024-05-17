@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminGetBulkPlayerBlockedPlayersV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,9 +48,10 @@ public class AdminGetBulkPlayerBlockedPlayersV1 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminGetBulkPlayerBlockedPlayersV1(
-      String namespace, ModelsGetBulkAllPlayerBlockedUsersRequest body) {
+      String customBasePath, String namespace, ModelsGetBulkAllPlayerBlockedUsersRequest body) {
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class PublicPartyKick extends Operation {
   private String path =
       "/session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/kick";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,11 @@ public class PublicPartyKick extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public PublicPartyKick(String namespace, String partyId, String userId) {
+  public PublicPartyKick(String customBasePath, String namespace, String partyId, String userId) {
     this.namespace = namespace;
     this.partyId = partyId;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

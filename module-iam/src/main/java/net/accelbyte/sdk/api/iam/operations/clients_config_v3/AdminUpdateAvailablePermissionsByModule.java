@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminUpdateAvailablePermissionsByModule extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/clientConfig/permissions";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,9 +47,10 @@ public class AdminUpdateAvailablePermissionsByModule extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminUpdateAvailablePermissionsByModule(
-      Boolean forceDelete, ClientmodelListUpsertModulesRequest body) {
+      String customBasePath, Boolean forceDelete, ClientmodelListUpsertModulesRequest body) {
     this.forceDelete = forceDelete;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

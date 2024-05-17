@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AdminQueryThirdPlatformLinkHistoryV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/users/linkhistories";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,12 +51,18 @@ public class AdminQueryThirdPlatformLinkHistoryV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminQueryThirdPlatformLinkHistoryV3(
-      String namespace, Integer limit, Integer offset, String platformUserId, String platformId) {
+      String customBasePath,
+      String namespace,
+      Integer limit,
+      Integer offset,
+      String platformUserId,
+      String platformId) {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
     this.platformUserId = platformUserId;
     this.platformId = platformId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

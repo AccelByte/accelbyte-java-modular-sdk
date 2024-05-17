@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -38,6 +38,7 @@ public class GetGroupJoinRequestPublicV2 extends Operation {
   /** generated field's value */
   private String path = "/group/v2/public/namespaces/{namespace}/groups/{groupId}/join/request";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,11 +59,12 @@ public class GetGroupJoinRequestPublicV2 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetGroupJoinRequestPublicV2(
-      String groupId, String namespace, Integer limit, Integer offset) {
+      String customBasePath, String groupId, String namespace, Integer limit, Integer offset) {
     this.groupId = groupId;
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

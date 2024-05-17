@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class AdminGetPlayerRecordSizeHandlerV1 extends Operation {
   private String path =
       "/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/size";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,12 @@ public class AdminGetPlayerRecordSizeHandlerV1 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminGetPlayerRecordSizeHandlerV1(String key, String namespace, String userId) {
+  public AdminGetPlayerRecordSizeHandlerV1(
+      String customBasePath, String key, String namespace, String userId) {
     this.key = key;
     this.namespace = namespace;
     this.userId = userId;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

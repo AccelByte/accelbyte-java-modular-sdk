@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -119,6 +119,7 @@ public class UpdateApp extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/{itemId}/app";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -139,11 +140,13 @@ public class UpdateApp extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public UpdateApp(String itemId, String namespace, String storeId, AppUpdate body) {
+  public UpdateApp(
+      String customBasePath, String itemId, String namespace, String storeId, AppUpdate body) {
     this.itemId = itemId;
     this.namespace = namespace;
     this.storeId = storeId;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

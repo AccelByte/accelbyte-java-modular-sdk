@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -36,6 +36,7 @@ public class AdminListUsersStatItems extends Operation {
   private String path =
       "/social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,6 +58,7 @@ public class AdminListUsersStatItems extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminListUsersStatItems(
+      String customBasePath,
       String namespace,
       String userId,
       String additionalKey,
@@ -67,6 +69,7 @@ public class AdminListUsersStatItems extends Operation {
     this.additionalKey = additionalKey;
     this.statCodes = statCodes;
     this.tags = tags;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

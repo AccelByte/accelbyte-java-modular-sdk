@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -30,6 +30,7 @@ public class Verify2faCodeV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/oauth/mfa/verify";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,11 +52,13 @@ public class Verify2faCodeV4 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public Verify2faCodeV4(String code, String factor, String mfaToken, Boolean rememberDevice) {
+  public Verify2faCodeV4(
+      String customBasePath, String code, String factor, String mfaToken, Boolean rememberDevice) {
     this.code = code;
     this.factor = factor;
     this.mfaToken = mfaToken;
     this.rememberDevice = rememberDevice;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

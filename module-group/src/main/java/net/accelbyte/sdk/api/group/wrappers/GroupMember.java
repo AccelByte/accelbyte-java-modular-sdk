@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -16,9 +16,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class GroupMember {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public GroupMember(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("group");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public GroupMember(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -26,6 +37,10 @@ public class GroupMember {
    */
   public ModelsGetGroupMemberListResponseV1 getGroupMembersListAdminV1(
       GetGroupMembersListAdminV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -36,6 +51,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 acceptGroupInvitationPublicV1(
       AcceptGroupInvitationPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -46,6 +65,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 rejectGroupInvitationPublicV1(
       RejectGroupInvitationPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -55,6 +78,10 @@ public class GroupMember {
    * @see JoinGroupV1
    */
   public ModelsJoinGroupResponseV1 joinGroupV1(JoinGroupV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -65,6 +92,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 cancelGroupJoinRequestV1(CancelGroupJoinRequestV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -75,6 +106,10 @@ public class GroupMember {
    */
   public ModelsGetGroupMemberListResponseV1 getGroupMembersListPublicV1(
       GetGroupMembersListPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -84,6 +119,10 @@ public class GroupMember {
    * @see LeaveGroupPublicV1
    */
   public ModelsLeaveGroupResponseV1 leaveGroupPublicV1(LeaveGroupPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -94,6 +133,10 @@ public class GroupMember {
    */
   public ModelsGetUserGroupInformationResponseV1 getUserGroupInformationPublicV1(
       GetUserGroupInformationPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -104,6 +147,10 @@ public class GroupMember {
    */
   public ModelsUserInvitationResponseV1 inviteGroupPublicV1(InviteGroupPublicV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -114,6 +161,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 acceptGroupJoinRequestPublicV1(
       AcceptGroupJoinRequestPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -124,6 +175,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 rejectGroupJoinRequestPublicV1(
       RejectGroupJoinRequestPublicV1 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -134,6 +189,10 @@ public class GroupMember {
    */
   public ModelsKickGroupMemberResponseV1 kickGroupMemberPublicV1(KickGroupMemberPublicV1 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -144,6 +203,10 @@ public class GroupMember {
    */
   public ModelsGetGroupMemberListResponseV1 getUserJoinedGroupInformationPublicV2(
       GetUserJoinedGroupInformationPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -154,6 +217,10 @@ public class GroupMember {
    */
   public ModelsGetUserGroupInformationResponseV1 adminGetUserGroupStatusInformationV2(
       AdminGetUserGroupStatusInformationV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -164,6 +231,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 acceptGroupInvitationPublicV2(
       AcceptGroupInvitationPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -174,6 +245,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 rejectGroupInvitationPublicV2(
       RejectGroupInvitationPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -183,6 +258,10 @@ public class GroupMember {
    * @see JoinGroupV2
    */
   public ModelsJoinGroupResponseV1 joinGroupV2(JoinGroupV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -192,6 +271,10 @@ public class GroupMember {
    * @see LeaveGroupPublicV2
    */
   public ModelsLeaveGroupResponseV1 leaveGroupPublicV2(LeaveGroupPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -202,6 +285,10 @@ public class GroupMember {
    */
   public ModelsGetGroupMemberListResponseV1 getUserGroupInformationPublicV2(
       GetUserGroupInformationPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -212,6 +299,10 @@ public class GroupMember {
    */
   public ModelsUserInvitationResponseV1 inviteGroupPublicV2(InviteGroupPublicV2 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -222,6 +313,10 @@ public class GroupMember {
    */
   public ModelsCancelInvitationGroupResponseV2 cancelInvitationGroupMemberV2(
       CancelInvitationGroupMemberV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -232,6 +327,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 acceptGroupJoinRequestPublicV2(
       AcceptGroupJoinRequestPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -242,6 +341,10 @@ public class GroupMember {
    */
   public ModelsMemberRequestGroupResponseV1 rejectGroupJoinRequestPublicV2(
       RejectGroupJoinRequestPublicV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -252,6 +355,10 @@ public class GroupMember {
    */
   public ModelsKickGroupMemberResponseV1 kickGroupMemberPublicV2(KickGroupMemberPublicV2 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -262,6 +369,10 @@ public class GroupMember {
    */
   public ModelsGetUserGroupInformationResponseV1 getUserGroupStatusInformationV2(
       GetUserGroupStatusInformationV2 input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

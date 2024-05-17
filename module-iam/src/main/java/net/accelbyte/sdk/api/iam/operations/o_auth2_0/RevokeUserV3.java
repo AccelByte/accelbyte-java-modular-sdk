@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class RevokeUserV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,10 +50,12 @@ public class RevokeUserV3 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RevokeUserV3(String namespace, String userId, Boolean includeGameNamespace) {
+  public RevokeUserV3(
+      String customBasePath, String namespace, String userId, Boolean includeGameNamespace) {
     this.namespace = namespace;
     this.userId = userId;
     this.includeGameNamespace = includeGameNamespace;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

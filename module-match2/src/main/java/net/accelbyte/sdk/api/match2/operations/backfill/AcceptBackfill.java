@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class AcceptBackfill extends Operation {
   /** generated field's value */
   private String path = "/match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept";
 
+  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -48,10 +49,12 @@ public class AcceptBackfill extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AcceptBackfill(String backfillID, String namespace, ApiBackFillAcceptRequest body) {
+  public AcceptBackfill(
+      String customBasePath, String backfillID, String namespace, ApiBackFillAcceptRequest body) {
     this.backfillID = backfillID;
     this.namespace = namespace;
     this.body = body;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -33,6 +33,7 @@ public class PublicListGlobalAchievements extends Operation {
   /** generated field's value */
   private String path = "/achievement/v1/public/namespaces/{namespace}/global/achievements";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,6 +56,7 @@ public class PublicListGlobalAchievements extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicListGlobalAchievements(
+      String customBasePath,
       String namespace,
       String achievementCodes,
       Integer limit,
@@ -69,6 +71,7 @@ public class PublicListGlobalAchievements extends Operation {
     this.sortBy = sortBy;
     this.status = status;
     this.tags = tags;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

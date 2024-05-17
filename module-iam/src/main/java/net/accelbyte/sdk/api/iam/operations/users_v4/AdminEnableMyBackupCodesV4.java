@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class AdminEnableMyBackupCodesV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/users/me/mfa/backupCode/enable";
 
+  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -43,7 +44,8 @@ public class AdminEnableMyBackupCodesV4 extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminEnableMyBackupCodesV4() {
+  public AdminEnableMyBackupCodesV4(String customBasePath) {
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

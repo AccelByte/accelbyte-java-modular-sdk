@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -31,6 +31,7 @@ public class GetStatItems extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats/{statCode}/statitems";
 
+  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,12 +53,18 @@ public class GetStatItems extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetStatItems(
-      String namespace, String statCode, Integer limit, Integer offset, String sortBy) {
+      String customBasePath,
+      String namespace,
+      String statCode,
+      Integer limit,
+      Integer offset,
+      String sortBy) {
     this.namespace = namespace;
     this.statCode = statCode;
     this.limit = limit;
     this.offset = offset;
     this.sortBy = sortBy;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

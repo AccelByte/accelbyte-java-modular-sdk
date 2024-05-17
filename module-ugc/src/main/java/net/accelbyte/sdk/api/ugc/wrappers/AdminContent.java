@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -17,9 +17,20 @@ import net.accelbyte.sdk.core.RequestRunner;
 public class AdminContent {
 
   private RequestRunner sdk;
+  private String customBasePath = "";
 
   public AdminContent(RequestRunner sdk) {
     this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("ugc");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public AdminContent(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
   }
 
   /**
@@ -29,6 +40,10 @@ public class AdminContent {
   @Deprecated
   public ModelsCreateContentResponse adminUploadContentDirect(AdminUploadContentDirect input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -39,6 +54,10 @@ public class AdminContent {
    */
   public ModelsCreateContentResponse adminUploadContentS3(AdminUploadContentS3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -49,6 +68,10 @@ public class AdminContent {
    */
   public ModelsCreateContentResponse singleAdminUpdateContentS3(SingleAdminUpdateContentS3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -59,6 +82,10 @@ public class AdminContent {
    */
   public ModelsPaginatedContentDownloadResponse adminSearchChannelSpecificContent(
       AdminSearchChannelSpecificContent input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -71,6 +98,10 @@ public class AdminContent {
   @Deprecated
   public ModelsCreateContentResponse singleAdminUpdateContentDirect(
       SingleAdminUpdateContentDirect input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -80,6 +111,10 @@ public class AdminContent {
    * @see SingleAdminDeleteContent
    */
   public void singleAdminDeleteContent(SingleAdminDeleteContent input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -90,6 +125,10 @@ public class AdminContent {
    */
   public ModelsPaginatedContentDownloadResponse singleAdminGetContent(SingleAdminGetContent input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -100,6 +139,10 @@ public class AdminContent {
    */
   public List<ModelsContentDownloadResponse> adminGetContentBulk(AdminGetContentBulk input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -110,6 +153,10 @@ public class AdminContent {
    */
   public ModelsPaginatedContentDownloadResponse adminSearchContent(AdminSearchContent input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -120,6 +167,10 @@ public class AdminContent {
    */
   public List<ModelsContentDownloadResponse> adminGetContentBulkByShareCodes(
       AdminGetContentBulkByShareCodes input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -130,6 +181,10 @@ public class AdminContent {
    */
   public ModelsContentDownloadResponse adminGetUserContentByShareCode(
       AdminGetUserContentByShareCode input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -140,6 +195,10 @@ public class AdminContent {
    */
   public ModelsContentDownloadResponse adminGetSpecificContent(AdminGetSpecificContent input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -150,6 +209,10 @@ public class AdminContent {
    */
   public ModelsGetContentPreviewResponse adminDownloadContentPreview(
       AdminDownloadContentPreview input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -160,6 +223,10 @@ public class AdminContent {
    */
   public ModelsContentDownloadResponse rollbackContentVersion(RollbackContentVersion input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -170,6 +237,10 @@ public class AdminContent {
    */
   public ModelsUpdateScreenshotResponse adminUpdateScreenshots(AdminUpdateScreenshots input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -180,6 +251,10 @@ public class AdminContent {
    */
   public ModelsCreateScreenshotResponse adminUploadContentScreenshot(
       AdminUploadContentScreenshot input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -189,6 +264,10 @@ public class AdminContent {
    * @see AdminDeleteContentScreenshot
    */
   public void adminDeleteContentScreenshot(AdminDeleteContentScreenshot input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -199,6 +278,10 @@ public class AdminContent {
    */
   public ModelsListContentVersionsResponse listContentVersions(ListContentVersions input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -209,6 +292,10 @@ public class AdminContent {
    */
   public ModelsCreateContentResponse adminUpdateContentS3ByShareCode(
       AdminUpdateContentS3ByShareCode input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -219,6 +306,10 @@ public class AdminContent {
    */
   public ModelsCreateContentResponse adminUpdateContentS3(AdminUpdateContentS3 input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -228,6 +319,10 @@ public class AdminContent {
    * @see DeleteContentByShareCode
    */
   public void deleteContentByShareCode(DeleteContentByShareCode input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -240,6 +335,10 @@ public class AdminContent {
   @Deprecated
   public ModelsCreateContentResponse adminUpdateContentDirect(AdminUpdateContentDirect input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -249,6 +348,10 @@ public class AdminContent {
    * @see AdminDeleteContent
    */
   public void adminDeleteContent(AdminDeleteContent input) throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -259,6 +362,10 @@ public class AdminContent {
    */
   public ModelsPaginatedContentDownloadResponse adminGetContent(AdminGetContent input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
@@ -269,6 +376,10 @@ public class AdminContent {
    */
   public ModelsCreateContentResponse adminHideUserContent(AdminHideUserContent input)
       throws Exception {
+    if (!customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());

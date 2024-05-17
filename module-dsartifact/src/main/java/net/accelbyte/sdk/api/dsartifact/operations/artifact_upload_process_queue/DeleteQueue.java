@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -32,6 +32,7 @@ public class DeleteQueue extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/namespaces/{namespace}/artifacts/queues";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -51,10 +52,11 @@ public class DeleteQueue extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteQueue(String namespace, String nodeIP, String podName) {
+  public DeleteQueue(String customBasePath, String namespace, String nodeIP, String podName) {
     this.namespace = namespace;
     this.nodeIP = nodeIP;
     this.podName = podName;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  *
@@ -29,6 +29,7 @@ public class DeleteTiedStat extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats/{statCode}/tied";
 
+  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -46,9 +47,10 @@ public class DeleteTiedStat extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public DeleteTiedStat(String namespace, String statCode) {
+  public DeleteTiedStat(String customBasePath, String namespace, String statCode) {
     this.namespace = namespace;
     this.statCode = statCode;
+    this.customBasePath = customBasePath;
 
     securities.add("Bearer");
   }
