@@ -31,7 +31,6 @@ public class UnregisterEventIDHandler extends Operation {
   /** generated field's value */
   private String path = "/event/registry/eventIds/{eventId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class UnregisterEventIDHandler extends Operation {
   @Deprecated
   public UnregisterEventIDHandler(String customBasePath, String eventId) {
     this.eventId = eventId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -32,7 +32,6 @@ public class DeleteNodeByID extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/artifacts/nodes/ipaddresses";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -53,7 +52,7 @@ public class DeleteNodeByID extends Operation {
   public DeleteNodeByID(String customBasePath, String nodeIP, String podName) {
     this.nodeIP = nodeIP;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

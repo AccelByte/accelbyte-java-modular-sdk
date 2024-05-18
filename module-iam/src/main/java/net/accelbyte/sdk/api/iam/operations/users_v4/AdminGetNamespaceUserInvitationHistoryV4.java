@@ -31,7 +31,6 @@ public class AdminGetNamespaceUserInvitationHistoryV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/namespaces/{namespace}/invitationHistories/users";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class AdminGetNamespaceUserInvitationHistoryV4 extends Operation {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

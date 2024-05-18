@@ -38,7 +38,7 @@ public class Fulfillment {
    */
   public FulfillmentHistoryPagingSlicedResult queryFulfillmentHistories(
       QueryFulfillmentHistories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Fulfillment {
    * @see FulfillItem
    */
   public FulfillmentResult fulfillItem(FulfillItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class Fulfillment {
    * @see RedeemCode
    */
   public FulfillmentResult redeemCode(RedeemCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Fulfillment {
    * @see PreCheckFulfillItem
    */
   public List<FulfillmentItem> preCheckFulfillItem(PreCheckFulfillItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Fulfillment {
    * @see FulfillRewards
    */
   public void fulfillRewards(FulfillRewards input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class Fulfillment {
    * @see PublicRedeemCode
    */
   public FulfillmentResult publicRedeemCode(PublicRedeemCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class Fulfillment {
    * @see FulfillRewardsV2
    */
   public FulfillmentResult fulfillRewardsV2(FulfillRewardsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

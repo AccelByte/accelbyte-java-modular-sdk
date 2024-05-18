@@ -30,7 +30,6 @@ public class AdminGetBannedUsersV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/bans/users";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class AdminGetBannedUsersV3 extends Operation {
     this.banType = banType;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class GetAllNotificationTemplatesV1Admin extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/notification/namespaces/{namespace}/templates";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class GetAllNotificationTemplatesV1Admin extends Operation {
   @Deprecated
   public GetAllNotificationTemplatesV1Admin(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class PublicGetUserProfilePublicInfoByIds extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/public/namespaces/{namespace}/profiles/public";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class PublicGetUserProfilePublicInfoByIds extends Operation {
       String customBasePath, String namespace, String userIds) {
     this.namespace = namespace;
     this.userIds = userIds;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

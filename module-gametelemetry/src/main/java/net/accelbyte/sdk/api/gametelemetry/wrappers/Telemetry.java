@@ -37,7 +37,7 @@ public class Telemetry {
    */
   public ListBaseResponseStr getNamespacesGameTelemetryV1AdminNamespacesGet(
       GetNamespacesGameTelemetryV1AdminNamespacesGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Telemetry {
   public PagedResponseGetNamespaceEventResponse
       getEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(
           GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

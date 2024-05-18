@@ -37,7 +37,7 @@ public class PublicGameRecord {
    */
   public ModelsBulkGetGameRecordResponse getGameRecordsBulk(GetGameRecordsBulk input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicGameRecord {
    */
   public ModelsGameRecordResponse getGameRecordHandlerV1(GetGameRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PublicGameRecord {
    */
   public ModelsGameRecordResponse putGameRecordHandlerV1(PutGameRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class PublicGameRecord {
    */
   public ModelsGameRecordResponse postGameRecordHandlerV1(PostGameRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class PublicGameRecord {
    * @see DeleteGameRecordHandlerV1
    */
   public void deleteGameRecordHandlerV1(DeleteGameRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

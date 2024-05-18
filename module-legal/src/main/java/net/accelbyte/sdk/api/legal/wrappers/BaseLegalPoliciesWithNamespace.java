@@ -38,7 +38,7 @@ public class BaseLegalPoliciesWithNamespace {
    */
   public List<RetrieveBasePolicyResponse> retrieveAllLegalPoliciesByNamespace(
       RetrieveAllLegalPoliciesByNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class BaseLegalPoliciesWithNamespace {
    * @see CreatePolicy1
    */
   public CreateBasePolicyResponse createPolicy1(CreatePolicy1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class BaseLegalPoliciesWithNamespace {
    */
   public RetrieveBasePolicyResponse retrieveSinglePolicy1(RetrieveSinglePolicy1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class BaseLegalPoliciesWithNamespace {
    */
   public UpdateBasePolicyResponse partialUpdatePolicy1(PartialUpdatePolicy1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class BaseLegalPoliciesWithNamespace {
    */
   public RetrievePolicyResponse retrievePolicyCountry1(RetrievePolicyCountry1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class BaseLegalPoliciesWithNamespace {
    */
   public List<RetrievePolicyTypeResponse> retrieveAllPolicyTypes1(RetrieveAllPolicyTypes1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -33,7 +33,6 @@ public class PublicGetPaymentMethods extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/payment/methods";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicGetPaymentMethods extends Operation {
   public PublicGetPaymentMethods(String customBasePath, String namespace, String paymentOrderNo) {
     this.namespace = namespace;
     this.paymentOrderNo = paymentOrderNo;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

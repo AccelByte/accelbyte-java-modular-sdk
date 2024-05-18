@@ -37,7 +37,7 @@ public class AdminInventories {
    */
   public ApimodelsListInventoryResp adminListInventories(AdminListInventories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminInventories {
    * @see AdminCreateInventory
    */
   public ApimodelsInventoryResp adminCreateInventory(AdminCreateInventory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminInventories {
    * @see AdminGetInventory
    */
   public ApimodelsInventoryResp adminGetInventory(AdminGetInventory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class AdminInventories {
    * @see AdminUpdateInventory
    */
   public ApimodelsInventoryResp adminUpdateInventory(AdminUpdateInventory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class AdminInventories {
    * @see DeleteInventory
    */
   public void deleteInventory(DeleteInventory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class AdminInventories {
    * @see AdminPurchasable
    */
   public void adminPurchasable(AdminPurchasable input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

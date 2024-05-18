@@ -31,7 +31,6 @@ public class PublicChatHistory extends Operation {
   /** generated field's value */
   private String path = "/chat/public/namespaces/{namespace}/topic/{topic}/chats";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -64,7 +63,7 @@ public class PublicChatHistory extends Operation {
     this.limit = limit;
     this.order = order;
     this.startCreatedAt = startCreatedAt;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

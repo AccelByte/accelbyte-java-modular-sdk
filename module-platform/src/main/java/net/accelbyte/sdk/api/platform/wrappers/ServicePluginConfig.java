@@ -37,7 +37,7 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo getLootBoxPluginConfig(GetLootBoxPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo updateLootBoxPluginConfig(UpdateLootBoxPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class ServicePluginConfig {
    * @see DeleteLootBoxPluginConfig
    */
   public void deleteLootBoxPluginConfig(DeleteLootBoxPluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class ServicePluginConfig {
    */
   public LootBoxPluginConfigInfo uplodLootBoxPluginConfigCert(UplodLootBoxPluginConfigCert input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class ServicePluginConfig {
    * @see GetLootBoxGrpcInfo
    */
   public GrpcServerInfo getLootBoxGrpcInfo(GetLootBoxGrpcInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo getSectionPluginConfig(GetSectionPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo updateSectionPluginConfig(UpdateSectionPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class ServicePluginConfig {
    * @see DeleteSectionPluginConfig
    */
   public void deleteSectionPluginConfig(DeleteSectionPluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class ServicePluginConfig {
    */
   public SectionPluginConfigInfo uploadSectionPluginConfigCert(UploadSectionPluginConfigCert input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -162,7 +162,7 @@ public class ServicePluginConfig {
   @Deprecated
   public ServicePluginConfigInfo getServicePluginConfig(GetServicePluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -178,7 +178,7 @@ public class ServicePluginConfig {
   @Deprecated
   public ServicePluginConfigInfo updateServicePluginConfig(UpdateServicePluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -193,7 +193,7 @@ public class ServicePluginConfig {
    */
   @Deprecated
   public void deleteServicePluginConfig(DeleteServicePluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -207,7 +207,7 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo getRevocationPluginConfig(GetRevocationPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -221,7 +221,7 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo updateRevocationPluginConfig(UpdateRevocationPluginConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -234,7 +234,7 @@ public class ServicePluginConfig {
    * @see DeleteRevocationPluginConfig
    */
   public void deleteRevocationPluginConfig(DeleteRevocationPluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -248,7 +248,7 @@ public class ServicePluginConfig {
    */
   public RevocationPluginConfigInfo uploadRevocationPluginConfigCert(
       UploadRevocationPluginConfigCert input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

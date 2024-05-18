@@ -38,7 +38,7 @@ public class Player {
    */
   public List<ApimodelsPlayerAttributesResponseBody> adminQueryPlayerAttributes(
       AdminQueryPlayerAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Player {
    */
   public ApimodelsPlayerAttributesResponseBody adminGetPlayerAttributes(
       AdminGetPlayerAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Player {
    */
   public ApimodelsPlayersCurrentPlatformResponse publicGetBulkPlayerCurrentPlatform(
       PublicGetBulkPlayerCurrentPlatform input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class Player {
    */
   public ApimodelsPlayerAttributesResponseBody publicGetPlayerAttributes(
       PublicGetPlayerAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class Player {
    */
   public ApimodelsPlayerAttributesResponseBody publicStorePlayerAttributes(
       PublicStorePlayerAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class Player {
    * @see PublicDeletePlayerAttributes
    */
   public void publicDeletePlayerAttributes(PublicDeletePlayerAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,7 @@ public class Admin {
    * @see GetServerLogs
    */
   public ModelsServerLogs getServerLogs(GetServerLogs input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

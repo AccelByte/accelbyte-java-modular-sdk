@@ -28,7 +28,6 @@ public class SyncOculusDLC extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class SyncOculusDLC extends Operation {
   public SyncOculusDLC(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

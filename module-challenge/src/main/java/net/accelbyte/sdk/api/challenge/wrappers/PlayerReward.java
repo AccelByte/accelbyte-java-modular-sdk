@@ -38,7 +38,7 @@ public class PlayerReward {
    */
   public ModelListUserRewardsResponse adminGetUserRewards(AdminGetUserRewards input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class PlayerReward {
    */
   public ModelListUserRewardsResponse publicGetUserRewards(PublicGetUserRewards input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class PlayerReward {
    */
   public List<ModelUserReward> publicClaimUserRewards(PublicClaimUserRewards input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

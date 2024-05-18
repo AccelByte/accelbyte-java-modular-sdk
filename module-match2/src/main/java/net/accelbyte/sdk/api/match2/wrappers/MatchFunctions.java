@@ -36,7 +36,7 @@ public class MatchFunctions {
    * @see MatchFunctionList
    */
   public ApiListMatchFunctionsResponse matchFunctionList(MatchFunctionList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class MatchFunctions {
    * @see CreateMatchFunction
    */
   public void createMatchFunction(CreateMatchFunction input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class MatchFunctions {
    * @see UpdateMatchFunction
    */
   public ApiMatchFunctionConfig updateMatchFunction(UpdateMatchFunction input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class MatchFunctions {
    * @see DeleteMatchFunction
    */
   public void deleteMatchFunction(DeleteMatchFunction input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

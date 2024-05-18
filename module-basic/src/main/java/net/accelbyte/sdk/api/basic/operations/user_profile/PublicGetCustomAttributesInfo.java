@@ -33,7 +33,6 @@ public class PublicGetCustomAttributesInfo extends Operation {
   private String path =
       "/basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicGetCustomAttributesInfo extends Operation {
   public PublicGetCustomAttributesInfo(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

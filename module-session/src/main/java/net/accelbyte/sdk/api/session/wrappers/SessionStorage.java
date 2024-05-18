@@ -36,7 +36,7 @@ public class SessionStorage {
    * @see AdminReadSessionStorage
    */
   public Map<String, ?> adminReadSessionStorage(AdminReadSessionStorage input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class SessionStorage {
    * @see AdminDeleteUserSessionStorage
    */
   public void adminDeleteUserSessionStorage(AdminDeleteUserSessionStorage input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class SessionStorage {
    */
   public Map<String, ?> adminReadUserSessionStorage(AdminReadUserSessionStorage input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class SessionStorage {
    */
   public Map<String, ?> publicUpdateInsertSessionStorageLeader(
       PublicUpdateInsertSessionStorageLeader input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class SessionStorage {
    */
   public Map<String, ?> publicUpdateInsertSessionStorage(PublicUpdateInsertSessionStorage input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

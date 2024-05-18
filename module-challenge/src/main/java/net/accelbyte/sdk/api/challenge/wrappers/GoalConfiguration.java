@@ -36,7 +36,7 @@ public class GoalConfiguration {
    * @see AdminGetGoals
    */
   public ModelGetGoalsResponse adminGetGoals(AdminGetGoals input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class GoalConfiguration {
    * @see AdminCreateGoal
    */
   public ModelGoalResponse adminCreateGoal(AdminCreateGoal input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class GoalConfiguration {
    * @see AdminGetGoal
    */
   public ModelGoalResponse adminGetGoal(AdminGetGoal input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class GoalConfiguration {
    * @see AdminUpdateGoals
    */
   public ModelGoalResponse adminUpdateGoals(AdminUpdateGoals input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class GoalConfiguration {
    * @see AdminDeleteGoal
    */
   public void adminDeleteGoal(AdminDeleteGoal input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

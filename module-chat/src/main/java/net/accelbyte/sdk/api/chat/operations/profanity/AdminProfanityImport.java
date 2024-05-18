@@ -29,7 +29,6 @@ public class AdminProfanityImport extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/profanity/namespaces/{namespace}/dictionary/import";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class AdminProfanityImport extends Operation {
     this.action = action;
     this.showResult = showResult;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -38,7 +38,7 @@ public class StatCycleConfiguration {
    * @see GetStatCycles
    */
   public StatCyclePagingSlicedResult getStatCycles(GetStatCycles input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class StatCycleConfiguration {
    * @see CreateStatCycle
    */
   public StatCycleInfo createStatCycle(CreateStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class StatCycleConfiguration {
    * @see BulkGetStatCycle
    */
   public BulkStatCycleResult bulkGetStatCycle(BulkGetStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class StatCycleConfiguration {
    * @see ExportStatCycle
    */
   public InputStream exportStatCycle(ExportStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class StatCycleConfiguration {
    * @see ImportStatCycle
    */
   public StatImportInfo importStatCycle(ImportStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class StatCycleConfiguration {
    * @see GetStatCycle
    */
   public StatCycleInfo getStatCycle(GetStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class StatCycleConfiguration {
    * @see UpdateStatCycle
    */
   public StatCycleInfo updateStatCycle(UpdateStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class StatCycleConfiguration {
    * @see DeleteStatCycle
    */
   public void deleteStatCycle(DeleteStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -142,7 +142,7 @@ public class StatCycleConfiguration {
    * @see BulkAddStats
    */
   public List<BulkStatCycleOperationResult> bulkAddStats(BulkAddStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -155,7 +155,7 @@ public class StatCycleConfiguration {
    * @see StopStatCycle
    */
   public StatCycleInfo stopStatCycle(StopStatCycle input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -168,7 +168,7 @@ public class StatCycleConfiguration {
    * @see GetStatCycles1
    */
   public StatCyclePagingSlicedResult getStatCycles1(GetStatCycles1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -181,7 +181,7 @@ public class StatCycleConfiguration {
    * @see BulkGetStatCycle1
    */
   public BulkStatCycleResult bulkGetStatCycle1(BulkGetStatCycle1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -194,7 +194,7 @@ public class StatCycleConfiguration {
    * @see GetStatCycle1
    */
   public StatCycleInfo getStatCycle1(GetStatCycle1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

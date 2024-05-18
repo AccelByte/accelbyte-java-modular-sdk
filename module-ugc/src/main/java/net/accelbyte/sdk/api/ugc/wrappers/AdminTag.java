@@ -36,7 +36,7 @@ public class AdminTag {
    * @see AdminGetTag
    */
   public ModelsPaginatedGetTagResponse adminGetTag(AdminGetTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminTag {
    * @see AdminCreateTag
    */
   public ModelsCreateTagResponse adminCreateTag(AdminCreateTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class AdminTag {
    * @see AdminUpdateTag
    */
   public ModelsCreateTagResponse adminUpdateTag(AdminUpdateTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class AdminTag {
    * @see AdminDeleteTag
    */
   public void adminDeleteTag(AdminDeleteTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

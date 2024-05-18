@@ -39,7 +39,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByNamespaceHandler(GetEventByNamespaceHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -54,7 +54,7 @@ public class Event {
    */
   @Deprecated
   public void postEventHandler(PostEventHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -70,7 +70,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByEventIDHandler(GetEventByEventIDHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -86,7 +86,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByEventTypeHandler(GetEventByEventTypeHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByEventTypeAndEventIDHandler(
       GetEventByEventTypeAndEventIDHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByUserIDHandler(GetEventByUserIDHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByUserIDAndEventIDHandler(
       GetEventByUserIDAndEventIDHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -150,7 +150,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByUserIDAndEventTypeHandler(
       GetEventByUserIDAndEventTypeHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -166,7 +166,7 @@ public class Event {
   @Deprecated
   public ModelsEventResponse getEventByUserEventIDAndEventTypeHandler(
       GetEventByUserEventIDAndEventTypeHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -30,7 +30,6 @@ public class PublicGetQRCode extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/payment/qrcode";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("image/png");
@@ -51,7 +50,7 @@ public class PublicGetQRCode extends Operation {
   public PublicGetQRCode(String customBasePath, String namespace, String code) {
     this.namespace = namespace;
     this.code = code;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

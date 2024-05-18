@@ -41,7 +41,6 @@ public class UpdateGroupPredefinedRulePublicV2 extends Operation {
   private String path =
       "/group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -73,7 +72,7 @@ public class UpdateGroupPredefinedRulePublicV2 extends Operation {
     this.groupId = groupId;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

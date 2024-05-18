@@ -37,7 +37,7 @@ public class AdminInventoryConfigurations {
    */
   public ApimodelsListInventoryConfigurationsResp adminListInventoryConfigurations(
       AdminListInventoryConfigurations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminInventoryConfigurations {
    */
   public ApimodelsInventoryConfigurationResp adminCreateInventoryConfiguration(
       AdminCreateInventoryConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminInventoryConfigurations {
    */
   public ApimodelsInventoryConfigurationResp adminGetInventoryConfiguration(
       AdminGetInventoryConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminInventoryConfigurations {
    */
   public ApimodelsInventoryConfigurationResp adminUpdateInventoryConfiguration(
       AdminUpdateInventoryConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class AdminInventoryConfigurations {
    */
   public void adminDeleteInventoryConfiguration(AdminDeleteInventoryConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

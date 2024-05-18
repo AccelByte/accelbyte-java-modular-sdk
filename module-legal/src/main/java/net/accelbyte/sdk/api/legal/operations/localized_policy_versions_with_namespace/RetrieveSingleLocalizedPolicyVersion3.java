@@ -31,7 +31,6 @@ public class RetrieveSingleLocalizedPolicyVersion3 extends Operation {
   private String path =
       "/agreement/public/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class RetrieveSingleLocalizedPolicyVersion3 extends Operation {
       String customBasePath, String localizedPolicyVersionId, String namespace) {
     this.localizedPolicyVersionId = localizedPolicyVersionId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

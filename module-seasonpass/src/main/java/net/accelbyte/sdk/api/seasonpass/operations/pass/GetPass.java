@@ -34,7 +34,6 @@ public class GetPass extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class GetPass extends Operation {
     this.code = code;
     this.namespace = namespace;
     this.seasonId = seasonId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

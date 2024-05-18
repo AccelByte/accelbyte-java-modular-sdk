@@ -34,7 +34,6 @@ public class PublicListAllMyStatItems extends Operation {
   /** generated field's value */
   private String path = "/social/v1/public/namespaces/{namespace}/users/me/statitems/value/bulk";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -63,7 +62,7 @@ public class PublicListAllMyStatItems extends Operation {
     this.additionalKey = additionalKey;
     this.statCodes = statCodes;
     this.tags = tags;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,6 @@ public class PublicGetApp extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/items/{itemId}/app/locale";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -69,7 +68,7 @@ public class PublicGetApp extends Operation {
     this.language = language;
     this.region = region;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

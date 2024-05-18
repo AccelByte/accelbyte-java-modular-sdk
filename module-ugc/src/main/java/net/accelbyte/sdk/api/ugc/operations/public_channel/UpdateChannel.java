@@ -29,7 +29,6 @@ public class UpdateChannel extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class UpdateChannel extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

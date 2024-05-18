@@ -36,7 +36,7 @@ public class Account {
    * @see AdminAccountGet
    */
   public ApiAccountResponse adminAccountGet(AdminAccountGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Account {
    * @see AdminAccountCreate
    */
   public ApiAccountCreateResponse adminAccountCreate(AdminAccountCreate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Account {
    */
   public ApiAccountLinkTokenResponse adminAccountLinkTokenGet(AdminAccountLinkTokenGet input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Account {
    */
   public ApiAccountLinkResponse adminAccountLinkTokenPost(AdminAccountLinkTokenPost input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Account {
    * @see AccountGet
    */
   public ApiAccountResponse accountGet(AccountGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

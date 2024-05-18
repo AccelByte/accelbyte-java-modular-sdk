@@ -30,7 +30,6 @@ public class PublicPartyKick extends Operation {
   private String path =
       "/session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/kick";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicPartyKick extends Operation {
     this.namespace = namespace;
     this.partyId = partyId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

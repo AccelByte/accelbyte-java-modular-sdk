@@ -37,7 +37,7 @@ public class PublicStagingContent {
    */
   public ModelsPaginatedListStagingContentResponse listUserStagingContents(
       ListUserStagingContents input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicStagingContent {
    */
   public ModelsStagingContentResponse getUserStagingContentByID(GetUserStagingContentByID input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PublicStagingContent {
    */
   public ModelsStagingContentResponse updateStagingContent(UpdateStagingContent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class PublicStagingContent {
    * @see DeleteUserStagingContentByID
    */
   public void deleteUserStagingContentByID(DeleteUserStagingContentByID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -29,7 +29,6 @@ public class AdminUpdateThirdPartyConfig extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminUpdateThirdPartyConfig extends Operation {
       String customBasePath, String namespace, ModelsUpdateConfigRequest body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

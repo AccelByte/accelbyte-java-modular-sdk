@@ -31,7 +31,6 @@ public class AdminGetCountryListV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/countries";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminGetCountryListV3 extends Operation {
   public AdminGetCountryListV3(String customBasePath, String namespace, Boolean filterBlacklist) {
     this.namespace = namespace;
     this.filterBlacklist = filterBlacklist;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

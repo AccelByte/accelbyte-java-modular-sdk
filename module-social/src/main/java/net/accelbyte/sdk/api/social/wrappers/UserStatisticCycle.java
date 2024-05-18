@@ -37,7 +37,7 @@ public class UserStatisticCycle {
    */
   public UserStatCycleItemPagingSlicedResult getUserStatCycleItems(GetUserStatCycleItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class UserStatisticCycle {
    */
   public UserStatCycleItemPagingSlicedResult publicListMyStatCycleItems(
       PublicListMyStatCycleItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class UserStatisticCycle {
    */
   public UserStatCycleItemPagingSlicedResult getUserStatCycleItems1(GetUserStatCycleItems1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

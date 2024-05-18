@@ -30,7 +30,6 @@ public class RequestPresignedURL1 extends Operation {
   private String path =
       "/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class RequestPresignedURL1 extends Operation {
     this.localizedPolicyVersionId = localizedPolicyVersionId;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

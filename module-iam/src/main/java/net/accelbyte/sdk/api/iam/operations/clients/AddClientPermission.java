@@ -32,7 +32,6 @@ public class AddClientPermission extends Operation {
   /** generated field's value */
   private String path = "/iam/clients/{clientId}/clientpermissions/{resource}/{action}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class AddClientPermission extends Operation {
     this.action = action;
     this.clientId = clientId;
     this.resource = resource;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

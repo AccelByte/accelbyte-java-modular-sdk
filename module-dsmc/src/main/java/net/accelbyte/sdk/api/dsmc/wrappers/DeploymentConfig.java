@@ -36,7 +36,7 @@ public class DeploymentConfig {
    * @see GetAllDeployment
    */
   public ModelsListDeploymentResponse getAllDeployment(GetAllDeployment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class DeploymentConfig {
    * @see GetDeployment
    */
   public ModelsDeploymentWithOverride getDeployment(GetDeployment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class DeploymentConfig {
    * @see CreateDeployment
    */
   public ModelsDeploymentWithOverride createDeployment(CreateDeployment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class DeploymentConfig {
    * @see DeleteDeployment
    */
   public void deleteDeployment(DeleteDeployment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class DeploymentConfig {
    * @see UpdateDeployment
    */
   public ModelsDeploymentWithOverride updateDeployment(UpdateDeployment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createRootRegionOverride(CreateRootRegionOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteRootRegionOverride(DeleteRootRegionOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -130,7 +130,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateRootRegionOverride(UpdateRootRegionOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -144,7 +144,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createDeploymentOverride(CreateDeploymentOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -158,7 +158,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteDeploymentOverride(DeleteDeploymentOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -172,7 +172,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateDeploymentOverride(UpdateDeploymentOverride input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -186,7 +186,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createOverrideRegionOverride(
       CreateOverrideRegionOverride input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -200,7 +200,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride deleteOverrideRegionOverride(
       DeleteOverrideRegionOverride input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -214,7 +214,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride updateOverrideRegionOverride(
       UpdateOverrideRegionOverride input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -228,7 +228,7 @@ public class DeploymentConfig {
    */
   public ModelsListDeploymentResponse getAllDeploymentClient(GetAllDeploymentClient input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -242,7 +242,7 @@ public class DeploymentConfig {
    */
   public ModelsDeploymentWithOverride createDeploymentClient(CreateDeploymentClient input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -255,7 +255,7 @@ public class DeploymentConfig {
    * @see DeleteDeploymentClient
    */
   public void deleteDeploymentClient(DeleteDeploymentClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,7 @@ public class Ticket {
    * @see GetTicketDynamic
    */
   public TicketDynamicInfo getTicketDynamic(GetTicketDynamic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Ticket {
    * @see DecreaseTicketSale
    */
   public void decreaseTicketSale(DecreaseTicketSale input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Ticket {
    * @see GetTicketBoothID
    */
   public TicketBoothID getTicketBoothID(GetTicketBoothID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class Ticket {
    * @see IncreaseTicketSale
    */
   public TicketSaleIncrementResult increaseTicketSale(IncreaseTicketSale input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class Ticket {
    * @see AcquireUserTicket
    */
   public TicketAcquireResult acquireUserTicket(AcquireUserTicket input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

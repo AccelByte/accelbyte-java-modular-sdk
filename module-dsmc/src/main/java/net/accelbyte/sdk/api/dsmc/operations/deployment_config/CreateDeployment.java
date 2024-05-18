@@ -34,7 +34,6 @@ public class CreateDeployment extends Operation {
   private String path =
       "/dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class CreateDeployment extends Operation {
     this.deployment = deployment;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

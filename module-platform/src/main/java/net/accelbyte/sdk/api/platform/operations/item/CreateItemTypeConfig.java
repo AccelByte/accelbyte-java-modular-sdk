@@ -31,7 +31,6 @@ public class CreateItemTypeConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/items/configs";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,7 +45,7 @@ public class CreateItemTypeConfig extends Operation {
   @Deprecated
   public CreateItemTypeConfig(String customBasePath, ItemTypeConfigCreate body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

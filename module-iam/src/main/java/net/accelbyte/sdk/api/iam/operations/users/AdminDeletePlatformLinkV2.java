@@ -40,7 +40,6 @@ public class AdminDeletePlatformLinkV2 extends Operation {
   private String path =
       "/iam/v2/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded", "text/plain");
   private List<String> produces = Arrays.asList("application/json");
@@ -71,7 +70,7 @@ public class AdminDeletePlatformLinkV2 extends Operation {
     this.platformId = platformId;
     this.userId = userId;
     this.platformNamespace = platformNamespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

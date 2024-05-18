@@ -38,7 +38,7 @@ public class SSOCredential {
    */
   public List<ModelSSOPlatformCredentialResponse> retrieveAllSSOLoginPlatformCredentialV3(
       RetrieveAllSSOLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class SSOCredential {
    */
   public ModelSSOPlatformCredentialResponse retrieveSSOLoginPlatformCredential(
       RetrieveSSOLoginPlatformCredential input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class SSOCredential {
    */
   public ModelSSOPlatformCredentialResponse addSSOLoginPlatformCredential(
       AddSSOLoginPlatformCredential input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class SSOCredential {
    */
   public void deleteSSOLoginPlatformCredentialV3(DeleteSSOLoginPlatformCredentialV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class SSOCredential {
    */
   public ModelSSOPlatformCredentialResponse updateSSOPlatformCredential(
       UpdateSSOPlatformCredential input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

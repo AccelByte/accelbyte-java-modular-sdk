@@ -37,7 +37,6 @@ public class AddRoleMembers extends Operation {
   /** generated field's value */
   private String path = "/iam/roles/{roleId}/members";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class AddRoleMembers extends Operation {
   public AddRoleMembers(String customBasePath, String roleId, ModelRoleMembersRequest body) {
     this.roleId = roleId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

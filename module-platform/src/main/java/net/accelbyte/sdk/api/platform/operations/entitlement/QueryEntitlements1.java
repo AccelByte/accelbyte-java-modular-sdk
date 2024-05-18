@@ -33,7 +33,6 @@ public class QueryEntitlements1 extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/entitlements/byItemIds";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -65,7 +64,7 @@ public class QueryEntitlements1 extends Operation {
     this.itemIds = itemIds;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

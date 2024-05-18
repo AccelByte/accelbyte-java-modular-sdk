@@ -31,7 +31,6 @@ public class PublicDownloadUserOrderReceipt extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/pdf");
@@ -56,7 +55,7 @@ public class PublicDownloadUserOrderReceipt extends Operation {
     this.namespace = namespace;
     this.orderNo = orderNo;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

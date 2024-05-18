@@ -36,7 +36,7 @@ public class AdminItemTypes {
    * @see AdminListItemTypes
    */
   public ApimodelsListItemTypesResp adminListItemTypes(AdminListItemTypes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminItemTypes {
    */
   public ApimodelsCreateItemTypeResp adminCreateItemType(AdminCreateItemType input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminItemTypes {
    * @see AdminDeleteItemType
    */
   public void adminDeleteItemType(AdminDeleteItemType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

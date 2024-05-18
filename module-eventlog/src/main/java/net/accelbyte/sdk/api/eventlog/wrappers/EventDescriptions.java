@@ -39,7 +39,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleAgentType agentTypeDescriptionHandler(AgentTypeDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -55,7 +55,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleAgentType specificAgentTypeDescriptionHandler(
       SpecificAgentTypeDescriptionHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -71,7 +71,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventID eventIDDescriptionHandler(EventIDDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -87,7 +87,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventID specificEventIDDescriptionHandler(
       SpecificEventIDDescriptionHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventLevel eventLevelDescriptionHandler(EventLevelDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventLevel specificEventLevelDescriptionHandler(
       SpecificEventLevelDescriptionHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventType eventTypeDescriptionHandler(EventTypeDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -151,7 +151,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleEventType specificEventTypeDescriptionHandler(
       SpecificEventTypeDescriptionHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -167,7 +167,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleUX uxNameDescriptionHandler(UXNameDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -183,7 +183,7 @@ public class EventDescriptions {
   @Deprecated
   public ModelsMultipleUX specificUXDescriptionHandler(SpecificUXDescriptionHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

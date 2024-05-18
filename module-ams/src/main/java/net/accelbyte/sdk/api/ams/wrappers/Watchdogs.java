@@ -35,7 +35,7 @@ public class Watchdogs {
    * @see LocalWatchdogConnect
    */
   public void localWatchdogConnect(LocalWatchdogConnect input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class Watchdogs {
    * @see WatchdogConnect
    */
   public void watchdogConnect(WatchdogConnect input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

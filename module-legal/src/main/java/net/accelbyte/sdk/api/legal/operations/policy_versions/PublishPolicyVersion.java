@@ -28,7 +28,6 @@ public class PublishPolicyVersion extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/policies/versions/{policyVersionId}/latest";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class PublishPolicyVersion extends Operation {
   public PublishPolicyVersion(String customBasePath, String policyVersionId, Boolean shouldNotify) {
     this.policyVersionId = policyVersionId;
     this.shouldNotify = shouldNotify;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

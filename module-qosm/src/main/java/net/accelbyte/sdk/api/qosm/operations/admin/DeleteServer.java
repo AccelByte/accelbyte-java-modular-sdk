@@ -30,7 +30,6 @@ public class DeleteServer extends Operation {
   /** generated field's value */
   private String path = "/qosm/admin/servers/{region}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,7 +46,7 @@ public class DeleteServer extends Operation {
   @Deprecated
   public DeleteServer(String customBasePath, String region) {
     this.region = region;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

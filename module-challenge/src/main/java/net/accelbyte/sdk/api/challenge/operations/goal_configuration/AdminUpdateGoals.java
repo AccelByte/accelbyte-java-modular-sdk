@@ -41,7 +41,6 @@ public class AdminUpdateGoals extends Operation {
   private String path =
       "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -73,7 +72,7 @@ public class AdminUpdateGoals extends Operation {
     this.code = code;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

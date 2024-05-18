@@ -33,7 +33,6 @@ public class GetUserInfoStatus extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/userInfo";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class GetUserInfoStatus extends Operation {
   @Deprecated
   public GetUserInfoStatus(String customBasePath, String namespaces) {
     this.namespaces = namespaces;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

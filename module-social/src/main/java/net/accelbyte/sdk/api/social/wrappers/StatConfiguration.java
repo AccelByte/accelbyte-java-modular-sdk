@@ -37,7 +37,7 @@ public class StatConfiguration {
    * @see GetStats
    */
   public StatPagingSlicedResult getStats(GetStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class StatConfiguration {
    * @see CreateStat
    */
   public StatInfo createStat(CreateStat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class StatConfiguration {
    * @see ExportStats
    */
   public InputStream exportStats(ExportStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class StatConfiguration {
    * @see ImportStats
    */
   public StatImportInfo importStats(ImportStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class StatConfiguration {
    * @see QueryStats
    */
   public StatPagingSlicedResult queryStats(QueryStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class StatConfiguration {
    * @see GetStat
    */
   public StatInfo getStat(GetStat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class StatConfiguration {
    * @see DeleteStat
    */
   public void deleteStat(DeleteStat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class StatConfiguration {
    * @see UpdateStat
    */
   public StatInfo updateStat(UpdateStat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -141,7 +141,7 @@ public class StatConfiguration {
    * @see DeleteTiedStat
    */
   public void deleteTiedStat(DeleteTiedStat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -154,7 +154,7 @@ public class StatConfiguration {
    * @see CreateStat1
    */
   public StatInfo createStat1(CreateStat1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

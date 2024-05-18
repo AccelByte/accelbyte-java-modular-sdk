@@ -36,7 +36,6 @@ public class GetCurrentUserSeasonProgression extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class GetCurrentUserSeasonProgression extends Operation {
   public GetCurrentUserSeasonProgression(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class Certificate {
    */
   public ModelsPlatformCredentials handleUploadXboxPFXCertificate(
       HandleUploadXboxPFXCertificate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

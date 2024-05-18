@@ -30,7 +30,6 @@ public class ListProvidersByRegion extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/public/providers/regions/{region}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,7 +46,7 @@ public class ListProvidersByRegion extends Operation {
   @Deprecated
   public ListProvidersByRegion(String customBasePath, String region) {
     this.region = region;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

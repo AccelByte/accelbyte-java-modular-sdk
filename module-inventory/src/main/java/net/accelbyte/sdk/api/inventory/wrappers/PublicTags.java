@@ -36,7 +36,7 @@ public class PublicTags {
    * @see PublicListTags
    */
   public ApimodelsListTagsResp publicListTags(PublicListTags input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

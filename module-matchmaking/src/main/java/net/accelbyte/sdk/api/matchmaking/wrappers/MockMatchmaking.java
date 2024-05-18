@@ -37,7 +37,7 @@ public class MockMatchmaking {
    * @see CleanAllMocks
    */
   public void cleanAllMocks(CleanAllMocks input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class MockMatchmaking {
    * @see GetAllMockMatches
    */
   public ModelsGetMockMatchesResponse getAllMockMatches(GetAllMockMatches input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class MockMatchmaking {
    */
   public ModelsGetMockMatchesResponse getMockMatchesByTimestamp(GetMockMatchesByTimestamp input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class MockMatchmaking {
    * @see GetAllMockTickets
    */
   public ModelsGetMockTicketsResponse getAllMockTickets(GetAllMockTickets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class MockMatchmaking {
    * @see CreateMockTickets
    */
   public List<ModelsMockTicket> createMockTickets(CreateMockTickets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class MockMatchmaking {
    * @see BulkCreateMockTickets
    */
   public void bulkCreateMockTickets(BulkCreateMockTickets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class MockMatchmaking {
    */
   public ModelsGetMockTicketsResponse getMockTicketsByTimestamp(GetMockTicketsByTimestamp input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

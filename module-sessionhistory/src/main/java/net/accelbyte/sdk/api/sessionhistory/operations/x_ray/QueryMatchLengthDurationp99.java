@@ -30,7 +30,6 @@ public class QueryMatchLengthDurationp99 extends Operation {
   private String path =
       "/sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/match-length-duration-p99";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class QueryMatchLengthDurationp99 extends Operation {
     this.namespace = namespace;
     this.endDate = endDate;
     this.startDate = startDate;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

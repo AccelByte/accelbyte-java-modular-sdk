@@ -34,7 +34,6 @@ public class BulkFetchOrDefaultStatItems extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class BulkFetchOrDefaultStatItems extends Operation {
     this.namespace = namespace;
     this.statCode = statCode;
     this.userIds = userIds;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

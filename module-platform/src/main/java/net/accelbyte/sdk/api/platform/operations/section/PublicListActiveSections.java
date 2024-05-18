@@ -37,7 +37,6 @@ public class PublicListActiveSections extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/users/{userId}/sections";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -76,7 +75,7 @@ public class PublicListActiveSections extends Operation {
     this.region = region;
     this.storeId = storeId;
     this.viewId = viewId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

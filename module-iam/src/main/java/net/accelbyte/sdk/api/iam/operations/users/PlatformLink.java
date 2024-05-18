@@ -48,7 +48,6 @@ public class PlatformLink extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -76,7 +75,7 @@ public class PlatformLink extends Operation {
     this.platformId = platformId;
     this.userId = userId;
     this.ticket = ticket;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

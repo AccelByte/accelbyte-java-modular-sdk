@@ -32,7 +32,6 @@ public class Heartbeat extends Operation {
   /** generated field's value */
   private String path = "/qosm/servers/heartbeat";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class Heartbeat extends Operation {
   @Deprecated
   public Heartbeat(String customBasePath, ModelsHeartbeatRequest body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

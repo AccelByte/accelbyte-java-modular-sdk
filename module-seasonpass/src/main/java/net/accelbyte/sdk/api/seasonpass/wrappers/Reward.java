@@ -37,7 +37,7 @@ public class Reward {
    * @see QueryRewards
    */
   public List<RewardInfo> queryRewards(QueryRewards input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Reward {
    * @see CreateReward
    */
   public RewardInfo createReward(CreateReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Reward {
    * @see GetReward
    */
   public RewardInfo getReward(GetReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Reward {
    * @see DeleteReward
    */
   public void deleteReward(DeleteReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Reward {
    * @see UpdateReward
    */
   public RewardInfo updateReward(UpdateReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Reward {
    * @see PublicClaimUserReward
    */
   public ClaimableRewards publicClaimUserReward(PublicClaimUserReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class Reward {
    */
   public ClaimableRewards publicBulkClaimUserRewards(PublicBulkClaimUserRewards input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

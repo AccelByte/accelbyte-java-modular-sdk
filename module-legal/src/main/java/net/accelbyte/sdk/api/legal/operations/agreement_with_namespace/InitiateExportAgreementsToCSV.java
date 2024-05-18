@@ -35,7 +35,6 @@ public class InitiateExportAgreementsToCSV extends Operation {
   private String path =
       "/agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/initiate";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class InitiateExportAgreementsToCSV extends Operation {
     this.end = end;
     this.policyVersionId = policyVersionId;
     this.start = start;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

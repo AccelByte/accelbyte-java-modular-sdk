@@ -32,7 +32,6 @@ public class BulkEnableCodes extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class BulkEnableCodes extends Operation {
     this.campaignId = campaignId;
     this.namespace = namespace;
     this.batchNo = batchNo;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class UpdateClient extends Operation {
   /** generated field's value */
   private String path = "/iam/clients/{clientId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class UpdateClient extends Operation {
   public UpdateClient(String customBasePath, String clientId, ClientmodelClientUpdateRequest body) {
     this.clientId = clientId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class PublicInventoryConfigurations {
    */
   public ApimodelsListInventoryConfigurationsResp publicListInventoryConfigurations(
       PublicListInventoryConfigurations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

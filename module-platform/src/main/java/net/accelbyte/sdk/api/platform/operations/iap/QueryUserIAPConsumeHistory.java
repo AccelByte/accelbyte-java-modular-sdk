@@ -31,7 +31,6 @@ public class QueryUserIAPConsumeHistory extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -73,7 +72,7 @@ public class QueryUserIAPConsumeHistory extends Operation {
     this.startTime = startTime;
     this.status = status;
     this.type = type;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

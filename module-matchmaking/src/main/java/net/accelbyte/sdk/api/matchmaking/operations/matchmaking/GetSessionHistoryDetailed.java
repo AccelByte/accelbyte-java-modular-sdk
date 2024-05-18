@@ -44,7 +44,6 @@ public class GetSessionHistoryDetailed extends Operation {
   private String path =
       "/matchmaking/v1/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -65,7 +64,7 @@ public class GetSessionHistoryDetailed extends Operation {
   public GetSessionHistoryDetailed(String customBasePath, String matchID, String namespace) {
     this.matchID = matchID;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

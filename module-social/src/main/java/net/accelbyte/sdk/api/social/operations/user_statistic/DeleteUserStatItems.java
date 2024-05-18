@@ -32,7 +32,6 @@ public class DeleteUserStatItems extends Operation {
   private String path =
       "/social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class DeleteUserStatItems extends Operation {
     this.namespace = namespace;
     this.statCode = statCode;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -45,7 +45,6 @@ public class CreateMatchPool extends Operation {
   /** generated field's value */
   private String path = "/match2/v1/namespaces/{namespace}/match-pools";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -66,7 +65,7 @@ public class CreateMatchPool extends Operation {
   public CreateMatchPool(String customBasePath, String namespace, ApiMatchPool body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

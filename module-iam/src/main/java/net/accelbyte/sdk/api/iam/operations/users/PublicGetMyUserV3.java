@@ -37,7 +37,6 @@ public class PublicGetMyUserV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/users/me";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class PublicGetMyUserV3 extends Operation {
   @Deprecated
   public PublicGetMyUserV3(String customBasePath, Boolean includeAllPlatforms) {
     this.includeAllPlatforms = includeAllPlatforms;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

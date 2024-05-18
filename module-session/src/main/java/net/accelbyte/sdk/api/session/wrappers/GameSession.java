@@ -37,7 +37,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionQueryResponse adminQueryGameSessions(AdminQueryGameSessions input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionQueryResponse adminQueryGameSessionsByAttributes(
       AdminQueryGameSessionsByAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class GameSession {
    */
   public ApimodelsDeleteBulkGameSessionsAPIResponse adminDeleteBulkGameSessions(
       AdminDeleteBulkGameSessions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class GameSession {
    * @see AdminSetDSReady
    */
   public void adminSetDSReady(AdminSetDSReady input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class GameSession {
    */
   public ApimodelsUpdateGameSessionMemberStatusResponse adminUpdateGameSessionMember(
       AdminUpdateGameSessionMember input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class GameSession {
    * @see CreateGameSession
    */
   public ApimodelsGameSessionResponse createGameSession(CreateGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionQueryResponse publicQueryGameSessionsByAttributes(
       PublicQueryGameSessionsByAttributes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse publicSessionJoinCode(PublicSessionJoinCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse getGameSessionByPodName(GetGameSessionByPodName input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class GameSession {
    * @see GetGameSession
    */
   public ApimodelsGameSessionResponse getGameSession(GetGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -173,7 +173,7 @@ public class GameSession {
    * @see UpdateGameSession
    */
   public ApimodelsGameSessionResponse updateGameSession(UpdateGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -186,7 +186,7 @@ public class GameSession {
    * @see DeleteGameSession
    */
   public void deleteGameSession(DeleteGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -200,7 +200,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse patchUpdateGameSession(PatchUpdateGameSession input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -214,7 +214,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse updateGameSessionBackfillTicketID(
       UpdateGameSessionBackfillTicketID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -228,7 +228,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse gameSessionGenerateCode(GameSessionGenerateCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -241,7 +241,7 @@ public class GameSession {
    * @see PublicRevokeGameSessionCode
    */
   public void publicRevokeGameSessionCode(PublicRevokeGameSessionCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -254,7 +254,7 @@ public class GameSession {
    * @see PublicGameSessionInvite
    */
   public void publicGameSessionInvite(PublicGameSessionInvite input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -267,7 +267,7 @@ public class GameSession {
    * @see JoinGameSession
    */
   public ApimodelsGameSessionResponse joinGameSession(JoinGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -281,7 +281,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse publicPromoteGameSessionLeader(
       PublicPromoteGameSessionLeader input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -294,7 +294,7 @@ public class GameSession {
    * @see LeaveGameSession
    */
   public void leaveGameSession(LeaveGameSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -307,7 +307,7 @@ public class GameSession {
    * @see PublicGameSessionReject
    */
   public void publicGameSessionReject(PublicGameSessionReject input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -321,7 +321,7 @@ public class GameSession {
    */
   public ApimodelsServerSecret getSessionServerSecret(GetSessionServerSecret input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -335,7 +335,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionResponse appendTeamGameSession(AppendTeamGameSession input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -349,7 +349,7 @@ public class GameSession {
    */
   public ApimodelsGameSessionQueryResponse publicQueryMyGameSessions(
       PublicQueryMyGameSessions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

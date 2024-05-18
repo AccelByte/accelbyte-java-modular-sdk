@@ -37,7 +37,7 @@ public class Policies {
    * @see RetrievePolicies
    */
   public List<RetrievePolicyResponse> retrievePolicies(RetrievePolicies input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Policies {
    * @see UpdatePolicy
    */
   public void updatePolicy(UpdatePolicy input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Policies {
    * @see SetDefaultPolicy2
    */
   public void setDefaultPolicy2(SetDefaultPolicy2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Policies {
    */
   public List<String> retrieveCountryListWithPolicies(RetrieveCountryListWithPolicies input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Policies {
    */
   public List<RetrievePolicyPublicResponse> retrieveLatestPolicies(RetrieveLatestPolicies input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Policies {
    */
   public List<RetrievePolicyPublicResponse> retrieveLatestPoliciesPublic(
       RetrieveLatestPoliciesPublic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class Policies {
    */
   public List<RetrievePolicyPublicResponse> retrieveLatestPoliciesByNamespaceAndCountryPublic(
       RetrieveLatestPoliciesByNamespaceAndCountryPublic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

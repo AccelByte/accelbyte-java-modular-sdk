@@ -36,7 +36,6 @@ public class GetPaymentCustomization extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/payment/customization";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -67,7 +66,7 @@ public class GetPaymentCustomization extends Operation {
     this.sandbox = sandbox;
     this.paymentProvider = paymentProvider;
     this.region = region;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

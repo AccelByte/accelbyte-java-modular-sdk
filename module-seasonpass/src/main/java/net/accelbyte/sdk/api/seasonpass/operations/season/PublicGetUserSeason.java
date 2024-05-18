@@ -35,7 +35,6 @@ public class PublicGetUserSeason extends Operation {
   private String path =
       "/seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class PublicGetUserSeason extends Operation {
     this.namespace = namespace;
     this.seasonId = seasonId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

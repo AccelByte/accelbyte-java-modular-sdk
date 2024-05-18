@@ -38,7 +38,7 @@ public class AdminContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetContentByChannelIDV2(
       AdminGetContentByChannelIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class AdminContentV2 {
    */
   public ModelsCreateContentResponseV2 adminCreateContentV2(AdminCreateContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminContentV2 {
    * @see AdminDeleteOfficialContentV2
    */
   public void adminDeleteOfficialContentV2(AdminDeleteOfficialContentV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminContentV2 {
    */
   public ModelsUpdateContentResponseV2 adminUpdateOfficialContentV2(
       AdminUpdateOfficialContentV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class AdminContentV2 {
    */
   public ModelsUpdateContentResponseV2 adminUpdateOfficialContentFileLocation(
       AdminUpdateOfficialContentFileLocation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class AdminContentV2 {
    */
   public ModelsGenerateContentUploadURLResponse adminGenerateOfficialContentUploadURLV2(
       AdminGenerateOfficialContentUploadURLV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class AdminContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminListContentV2(AdminListContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class AdminContentV2 {
    */
   public List<ModelsContentDownloadResponseV2> adminBulkGetContentByIDsV2(
       AdminBulkGetContentByIDsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class AdminContentV2 {
    */
   public List<ModelsContentDownloadResponseV2> adminGetContentBulkByShareCodesV2(
       AdminGetContentBulkByShareCodesV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -163,7 +163,7 @@ public class AdminContentV2 {
    */
   public ModelsContentDownloadResponseV2 adminGetContentByShareCodeV2(
       AdminGetContentByShareCodeV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -177,7 +177,7 @@ public class AdminContentV2 {
    */
   public ModelsContentDownloadResponseV2 adminGetContentByContentIDV2(
       AdminGetContentByContentIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -191,7 +191,7 @@ public class AdminContentV2 {
    */
   public ModelsContentDownloadResponse rollbackContentVersionV2(RollbackContentVersionV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -205,7 +205,7 @@ public class AdminContentV2 {
    */
   public ModelsUpdateScreenshotResponse adminUpdateScreenshotsV2(AdminUpdateScreenshotsV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -219,7 +219,7 @@ public class AdminContentV2 {
    */
   public ModelsCreateScreenshotResponse adminUploadContentScreenshotV2(
       AdminUploadContentScreenshotV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -233,7 +233,7 @@ public class AdminContentV2 {
    */
   public void adminDeleteContentScreenshotV2(AdminDeleteContentScreenshotV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -247,7 +247,7 @@ public class AdminContentV2 {
    */
   public ModelsListContentVersionsResponse listContentVersionsV2(ListContentVersionsV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -261,7 +261,7 @@ public class AdminContentV2 {
    */
   public ModelsCreateContentResponseV2 adminUpdateContentByShareCodeV2(
       AdminUpdateContentByShareCodeV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -275,7 +275,7 @@ public class AdminContentV2 {
    */
   public void adminDeleteContentByShareCodeV2(AdminDeleteContentByShareCodeV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -288,7 +288,7 @@ public class AdminContentV2 {
    * @see AdminDeleteUserContentV2
    */
   public void adminDeleteUserContentV2(AdminDeleteUserContentV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -302,7 +302,7 @@ public class AdminContentV2 {
    */
   public ModelsUpdateContentResponseV2 adminUpdateUserContentV2(AdminUpdateUserContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -316,7 +316,7 @@ public class AdminContentV2 {
    */
   public ModelsUpdateContentResponseV2 adminUpdateUserContentFileLocation(
       AdminUpdateUserContentFileLocation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -330,7 +330,7 @@ public class AdminContentV2 {
    */
   public ModelsGenerateContentUploadURLResponse adminGenerateUserContentUploadURLV2(
       AdminGenerateUserContentUploadURLV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -344,7 +344,7 @@ public class AdminContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetContentByUserIDV2(
       AdminGetContentByUserIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -358,7 +358,7 @@ public class AdminContentV2 {
    */
   public ModelsCreateContentResponseV2 adminUpdateContentHideStatusV2(
       AdminUpdateContentHideStatusV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

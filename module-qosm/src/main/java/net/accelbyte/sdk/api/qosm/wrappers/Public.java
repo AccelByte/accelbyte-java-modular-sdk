@@ -37,7 +37,7 @@ public class Public {
    */
   public ModelsListServerResponse listServerPerNamespace(ListServerPerNamespace input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Public {
    * @see ListServer
    */
   public ModelsListServerResponse listServer(ListServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

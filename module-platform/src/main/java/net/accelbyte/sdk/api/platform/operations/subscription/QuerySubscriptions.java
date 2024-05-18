@@ -31,7 +31,6 @@ public class QuerySubscriptions extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/subscriptions";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -75,7 +74,7 @@ public class QuerySubscriptions extends Operation {
     this.status = status;
     this.subscribedBy = subscribedBy;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

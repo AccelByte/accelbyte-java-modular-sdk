@@ -31,7 +31,6 @@ public class SetActiveQueue extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/artifacts/queues/active";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -52,7 +51,7 @@ public class SetActiveQueue extends Operation {
   public SetActiveQueue(String customBasePath, String nodeIP, String podName) {
     this.nodeIP = nodeIP;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

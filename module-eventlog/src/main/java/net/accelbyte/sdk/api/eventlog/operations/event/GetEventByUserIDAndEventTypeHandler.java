@@ -32,7 +32,6 @@ public class GetEventByUserIDAndEventTypeHandler extends Operation {
   /** generated field's value */
   private String path = "/event/namespaces/{namespace}/users/{userId}/eventType/{eventType}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -75,7 +74,7 @@ public class GetEventByUserIDAndEventTypeHandler extends Operation {
     this.endDate = endDate;
     this.pageSize = pageSize;
     this.startDate = startDate;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

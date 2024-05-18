@@ -33,7 +33,6 @@ public class CheckWallet extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/check";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class CheckWallet extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.origin = origin;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

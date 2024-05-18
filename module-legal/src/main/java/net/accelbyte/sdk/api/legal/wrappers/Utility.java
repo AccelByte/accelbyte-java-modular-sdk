@@ -36,7 +36,7 @@ public class Utility {
    * @see CheckReadiness
    */
   public LegalReadinessStatusResponse checkReadiness(CheckReadiness input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

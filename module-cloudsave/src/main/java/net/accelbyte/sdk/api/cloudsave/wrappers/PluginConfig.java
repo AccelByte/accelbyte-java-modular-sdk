@@ -36,7 +36,7 @@ public class PluginConfig {
    * @see GetPluginConfig
    */
   public ModelsPluginResponse getPluginConfig(GetPluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class PluginConfig {
    * @see CreatePluginConfig
    */
   public ModelsPluginResponse createPluginConfig(CreatePluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class PluginConfig {
    * @see DeletePluginConfig
    */
   public void deletePluginConfig(DeletePluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class PluginConfig {
    * @see UpdatePluginConfig
    */
   public ModelsPluginResponse updatePluginConfig(UpdatePluginConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

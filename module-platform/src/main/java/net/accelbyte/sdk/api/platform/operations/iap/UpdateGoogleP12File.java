@@ -31,7 +31,6 @@ public class UpdateGoogleP12File extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/iap/config/google/cert";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class UpdateGoogleP12File extends Operation {
   public UpdateGoogleP12File(String customBasePath, String namespace, File file) {
     this.namespace = namespace;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -29,7 +29,6 @@ public class AdminDeleteBulkGameSessions extends Operation {
   /** generated field's value */
   private String path = "/session/v1/admin/namespaces/{namespace}/gamesessions/bulk";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminDeleteBulkGameSessions extends Operation {
       String customBasePath, String namespace, ApimodelsDeleteBulkGameSessionRequest body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

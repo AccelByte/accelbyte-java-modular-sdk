@@ -36,7 +36,7 @@ public class Anonymization {
    */
   public void adminAnonymizeUserLeaderboardAdminV1(AdminAnonymizeUserLeaderboardAdminV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

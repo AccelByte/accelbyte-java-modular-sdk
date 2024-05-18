@@ -36,7 +36,7 @@ public class PublicTag {
    * @see GetTag
    */
   public ModelsPaginatedGetTagResponse getTag(GetTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

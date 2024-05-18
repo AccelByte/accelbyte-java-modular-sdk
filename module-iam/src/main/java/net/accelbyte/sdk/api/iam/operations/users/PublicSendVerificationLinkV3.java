@@ -30,7 +30,6 @@ public class PublicSendVerificationLinkV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/users/me/verify_link/request";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class PublicSendVerificationLinkV3 extends Operation {
   public PublicSendVerificationLinkV3(
       String customBasePath, ModelSendVerificationLinkRequest body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

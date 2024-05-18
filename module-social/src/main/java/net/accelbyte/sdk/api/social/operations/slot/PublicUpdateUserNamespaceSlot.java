@@ -36,7 +36,6 @@ public class PublicUpdateUserNamespaceSlot extends Operation {
   /** generated field's value */
   private String path = "/social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -79,7 +78,7 @@ public class PublicUpdateUserNamespaceSlot extends Operation {
     this.checksum = checksum;
     this.customAttribute = customAttribute;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

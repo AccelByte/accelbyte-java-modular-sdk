@@ -37,7 +37,7 @@ public class AdminIntegrationConfigurations {
    */
   public ApimodelsListIntegrationConfigurationsResp adminListIntegrationConfigurations(
       AdminListIntegrationConfigurations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminIntegrationConfigurations {
    */
   public ApimodelsIntegrationConfigurationResp adminCreateIntegrationConfiguration(
       AdminCreateIntegrationConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminIntegrationConfigurations {
    */
   public ApimodelsIntegrationConfigurationResp adminUpdateIntegrationConfiguration(
       AdminUpdateIntegrationConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminIntegrationConfigurations {
    */
   public ApimodelsIntegrationConfigurationResp adminUpdateStatusIntegrationConfiguration(
       AdminUpdateStatusIntegrationConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

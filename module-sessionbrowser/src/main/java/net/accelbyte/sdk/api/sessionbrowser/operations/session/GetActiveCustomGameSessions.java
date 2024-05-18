@@ -30,7 +30,6 @@ public class GetActiveCustomGameSessions extends Operation {
   private String path =
       "/sessionbrowser/admin/namespaces/{namespace}/gamesession/active/custom-game";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class GetActiveCustomGameSessions extends Operation {
     this.offset = offset;
     this.serverRegion = serverRegion;
     this.sessionId = sessionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

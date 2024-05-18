@@ -29,7 +29,6 @@ public class PublicDeleteContentV2 extends Operation {
   private String path =
       "/ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class PublicDeleteContentV2 extends Operation {
     this.contentId = contentId;
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

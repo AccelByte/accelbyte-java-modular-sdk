@@ -35,7 +35,7 @@ public class FleetCommander {
    * @see PortalHealthCheck
    */
   public void portalHealthCheck(PortalHealthCheck input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class FleetCommander {
    * @see Func1
    */
   public void func1(Func1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -61,7 +61,7 @@ public class FleetCommander {
    * @see BasicHealthCheck
    */
   public void basicHealthCheck(BasicHealthCheck input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

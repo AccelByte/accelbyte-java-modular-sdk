@@ -29,7 +29,6 @@ public class AdminQueryMatchmakingDetail extends Operation {
   /** generated field's value */
   private String path = "/sessionhistory/v1/admin/namespaces/{namespace}/matchmaking";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -70,7 +69,7 @@ public class AdminQueryMatchmakingDetail extends Operation {
     this.orderBy = orderBy;
     this.ticketID = ticketID;
     this.userID = userID;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

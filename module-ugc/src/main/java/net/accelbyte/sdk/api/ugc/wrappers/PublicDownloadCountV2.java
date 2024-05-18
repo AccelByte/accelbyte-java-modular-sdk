@@ -37,7 +37,7 @@ public class PublicDownloadCountV2 {
    */
   public ModelsAddDownloadCountResponse publicAddDownloadCountV2(PublicAddDownloadCountV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicDownloadCountV2 {
    */
   public ModelsPaginatedContentDownloaderResponse publicListContentDownloaderV2(
       PublicListContentDownloaderV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

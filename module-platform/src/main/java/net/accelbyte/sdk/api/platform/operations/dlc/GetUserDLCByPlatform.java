@@ -31,7 +31,6 @@ public class GetUserDLCByPlatform extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/users/{userId}/dlc";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class GetUserDLCByPlatform extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.type = type;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class AdminGroup {
    */
   public ModelsPaginatedGroupResponse singleAdminGetAllGroups(SingleAdminGetAllGroups input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminGroup {
    * @see AdminCreateGroup
    */
   public ModelsCreateGroupResponse adminCreateGroup(AdminCreateGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminGroup {
    * @see SingleAdminGetGroup
    */
   public ModelsCreateGroupResponse singleAdminGetGroup(SingleAdminGetGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class AdminGroup {
    */
   public ModelsCreateGroupResponse singleAdminUpdateGroup(SingleAdminUpdateGroup input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class AdminGroup {
    * @see SingleAdminDeleteGroup
    */
   public void singleAdminDeleteGroup(SingleAdminDeleteGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponse singleAdminGetGroupContents(
       SingleAdminGetGroupContents input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class AdminGroup {
    * @see AdminGetAllGroups
    */
   public ModelsPaginatedGroupResponse adminGetAllGroups(AdminGetAllGroups input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -130,7 +130,7 @@ public class AdminGroup {
    * @see AdminGetGroup
    */
   public ModelsCreateGroupResponse adminGetGroup(AdminGetGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class AdminGroup {
    * @see AdminUpdateGroup
    */
   public ModelsCreateGroupResponse adminUpdateGroup(AdminUpdateGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -156,7 +156,7 @@ public class AdminGroup {
    * @see AdminDeleteGroup
    */
   public void adminDeleteGroup(AdminDeleteGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -170,7 +170,7 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponse adminGetGroupContents(AdminGetGroupContents input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -184,7 +184,7 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetOfficialGroupContentsV2(
       AdminGetOfficialGroupContentsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -198,7 +198,7 @@ public class AdminGroup {
    */
   public ModelsPaginatedContentDownloadResponseV2 adminGetUserGroupContentsV2(
       AdminGetUserGroupContentsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

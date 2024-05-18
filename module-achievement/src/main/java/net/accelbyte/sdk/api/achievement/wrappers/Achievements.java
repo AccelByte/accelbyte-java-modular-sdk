@@ -38,7 +38,7 @@ public class Achievements {
    */
   public ModelsPaginatedAchievementResponse adminListAchievements(AdminListAchievements input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Achievements {
    */
   public ModelsAchievementResponse adminCreateNewAchievement(AdminCreateNewAchievement input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Achievements {
    * @see ExportAchievements
    */
   public InputStream exportAchievements(ExportAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Achievements {
    * @see ImportAchievements
    */
   public ServiceImportConfigResponse importAchievements(ImportAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Achievements {
    * @see AdminGetAchievement
    */
   public ModelsAchievementResponse adminGetAchievement(AdminGetAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Achievements {
    */
   public ModelsAchievementResponse adminUpdateAchievement(AdminUpdateAchievement input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class Achievements {
    * @see AdminDeleteAchievement
    */
   public void adminDeleteAchievement(AdminDeleteAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class Achievements {
    */
   public void adminUpdateAchievementListOrder(AdminUpdateAchievementListOrder input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class Achievements {
    */
   public ModelsPublicAchievementsResponse publicListAchievements(PublicListAchievements input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class Achievements {
    */
   public ModelsPublicAchievementResponse publicGetAchievement(PublicGetAchievement input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

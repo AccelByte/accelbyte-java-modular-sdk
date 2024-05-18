@@ -36,7 +36,6 @@ public class PublicQueryMyGameSessions extends Operation {
   /** generated field's value */
   private String path = "/session/v1/public/namespaces/{namespace}/users/me/gamesessions";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class PublicQueryMyGameSessions extends Operation {
     this.order = order;
     this.orderBy = orderBy;
     this.status = status;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

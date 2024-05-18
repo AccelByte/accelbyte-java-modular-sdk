@@ -37,7 +37,7 @@ public class MatchmakingOperations {
    * @see GetHealthcheckInfo
    */
   public void getHealthcheckInfo(GetHealthcheckInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class MatchmakingOperations {
    * @see HandlerV3Healthz
    */
   public void handlerV3Healthz(HandlerV3Healthz input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class MatchmakingOperations {
    */
   public List<LogAppMessageDeclaration> publicGetMessages(PublicGetMessages input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class MatchmakingOperations {
    * @see VersionCheckHandler
    */
   public void versionCheckHandler(VersionCheckHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,7 @@ public class Revocation {
    * @see GetRevocationConfig
    */
   public RevocationConfigInfo getRevocationConfig(GetRevocationConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Revocation {
    */
   public RevocationConfigInfo updateRevocationConfig(UpdateRevocationConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Revocation {
    * @see DeleteRevocationConfig
    */
   public void deleteRevocationConfig(DeleteRevocationConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Revocation {
    */
   public RevocationHistoryPagingSlicedResult queryRevocationHistories(
       QueryRevocationHistories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Revocation {
    * @see DoRevocation
    */
   public RevocationResult doRevocation(DoRevocation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

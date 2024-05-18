@@ -37,7 +37,7 @@ public class TerminatedServers {
    */
   public ModelsListTerminatedServersResponse listTerminatedServersWithNamespace(
       ListTerminatedServersWithNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

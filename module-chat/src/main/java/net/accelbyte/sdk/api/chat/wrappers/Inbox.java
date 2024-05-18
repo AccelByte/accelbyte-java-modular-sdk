@@ -38,7 +38,7 @@ public class Inbox {
    */
   public List<ModelsGetInboxCategoriesResponseItem> adminGetInboxCategories(
       AdminGetInboxCategories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Inbox {
    */
   public ModelsAddInboxCategoryResponse adminAddInboxCategory(AdminAddInboxCategory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Inbox {
    * @see AdminDeleteInboxCategory
    */
   public void adminDeleteInboxCategory(AdminDeleteInboxCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Inbox {
    * @see AdminUpdateInboxCategory
    */
   public void adminUpdateInboxCategory(AdminUpdateInboxCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class Inbox {
    */
   public ModelsJSONSchemaType adminGetCategorySchema(AdminGetCategorySchema input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Inbox {
    * @see AdminDeleteInboxMessage
    */
   public void adminDeleteInboxMessage(AdminDeleteInboxMessage input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class Inbox {
    */
   public ModelsGetInboxMessagesResponse adminGetInboxMessages(AdminGetInboxMessages input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class Inbox {
    */
   public ModelsSaveInboxMessageResponse adminSaveInboxMessage(AdminSaveInboxMessage input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class Inbox {
    */
   public ModelsUnsendInboxMessageResponse adminUnsendInboxMessage(AdminUnsendInboxMessage input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class Inbox {
    * @see AdminGetInboxUsers
    */
   public ModelsGetInboxUsersResponse adminGetInboxUsers(AdminGetInboxUsers input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -173,7 +173,7 @@ public class Inbox {
    * @see AdminUpdateInboxMessage
    */
   public void adminUpdateInboxMessage(AdminUpdateInboxMessage input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Inbox {
    */
   public ModelsSendInboxMessageResponse adminSendInboxMessage(AdminSendInboxMessage input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -200,7 +200,7 @@ public class Inbox {
    * @see AdminGetInboxStats
    */
   public ModelsGetInboxStatsResponse adminGetInboxStats(AdminGetInboxStats input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

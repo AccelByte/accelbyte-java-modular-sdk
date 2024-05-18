@@ -31,7 +31,6 @@ public class QueryRevocationHistories extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/revocation/history";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -75,7 +74,7 @@ public class QueryRevocationHistories extends Operation {
     this.status = status;
     this.transactionId = transactionId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

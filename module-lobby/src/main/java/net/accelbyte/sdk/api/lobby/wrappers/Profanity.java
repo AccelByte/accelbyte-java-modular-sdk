@@ -38,7 +38,7 @@ public class Profanity {
    */
   public List<ModelsProfanityFilter> adminDebugProfanityFilters(AdminDebugProfanityFilters input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Profanity {
    */
   public ModelsAdminGetProfanityListFiltersV1Response adminGetProfanityListFiltersV1(
       AdminGetProfanityListFiltersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Profanity {
    */
   public void adminAddProfanityFilterIntoList(AdminAddProfanityFilterIntoList input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Profanity {
    * @see AdminAddProfanityFilters
    */
   public void adminAddProfanityFilters(AdminAddProfanityFilters input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class Profanity {
    */
   public void adminImportProfanityFiltersFromFile(AdminImportProfanityFiltersFromFile input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class Profanity {
    */
   public List<ModelsProfanityFilter> adminDeleteProfanityFilter(AdminDeleteProfanityFilter input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class Profanity {
    */
   public List<ModelsAdminGetProfanityListsListResponse> adminGetProfanityLists(
       AdminGetProfanityLists input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class Profanity {
    * @see AdminCreateProfanityList
    */
   public void adminCreateProfanityList(AdminCreateProfanityList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class Profanity {
    * @see AdminUpdateProfanityList
    */
   public void adminUpdateProfanityList(AdminUpdateProfanityList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class Profanity {
    * @see AdminDeleteProfanityList
    */
   public void adminDeleteProfanityList(AdminDeleteProfanityList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -173,7 +173,7 @@ public class Profanity {
    * @see AdminGetProfanityRule
    */
   public ModelsProfanityRule adminGetProfanityRule(AdminGetProfanityRule input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Profanity {
    */
   public void adminSetProfanityRuleForNamespace(AdminSetProfanityRuleForNamespace input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -201,7 +201,7 @@ public class Profanity {
    */
   public ModelsAdminVerifyMessageProfanityResponse adminVerifyMessageProfanityResponse(
       AdminVerifyMessageProfanityResponse input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

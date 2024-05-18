@@ -35,7 +35,6 @@ public class CreateImagePatch extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/admin/images/patches";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class CreateImagePatch extends Operation {
   @Deprecated
   public CreateImagePatch(String customBasePath, ModelsCreateImagePatchRequest body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

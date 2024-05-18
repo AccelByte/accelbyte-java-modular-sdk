@@ -29,7 +29,6 @@ public class AdminUpdateConfigV1 extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/config/namespaces/{namespace}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminUpdateConfigV1 extends Operation {
   public AdminUpdateConfigV1(String customBasePath, String namespace, ModelsConfigResponse body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

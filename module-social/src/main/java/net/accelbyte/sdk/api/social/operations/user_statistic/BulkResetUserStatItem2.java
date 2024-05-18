@@ -35,7 +35,6 @@ public class BulkResetUserStatItem2 extends Operation {
   /** generated field's value */
   private String path = "/social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class BulkResetUserStatItem2 extends Operation {
       String customBasePath, String namespace, List<BulkUserStatItemReset> body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

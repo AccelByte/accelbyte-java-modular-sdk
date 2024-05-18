@@ -37,7 +37,7 @@ public class Group {
    */
   public ModelsGetGroupsListResponseV1 getGroupListAdminV1(GetGroupListAdminV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Group {
    * @see GetSingleGroupAdminV1
    */
   public ModelsGroupResponseV1 getSingleGroupAdminV1(GetSingleGroupAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Group {
    * @see DeleteGroupAdminV1
    */
   public void deleteGroupAdminV1(DeleteGroupAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Group {
    */
   public ModelsGetGroupsListResponseV1 getGroupListPublicV1(GetGroupListPublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 createNewGroupPublicV1(CreateNewGroupPublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 getSingleGroupPublicV1(GetSingleGroupPublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class Group {
    * @see UpdateSingleGroupV1
    */
   public ModelsGroupResponseV1 updateSingleGroupV1(UpdateSingleGroupV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -131,7 +131,7 @@ public class Group {
    * @see DeleteGroupPublicV1
    */
   public void deleteGroupPublicV1(DeleteGroupPublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -145,7 +145,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updatePatchSingleGroupPublicV1(UpdatePatchSingleGroupPublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -159,7 +159,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupCustomAttributesPublicV1(
       UpdateGroupCustomAttributesPublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -173,7 +173,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupCustomRulePublicV1(UpdateGroupCustomRulePublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupPredefinedRulePublicV1(
       UpdateGroupPredefinedRulePublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -201,7 +201,7 @@ public class Group {
    */
   public void deleteGroupPredefinedRulePublicV1(DeleteGroupPredefinedRulePublicV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -215,7 +215,7 @@ public class Group {
    */
   public ModelsGetGroupsResponseV1 getListGroupByIDsAdminV2(GetListGroupByIDsAdminV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -229,7 +229,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 createNewGroupPublicV2(CreateNewGroupPublicV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -242,7 +242,7 @@ public class Group {
    * @see GetListGroupByIDsV2
    */
   public ModelsGetGroupsResponseV1 getListGroupByIDsV2(GetListGroupByIDsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -256,7 +256,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updatePutSingleGroupPublicV2(UpdatePutSingleGroupPublicV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -269,7 +269,7 @@ public class Group {
    * @see DeleteGroupPublicV2
    */
   public void deleteGroupPublicV2(DeleteGroupPublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -283,7 +283,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updatePatchSingleGroupPublicV2(UpdatePatchSingleGroupPublicV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -297,7 +297,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupCustomAttributesPublicV2(
       UpdateGroupCustomAttributesPublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -311,7 +311,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupCustomRulePublicV2(UpdateGroupCustomRulePublicV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -325,7 +325,7 @@ public class Group {
    */
   public ModelsGroupResponseV1 updateGroupPredefinedRulePublicV2(
       UpdateGroupPredefinedRulePublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -339,7 +339,7 @@ public class Group {
    */
   public void deleteGroupPredefinedRulePublicV2(DeleteGroupPredefinedRulePublicV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

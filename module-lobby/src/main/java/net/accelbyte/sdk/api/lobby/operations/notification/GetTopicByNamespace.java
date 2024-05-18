@@ -29,7 +29,6 @@ public class GetTopicByNamespace extends Operation {
   /** generated field's value */
   private String path = "/notification/namespaces/{namespace}/topics";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class GetTopicByNamespace extends Operation {
     this.after = after;
     this.before = before;
     this.limit = limit;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

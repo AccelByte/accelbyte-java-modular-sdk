@@ -35,7 +35,6 @@ public class ResetUserSeason extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class ResetUserSeason extends Operation {
   public ResetUserSeason(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class GetGameSessionByPodName extends Operation {
   /** generated field's value */
   private String path = "/session/v1/public/namespaces/{namespace}/gamesessions/servers/{podName}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class GetGameSessionByPodName extends Operation {
   public GetGameSessionByPodName(String customBasePath, String namespace, String podName) {
     this.namespace = namespace;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

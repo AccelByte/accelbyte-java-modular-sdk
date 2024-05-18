@@ -37,7 +37,7 @@ public class AdminChannel {
    */
   public ModelsPaginatedGetChannelResponse singleAdminGetChannel(SingleAdminGetChannel input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminChannel {
    * @see AdminCreateChannel
    */
   public ModelsChannelResponse adminCreateChannel(AdminCreateChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class AdminChannel {
    */
   public ModelsChannelResponse singleAdminUpdateChannel(SingleAdminUpdateChannel input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class AdminChannel {
    * @see SingleAdminDeleteChannel
    */
   public void singleAdminDeleteChannel(SingleAdminDeleteChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class AdminChannel {
    * @see AdminGetChannel
    */
   public ModelsPaginatedGetChannelResponse adminGetChannel(AdminGetChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class AdminChannel {
    * @see AdminUpdateChannel
    */
   public ModelsChannelResponse adminUpdateChannel(AdminUpdateChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class AdminChannel {
    * @see AdminDeleteChannel
    */
   public void adminDeleteChannel(AdminDeleteChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

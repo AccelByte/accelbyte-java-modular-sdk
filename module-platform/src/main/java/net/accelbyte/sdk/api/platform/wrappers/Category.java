@@ -37,7 +37,7 @@ public class Category {
    * @see GetRootCategories
    */
   public List<FullCategoryInfo> getRootCategories(GetRootCategories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Category {
    * @see CreateCategory
    */
   public FullCategoryInfo createCategory(CreateCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Category {
    * @see ListCategoriesBasic
    */
   public List<BasicCategoryInfo> listCategoriesBasic(ListCategoriesBasic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Category {
    * @see GetCategory
    */
   public FullCategoryInfo getCategory(GetCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Category {
    * @see UpdateCategory
    */
   public FullCategoryInfo updateCategory(UpdateCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Category {
    * @see DeleteCategory
    */
   public FullCategoryInfo deleteCategory(DeleteCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Category {
    * @see GetChildCategories
    */
   public List<FullCategoryInfo> getChildCategories(GetChildCategories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class Category {
    */
   public List<FullCategoryInfo> getDescendantCategories(GetDescendantCategories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class Category {
    */
   public List<CategoryInfo> publicGetRootCategories(PublicGetRootCategories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -157,7 +157,7 @@ public class Category {
    */
   public List<HierarchicalCategoryInfo> downloadCategories(DownloadCategories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -170,7 +170,7 @@ public class Category {
    * @see PublicGetCategory
    */
   public CategoryInfo publicGetCategory(PublicGetCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -184,7 +184,7 @@ public class Category {
    */
   public List<CategoryInfo> publicGetChildCategories(PublicGetChildCategories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -198,7 +198,7 @@ public class Category {
    */
   public List<CategoryInfo> publicGetDescendantCategories(PublicGetDescendantCategories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

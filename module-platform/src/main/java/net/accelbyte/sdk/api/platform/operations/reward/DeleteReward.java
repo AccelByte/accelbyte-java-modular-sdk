@@ -33,7 +33,6 @@ public class DeleteReward extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/rewards/{rewardId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class DeleteReward extends Operation {
   public DeleteReward(String customBasePath, String namespace, String rewardId) {
     this.namespace = namespace;
     this.rewardId = rewardId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

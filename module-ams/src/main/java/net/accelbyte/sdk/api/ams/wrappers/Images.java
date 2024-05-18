@@ -36,7 +36,7 @@ public class Images {
    * @see ImageList
    */
   public ApiImageList imageList(ImageList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Images {
    * @see ImageGet
    */
   public ApiImageDetails imageGet(ImageGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Images {
    * @see ImagePatch
    */
   public ApiImageDetails imagePatch(ImagePatch input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

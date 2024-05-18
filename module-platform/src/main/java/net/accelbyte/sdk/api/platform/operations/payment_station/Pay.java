@@ -33,7 +33,6 @@ public class Pay extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/pay";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -66,7 +65,7 @@ public class Pay extends Operation {
     this.paymentProvider = paymentProvider;
     this.zipCode = zipCode;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

@@ -32,7 +32,6 @@ public class GetPublisherConfig extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class GetPublisherConfig extends Operation {
   public GetPublisherConfig(String customBasePath, String configKey, String namespace) {
     this.configKey = configKey;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

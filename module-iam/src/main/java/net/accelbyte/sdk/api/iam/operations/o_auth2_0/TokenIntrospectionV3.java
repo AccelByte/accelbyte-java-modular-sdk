@@ -31,7 +31,6 @@ public class TokenIntrospectionV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/oauth/introspect";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class TokenIntrospectionV3 extends Operation {
   @Deprecated
   public TokenIntrospectionV3(String customBasePath, String token) {
     this.token = token;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
     securities.add("Basic");

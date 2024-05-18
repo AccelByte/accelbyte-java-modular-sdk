@@ -78,7 +78,6 @@ public class AdminPostGameRecordHandlerV1 extends Operation {
   /** generated field's value */
   private String path = "/cloudsave/v1/admin/namespaces/{namespace}/records/{key}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -103,7 +102,7 @@ public class AdminPostGameRecordHandlerV1 extends Operation {
     this.key = key;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

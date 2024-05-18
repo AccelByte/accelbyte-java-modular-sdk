@@ -31,7 +31,6 @@ public class UpdateWxPayConfigCert extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/merchant/{id}/wxpayconfig/cert";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class UpdateWxPayConfigCert extends Operation {
   public UpdateWxPayConfigCert(String customBasePath, String id, File file) {
     this.id = id;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

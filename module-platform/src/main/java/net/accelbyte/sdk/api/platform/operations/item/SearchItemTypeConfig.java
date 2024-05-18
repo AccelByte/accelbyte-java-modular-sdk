@@ -33,7 +33,6 @@ public class SearchItemTypeConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/items/configs/search";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class SearchItemTypeConfig extends Operation {
   public SearchItemTypeConfig(String customBasePath, String clazz, String itemType) {
     this.clazz = clazz;
     this.itemType = itemType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

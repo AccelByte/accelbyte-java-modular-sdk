@@ -37,7 +37,7 @@ public class InputValidations {
    */
   public ModelInputValidationsResponse adminGetInputValidations(AdminGetInputValidations input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class InputValidations {
    * @see AdminUpdateInputValidations
    */
   public void adminUpdateInputValidations(AdminUpdateInputValidations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class InputValidations {
    * @see AdminResetInputValidations
    */
   public void adminResetInputValidations(AdminResetInputValidations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class InputValidations {
    */
   public ModelInputValidationsPublicResponse publicGetInputValidations(
       PublicGetInputValidations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class InputValidations {
    */
   public ModelInputValidationConfigVersion publicGetInputValidationByField(
       PublicGetInputValidationByField input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

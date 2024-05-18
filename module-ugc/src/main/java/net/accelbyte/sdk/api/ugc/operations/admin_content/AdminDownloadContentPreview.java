@@ -32,7 +32,6 @@ public class AdminDownloadContentPreview extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class AdminDownloadContentPreview extends Operation {
   public AdminDownloadContentPreview(String customBasePath, String contentId, String namespace) {
     this.contentId = contentId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

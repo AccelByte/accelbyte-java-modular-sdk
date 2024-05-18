@@ -34,7 +34,6 @@ public class ReorderTier extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class ReorderTier extends Operation {
     this.namespace = namespace;
     this.seasonId = seasonId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

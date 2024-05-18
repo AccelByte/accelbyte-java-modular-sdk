@@ -29,7 +29,6 @@ public class AdminGetInboxStats extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/inbox/namespaces/{namespace}/stats";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class AdminGetInboxStats extends Operation {
   public AdminGetInboxStats(String customBasePath, String namespace, List<String> messageId) {
     this.namespace = namespace;
     this.messageId = messageId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

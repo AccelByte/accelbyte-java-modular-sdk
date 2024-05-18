@@ -37,7 +37,6 @@ public class PublicUpdateUserNamespaceSlotMetadata extends Operation {
   private String path =
       "/social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -68,7 +67,7 @@ public class PublicUpdateUserNamespaceSlotMetadata extends Operation {
     this.slotId = slotId;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class GetSpecialPaymentProviders extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/provider/special";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -46,7 +45,7 @@ public class GetSpecialPaymentProviders extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetSpecialPaymentProviders(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

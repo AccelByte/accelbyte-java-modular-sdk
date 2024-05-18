@@ -31,7 +31,6 @@ public class PublishTemplateLocalizationV1Admin extends Operation {
   private String path =
       "/lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class PublishTemplateLocalizationV1Admin extends Operation {
     this.namespace = namespace;
     this.templateLanguage = templateLanguage;
     this.templateSlug = templateSlug;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

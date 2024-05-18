@@ -36,7 +36,7 @@ public class RuleSets {
    * @see RuleSetList
    */
   public ApiListRuleSetsResponse ruleSetList(RuleSetList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class RuleSets {
    * @see CreateRuleSet
    */
   public void createRuleSet(CreateRuleSet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class RuleSets {
    * @see RuleSetDetails
    */
   public ApiRuleSetPayload ruleSetDetails(RuleSetDetails input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class RuleSets {
    * @see UpdateRuleSet
    */
   public ApiRuleSetPayload updateRuleSet(UpdateRuleSet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class RuleSets {
    * @see DeleteRuleSet
    */
   public void deleteRuleSet(DeleteRuleSet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

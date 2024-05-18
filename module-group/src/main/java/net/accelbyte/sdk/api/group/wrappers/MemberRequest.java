@@ -37,7 +37,7 @@ public class MemberRequest {
    */
   public ModelsGetMemberRequestsListResponseV1 getGroupJoinRequestPublicV1(
       GetGroupJoinRequestPublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class MemberRequest {
    */
   public ModelsGetMemberRequestsListResponseV1 getGroupInvitationRequestPublicV1(
       GetGroupInvitationRequestPublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class MemberRequest {
    */
   public ModelsGetMemberRequestsListResponseV1 getGroupInviteRequestPublicV2(
       GetGroupInviteRequestPublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class MemberRequest {
    */
   public ModelsGetMemberRequestsListResponseV1 getGroupJoinRequestPublicV2(
       GetGroupJoinRequestPublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class MemberRequest {
    */
   public ModelsGetMemberRequestsListResponseV1 getMyGroupJoinRequestV2(
       GetMyGroupJoinRequestV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

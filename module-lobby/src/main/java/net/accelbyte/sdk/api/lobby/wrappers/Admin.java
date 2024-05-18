@@ -38,7 +38,7 @@ public class Admin {
    */
   public ModelGlobalConfiguration adminGetGlobalConfig(AdminGetGlobalConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Admin {
    */
   public ModelGlobalConfiguration adminUpdateGlobalConfig(AdminUpdateGlobalConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Admin {
    * @see AdminDeleteGlobalConfig
    */
   public void adminDeleteGlobalConfig(AdminDeleteGlobalConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Admin {
    * @see FreeFormNotification
    */
   public void freeFormNotification(FreeFormNotification input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Admin {
    * @see NotificationWithTemplate
    */
   public void notificationWithTemplate(NotificationWithTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class Admin {
    * @see GetGameTemplate
    */
   public List<ModelTemplateResponse> getGameTemplate(GetGameTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class Admin {
    * @see CreateTemplate
    */
   public void createTemplate(CreateTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -130,7 +130,7 @@ public class Admin {
    * @see GetSlugTemplate
    */
   public ModelTemplateLocalizationResponse getSlugTemplate(GetSlugTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class Admin {
    * @see DeleteTemplateSlug
    */
   public void deleteTemplateSlug(DeleteTemplateSlug input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -157,7 +157,7 @@ public class Admin {
    */
   public ModelTemplateLocalization getLocalizationTemplate(GetLocalizationTemplate input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -170,7 +170,7 @@ public class Admin {
    * @see UpdateLocalizationTemplate
    */
   public void updateLocalizationTemplate(UpdateLocalizationTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -183,7 +183,7 @@ public class Admin {
    * @see DeleteTemplateLocalization
    */
   public void deleteTemplateLocalization(DeleteTemplateLocalization input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -196,7 +196,7 @@ public class Admin {
    * @see PublishTemplate
    */
   public void publishTemplate(PublishTemplate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

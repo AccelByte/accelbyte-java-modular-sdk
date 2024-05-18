@@ -30,7 +30,6 @@ public class QueryDetailTickMatchPool extends Operation {
   private String path =
       "/sessionhistory/v2/admin/namespaces/{namespace}/xray/match-pools/{poolName}/pods/{podName}/ticks";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -75,7 +74,7 @@ public class QueryDetailTickMatchPool extends Operation {
     this.offset = offset;
     this.endDate = endDate;
     this.startDate = startDate;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

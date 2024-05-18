@@ -31,7 +31,6 @@ public class RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3 extends 
   /** generated field's value */
   private String path = "/iam/v3/public/namespaces/{namespace}/platforms/clients/active";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3 extends 
   public RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(
       String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

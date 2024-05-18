@@ -28,7 +28,6 @@ public class WatchdogConnect extends Operation {
   /** generated field's value */
   private String path = "/ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class WatchdogConnect extends Operation {
   public WatchdogConnect(String customBasePath, String namespace, String watchdogID) {
     this.namespace = namespace;
     this.watchdogID = watchdogID;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

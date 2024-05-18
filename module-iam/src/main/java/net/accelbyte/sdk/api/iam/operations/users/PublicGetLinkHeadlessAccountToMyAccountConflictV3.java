@@ -33,7 +33,6 @@ public class PublicGetLinkHeadlessAccountToMyAccountConflictV3 extends Operation
   /** generated field's value */
   private String path = "/iam/v3/public/users/me/headless/link/conflict";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class PublicGetLinkHeadlessAccountToMyAccountConflictV3 extends Operation
   public PublicGetLinkHeadlessAccountToMyAccountConflictV3(
       String customBasePath, String oneTimeLinkCode) {
     this.oneTimeLinkCode = oneTimeLinkCode;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

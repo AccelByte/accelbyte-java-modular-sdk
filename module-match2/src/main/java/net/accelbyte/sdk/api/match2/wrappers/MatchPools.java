@@ -36,7 +36,7 @@ public class MatchPools {
    * @see MatchPoolList
    */
   public ApiListMatchPoolsResponse matchPoolList(MatchPoolList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class MatchPools {
    * @see CreateMatchPool
    */
   public void createMatchPool(CreateMatchPool input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class MatchPools {
    * @see MatchPoolDetails
    */
   public ApiMatchPool matchPoolDetails(MatchPoolDetails input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class MatchPools {
    * @see UpdateMatchPool
    */
   public ApiMatchPool updateMatchPool(UpdateMatchPool input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class MatchPools {
    * @see DeleteMatchPool
    */
   public void deleteMatchPool(DeleteMatchPool input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class MatchPools {
    * @see MatchPoolMetric
    */
   public ApiTicketMetricResultRecord matchPoolMetric(MatchPoolMetric input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -114,7 +114,7 @@ public class MatchPools {
    * @see GetPlayerMetric
    */
   public ApiPlayerMetricRecord getPlayerMetric(GetPlayerMetric input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class MatchPools {
    */
   public ApiListMatchPoolTicketsResponse adminGetMatchPoolTickets(AdminGetMatchPoolTickets input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

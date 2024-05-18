@@ -31,7 +31,6 @@ public class RetrieveActiveOIDCClientsPublicV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/namespaces/{namespace}/platforms/clients/oidc";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class RetrieveActiveOIDCClientsPublicV3 extends Operation {
       String customBasePath, String namespace, String clientId) {
     this.namespace = namespace;
     this.clientId = clientId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class PublicItems {
    * @see PublicConsumeMyItem
    */
   public ApimodelsItemResp publicConsumeMyItem(PublicConsumeMyItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class PublicItems {
    * @see PublicListItems
    */
   public ApimodelsListItemResp publicListItems(PublicListItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class PublicItems {
    */
   public List<ApimodelsUpdateItemResp> publicBulkUpdateMyItems(PublicBulkUpdateMyItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class PublicItems {
    */
   public List<ApimodelsUpdateItemResp> publicBulkRemoveMyItems(PublicBulkRemoveMyItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class PublicItems {
    * @see PublicMoveMyItems
    */
   public ApimodelsMoveItemsResp publicMoveMyItems(PublicMoveMyItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class PublicItems {
    * @see PublicGetItem
    */
   public ApimodelsItemResp publicGetItem(PublicGetItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

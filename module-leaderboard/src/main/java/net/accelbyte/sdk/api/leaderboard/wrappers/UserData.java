@@ -37,7 +37,7 @@ public class UserData {
    */
   public ModelsGetAllUserLeaderboardsResp getUserLeaderboardRankingsAdminV1(
       GetUserLeaderboardRankingsAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

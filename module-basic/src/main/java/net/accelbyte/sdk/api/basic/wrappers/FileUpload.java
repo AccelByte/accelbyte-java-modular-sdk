@@ -36,7 +36,7 @@ public class FileUpload {
    * @see GeneratedUploadUrl
    */
   public FileUploadUrlInfo generatedUploadUrl(GeneratedUploadUrl input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class FileUpload {
    */
   public FileUploadUrlInfo generatedUserUploadContentUrl(GeneratedUserUploadContentUrl input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class FileUpload {
    */
   public FileUploadUrlInfo publicGeneratedUploadUrl(PublicGeneratedUploadUrl input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class FileUpload {
    */
   public FileUploadUrlInfo publicGeneratedUserUploadContentUrl(
       PublicGeneratedUserUploadContentUrl input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

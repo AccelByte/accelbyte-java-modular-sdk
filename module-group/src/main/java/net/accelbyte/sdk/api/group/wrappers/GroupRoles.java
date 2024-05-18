@@ -37,7 +37,7 @@ public class GroupRoles {
    */
   public ModelsGetMemberRolesListResponseV1 getMemberRolesListAdminV1(
       GetMemberRolesListAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GroupRoles {
    */
   public ModelsMemberRoleResponseV1 createMemberRoleAdminV1(CreateMemberRoleAdminV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class GroupRoles {
    */
   public ModelsMemberRoleResponseV1 getSingleMemberRoleAdminV1(GetSingleMemberRoleAdminV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class GroupRoles {
    * @see DeleteMemberRoleAdminV1
    */
   public void deleteMemberRoleAdminV1(DeleteMemberRoleAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class GroupRoles {
    */
   public ModelsMemberRoleResponseV1 updateMemberRoleAdminV1(UpdateMemberRoleAdminV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class GroupRoles {
    */
   public ModelsMemberRoleResponseV1 updateMemberRolePermissionAdminV1(
       UpdateMemberRolePermissionAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class GroupRoles {
    */
   public ModelsGetMemberRolesListResponseV1 getMemberRolesListPublicV1(
       GetMemberRolesListPublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class GroupRoles {
    */
   public ModelsGetUserGroupInformationResponseV1 updateMemberRolePublicV1(
       UpdateMemberRolePublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class GroupRoles {
    * @see DeleteMemberRolePublicV1
    */
   public void deleteMemberRolePublicV1(DeleteMemberRolePublicV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -161,7 +161,7 @@ public class GroupRoles {
    */
   public ModelsGetMemberRolesListResponseV1 getMemberRolesListPublicV2(
       GetMemberRolesListPublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -175,7 +175,7 @@ public class GroupRoles {
    */
   public ModelsGetUserGroupInformationResponseV1 updateMemberRolePublicV2(
       UpdateMemberRolePublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -188,7 +188,7 @@ public class GroupRoles {
    * @see DeleteMemberRolePublicV2
    */
   public void deleteMemberRolePublicV2(DeleteMemberRolePublicV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

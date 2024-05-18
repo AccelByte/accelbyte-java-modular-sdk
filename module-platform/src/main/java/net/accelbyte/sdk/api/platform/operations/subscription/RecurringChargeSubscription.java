@@ -34,7 +34,6 @@ public class RecurringChargeSubscription extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class RecurringChargeSubscription extends Operation {
       String customBasePath, String namespace, String subscriptionId) {
     this.namespace = namespace;
     this.subscriptionId = subscriptionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

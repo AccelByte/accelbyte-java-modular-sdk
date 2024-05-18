@@ -38,7 +38,7 @@ public class Country {
    */
   public List<ModelCountryResponse> adminGetCountryListV3(AdminGetCountryListV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Country {
    */
   public ModelCountryBlacklistResponse adminGetCountryBlacklistV3(AdminGetCountryBlacklistV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Country {
    * @see AdminAddCountryBlacklistV3
    */
   public void adminAddCountryBlacklistV3(AdminAddCountryBlacklistV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Country {
    */
   public List<ModelCountryResponse> publicGetCountryListV3(PublicGetCountryListV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

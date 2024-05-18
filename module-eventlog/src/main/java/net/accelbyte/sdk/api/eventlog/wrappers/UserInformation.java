@@ -39,7 +39,7 @@ public class UserInformation {
   @Deprecated
   public ModelsEventResponse getUserActivitiesHandler(GetUserActivitiesHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -54,7 +54,7 @@ public class UserInformation {
    */
   @Deprecated
   public void deleteUserActivitiesHandler(DeleteUserActivitiesHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -70,7 +70,7 @@ public class UserInformation {
   @Deprecated
   public ModelsUserLastActivity lastUserActivityTimeHandler(LastUserActivityTimeHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

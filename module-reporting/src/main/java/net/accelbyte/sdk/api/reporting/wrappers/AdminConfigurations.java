@@ -36,7 +36,7 @@ public class AdminConfigurations {
    * @see Get
    */
   public RestapiConfigResponse get(Get input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminConfigurations {
    * @see Upsert
    */
   public RestapiConfigResponse upsert(Upsert input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

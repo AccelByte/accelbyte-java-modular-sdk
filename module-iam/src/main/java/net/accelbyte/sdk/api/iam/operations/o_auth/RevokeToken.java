@@ -35,7 +35,6 @@ public class RevokeToken extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/revoke/token";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class RevokeToken extends Operation {
   @Deprecated
   public RevokeToken(String customBasePath, String token) {
     this.token = token;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

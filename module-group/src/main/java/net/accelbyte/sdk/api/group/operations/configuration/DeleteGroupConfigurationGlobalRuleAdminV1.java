@@ -33,7 +33,6 @@ public class DeleteGroupConfigurationGlobalRuleAdminV1 extends Operation {
   private String path =
       "/group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class DeleteGroupConfigurationGlobalRuleAdminV1 extends Operation {
     this.allowedAction = allowedAction;
     this.configurationCode = configurationCode;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

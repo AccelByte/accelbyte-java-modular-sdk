@@ -31,7 +31,6 @@ public class PublicDownloadMyBackupCodesV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/download";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class PublicDownloadMyBackupCodesV4 extends Operation {
   @Deprecated
   public PublicDownloadMyBackupCodesV4(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class Section {
    * @see QuerySections
    */
   public SectionPagingSlicedResult querySections(QuerySections input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Section {
    * @see CreateSection
    */
   public FullSectionInfo createSection(CreateSection input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Section {
    * @see PurgeExpiredSection
    */
   public void purgeExpiredSection(PurgeExpiredSection input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Section {
    * @see GetSection
    */
   public FullSectionInfo getSection(GetSection input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Section {
    * @see UpdateSection
    */
   public FullSectionInfo updateSection(UpdateSection input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Section {
    * @see DeleteSection
    */
   public void deleteSection(DeleteSection input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class Section {
    */
   public List<SectionInfo> publicListActiveSections(PublicListActiveSections input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

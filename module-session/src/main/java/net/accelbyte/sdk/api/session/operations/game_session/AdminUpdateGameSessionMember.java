@@ -30,7 +30,6 @@ public class AdminUpdateGameSessionMember extends Operation {
   private String path =
       "/session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/status/{statusType}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class AdminUpdateGameSessionMember extends Operation {
     this.namespace = namespace;
     this.sessionId = sessionId;
     this.statusType = statusType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

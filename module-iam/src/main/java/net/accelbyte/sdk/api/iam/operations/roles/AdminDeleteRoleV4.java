@@ -29,7 +29,6 @@ public class AdminDeleteRoleV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/roles/{roleId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -46,7 +45,7 @@ public class AdminDeleteRoleV4 extends Operation {
   @Deprecated
   public AdminDeleteRoleV4(String customBasePath, String roleId) {
     this.roleId = roleId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

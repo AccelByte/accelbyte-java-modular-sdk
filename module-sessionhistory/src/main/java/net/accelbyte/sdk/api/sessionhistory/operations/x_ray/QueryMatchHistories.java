@@ -30,7 +30,6 @@ public class QueryMatchHistories extends Operation {
   private String path =
       "/sessionhistory/v2/admin/namespaces/{namespace}/xray/matches/{matchId}/histories";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class QueryMatchHistories extends Operation {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

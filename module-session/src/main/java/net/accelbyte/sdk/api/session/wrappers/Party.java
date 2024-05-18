@@ -36,7 +36,7 @@ public class Party {
    * @see AdminQueryParties
    */
   public ApimodelsPartyQueryResponse adminQueryParties(AdminQueryParties input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Party {
    */
   public ApimodelsPartySessionResponse publicPartyJoinCode(PublicPartyJoinCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Party {
    * @see PublicGetParty
    */
   public ApimodelsPartySessionResponse publicGetParty(PublicGetParty input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Party {
    * @see PublicUpdateParty
    */
   public ApimodelsPartySessionResponse publicUpdateParty(PublicUpdateParty input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Party {
    */
   public ApimodelsPartySessionResponse publicPatchUpdateParty(PublicPatchUpdateParty input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class Party {
    */
   public ApimodelsPartySessionResponse publicGeneratePartyCode(PublicGeneratePartyCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class Party {
    * @see PublicRevokePartyCode
    */
   public void publicRevokePartyCode(PublicRevokePartyCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -131,7 +131,7 @@ public class Party {
    */
   public ApimodelsSessionInviteResponse publicPartyInvite(PublicPartyInvite input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -145,7 +145,7 @@ public class Party {
    */
   public ApimodelsPartySessionResponse publicPromotePartyLeader(PublicPromotePartyLeader input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -158,7 +158,7 @@ public class Party {
    * @see PublicPartyJoin
    */
   public ApimodelsPartySessionResponse publicPartyJoin(PublicPartyJoin input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -171,7 +171,7 @@ public class Party {
    * @see PublicPartyLeave
    */
   public void publicPartyLeave(PublicPartyLeave input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -184,7 +184,7 @@ public class Party {
    * @see PublicPartyReject
    */
   public void publicPartyReject(PublicPartyReject input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -197,7 +197,7 @@ public class Party {
    * @see PublicPartyKick
    */
   public ApimodelsKickResponse publicPartyKick(PublicPartyKick input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -210,7 +210,7 @@ public class Party {
    * @see PublicCreateParty
    */
   public ApimodelsPartySessionResponse publicCreateParty(PublicCreateParty input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -224,7 +224,7 @@ public class Party {
    */
   public ApimodelsPartyQueryResponse publicQueryMyParties(PublicQueryMyParties input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -37,7 +37,7 @@ public class Config {
    * @see ListConfig
    */
   public ModelsListConfigResponse listConfig(ListConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Config {
    */
   @Deprecated
   public void saveConfig(SaveConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Config {
    * @see GetConfig
    */
   public ModelsDSMConfigRecord getConfig(GetConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Config {
    * @see CreateConfig
    */
   public ModelsDSMConfigRecord createConfig(CreateConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Config {
    * @see DeleteConfig
    */
   public void deleteConfig(DeleteConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class Config {
    * @see UpdateConfig
    */
   public ModelsDSMConfigRecord updateConfig(UpdateConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class Config {
    * @see ClearCache
    */
   public void clearCache(ClearCache input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -130,7 +130,7 @@ public class Config {
    * @see AddPort
    */
   public ModelsDSMConfigRecord addPort(AddPort input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class Config {
    * @see DeletePort
    */
   public ModelsDSMConfigRecord deletePort(DeletePort input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -156,7 +156,7 @@ public class Config {
    * @see UpdatePort
    */
   public ModelsDSMConfigRecord updatePort(UpdatePort input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -169,7 +169,7 @@ public class Config {
    * @see ExportConfigV1
    */
   public InputStream exportConfigV1(ExportConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -182,7 +182,7 @@ public class Config {
    * @see ImportConfigV1
    */
   public ModelsImportResponse importConfigV1(ImportConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -37,7 +37,7 @@ public class PlatformCredential {
    */
   public ModelsPlatformCredentials adminGetPlatformCredentials(AdminGetPlatformCredentials input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PlatformCredential {
    */
   public ModelsPlatformCredentials adminUpdatePlatformCredentials(
       AdminUpdatePlatformCredentials input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PlatformCredential {
    */
   public void adminDeletePlatformCredentials(AdminDeletePlatformCredentials input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

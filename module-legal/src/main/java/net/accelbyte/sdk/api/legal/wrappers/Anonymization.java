@@ -35,7 +35,7 @@ public class Anonymization {
    * @see AnonymizeUserAgreement
    */
   public void anonymizeUserAgreement(AnonymizeUserAgreement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

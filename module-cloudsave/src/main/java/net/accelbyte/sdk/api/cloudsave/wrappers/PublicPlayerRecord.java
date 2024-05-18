@@ -37,7 +37,7 @@ public class PublicPlayerRecord {
    */
   public ModelsBulkGetPlayerRecordResponse bulkGetPlayerPublicRecordHandlerV1(
       BulkGetPlayerPublicRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicPlayerRecord {
    */
   public ModelsListPlayerRecordKeysResponse retrievePlayerRecords(RetrievePlayerRecords input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PublicPlayerRecord {
    */
   public ModelsBulkGetPlayerRecordResponse getPlayerRecordsBulkHandlerV1(
       GetPlayerRecordsBulkHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class PublicPlayerRecord {
    */
   public void publicDeletePlayerPublicRecordHandlerV1(PublicDeletePlayerPublicRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class PublicPlayerRecord {
    */
   public ModelsListPlayerRecordKeysResponse getOtherPlayerPublicRecordKeyHandlerV1(
       GetOtherPlayerPublicRecordKeyHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class PublicPlayerRecord {
    */
   public ModelsBulkGetPlayerRecordResponse getOtherPlayerPublicRecordHandlerV1(
       GetOtherPlayerPublicRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse getPlayerRecordHandlerV1(GetPlayerRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse putPlayerRecordHandlerV1(PutPlayerRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse postPlayerRecordHandlerV1(PostPlayerRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -162,7 +162,7 @@ public class PublicPlayerRecord {
    * @see DeletePlayerRecordHandlerV1
    */
   public void deletePlayerRecordHandlerV1(DeletePlayerRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -176,7 +176,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse getPlayerPublicRecordHandlerV1(
       GetPlayerPublicRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -190,7 +190,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse putPlayerPublicRecordHandlerV1(
       PutPlayerPublicRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -204,7 +204,7 @@ public class PublicPlayerRecord {
    */
   public ModelsPlayerRecordResponse postPlayerPublicRecordHandlerV1(
       PostPlayerPublicRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

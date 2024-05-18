@@ -35,7 +35,7 @@ public class SSO {
    * @see LoginSSOClient
    */
   public void loginSSOClient(LoginSSOClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class SSO {
    * @see LogoutSSOClient
    */
   public void logoutSSOClient(LogoutSSOClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

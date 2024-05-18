@@ -36,7 +36,7 @@ public class Servers {
    * @see FleetServerHistory
    */
   public ApiDSHistoryList fleetServerHistory(FleetServerHistory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Servers {
    * @see FleetServerInfo
    */
   public ApiFleetServerInfoResponse fleetServerInfo(FleetServerInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Servers {
    */
   public ApiFleetServerConnectionInfoResponse fleetServerConnectionInfo(
       FleetServerConnectionInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Servers {
    * @see ServerHistory
    */
   public ApiFleetServerHistoryResponse serverHistory(ServerHistory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

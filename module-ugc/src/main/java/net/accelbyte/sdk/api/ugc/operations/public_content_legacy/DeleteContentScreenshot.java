@@ -29,7 +29,6 @@ public class DeleteContentScreenshot extends Operation {
   private String path =
       "/ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class DeleteContentScreenshot extends Operation {
     this.namespace = namespace;
     this.screenshotId = screenshotId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

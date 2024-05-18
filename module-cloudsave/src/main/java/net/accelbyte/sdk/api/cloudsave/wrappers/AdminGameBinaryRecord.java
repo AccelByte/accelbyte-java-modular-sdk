@@ -37,7 +37,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsListGameBinaryRecordsAdminResponse adminListGameBinaryRecordsV1(
       AdminListGameBinaryRecordsV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse adminPostGameBinaryRecordV1(
       AdminPostGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsGameBinaryRecordAdminResponse adminGetGameBinaryRecordV1(
       AdminGetGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsGameBinaryRecordAdminResponse adminPutGameBinaryRecordV1(
       AdminPutGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class AdminGameBinaryRecord {
    * @see AdminDeleteGameBinaryRecordV1
    */
   public void adminDeleteGameBinaryRecordV1(AdminDeleteGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsGameBinaryRecordAdminResponse adminPutGameBinaryRecorMetadataV1(
       AdminPutGameBinaryRecorMetadataV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class AdminGameBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse adminPostGameBinaryPresignedURLV1(
       AdminPostGameBinaryPresignedURLV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

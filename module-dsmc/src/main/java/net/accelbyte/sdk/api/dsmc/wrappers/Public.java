@@ -37,7 +37,7 @@ public class Public {
    * @see GetDefaultProvider
    */
   public ModelsDefaultProvider getDefaultProvider(GetDefaultProvider input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Public {
    * @see ListProviders
    */
   public List<String> listProviders(ListProviders input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Public {
    * @see ListProvidersByRegion
    */
   public List<String> listProvidersByRegion(ListProvidersByRegion input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

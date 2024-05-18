@@ -34,7 +34,6 @@ public class GetServerSessionTimeout extends Operation {
   private String path =
       "/dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class GetServerSessionTimeout extends Operation {
   public GetServerSessionTimeout(String customBasePath, String namespace, String podName) {
     this.namespace = namespace;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

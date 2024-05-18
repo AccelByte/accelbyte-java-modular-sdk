@@ -36,7 +36,6 @@ public class PublicQueryItems extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/items/byCriteria";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -98,7 +97,7 @@ public class PublicQueryItems extends Operation {
     this.sortBy = sortBy;
     this.storeId = storeId;
     this.tags = tags;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

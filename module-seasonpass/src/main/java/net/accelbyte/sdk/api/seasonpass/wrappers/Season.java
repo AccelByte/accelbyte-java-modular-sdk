@@ -37,7 +37,7 @@ public class Season {
    * @see QuerySeasons
    */
   public ListSeasonInfoPagingSlicedResult querySeasons(QuerySeasons input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Season {
    * @see CreateSeason
    */
   public SeasonInfo createSeason(CreateSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Season {
    * @see GetCurrentSeason
    */
   public SeasonSummary getCurrentSeason(GetCurrentSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Season {
    */
   public List<UserSeasonSummary> bulkGetUserSeasonProgression(BulkGetUserSeasonProgression input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Season {
    * @see GetSeason
    */
   public SeasonInfo getSeason(GetSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class Season {
    * @see DeleteSeason
    */
   public void deleteSeason(DeleteSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class Season {
    * @see UpdateSeason
    */
   public SeasonInfo updateSeason(UpdateSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class Season {
    * @see CloneSeason
    */
   public SeasonInfo cloneSeason(CloneSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -142,7 +142,7 @@ public class Season {
    * @see GetFullSeason
    */
   public FullSeasonInfo getFullSeason(GetFullSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -155,7 +155,7 @@ public class Season {
    * @see PublishSeason
    */
   public SeasonInfo publishSeason(PublishSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -168,7 +168,7 @@ public class Season {
    * @see RetireSeason
    */
   public SeasonInfo retireSeason(RetireSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -181,7 +181,7 @@ public class Season {
    * @see UnpublishSeason
    */
   public SeasonInfo unpublishSeason(UnpublishSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -195,7 +195,7 @@ public class Season {
    */
   public ListUserSeasonInfoPagingSlicedResult getUserParticipatedSeasons(
       GetUserParticipatedSeasons input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -208,7 +208,7 @@ public class Season {
    * @see ExistsAnyPassByPassCodes
    */
   public Ownership existsAnyPassByPassCodes(ExistsAnyPassByPassCodes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -222,7 +222,7 @@ public class Season {
    */
   public UserSeasonSummary getCurrentUserSeasonProgression(GetCurrentUserSeasonProgression input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -235,7 +235,7 @@ public class Season {
    * @see CheckSeasonPurchasable
    */
   public void checkSeasonPurchasable(CheckSeasonPurchasable input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -248,7 +248,7 @@ public class Season {
    * @see ResetUserSeason
    */
   public void resetUserSeason(ResetUserSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -262,7 +262,7 @@ public class Season {
    */
   public ExpGrantHistoryPagingSlicedResult queryUserExpGrantHistory(QueryUserExpGrantHistory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -276,7 +276,7 @@ public class Season {
    */
   public ReasonTagsResult queryUserExpGrantHistoryTag(QueryUserExpGrantHistoryTag input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -289,7 +289,7 @@ public class Season {
    * @see GetUserSeason
    */
   public ClaimableUserSeasonInfo getUserSeason(GetUserSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -302,7 +302,7 @@ public class Season {
    * @see PublicGetCurrentSeason
    */
   public LocalizedSeasonInfo publicGetCurrentSeason(PublicGetCurrentSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -316,7 +316,7 @@ public class Season {
    */
   public ClaimableUserSeasonInfo publicGetCurrentUserSeason(PublicGetCurrentUserSeason input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -329,7 +329,7 @@ public class Season {
    * @see PublicGetUserSeason
    */
   public ClaimableUserSeasonInfo publicGetUserSeason(PublicGetUserSeason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

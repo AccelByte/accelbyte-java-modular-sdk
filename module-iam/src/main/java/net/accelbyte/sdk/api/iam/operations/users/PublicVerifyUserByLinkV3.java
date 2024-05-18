@@ -24,7 +24,6 @@ public class PublicVerifyUserByLinkV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/users/verify_link/verify";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -39,7 +38,7 @@ public class PublicVerifyUserByLinkV3 extends Operation {
   @Deprecated
   public PublicVerifyUserByLinkV3(String customBasePath, String code) {
     this.code = code;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

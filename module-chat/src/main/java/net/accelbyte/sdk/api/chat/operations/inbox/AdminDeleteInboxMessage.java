@@ -28,7 +28,6 @@ public class AdminDeleteInboxMessage extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/inbox/namespaces/{namespace}/message/{messageId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class AdminDeleteInboxMessage extends Operation {
     this.messageId = messageId;
     this.namespace = namespace;
     this.force = force;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -29,7 +29,6 @@ public class AdminQueryThirdPlatformLinkHistoryV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/users/linkhistories";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class AdminQueryThirdPlatformLinkHistoryV3 extends Operation {
     this.offset = offset;
     this.platformUserId = platformUserId;
     this.platformId = platformId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

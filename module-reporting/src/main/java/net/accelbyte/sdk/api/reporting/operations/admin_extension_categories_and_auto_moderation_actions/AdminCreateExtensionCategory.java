@@ -29,7 +29,6 @@ public class AdminCreateExtensionCategory extends Operation {
   /** generated field's value */
   private String path = "/reporting/v1/admin/extensionCategories";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,7 +46,7 @@ public class AdminCreateExtensionCategory extends Operation {
   public AdminCreateExtensionCategory(
       String customBasePath, RestapiExtensionCategoryApiRequest body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

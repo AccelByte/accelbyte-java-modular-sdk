@@ -30,7 +30,6 @@ public class QueryStats extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats/search";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -66,7 +65,7 @@ public class QueryStats extends Operation {
     this.limit = limit;
     this.offset = offset;
     this.keyword = keyword;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

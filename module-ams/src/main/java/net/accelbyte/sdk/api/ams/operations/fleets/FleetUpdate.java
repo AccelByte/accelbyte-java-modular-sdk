@@ -31,7 +31,6 @@ public class FleetUpdate extends Operation {
   /** generated field's value */
   private String path = "/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class FleetUpdate extends Operation {
     this.fleetID = fleetID;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class GlobalConfiguration {
    */
   public ApimodelsGlobalConfigurationResponse adminListGlobalConfiguration(
       AdminListGlobalConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GlobalConfiguration {
    */
   public ApimodelsGlobalConfigurationResponse adminUpdateGlobalConfiguration(
       AdminUpdateGlobalConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class GlobalConfiguration {
    */
   public void adminDeleteGlobalConfiguration(AdminDeleteGlobalConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

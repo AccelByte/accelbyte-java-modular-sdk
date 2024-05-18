@@ -37,7 +37,7 @@ public class ChallengeConfiguration {
    * @see AdminGetChallenges
    */
   public ModelListChallengeResponse adminGetChallenges(AdminGetChallenges input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class ChallengeConfiguration {
    * @see AdminCreateChallenge
    */
   public ModelChallengeResponse adminCreateChallenge(AdminCreateChallenge input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class ChallengeConfiguration {
    * @see AdminGetChallenge
    */
   public ModelChallengeResponse adminGetChallenge(AdminGetChallenge input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class ChallengeConfiguration {
    * @see AdminUpdateChallenge
    */
   public ModelChallengeResponse adminUpdateChallenge(AdminUpdateChallenge input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class ChallengeConfiguration {
    * @see AdminDeleteChallenge
    */
   public void adminDeleteChallenge(AdminDeleteChallenge input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class ChallengeConfiguration {
    * @see AdminGetPeriods
    */
   public ModelListPeriodsResponse adminGetPeriods(AdminGetPeriods input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class ChallengeConfiguration {
    */
   public List<ModelSchedule> adminRandomizeChallenge(AdminRandomizeChallenge input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class ChallengeConfiguration {
    * @see AdminDeleteTiedChallenge
    */
   public void adminDeleteTiedChallenge(AdminDeleteTiedChallenge input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,6 @@ public class PublicGetMyEntitlementOwnershipByItemId extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byItemId";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class PublicGetMyEntitlementOwnershipByItemId extends Operation {
     this.namespace = namespace;
     this.entitlementClazz = entitlementClazz;
     this.itemId = itemId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

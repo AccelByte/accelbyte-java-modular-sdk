@@ -29,7 +29,6 @@ public class AdminGetReason extends Operation {
   /** generated field's value */
   private String path = "/reporting/v1/admin/namespaces/{namespace}/reasons/{reasonId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminGetReason extends Operation {
   public AdminGetReason(String customBasePath, String namespace, String reasonId) {
     this.namespace = namespace;
     this.reasonId = reasonId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

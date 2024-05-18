@@ -28,7 +28,6 @@ public class AdminDeleteType extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/admin/namespaces/{namespace}/types/{typeId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class AdminDeleteType extends Operation {
   public AdminDeleteType(String customBasePath, String namespace, String typeId) {
     this.namespace = namespace;
     this.typeId = typeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

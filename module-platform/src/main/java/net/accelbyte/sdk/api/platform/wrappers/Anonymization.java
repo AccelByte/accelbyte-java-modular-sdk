@@ -35,7 +35,7 @@ public class Anonymization {
    * @see AnonymizeCampaign
    */
   public void anonymizeCampaign(AnonymizeCampaign input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class Anonymization {
    * @see AnonymizeEntitlement
    */
   public void anonymizeEntitlement(AnonymizeEntitlement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -61,7 +61,7 @@ public class Anonymization {
    * @see AnonymizeFulfillment
    */
   public void anonymizeFulfillment(AnonymizeFulfillment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -74,7 +74,7 @@ public class Anonymization {
    * @see AnonymizeIntegration
    */
   public void anonymizeIntegration(AnonymizeIntegration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -87,7 +87,7 @@ public class Anonymization {
    * @see AnonymizeOrder
    */
   public void anonymizeOrder(AnonymizeOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -100,7 +100,7 @@ public class Anonymization {
    * @see AnonymizePayment
    */
   public void anonymizePayment(AnonymizePayment input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -113,7 +113,7 @@ public class Anonymization {
    * @see AnonymizeRevocation
    */
   public void anonymizeRevocation(AnonymizeRevocation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -126,7 +126,7 @@ public class Anonymization {
    * @see AnonymizeSubscription
    */
   public void anonymizeSubscription(AnonymizeSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -139,7 +139,7 @@ public class Anonymization {
    * @see AnonymizeWallet
    */
   public void anonymizeWallet(AnonymizeWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

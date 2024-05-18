@@ -36,7 +36,6 @@ public class PublicSearchItems extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/items/search";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -82,7 +81,7 @@ public class PublicSearchItems extends Operation {
     this.storeId = storeId;
     this.keyword = keyword;
     this.language = language;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

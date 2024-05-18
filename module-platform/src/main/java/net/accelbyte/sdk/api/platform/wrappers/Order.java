@@ -38,7 +38,7 @@ public class Order {
    * @see QueryOrders
    */
   public OrderPagingResult queryOrders(QueryOrders input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Order {
    * @see GetOrderStatistics
    */
   public OrderStatistics getOrderStatistics(GetOrderStatistics input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class Order {
    * @see GetOrder
    */
   public OrderInfo getOrder(GetOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Order {
    * @see RefundOrder
    */
   public OrderInfo refundOrder(RefundOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Order {
    * @see QueryUserOrders
    */
   public OrderPagingSlicedResult queryUserOrders(QueryUserOrders input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class Order {
    * @see AdminCreateUserOrder
    */
   public OrderInfo adminCreateUserOrder(AdminCreateUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class Order {
    * @see CountOfPurchasedItem
    */
   public PurchasedItemCount countOfPurchasedItem(CountOfPurchasedItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class Order {
    * @see GetUserOrder
    */
   public OrderInfo getUserOrder(GetUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -142,7 +142,7 @@ public class Order {
    * @see UpdateUserOrderStatus
    */
   public OrderInfo updateUserOrderStatus(UpdateUserOrderStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -155,7 +155,7 @@ public class Order {
    * @see FulfillUserOrder
    */
   public OrderInfo fulfillUserOrder(FulfillUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -170,7 +170,7 @@ public class Order {
    */
   @Deprecated
   public OrderGrantInfo getUserOrderGrant(GetUserOrderGrant input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -184,7 +184,7 @@ public class Order {
    */
   public List<OrderHistoryInfo> getUserOrderHistories(GetUserOrderHistories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -197,7 +197,7 @@ public class Order {
    * @see ProcessUserOrderNotification
    */
   public void processUserOrderNotification(ProcessUserOrderNotification input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -210,7 +210,7 @@ public class Order {
    * @see DownloadUserOrderReceipt
    */
   public InputStream downloadUserOrderReceipt(DownloadUserOrderReceipt input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -224,7 +224,7 @@ public class Order {
    */
   public OrderPagingSlicedResult publicQueryUserOrders(PublicQueryUserOrders input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -237,7 +237,7 @@ public class Order {
    * @see PublicCreateUserOrder
    */
   public OrderInfo publicCreateUserOrder(PublicCreateUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -251,7 +251,7 @@ public class Order {
    */
   public OrderDiscountPreviewResponse publicPreviewOrderPrice(PublicPreviewOrderPrice input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -264,7 +264,7 @@ public class Order {
    * @see PublicGetUserOrder
    */
   public OrderInfo publicGetUserOrder(PublicGetUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -277,7 +277,7 @@ public class Order {
    * @see PublicCancelUserOrder
    */
   public OrderInfo publicCancelUserOrder(PublicCancelUserOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -291,7 +291,7 @@ public class Order {
    */
   public List<OrderHistoryInfo> publicGetUserOrderHistories(PublicGetUserOrderHistories input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -305,7 +305,7 @@ public class Order {
    */
   public InputStream publicDownloadUserOrderReceipt(PublicDownloadUserOrderReceipt input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

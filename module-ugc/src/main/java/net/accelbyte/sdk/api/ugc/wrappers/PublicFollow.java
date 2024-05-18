@@ -37,7 +37,7 @@ public class PublicFollow {
    */
   public ModelsPaginatedContentDownloadResponse getFollowedContent(GetFollowedContent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicFollow {
    */
   public ModelsPaginatedCreatorOverviewResponse getFollowedUsers(GetFollowedUsers input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PublicFollow {
    */
   public ModelsUserFollowResponse updateUserFollowStatus(UpdateUserFollowStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class PublicFollow {
    */
   public ModelsPaginatedCreatorOverviewResponse getPublicFollowers(GetPublicFollowers input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class PublicFollow {
    */
   public ModelsPaginatedCreatorOverviewResponse getPublicFollowing(GetPublicFollowing input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

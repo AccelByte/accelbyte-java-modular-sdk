@@ -29,7 +29,6 @@ public class DeleteStat extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats/{statCode}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -50,7 +49,7 @@ public class DeleteStat extends Operation {
   public DeleteStat(String customBasePath, String namespace, String statCode) {
     this.namespace = namespace;
     this.statCode = statCode;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

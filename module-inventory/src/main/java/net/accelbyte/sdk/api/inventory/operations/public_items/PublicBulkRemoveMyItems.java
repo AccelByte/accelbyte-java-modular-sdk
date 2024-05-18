@@ -32,7 +32,6 @@ public class PublicBulkRemoveMyItems extends Operation {
   private String path =
       "/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class PublicBulkRemoveMyItems extends Operation {
     this.inventoryId = inventoryId;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

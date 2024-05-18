@@ -28,7 +28,6 @@ public class AdminSendMyMFAEmailCodeV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/users/me/mfa/email/code";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -41,7 +40,7 @@ public class AdminSendMyMFAEmailCodeV4 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminSendMyMFAEmailCodeV4(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

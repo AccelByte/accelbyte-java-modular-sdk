@@ -40,7 +40,7 @@ public class Slot {
    */
   @Deprecated
   public List<SlotInfo> getUserNamespaceSlots(GetUserNamespaceSlots input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -55,7 +55,7 @@ public class Slot {
    */
   @Deprecated
   public InputStream getSlotData(GetSlotData input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -71,7 +71,7 @@ public class Slot {
   @Deprecated
   public List<SlotInfo> publicGetUserNamespaceSlots(PublicGetUserNamespaceSlots input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -86,7 +86,7 @@ public class Slot {
    */
   @Deprecated
   public void publicCreateUserNamespaceSlot(PublicCreateUserNamespaceSlot input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class Slot {
    */
   @Deprecated
   public InputStream publicGetSlotData(PublicGetSlotData input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class Slot {
   @Deprecated
   public SlotInfo publicUpdateUserNamespaceSlot(PublicUpdateUserNamespaceSlot input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class Slot {
    */
   @Deprecated
   public void publicDeleteUserNamespaceSlot(PublicDeleteUserNamespaceSlot input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -148,7 +148,7 @@ public class Slot {
   @Deprecated
   public SlotInfo publicUpdateUserNamespaceSlotMetadata(PublicUpdateUserNamespaceSlotMetadata input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,7 @@ public class DownloadServerArtifact {
    * @see DownloadServerArtifacts
    */
   public void downloadServerArtifacts(DownloadServerArtifacts input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class DownloadServerArtifact {
    * @see CheckServerArtifact
    */
   public ModelsArtifactFileStatus checkServerArtifact(CheckServerArtifact input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

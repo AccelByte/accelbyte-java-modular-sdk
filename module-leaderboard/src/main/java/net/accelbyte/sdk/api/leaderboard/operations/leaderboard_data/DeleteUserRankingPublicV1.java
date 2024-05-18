@@ -33,7 +33,6 @@ public class DeleteUserRankingPublicV1 extends Operation {
   private String path =
       "/leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class DeleteUserRankingPublicV1 extends Operation {
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

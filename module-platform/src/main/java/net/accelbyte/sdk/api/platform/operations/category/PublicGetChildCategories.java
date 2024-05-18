@@ -38,7 +38,6 @@ public class PublicGetChildCategories extends Operation {
   private String path =
       "/platform/public/namespaces/{namespace}/categories/{categoryPath}/children";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -68,7 +67,7 @@ public class PublicGetChildCategories extends Operation {
     this.namespace = namespace;
     this.language = language;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

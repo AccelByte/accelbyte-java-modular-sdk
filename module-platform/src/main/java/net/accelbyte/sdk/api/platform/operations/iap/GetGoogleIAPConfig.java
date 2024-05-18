@@ -31,7 +31,6 @@ public class GetGoogleIAPConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/iap/config/google";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class GetGoogleIAPConfig extends Operation {
   @Deprecated
   public GetGoogleIAPConfig(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

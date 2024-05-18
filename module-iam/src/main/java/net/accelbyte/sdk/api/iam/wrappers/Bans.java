@@ -38,7 +38,7 @@ public class Bans {
    */
   @Deprecated
   public AccountcommonBans getBansType(GetBansType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -53,7 +53,7 @@ public class Bans {
    */
   @Deprecated
   public AccountcommonBanReasons getListBanReason(GetListBanReason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Bans {
    * @see AdminGetBansTypeV3
    */
   public AccountcommonBansV3 adminGetBansTypeV3(AdminGetBansTypeV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class Bans {
    */
   public AccountcommonBanReasonsV3 adminGetListBanReasonV3(AdminGetListBanReasonV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class Bans {
    */
   public ModelGetUserBanV3Response adminGetBannedUsersV3(AdminGetBannedUsersV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -108,7 +108,7 @@ public class Bans {
    */
   public ModelListBulkUserBanResponseV3 adminBanUserBulkV3(AdminBanUserBulkV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -122,7 +122,7 @@ public class Bans {
    */
   public ModelListBulkUserBanResponseV3 adminUnbanUserBulkV3(AdminUnbanUserBulkV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -136,7 +136,7 @@ public class Bans {
    */
   public AccountcommonBansV3 adminGetBansTypeWithNamespaceV3(AdminGetBansTypeWithNamespaceV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

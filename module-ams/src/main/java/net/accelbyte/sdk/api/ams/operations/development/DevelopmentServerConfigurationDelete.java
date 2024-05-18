@@ -29,7 +29,6 @@ public class DevelopmentServerConfigurationDelete extends Operation {
   private String path =
       "/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class DevelopmentServerConfigurationDelete extends Operation {
       String customBasePath, String developmentServerConfigID, String namespace) {
     this.developmentServerConfigID = developmentServerConfigID;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,7 @@ public class AdminConfig {
    * @see AdminGetConfigs
    */
   public ModelsPaginatedGetConfigsResponse adminGetConfigs(AdminGetConfigs input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminConfig {
    * @see AdminUpdateConfig
    */
   public void adminUpdateConfig(AdminUpdateConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

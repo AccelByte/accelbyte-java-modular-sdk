@@ -38,7 +38,7 @@ public class PublicContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 publicGetContentByChannelIDV2(
       PublicGetContentByChannelIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class PublicContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 publicListContentV2(PublicListContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class PublicContentV2 {
    */
   public List<ModelsContentDownloadResponseV2> publicBulkGetContentByIDV2(
       PublicBulkGetContentByIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class PublicContentV2 {
    */
   public List<ModelsContentDownloadResponseV2> publicGetContentBulkByShareCodesV2(
       PublicGetContentBulkByShareCodesV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class PublicContentV2 {
    */
   public ModelsContentDownloadResponseV2 publicGetContentByShareCodeV2(
       PublicGetContentByShareCodeV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -108,7 +108,7 @@ public class PublicContentV2 {
    */
   public ModelsContentDownloadResponseV2 publicGetContentByIDV2(PublicGetContentByIDV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -122,7 +122,7 @@ public class PublicContentV2 {
    */
   public ModelsCreateContentResponseV2 publicCreateContentV2(PublicCreateContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -136,7 +136,7 @@ public class PublicContentV2 {
    */
   public ModelsCreateContentResponseV2 publicUpdateContentByShareCodeV2(
       PublicUpdateContentByShareCodeV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -150,7 +150,7 @@ public class PublicContentV2 {
    */
   public void publicDeleteContentByShareCodeV2(PublicDeleteContentByShareCodeV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -163,7 +163,7 @@ public class PublicContentV2 {
    * @see PublicDeleteContentV2
    */
   public void publicDeleteContentV2(PublicDeleteContentV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -177,7 +177,7 @@ public class PublicContentV2 {
    */
   public ModelsUpdateContentResponseV2 publicUpdateContentV2(PublicUpdateContentV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -191,7 +191,7 @@ public class PublicContentV2 {
    */
   public ModelsUpdateContentResponseV2 publicUpdateContentFileLocation(
       PublicUpdateContentFileLocation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -205,7 +205,7 @@ public class PublicContentV2 {
    */
   public ModelsCreateContentResponseV2 updateContentShareCodeV2(UpdateContentShareCodeV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -219,7 +219,7 @@ public class PublicContentV2 {
    */
   public ModelsGenerateContentUploadURLResponse publicGenerateContentUploadURLV2(
       PublicGenerateContentUploadURLV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -233,7 +233,7 @@ public class PublicContentV2 {
    */
   public ModelsPaginatedContentDownloadResponseV2 publicGetContentByUserIDV2(
       PublicGetContentByUserIDV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -247,7 +247,7 @@ public class PublicContentV2 {
    */
   public ModelsUpdateScreenshotResponse updateScreenshotsV2(UpdateScreenshotsV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -261,7 +261,7 @@ public class PublicContentV2 {
    */
   public ModelsCreateScreenshotResponse uploadContentScreenshotV2(UploadContentScreenshotV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -274,7 +274,7 @@ public class PublicContentV2 {
    * @see DeleteContentScreenshotV2
    */
   public void deleteContentScreenshotV2(DeleteContentScreenshotV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

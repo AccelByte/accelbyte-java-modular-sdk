@@ -31,7 +31,6 @@ public class DownloadExportedAgreementsInCSV extends Operation {
   private String path =
       "/agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class DownloadExportedAgreementsInCSV extends Operation {
   public DownloadExportedAgreementsInCSV(String customBasePath, String namespace, String exportId) {
     this.namespace = namespace;
     this.exportId = exportId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

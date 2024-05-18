@@ -29,7 +29,6 @@ public class UpdateLocalizedPolicyVersion extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/localized-policy-versions/{localizedPolicyVersionId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class UpdateLocalizedPolicyVersion extends Operation {
       UpdateLocalizedPolicyVersionRequest body) {
     this.localizedPolicyVersionId = localizedPolicyVersionId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

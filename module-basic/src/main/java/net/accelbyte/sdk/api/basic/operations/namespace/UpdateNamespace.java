@@ -31,7 +31,6 @@ public class UpdateNamespace extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/admin/namespaces/{namespace}/basic";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class UpdateNamespace extends Operation {
   public UpdateNamespace(String customBasePath, String namespace, NamespaceUpdate body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

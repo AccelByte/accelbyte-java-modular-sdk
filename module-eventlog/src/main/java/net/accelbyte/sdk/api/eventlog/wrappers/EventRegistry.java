@@ -39,7 +39,7 @@ public class EventRegistry {
   @Deprecated
   public ModelsEventRegistry getRegisteredEventsHandler(GetRegisteredEventsHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -54,7 +54,7 @@ public class EventRegistry {
    */
   @Deprecated
   public void registerEventHandler(RegisterEventHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -70,7 +70,7 @@ public class EventRegistry {
   @Deprecated
   public ModelsEventRegistry getRegisteredEventIDHandler(GetRegisteredEventIDHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -85,7 +85,7 @@ public class EventRegistry {
    */
   @Deprecated
   public void updateEventRegistryHandler(UpdateEventRegistryHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -100,7 +100,7 @@ public class EventRegistry {
    */
   @Deprecated
   public void unregisterEventIDHandler(UnregisterEventIDHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class EventRegistry {
   @Deprecated
   public ModelsEventRegistry getRegisteredEventsByEventTypeHandler(
       GetRegisteredEventsByEventTypeHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

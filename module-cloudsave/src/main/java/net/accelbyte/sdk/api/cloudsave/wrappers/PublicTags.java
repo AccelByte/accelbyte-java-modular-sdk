@@ -37,7 +37,7 @@ public class PublicTags {
    */
   public ModelsListTagsResponse publicListTagsHandlerV1(PublicListTagsHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

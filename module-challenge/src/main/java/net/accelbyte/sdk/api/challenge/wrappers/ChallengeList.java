@@ -36,7 +36,7 @@ public class ChallengeList {
    * @see GetChallenges
    */
   public ModelListChallengeResponse getChallenges(GetChallenges input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class ChallengeList {
    */
   public ModelGetGoalsResponse publicGetScheduledGoals(PublicGetScheduledGoals input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

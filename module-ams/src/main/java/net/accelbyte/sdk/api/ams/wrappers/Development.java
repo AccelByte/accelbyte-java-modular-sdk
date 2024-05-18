@@ -37,7 +37,7 @@ public class Development {
    */
   public ApiDevelopmentServerConfigurationListResponse developmentServerConfigurationList(
       DevelopmentServerConfigurationList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Development {
    */
   public ApiDevelopmentServerConfigurationCreateResponse developmentServerConfigurationCreate(
       DevelopmentServerConfigurationCreate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Development {
    */
   public ApiDevelopmentServerConfigurationGetResponse developmentServerConfigurationGet(
       DevelopmentServerConfigurationGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Development {
    */
   public void developmentServerConfigurationDelete(DevelopmentServerConfigurationDelete input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

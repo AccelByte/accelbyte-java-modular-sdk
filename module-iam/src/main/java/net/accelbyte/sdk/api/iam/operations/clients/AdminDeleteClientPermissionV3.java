@@ -29,7 +29,6 @@ public class AdminDeleteClientPermissionV3 extends Operation {
   private String path =
       "/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class AdminDeleteClientPermissionV3 extends Operation {
     this.clientId = clientId;
     this.namespace = namespace;
     this.resource = resource;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

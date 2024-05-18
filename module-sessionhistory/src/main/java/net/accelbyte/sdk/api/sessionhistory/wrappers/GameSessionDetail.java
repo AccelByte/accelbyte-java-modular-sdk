@@ -37,7 +37,7 @@ public class GameSessionDetail {
    */
   public ApimodelsGameSessionDetailQueryResponse adminQueryGameSessionDetail(
       AdminQueryGameSessionDetail input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GameSessionDetail {
    */
   public ApimodelsGameSessionDetail getGameSessionDetail(GetGameSessionDetail input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetailQueryResponse adminQueryMatchmakingDetail(
       AdminQueryMatchmakingDetail input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetail adminGetMatchmakingDetailBySessionID(
       AdminGetMatchmakingDetailBySessionID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class GameSessionDetail {
    */
   public ApimodelsMatchmakingDetail adminGetMatchmakingDetailByTicketID(
       AdminGetMatchmakingDetailByTicketID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class GameSessionDetail {
    */
   public ApimodelsPartyDetailQueryResponse adminQueryPartyDetail(AdminQueryPartyDetail input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class GameSessionDetail {
    * @see GetPartyDetail
    */
   public ApimodelsPartyDetail getPartyDetail(GetPartyDetail input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class GameSessionDetail {
    */
   public ApimodelsTicketDetailQueryResponse adminQueryTicketDetail(AdminQueryTicketDetail input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -148,7 +148,7 @@ public class GameSessionDetail {
    */
   public ApimodelsTicketObservabilityDetail adminTicketDetailGetByTicketID(
       AdminTicketDetailGetByTicketID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

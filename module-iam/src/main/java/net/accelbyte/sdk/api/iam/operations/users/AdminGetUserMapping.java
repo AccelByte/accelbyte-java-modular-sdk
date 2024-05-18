@@ -34,7 +34,6 @@ public class AdminGetUserMapping extends Operation {
   private String path =
       "/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class AdminGetUserMapping extends Operation {
     this.namespace = namespace;
     this.targetNamespace = targetNamespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class AdminItems {
    * @see AdminListItems
    */
   public ApimodelsListItemResp adminListItems(AdminListItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminItems {
    * @see AdminGetInventoryItem
    */
   public ApimodelsItemResp adminGetInventoryItem(AdminGetInventoryItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminItems {
    * @see AdminConsumeUserItem
    */
   public ApimodelsItemResp adminConsumeUserItem(AdminConsumeUserItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class AdminItems {
    */
   public List<ApimodelsUpdateItemResp> adminBulkUpdateMyItems(AdminBulkUpdateMyItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class AdminItems {
    */
   public ApimodelsItemResp adminSaveItemToInventory(AdminSaveItemToInventory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class AdminItems {
    */
   public List<ApimodelsUpdateItemResp> adminBulkRemoveItems(AdminBulkRemoveItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class AdminItems {
    * @see AdminSaveItem
    */
   public ApimodelsItemResp adminSaveItem(AdminSaveItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -131,7 +131,7 @@ public class AdminItems {
    * @see AdminSyncUserEntitlements
    */
   public void adminSyncUserEntitlements(AdminSyncUserEntitlements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

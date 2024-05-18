@@ -35,7 +35,6 @@ public class IndirectBulkAcceptVersionedPolicyV2 extends Operation {
   private String path =
       "/agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -70,7 +69,7 @@ public class IndirectBulkAcceptVersionedPolicyV2 extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

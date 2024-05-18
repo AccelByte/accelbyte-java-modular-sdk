@@ -29,7 +29,6 @@ public class AdminDeleteConfigPermissionsByGroup extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/clientConfig/permissions";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminDeleteConfigPermissionsByGroup extends Operation {
       String customBasePath, Boolean forceDelete, ClientmodelPermissionSetDeleteGroupRequest body) {
     this.forceDelete = forceDelete;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

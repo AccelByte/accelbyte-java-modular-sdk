@@ -39,7 +39,7 @@ public class SlotConfig {
   @Deprecated
   public NamespaceSlotConfigInfo getNamespaceSlotConfig(GetNamespaceSlotConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -55,7 +55,7 @@ public class SlotConfig {
   @Deprecated
   public NamespaceSlotConfigInfo updateNamespaceSlotConfig(UpdateNamespaceSlotConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -70,7 +70,7 @@ public class SlotConfig {
    */
   @Deprecated
   public void deleteNamespaceSlotConfig(DeleteNamespaceSlotConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -85,7 +85,7 @@ public class SlotConfig {
    */
   @Deprecated
   public UserSlotConfigInfo getUserSlotConfig(GetUserSlotConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -100,7 +100,7 @@ public class SlotConfig {
    */
   @Deprecated
   public UserSlotConfigInfo updateUserSlotConfig(UpdateUserSlotConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class SlotConfig {
    */
   @Deprecated
   public void deleteUserSlotConfig(DeleteUserSlotConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

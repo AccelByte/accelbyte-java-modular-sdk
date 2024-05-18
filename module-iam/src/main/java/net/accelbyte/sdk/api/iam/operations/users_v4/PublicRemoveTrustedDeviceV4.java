@@ -29,7 +29,6 @@ public class PublicRemoveTrustedDeviceV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/device";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class PublicRemoveTrustedDeviceV4 extends Operation {
   public PublicRemoveTrustedDeviceV4(String customBasePath, String namespace, String deviceToken) {
     this.namespace = namespace;
     this.deviceToken = deviceToken;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

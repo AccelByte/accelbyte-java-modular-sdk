@@ -33,7 +33,6 @@ public class UploadKeys extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class UploadKeys extends Operation {
     this.keyGroupId = keyGroupId;
     this.namespace = namespace;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

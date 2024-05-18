@@ -34,7 +34,6 @@ public class PublishSelected extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class PublishSelected extends Operation {
   public PublishSelected(String customBasePath, String namespace, String storeId) {
     this.namespace = namespace;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class RecentPlayer {
    */
   public ModelsRecentPlayerQueryResponse adminGetRecentPlayer(AdminGetRecentPlayer input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class RecentPlayer {
    */
   public ModelsRecentPlayerQueryResponse adminGetRecentTeamPlayer(AdminGetRecentTeamPlayer input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class RecentPlayer {
    */
   public ModelsRecentPlayerQueryResponse publicGetRecentPlayer(PublicGetRecentPlayer input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class RecentPlayer {
    */
   public ModelsRecentPlayerQueryResponse publicGetRecentTeamPlayer(PublicGetRecentTeamPlayer input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

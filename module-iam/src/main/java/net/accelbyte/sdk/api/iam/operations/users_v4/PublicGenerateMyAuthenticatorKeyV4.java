@@ -30,7 +30,6 @@ public class PublicGenerateMyAuthenticatorKeyV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -47,7 +46,7 @@ public class PublicGenerateMyAuthenticatorKeyV4 extends Operation {
   @Deprecated
   public PublicGenerateMyAuthenticatorKeyV4(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -32,7 +32,6 @@ public class AddUserRole extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/{userId}/roles/{roleId}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json", "text/plain");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class AddUserRole extends Operation {
     this.namespace = namespace;
     this.roleId = roleId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

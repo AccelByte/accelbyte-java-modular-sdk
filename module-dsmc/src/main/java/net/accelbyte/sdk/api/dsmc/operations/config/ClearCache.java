@@ -32,7 +32,6 @@ public class ClearCache extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/admin/namespaces/{namespace}/configs/cache";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class ClearCache extends Operation {
   @Deprecated
   public ClearCache(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

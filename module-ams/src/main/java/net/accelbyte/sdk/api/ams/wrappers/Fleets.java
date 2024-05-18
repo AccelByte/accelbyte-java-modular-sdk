@@ -36,7 +36,7 @@ public class Fleets {
    * @see FleetList
    */
   public ApiFleetListResponse fleetList(FleetList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Fleets {
    * @see FleetCreate
    */
   public ApiFleetCreateResponse fleetCreate(FleetCreate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Fleets {
    * @see FleetGet
    */
   public ApiFleetGetResponse fleetGet(FleetGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class Fleets {
    * @see FleetUpdate
    */
   public void fleetUpdate(FleetUpdate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class Fleets {
    * @see FleetDelete
    */
   public void fleetDelete(FleetDelete input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class Fleets {
    * @see FleetServers
    */
   public ApiFleetServersResponse fleetServers(FleetServers input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -114,7 +114,7 @@ public class Fleets {
    * @see FleetClaimByID
    */
   public ApiFleetClaimResponse fleetClaimByID(FleetClaimByID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -127,7 +127,7 @@ public class Fleets {
    * @see FleetClaimByKeys
    */
   public ApiFleetClaimResponse fleetClaimByKeys(FleetClaimByKeys input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

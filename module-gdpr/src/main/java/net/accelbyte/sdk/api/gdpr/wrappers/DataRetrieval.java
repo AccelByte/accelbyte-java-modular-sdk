@@ -37,7 +37,7 @@ public class DataRetrieval {
    */
   public ModelsListPersonalDataResponse adminGetListPersonalDataRequest(
       AdminGetListPersonalDataRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class DataRetrieval {
    */
   public ModelsUserPersonalDataResponse adminGetUserPersonalDataRequests(
       AdminGetUserPersonalDataRequests input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class DataRetrieval {
    */
   public ModelsDataRetrievalResponse adminRequestDataRetrieval(AdminRequestDataRetrieval input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class DataRetrieval {
    */
   public void adminCancelUserPersonalDataRequest(AdminCancelUserPersonalDataRequest input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class DataRetrieval {
    */
   public ModelsUserDataURL adminGeneratePersonalDataURL(AdminGeneratePersonalDataURL input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class DataRetrieval {
    */
   public ModelsUserPersonalDataResponse publicGetUserPersonalDataRequests(
       PublicGetUserPersonalDataRequests input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class DataRetrieval {
    */
   public ModelsDataRetrievalResponse publicRequestDataRetrieval(PublicRequestDataRetrieval input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class DataRetrieval {
    */
   public void publicCancelUserPersonalDataRequest(PublicCancelUserPersonalDataRequest input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class DataRetrieval {
    */
   public ModelsUserDataURL publicGeneratePersonalDataURL(PublicGeneratePersonalDataURL input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

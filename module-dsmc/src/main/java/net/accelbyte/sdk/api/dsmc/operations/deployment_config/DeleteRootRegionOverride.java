@@ -35,7 +35,6 @@ public class DeleteRootRegionOverride extends Operation {
   private String path =
       "/dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class DeleteRootRegionOverride extends Operation {
     this.deployment = deployment;
     this.namespace = namespace;
     this.region = region;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -34,7 +34,6 @@ public class DisableCode extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/codes/{code}/disable";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class DisableCode extends Operation {
   public DisableCode(String customBasePath, String code, String namespace) {
     this.code = code;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

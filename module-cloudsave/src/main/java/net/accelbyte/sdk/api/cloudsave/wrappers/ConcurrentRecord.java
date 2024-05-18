@@ -37,7 +37,7 @@ public class ConcurrentRecord {
    */
   public void putGameRecordConcurrentHandlerV1(PutGameRecordConcurrentHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class ConcurrentRecord {
    */
   public ModelsPlayerRecordConcurrentUpdateResponse putPlayerRecordConcurrentHandlerV1(
       PutPlayerRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class ConcurrentRecord {
    */
   public ModelsPlayerRecordConcurrentUpdateResponse putPlayerPublicRecordConcurrentHandlerV1(
       PutPlayerPublicRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

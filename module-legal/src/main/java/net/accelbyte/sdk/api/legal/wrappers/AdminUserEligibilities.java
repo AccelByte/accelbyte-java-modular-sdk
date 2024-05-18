@@ -37,7 +37,7 @@ public class AdminUserEligibilities {
    */
   public RetrieveUserEligibilitiesIndirectResponse adminRetrieveEligibilities(
       AdminRetrieveEligibilities input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

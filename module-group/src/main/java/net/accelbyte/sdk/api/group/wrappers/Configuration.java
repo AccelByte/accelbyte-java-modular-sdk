@@ -37,7 +37,7 @@ public class Configuration {
    */
   public ModelsListConfigurationResponseV1 listGroupConfigurationAdminV1(
       ListGroupConfigurationAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Configuration {
    */
   public ModelsCreateGroupConfigurationResponseV1 createGroupConfigurationAdminV1(
       CreateGroupConfigurationAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Configuration {
    */
   public ModelsCreateGroupConfigurationResponseV1 initiateGroupConfigurationAdminV1(
       InitiateGroupConfigurationAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Configuration {
    */
   public ModelsGetGroupConfigurationResponseV1 getGroupConfigurationAdminV1(
       GetGroupConfigurationAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class Configuration {
    * @see DeleteGroupConfigurationV1
    */
   public void deleteGroupConfigurationV1(DeleteGroupConfigurationV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class Configuration {
    */
   public ModelsUpdateGroupConfigurationResponseV1 updateGroupConfigurationAdminV1(
       UpdateGroupConfigurationAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class Configuration {
    */
   public ModelsUpdateGroupConfigurationResponseV1 updateGroupConfigurationGlobalRuleAdminV1(
       UpdateGroupConfigurationGlobalRuleAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class Configuration {
    */
   public ModelsUpdateGroupConfigurationResponseV1 deleteGroupConfigurationGlobalRuleAdminV1(
       DeleteGroupConfigurationGlobalRuleAdminV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

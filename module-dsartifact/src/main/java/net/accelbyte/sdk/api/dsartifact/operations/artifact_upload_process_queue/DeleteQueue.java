@@ -32,7 +32,6 @@ public class DeleteQueue extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/namespaces/{namespace}/artifacts/queues";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -56,7 +55,7 @@ public class DeleteQueue extends Operation {
     this.namespace = namespace;
     this.nodeIP = nodeIP;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

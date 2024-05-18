@@ -48,7 +48,6 @@ public class PublicNormalizePaymentReturnUrl extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/payment/returnurl";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -117,7 +116,7 @@ public class PublicNormalizePaymentReturnUrl extends Operation {
     this.paymentOrderNo = paymentOrderNo;
     this.paymentProvider = paymentProvider;
     this.returnUrl = returnUrl;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

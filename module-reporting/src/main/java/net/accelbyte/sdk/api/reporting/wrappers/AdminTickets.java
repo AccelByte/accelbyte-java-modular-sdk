@@ -36,7 +36,7 @@ public class AdminTickets {
    * @see ListTickets
    */
   public RestapiTicketListResponse listTickets(ListTickets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminTickets {
    * @see TicketStatistic
    */
   public RestapiTicketStatisticResponse ticketStatistic(TicketStatistic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class AdminTickets {
    * @see GetTicketDetail
    */
   public RestapiTicketResponse getTicketDetail(GetTicketDetail input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class AdminTickets {
    * @see DeleteTicket
    */
   public void deleteTicket(DeleteTicket input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class AdminTickets {
    * @see GetReportsByTicket
    */
   public RestapiReportListResponse getReportsByTicket(GetReportsByTicket input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class AdminTickets {
    */
   public RestapiTicketResponse updateTicketResolutions(UpdateTicketResolutions input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

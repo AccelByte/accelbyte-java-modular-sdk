@@ -33,7 +33,6 @@ public class QueryItems extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/byCriteria";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -98,7 +97,7 @@ public class QueryItems extends Operation {
     this.storeId = storeId;
     this.tags = tags;
     this.targetNamespace = targetNamespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

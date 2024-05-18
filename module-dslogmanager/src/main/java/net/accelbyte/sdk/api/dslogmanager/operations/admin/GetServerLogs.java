@@ -33,7 +33,6 @@ public class GetServerLogs extends Operation {
   /** generated field's value */
   private String path = "/dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -66,7 +65,7 @@ public class GetServerLogs extends Operation {
     this.logType = logType;
     this.offset = offset;
     this.origin = origin;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

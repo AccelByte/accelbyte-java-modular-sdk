@@ -36,7 +36,7 @@ public class SessionPlatform {
    * @see RegisterXblSessions
    */
   public Map<String, ?> registerXblSessions(RegisterXblSessions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

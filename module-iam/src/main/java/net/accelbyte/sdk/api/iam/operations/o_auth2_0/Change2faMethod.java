@@ -29,7 +29,6 @@ public class Change2faMethod extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/oauth/mfa/factor/change";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class Change2faMethod extends Operation {
   public Change2faMethod(String customBasePath, String factor, String mfaToken) {
     this.factor = factor;
     this.mfaToken = mfaToken;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

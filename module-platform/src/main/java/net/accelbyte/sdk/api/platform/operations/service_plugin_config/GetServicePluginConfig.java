@@ -32,7 +32,6 @@ public class GetServicePluginConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/configs/servicePlugin";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -49,7 +48,7 @@ public class GetServicePluginConfig extends Operation {
   @Deprecated
   public GetServicePluginConfig(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

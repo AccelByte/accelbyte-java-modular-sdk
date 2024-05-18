@@ -29,7 +29,6 @@ public class AdminSubmitUserAccountDeletionRequest extends Operation {
   /** generated field's value */
   private String path = "/gdpr/admin/namespaces/{namespace}/users/{userId}/deletions";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminSubmitUserAccountDeletionRequest extends Operation {
       String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -32,7 +32,6 @@ public class ResetPlatformWalletConfig extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class ResetPlatformWalletConfig extends Operation {
   public ResetPlatformWalletConfig(String customBasePath, String namespace, String platform) {
     this.namespace = namespace;
     this.platform = platform;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,6 @@ public class GetUserEntitlementHistories extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/history";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class GetUserEntitlementHistories extends Operation {
     this.entitlementId = entitlementId;
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

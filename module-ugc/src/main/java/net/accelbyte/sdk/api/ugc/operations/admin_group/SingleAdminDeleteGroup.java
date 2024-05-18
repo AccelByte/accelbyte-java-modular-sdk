@@ -28,7 +28,6 @@ public class SingleAdminDeleteGroup extends Operation {
   /** generated field's value */
   private String path = "/ugc/v1/admin/namespaces/{namespace}/groups/{groupId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class SingleAdminDeleteGroup extends Operation {
   public SingleAdminDeleteGroup(String customBasePath, String groupId, String namespace) {
     this.groupId = groupId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

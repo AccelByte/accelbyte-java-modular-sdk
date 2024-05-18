@@ -34,7 +34,6 @@ public class DisableUserEntitlement extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/disable";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class DisableUserEntitlement extends Operation {
     this.entitlementId = entitlementId;
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

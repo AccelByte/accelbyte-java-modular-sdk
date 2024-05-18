@@ -30,7 +30,6 @@ public class PublicGetAsyncStatus extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class PublicGetAsyncStatus extends Operation {
   public PublicGetAsyncStatus(String customBasePath, String namespace, String requestId) {
     this.namespace = namespace;
     this.requestId = requestId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

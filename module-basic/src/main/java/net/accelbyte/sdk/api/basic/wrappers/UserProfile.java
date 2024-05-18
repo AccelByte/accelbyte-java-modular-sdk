@@ -38,7 +38,7 @@ public class UserProfile {
    */
   public UserProfileInfo getUserProfileInfoByPublicId(GetUserProfileInfoByPublicId input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class UserProfile {
    */
   public List<UserProfilePublicInfo> adminGetUserProfilePublicInfoByIds(
       AdminGetUserProfilePublicInfoByIds input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class UserProfile {
    * @see GetUserProfileInfo
    */
   public UserProfilePrivateInfo getUserProfileInfo(GetUserProfileInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class UserProfile {
    * @see UpdateUserProfile
    */
   public UserProfilePrivateInfo updateUserProfile(UpdateUserProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class UserProfile {
    * @see DeleteUserProfile
    */
   public UserProfilePrivateInfo deleteUserProfile(DeleteUserProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class UserProfile {
    * @see GetCustomAttributesInfo
    */
   public Map<String, ?> getCustomAttributesInfo(GetCustomAttributesInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class UserProfile {
    */
   public Map<String, ?> updateCustomAttributesPartially(UpdateCustomAttributesPartially input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class UserProfile {
    */
   public Map<String, ?> getPrivateCustomAttributesInfo(GetPrivateCustomAttributesInfo input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class UserProfile {
    */
   public Map<String, ?> updatePrivateCustomAttributesPartially(
       UpdatePrivateCustomAttributesPartially input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class UserProfile {
    */
   public UserProfilePrivateInfo updateUserProfileStatus(UpdateUserProfileStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -174,7 +174,7 @@ public class UserProfile {
    */
   public List<UserProfilePublicInfo> publicGetUserProfilePublicInfoByIds(
       PublicGetUserProfilePublicInfoByIds input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -188,7 +188,7 @@ public class UserProfile {
    */
   public UserProfilePublicInfo publicGetUserProfileInfoByPublicId(
       PublicGetUserProfileInfoByPublicId input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -201,7 +201,7 @@ public class UserProfile {
    * @see GetMyProfileInfo
    */
   public UserProfilePrivateInfo getMyProfileInfo(GetMyProfileInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -214,7 +214,7 @@ public class UserProfile {
    * @see UpdateMyProfile
    */
   public UserProfilePrivateInfo updateMyProfile(UpdateMyProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -227,7 +227,7 @@ public class UserProfile {
    * @see CreateMyProfile
    */
   public UserProfilePrivateInfo createMyProfile(CreateMyProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -241,7 +241,7 @@ public class UserProfile {
    */
   public Map<String, ?> getMyPrivateCustomAttributesInfo(GetMyPrivateCustomAttributesInfo input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -255,7 +255,7 @@ public class UserProfile {
    */
   public Map<String, ?> updateMyPrivateCustomAttributesPartially(
       UpdateMyPrivateCustomAttributesPartially input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -268,7 +268,7 @@ public class UserProfile {
    * @see GetMyZipCode
    */
   public UserZipCode getMyZipCode(GetMyZipCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -281,7 +281,7 @@ public class UserProfile {
    * @see UpdateMyZipCode
    */
   public UserZipCode updateMyZipCode(UpdateMyZipCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -294,7 +294,7 @@ public class UserProfile {
    * @see PublicGetUserProfileInfo
    */
   public UserProfileInfo publicGetUserProfileInfo(PublicGetUserProfileInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -307,7 +307,7 @@ public class UserProfile {
    * @see PublicUpdateUserProfile
    */
   public UserProfileInfo publicUpdateUserProfile(PublicUpdateUserProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -320,7 +320,7 @@ public class UserProfile {
    * @see PublicCreateUserProfile
    */
   public UserProfileInfo publicCreateUserProfile(PublicCreateUserProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -334,7 +334,7 @@ public class UserProfile {
    */
   public Map<String, ?> publicGetCustomAttributesInfo(PublicGetCustomAttributesInfo input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -348,7 +348,7 @@ public class UserProfile {
    */
   public Map<String, ?> publicUpdateCustomAttributesPartially(
       PublicUpdateCustomAttributesPartially input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -362,7 +362,7 @@ public class UserProfile {
    */
   public UserProfilePublicInfo publicGetUserProfilePublicInfo(PublicGetUserProfilePublicInfo input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -376,7 +376,7 @@ public class UserProfile {
    */
   public UserProfileInfo publicUpdateUserProfileStatus(PublicUpdateUserProfileStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

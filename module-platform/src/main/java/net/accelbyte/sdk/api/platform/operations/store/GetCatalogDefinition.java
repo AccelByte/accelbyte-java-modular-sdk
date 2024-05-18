@@ -35,7 +35,6 @@ public class GetCatalogDefinition extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/stores/catalogDefinition";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class GetCatalogDefinition extends Operation {
   public GetCatalogDefinition(String customBasePath, String namespace, String catalogType) {
     this.namespace = namespace;
     this.catalogType = catalogType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

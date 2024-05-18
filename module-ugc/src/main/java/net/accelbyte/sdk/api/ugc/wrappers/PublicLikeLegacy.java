@@ -37,7 +37,7 @@ public class PublicLikeLegacy {
    */
   public ModelsPaginatedContentDownloadResponse getLikedContent(GetLikedContent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicLikeLegacy {
    */
   public ModelsContentLikeResponse updateContentLikeStatus(UpdateContentLikeStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

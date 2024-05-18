@@ -31,7 +31,6 @@ public class UpdateMyZipCode extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class UpdateMyZipCode extends Operation {
       String customBasePath, String namespace, UserZipCodeUpdate userZipCodeUpdate) {
     this.namespace = namespace;
     this.userZipCodeUpdate = userZipCodeUpdate;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

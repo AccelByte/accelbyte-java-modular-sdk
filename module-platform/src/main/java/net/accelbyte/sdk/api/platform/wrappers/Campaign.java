@@ -37,7 +37,7 @@ public class Campaign {
    * @see QueryCampaigns
    */
   public CampaignPagingSlicedResult queryCampaigns(QueryCampaigns input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Campaign {
    * @see CreateCampaign
    */
   public CampaignInfo createCampaign(CreateCampaign input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Campaign {
    * @see GetCampaign
    */
   public CampaignInfo getCampaign(GetCampaign input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Campaign {
    * @see UpdateCampaign
    */
   public CampaignInfo updateCampaign(UpdateCampaign input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Campaign {
    * @see GetCampaignDynamic
    */
   public CampaignDynamicInfo getCampaignDynamic(GetCampaignDynamic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Campaign {
    * @see QueryCodes
    */
   public CodeInfoPagingSlicedResult queryCodes(QueryCodes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Campaign {
    * @see CreateCodes
    */
   public CodeCreateResult createCodes(CreateCodes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class Campaign {
    * @see Download
    */
   public InputStream download(Download input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -141,7 +141,7 @@ public class Campaign {
    * @see BulkDisableCodes
    */
   public BulkOperationResult bulkDisableCodes(BulkDisableCodes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -154,7 +154,7 @@ public class Campaign {
    * @see BulkEnableCodes
    */
   public BulkOperationResult bulkEnableCodes(BulkEnableCodes input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -168,7 +168,7 @@ public class Campaign {
    */
   public RedeemHistoryPagingSlicedResult queryRedeemHistory(QueryRedeemHistory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -181,7 +181,7 @@ public class Campaign {
    * @see GetCode
    */
   public CodeInfo getCode(GetCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -194,7 +194,7 @@ public class Campaign {
    * @see DisableCode
    */
   public CodeInfo disableCode(DisableCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -207,7 +207,7 @@ public class Campaign {
    * @see EnableCode
    */
   public CodeInfo enableCode(EnableCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -220,7 +220,7 @@ public class Campaign {
    * @see ApplyUserRedemption
    */
   public RedeemResult applyUserRedemption(ApplyUserRedemption input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -32,7 +32,6 @@ public class PublicIncUserStatItem extends Operation {
   private String path =
       "/social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class PublicIncUserStatItem extends Operation {
     this.statCode = statCode;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

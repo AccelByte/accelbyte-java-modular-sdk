@@ -33,7 +33,6 @@ public class DeleteRolePermission extends Operation {
   /** generated field's value */
   private String path = "/iam/roles/{roleId}/permissions/{resource}/{action}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class DeleteRolePermission extends Operation {
     this.action = action;
     this.resource = resource;
     this.roleId = roleId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

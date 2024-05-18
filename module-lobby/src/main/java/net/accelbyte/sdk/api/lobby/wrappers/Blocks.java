@@ -38,7 +38,7 @@ public class Blocks {
    */
   public List<ModelNativeUserBlockResponse> syncNativeBlockedUser(SyncNativeBlockedUser input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

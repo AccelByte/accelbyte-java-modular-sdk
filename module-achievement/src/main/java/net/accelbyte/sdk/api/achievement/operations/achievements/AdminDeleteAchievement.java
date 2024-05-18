@@ -29,7 +29,6 @@ public class AdminDeleteAchievement extends Operation {
   private String path =
       "/achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminDeleteAchievement extends Operation {
   public AdminDeleteAchievement(String customBasePath, String achievementCode, String namespace) {
     this.achievementCode = achievementCode;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

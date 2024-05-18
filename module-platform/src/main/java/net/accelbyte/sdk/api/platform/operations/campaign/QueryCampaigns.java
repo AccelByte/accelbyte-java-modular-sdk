@@ -31,7 +31,6 @@ public class QueryCampaigns extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/campaigns";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -63,7 +62,7 @@ public class QueryCampaigns extends Operation {
     this.name = name;
     this.offset = offset;
     this.tag = tag;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

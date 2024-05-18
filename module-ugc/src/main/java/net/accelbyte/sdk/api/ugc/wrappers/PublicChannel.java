@@ -36,7 +36,7 @@ public class PublicChannel {
    * @see GetChannels
    */
   public ModelsPaginatedGetChannelResponse getChannels(GetChannels input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class PublicChannel {
    * @see PublicCreateChannel
    */
   public ModelsChannelResponse publicCreateChannel(PublicCreateChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class PublicChannel {
    * @see UpdateChannel
    */
   public ModelsChannelResponse updateChannel(UpdateChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class PublicChannel {
    * @see DeleteChannel
    */
   public void deleteChannel(DeleteChannel input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -35,7 +35,7 @@ public class Server {
    * @see Heartbeat
    */
   public void heartbeat(Heartbeat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

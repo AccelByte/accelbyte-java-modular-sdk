@@ -32,7 +32,6 @@ public class PublicGetRecentTeamPlayer extends Operation {
   /** generated field's value */
   private String path = "/session/v1/public/namespaces/{namespace}/recent-team-player";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class PublicGetRecentTeamPlayer extends Operation {
   public PublicGetRecentTeamPlayer(String customBasePath, String namespace, Integer limit) {
     this.namespace = namespace;
     this.limit = limit;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -32,7 +32,6 @@ public class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlayt
   /** generated field's value */
   private String path = "/game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlayt
       String customBasePath, String playtime, String steamId) {
     this.playtime = playtime;
     this.steamId = steamId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
     securities.add("Cookie");

@@ -36,7 +36,7 @@ public class TTLConfig {
    */
   public void deleteGameBinaryRecordTTLConfig(DeleteGameBinaryRecordTTLConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class TTLConfig {
    * @see DeleteGameRecordTTLConfig
    */
   public void deleteGameRecordTTLConfig(DeleteGameRecordTTLConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

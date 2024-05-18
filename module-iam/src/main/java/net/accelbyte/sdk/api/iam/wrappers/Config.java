@@ -37,7 +37,7 @@ public class Config {
    */
   public ModelConfigValueResponseV3 adminGetConfigValueV3(AdminGetConfigValueV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Config {
    */
   public ModelConfigValueResponseV3 publicGetConfigValueV3(PublicGetConfigValueV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

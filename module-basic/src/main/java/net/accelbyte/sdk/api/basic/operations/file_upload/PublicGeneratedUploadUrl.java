@@ -31,7 +31,6 @@ public class PublicGeneratedUploadUrl extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/public/namespaces/{namespace}/folders/{folder}/files";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class PublicGeneratedUploadUrl extends Operation {
     this.folder = folder;
     this.namespace = namespace;
     this.fileType = fileType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

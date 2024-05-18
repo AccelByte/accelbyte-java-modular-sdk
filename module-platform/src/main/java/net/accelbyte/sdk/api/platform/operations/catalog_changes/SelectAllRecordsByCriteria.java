@@ -29,7 +29,6 @@ public class SelectAllRecordsByCriteria extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -74,7 +73,7 @@ public class SelectAllRecordsByCriteria extends Operation {
     this.type = type;
     this.updatedAtEnd = updatedAtEnd;
     this.updatedAtStart = updatedAtStart;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

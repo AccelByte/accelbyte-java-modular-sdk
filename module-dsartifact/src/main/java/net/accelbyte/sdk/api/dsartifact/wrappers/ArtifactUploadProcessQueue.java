@@ -36,7 +36,7 @@ public class ArtifactUploadProcessQueue {
    * @see ListNodesIPAddress
    */
   public ModelsListNodesIPAddress listNodesIPAddress(ListNodesIPAddress input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class ArtifactUploadProcessQueue {
    * @see DeleteNodeByID
    */
   public void deleteNodeByID(DeleteNodeByID input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class ArtifactUploadProcessQueue {
    * @see ListQueue
    */
   public ModelsListQueueResponse listQueue(ListQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class ArtifactUploadProcessQueue {
    * @see GetActiveQueue
    */
   public ModelsQueue getActiveQueue(GetActiveQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class ArtifactUploadProcessQueue {
    * @see SetActiveQueue
    */
   public void setActiveQueue(SetActiveQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class ArtifactUploadProcessQueue {
    * @see DeleteActiveQueue
    */
   public void deleteActiveQueue(DeleteActiveQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -114,7 +114,7 @@ public class ArtifactUploadProcessQueue {
    * @see ReportFailedUpload
    */
   public void reportFailedUpload(ReportFailedUpload input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -127,7 +127,7 @@ public class ArtifactUploadProcessQueue {
    * @see DeleteQueue
    */
   public void deleteQueue(DeleteQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -140,7 +140,7 @@ public class ArtifactUploadProcessQueue {
    * @see ListAllActiveQueue
    */
   public ModelsListAllQueueResponse listAllActiveQueue(ListAllActiveQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -153,7 +153,7 @@ public class ArtifactUploadProcessQueue {
    * @see ListAllQueue
    */
   public ModelsListAllQueueResponse listAllQueue(ListAllQueue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

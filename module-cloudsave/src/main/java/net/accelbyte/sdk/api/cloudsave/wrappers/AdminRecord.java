@@ -37,7 +37,7 @@ public class AdminRecord {
    */
   public ModelsListAdminGameRecordKeysResponse adminListAdminGameRecordV1(
       AdminListAdminGameRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminGameRecordResponse adminBulkGetAdminGameRecordV1(
       AdminBulkGetAdminGameRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminGetAdminGameRecordV1(AdminGetAdminGameRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminPutAdminGameRecordV1(AdminPutAdminGameRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class AdminRecord {
    */
   public ModelsAdminGameRecordResponse adminPostAdminGameRecordV1(AdminPostAdminGameRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class AdminRecord {
    * @see AdminDeleteAdminGameRecordV1
    */
   public void adminDeleteAdminGameRecordV1(AdminDeleteAdminGameRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminPlayerRecordResponse bulkGetAdminPlayerRecordByUserIdsV1(
       BulkGetAdminPlayerRecordByUserIdsV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class AdminRecord {
    */
   public ModelsListAdminPlayerRecordKeysResponse adminListAdminUserRecordsV1(
       AdminListAdminUserRecordsV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -148,7 +148,7 @@ public class AdminRecord {
    */
   public ModelsBulkGetAdminPlayerRecordResponse adminBulkGetAdminPlayerRecordV1(
       AdminBulkGetAdminPlayerRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -162,7 +162,7 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminGetAdminPlayerRecordV1(
       AdminGetAdminPlayerRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -176,7 +176,7 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminPutAdminPlayerRecordV1(
       AdminPutAdminPlayerRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -190,7 +190,7 @@ public class AdminRecord {
    */
   public ModelsAdminPlayerRecordResponse adminPostPlayerAdminRecordV1(
       AdminPostPlayerAdminRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -204,7 +204,7 @@ public class AdminRecord {
    */
   public void adminDeleteAdminPlayerRecordV1(AdminDeleteAdminPlayerRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -30,7 +30,6 @@ public class PublicGetScheduledGoals extends Operation {
   private String path =
       "/challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -63,7 +62,7 @@ public class PublicGetScheduledGoals extends Operation {
     this.limit = limit;
     this.offset = offset;
     this.tags = tags;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

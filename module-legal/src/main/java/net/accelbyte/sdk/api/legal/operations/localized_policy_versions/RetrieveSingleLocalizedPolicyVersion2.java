@@ -30,7 +30,6 @@ public class RetrieveSingleLocalizedPolicyVersion2 extends Operation {
   /** generated field's value */
   private String path = "/agreement/public/localized-policy-versions/{localizedPolicyVersionId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -48,7 +47,7 @@ public class RetrieveSingleLocalizedPolicyVersion2 extends Operation {
   public RetrieveSingleLocalizedPolicyVersion2(
       String customBasePath, String localizedPolicyVersionId) {
     this.localizedPolicyVersionId = localizedPolicyVersionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

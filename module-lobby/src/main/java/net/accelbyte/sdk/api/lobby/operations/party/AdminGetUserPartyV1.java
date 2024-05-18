@@ -29,7 +29,6 @@ public class AdminGetUserPartyV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/party/namespaces/{namespace}/users/{userId}/party";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminGetUserPartyV1 extends Operation {
   public AdminGetUserPartyV1(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

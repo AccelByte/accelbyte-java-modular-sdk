@@ -30,7 +30,6 @@ public class AdminReadSessionStorage extends Operation {
   /** generated field's value */
   private String path = "/session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminReadSessionStorage extends Operation {
   public AdminReadSessionStorage(String customBasePath, String namespace, String sessionId) {
     this.namespace = namespace;
     this.sessionId = sessionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

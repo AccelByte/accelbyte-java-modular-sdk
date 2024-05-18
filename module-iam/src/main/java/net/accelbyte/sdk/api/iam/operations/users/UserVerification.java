@@ -36,7 +36,6 @@ public class UserVerification extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/{userId}/verification";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class UserVerification extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

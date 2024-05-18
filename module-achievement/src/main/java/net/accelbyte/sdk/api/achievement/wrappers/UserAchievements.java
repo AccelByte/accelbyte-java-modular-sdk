@@ -37,7 +37,7 @@ public class UserAchievements {
    */
   public ModelsPaginatedUserAchievementResponse adminListUserAchievements(
       AdminListUserAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class UserAchievements {
    * @see AdminResetAchievement
    */
   public void adminResetAchievement(AdminResetAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class UserAchievements {
    * @see AdminUnlockAchievement
    */
   public void adminUnlockAchievement(AdminUnlockAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class UserAchievements {
    */
   public ModelsPaginatedUserAchievementResponse publicListUserAchievements(
       PublicListUserAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class UserAchievements {
    * @see PublicUnlockAchievement
    */
   public void publicUnlockAchievement(PublicUnlockAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -38,7 +38,7 @@ public class UserInfo {
    */
   public List<RetrieveUserInfoCacheStatusResponse> getUserInfoStatus(GetUserInfoStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -53,7 +53,7 @@ public class UserInfo {
    */
   @Deprecated
   public void syncUserInfo(SyncUserInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -68,7 +68,7 @@ public class UserInfo {
    */
   @Deprecated
   public void invalidateUserInfoCache(InvalidateUserInfoCache input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

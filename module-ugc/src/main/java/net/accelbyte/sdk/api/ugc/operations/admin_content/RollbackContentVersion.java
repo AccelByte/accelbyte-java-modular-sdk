@@ -31,7 +31,6 @@ public class RollbackContentVersion extends Operation {
   private String path =
       "/ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class RollbackContentVersion extends Operation {
     this.contentId = contentId;
     this.namespace = namespace;
     this.versionId = versionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

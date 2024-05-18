@@ -37,7 +37,7 @@ public class Namespace {
    * @see GetNamespaces
    */
   public List<NamespaceInfo> getNamespaces(GetNamespaces input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Namespace {
    * @see CreateNamespace
    */
   public NamespaceInfo createNamespace(CreateNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Namespace {
    * @see GetNamespace
    */
   public NamespaceInfo getNamespace(GetNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Namespace {
    * @see DeleteNamespace
    */
   public NamespaceInfo deleteNamespace(DeleteNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Namespace {
    * @see UpdateNamespace
    */
   public NamespaceInfo updateNamespace(UpdateNamespace input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Namespace {
    * @see GetChildNamespaces
    */
   public List<NamespaceInfo> getChildNamespaces(GetChildNamespaces input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Namespace {
    * @see GetNamespaceContext
    */
   public NamespaceContext getNamespaceContext(GetNamespaceContext input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class Namespace {
    * @see GetGameNamespaces
    */
   public List<NamespaceInfo> getGameNamespaces(GetGameNamespaces input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -142,7 +142,7 @@ public class Namespace {
    */
   public NamespacePublisherInfo getNamespacePublisher(GetNamespacePublisher input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -155,7 +155,7 @@ public class Namespace {
    * @see ChangeNamespaceStatus
    */
   public NamespaceInfo changeNamespaceStatus(ChangeNamespaceStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -168,7 +168,7 @@ public class Namespace {
    * @see PublicGetNamespaces
    */
   public List<NamespaceInfo> publicGetNamespaces(PublicGetNamespaces input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -181,7 +181,7 @@ public class Namespace {
    * @see GetNamespace1
    */
   public NamespaceSimpleInfo getNamespace1(GetNamespace1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -195,7 +195,7 @@ public class Namespace {
    */
   public NamespacePublisherInfo publicGetNamespacePublisher(PublicGetNamespacePublisher input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

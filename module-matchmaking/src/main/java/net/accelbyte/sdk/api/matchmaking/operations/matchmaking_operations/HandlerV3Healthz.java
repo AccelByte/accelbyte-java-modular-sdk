@@ -24,7 +24,6 @@ public class HandlerV3Healthz extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/healthz";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -37,7 +36,7 @@ public class HandlerV3Healthz extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public HandlerV3Healthz(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

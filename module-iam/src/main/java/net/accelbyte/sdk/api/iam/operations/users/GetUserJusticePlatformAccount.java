@@ -46,7 +46,6 @@ public class GetUserJusticePlatformAccount extends Operation {
   private String path =
       "/iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -71,7 +70,7 @@ public class GetUserJusticePlatformAccount extends Operation {
     this.namespace = namespace;
     this.targetNamespace = targetNamespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

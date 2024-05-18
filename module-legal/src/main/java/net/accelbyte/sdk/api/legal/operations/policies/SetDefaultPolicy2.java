@@ -28,7 +28,6 @@ public class SetDefaultPolicy2 extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/policies/{policyId}/default";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -45,7 +44,7 @@ public class SetDefaultPolicy2 extends Operation {
   @Deprecated
   public SetDefaultPolicy2(String customBasePath, String policyId) {
     this.policyId = policyId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

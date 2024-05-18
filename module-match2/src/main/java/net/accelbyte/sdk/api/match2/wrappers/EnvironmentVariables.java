@@ -37,7 +37,7 @@ public class EnvironmentVariables {
    */
   public ApiListEnvironmentVariablesResponse environmentVariableList(EnvironmentVariableList input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

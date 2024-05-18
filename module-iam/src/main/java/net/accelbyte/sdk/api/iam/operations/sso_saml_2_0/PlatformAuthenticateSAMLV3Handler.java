@@ -31,7 +31,6 @@ public class PlatformAuthenticateSAMLV3Handler extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/sso/saml/platforms/{platformId}/authenticate";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList();
@@ -57,7 +56,7 @@ public class PlatformAuthenticateSAMLV3Handler extends Operation {
     this.code = code;
     this.error = error;
     this.state = state;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

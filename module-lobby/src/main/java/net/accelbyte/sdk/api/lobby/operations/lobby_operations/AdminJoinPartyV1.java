@@ -29,7 +29,6 @@ public class AdminJoinPartyV1 extends Operation {
   private String path =
       "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class AdminJoinPartyV1 extends Operation {
     this.namespace = namespace;
     this.partyId = partyId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

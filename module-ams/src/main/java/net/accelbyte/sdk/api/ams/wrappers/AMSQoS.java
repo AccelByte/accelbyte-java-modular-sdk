@@ -36,7 +36,7 @@ public class AMSQoS {
    * @see QoSRegionsGet
    */
   public ApiQoSEndpointResponse qoSRegionsGet(QoSRegionsGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AMSQoS {
    * @see QoSRegionsUpdate
    */
   public void qoSRegionsUpdate(QoSRegionsUpdate input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

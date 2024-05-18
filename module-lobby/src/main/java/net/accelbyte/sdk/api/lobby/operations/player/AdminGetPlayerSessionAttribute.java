@@ -30,7 +30,6 @@ public class AdminGetPlayerSessionAttribute extends Operation {
   private String path =
       "/lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes/{attribute}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class AdminGetPlayerSessionAttribute extends Operation {
     this.attribute = attribute;
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

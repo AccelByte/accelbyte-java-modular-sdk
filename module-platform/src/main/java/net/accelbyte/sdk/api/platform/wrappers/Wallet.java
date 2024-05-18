@@ -38,7 +38,7 @@ public class Wallet {
    */
   public PlatformWalletConfigInfo getPlatformWalletConfig(GetPlatformWalletConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Wallet {
    */
   public PlatformWalletConfigInfo updatePlatformWalletConfig(UpdatePlatformWalletConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Wallet {
    */
   public PlatformWalletConfigInfo resetPlatformWalletConfig(ResetPlatformWalletConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class Wallet {
    */
   public List<CurrencyWallet> queryUserCurrencyWallets(QueryUserCurrencyWallets input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class Wallet {
    */
   public WalletInfo debitUserWalletByCurrencyCode(DebitUserWalletByCurrencyCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -108,7 +108,7 @@ public class Wallet {
    */
   public WalletTransactionPagingSlicedResult listUserCurrencyTransactions(
       ListUserCurrencyTransactions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class Wallet {
    * @see CheckBalance
    */
   public void checkBalance(CheckBalance input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -136,7 +136,7 @@ public class Wallet {
    */
   @Deprecated
   public void checkWallet(CheckWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class Wallet {
    * @see CreditUserWallet
    */
   public WalletInfo creditUserWallet(CreditUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -162,7 +162,7 @@ public class Wallet {
    * @see DebitByWalletPlatform
    */
   public PlatformWallet debitByWalletPlatform(DebitByWalletPlatform input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -175,7 +175,7 @@ public class Wallet {
    * @see PayWithUserWallet
    */
   public PlatformWallet payWithUserWallet(PayWithUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -190,7 +190,7 @@ public class Wallet {
    */
   @Deprecated
   public WalletInfo getUserWallet(GetUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -205,7 +205,7 @@ public class Wallet {
    */
   @Deprecated
   public WalletInfo debitUserWallet(DebitUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -220,7 +220,7 @@ public class Wallet {
    */
   @Deprecated
   public void disableUserWallet(DisableUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -235,7 +235,7 @@ public class Wallet {
    */
   @Deprecated
   public void enableUserWallet(EnableUserWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -251,7 +251,7 @@ public class Wallet {
   @Deprecated
   public DetailedWalletTransactionPagingSlicedResult listUserWalletTransactions(
       ListUserWalletTransactions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -266,7 +266,7 @@ public class Wallet {
    */
   @Deprecated
   public WalletPagingSlicedResult queryWallets(QueryWallets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -279,7 +279,7 @@ public class Wallet {
    * @see BulkCredit
    */
   public BulkCreditResult bulkCredit(BulkCredit input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -292,7 +292,7 @@ public class Wallet {
    * @see BulkDebit
    */
   public BulkDebitResult bulkDebit(BulkDebit input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -307,7 +307,7 @@ public class Wallet {
    */
   @Deprecated
   public WalletInfo getWallet(GetWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -320,7 +320,7 @@ public class Wallet {
    * @see PublicGetMyWallet
    */
   public PlatformWallet publicGetMyWallet(PublicGetMyWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -333,7 +333,7 @@ public class Wallet {
    * @see PublicGetWallet
    */
   public PlatformWallet publicGetWallet(PublicGetWallet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -347,7 +347,7 @@ public class Wallet {
    */
   public WalletTransactionPagingSlicedResult publicListUserWalletTransactions(
       PublicListUserWalletTransactions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -36,7 +36,7 @@ public class Backfill {
    * @see CreateBackfill
    */
   public ApiBackfillCreateResponse createBackfill(CreateBackfill input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Backfill {
    */
   public ApiBackfillProposalResponse getBackfillProposal(GetBackfillProposal input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Backfill {
    * @see GetBackfill
    */
   public ApiBackfillGetResponse getBackfill(GetBackfill input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Backfill {
    * @see DeleteBackfill
    */
   public void deleteBackfill(DeleteBackfill input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Backfill {
    * @see AcceptBackfill
    */
   public ModelsGameSession acceptBackfill(AcceptBackfill input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Backfill {
    * @see RejectBackfill
    */
   public void rejectBackfill(RejectBackfill input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

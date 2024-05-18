@@ -36,7 +36,7 @@ public class Moderation {
    * @see AdminGetChatSnapshot
    */
   public ModelsChatSnapshots adminGetChatSnapshot(AdminGetChatSnapshot input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Moderation {
    * @see AdminDeleteChatSnapshot
    */
   public void adminDeleteChatSnapshot(AdminDeleteChatSnapshot input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Moderation {
    * @see PublicGetChatSnapshot
    */
   public ModelsChatSnapshots publicGetChatSnapshot(PublicGetChatSnapshot input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

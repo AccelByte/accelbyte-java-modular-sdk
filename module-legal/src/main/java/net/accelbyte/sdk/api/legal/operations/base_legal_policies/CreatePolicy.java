@@ -29,7 +29,6 @@ public class CreatePolicy extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/base-policies";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -44,7 +43,7 @@ public class CreatePolicy extends Operation {
   @Deprecated
   public CreatePolicy(String customBasePath, CreateBasePolicyRequest body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

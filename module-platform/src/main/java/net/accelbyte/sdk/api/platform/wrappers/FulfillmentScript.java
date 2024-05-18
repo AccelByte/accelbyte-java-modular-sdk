@@ -38,7 +38,7 @@ public class FulfillmentScript {
    */
   public List<FulfillmentScriptInfo> listFulfillmentScripts(ListFulfillmentScripts input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class FulfillmentScript {
    * @see GetFulfillmentScript
    */
   public FulfillmentScriptInfo getFulfillmentScript(GetFulfillmentScript input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class FulfillmentScript {
    */
   public FulfillmentScriptInfo createFulfillmentScript(CreateFulfillmentScript input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class FulfillmentScript {
    * @see DeleteFulfillmentScript
    */
   public void deleteFulfillmentScript(DeleteFulfillmentScript input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class FulfillmentScript {
    */
   public FulfillmentScriptInfo updateFulfillmentScript(UpdateFulfillmentScript input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

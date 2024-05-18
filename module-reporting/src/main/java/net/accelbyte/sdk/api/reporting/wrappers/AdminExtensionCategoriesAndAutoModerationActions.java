@@ -38,7 +38,7 @@ public class AdminExtensionCategoriesAndAutoModerationActions {
    */
   public RestapiActionListApiResponse adminFindActionList(AdminFindActionList input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class AdminExtensionCategoriesAndAutoModerationActions {
    */
   public RestapiActionApiResponse adminCreateModAction(AdminCreateModAction input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class AdminExtensionCategoriesAndAutoModerationActions {
    */
   public RestapiExtensionCategoryListApiResponse adminFindExtensionCategoryList(
       AdminFindExtensionCategoryList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class AdminExtensionCategoriesAndAutoModerationActions {
    */
   public RestapiExtensionCategoryApiResponse adminCreateExtensionCategory(
       AdminCreateExtensionCategory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

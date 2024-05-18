@@ -35,7 +35,7 @@ public class Auth {
    * @see AuthCheck
    */
   public void authCheck(AuthCheck input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

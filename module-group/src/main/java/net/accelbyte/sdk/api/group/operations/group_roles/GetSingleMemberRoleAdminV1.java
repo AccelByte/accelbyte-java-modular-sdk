@@ -31,7 +31,6 @@ public class GetSingleMemberRoleAdminV1 extends Operation {
   /** generated field's value */
   private String path = "/group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class GetSingleMemberRoleAdminV1 extends Operation {
   public GetSingleMemberRoleAdminV1(String customBasePath, String memberRoleId, String namespace) {
     this.memberRoleId = memberRoleId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

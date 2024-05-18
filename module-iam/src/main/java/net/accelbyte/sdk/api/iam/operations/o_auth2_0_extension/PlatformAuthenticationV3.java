@@ -50,7 +50,6 @@ public class PlatformAuthenticationV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/platforms/{platformId}/authenticate";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -110,7 +109,7 @@ public class PlatformAuthenticationV3 extends Operation {
     this.openidSig = openidSig;
     this.openidSigned = openidSigned;
     this.state = state;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

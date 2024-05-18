@@ -59,7 +59,6 @@ public class SaveConfig extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/admin/configs";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -76,7 +75,7 @@ public class SaveConfig extends Operation {
   @Deprecated
   public SaveConfig(String customBasePath, ModelsDSMConfigRecord body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

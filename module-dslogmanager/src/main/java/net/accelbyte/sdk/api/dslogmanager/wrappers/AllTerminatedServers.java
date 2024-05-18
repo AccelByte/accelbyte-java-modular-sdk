@@ -37,7 +37,7 @@ public class AllTerminatedServers {
    * @see BatchDownloadServerLogs
    */
   public InputStream batchDownloadServerLogs(BatchDownloadServerLogs input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AllTerminatedServers {
    */
   public ModelsListTerminatedServersResponse listAllTerminatedServers(
       ListAllTerminatedServers input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

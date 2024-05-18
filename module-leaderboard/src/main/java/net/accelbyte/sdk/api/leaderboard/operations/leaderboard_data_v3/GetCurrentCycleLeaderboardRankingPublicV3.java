@@ -30,7 +30,6 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
   private String path =
       "/leaderboard/v3/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -64,7 +63,7 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

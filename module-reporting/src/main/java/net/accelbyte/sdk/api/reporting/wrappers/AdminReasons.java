@@ -37,7 +37,7 @@ public class AdminReasons {
    */
   public RestapiReasonGroupListResponse adminListReasonGroups(AdminListReasonGroups input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminReasons {
    * @see CreateReasonGroup
    */
   public RestapiReasonGroupResponse createReasonGroup(CreateReasonGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminReasons {
    * @see GetReasonGroup
    */
   public RestapiReasonGroupResponse getReasonGroup(GetReasonGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class AdminReasons {
    * @see DeleteReasonGroup
    */
   public void deleteReasonGroup(DeleteReasonGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class AdminReasons {
    * @see UpdateReasonGroup
    */
   public RestapiReasonGroupResponse updateReasonGroup(UpdateReasonGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class AdminReasons {
    * @see AdminGetReasons
    */
   public RestapiAdminReasonListResponse adminGetReasons(AdminGetReasons input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class AdminReasons {
    * @see CreateReason
    */
   public RestapiAdminReasonResponse createReason(CreateReason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class AdminReasons {
    */
   public RestapiAdminAllReasonsResponse adminGetAllReasons(AdminGetAllReasons input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class AdminReasons {
    */
   public RestapiUnusedReasonListResponse adminGetUnusedReasons(AdminGetUnusedReasons input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -156,7 +156,7 @@ public class AdminReasons {
    * @see AdminGetReason
    */
   public RestapiAdminReasonResponse adminGetReason(AdminGetReason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -169,7 +169,7 @@ public class AdminReasons {
    * @see DeleteReason
    */
   public void deleteReason(DeleteReason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -182,7 +182,7 @@ public class AdminReasons {
    * @see UpdateReason
    */
   public RestapiAdminReasonResponse updateReason(UpdateReason input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

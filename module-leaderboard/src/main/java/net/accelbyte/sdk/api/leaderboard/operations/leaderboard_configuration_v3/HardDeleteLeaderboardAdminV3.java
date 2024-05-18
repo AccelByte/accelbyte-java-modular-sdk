@@ -36,7 +36,6 @@ public class HardDeleteLeaderboardAdminV3 extends Operation {
   private String path =
       "/leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class HardDeleteLeaderboardAdminV3 extends Operation {
       String customBasePath, String leaderboardCode, String namespace) {
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

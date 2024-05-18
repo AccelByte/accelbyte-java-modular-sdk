@@ -29,7 +29,6 @@ public class UnselectAllRecords extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class UnselectAllRecords extends Operation {
   public UnselectAllRecords(String customBasePath, String namespace, String storeId) {
     this.namespace = namespace;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

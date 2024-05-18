@@ -32,7 +32,6 @@ public class AdminGetInventoryItem extends Operation {
   private String path =
       "/inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -64,7 +63,7 @@ public class AdminGetInventoryItem extends Operation {
     this.namespace = namespace;
     this.slotId = slotId;
     this.sourceItemId = sourceItemId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class AdminGameRecord {
    */
   public ModelsListGameRecordKeysResponse listGameRecordsHandlerV1(ListGameRecordsHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminGameRecord {
    */
   public ModelsGameRecordAdminResponse adminGetGameRecordHandlerV1(
       AdminGetGameRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminGameRecord {
    */
   public ModelsGameRecordAdminResponse adminPutGameRecordHandlerV1(
       AdminPutGameRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminGameRecord {
    */
   public ModelsGameRecordAdminResponse adminPostGameRecordHandlerV1(
       AdminPostGameRecordHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class AdminGameRecord {
    */
   public void adminDeleteGameRecordHandlerV1(AdminDeleteGameRecordHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

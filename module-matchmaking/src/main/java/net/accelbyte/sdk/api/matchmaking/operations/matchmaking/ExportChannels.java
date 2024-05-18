@@ -30,7 +30,6 @@ public class ExportChannels extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/v1/admin/namespaces/{namespace}/channels/export";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -47,7 +46,7 @@ public class ExportChannels extends Operation {
   @Deprecated
   public ExportChannels(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

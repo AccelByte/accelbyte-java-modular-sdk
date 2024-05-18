@@ -37,7 +37,7 @@ public class Config {
    * @see AdminGetAllConfigV1
    */
   public ModelsConfigList adminGetAllConfigV1(AdminGetAllConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Config {
    * @see AdminGetConfigV1
    */
   public ModelsConfigResponse adminGetConfigV1(AdminGetConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Config {
    * @see AdminUpdateConfigV1
    */
   public ModelsConfigResponse adminUpdateConfigV1(AdminUpdateConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Config {
    * @see ExportConfig
    */
   public List<ModelsConfigExport> exportConfig(ExportConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Config {
    * @see ImportConfig
    */
   public ModelsImportConfigResponse importConfig(ImportConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Config {
    * @see PublicGetConfigV1
    */
   public ModelsPublicConfigResponse publicGetConfigV1(PublicGetConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

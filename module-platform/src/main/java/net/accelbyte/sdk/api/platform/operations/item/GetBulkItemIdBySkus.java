@@ -35,7 +35,6 @@ public class GetBulkItemIdBySkus extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/itemId/bySkus";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class GetBulkItemIdBySkus extends Operation {
     this.namespace = namespace;
     this.sku = sku;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

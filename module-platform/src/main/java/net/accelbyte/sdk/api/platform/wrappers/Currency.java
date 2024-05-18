@@ -37,7 +37,7 @@ public class Currency {
    * @see ListCurrencies
    */
   public List<CurrencyInfo> listCurrencies(ListCurrencies input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Currency {
    * @see CreateCurrency
    */
   public CurrencyInfo createCurrency(CreateCurrency input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Currency {
    * @see UpdateCurrency
    */
   public CurrencyInfo updateCurrency(UpdateCurrency input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Currency {
    * @see DeleteCurrency
    */
   public CurrencyInfo deleteCurrency(DeleteCurrency input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Currency {
    * @see GetCurrencyConfig
    */
   public CurrencyConfig getCurrencyConfig(GetCurrencyConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Currency {
    * @see GetCurrencySummary
    */
   public CurrencySummary getCurrencySummary(GetCurrencySummary input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Currency {
    * @see PublicListCurrencies
    */
   public List<CurrencyInfo> publicListCurrencies(PublicListCurrencies input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

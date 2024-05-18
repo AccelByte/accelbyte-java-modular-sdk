@@ -40,7 +40,6 @@ public class ImportImages extends Operation {
   /** generated field's value */
   private String path = "/dsmcontroller/admin/images/import";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class ImportImages extends Operation {
   @Deprecated
   public ImportImages(String customBasePath, File file) {
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -35,7 +35,7 @@ public class Admin {
    * @see UpdateServerConfig
    */
   public void updateServerConfig(UpdateServerConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class Admin {
    * @see DeleteServer
    */
   public void deleteServer(DeleteServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -61,7 +61,7 @@ public class Admin {
    * @see SetServerAlias
    */
   public void setServerAlias(SetServerAlias input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

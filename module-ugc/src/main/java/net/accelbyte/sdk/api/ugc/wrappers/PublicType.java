@@ -36,7 +36,7 @@ public class PublicType {
    * @see GetType
    */
   public ModelsPaginatedGetTypeResponse getType(GetType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

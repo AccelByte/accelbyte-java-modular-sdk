@@ -38,7 +38,7 @@ public class LobbyOperations {
    */
   public ModelsPartyData adminUpdatePartyAttributesV1(AdminUpdatePartyAttributesV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class LobbyOperations {
    * @see AdminJoinPartyV1
    */
   public void adminJoinPartyV1(AdminJoinPartyV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class LobbyOperations {
    */
   public List<LogAppMessageDeclaration> publicGetMessages(PublicGetMessages input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

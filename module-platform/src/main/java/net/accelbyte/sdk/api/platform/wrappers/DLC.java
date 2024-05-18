@@ -37,7 +37,7 @@ public class DLC {
    * @see GetDLCItemConfig
    */
   public DLCItemConfigInfo getDLCItemConfig(GetDLCItemConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class DLC {
    * @see UpdateDLCItemConfig
    */
   public DLCItemConfigInfo updateDLCItemConfig(UpdateDLCItemConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class DLC {
    * @see DeleteDLCItemConfig
    */
   public void deleteDLCItemConfig(DeleteDLCItemConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class DLC {
    * @see GetPlatformDLCConfig
    */
   public PlatformDLCConfigInfo getPlatformDLCConfig(GetPlatformDLCConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class DLC {
    */
   public PlatformDLCConfigInfo updatePlatformDLCConfig(UpdatePlatformDLCConfig input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class DLC {
    * @see DeletePlatformDLCConfig
    */
   public void deletePlatformDLCConfig(DeletePlatformDLCConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class DLC {
    * @see GetUserDLCByPlatform
    */
   public UserDLC getUserDLCByPlatform(GetUserDLCByPlatform input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class DLC {
    * @see GetUserDLC
    */
   public List<UserDLCRecord> getUserDLC(GetUserDLC input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class DLC {
    */
   public DLCConfigRewardShortInfo geDLCDurableRewardShortMap(GeDLCDurableRewardShortMap input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -156,7 +156,7 @@ public class DLC {
    * @see SyncEpicGameDLC
    */
   public void syncEpicGameDLC(SyncEpicGameDLC input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -169,7 +169,7 @@ public class DLC {
    * @see SyncOculusDLC
    */
   public void syncOculusDLC(SyncOculusDLC input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -182,7 +182,7 @@ public class DLC {
    * @see PublicSyncPsnDlcInventory
    */
   public void publicSyncPsnDlcInventory(PublicSyncPsnDlcInventory input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -196,7 +196,7 @@ public class DLC {
    */
   public void publicSyncPsnDlcInventoryWithMultipleServiceLabels(
       PublicSyncPsnDlcInventoryWithMultipleServiceLabels input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -209,7 +209,7 @@ public class DLC {
    * @see SyncSteamDLC
    */
   public void syncSteamDLC(SyncSteamDLC input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -222,7 +222,7 @@ public class DLC {
    * @see SyncXboxDLC
    */
   public void syncXboxDLC(SyncXboxDLC input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

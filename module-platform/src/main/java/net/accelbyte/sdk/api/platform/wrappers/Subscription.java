@@ -37,7 +37,7 @@ public class Subscription {
    */
   public SubscriptionPagingSlicedResult querySubscriptions(QuerySubscriptions input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Subscription {
    */
   public RecurringChargeResult recurringChargeSubscription(RecurringChargeSubscription input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Subscription {
    */
   public SubscriptionPagingSlicedResult queryUserSubscriptions(QueryUserSubscriptions input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Subscription {
    */
   public SubscriptionActivityPagingSlicedResult getUserSubscriptionActivities(
       GetUserSubscriptionActivities input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class Subscription {
    */
   public SubscriptionInfo platformSubscribeSubscription(PlatformSubscribeSubscription input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class Subscription {
    */
   public Subscribable checkUserSubscriptionSubscribableByItemId(
       CheckUserSubscriptionSubscribableByItemId input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class Subscription {
    * @see GetUserSubscription
    */
   public SubscriptionInfo getUserSubscription(GetUserSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class Subscription {
    * @see DeleteUserSubscription
    */
   public void deleteUserSubscription(DeleteUserSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class Subscription {
    * @see CancelSubscription
    */
   public SubscriptionInfo cancelSubscription(CancelSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -159,7 +159,7 @@ public class Subscription {
    * @see GrantDaysToSubscription
    */
   public SubscriptionInfo grantDaysToSubscription(GrantDaysToSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -173,7 +173,7 @@ public class Subscription {
    */
   public BillingHistoryPagingSlicedResult getUserSubscriptionBillingHistories(
       GetUserSubscriptionBillingHistories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Subscription {
    */
   public void processUserSubscriptionNotification(ProcessUserSubscriptionNotification input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -201,7 +201,7 @@ public class Subscription {
    */
   public SubscriptionPagingSlicedResult publicQueryUserSubscriptions(
       PublicQueryUserSubscriptions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -214,7 +214,7 @@ public class Subscription {
    * @see PublicSubscribeSubscription
    */
   public void publicSubscribeSubscription(PublicSubscribeSubscription input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -228,7 +228,7 @@ public class Subscription {
    */
   public Subscribable publicCheckUserSubscriptionSubscribableByItemId(
       PublicCheckUserSubscriptionSubscribableByItemId input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -242,7 +242,7 @@ public class Subscription {
    */
   public SubscriptionInfo publicGetUserSubscription(PublicGetUserSubscription input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -256,7 +256,7 @@ public class Subscription {
    */
   public SubscriptionInfo publicChangeSubscriptionBillingAccount(
       PublicChangeSubscriptionBillingAccount input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -270,7 +270,7 @@ public class Subscription {
    */
   public SubscriptionInfo publicCancelSubscription(PublicCancelSubscription input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -284,7 +284,7 @@ public class Subscription {
    */
   public BillingHistoryPagingSlicedResult publicGetUserSubscriptionBillingHistories(
       PublicGetUserSubscriptionBillingHistories input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

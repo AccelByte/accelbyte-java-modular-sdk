@@ -37,7 +37,7 @@ public class PaymentDedicated {
    */
   public PaymentOrderCreateResult createPaymentOrderByDedicated(CreatePaymentOrderByDedicated input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PaymentDedicated {
    */
   public PaymentOrderRefundResult refundPaymentOrderByDedicated(RefundPaymentOrderByDedicated input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class PaymentDedicated {
    * @see SyncPaymentOrders
    */
   public PaymentOrderSyncResult syncPaymentOrders(SyncPaymentOrders input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

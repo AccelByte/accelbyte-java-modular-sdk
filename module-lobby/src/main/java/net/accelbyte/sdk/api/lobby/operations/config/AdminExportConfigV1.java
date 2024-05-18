@@ -51,7 +51,6 @@ public class AdminExportConfigV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/config/namespaces/{namespace}/export";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -68,7 +67,7 @@ public class AdminExportConfigV1 extends Operation {
   @Deprecated
   public AdminExportConfigV1(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -35,7 +35,6 @@ public class GetChildCategories extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/categories/{categoryPath}/children";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class GetChildCategories extends Operation {
     this.categoryPath = categoryPath;
     this.namespace = namespace;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

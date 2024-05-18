@@ -31,7 +31,6 @@ public class UserRequestFriend extends Operation {
   /** generated field's value */
   private String path = "/friends/namespaces/{namespace}/me/request";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class UserRequestFriend extends Operation {
       String customBasePath, String namespace, ModelUserRequestFriendRequest body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

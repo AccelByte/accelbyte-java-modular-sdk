@@ -31,7 +31,6 @@ public class StoreMatchResults extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/namespaces/{namespace}/matchresult";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class StoreMatchResults extends Operation {
   public StoreMatchResults(String customBasePath, String namespace, ModelsMatchResultRequest body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

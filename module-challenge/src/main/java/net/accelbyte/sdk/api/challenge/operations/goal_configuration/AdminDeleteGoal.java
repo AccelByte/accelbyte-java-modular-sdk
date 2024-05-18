@@ -29,7 +29,6 @@ public class AdminDeleteGoal extends Operation {
   private String path =
       "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class AdminDeleteGoal extends Operation {
     this.challengeCode = challengeCode;
     this.code = code;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -42,7 +42,6 @@ public class PublicUpdateUserV2 extends Operation {
   /** generated field's value */
   private String path = "/iam/v2/public/namespaces/{namespace}/users/{userId}";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -67,7 +66,7 @@ public class PublicUpdateUserV2 extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

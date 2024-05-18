@@ -36,7 +36,7 @@ public class UserVisibility {
    * @see GetHiddenUsersV2
    */
   public ModelsGetHiddenUserResponse getHiddenUsersV2(GetHiddenUsersV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class UserVisibility {
    */
   public ModelsGetUserVisibilityResponse getUserVisibilityStatusV2(GetUserVisibilityStatusV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class UserVisibility {
    */
   public ModelsGetUserVisibilityResponse setUserLeaderboardVisibilityStatusV2(
       SetUserLeaderboardVisibilityStatusV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class UserVisibility {
    */
   public ModelsGetUserVisibilityResponse setUserVisibilityStatusV2(SetUserVisibilityStatusV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

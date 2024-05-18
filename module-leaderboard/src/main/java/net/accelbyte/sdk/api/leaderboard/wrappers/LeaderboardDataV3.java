@@ -37,7 +37,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsGetLeaderboardRankingResp getAllTimeLeaderboardRankingAdminV3(
       GetAllTimeLeaderboardRankingAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsGetLeaderboardRankingResp getCurrentCycleLeaderboardRankingAdminV3(
       GetCurrentCycleLeaderboardRankingAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class LeaderboardDataV3 {
    */
   public void deleteUserRankingByLeaderboardCodeAdminV3(
       DeleteUserRankingByLeaderboardCodeAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsUserRankingResponseV3 getUserRankingAdminV3(GetUserRankingAdminV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class LeaderboardDataV3 {
    * @see DeleteUserRankingAdminV3
    */
   public void deleteUserRankingAdminV3(DeleteUserRankingAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class LeaderboardDataV3 {
    * @see DeleteUserRankingsAdminV3
    */
   public void deleteUserRankingsAdminV3(DeleteUserRankingsAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsGetLeaderboardRankingResp getAllTimeLeaderboardRankingPublicV3(
       GetAllTimeLeaderboardRankingPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsGetLeaderboardRankingResp getCurrentCycleLeaderboardRankingPublicV3(
       GetCurrentCycleLeaderboardRankingPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsBulkUserRankingResponseV3 bulkGetUsersRankingPublicV3(
       BulkGetUsersRankingPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -161,7 +161,7 @@ public class LeaderboardDataV3 {
    */
   public ModelsUserRankingResponseV3 getUserRankingPublicV3(GetUserRankingPublicV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

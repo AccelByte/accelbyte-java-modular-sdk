@@ -36,7 +36,7 @@ public class AdminModerationRule {
    * @see CreateModerationRule
    */
   public void createModerationRule(CreateModerationRule input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AdminModerationRule {
    */
   public RestapiModerationRuleResponse updateModerationRule(UpdateModerationRule input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AdminModerationRule {
    * @see DeleteModerationRule
    */
   public void deleteModerationRule(DeleteModerationRule input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class AdminModerationRule {
    * @see UpdateModerationRuleStatus
    */
   public void updateModerationRuleStatus(UpdateModerationRuleStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class AdminModerationRule {
    * @see GetModerationRules
    */
   public RestapiModerationRulesList getModerationRules(GetModerationRules input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class AdminModerationRule {
    */
   public RestapiModerationRuleResponse getModerationRuleDetails(GetModerationRuleDetails input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

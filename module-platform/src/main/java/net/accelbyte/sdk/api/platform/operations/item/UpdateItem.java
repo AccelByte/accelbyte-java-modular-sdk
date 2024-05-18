@@ -266,7 +266,6 @@ public class UpdateItem extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/items/{itemId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -293,7 +292,7 @@ public class UpdateItem extends Operation {
     this.namespace = namespace;
     this.storeId = storeId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class DataDeletion {
    */
   public ModelsListDeletionDataResponse adminGetListDeletionDataRequest(
       AdminGetListDeletionDataRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class DataDeletion {
    */
   public ModelsDeletionData adminGetUserAccountDeletionRequest(
       AdminGetUserAccountDeletionRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class DataDeletion {
    */
   public ModelsRequestDeleteResponse adminSubmitUserAccountDeletionRequest(
       AdminSubmitUserAccountDeletionRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class DataDeletion {
    */
   public void adminCancelUserAccountDeletionRequest(AdminCancelUserAccountDeletionRequest input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class DataDeletion {
    */
   public ModelsRequestDeleteResponse publicSubmitUserAccountDeletionRequest(
       PublicSubmitUserAccountDeletionRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class DataDeletion {
    */
   public void publicCancelUserAccountDeletionRequest(PublicCancelUserAccountDeletionRequest input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class DataDeletion {
    */
   public ModelsDeletionStatus publicGetUserAccountDeletionStatus(
       PublicGetUserAccountDeletionStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class DataDeletion {
    */
   public ModelsRequestDeleteResponse publicSubmitMyAccountDeletionRequest(
       PublicSubmitMyAccountDeletionRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class DataDeletion {
    */
   public void publicCancelMyAccountDeletionRequest(PublicCancelMyAccountDeletionRequest input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -163,7 +163,7 @@ public class DataDeletion {
    */
   public ModelsDeletionStatus publicGetMyAccountDeletionStatus(
       PublicGetMyAccountDeletionStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

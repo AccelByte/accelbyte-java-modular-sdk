@@ -37,7 +37,7 @@ public class EnvironmentVariable {
    */
   public ApimodelsEnvironmentVariableListResponse adminListEnvironmentVariables(
       AdminListEnvironmentVariables input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

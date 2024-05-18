@@ -29,7 +29,6 @@ public class ExportStore1 extends Operation {
   /** generated field's value */
   private String path = "/platform/v2/admin/namespaces/{namespace}/stores/{storeId}/export";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/zip");
@@ -53,7 +52,7 @@ public class ExportStore1 extends Operation {
     this.namespace = namespace;
     this.storeId = storeId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

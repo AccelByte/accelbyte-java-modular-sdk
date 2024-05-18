@@ -37,7 +37,6 @@ public class RevokeAUser extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/revoke/user";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class RevokeAUser extends Operation {
   @Deprecated
   public RevokeAUser(String customBasePath, String userID) {
     this.userID = userID;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

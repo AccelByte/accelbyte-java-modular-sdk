@@ -38,7 +38,7 @@ public class AgreementWithNamespace {
    */
   public List<UserAgreementsResponse> retrieveAcceptedAgreementsForMultiUsers(
       RetrieveAcceptedAgreementsForMultiUsers input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class AgreementWithNamespace {
    */
   public List<RetrieveAcceptedAgreementResponse> retrieveAcceptedAgreements1(
       RetrieveAcceptedAgreements1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class AgreementWithNamespace {
    */
   public PagedRetrieveUserAcceptedAgreementResponse retrieveAllUsersByPolicyVersion1(
       RetrieveAllUsersByPolicyVersion1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class AgreementWithNamespace {
    */
   public DownloadExportedAgreementsInCSVResponse downloadExportedAgreementsInCSV(
       DownloadExportedAgreementsInCSV input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class AgreementWithNamespace {
    */
   public InitiateExportAgreementsToCSVResponse initiateExportAgreementsToCSV(
       InitiateExportAgreementsToCSV input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

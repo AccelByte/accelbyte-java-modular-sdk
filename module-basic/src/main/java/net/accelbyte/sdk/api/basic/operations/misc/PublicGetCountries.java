@@ -36,7 +36,6 @@ public class PublicGetCountries extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/public/namespaces/{namespace}/misc/countries";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class PublicGetCountries extends Operation {
   public PublicGetCountries(String customBasePath, String namespace, String lang) {
     this.namespace = namespace;
     this.lang = lang;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

@@ -32,7 +32,6 @@ public class DownloadServerArtifacts extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/download";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -53,7 +52,7 @@ public class DownloadServerArtifacts extends Operation {
   public DownloadServerArtifacts(String customBasePath, String namespace, String podName) {
     this.namespace = namespace;
     this.podName = podName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

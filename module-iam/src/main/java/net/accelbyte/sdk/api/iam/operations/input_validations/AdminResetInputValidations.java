@@ -28,7 +28,6 @@ public class AdminResetInputValidations extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/inputValidations/{field}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -45,7 +44,7 @@ public class AdminResetInputValidations extends Operation {
   @Deprecated
   public AdminResetInputValidations(String customBasePath, String field) {
     this.field = field;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

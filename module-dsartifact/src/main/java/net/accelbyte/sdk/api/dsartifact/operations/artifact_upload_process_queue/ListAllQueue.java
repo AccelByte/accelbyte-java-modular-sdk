@@ -33,7 +33,6 @@ public class ListAllQueue extends Operation {
   /** generated field's value */
   private String path = "/dsartifact/namespaces/{namespace}/artifacts/queues/all";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -74,7 +73,7 @@ public class ListAllQueue extends Operation {
     this.order = order;
     this.podName = podName;
     this.previous = previous;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -46,7 +46,6 @@ public class PublicSearchUserV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/public/namespaces/{namespace}/users";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -84,7 +83,7 @@ public class PublicSearchUserV3 extends Operation {
     this.platformBy = platformBy;
     this.platformId = platformId;
     this.query = query;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

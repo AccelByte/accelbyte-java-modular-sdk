@@ -30,7 +30,6 @@ public class DeleteCountryGroup extends Operation {
   private String path =
       "/basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class DeleteCountryGroup extends Operation {
   public DeleteCountryGroup(String customBasePath, String countryGroupCode, String namespace) {
     this.countryGroupCode = countryGroupCode;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

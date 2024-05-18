@@ -35,7 +35,7 @@ public class Anonymization {
    * @see AdminAnonymizeUserAchievement
    */
   public void adminAnonymizeUserAchievement(AdminAnonymizeUserAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

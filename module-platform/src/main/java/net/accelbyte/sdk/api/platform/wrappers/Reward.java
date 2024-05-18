@@ -37,7 +37,7 @@ public class Reward {
    * @see CreateReward
    */
   public RewardInfo createReward(CreateReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Reward {
    * @see QueryRewards
    */
   public RewardPagingSlicedResult queryRewards(QueryRewards input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Reward {
    * @see ExportRewards
    */
   public InputStream exportRewards(ExportRewards input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Reward {
    * @see ImportRewards
    */
   public void importRewards(ImportRewards input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Reward {
    * @see GetReward
    */
   public RewardInfo getReward(GetReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class Reward {
    * @see UpdateReward
    */
   public RewardInfo updateReward(UpdateReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Reward {
    * @see DeleteReward
    */
   public RewardInfo deleteReward(DeleteReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class Reward {
    * @see CheckEventCondition
    */
   public ConditionMatchResult checkEventCondition(CheckEventCondition input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -141,7 +141,7 @@ public class Reward {
    * @see DeleteRewardConditionRecord
    */
   public void deleteRewardConditionRecord(DeleteRewardConditionRecord input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -154,7 +154,7 @@ public class Reward {
    * @see GetRewardByCode
    */
   public RewardInfo getRewardByCode(GetRewardByCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -167,7 +167,7 @@ public class Reward {
    * @see QueryRewards1
    */
   public RewardPagingSlicedResult queryRewards1(QueryRewards1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -180,7 +180,7 @@ public class Reward {
    * @see GetReward1
    */
   public RewardInfo getReward1(GetReward1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

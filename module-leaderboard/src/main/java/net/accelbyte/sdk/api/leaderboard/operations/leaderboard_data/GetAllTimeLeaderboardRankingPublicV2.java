@@ -30,7 +30,6 @@ public class GetAllTimeLeaderboardRankingPublicV2 extends Operation {
   private String path =
       "/leaderboard/v2/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class GetAllTimeLeaderboardRankingPublicV2 extends Operation {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

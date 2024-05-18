@@ -35,7 +35,6 @@ public class PublishSeason extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -56,7 +55,7 @@ public class PublishSeason extends Operation {
   public PublishSeason(String customBasePath, String namespace, String seasonId) {
     this.namespace = namespace;
     this.seasonId = seasonId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,7 @@ public class Artifacts {
    * @see ArtifactGet
    */
   public ApiArtifactListResponse artifactGet(ArtifactGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Artifacts {
    * @see ArtifactUsageGet
    */
   public ApiArtifactUsageResponse artifactUsageGet(ArtifactUsageGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Artifacts {
    * @see ArtifactDelete
    */
   public void artifactDelete(ArtifactDelete input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class Artifacts {
    * @see ArtifactGetURL
    */
   public ApiArtifactURLResponse artifactGetURL(ArtifactGetURL input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -89,7 +89,7 @@ public class Artifacts {
    */
   public ApiFleetArtifactsSampleRules fleetArtifactSamplingRulesGet(
       FleetArtifactSamplingRulesGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class Artifacts {
    */
   public ApiFleetArtifactsSampleRules fleetArtifactSamplingRulesSet(
       FleetArtifactSamplingRulesSet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -38,7 +38,6 @@ public class RevokeUser extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/namespaces/{namespace}/users/{userId}/revoke";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class RevokeUser extends Operation {
   public RevokeUser(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

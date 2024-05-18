@@ -33,7 +33,6 @@ public class PublicGetPartyDataV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicGetPartyDataV1 extends Operation {
   public PublicGetPartyDataV1(String customBasePath, String namespace, String partyId) {
     this.namespace = namespace;
     this.partyId = partyId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

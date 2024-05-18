@@ -31,7 +31,6 @@ public class AdminDeleteItemType extends Operation {
   /** generated field's value */
   private String path = "/inventory/v1/admin/namespaces/{namespace}/itemtypes/{itemTypeName}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class AdminDeleteItemType extends Operation {
   public AdminDeleteItemType(String customBasePath, String itemTypeName, String namespace) {
     this.itemTypeName = itemTypeName;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

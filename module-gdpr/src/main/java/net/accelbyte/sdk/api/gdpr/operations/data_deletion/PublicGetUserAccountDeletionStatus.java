@@ -30,7 +30,6 @@ public class PublicGetUserAccountDeletionStatus extends Operation {
   /** generated field's value */
   private String path = "/gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class PublicGetUserAccountDeletionStatus extends Operation {
       String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

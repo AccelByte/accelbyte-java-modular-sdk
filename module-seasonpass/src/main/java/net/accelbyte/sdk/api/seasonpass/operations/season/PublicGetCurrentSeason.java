@@ -34,7 +34,6 @@ public class PublicGetCurrentSeason extends Operation {
   /** generated field's value */
   private String path = "/seasonpass/public/namespaces/{namespace}/seasons/current";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicGetCurrentSeason extends Operation {
   public PublicGetCurrentSeason(String customBasePath, String namespace, String language) {
     this.namespace = namespace;
     this.language = language;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

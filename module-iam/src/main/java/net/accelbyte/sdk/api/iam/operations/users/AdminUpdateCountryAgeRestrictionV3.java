@@ -30,7 +30,6 @@ public class AdminUpdateCountryAgeRestrictionV3 extends Operation {
   private String path =
       "/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -58,7 +57,7 @@ public class AdminUpdateCountryAgeRestrictionV3 extends Operation {
     this.countryCode = countryCode;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

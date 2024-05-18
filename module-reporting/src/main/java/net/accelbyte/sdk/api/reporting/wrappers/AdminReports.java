@@ -36,7 +36,7 @@ public class AdminReports {
    * @see ListReports
    */
   public RestapiReportListResponse listReports(ListReports input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminReports {
    * @see AdminSubmitReport
    */
   public RestapiSubmitReportResponse adminSubmitReport(AdminSubmitReport input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

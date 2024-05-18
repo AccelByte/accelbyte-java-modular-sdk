@@ -28,7 +28,6 @@ public class DeleteMatchTicket extends Operation {
   /** generated field's value */
   private String path = "/match2/v1/namespaces/{namespace}/match-tickets/{ticketid}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class DeleteMatchTicket extends Operation {
   public DeleteMatchTicket(String customBasePath, String namespace, String ticketid) {
     this.namespace = namespace;
     this.ticketid = ticketid;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

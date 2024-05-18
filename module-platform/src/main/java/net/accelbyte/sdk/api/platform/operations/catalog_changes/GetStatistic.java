@@ -34,7 +34,6 @@ public class GetStatistic extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -76,7 +75,7 @@ public class GetStatistic extends Operation {
     this.type = type;
     this.updatedAtEnd = updatedAtEnd;
     this.updatedAtStart = updatedAtStart;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

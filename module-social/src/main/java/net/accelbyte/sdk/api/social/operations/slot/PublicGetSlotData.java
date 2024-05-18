@@ -34,7 +34,6 @@ public class PublicGetSlotData extends Operation {
   /** generated field's value */
   private String path = "/social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/octet-stream");
@@ -58,7 +57,7 @@ public class PublicGetSlotData extends Operation {
     this.namespace = namespace;
     this.slotId = slotId;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,6 @@ public class VerifyToken extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/verify";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class VerifyToken extends Operation {
   @Deprecated
   public VerifyToken(String customBasePath, String token) {
     this.token = token;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Basic");
   }

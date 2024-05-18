@@ -28,7 +28,6 @@ public class ArtifactDelete extends Operation {
   /** generated field's value */
   private String path = "/ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class ArtifactDelete extends Operation {
   public ArtifactDelete(String customBasePath, String artifactID, String namespace) {
     this.artifactID = artifactID;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

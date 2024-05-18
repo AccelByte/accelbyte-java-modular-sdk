@@ -29,7 +29,6 @@ public class GetRecentPlayer extends Operation {
   /** generated field's value */
   private String path = "/sessionbrowser/namespaces/{namespace}/recentplayer/{userID}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class GetRecentPlayer extends Operation {
   public GetRecentPlayer(String customBasePath, String namespace, String userID) {
     this.namespace = namespace;
     this.userID = userID;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

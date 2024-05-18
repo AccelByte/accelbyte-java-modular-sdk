@@ -32,7 +32,6 @@ public class AdminEnableUserV2 extends Operation {
   /** generated field's value */
   private String path = "/iam/v2/admin/namespaces/{namespace}/users/{userId}/enable";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class AdminEnableUserV2 extends Operation {
   public AdminEnableUserV2(String customBasePath, String namespace, String userId) {
     this.namespace = namespace;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

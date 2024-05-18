@@ -30,7 +30,6 @@ public class AdminGetCategorySchema extends Operation {
   private String path =
       "/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}/schema.json";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminGetCategorySchema extends Operation {
   public AdminGetCategorySchema(String customBasePath, String category, String namespace) {
     this.category = category;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

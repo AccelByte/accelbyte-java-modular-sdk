@@ -29,7 +29,6 @@ public class SelectRecord extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class SelectRecord extends Operation {
     this.changeId = changeId;
     this.namespace = namespace;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

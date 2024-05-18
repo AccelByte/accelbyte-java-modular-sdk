@@ -52,7 +52,6 @@ public class AdminSearchUserV3 extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/admin/namespaces/{namespace}/users/search";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -108,7 +107,7 @@ public class AdminSearchUserV3 extends Operation {
     this.skipLoginQueue = skipLoginQueue;
     this.startDate = startDate;
     this.testAccount = testAccount;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -32,7 +32,6 @@ public class AdminDeleteInventoryConfiguration extends Operation {
   private String path =
       "/inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class AdminDeleteInventoryConfiguration extends Operation {
       String customBasePath, String inventoryConfigurationId, String namespace) {
     this.inventoryConfigurationId = inventoryConfigurationId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

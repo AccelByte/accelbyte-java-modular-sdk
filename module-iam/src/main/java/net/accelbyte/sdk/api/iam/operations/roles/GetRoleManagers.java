@@ -36,7 +36,6 @@ public class GetRoleManagers extends Operation {
   /** generated field's value */
   private String path = "/iam/roles/{roleId}/managers";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class GetRoleManagers extends Operation {
   @Deprecated
   public GetRoleManagers(String customBasePath, String roleId) {
     this.roleId = roleId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

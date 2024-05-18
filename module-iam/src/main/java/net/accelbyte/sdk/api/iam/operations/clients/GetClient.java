@@ -33,7 +33,6 @@ public class GetClient extends Operation {
   /** generated field's value */
   private String path = "/iam/clients/{clientId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class GetClient extends Operation {
   @Deprecated
   public GetClient(String customBasePath, String clientId) {
     this.clientId = clientId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

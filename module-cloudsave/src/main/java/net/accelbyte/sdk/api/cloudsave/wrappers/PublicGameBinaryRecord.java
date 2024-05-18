@@ -37,7 +37,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsListGameBinaryRecordsResponse listGameBinaryRecordsV1(ListGameBinaryRecordsV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse postGameBinaryRecordV1(PostGameBinaryRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsBulkGetGameBinaryRecordResponse bulkGetGameBinaryRecordV1(
       BulkGetGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsGameBinaryRecordResponse getGameBinaryRecordV1(GetGameBinaryRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsGameBinaryRecordResponse putGameBinaryRecordV1(PutGameBinaryRecordV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class PublicGameBinaryRecord {
    * @see DeleteGameBinaryRecordV1
    */
   public void deleteGameBinaryRecordV1(DeleteGameBinaryRecordV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class PublicGameBinaryRecord {
    */
   public ModelsUploadBinaryRecordResponse postGameBinaryPresignedURLV1(
       PostGameBinaryPresignedURLV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

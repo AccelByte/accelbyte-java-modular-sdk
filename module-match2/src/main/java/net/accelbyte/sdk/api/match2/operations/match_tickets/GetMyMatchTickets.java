@@ -29,7 +29,6 @@ public class GetMyMatchTickets extends Operation {
   /** generated field's value */
   private String path = "/match2/v1/namespaces/{namespace}/match-tickets/me";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class GetMyMatchTickets extends Operation {
     this.limit = limit;
     this.matchPool = matchPool;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

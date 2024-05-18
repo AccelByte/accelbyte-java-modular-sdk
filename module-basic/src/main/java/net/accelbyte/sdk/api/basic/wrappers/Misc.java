@@ -39,7 +39,7 @@ public class Misc {
    */
   @Deprecated
   public List<CountryObject> getCountries(GetCountries input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -53,7 +53,7 @@ public class Misc {
    */
   public List<RetrieveCountryGroupResponse> getCountryGroups(GetCountryGroups input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Misc {
    * @see AddCountryGroup
    */
   public AddCountryGroupResponse addCountryGroup(AddCountryGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class Misc {
    * @see UpdateCountryGroup
    */
   public CountryGroupObject updateCountryGroup(UpdateCountryGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class Misc {
    * @see DeleteCountryGroup
    */
   public void deleteCountryGroup(DeleteCountryGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Misc {
    * @see GetLanguages
    */
   public Map<String, ?> getLanguages(GetLanguages input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class Misc {
    * @see GetTimeZones
    */
   public List<String> getTimeZones(GetTimeZones input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -131,7 +131,7 @@ public class Misc {
    * @see PublicGetTime
    */
   public RetrieveTimeResponse publicGetTime(PublicGetTime input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class Misc {
    */
   @Deprecated
   public List<CountryObject> publicGetCountries(PublicGetCountries input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -159,7 +159,7 @@ public class Misc {
    * @see PublicGetLanguages
    */
   public Map<String, ?> publicGetLanguages(PublicGetLanguages input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -172,7 +172,7 @@ public class Misc {
    * @see PublicGetTimeZones
    */
   public List<String> publicGetTimeZones(PublicGetTimeZones input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

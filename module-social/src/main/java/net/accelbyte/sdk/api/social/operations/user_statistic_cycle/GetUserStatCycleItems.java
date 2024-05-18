@@ -32,7 +32,6 @@ public class GetUserStatCycleItems extends Operation {
   private String path =
       "/social/v1/admin/namespaces/{namespace}/users/{userId}/statCycles/{cycleId}/statCycleitems";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -75,7 +74,7 @@ public class GetUserStatCycleItems extends Operation {
     this.offset = offset;
     this.sortBy = sortBy;
     this.statCodes = statCodes;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

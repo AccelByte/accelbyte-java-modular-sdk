@@ -56,7 +56,6 @@ public class AddUserPermission extends Operation {
   private String path =
       "/iam/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -92,7 +91,7 @@ public class AddUserPermission extends Operation {
     this.resource = resource;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

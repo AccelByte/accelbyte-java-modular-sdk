@@ -37,7 +37,7 @@ public class AdminStagingContent {
    */
   public ModelsPaginatedListStagingContentResponse adminListStagingContents(
       AdminListStagingContents input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminStagingContent {
    */
   public ModelsStagingContentResponse adminGetStagingContentByID(AdminGetStagingContentByID input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminStagingContent {
    */
   public ModelsStagingContentResponse adminApproveStagingContent(AdminApproveStagingContent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminStagingContent {
    */
   public ModelsPaginatedListStagingContentResponse adminListUserStagingContents(
       AdminListUserStagingContents input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

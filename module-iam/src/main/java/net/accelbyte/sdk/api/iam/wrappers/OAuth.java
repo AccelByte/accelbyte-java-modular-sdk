@@ -38,7 +38,7 @@ public class OAuth {
    */
   @Deprecated
   public String authorization(Authorization input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -53,7 +53,7 @@ public class OAuth {
    */
   @Deprecated
   public OauthcommonJWKSet getJWKS(GetJWKS input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -69,7 +69,7 @@ public class OAuth {
   @Deprecated
   public OauthmodelTokenResponse platformTokenRequestHandler(PlatformTokenRequestHandler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -84,7 +84,7 @@ public class OAuth {
    */
   @Deprecated
   public void revokeUser(RevokeUser input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -99,7 +99,7 @@ public class OAuth {
    */
   @Deprecated
   public OauthapiRevocationList getRevocationList(GetRevocationList input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -114,7 +114,7 @@ public class OAuth {
    */
   @Deprecated
   public void revokeToken(RevokeToken input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class OAuth {
    */
   @Deprecated
   public void revokeAUser(RevokeAUser input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -144,7 +144,7 @@ public class OAuth {
    */
   @Deprecated
   public OauthmodelTokenResponse tokenGrant(TokenGrant input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -159,7 +159,7 @@ public class OAuth {
    */
   @Deprecated
   public OauthmodelTokenResponse verifyToken(VerifyToken input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

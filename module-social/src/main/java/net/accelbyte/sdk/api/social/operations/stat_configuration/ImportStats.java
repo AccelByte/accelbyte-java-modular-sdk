@@ -33,7 +33,6 @@ public class ImportStats extends Operation {
   /** generated field's value */
   private String path = "/social/v1/admin/namespaces/{namespace}/stats/import";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class ImportStats extends Operation {
     this.namespace = namespace;
     this.replaceExisting = replaceExisting;
     this.file = file;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

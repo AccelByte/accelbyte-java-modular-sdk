@@ -37,7 +37,6 @@ public class ListCrossNamespaceAccountLink extends Operation {
   /** generated field's value */
   private String path = "/iam/namespaces/{namespace}/users/{userId}/crosslink";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -68,7 +67,7 @@ public class ListCrossNamespaceAccountLink extends Operation {
     this.userId = userId;
     this.platformId = platformId;
     this.linkingToken = linkingToken;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class GlobalStatistic {
    */
   public GlobalStatItemPagingSlicedResult getGlobalStatItems(GetGlobalStatItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GlobalStatistic {
    */
   public GlobalStatItemInfo getGlobalStatItemByStatCode(GetGlobalStatItemByStatCode input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class GlobalStatistic {
    */
   public GlobalStatItemPagingSlicedResult getGlobalStatItems1(GetGlobalStatItems1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class GlobalStatistic {
    */
   public GlobalStatItemInfo getGlobalStatItemByStatCode1(GetGlobalStatItemByStatCode1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

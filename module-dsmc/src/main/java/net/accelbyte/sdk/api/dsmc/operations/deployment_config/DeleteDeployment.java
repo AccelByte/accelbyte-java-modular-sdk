@@ -33,7 +33,6 @@ public class DeleteDeployment extends Operation {
   private String path =
       "/dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class DeleteDeployment extends Operation {
   public DeleteDeployment(String customBasePath, String deployment, String namespace) {
     this.deployment = deployment;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

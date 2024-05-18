@@ -38,7 +38,7 @@ public class Friends {
    */
   public List<ModelGetUserFriendsResponse> getUserFriendsUpdated(GetUserFriendsUpdated input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Friends {
    */
   public List<ModelGetUserIncomingFriendsResponse> getUserIncomingFriends(
       GetUserIncomingFriends input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class Friends {
    */
   public List<ModelLoadIncomingFriendsWithTimeResponse> getUserIncomingFriendsWithTime(
       GetUserIncomingFriendsWithTime input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class Friends {
    */
   public List<ModelGetUserOutgoingFriendsResponse> getUserOutgoingFriends(
       GetUserOutgoingFriends input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class Friends {
    */
   public List<ModelLoadOutgoingFriendsWithTimeResponse> getUserOutgoingFriendsWithTime(
       GetUserOutgoingFriendsWithTime input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -108,7 +108,7 @@ public class Friends {
    */
   public ModelListBulkUserPlatformsResponse getUserFriendsWithPlatform(
       GetUserFriendsWithPlatform input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class Friends {
    * @see UserRequestFriend
    */
   public void userRequestFriend(UserRequestFriend input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class Friends {
    * @see UserAcceptFriendRequest
    */
   public void userAcceptFriendRequest(UserAcceptFriendRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class Friends {
    * @see UserCancelFriendRequest
    */
   public void userCancelFriendRequest(UserCancelFriendRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class Friends {
    * @see UserRejectFriendRequest
    */
   public void userRejectFriendRequest(UserRejectFriendRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -174,7 +174,7 @@ public class Friends {
    */
   public ModelUserGetFriendshipStatusResponse userGetFriendshipStatus(UserGetFriendshipStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Friends {
    * @see UserUnfriendRequest
    */
   public void userUnfriendRequest(UserUnfriendRequest input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -200,7 +200,7 @@ public class Friends {
    * @see AddFriendsWithoutConfirmation
    */
   public void addFriendsWithoutConfirmation(AddFriendsWithoutConfirmation input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -213,7 +213,7 @@ public class Friends {
    * @see BulkDeleteFriends
    */
   public ModelBulkFriendsResponse bulkDeleteFriends(BulkDeleteFriends input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -227,7 +227,7 @@ public class Friends {
    */
   public List<ModelNativeFriendSyncResponse> syncNativeFriends(SyncNativeFriends input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -240,7 +240,7 @@ public class Friends {
    * @see GetListOfFriends
    */
   public ModelGetFriendsResponse getListOfFriends(GetListOfFriends input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -254,7 +254,7 @@ public class Friends {
    */
   public ModelLoadIncomingFriendsWithTimeResponse getIncomingFriendRequests(
       GetIncomingFriendRequests input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -268,7 +268,7 @@ public class Friends {
    */
   public ModelFriendshipConnectionResponse adminListFriendsOfFriends(
       AdminListFriendsOfFriends input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -282,7 +282,7 @@ public class Friends {
    */
   public ModelLoadOutgoingFriendsWithTimeResponse getOutgoingFriendRequests(
       GetOutgoingFriendRequests input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

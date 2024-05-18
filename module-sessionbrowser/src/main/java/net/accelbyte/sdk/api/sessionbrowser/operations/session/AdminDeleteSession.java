@@ -29,7 +29,6 @@ public class AdminDeleteSession extends Operation {
   /** generated field's value */
   private String path = "/sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminDeleteSession extends Operation {
   public AdminDeleteSession(String customBasePath, String namespace, String sessionID) {
     this.namespace = namespace;
     this.sessionID = sessionID;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

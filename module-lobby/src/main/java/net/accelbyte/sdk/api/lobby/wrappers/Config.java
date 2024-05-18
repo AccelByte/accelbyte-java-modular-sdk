@@ -37,7 +37,7 @@ public class Config {
    * @see AdminGetAllConfigV1
    */
   public ModelsConfigList adminGetAllConfigV1(AdminGetAllConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Config {
    * @see AdminGetConfigV1
    */
   public ModelsConfigReq adminGetConfigV1(AdminGetConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class Config {
    * @see AdminUpdateConfigV1
    */
   public ModelsConfigReq adminUpdateConfigV1(AdminUpdateConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -76,7 +76,7 @@ public class Config {
    * @see AdminExportConfigV1
    */
   public InputStream adminExportConfigV1(AdminExportConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class Config {
    */
   public ModelsImportConfigResponse adminImportConfigV1(AdminImportConfigV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

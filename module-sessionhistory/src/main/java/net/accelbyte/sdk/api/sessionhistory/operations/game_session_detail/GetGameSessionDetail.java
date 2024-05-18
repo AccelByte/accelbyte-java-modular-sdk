@@ -29,7 +29,6 @@ public class GetGameSessionDetail extends Operation {
   /** generated field's value */
   private String path = "/sessionhistory/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class GetGameSessionDetail extends Operation {
   public GetGameSessionDetail(String customBasePath, String namespace, String sessionId) {
     this.namespace = namespace;
     this.sessionId = sessionId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

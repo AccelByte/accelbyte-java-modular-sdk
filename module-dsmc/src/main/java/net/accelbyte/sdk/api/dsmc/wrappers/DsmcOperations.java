@@ -38,7 +38,7 @@ public class DsmcOperations {
    */
   public List<LogAppMessageDeclaration> publicGetMessages(PublicGetMessages input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

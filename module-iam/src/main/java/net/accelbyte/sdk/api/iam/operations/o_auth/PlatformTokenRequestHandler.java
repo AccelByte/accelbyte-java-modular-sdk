@@ -45,7 +45,6 @@ public class PlatformTokenRequestHandler extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/namespaces/{namespace}/platforms/{platformId}/token";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/x-www-form-urlencoded");
   private List<String> produces = Arrays.asList("application/json");
@@ -78,7 +77,7 @@ public class PlatformTokenRequestHandler extends Operation {
     this.deviceId = deviceId;
     this.macAddress = macAddress;
     this.platformToken = platformToken;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

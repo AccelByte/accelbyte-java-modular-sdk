@@ -29,7 +29,6 @@ public class AdminQuerySession extends Operation {
   /** generated field's value */
   private String path = "/sessionbrowser/admin/namespaces/{namespace}/gamesession";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -80,7 +79,7 @@ public class AdminQuerySession extends Operation {
     this.serverStatus = serverStatus;
     this.userId = userId;
     this.sessionType = sessionType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

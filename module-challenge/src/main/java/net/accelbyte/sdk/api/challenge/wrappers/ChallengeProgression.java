@@ -36,7 +36,7 @@ public class ChallengeProgression {
    * @see AdminEvaluateProgress
    */
   public void adminEvaluateProgress(AdminEvaluateProgress input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class ChallengeProgression {
    * @see EvaluateMyProgress
    */
   public void evaluateMyProgress(EvaluateMyProgress input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class ChallengeProgression {
    */
   public ModelUserProgressionResponse publicGetUserProgression(PublicGetUserProgression input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

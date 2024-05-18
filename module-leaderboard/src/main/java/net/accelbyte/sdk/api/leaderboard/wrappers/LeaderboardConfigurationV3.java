@@ -37,7 +37,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetAllLeaderboardConfigsRespV3 getLeaderboardConfigurationsAdminV3(
       GetLeaderboardConfigurationsAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetLeaderboardConfigRespV3 createLeaderboardConfigurationAdminV3(
       CreateLeaderboardConfigurationAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsDeleteBulkLeaderboardsResp deleteBulkLeaderboardConfigurationAdminV3(
       DeleteBulkLeaderboardConfigurationAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetLeaderboardConfigRespV3 getLeaderboardConfigurationAdminV3(
       GetLeaderboardConfigurationAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetLeaderboardConfigRespV3 updateLeaderboardConfigurationAdminV3(
       UpdateLeaderboardConfigurationAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class LeaderboardConfigurationV3 {
    */
   public void deleteLeaderboardConfigurationAdminV3(DeleteLeaderboardConfigurationAdminV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class LeaderboardConfigurationV3 {
    * @see HardDeleteLeaderboardAdminV3
    */
   public void hardDeleteLeaderboardAdminV3(HardDeleteLeaderboardAdminV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetAllLeaderboardConfigsPublicRespV3 getLeaderboardConfigurationsPublicV3(
       GetLeaderboardConfigurationsPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -148,7 +148,7 @@ public class LeaderboardConfigurationV3 {
    */
   public ModelsGetLeaderboardConfigPublicRespV3 getLeaderboardConfigurationPublicV3(
       GetLeaderboardConfigurationPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

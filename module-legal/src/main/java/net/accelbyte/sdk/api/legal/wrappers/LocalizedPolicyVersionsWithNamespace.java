@@ -38,7 +38,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public List<RetrieveLocalizedPolicyVersionResponse> retrieveLocalizedPolicyVersions1(
       RetrieveLocalizedPolicyVersions1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public CreateLocalizedPolicyVersionResponse createLocalizedPolicyVersion1(
       CreateLocalizedPolicyVersion1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public RetrieveLocalizedPolicyVersionResponse retrieveSingleLocalizedPolicyVersion1(
       RetrieveSingleLocalizedPolicyVersion1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public UpdateLocalizedPolicyVersionResponse updateLocalizedPolicyVersion1(
       UpdateLocalizedPolicyVersion1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public UploadLocalizedPolicyVersionAttachmentResponse requestPresignedURL1(
       RequestPresignedURL1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    * @see SetDefaultPolicy1
    */
   public void setDefaultPolicy1(SetDefaultPolicy1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class LocalizedPolicyVersionsWithNamespace {
    */
   public RetrieveLocalizedPolicyVersionPublicResponse retrieveSingleLocalizedPolicyVersion3(
       RetrieveSingleLocalizedPolicyVersion3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

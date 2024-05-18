@@ -35,7 +35,7 @@ public class PoliciesWithNamespace {
    * @see UpdatePolicy1
    */
   public void updatePolicy1(UpdatePolicy1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class PoliciesWithNamespace {
    * @see SetDefaultPolicy3
    */
   public void setDefaultPolicy3(SetDefaultPolicy3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

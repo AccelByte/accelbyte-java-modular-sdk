@@ -30,7 +30,6 @@ public class AdminDeleteTiedChallenge extends Operation {
   private String path =
       "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class AdminDeleteTiedChallenge extends Operation {
   public AdminDeleteTiedChallenge(String customBasePath, String challengeCode, String namespace) {
     this.challengeCode = challengeCode;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,7 @@ public class MatchTickets {
    * @see CreateMatchTicket
    */
   public ApiMatchTicketResponse createMatchTicket(CreateMatchTicket input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class MatchTickets {
    * @see GetMyMatchTickets
    */
   public ApiMatchTicketStatuses getMyMatchTickets(GetMyMatchTickets input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class MatchTickets {
    * @see MatchTicketDetails
    */
   public ApiMatchTicketStatus matchTicketDetails(MatchTicketDetails input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class MatchTickets {
    * @see DeleteMatchTicket
    */
   public void deleteMatchTicket(DeleteMatchTicket input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -37,7 +37,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedGlobalAchievementResponse adminListGlobalAchievements(
       AdminListGlobalAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedContributorResponse adminListGlobalAchievementContributors(
       AdminListGlobalAchievementContributors input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class GlobalAchievements {
    * @see ResetGlobalAchievement
    */
   public void resetGlobalAchievement(ResetGlobalAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedUserContributionResponse adminListUserContributions(
       AdminListUserContributions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedGlobalAchievementResponse publicListGlobalAchievements(
       PublicListGlobalAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedContributorResponse listGlobalAchievementContributors(
       ListGlobalAchievementContributors input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class GlobalAchievements {
    */
   public ModelsPaginatedUserContributionResponse listUserContributions(ListUserContributions input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class GlobalAchievements {
    * @see ClaimGlobalAchievementReward
    */
   public void claimGlobalAchievementReward(ClaimGlobalAchievementReward input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

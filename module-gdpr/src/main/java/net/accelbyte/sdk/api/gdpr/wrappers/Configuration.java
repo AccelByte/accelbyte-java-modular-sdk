@@ -38,7 +38,7 @@ public class Configuration {
    */
   public List<String> getAdminEmailConfiguration(GetAdminEmailConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Configuration {
    * @see UpdateAdminEmailConfiguration
    */
   public void updateAdminEmailConfiguration(UpdateAdminEmailConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class Configuration {
    * @see SaveAdminEmailConfiguration
    */
   public void saveAdminEmailConfiguration(SaveAdminEmailConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Configuration {
    * @see DeleteAdminEmailConfiguration
    */
   public void deleteAdminEmailConfiguration(DeleteAdminEmailConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Configuration {
    */
   public DtoServicesConfigurationResponse adminGetServicesConfiguration(
       AdminGetServicesConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Configuration {
    */
   public DtoServiceConfigurationUpdateRequest adminUpdateServicesConfiguration(
       AdminUpdateServicesConfiguration input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class Configuration {
    */
   public void adminResetServicesConfiguration(AdminResetServicesConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

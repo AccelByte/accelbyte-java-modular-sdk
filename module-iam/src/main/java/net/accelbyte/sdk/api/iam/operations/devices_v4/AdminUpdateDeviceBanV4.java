@@ -29,7 +29,6 @@ public class AdminUpdateDeviceBanV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class AdminUpdateDeviceBanV4 extends Operation {
     this.banId = banId;
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,6 @@ public class DeleteGroupPredefinedRulePublicV1 extends Operation {
   private String path =
       "/group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class DeleteGroupPredefinedRulePublicV1 extends Operation {
     this.allowedAction = allowedAction;
     this.groupId = groupId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

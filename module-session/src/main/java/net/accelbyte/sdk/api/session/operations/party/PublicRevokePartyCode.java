@@ -28,7 +28,6 @@ public class PublicRevokePartyCode extends Operation {
   /** generated field's value */
   private String path = "/session/v1/public/namespaces/{namespace}/parties/{partyId}/code";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class PublicRevokePartyCode extends Operation {
   public PublicRevokePartyCode(String customBasePath, String namespace, String partyId) {
     this.namespace = namespace;
     this.partyId = partyId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

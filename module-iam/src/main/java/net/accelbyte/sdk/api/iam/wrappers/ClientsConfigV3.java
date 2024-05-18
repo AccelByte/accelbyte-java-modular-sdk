@@ -37,7 +37,7 @@ public class ClientsConfigV3 {
    */
   public ClientmodelListClientPermissionSet adminListClientAvailablePermissions(
       AdminListClientAvailablePermissions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class ClientsConfigV3 {
    */
   public void adminUpdateAvailablePermissionsByModule(AdminUpdateAvailablePermissionsByModule input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class ClientsConfigV3 {
    */
   public void adminDeleteConfigPermissionsByGroup(AdminDeleteConfigPermissionsByGroup input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class ClientsConfigV3 {
    */
   public ClientmodelListTemplatesResponse adminListClientTemplates(AdminListClientTemplates input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

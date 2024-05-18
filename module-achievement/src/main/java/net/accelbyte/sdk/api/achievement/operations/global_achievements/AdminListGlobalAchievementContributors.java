@@ -30,7 +30,6 @@ public class AdminListGlobalAchievementContributors extends Operation {
   private String path =
       "/achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/contributors";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -63,7 +62,7 @@ public class AdminListGlobalAchievementContributors extends Operation {
     this.limit = limit;
     this.offset = offset;
     this.sortBy = sortBy;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

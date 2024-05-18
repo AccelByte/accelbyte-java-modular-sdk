@@ -34,7 +34,6 @@ public class AdminUpdateRoleV4 extends Operation {
   /** generated field's value */
   private String path = "/iam/v4/admin/roles/{roleId}";
 
-  private String customBasePath = "";
   private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class AdminUpdateRoleV4 extends Operation {
   public AdminUpdateRoleV4(String customBasePath, String roleId, ModelRoleV4Request body) {
     this.roleId = roleId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

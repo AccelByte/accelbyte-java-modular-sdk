@@ -29,7 +29,6 @@ public class RetrieveSinglePolicy1 extends Operation {
   /** generated field's value */
   private String path = "/agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class RetrieveSinglePolicy1 extends Operation {
   public RetrieveSinglePolicy1(String customBasePath, String basePolicyId, String namespace) {
     this.basePolicyId = basePolicyId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

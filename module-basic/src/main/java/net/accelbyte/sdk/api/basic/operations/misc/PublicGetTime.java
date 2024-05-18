@@ -29,7 +29,6 @@ public class PublicGetTime extends Operation {
   /** generated field's value */
   private String path = "/basic/v1/public/misc/time";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -42,7 +41,7 @@ public class PublicGetTime extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicGetTime(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

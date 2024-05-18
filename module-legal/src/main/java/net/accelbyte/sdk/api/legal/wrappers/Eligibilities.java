@@ -38,7 +38,7 @@ public class Eligibilities {
    */
   public List<RetrieveUserEligibilitiesResponse> retrieveEligibilitiesPublic(
       RetrieveEligibilitiesPublic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Eligibilities {
    */
   public RetrieveUserEligibilitiesIndirectResponse retrieveEligibilitiesPublicIndirect(
       RetrieveEligibilitiesPublicIndirect input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

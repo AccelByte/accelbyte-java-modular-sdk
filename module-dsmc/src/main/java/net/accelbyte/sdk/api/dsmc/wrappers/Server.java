@@ -36,7 +36,7 @@ public class Server {
    * @see ListServerClient
    */
   public ModelsListServerResponse listServerClient(ListServerClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Server {
    * @see ServerHeartbeat
    */
   public void serverHeartbeat(ServerHeartbeat input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Server {
    * @see DeregisterLocalServer
    */
   public void deregisterLocalServer(DeregisterLocalServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class Server {
    * @see RegisterLocalServer
    */
   public ModelsServer registerLocalServer(RegisterLocalServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class Server {
    * @see RegisterServer
    */
   public ModelsServer registerServer(RegisterServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class Server {
    * @see ShutdownServer
    */
   public void shutdownServer(ShutdownServer input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class Server {
    */
   public ModelsServerDeploymentConfigSessionTimeoutResponse getServerSessionTimeout(
       GetServerSessionTimeout input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class Server {
    * @see GetServerSession
    */
   public ModelsServerSessionResponse getServerSession(GetServerSession input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

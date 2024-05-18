@@ -28,7 +28,6 @@ public class CleanAllMocks extends Operation {
   /** generated field's value */
   private String path = "/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/mocks";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class CleanAllMocks extends Operation {
   public CleanAllMocks(String customBasePath, String channelName, String namespace) {
     this.channelName = channelName;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,7 @@ public class OrderDedicated {
    * @see SyncOrders
    */
   public OrderSyncResult syncOrders(SyncOrders input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

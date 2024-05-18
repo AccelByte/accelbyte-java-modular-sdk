@@ -37,7 +37,7 @@ public class UserStatistic {
    * @see BulkFetchStatItems
    */
   public List<UserStatItemInfo> bulkFetchStatItems(BulkFetchStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkIncUserStatItem(BulkIncUserStatItem input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkIncUserStatItemValue(BulkIncUserStatItemValue input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> bulkFetchOrDefaultStatItems(
       BulkFetchOrDefaultStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkResetUserStatItem(BulkResetUserStatItem input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class UserStatistic {
    * @see GetStatItems
    */
   public StatItemValuePagingSlicedResult getStatItems(GetStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class UserStatistic {
    * @see GetUserStatItems
    */
   public UserStatItemPagingSlicedResult getUserStatItems(GetUserStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkCreateUserStatItems(BulkCreateUserStatItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkIncUserStatItem1(BulkIncUserStatItem1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -161,7 +161,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkIncUserStatItemValue1(BulkIncUserStatItemValue1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -175,7 +175,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkResetUserStatItem1(BulkResetUserStatItem1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -188,7 +188,7 @@ public class UserStatistic {
    * @see CreateUserStatItem
    */
   public void createUserStatItem(CreateUserStatItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -201,7 +201,7 @@ public class UserStatistic {
    * @see DeleteUserStatItems
    */
   public void deleteUserStatItems(DeleteUserStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -214,7 +214,7 @@ public class UserStatistic {
    * @see IncUserStatItemValue
    */
   public StatItemIncResult incUserStatItemValue(IncUserStatItemValue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -227,7 +227,7 @@ public class UserStatistic {
    * @see ResetUserStatItemValue
    */
   public StatItemIncResult resetUserStatItemValue(ResetUserStatItemValue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -240,7 +240,7 @@ public class UserStatistic {
    * @see BulkFetchStatItems1
    */
   public List<UserStatItemInfo> bulkFetchStatItems1(BulkFetchStatItems1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -254,7 +254,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> publicBulkIncUserStatItem(PublicBulkIncUserStatItem input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -268,7 +268,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> publicBulkIncUserStatItemValue(
       PublicBulkIncUserStatItemValue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -282,7 +282,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkResetUserStatItem2(BulkResetUserStatItem2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -296,7 +296,7 @@ public class UserStatistic {
    */
   public UserStatItemPagingSlicedResult publicListMyStatItems(PublicListMyStatItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -310,7 +310,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> publicListAllMyStatItems(
       PublicListAllMyStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -324,7 +324,7 @@ public class UserStatistic {
    */
   public UserStatItemPagingSlicedResult publicQueryUserStatItems(PublicQueryUserStatItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -338,7 +338,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> publicBulkCreateUserStatItems(
       PublicBulkCreateUserStatItems input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -352,7 +352,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> publicQueryUserStatItems1(
       PublicQueryUserStatItems1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -366,7 +366,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> publicBulkIncUserStatItem1(PublicBulkIncUserStatItem1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -380,7 +380,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkIncUserStatItemValue2(BulkIncUserStatItemValue2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -394,7 +394,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkResetUserStatItem3(BulkResetUserStatItem3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -407,7 +407,7 @@ public class UserStatistic {
    * @see PublicCreateUserStatItem
    */
   public void publicCreateUserStatItem(PublicCreateUserStatItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -420,7 +420,7 @@ public class UserStatistic {
    * @see DeleteUserStatItems1
    */
   public void deleteUserStatItems1(DeleteUserStatItems1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -433,7 +433,7 @@ public class UserStatistic {
    * @see PublicIncUserStatItem
    */
   public StatItemIncResult publicIncUserStatItem(PublicIncUserStatItem input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -447,7 +447,7 @@ public class UserStatistic {
    */
   public StatItemIncResult publicIncUserStatItemValue(PublicIncUserStatItemValue input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -460,7 +460,7 @@ public class UserStatistic {
    * @see ResetUserStatItemValue1
    */
   public StatItemIncResult resetUserStatItemValue1(ResetUserStatItemValue1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -474,7 +474,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkUpdateUserStatItemV2(BulkUpdateUserStatItemV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -488,7 +488,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> bulkFetchOrDefaultStatItems1(
       BulkFetchOrDefaultStatItems1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -502,7 +502,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> adminListUsersStatItems(AdminListUsersStatItems input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -516,7 +516,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkUpdateUserStatItem(BulkUpdateUserStatItem input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -530,7 +530,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkResetUserStatItemValues(
       BulkResetUserStatItemValues input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -543,7 +543,7 @@ public class UserStatistic {
    * @see DeleteUserStatItems2
    */
   public void deleteUserStatItems2(DeleteUserStatItems2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -556,7 +556,7 @@ public class UserStatistic {
    * @see UpdateUserStatItemValue
    */
   public StatItemIncResult updateUserStatItemValue(UpdateUserStatItemValue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -570,7 +570,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkUpdateUserStatItem1(BulkUpdateUserStatItem1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -584,7 +584,7 @@ public class UserStatistic {
    */
   public List<ADTOObjectForUserStatItemValue> publicQueryUserStatItems2(
       PublicQueryUserStatItems2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -598,7 +598,7 @@ public class UserStatistic {
    */
   public List<BulkStatOperationResult> bulkUpdateUserStatItem2(BulkUpdateUserStatItem2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -612,7 +612,7 @@ public class UserStatistic {
    */
   public StatItemIncResult updateUserStatItemValue1(UpdateUserStatItemValue1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

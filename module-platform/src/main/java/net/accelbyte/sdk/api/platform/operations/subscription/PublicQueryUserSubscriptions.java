@@ -31,7 +31,6 @@ public class PublicQueryUserSubscriptions extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/users/{userId}/subscriptions";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -76,7 +75,7 @@ public class PublicQueryUserSubscriptions extends Operation {
     this.sku = sku;
     this.status = status;
     this.subscribedBy = subscribedBy;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -37,7 +37,7 @@ public class AdminConcurrentRecord {
    */
   public void adminPutAdminGameRecordConcurrentHandlerV1(
       AdminPutAdminGameRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class AdminConcurrentRecord {
    */
   public void adminPutGameRecordConcurrentHandlerV1(AdminPutGameRecordConcurrentHandlerV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class AdminConcurrentRecord {
    */
   public ModelsPlayerRecordConcurrentUpdateResponse adminPutAdminPlayerRecordConcurrentHandlerV1(
       AdminPutAdminPlayerRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class AdminConcurrentRecord {
    */
   public ModelsPlayerRecordConcurrentUpdateResponse adminPutPlayerRecordConcurrentHandlerV1(
       AdminPutPlayerRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class AdminConcurrentRecord {
    */
   public ModelsPlayerRecordConcurrentUpdateResponse adminPutPlayerPublicRecordConcurrentHandlerV1(
       AdminPutPlayerPublicRecordConcurrentHandlerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

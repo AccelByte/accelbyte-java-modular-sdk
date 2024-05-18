@@ -36,7 +36,6 @@ public class RejectGroupInvitationPublicV2 extends Operation {
   /** generated field's value */
   private String path = "/group/v2/public/namespaces/{namespace}/groups/{groupId}/invite/reject";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class RejectGroupInvitationPublicV2 extends Operation {
   public RejectGroupInvitationPublicV2(String customBasePath, String groupId, String namespace) {
     this.groupId = groupId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

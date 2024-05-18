@@ -36,7 +36,7 @@ public class KeyGroup {
    * @see QueryKeyGroups
    */
   public KeyGroupPagingSlicedResult queryKeyGroups(QueryKeyGroups input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class KeyGroup {
    * @see CreateKeyGroup
    */
   public KeyGroupInfo createKeyGroup(CreateKeyGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class KeyGroup {
    */
   @Deprecated
   public KeyGroupInfo getKeyGroupByBoothName(GetKeyGroupByBoothName input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class KeyGroup {
    * @see GetKeyGroup
    */
   public KeyGroupInfo getKeyGroup(GetKeyGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -90,7 +90,7 @@ public class KeyGroup {
    * @see UpdateKeyGroup
    */
   public KeyGroupInfo updateKeyGroup(UpdateKeyGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -103,7 +103,7 @@ public class KeyGroup {
    * @see GetKeyGroupDynamic
    */
   public KeyGroupDynamicInfo getKeyGroupDynamic(GetKeyGroupDynamic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class KeyGroup {
    * @see ListKeys
    */
   public KeyPagingSliceResult listKeys(ListKeys input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -129,7 +129,7 @@ public class KeyGroup {
    * @see UploadKeys
    */
   public BulkOperationResult uploadKeys(UploadKeys input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

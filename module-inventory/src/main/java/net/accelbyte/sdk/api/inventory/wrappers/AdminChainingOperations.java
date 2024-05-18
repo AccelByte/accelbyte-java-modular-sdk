@@ -37,7 +37,7 @@ public class AdminChainingOperations {
    */
   public ApimodelsChainingOperationResp adminCreateChainingOperations(
       AdminCreateChainingOperations input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -33,7 +33,6 @@ public class GetSingleGroupPublicV1 extends Operation {
   /** generated field's value */
   private String path = "/group/v1/public/namespaces/{namespace}/groups/{groupId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class GetSingleGroupPublicV1 extends Operation {
   public GetSingleGroupPublicV1(String customBasePath, String groupId, String namespace) {
     this.groupId = groupId;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

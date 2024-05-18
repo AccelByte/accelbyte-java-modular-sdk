@@ -39,7 +39,7 @@ public class ThirdPartyCredential {
   public List<ModelThirdPartyLoginPlatformCredentialResponse>
       retrieveAllThirdPartyLoginPlatformCredentialV3(
           RetrieveAllThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -54,7 +54,7 @@ public class ThirdPartyCredential {
   public List<ModelThirdPartyLoginPlatformCredentialResponse>
       retrieveAllActiveThirdPartyLoginPlatformCredentialV3(
           RetrieveAllActiveThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -68,7 +68,7 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse retrieveThirdPartyLoginPlatformCredentialV3(
       RetrieveThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -82,7 +82,7 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse addThirdPartyLoginPlatformCredentialV3(
       AddThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -96,7 +96,7 @@ public class ThirdPartyCredential {
    */
   public void deleteThirdPartyLoginPlatformCredentialV3(
       DeleteThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -110,7 +110,7 @@ public class ThirdPartyCredential {
    */
   public ModelThirdPartyLoginPlatformCredentialResponse updateThirdPartyLoginPlatformCredentialV3(
       UpdateThirdPartyLoginPlatformCredentialV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -124,7 +124,7 @@ public class ThirdPartyCredential {
    */
   public ModelPlatformDomainResponse updateThirdPartyLoginPlatformDomainV3(
       UpdateThirdPartyLoginPlatformDomainV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -138,7 +138,7 @@ public class ThirdPartyCredential {
    */
   public void deleteThirdPartyLoginPlatformDomainV3(DeleteThirdPartyLoginPlatformDomainV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -152,7 +152,7 @@ public class ThirdPartyCredential {
    */
   public ModelCheckAvailabilityResponse adminCheckThirdPartyLoginPlatformAvailabilityV3(
       AdminCheckThirdPartyLoginPlatformAvailabilityV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -167,7 +167,7 @@ public class ThirdPartyCredential {
   public List<ModelPublicThirdPartyPlatformInfo>
       retrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3(
           RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -181,7 +181,7 @@ public class ThirdPartyCredential {
    */
   public List<ModelPublicThirdPartyPlatformInfo> retrieveActiveOIDCClientsPublicV3(
       RetrieveActiveOIDCClientsPublicV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

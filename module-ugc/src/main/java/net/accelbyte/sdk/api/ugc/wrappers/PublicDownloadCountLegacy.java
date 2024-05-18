@@ -36,7 +36,7 @@ public class PublicDownloadCountLegacy {
    * @see AddDownloadCount
    */
   public ModelsAddDownloadCountResponse addDownloadCount(AddDownloadCount input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

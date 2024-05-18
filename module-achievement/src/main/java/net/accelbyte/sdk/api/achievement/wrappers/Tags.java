@@ -36,7 +36,7 @@ public class Tags {
    * @see AdminListTags
    */
   public ModelsPaginatedTagResponse adminListTags(AdminListTags input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Tags {
    * @see PublicListTags
    */
   public ModelsPaginatedTagResponse publicListTags(PublicListTags input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

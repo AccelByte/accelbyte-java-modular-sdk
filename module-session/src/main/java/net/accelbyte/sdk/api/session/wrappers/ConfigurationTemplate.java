@@ -37,7 +37,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigAlertResponse adminGetConfigurationAlertV1(
       AdminGetConfigurationAlertV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigAlertResponse adminUpdateConfigurationAlertV1(
       AdminUpdateConfigurationAlertV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigAlertResponse adminCreateConfigurationAlertV1(
       AdminCreateConfigurationAlertV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -79,7 +79,7 @@ public class ConfigurationTemplate {
    */
   public void adminDeleteConfigurationAlertV1(AdminDeleteConfigurationAlertV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -93,7 +93,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigurationTemplateResponse adminCreateConfigurationTemplateV1(
       AdminCreateConfigurationTemplateV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigurationTemplatesResponse adminGetAllConfigurationTemplatesV1(
       AdminGetAllConfigurationTemplatesV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigurationTemplateResponse adminGetConfigurationTemplateV1(
       AdminGetConfigurationTemplateV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class ConfigurationTemplate {
    */
   public ApimodelsConfigurationTemplateResponse adminUpdateConfigurationTemplateV1(
       AdminUpdateConfigurationTemplateV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -149,7 +149,7 @@ public class ConfigurationTemplate {
    */
   public void adminDeleteConfigurationTemplateV1(AdminDeleteConfigurationTemplateV1 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -163,7 +163,7 @@ public class ConfigurationTemplate {
    */
   public ModelsDSMConfigRecord adminGetDSMCConfiguration(AdminGetDSMCConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -177,7 +177,7 @@ public class ConfigurationTemplate {
    */
   public ModelsDSMConfigRecord adminSyncDSMCConfiguration(AdminSyncDSMCConfiguration input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

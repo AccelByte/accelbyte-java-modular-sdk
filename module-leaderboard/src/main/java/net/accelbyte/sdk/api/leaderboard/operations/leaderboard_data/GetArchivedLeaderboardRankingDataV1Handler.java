@@ -33,7 +33,6 @@ public class GetArchivedLeaderboardRankingDataV1Handler extends Operation {
   private String path =
       "/leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/archived";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -64,7 +63,7 @@ public class GetArchivedLeaderboardRankingDataV1Handler extends Operation {
     this.namespace = namespace;
     this.slug = slug;
     this.leaderboardCodes = leaderboardCodes;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

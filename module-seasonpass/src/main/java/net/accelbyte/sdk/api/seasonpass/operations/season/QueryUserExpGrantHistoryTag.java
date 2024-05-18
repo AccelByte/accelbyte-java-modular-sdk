@@ -36,7 +36,6 @@ public class QueryUserExpGrantHistoryTag extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -60,7 +59,7 @@ public class QueryUserExpGrantHistoryTag extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.seasonId = seasonId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

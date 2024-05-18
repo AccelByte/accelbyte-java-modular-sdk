@@ -36,7 +36,7 @@ public class Config {
    * @see AdminGetAllConfigV1
    */
   public ApiNamespaceConfigList adminGetAllConfigV1(AdminGetAllConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class Config {
    * @see AdminGetConfigV1
    */
   public ConfigmodelsNamespaceConfig adminGetConfigV1(AdminGetConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class Config {
    * @see AdminPatchConfigV1
    */
   public ConfigmodelsNamespaceConfig adminPatchConfigV1(AdminPatchConfigV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -41,7 +41,6 @@ public class RetrieveLatestPoliciesByNamespaceAndCountryPublic extends Operation
   /** generated field's value */
   private String path = "/agreement/public/policies/namespaces/{namespace}/countries/{countryCode}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -77,7 +76,7 @@ public class RetrieveLatestPoliciesByNamespaceAndCountryPublic extends Operation
     this.defaultOnEmpty = defaultOnEmpty;
     this.policyType = policyType;
     this.tags = tags;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
   }
 
   @Override

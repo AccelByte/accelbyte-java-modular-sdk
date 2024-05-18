@@ -31,7 +31,6 @@ public class Download extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("text/csv");
@@ -54,7 +53,7 @@ public class Download extends Operation {
     this.campaignId = campaignId;
     this.namespace = namespace;
     this.batchNo = batchNo;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

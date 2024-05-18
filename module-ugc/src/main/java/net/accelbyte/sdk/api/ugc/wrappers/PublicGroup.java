@@ -36,7 +36,7 @@ public class PublicGroup {
    * @see GetGroups
    */
   public ModelsPaginatedGroupResponse getGroups(GetGroups input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class PublicGroup {
    * @see CreateGroup
    */
   public ModelsCreateGroupResponse createGroup(CreateGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class PublicGroup {
    * @see GetGroup
    */
   public ModelsCreateGroupResponse getGroup(GetGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class PublicGroup {
    * @see UpdateGroup
    */
   public ModelsCreateGroupResponse updateGroup(UpdateGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class PublicGroup {
    * @see DeleteGroup
    */
   public void deleteGroup(DeleteGroup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -102,7 +102,7 @@ public class PublicGroup {
    */
   public ModelsPaginatedContentDownloadResponse getGroupContent(GetGroupContent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -116,7 +116,7 @@ public class PublicGroup {
    */
   public ModelsPaginatedContentDownloadResponseV2 publicGetGroupContentsV2(
       PublicGetGroupContentsV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

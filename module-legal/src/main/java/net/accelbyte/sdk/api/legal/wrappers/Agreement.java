@@ -37,7 +37,7 @@ public class Agreement {
    * @see ChangePreferenceConsent
    */
   public void changePreferenceConsent(ChangePreferenceConsent input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Agreement {
    */
   public List<RetrieveAcceptedAgreementResponse> retrieveAcceptedAgreements(
       RetrieveAcceptedAgreements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Agreement {
    */
   public PagedRetrieveUserAcceptedAgreementResponse retrieveAllUsersByPolicyVersion(
       RetrieveAllUsersByPolicyVersion input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Agreement {
    * @see ChangePreferenceConsent1
    */
   public void changePreferenceConsent1(ChangePreferenceConsent1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Agreement {
    * @see AcceptVersionedPolicy
    */
   public void acceptVersionedPolicy(AcceptVersionedPolicy input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Agreement {
    */
   public List<RetrieveAcceptedAgreementResponse> retrieveAgreementsPublic(
       RetrieveAgreementsPublic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class Agreement {
    */
   public AcceptAgreementResponse bulkAcceptVersionedPolicy(BulkAcceptVersionedPolicy input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -135,7 +135,7 @@ public class Agreement {
   @Deprecated
   public AcceptAgreementResponse indirectBulkAcceptVersionedPolicyV2(
       IndirectBulkAcceptVersionedPolicyV2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -151,7 +151,7 @@ public class Agreement {
   @Deprecated
   public AcceptAgreementResponse indirectBulkAcceptVersionedPolicy1(
       IndirectBulkAcceptVersionedPolicy1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

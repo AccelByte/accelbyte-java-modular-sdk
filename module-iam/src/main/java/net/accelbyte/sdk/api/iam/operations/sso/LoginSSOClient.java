@@ -24,7 +24,6 @@ public class LoginSSOClient extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/sso/{platformId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -44,7 +43,7 @@ public class LoginSSOClient extends Operation {
   public LoginSSOClient(String customBasePath, String platformId, String payload) {
     this.platformId = platformId;
     this.payload = payload;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

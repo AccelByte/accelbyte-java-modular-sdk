@@ -32,7 +32,6 @@ public class TestStripeConfigById extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/merchant/{id}/stripeconfig/test";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class TestStripeConfigById extends Operation {
   public TestStripeConfigById(String customBasePath, String id, Boolean sandbox) {
     this.id = id;
     this.sandbox = sandbox;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class DeleteReward extends Operation {
   private String path =
       "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -57,7 +56,7 @@ public class DeleteReward extends Operation {
     this.code = code;
     this.namespace = namespace;
     this.seasonId = seasonId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

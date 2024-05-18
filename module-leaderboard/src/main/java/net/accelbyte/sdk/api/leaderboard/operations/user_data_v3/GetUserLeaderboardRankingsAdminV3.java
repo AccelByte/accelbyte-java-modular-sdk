@@ -29,7 +29,6 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
   /** generated field's value */
   private String path = "/leaderboard/v3/admin/namespaces/{namespace}/users/{userId}/leaderboards";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
     this.userId = userId;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

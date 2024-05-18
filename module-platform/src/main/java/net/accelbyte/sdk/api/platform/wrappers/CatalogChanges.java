@@ -36,7 +36,7 @@ public class CatalogChanges {
    * @see QueryChanges
    */
   public CatalogChangePagingResult queryChanges(QueryChanges input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class CatalogChanges {
    * @see PublishAll
    */
   public StoreInfo publishAll(PublishAll input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class CatalogChanges {
    * @see PublishSelected
    */
   public StoreInfo publishSelected(PublishSelected input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class CatalogChanges {
    * @see SelectAllRecords
    */
   public void selectAllRecords(SelectAllRecords input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class CatalogChanges {
    * @see SelectAllRecordsByCriteria
    */
   public void selectAllRecordsByCriteria(SelectAllRecordsByCriteria input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class CatalogChanges {
    * @see GetStatistic
    */
   public CatalogChangeStatistics getStatistic(GetStatistic input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -114,7 +114,7 @@ public class CatalogChanges {
    * @see UnselectAllRecords
    */
   public void unselectAllRecords(UnselectAllRecords input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -127,7 +127,7 @@ public class CatalogChanges {
    * @see SelectRecord
    */
   public void selectRecord(SelectRecord input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -140,7 +140,7 @@ public class CatalogChanges {
    * @see UnselectRecord
    */
   public void unselectRecord(UnselectRecord input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

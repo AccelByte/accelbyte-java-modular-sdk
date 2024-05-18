@@ -38,7 +38,7 @@ public class Payment {
    */
   public PaymentNotificationPagingSlicedResult queryPaymentNotifications(
       QueryPaymentNotifications input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class Payment {
    */
   public PaymentOrderPagingSlicedResult queryPaymentOrders(QueryPaymentOrders input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Payment {
    * @see ListExtOrderNoByExtTxId
    */
   public List<String> listExtOrderNoByExtTxId(ListExtOrderNoByExtTxId input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Payment {
    * @see GetPaymentOrder
    */
   public PaymentOrderInfo getPaymentOrder(GetPaymentOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Payment {
    * @see ChargePaymentOrder
    */
   public PaymentOrderInfo chargePaymentOrder(ChargePaymentOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Payment {
    */
   public NotificationProcessResult simulatePaymentOrderNotification(
       SimulatePaymentOrderNotification input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -119,7 +119,7 @@ public class Payment {
    */
   public PaymentOrderChargeStatus getPaymentOrderChargeStatus(GetPaymentOrderChargeStatus input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class Payment {
    * @see CreateUserPaymentOrder
    */
   public PaymentOrderInfo createUserPaymentOrder(CreateUserPaymentOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -145,7 +145,7 @@ public class Payment {
    * @see RefundUserPaymentOrder
    */
   public PaymentOrderInfo refundUserPaymentOrder(RefundUserPaymentOrder input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

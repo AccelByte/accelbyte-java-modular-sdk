@@ -29,7 +29,6 @@ public class AdminGetProfanityListFiltersV1 extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/profanity/namespaces/{namespace}/list/{list}/filters";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminGetProfanityListFiltersV1 extends Operation {
   public AdminGetProfanityListFiltersV1(String customBasePath, String list, String namespace) {
     this.list = list;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

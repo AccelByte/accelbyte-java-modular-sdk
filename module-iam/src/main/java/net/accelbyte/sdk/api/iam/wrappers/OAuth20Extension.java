@@ -36,7 +36,7 @@ public class OAuth20Extension {
    * @see UserAuthenticationV3
    */
   public String userAuthenticationV3(UserAuthenticationV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 authenticationWithPlatformLinkV3(
       AuthenticationWithPlatformLinkV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 generateTokenByNewHeadlessAccountV3(
       GenerateTokenByNewHeadlessAccountV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class OAuth20Extension {
    */
   public OauthmodelOneTimeLinkingCodeResponse requestOneTimeLinkingCodeV3(
       RequestOneTimeLinkingCodeV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class OAuth20Extension {
    */
   public OauthmodelOneTimeLinkingCodeValidationResponse validateOneTimeLinkingCodeV3(
       ValidateOneTimeLinkingCodeV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 requestTokenByOneTimeLinkCodeResponseV3(
       RequestTokenByOneTimeLinkCodeResponseV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class OAuth20Extension {
    */
   public OauthmodelCountryLocationResponse getCountryLocationV3(GetCountryLocationV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class OAuth20Extension {
    * @see Logout
    */
   public void logout(Logout input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -147,7 +147,7 @@ public class OAuth20Extension {
    */
   public OauthmodelTargetTokenCodeResponse requestTokenExchangeCodeV3(
       RequestTokenExchangeCodeV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class OAuth20Extension {
    * @see PlatformAuthenticationV3
    */
   public String platformAuthenticationV3(PlatformAuthenticationV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -174,7 +174,7 @@ public class OAuth20Extension {
    */
   public OauthmodelPlatformTokenRefreshResponseV3 platformTokenRefreshV3(
       PlatformTokenRefreshV3 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -188,7 +188,7 @@ public class OAuth20Extension {
    */
   public OauthmodelTokenResponseV3 requestTargetTokenResponseV3(RequestTargetTokenResponseV3 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -29,7 +29,6 @@ public class GetPublicEditHistory extends Operation {
   /** generated field's value */
   private String path = "/event/v2/public/namespaces/{namespace}/users/{userId}/edithistory";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -68,7 +67,7 @@ public class GetPublicEditHistory extends Operation {
     this.pageSize = pageSize;
     this.startDate = startDate;
     this.type = type;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

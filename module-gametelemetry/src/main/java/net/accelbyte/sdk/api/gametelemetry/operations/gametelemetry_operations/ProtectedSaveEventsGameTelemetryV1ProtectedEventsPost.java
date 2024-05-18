@@ -56,7 +56,6 @@ public class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost extends Opera
   /** generated field's value */
   private String path = "/game-telemetry/v1/protected/events";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -74,7 +73,7 @@ public class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost extends Opera
   public ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(
       String customBasePath, List<TelemetryBody> body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
     securities.add("Cookie");

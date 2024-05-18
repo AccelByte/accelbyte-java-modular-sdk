@@ -32,7 +32,6 @@ public class GetUserSubscriptionBillingHistories extends Operation {
   private String path =
       "/platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -69,7 +68,7 @@ public class GetUserSubscriptionBillingHistories extends Operation {
     this.excludeFree = excludeFree;
     this.limit = limit;
     this.offset = offset;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

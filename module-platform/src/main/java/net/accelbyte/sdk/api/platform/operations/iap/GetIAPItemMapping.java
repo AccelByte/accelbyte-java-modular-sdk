@@ -29,7 +29,6 @@ public class GetIAPItemMapping extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/iap/item/mapping";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -49,7 +48,7 @@ public class GetIAPItemMapping extends Operation {
   public GetIAPItemMapping(String customBasePath, String namespace, String platform) {
     this.namespace = namespace;
     this.platform = platform;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -33,7 +33,6 @@ public class ListTerminatedServers extends Operation {
   /** generated field's value */
   private String path = "/dslogmanager/namespaces/{namespace}/servers/search";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json", "text/x-log");
@@ -98,7 +97,7 @@ public class ListTerminatedServers extends Operation {
     this.startDate = startDate;
     this.status = status;
     this.userId = userId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

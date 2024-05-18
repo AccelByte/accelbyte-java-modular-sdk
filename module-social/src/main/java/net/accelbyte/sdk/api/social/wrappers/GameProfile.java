@@ -37,7 +37,7 @@ public class GameProfile {
    * @see GetUserProfiles
    */
   public List<GameProfileHeader> getUserProfiles(GetUserProfiles input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class GameProfile {
    * @see GetProfile
    */
   public GameProfileInfo getProfile(GetProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class GameProfile {
    */
   public List<UserGameProfiles> publicGetUserGameProfiles(PublicGetUserGameProfiles input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class GameProfile {
    */
   public List<GameProfileHeader> publicGetUserProfiles(PublicGetUserProfiles input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class GameProfile {
    * @see PublicCreateProfile
    */
   public void publicCreateProfile(PublicCreateProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class GameProfile {
    * @see PublicGetProfile
    */
   public GameProfileInfo publicGetProfile(PublicGetProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class GameProfile {
    * @see PublicUpdateProfile
    */
   public GameProfileInfo publicUpdateProfile(PublicUpdateProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -130,7 +130,7 @@ public class GameProfile {
    * @see PublicDeleteProfile
    */
   public void publicDeleteProfile(PublicDeleteProfile input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -143,7 +143,7 @@ public class GameProfile {
    * @see PublicGetProfileAttribute
    */
   public Attribute publicGetProfileAttribute(PublicGetProfileAttribute input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -156,7 +156,7 @@ public class GameProfile {
    * @see PublicUpdateAttribute
    */
   public GameProfileInfo publicUpdateAttribute(PublicUpdateAttribute input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

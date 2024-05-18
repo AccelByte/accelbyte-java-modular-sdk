@@ -32,7 +32,6 @@ public class UpdateXsollaUIConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/merchant/{id}/xsollauiconfig";
 
-  private String customBasePath = "";
   private String method = "PUT";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class UpdateXsollaUIConfig extends Operation {
   public UpdateXsollaUIConfig(String customBasePath, String id, XsollaPaywallConfigRequest body) {
     this.id = id;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

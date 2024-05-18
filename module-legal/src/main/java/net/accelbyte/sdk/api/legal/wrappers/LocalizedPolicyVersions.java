@@ -38,7 +38,7 @@ public class LocalizedPolicyVersions {
    */
   public List<RetrieveLocalizedPolicyVersionResponse> retrieveLocalizedPolicyVersions(
       RetrieveLocalizedPolicyVersions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -52,7 +52,7 @@ public class LocalizedPolicyVersions {
    */
   public CreateLocalizedPolicyVersionResponse createLocalizedPolicyVersion(
       CreateLocalizedPolicyVersion input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -66,7 +66,7 @@ public class LocalizedPolicyVersions {
    */
   public RetrieveLocalizedPolicyVersionResponse retrieveSingleLocalizedPolicyVersion(
       RetrieveSingleLocalizedPolicyVersion input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -80,7 +80,7 @@ public class LocalizedPolicyVersions {
    */
   public UpdateLocalizedPolicyVersionResponse updateLocalizedPolicyVersion(
       UpdateLocalizedPolicyVersion input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class LocalizedPolicyVersions {
    */
   public UploadLocalizedPolicyVersionAttachmentResponse requestPresignedURL(
       RequestPresignedURL input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -107,7 +107,7 @@ public class LocalizedPolicyVersions {
    * @see SetDefaultPolicy
    */
   public void setDefaultPolicy(SetDefaultPolicy input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class LocalizedPolicyVersions {
    */
   public RetrieveLocalizedPolicyVersionPublicResponse retrieveSingleLocalizedPolicyVersion2(
       RetrieveSingleLocalizedPolicyVersion2 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

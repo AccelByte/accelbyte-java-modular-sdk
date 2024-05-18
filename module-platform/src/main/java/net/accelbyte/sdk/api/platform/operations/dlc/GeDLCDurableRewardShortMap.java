@@ -29,7 +29,6 @@ public class GeDLCDurableRewardShortMap extends Operation {
   /** generated field's value */
   private String path = "/platform/public/namespaces/{namespace}/dlc/rewards/durable/map";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList();
@@ -50,7 +49,7 @@ public class GeDLCDurableRewardShortMap extends Operation {
   public GeDLCDurableRewardShortMap(String customBasePath, String namespace, String dlcType) {
     this.namespace = namespace;
     this.dlcType = dlcType;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

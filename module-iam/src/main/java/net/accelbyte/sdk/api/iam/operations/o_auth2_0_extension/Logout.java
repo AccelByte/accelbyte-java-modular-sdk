@@ -30,7 +30,6 @@ public class Logout extends Operation {
   /** generated field's value */
   private String path = "/iam/v3/logout";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("*/*");
   private List<String> produces = Arrays.asList("application/json");
@@ -43,7 +42,7 @@ public class Logout extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public Logout(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -36,7 +36,7 @@ public class TradeAction {
    * @see Commit
    */
   public TradeChainActionHistoryInfo commit(Commit input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class TradeAction {
    */
   public TradeActionPagingSlicedResult getTradeHistoryByCriteria(GetTradeHistoryByCriteria input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class TradeAction {
    */
   public TradeChainActionHistoryInfo getTradeHistoryByTransactionId(
       GetTradeHistoryByTransactionId input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

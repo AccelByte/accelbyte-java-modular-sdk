@@ -37,7 +37,7 @@ public class Clawback {
    */
   public IAPClawbackPagingSlicedResult queryIAPClawbackHistory(QueryIAPClawbackHistory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Clawback {
    */
   public ClawbackInfo mockPlayStationStreamEvent(MockPlayStationStreamEvent input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

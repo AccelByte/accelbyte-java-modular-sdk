@@ -36,7 +36,7 @@ public class SSOSAML20 {
    */
   public String platformAuthenticateSAMLV3Handler(PlatformAuthenticateSAMLV3Handler input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

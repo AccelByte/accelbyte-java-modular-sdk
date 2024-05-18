@@ -37,7 +37,7 @@ public class Invoice {
    * @see DownloadInvoiceDetails
    */
   public InputStream downloadInvoiceDetails(DownloadInvoiceDetails input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Invoice {
    * @see GenerateInvoiceSummary
    */
   public InvoiceSummary generateInvoiceSummary(GenerateInvoiceSummary input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

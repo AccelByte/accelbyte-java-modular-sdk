@@ -31,7 +31,6 @@ public class QueryEventStreamHandler extends Operation {
   /** generated field's value */
   private String path = "/event/v2/admin/namespaces/{namespace}/query";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -67,7 +66,7 @@ public class QueryEventStreamHandler extends Operation {
     this.pageSize = pageSize;
     this.startDate = startDate;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

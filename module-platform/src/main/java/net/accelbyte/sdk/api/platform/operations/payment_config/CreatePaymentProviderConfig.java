@@ -44,7 +44,6 @@ public class CreatePaymentProviderConfig extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/payment/config/provider";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -59,7 +58,7 @@ public class CreatePaymentProviderConfig extends Operation {
   @Deprecated
   public CreatePaymentProviderConfig(String customBasePath, PaymentProviderConfigEdit body) {
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

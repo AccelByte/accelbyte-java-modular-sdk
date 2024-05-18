@@ -37,7 +37,7 @@ public class Tier {
    * @see QueryTiers
    */
   public TierPagingSlicedResult queryTiers(QueryTiers input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Tier {
    */
   public List<net.accelbyte.sdk.api.seasonpass.models.Tier> createTier(CreateTier input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -65,7 +65,7 @@ public class Tier {
    */
   public net.accelbyte.sdk.api.seasonpass.models.Tier updateTier(UpdateTier input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Tier {
    * @see DeleteTier
    */
   public void deleteTier(DeleteTier input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class Tier {
    */
   public net.accelbyte.sdk.api.seasonpass.models.Tier reorderTier(ReorderTier input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -105,7 +105,7 @@ public class Tier {
    * @see GrantUserExp
    */
   public UserSeasonSummary grantUserExp(GrantUserExp input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -118,7 +118,7 @@ public class Tier {
    * @see GrantUserTier
    */
   public UserSeasonSummary grantUserTier(GrantUserTier input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -29,7 +29,6 @@ public class AdminChannelTopicInfo extends Operation {
   /** generated field's value */
   private String path = "/chat/admin/namespaces/{namespace}/topic/{topic}/channel";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class AdminChannelTopicInfo extends Operation {
   public AdminChannelTopicInfo(String customBasePath, String namespace, String topic) {
     this.namespace = namespace;
     this.topic = topic;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

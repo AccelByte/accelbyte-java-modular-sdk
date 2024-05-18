@@ -35,7 +35,7 @@ public class Operations {
    * @see GetHealthcheckInfo
    */
   public void getHealthcheckInfo(GetHealthcheckInfo input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -48,7 +48,7 @@ public class Operations {
    * @see GetHealthcheckInfoV1
    */
   public void getHealthcheckInfoV1(GetHealthcheckInfoV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -61,7 +61,7 @@ public class Operations {
    * @see VersionCheckHandler
    */
   public void versionCheckHandler(VersionCheckHandler input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

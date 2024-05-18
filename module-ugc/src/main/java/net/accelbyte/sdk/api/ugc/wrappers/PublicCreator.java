@@ -37,7 +37,7 @@ public class PublicCreator {
    */
   public ModelsPaginatedCreatorOverviewResponse publicSearchCreator(PublicSearchCreator input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class PublicCreator {
    * @see PublicGetCreator
    */
   public ModelsCreatorResponse publicGetCreator(PublicGetCreator input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

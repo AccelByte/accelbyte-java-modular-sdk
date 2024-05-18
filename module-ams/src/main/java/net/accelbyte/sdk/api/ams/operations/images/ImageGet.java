@@ -29,7 +29,6 @@ public class ImageGet extends Operation {
   /** generated field's value */
   private String path = "/ams/v1/admin/namespaces/{namespace}/images/{imageID}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class ImageGet extends Operation {
   public ImageGet(String customBasePath, String imageID, String namespace) {
     this.imageID = imageID;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

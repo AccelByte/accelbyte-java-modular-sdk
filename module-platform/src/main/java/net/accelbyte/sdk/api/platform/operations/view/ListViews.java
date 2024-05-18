@@ -35,7 +35,6 @@ public class ListViews extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/views";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class ListViews extends Operation {
   public ListViews(String customBasePath, String namespace, String storeId) {
     this.namespace = namespace;
     this.storeId = storeId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

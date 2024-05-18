@@ -31,7 +31,6 @@ public class BulkDebit extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/wallets/debit";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -51,7 +50,7 @@ public class BulkDebit extends Operation {
   public BulkDebit(String customBasePath, String namespace, List<BulkDebitRequest> body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

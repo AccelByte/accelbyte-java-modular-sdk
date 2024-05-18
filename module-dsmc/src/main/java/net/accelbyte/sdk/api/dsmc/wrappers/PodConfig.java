@@ -36,7 +36,7 @@ public class PodConfig {
    * @see GetLowestInstanceSpec
    */
   public ModelsInstanceSpec getLowestInstanceSpec(GetLowestInstanceSpec input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class PodConfig {
    * @see GetAllPodConfig
    */
   public ModelsListPodConfigResponse getAllPodConfig(GetAllPodConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class PodConfig {
    * @see GetPodConfig
    */
   public ModelsPodConfigRecord getPodConfig(GetPodConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class PodConfig {
    * @see CreatePodConfig
    */
   public ModelsPodConfigRecord createPodConfig(CreatePodConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -88,7 +88,7 @@ public class PodConfig {
    * @see DeletePodConfig
    */
   public void deletePodConfig(DeletePodConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -101,7 +101,7 @@ public class PodConfig {
    * @see UpdatePodConfig
    */
   public ModelsPodConfigRecord updatePodConfig(UpdatePodConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -115,7 +115,7 @@ public class PodConfig {
    */
   public ModelsListPodConfigResponse getAllPodConfigClient(GetAllPodConfigClient input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -128,7 +128,7 @@ public class PodConfig {
    * @see CreatePodConfigClient
    */
   public ModelsPodConfigRecord createPodConfigClient(CreatePodConfigClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -141,7 +141,7 @@ public class PodConfig {
    * @see DeletePodConfigClient
    */
   public void deletePodConfigClient(DeletePodConfigClient input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

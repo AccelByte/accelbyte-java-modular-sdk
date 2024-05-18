@@ -33,7 +33,6 @@ public class DeleteNotificationTopicV1Admin extends Operation {
   /** generated field's value */
   private String path = "/lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class DeleteNotificationTopicV1Admin extends Operation {
   public DeleteNotificationTopicV1Admin(String customBasePath, String namespace, String topicName) {
     this.namespace = namespace;
     this.topicName = topicName;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

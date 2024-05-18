@@ -36,7 +36,7 @@ public class PublicReports {
    * @see SubmitReport
    */
   public RestapiSubmitReportResponse submitReport(SubmitReport input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

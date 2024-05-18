@@ -37,7 +37,7 @@ public class PublicReasons {
    */
   public RestapiReasonGroupListResponse publicListReasonGroups(PublicListReasonGroups input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class PublicReasons {
    * @see PublicGetReasons
    */
   public RestapiPublicReasonListResponse publicGetReasons(PublicGetReasons input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

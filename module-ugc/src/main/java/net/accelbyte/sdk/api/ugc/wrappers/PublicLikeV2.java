@@ -37,7 +37,7 @@ public class PublicLikeV2 {
    */
   public ModelsPaginatedContentLikersResponse publicListContentLikeV2(PublicListContentLikeV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PublicLikeV2 {
    */
   public ModelsContentLikeResponse updateContentLikeStatusV2(UpdateContentLikeStatusV2 input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

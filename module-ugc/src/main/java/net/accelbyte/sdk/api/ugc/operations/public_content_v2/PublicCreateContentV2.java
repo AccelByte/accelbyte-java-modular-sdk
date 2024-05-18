@@ -30,7 +30,6 @@ public class PublicCreateContentV2 extends Operation {
   private String path =
       "/ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -62,7 +61,7 @@ public class PublicCreateContentV2 extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

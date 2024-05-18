@@ -36,7 +36,7 @@ public class Player {
    * @see AdminGetLobbyCCU
    */
   public ModelsGetLobbyCcuResponse adminGetLobbyCCU(AdminGetLobbyCCU input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class Player {
    */
   public ModelsGetBulkAllPlayerBlockedUsersResponse adminGetBulkPlayerBlockedPlayersV1(
       AdminGetBulkPlayerBlockedPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class Player {
    */
   public ModelsGetAllPlayerSessionAttributeResponse adminGetAllPlayerSessionAttribute(
       AdminGetAllPlayerSessionAttribute input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -78,7 +78,7 @@ public class Player {
    */
   public void adminSetPlayerSessionAttribute(AdminSetPlayerSessionAttribute input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -92,7 +92,7 @@ public class Player {
    */
   public ModelsGetPlayerSessionAttributeResponse adminGetPlayerSessionAttribute(
       AdminGetPlayerSessionAttribute input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -106,7 +106,7 @@ public class Player {
    */
   public ModelsGetAllPlayerBlockedUsersResponse adminGetPlayerBlockedPlayersV1(
       AdminGetPlayerBlockedPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -120,7 +120,7 @@ public class Player {
    */
   public ModelsGetAllPlayerBlockedByUsersResponse adminGetPlayerBlockedByPlayersV1(
       AdminGetPlayerBlockedByPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -133,7 +133,7 @@ public class Player {
    * @see AdminBulkBlockPlayersV1
    */
   public void adminBulkBlockPlayersV1(AdminBulkBlockPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -146,7 +146,7 @@ public class Player {
    * @see PublicPlayerBlockPlayersV1
    */
   public void publicPlayerBlockPlayersV1(PublicPlayerBlockPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -160,7 +160,7 @@ public class Player {
    */
   public ModelsGetAllPlayerBlockedUsersResponse publicGetPlayerBlockedPlayersV1(
       PublicGetPlayerBlockedPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -174,7 +174,7 @@ public class Player {
    */
   public ModelsGetAllPlayerBlockedByUsersResponse publicGetPlayerBlockedByPlayersV1(
       PublicGetPlayerBlockedByPlayersV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -187,7 +187,7 @@ public class Player {
    * @see PublicUnblockPlayerV1
    */
   public void publicUnblockPlayerV1(PublicUnblockPlayerV1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

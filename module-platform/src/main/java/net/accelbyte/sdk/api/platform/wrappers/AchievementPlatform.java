@@ -36,7 +36,7 @@ public class AchievementPlatform {
    * @see UnlockSteamUserAchievement
    */
   public void unlockSteamUserAchievement(UnlockSteamUserAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AchievementPlatform {
    * @see GetXblUserAchievements
    */
   public XblUserAchievements getXblUserAchievements(GetXblUserAchievements input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class AchievementPlatform {
    * @see UpdateXblUserAchievement
    */
   public void updateXblUserAchievement(UpdateXblUserAchievement input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

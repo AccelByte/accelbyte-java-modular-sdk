@@ -33,7 +33,6 @@ public class CreateStore extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/stores";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -53,7 +52,7 @@ public class CreateStore extends Operation {
   public CreateStore(String customBasePath, String namespace, StoreCreate body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

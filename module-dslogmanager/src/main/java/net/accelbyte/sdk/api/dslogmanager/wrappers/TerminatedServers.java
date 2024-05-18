@@ -38,7 +38,7 @@ public class TerminatedServers {
    */
   public ModelsListTerminatedServersResponse listTerminatedServers(ListTerminatedServers input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class TerminatedServers {
    * @see DownloadServerLogs
    */
   public InputStream downloadServerLogs(DownloadServerLogs input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class TerminatedServers {
    * @see CheckServerLogs
    */
   public ModelsLogFileStatus checkServerLogs(CheckServerLogs input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

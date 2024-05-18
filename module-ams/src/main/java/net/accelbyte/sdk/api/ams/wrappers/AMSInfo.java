@@ -36,7 +36,7 @@ public class AMSInfo {
    * @see InfoRegions
    */
   public ApiAMSRegionsResponse infoRegions(InfoRegions input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -50,7 +50,7 @@ public class AMSInfo {
    */
   public ApiAvailableInstanceTypesResponse infoSupportedInstances(InfoSupportedInstances input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -63,7 +63,7 @@ public class AMSInfo {
    * @see UploadURLGet
    */
   public void uploadURLGet(UploadURLGet input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

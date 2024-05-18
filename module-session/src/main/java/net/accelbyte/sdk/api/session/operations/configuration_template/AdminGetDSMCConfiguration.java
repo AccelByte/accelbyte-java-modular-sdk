@@ -29,7 +29,6 @@ public class AdminGetDSMCConfiguration extends Operation {
   /** generated field's value */
   private String path = "/session/v1/admin/namespaces/{namespace}/dsconfigs";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -46,7 +45,7 @@ public class AdminGetDSMCConfiguration extends Operation {
   @Deprecated
   public AdminGetDSMCConfiguration(String customBasePath, String namespace) {
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

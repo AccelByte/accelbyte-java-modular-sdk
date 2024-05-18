@@ -32,7 +32,6 @@ public class PublicBulkGetContentByIDV2 extends Operation {
   /** generated field's value */
   private String path = "/ugc/v2/public/namespaces/{namespace}/contents/bulk";
 
-  private String customBasePath = "";
   private String method = "POST";
   private List<String> consumes = Arrays.asList("application/json", "application/octet-stream");
   private List<String> produces = Arrays.asList("application/json");
@@ -54,7 +53,7 @@ public class PublicBulkGetContentByIDV2 extends Operation {
       String customBasePath, String namespace, ModelsPublicGetContentBulkRequest body) {
     this.namespace = namespace;
     this.body = body;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

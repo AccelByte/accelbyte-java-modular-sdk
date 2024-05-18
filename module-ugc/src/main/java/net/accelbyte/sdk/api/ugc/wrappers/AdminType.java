@@ -36,7 +36,7 @@ public class AdminType {
    * @see AdminGetType
    */
   public ModelsPaginatedGetTypeResponse adminGetType(AdminGetType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminType {
    * @see AdminCreateType
    */
   public ModelsCreateTypeResponse adminCreateType(AdminCreateType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class AdminType {
    * @see AdminUpdateType
    */
   public ModelsCreateTypeResponse adminUpdateType(AdminUpdateType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -75,7 +75,7 @@ public class AdminType {
    * @see AdminDeleteType
    */
   public void adminDeleteType(AdminDeleteType input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

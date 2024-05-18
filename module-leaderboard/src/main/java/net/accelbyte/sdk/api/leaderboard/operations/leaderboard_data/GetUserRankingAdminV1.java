@@ -30,7 +30,6 @@ public class GetUserRankingAdminV1 extends Operation {
   private String path =
       "/leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -61,7 +60,7 @@ public class GetUserRankingAdminV1 extends Operation {
     this.namespace = namespace;
     this.userId = userId;
     this.previousVersion = previousVersion;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

@@ -38,7 +38,7 @@ public class Store {
    * @see GetCatalogConfig
    */
   public CatalogConfigInfo getCatalogConfig(GetCatalogConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class Store {
    * @see UpdateCatalogConfig
    */
   public CatalogConfigInfo updateCatalogConfig(UpdateCatalogConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -64,7 +64,7 @@ public class Store {
    * @see ListStores
    */
   public List<StoreInfo> listStores(ListStores input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -77,7 +77,7 @@ public class Store {
    * @see CreateStore
    */
   public StoreInfo createStore(CreateStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -91,7 +91,7 @@ public class Store {
    */
   public List<CatalogDefinitionInfo> getCatalogDefinition(GetCatalogDefinition input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -104,7 +104,7 @@ public class Store {
    * @see DownloadCSVTemplates
    */
   public InputStream downloadCSVTemplates(DownloadCSVTemplates input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -117,7 +117,7 @@ public class Store {
    * @see ExportStoreByCSV
    */
   public InputStream exportStoreByCSV(ExportStoreByCSV input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -132,7 +132,7 @@ public class Store {
    */
   @Deprecated
   public StoreInfo importStore(ImportStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -145,7 +145,7 @@ public class Store {
    * @see GetPublishedStore
    */
   public StoreInfo getPublishedStore(GetPublishedStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -158,7 +158,7 @@ public class Store {
    * @see DeletePublishedStore
    */
   public StoreInfo deletePublishedStore(DeletePublishedStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -171,7 +171,7 @@ public class Store {
    * @see GetPublishedStoreBackup
    */
   public StoreBackupInfo getPublishedStoreBackup(GetPublishedStoreBackup input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -184,7 +184,7 @@ public class Store {
    * @see RollbackPublishedStore
    */
   public StoreInfo rollbackPublishedStore(RollbackPublishedStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -197,7 +197,7 @@ public class Store {
    * @see GetStore
    */
   public StoreInfo getStore(GetStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -210,7 +210,7 @@ public class Store {
    * @see UpdateStore
    */
   public StoreInfo updateStore(UpdateStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -223,7 +223,7 @@ public class Store {
    * @see DeleteStore
    */
   public StoreInfo deleteStore(DeleteStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -236,7 +236,7 @@ public class Store {
    * @see CloneStore
    */
   public StoreInfo cloneStore(CloneStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -251,7 +251,7 @@ public class Store {
    */
   @Deprecated
   public InputStream exportStore(ExportStore input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -265,7 +265,7 @@ public class Store {
    */
   public ImportStoreHistoryPagingResult queryImportHistory(QueryImportHistory input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -278,7 +278,7 @@ public class Store {
    * @see ImportStoreByCSV
    */
   public ImportStoreResult importStoreByCSV(ImportStoreByCSV input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -291,7 +291,7 @@ public class Store {
    * @see PublicListStores
    */
   public List<StoreInfo> publicListStores(PublicListStores input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -304,7 +304,7 @@ public class Store {
    * @see ImportStore1
    */
   public ImportStoreResult importStore1(ImportStore1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -317,7 +317,7 @@ public class Store {
    * @see ExportStore1
    */
   public InputStream exportStore1(ExportStore1 input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

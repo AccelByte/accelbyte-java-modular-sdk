@@ -38,7 +38,7 @@ public class PaymentAccount {
    */
   public List<net.accelbyte.sdk.api.platform.models.PaymentAccount> publicGetPaymentAccounts(
       PublicGetPaymentAccounts input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -51,7 +51,7 @@ public class PaymentAccount {
    * @see PublicDeletePaymentAccount
    */
   public void publicDeletePaymentAccount(PublicDeletePaymentAccount input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

@@ -32,7 +32,6 @@ public class GetCode extends Operation {
   /** generated field's value */
   private String path = "/platform/admin/namespaces/{namespace}/codes/{code}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
   private List<String> produces = Arrays.asList("application/json");
@@ -55,7 +54,7 @@ public class GetCode extends Operation {
     this.code = code;
     this.namespace = namespace;
     this.redeemable = redeemable;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

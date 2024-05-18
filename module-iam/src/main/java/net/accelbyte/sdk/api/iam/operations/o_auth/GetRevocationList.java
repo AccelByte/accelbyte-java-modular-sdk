@@ -37,7 +37,6 @@ public class GetRevocationList extends Operation {
   /** generated field's value */
   private String path = "/iam/oauth/revocationlist";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("");
   private List<String> produces = Arrays.asList("application/json");
@@ -50,7 +49,7 @@ public class GetRevocationList extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetRevocationList(String customBasePath) {
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Basic");
   }

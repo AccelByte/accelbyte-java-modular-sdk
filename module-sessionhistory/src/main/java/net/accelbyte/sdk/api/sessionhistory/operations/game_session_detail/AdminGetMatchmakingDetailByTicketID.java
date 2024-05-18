@@ -30,7 +30,6 @@ public class AdminGetMatchmakingDetailByTicketID extends Operation {
   private String path =
       "/sessionhistory/v1/admin/namespaces/{namespace}/matchmaking/ticket/{ticketId}";
 
-  private String customBasePath = "";
   private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -52,7 +51,7 @@ public class AdminGetMatchmakingDetailByTicketID extends Operation {
       String customBasePath, String namespace, String ticketId) {
     this.namespace = namespace;
     this.ticketId = ticketId;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }

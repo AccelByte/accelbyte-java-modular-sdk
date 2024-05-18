@@ -40,7 +40,7 @@ public class PaymentStation {
    */
   @Deprecated
   public Customization getPaymentCustomization(GetPaymentCustomization input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -53,7 +53,7 @@ public class PaymentStation {
    * @see PublicGetPaymentUrl
    */
   public PaymentUrl publicGetPaymentUrl(PublicGetPaymentUrl input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -67,7 +67,7 @@ public class PaymentStation {
    */
   public List<PaymentMethod> publicGetPaymentMethods(PublicGetPaymentMethods input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -81,7 +81,7 @@ public class PaymentStation {
    */
   public PaymentOrderDetails publicGetUnpaidPaymentOrder(PublicGetUnpaidPaymentOrder input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -94,7 +94,7 @@ public class PaymentStation {
    * @see Pay
    */
   public PaymentProcessResult pay(Pay input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -108,7 +108,7 @@ public class PaymentStation {
    */
   public PaymentOrderPaidResult publicCheckPaymentOrderPaidStatus(
       PublicCheckPaymentOrderPaidStatus input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -121,7 +121,7 @@ public class PaymentStation {
    * @see GetPaymentPublicConfig
    */
   public Map<String, ?> getPaymentPublicConfig(GetPaymentPublicConfig input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -134,7 +134,7 @@ public class PaymentStation {
    * @see PublicGetQRCode
    */
   public InputStream publicGetQRCode(PublicGetQRCode input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -148,7 +148,7 @@ public class PaymentStation {
    */
   public void publicNormalizePaymentReturnUrl(PublicNormalizePaymentReturnUrl input)
       throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -161,7 +161,7 @@ public class PaymentStation {
    * @see GetPaymentTaxValue
    */
   public TaxResult getPaymentTaxValue(GetPaymentTaxValue input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

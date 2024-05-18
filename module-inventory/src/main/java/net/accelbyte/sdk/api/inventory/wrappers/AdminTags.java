@@ -36,7 +36,7 @@ public class AdminTags {
    * @see AdminListTags
    */
   public ApimodelsListTagsResp adminListTags(AdminListTags input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -49,7 +49,7 @@ public class AdminTags {
    * @see AdminCreateTag
    */
   public ApimodelsCreateTagResp adminCreateTag(AdminCreateTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 
@@ -62,7 +62,7 @@ public class AdminTags {
    * @see AdminDeleteTag
    */
   public void adminDeleteTag(AdminDeleteTag input) throws Exception {
-    if (!customBasePath.equals("")) {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
 

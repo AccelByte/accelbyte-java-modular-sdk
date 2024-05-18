@@ -28,7 +28,6 @@ public class AdminDeleteInboxCategory extends Operation {
   /** generated field's value */
   private String path = "/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}";
 
-  private String customBasePath = "";
   private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
@@ -49,7 +48,7 @@ public class AdminDeleteInboxCategory extends Operation {
   public AdminDeleteInboxCategory(String customBasePath, String category, String namespace) {
     this.category = category;
     this.namespace = namespace;
-    this.customBasePath = customBasePath;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
   }
