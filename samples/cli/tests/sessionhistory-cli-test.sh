@@ -39,7 +39,7 @@ for JAR in build/install/cli/lib/*.jar; do ./ng ng-cp $JAR 1>&2; done
 ./ng ng-cp 1>&2
 
 echo "TAP version 13"
-echo "1..32"
+echo "1..34"
 
 #- 1 Login
 ./ng net.accelbyte.sdk.cli.Main loginClient \
@@ -63,271 +63,282 @@ eval_tap $? 2 'GetHealthcheckInfo' test.out
     > test.out 2>&1
 eval_tap $? 3 'GetHealthcheckInfoV1' test.out
 
-#- 4 AdminQueryGameSessionDetail
+#- 4 AdminGetLogConfig
+./ng net.accelbyte.sdk.cli.Main sessionhistory adminGetLogConfig \
+    > test.out 2>&1
+eval_tap $? 4 'AdminGetLogConfig' test.out
+
+#- 5 AdminPatchUpdateLogConfig
+./ng net.accelbyte.sdk.cli.Main sessionhistory adminPatchUpdateLogConfig \
+    --body '{"logLevel": "fatal"}' \
+    > test.out 2>&1
+eval_tap $? 5 'AdminPatchUpdateLogConfig' test.out
+
+#- 6 AdminQueryGameSessionDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminQueryGameSessionDetail \
     --namespace "$AB_NAMESPACE" \
-    --gameSessionID 'mDkzhpBa' \
-    --limit '50' \
-    --offset '56' \
-    --order 'dDPRMEJ1' \
-    --orderBy 'xy4DcWeK' \
-    --userID 'ugYXd5pU' \
+    --gameSessionID '0dccDAvg' \
+    --limit '51' \
+    --offset '28' \
+    --order 'I7pphEeT' \
+    --orderBy 'sWTRlUy7' \
+    --userID '3plAqiAm' \
     > test.out 2>&1
-eval_tap $? 4 'AdminQueryGameSessionDetail' test.out
+eval_tap $? 6 'AdminQueryGameSessionDetail' test.out
 
-#- 5 GetGameSessionDetail
+#- 7 GetGameSessionDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory getGameSessionDetail \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'hOFbTwfk' \
+    --sessionId 'dD7NpzDR' \
     > test.out 2>&1
-eval_tap $? 5 'GetGameSessionDetail' test.out
+eval_tap $? 7 'GetGameSessionDetail' test.out
 
-#- 6 AdminQueryMatchmakingDetail
+#- 8 AdminQueryMatchmakingDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminQueryMatchmakingDetail \
     --namespace "$AB_NAMESPACE" \
-    --gameSessionID 'EYwLeJQU' \
-    --limit '88' \
-    --offset '18' \
-    --order 'l00Daotm' \
-    --orderBy 'T5ZwbIC7' \
-    --ticketID 'VQ7OUrhs' \
-    --userID 'tfyQ9gOM' \
+    --gameSessionID 'dKMVBoQE' \
+    --limit '75' \
+    --offset '53' \
+    --order 'IA0mBhOz' \
+    --orderBy 'nd9mFbVC' \
+    --ticketID 'EdOxRl9x' \
+    --userID 'Xm8wv9tU' \
     > test.out 2>&1
-eval_tap $? 6 'AdminQueryMatchmakingDetail' test.out
+eval_tap $? 8 'AdminQueryMatchmakingDetail' test.out
 
-#- 7 AdminGetMatchmakingDetailBySessionID
+#- 9 AdminGetMatchmakingDetailBySessionID
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminGetMatchmakingDetailBySessionID \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'P5XdBmbb' \
+    --sessionId 'gIBRBJXr' \
     > test.out 2>&1
-eval_tap $? 7 'AdminGetMatchmakingDetailBySessionID' test.out
+eval_tap $? 9 'AdminGetMatchmakingDetailBySessionID' test.out
 
-#- 8 AdminGetMatchmakingDetailByTicketID
+#- 10 AdminGetMatchmakingDetailByTicketID
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminGetMatchmakingDetailByTicketID \
     --namespace "$AB_NAMESPACE" \
-    --ticketId '70G8dWsd' \
+    --ticketId 'YD2jV6TE' \
     > test.out 2>&1
-eval_tap $? 8 'AdminGetMatchmakingDetailByTicketID' test.out
+eval_tap $? 10 'AdminGetMatchmakingDetailByTicketID' test.out
 
-#- 9 AdminQueryPartyDetail
+#- 11 AdminQueryPartyDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminQueryPartyDetail \
     --namespace "$AB_NAMESPACE" \
-    --limit '57' \
+    --limit '35' \
     --offset '62' \
-    --order 'X333W9b6' \
-    --orderBy 'xW5jSqCQ' \
-    --partyID '02qJRHXA' \
-    --userID 'eumYYFrM' \
+    --order 'ZQcCaK9P' \
+    --orderBy 'bHqfL6HZ' \
+    --partyID 'V4gjap6l' \
+    --userID 'h0bWSvoJ' \
     > test.out 2>&1
-eval_tap $? 9 'AdminQueryPartyDetail' test.out
+eval_tap $? 11 'AdminQueryPartyDetail' test.out
 
-#- 10 GetPartyDetail
+#- 12 GetPartyDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory getPartyDetail \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'YpqSXnE4' \
+    --sessionId 'ebibn4C5' \
     > test.out 2>&1
-eval_tap $? 10 'GetPartyDetail' test.out
+eval_tap $? 12 'GetPartyDetail' test.out
 
-#- 11 AdminQueryTicketDetail
+#- 13 AdminQueryTicketDetail
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminQueryTicketDetail \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'uhqJxrrm' \
-    --gameMode 'DAkFsDFS' \
-    --limit '63' \
-    --offset '91' \
-    --order 'GW88rIdc' \
-    --partyID 's8GpUlQr' \
-    --region 'r4LahwIg' \
-    --startDate 'ulQ00pKZ' \
-    --userIDs 'A4xyKrr3' \
+    --endDate 'l4jAX254' \
+    --gameMode '3zKvtOU0' \
+    --limit '50' \
+    --offset '24' \
+    --order 'CDPlOcoP' \
+    --partyID 'xs6S9Sta' \
+    --region 'cCljdUI5' \
+    --startDate 'dmuzTjoP' \
+    --userIDs 'kMJ7YIxU' \
     > test.out 2>&1
-eval_tap $? 11 'AdminQueryTicketDetail' test.out
+eval_tap $? 13 'AdminQueryTicketDetail' test.out
 
-#- 12 AdminTicketDetailGetByTicketID
+#- 14 AdminTicketDetailGetByTicketID
 ./ng net.accelbyte.sdk.cli.Main sessionhistory adminTicketDetailGetByTicketID \
     --namespace "$AB_NAMESPACE" \
-    --ticketId 'ff8SZ2qu' \
+    --ticketId 'e6e05RyN' \
     > test.out 2>&1
-eval_tap $? 12 'AdminTicketDetailGetByTicketID' test.out
+eval_tap $? 14 'AdminTicketDetailGetByTicketID' test.out
 
-#- 13 QueryXrayMatchPool
+#- 15 QueryXrayMatchPool
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryXrayMatchPool \
     --namespace "$AB_NAMESPACE" \
-    --poolName 'BBdMITdi' \
-    --endDate 'rxatUEUJ' \
-    --startDate 'GkM2vyvN' \
+    --poolName 'jTL5I0OM' \
+    --endDate 'VixXC8QH' \
+    --startDate 'qwFAhX0n' \
     > test.out 2>&1
-eval_tap $? 13 'QueryXrayMatchPool' test.out
+eval_tap $? 15 'QueryXrayMatchPool' test.out
 
-#- 14 QueryDetailTickMatchPool
+#- 16 QueryDetailTickMatchPool
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryDetailTickMatchPool \
     --namespace "$AB_NAMESPACE" \
-    --podName '79XOp4XW' \
-    --poolName 'H1AV5Fzj' \
+    --podName 'IR0m5TNB' \
+    --poolName 'FLFav0RA' \
     --all  \
-    --limit '56' \
-    --offset '98' \
-    --endDate 'M5gRLP66' \
-    --startDate 'dJfWGpNg' \
+    --limit '39' \
+    --offset '8' \
+    --endDate 'EGFAVgAt' \
+    --startDate 'ixJNyH8m' \
     > test.out 2>&1
-eval_tap $? 14 'QueryDetailTickMatchPool' test.out
+eval_tap $? 16 'QueryDetailTickMatchPool' test.out
 
-#- 15 QueryDetailTickMatchPoolMatches
+#- 17 QueryDetailTickMatchPoolMatches
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryDetailTickMatchPoolMatches \
     --namespace "$AB_NAMESPACE" \
-    --podName 'n94wyQ6q' \
-    --poolName 'e7iGPKXy' \
-    --tickId 'xV0MdFVq' \
+    --podName 'rUTRoXbB' \
+    --poolName '9fShd00Q' \
+    --tickId 'Bh99ZAfC' \
     > test.out 2>&1
-eval_tap $? 15 'QueryDetailTickMatchPoolMatches' test.out
+eval_tap $? 17 'QueryDetailTickMatchPoolMatches' test.out
 
-#- 16 QueryDetailTickMatchPoolTicket
+#- 18 QueryDetailTickMatchPoolTicket
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryDetailTickMatchPoolTicket \
     --namespace "$AB_NAMESPACE" \
-    --podName 'yDKNHhdP' \
-    --poolName 'DZNOcsMB' \
-    --tickId 'ZVBLw6XX' \
+    --podName '4b9Qskpc' \
+    --poolName '1VEeLHbd' \
+    --tickId 'wdZWwZms' \
     > test.out 2>&1
-eval_tap $? 16 'QueryDetailTickMatchPoolTicket' test.out
+eval_tap $? 18 'QueryDetailTickMatchPoolTicket' test.out
 
-#- 17 QueryMatchHistories
+#- 19 QueryMatchHistories
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryMatchHistories \
-    --matchId 'fHlZpCzo' \
+    --matchId 'jo4iuf03' \
     --namespace "$AB_NAMESPACE" \
     --limit '34' \
-    --offset '64' \
+    --offset '79' \
     > test.out 2>&1
-eval_tap $? 17 'QueryMatchHistories' test.out
+eval_tap $? 19 'QueryMatchHistories' test.out
 
-#- 18 QueryMatchTicketHistories
+#- 20 QueryMatchTicketHistories
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryMatchTicketHistories \
-    --matchId 'YzwVL7iD' \
+    --matchId 'merpwfRX' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 18 'QueryMatchTicketHistories' test.out
+eval_tap $? 20 'QueryMatchTicketHistories' test.out
 
-#- 19 QueryXrayMatch
+#- 21 QueryXrayMatch
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryXrayMatch \
-    --matchId 'kbBq8Lmr' \
+    --matchId 'nuzS36Cc' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 19 'QueryXrayMatch' test.out
+eval_tap $? 21 'QueryXrayMatch' test.out
 
-#- 20 QueryAcquiringDS
+#- 22 QueryAcquiringDS
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryAcquiringDS \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'ryWPoJ15' \
-    --startDate 'uFGJZdmX' \
+    --endDate 'lNitrmVf' \
+    --startDate 'OIxzmERb' \
     > test.out 2>&1
-eval_tap $? 20 'QueryAcquiringDS' test.out
+eval_tap $? 22 'QueryAcquiringDS' test.out
 
-#- 21 QueryAcquiringDSWaitTimeAvg
+#- 23 QueryAcquiringDSWaitTimeAvg
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryAcquiringDSWaitTimeAvg \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'jzjgDJ24' \
-    --startDate '6UWZG01D' \
+    --endDate 'zWPXD7OB' \
+    --startDate 'GW5Lu0nN' \
     > test.out 2>&1
-eval_tap $? 21 'QueryAcquiringDSWaitTimeAvg' test.out
+eval_tap $? 23 'QueryAcquiringDSWaitTimeAvg' test.out
 
-#- 22 QueryMatchLengthDurationpAvg
+#- 24 QueryMatchLengthDurationpAvg
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryMatchLengthDurationpAvg \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'WgSeICXS' \
-    --startDate 'PVi03CpM' \
+    --endDate 'XAcKtLcw' \
+    --startDate 'YvV0M71Y' \
     > test.out 2>&1
-eval_tap $? 22 'QueryMatchLengthDurationpAvg' test.out
+eval_tap $? 24 'QueryMatchLengthDurationpAvg' test.out
 
-#- 23 QueryMatchLengthDurationp99
+#- 25 QueryMatchLengthDurationp99
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryMatchLengthDurationp99 \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'nsp2ngSG' \
-    --startDate 'fKK6AwrN' \
+    --endDate 'IKbn9IhF' \
+    --startDate 'xvQJdr64' \
     > test.out 2>&1
-eval_tap $? 23 'QueryMatchLengthDurationp99' test.out
+eval_tap $? 25 'QueryMatchLengthDurationp99' test.out
 
-#- 24 QueryTotalActiveSession
+#- 26 QueryTotalActiveSession
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalActiveSession \
     --namespace "$AB_NAMESPACE" \
-    --region 'jQPHx9ey' \
-    --endDate 'svi6xHWE' \
-    --startDate 'ygS2hKN2' \
+    --region 'ta7MdVus' \
+    --endDate '1N0xLDm5' \
+    --startDate '8u8Tgwji' \
     > test.out 2>&1
-eval_tap $? 24 'QueryTotalActiveSession' test.out
+eval_tap $? 26 'QueryTotalActiveSession' test.out
 
-#- 25 QueryTotalMatchmakingMatch
+#- 27 QueryTotalMatchmakingMatch
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalMatchmakingMatch \
     --namespace "$AB_NAMESPACE" \
-    --matchPool '4Ggt9BYS' \
-    --endDate 'p8ZCvNID' \
-    --startDate 'dmolaGX3' \
+    --matchPool 'rTJig3c5' \
+    --endDate 'T0IdHOWW' \
+    --startDate 'WVYJm1kP' \
     > test.out 2>&1
-eval_tap $? 25 'QueryTotalMatchmakingMatch' test.out
+eval_tap $? 27 'QueryTotalMatchmakingMatch' test.out
 
-#- 26 QueryTotalPlayerPersession
+#- 28 QueryTotalPlayerPersession
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalPlayerPersession \
     --namespace "$AB_NAMESPACE" \
-    --endDate 'tbo1ysKu' \
-    --startDate 'zRoBFUCK' \
+    --endDate 'qzfLY7kb' \
+    --startDate 'NBcUhrD4' \
     > test.out 2>&1
-eval_tap $? 26 'QueryTotalPlayerPersession' test.out
+eval_tap $? 28 'QueryTotalPlayerPersession' test.out
 
-#- 27 QueryTotalMatchmakingCanceled
+#- 29 QueryTotalMatchmakingCanceled
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalMatchmakingCanceled \
     --namespace "$AB_NAMESPACE" \
-    --matchPool 'PScknR2I' \
-    --endDate 'xppGrqIQ' \
-    --startDate 'kE6pJn2g' \
+    --matchPool 'sqNWmJbU' \
+    --endDate 'cz6Race5' \
+    --startDate 'SeqzFSAo' \
     > test.out 2>&1
-eval_tap $? 27 'QueryTotalMatchmakingCanceled' test.out
+eval_tap $? 29 'QueryTotalMatchmakingCanceled' test.out
 
-#- 28 QueryTotalMatchmakingCreated
+#- 30 QueryTotalMatchmakingCreated
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalMatchmakingCreated \
     --namespace "$AB_NAMESPACE" \
-    --matchPool 'FCFLldwj' \
-    --endDate 'dmn9dM91' \
-    --startDate 'FYs11uZ0' \
+    --matchPool '08gKJVzF' \
+    --endDate '18XWieU7' \
+    --startDate 'v5IdXDIy' \
     > test.out 2>&1
-eval_tap $? 28 'QueryTotalMatchmakingCreated' test.out
+eval_tap $? 30 'QueryTotalMatchmakingCreated' test.out
 
-#- 29 QueryTotalMatchmakingExpired
+#- 31 QueryTotalMatchmakingExpired
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalMatchmakingExpired \
     --namespace "$AB_NAMESPACE" \
-    --matchPool 'BNLCum0S' \
-    --endDate 'hpLSo7zT' \
-    --startDate 'I1GO6MX3' \
+    --matchPool 'IFGDGXYc' \
+    --endDate 'sqYSizmY' \
+    --startDate 'D3B16zV3' \
     > test.out 2>&1
-eval_tap $? 29 'QueryTotalMatchmakingExpired' test.out
+eval_tap $? 31 'QueryTotalMatchmakingExpired' test.out
 
-#- 30 QueryTotalMatchmakingMatchTicket
+#- 32 QueryTotalMatchmakingMatchTicket
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryTotalMatchmakingMatchTicket \
     --namespace "$AB_NAMESPACE" \
-    --matchPool 'pxulrcae' \
-    --endDate '08fF1XGk' \
-    --startDate 'WYWntLk9' \
+    --matchPool '7DhcSObk' \
+    --endDate 'vpykZJWL' \
+    --startDate 'lLL92Cnc' \
     > test.out 2>&1
-eval_tap $? 30 'QueryTotalMatchmakingMatchTicket' test.out
+eval_tap $? 32 'QueryTotalMatchmakingMatchTicket' test.out
 
-#- 31 QueryXrayTimelineByTicketID
+#- 33 QueryXrayTimelineByTicketID
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryXrayTimelineByTicketID \
     --namespace "$AB_NAMESPACE" \
-    --ticketId '0OEF1f1g' \
-    --limit '40' \
-    --offset '79' \
-    --endDate 'W3z5ZqiF' \
-    --startDate 'LduFRJNf' \
+    --ticketId '0YbklGoz' \
+    --limit '98' \
+    --offset '7' \
+    --endDate 'SVaTQNGl' \
+    --startDate 'lmncvJik' \
     > test.out 2>&1
-eval_tap $? 31 'QueryXrayTimelineByTicketID' test.out
+eval_tap $? 33 'QueryXrayTimelineByTicketID' test.out
 
-#- 32 QueryXrayTimelineByUserID
+#- 34 QueryXrayTimelineByUserID
 ./ng net.accelbyte.sdk.cli.Main sessionhistory queryXrayTimelineByUserID \
     --namespace "$AB_NAMESPACE" \
-    --userId 'EmOMC3ta' \
-    --limit '82' \
-    --offset '45' \
-    --endDate '5aWJF4ZO' \
-    --startDate 'LMxlBCgW' \
+    --userId 'GZJCKhp4' \
+    --limit '95' \
+    --offset '40' \
+    --endDate 'fuDMXKGX' \
+    --startDate '5bTMajdM' \
     > test.out 2>&1
-eval_tap $? 32 'QueryXrayTimelineByUserID' test.out
+eval_tap $? 34 'QueryXrayTimelineByUserID' test.out
 
 
 rm -f "tmp.dat"

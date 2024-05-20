@@ -39,14 +39,18 @@ public class RetrieveAllLegalPoliciesByNamespace extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private Boolean visibleOnly;
+
   /**
    * @param namespace required
    */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public RetrieveAllLegalPoliciesByNamespace(String customBasePath, String namespace) {
+  public RetrieveAllLegalPoliciesByNamespace(
+      String customBasePath, String namespace, Boolean visibleOnly) {
     this.namespace = namespace;
+    this.visibleOnly = visibleOnly;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -59,6 +63,15 @@ public class RetrieveAllLegalPoliciesByNamespace extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "visibleOnly",
+        this.visibleOnly == null ? null : Arrays.asList(String.valueOf(this.visibleOnly)));
+    return queryParams;
   }
 
   @Override
@@ -78,5 +91,12 @@ public class RetrieveAllLegalPoliciesByNamespace extends Operation {
     final String json = Helper.convertInputStreamToString(payload);
     return new ObjectMapper()
         .readValue(json, new TypeReference<List<RetrieveBasePolicyResponse>>() {});
+  }
+
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("visibleOnly", "None");
+    return result;
   }
 }

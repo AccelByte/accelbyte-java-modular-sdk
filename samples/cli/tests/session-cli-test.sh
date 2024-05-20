@@ -39,7 +39,7 @@ for JAR in build/install/cli/lib/*.jar; do ./ng ng-cp $JAR 1>&2; done
 ./ng ng-cp 1>&2
 
 echo "TAP version 13"
-echo "1..80"
+echo "1..82"
 
 #- 1 Login
 ./ng net.accelbyte.sdk.cli.Main loginClient \
@@ -63,590 +63,601 @@ eval_tap $? 2 'GetHealthcheckInfo' test.out
     > test.out 2>&1
 eval_tap $? 3 'GetHealthcheckInfoV1' test.out
 
-#- 4 AdminGetDSMCConfigurationDefault
+#- 4 AdminGetLogConfig
+./ng net.accelbyte.sdk.cli.Main session adminGetLogConfig \
+    > test.out 2>&1
+eval_tap $? 4 'AdminGetLogConfig' test.out
+
+#- 5 AdminPatchUpdateLogConfig
+./ng net.accelbyte.sdk.cli.Main session adminPatchUpdateLogConfig \
+    --body '{"logLevel": "info"}' \
+    > test.out 2>&1
+eval_tap $? 5 'AdminPatchUpdateLogConfig' test.out
+
+#- 6 AdminGetDSMCConfigurationDefault
 ./ng net.accelbyte.sdk.cli.Main session adminGetDSMCConfigurationDefault \
     > test.out 2>&1
-eval_tap $? 4 'AdminGetDSMCConfigurationDefault' test.out
+eval_tap $? 6 'AdminGetDSMCConfigurationDefault' test.out
 
-#- 5 AdminListEnvironmentVariables
+#- 7 AdminListEnvironmentVariables
 ./ng net.accelbyte.sdk.cli.Main session adminListEnvironmentVariables \
     > test.out 2>&1
-eval_tap $? 5 'AdminListEnvironmentVariables' test.out
+eval_tap $? 7 'AdminListEnvironmentVariables' test.out
 
-#- 6 AdminListGlobalConfiguration
+#- 8 AdminListGlobalConfiguration
 ./ng net.accelbyte.sdk.cli.Main session adminListGlobalConfiguration \
     > test.out 2>&1
-eval_tap $? 6 'AdminListGlobalConfiguration' test.out
+eval_tap $? 8 'AdminListGlobalConfiguration' test.out
 
-#- 7 AdminUpdateGlobalConfiguration
+#- 9 AdminUpdateGlobalConfiguration
 ./ng net.accelbyte.sdk.cli.Main session adminUpdateGlobalConfiguration \
-    --body '{"regionRetryMapping": {"PIty0gYn": ["LaWm6znr", "pIHI84O7", "ZU67HFaO"], "ufa4iVcJ": ["0JtEQfal", "mkJiao5y", "es33KBps"], "dpEPVOlF": ["u4azFQxA", "OWRP7T2v", "vm1Rwj3z"]}, "regionURLMapping": ["RyhCS65x", "uKqYuGMT", "159HMdnb"], "testGameMode": "vGuhuN0Q", "testRegionURLMapping": ["csz9Fpu6", "fjAm9RTS", "dj9VzKQ0"], "testTargetUserIDs": ["BfeKQ1dO", "R4ym4WqG", "RCdZZqSq"]}' \
+    --body '{"regionRetryMapping": {"7KvLCCI4": ["qzRjhb0H", "mAvycZTj", "76McBX93"], "Fn7nJwaM": ["0oFRcjdm", "bRWLGvmy", "2zVr9xfC"], "soUIZB3F": ["RcE9brRF", "KZFNmXTE", "4ayKi1p8"]}, "regionURLMapping": ["sadCMUS1", "TQ7rEaWt", "hVLxyYW5"], "testGameMode": "REKNvVZ3", "testRegionURLMapping": ["VzHSc4Kx", "zwTogkmU", "9mlezfdn"], "testTargetUserIDs": ["AAeQCduu", "X4L2PJ82", "ECWrYaoF"]}' \
     > test.out 2>&1
-eval_tap $? 7 'AdminUpdateGlobalConfiguration' test.out
+eval_tap $? 9 'AdminUpdateGlobalConfiguration' test.out
 
-#- 8 AdminDeleteGlobalConfiguration
+#- 10 AdminDeleteGlobalConfiguration
 ./ng net.accelbyte.sdk.cli.Main session adminDeleteGlobalConfiguration \
     > test.out 2>&1
-eval_tap $? 8 'AdminDeleteGlobalConfiguration' test.out
+eval_tap $? 10 'AdminDeleteGlobalConfiguration' test.out
 
-#- 9 AdminGetConfigurationAlertV1
+#- 11 AdminGetConfigurationAlertV1
 ./ng net.accelbyte.sdk.cli.Main session adminGetConfigurationAlertV1 \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 9 'AdminGetConfigurationAlertV1' test.out
+eval_tap $? 11 'AdminGetConfigurationAlertV1' test.out
 
-#- 10 AdminUpdateConfigurationAlertV1
+#- 12 AdminUpdateConfigurationAlertV1
 ./ng net.accelbyte.sdk.cli.Main session adminUpdateConfigurationAlertV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"durationDays": 19}' \
+    --body '{"durationDays": 35}' \
     > test.out 2>&1
-eval_tap $? 10 'AdminUpdateConfigurationAlertV1' test.out
+eval_tap $? 12 'AdminUpdateConfigurationAlertV1' test.out
 
-#- 11 AdminCreateConfigurationAlertV1
+#- 13 AdminCreateConfigurationAlertV1
 ./ng net.accelbyte.sdk.cli.Main session adminCreateConfigurationAlertV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"durationDays": 17}' \
+    --body '{"durationDays": 96}' \
     > test.out 2>&1
-eval_tap $? 11 'AdminCreateConfigurationAlertV1' test.out
+eval_tap $? 13 'AdminCreateConfigurationAlertV1' test.out
 
-#- 12 AdminDeleteConfigurationAlertV1
+#- 14 AdminDeleteConfigurationAlertV1
 ./ng net.accelbyte.sdk.cli.Main session adminDeleteConfigurationAlertV1 \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 12 'AdminDeleteConfigurationAlertV1' test.out
+eval_tap $? 14 'AdminDeleteConfigurationAlertV1' test.out
 
-#- 13 HandleUploadXboxPFXCertificate
+#- 15 HandleUploadXboxPFXCertificate
 ./ng net.accelbyte.sdk.cli.Main session handleUploadXboxPFXCertificate \
     --namespace "$AB_NAMESPACE" \
-    --description 'qVbc7kXc' \
-    --certname 'Clh9Fajp' \
+    --description '2klkEbqm' \
+    --certname 'pNW4lF2f' \
     --file 'tmp.dat' \
-    --password '1cAEIsdo' \
+    --password 'dRVMr1sf' \
     > test.out 2>&1
-eval_tap $? 13 'HandleUploadXboxPFXCertificate' test.out
+eval_tap $? 15 'HandleUploadXboxPFXCertificate' test.out
 
-#- 14 AdminCreateConfigurationTemplateV1
+#- 16 AdminCreateConfigurationTemplateV1
 ./ng net.accelbyte.sdk.cli.Main session adminCreateConfigurationTemplateV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"NativeSessionSetting": {"PSNServiceLabel": 87, "PSNSupportedPlatforms": ["Xqmx6NMt", "YYUKqVfm", "i5vLJLON"], "SessionTitle": "4UzBiZHE", "ShouldSync": false, "XboxAllowCrossPlatform": false, "XboxSandboxID": "Cghvvf0m", "XboxServiceConfigID": "vDd8xFYM", "XboxSessionTemplateName": "ISMjS6mL", "XboxTitleID": "nXSH5WPg", "localizedSessionName": {"IurLAWFI": {}, "WjaRbgeO": {}, "M60H2sJZ": {}}}, "PSNBaseUrl": "uGNl80H1", "attributes": {"vWr209Nt": {}, "UANBUFNn": {}, "gQj7oJr4": {}}, "autoJoin": true, "autoLeaveSession": false, "clientVersion": "29j7kxOP", "deployment": "OjMMmF61", "disableCodeGeneration": true, "dsManualSetReady": true, "dsSource": "HytjXV05", "enableSecret": false, "fallbackClaimKeys": ["H9Hjv7OJ", "L9GAgRRV", "LalHv4DH"], "immutableStorage": false, "inactiveTimeout": 98, "inviteTimeout": 25, "joinability": "9IzuG9bI", "leaderElectionGracePeriod": 26, "manualRejoin": false, "maxActiveSessions": 43, "maxPlayers": 34, "minPlayers": 79, "name": "ukzUz7iJ", "persistent": false, "preferredClaimKeys": ["vnxZojjD", "EQdkw9ML", "SoXUHiMH"], "requestedRegions": ["K8HWuLsm", "dhwnOEVU", "bxK6JN1Z"], "textChat": false, "tieTeamsSessionLifetime": false, "type": "BEFysJ4C"}' \
+    --body '{"NativeSessionSetting": {"PSNServiceLabel": 7, "PSNSupportedPlatforms": ["W4KsCrNh", "gB3I7We4", "pg3XVK9J"], "SessionTitle": "2pSrE9F4", "ShouldSync": true, "XboxAllowCrossPlatform": false, "XboxSandboxID": "W2QHbYgF", "XboxServiceConfigID": "n1igXRFr", "XboxSessionTemplateName": "aYwLb0z4", "XboxTitleID": "dwxDMzkN", "localizedSessionName": {"JTl0EuVy": {}, "mNIcpJso": {}, "E1n0Ukbs": {}}}, "PSNBaseUrl": "gEkR6Zcp", "attributes": {"eKVJsu5B": {}, "DmuCHJZQ": {}, "eenlU9fN": {}}, "autoJoin": true, "autoLeaveSession": true, "clientVersion": "6mqx61lL", "deployment": "99Je157y", "disableCodeGeneration": true, "dsManualSetReady": false, "dsSource": "GgU5ESjP", "enableSecret": false, "fallbackClaimKeys": ["3iCXRQnI", "4kORMMLn", "UW2A8zr6"], "immutableStorage": false, "inactiveTimeout": 61, "inviteTimeout": 22, "joinability": "Mil5MHaw", "leaderElectionGracePeriod": 73, "manualRejoin": true, "maxActiveSessions": 12, "maxPlayers": 89, "minPlayers": 79, "name": "9vmRL3U0", "persistent": true, "preferredClaimKeys": ["Sx6ZjMS4", "VogF71gm", "LAGkY6l1"], "requestedRegions": ["TNheyTsZ", "OTH6MFkO", "LLR4jY54"], "textChat": false, "tieTeamsSessionLifetime": true, "type": "8x7yUMQs"}' \
     > test.out 2>&1
-eval_tap $? 14 'AdminCreateConfigurationTemplateV1' test.out
+eval_tap $? 16 'AdminCreateConfigurationTemplateV1' test.out
 
-#- 15 AdminGetAllConfigurationTemplatesV1
+#- 17 AdminGetAllConfigurationTemplatesV1
 ./ng net.accelbyte.sdk.cli.Main session adminGetAllConfigurationTemplatesV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '17' \
-    --name 'TDhdJHHR' \
-    --offset '45' \
-    --order 'dfe4mbf2' \
-    --orderBy 'kr37nEpO' \
+    --limit '40' \
+    --name 'ctqLvreS' \
+    --offset '93' \
+    --order 'OzUpXotx' \
+    --orderBy 'Xe3KtCkH' \
     > test.out 2>&1
-eval_tap $? 15 'AdminGetAllConfigurationTemplatesV1' test.out
+eval_tap $? 17 'AdminGetAllConfigurationTemplatesV1' test.out
 
-#- 16 AdminGetConfigurationTemplateV1
+#- 18 AdminGetConfigurationTemplateV1
 ./ng net.accelbyte.sdk.cli.Main session adminGetConfigurationTemplateV1 \
-    --name 'alsh0IhN' \
+    --name 'bxaNdJk9' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 16 'AdminGetConfigurationTemplateV1' test.out
+eval_tap $? 18 'AdminGetConfigurationTemplateV1' test.out
 
-#- 17 AdminUpdateConfigurationTemplateV1
+#- 19 AdminUpdateConfigurationTemplateV1
 ./ng net.accelbyte.sdk.cli.Main session adminUpdateConfigurationTemplateV1 \
-    --name 'DHJu81dg' \
+    --name 'GaxvWjC0' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"NativeSessionSetting": {"PSNServiceLabel": 37, "PSNSupportedPlatforms": ["bTTO8RDe", "x47hSDeW", "D5Rv5ZI7"], "SessionTitle": "tjggc5l0", "ShouldSync": true, "XboxAllowCrossPlatform": true, "XboxSandboxID": "5si8YDHn", "XboxServiceConfigID": "hyRIISeN", "XboxSessionTemplateName": "JRT8FwhS", "XboxTitleID": "hAuZCryg", "localizedSessionName": {"Fer5n9JV": {}, "d1vHchkZ": {}, "ZehE4RkD": {}}}, "PSNBaseUrl": "gZy2omjz", "attributes": {"pQ7DB7cJ": {}, "0u3TlnSj": {}, "yojMMOQp": {}}, "autoJoin": true, "autoLeaveSession": false, "clientVersion": "c8Iv6ly9", "deployment": "lPNyomiB", "disableCodeGeneration": false, "dsManualSetReady": false, "dsSource": "d9NYQYVT", "enableSecret": false, "fallbackClaimKeys": ["A4hc7THZ", "kFTwZkQd", "Fe6dYujq"], "immutableStorage": false, "inactiveTimeout": 71, "inviteTimeout": 36, "joinability": "auMBKsyg", "leaderElectionGracePeriod": 83, "manualRejoin": false, "maxActiveSessions": 19, "maxPlayers": 8, "minPlayers": 0, "name": "tiBfjkyz", "persistent": false, "preferredClaimKeys": ["WIHsjifL", "PVPlKuxW", "PsqugYl7"], "requestedRegions": ["yWJnWIoX", "bACcdvnO", "QhIHattW"], "textChat": false, "tieTeamsSessionLifetime": true, "type": "xTsbiYD6"}' \
+    --body '{"NativeSessionSetting": {"PSNServiceLabel": 79, "PSNSupportedPlatforms": ["gX2oROu4", "dIwBhvi5", "P0Auv8E9"], "SessionTitle": "YlL2aWb0", "ShouldSync": false, "XboxAllowCrossPlatform": false, "XboxSandboxID": "TUCmX9x1", "XboxServiceConfigID": "i7xnmeoI", "XboxSessionTemplateName": "rlp3fk5a", "XboxTitleID": "2qliEMQ7", "localizedSessionName": {"Yn9JB17A": {}, "UNmddNQq": {}, "tIWssSZ4": {}}}, "PSNBaseUrl": "XwNhH1dG", "attributes": {"xEAmjUNT": {}, "A5DpZra9": {}, "Rlmd2nBg": {}}, "autoJoin": false, "autoLeaveSession": true, "clientVersion": "GAPfDV5a", "deployment": "JiU3Rzwm", "disableCodeGeneration": false, "dsManualSetReady": true, "dsSource": "wxlMJzzw", "enableSecret": true, "fallbackClaimKeys": ["vfrETcQN", "nge7M86T", "Ki58YUcJ"], "immutableStorage": false, "inactiveTimeout": 100, "inviteTimeout": 54, "joinability": "oeLh0HOv", "leaderElectionGracePeriod": 66, "manualRejoin": true, "maxActiveSessions": 84, "maxPlayers": 47, "minPlayers": 90, "name": "sFPAhvc0", "persistent": true, "preferredClaimKeys": ["J2rPH6pY", "5guGs6p3", "QG4i6QVR"], "requestedRegions": ["jAw66LWE", "iNrarWxY", "RN1W6YXC"], "textChat": false, "tieTeamsSessionLifetime": false, "type": "oA2Ha8nd"}' \
     > test.out 2>&1
-eval_tap $? 17 'AdminUpdateConfigurationTemplateV1' test.out
+eval_tap $? 19 'AdminUpdateConfigurationTemplateV1' test.out
 
-#- 18 AdminDeleteConfigurationTemplateV1
+#- 20 AdminDeleteConfigurationTemplateV1
 ./ng net.accelbyte.sdk.cli.Main session adminDeleteConfigurationTemplateV1 \
-    --name 'DdaweUYZ' \
+    --name 'thsBWa0G' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 18 'AdminDeleteConfigurationTemplateV1' test.out
+eval_tap $? 20 'AdminDeleteConfigurationTemplateV1' test.out
 
-#- 19 AdminGetMemberActiveSession
+#- 21 AdminGetMemberActiveSession
 ./ng net.accelbyte.sdk.cli.Main session adminGetMemberActiveSession \
-    --name 'eZeZn59J' \
+    --name 'TkwGQOAq' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'Q0i5J9EY' \
+    --userId 'gvVm0IPa' \
     > test.out 2>&1
-eval_tap $? 19 'AdminGetMemberActiveSession' test.out
+eval_tap $? 21 'AdminGetMemberActiveSession' test.out
 
-#- 20 AdminReconcileMaxActiveSession
+#- 22 AdminReconcileMaxActiveSession
 ./ng net.accelbyte.sdk.cli.Main session adminReconcileMaxActiveSession \
-    --name 'TeefeUNy' \
+    --name '2nO1MXtP' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userID": "xn31JPV2"}' \
+    --body '{"userID": "VhH6mXyZ"}' \
     > test.out 2>&1
-eval_tap $? 20 'AdminReconcileMaxActiveSession' test.out
+eval_tap $? 22 'AdminReconcileMaxActiveSession' test.out
 
-#- 21 AdminGetDSMCConfiguration
+#- 23 AdminGetDSMCConfiguration
 ./ng net.accelbyte.sdk.cli.Main session adminGetDSMCConfiguration \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 21 'AdminGetDSMCConfiguration' test.out
+eval_tap $? 23 'AdminGetDSMCConfiguration' test.out
 
-#- 22 AdminSyncDSMCConfiguration
+#- 24 AdminSyncDSMCConfiguration
 ./ng net.accelbyte.sdk.cli.Main session adminSyncDSMCConfiguration \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 22 'AdminSyncDSMCConfiguration' test.out
+eval_tap $? 24 'AdminSyncDSMCConfiguration' test.out
 
-#- 23 AdminQueryGameSessions
+#- 25 AdminQueryGameSessions
 ./ng net.accelbyte.sdk.cli.Main session adminQueryGameSessions \
     --namespace "$AB_NAMESPACE" \
-    --configurationName 'vlRbZ3Ai' \
-    --dsPodName 'fIA1PbID' \
-    --fromTime 'xIbQiWf8' \
-    --gameMode 'mXXqCJPs' \
-    --isPersistent 'YJUOsLUg' \
-    --isSoftDeleted 'j6UT7Mzi' \
-    --joinability 'q6afRwQJ' \
-    --limit '71' \
-    --matchPool 'u3dBuSSE' \
-    --memberID '05XRO04Q' \
-    --offset '58' \
-    --order 'ISeHVxBv' \
-    --orderBy 'YIM3Uq9h' \
-    --sessionID 'iZX8vCXc' \
-    --status 'ekYHXNFG' \
-    --statusV2 'ZVxPXfU8' \
-    --toTime 'VMDnQFzZ' \
+    --configurationName 'AgVvJA9t' \
+    --dsPodName 'NkkG2Zqx' \
+    --fromTime '2oATXYVy' \
+    --gameMode 'JJ8HpqUb' \
+    --isPersistent 'xvVLRA0c' \
+    --isSoftDeleted 'uq8C7FIv' \
+    --joinability 'Hdxmhz0H' \
+    --limit '94' \
+    --matchPool 'fML1Npjj' \
+    --memberID 'qCNa2sxd' \
+    --offset '77' \
+    --order '2VdMa4cI' \
+    --orderBy 'hHGFsbbt' \
+    --sessionID 'WfOAs00Z' \
+    --status 'BrYh0qkI' \
+    --statusV2 'KQlCj6EX' \
+    --toTime 'Gmrte8yp' \
     > test.out 2>&1
-eval_tap $? 23 'AdminQueryGameSessions' test.out
+eval_tap $? 25 'AdminQueryGameSessions' test.out
 
-#- 24 AdminQueryGameSessionsByAttributes
+#- 26 AdminQueryGameSessionsByAttributes
 ./ng net.accelbyte.sdk.cli.Main session adminQueryGameSessionsByAttributes \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ZAA7iIlm": {}, "d3R3It9g": {}, "xIllpZgS": {}}' \
+    --body '{"WOWZA2uh": {}, "8Oo1JmyN": {}, "g1JkUX8L": {}}' \
     > test.out 2>&1
-eval_tap $? 24 'AdminQueryGameSessionsByAttributes' test.out
+eval_tap $? 26 'AdminQueryGameSessionsByAttributes' test.out
 
-#- 25 AdminDeleteBulkGameSessions
+#- 27 AdminDeleteBulkGameSessions
 ./ng net.accelbyte.sdk.cli.Main session adminDeleteBulkGameSessions \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ids": ["TMylYQuH", "U0Cs5vWx", "nRsmdu1R"]}' \
+    --body '{"ids": ["ke6hW48C", "9D9blRmA", "7JRYAzYZ"]}' \
     > test.out 2>&1
-eval_tap $? 25 'AdminDeleteBulkGameSessions' test.out
+eval_tap $? 27 'AdminDeleteBulkGameSessions' test.out
 
-#- 26 AdminSetDSReady
+#- 28 AdminSetDSReady
 ./ng net.accelbyte.sdk.cli.Main session adminSetDSReady \
     --namespace "$AB_NAMESPACE" \
-    --sessionId '1ZKYL1Y2' \
-    --body '{"ready": false}' \
+    --sessionId 'FeodZGjW' \
+    --body '{"ready": true}' \
     > test.out 2>&1
-eval_tap $? 26 'AdminSetDSReady' test.out
+eval_tap $? 28 'AdminSetDSReady' test.out
 
-#- 27 AdminUpdateGameSessionMember
+#- 29 AdminUpdateGameSessionMember
 ./ng net.accelbyte.sdk.cli.Main session adminUpdateGameSessionMember \
-    --memberId 'TJ1mvJ5S' \
+    --memberId 'GzrHuqMc' \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'fkbgVLAO' \
-    --statusType 's5842igK' \
+    --sessionId 'LrFc4QTS' \
+    --statusType 'KAYrIy1t' \
     > test.out 2>&1
-eval_tap $? 27 'AdminUpdateGameSessionMember' test.out
+eval_tap $? 29 'AdminUpdateGameSessionMember' test.out
 
-#- 28 AdminGetListNativeSession
+#- 30 AdminGetListNativeSession
 ./ng net.accelbyte.sdk.cli.Main session adminGetListNativeSession \
     --namespace "$AB_NAMESPACE" \
-    --limit '65' \
-    --offset '57' \
-    --order '0soIhEgg' \
+    --limit '55' \
+    --offset '77' \
+    --order 'UGHxuL3E' \
     > test.out 2>&1
-eval_tap $? 28 'AdminGetListNativeSession' test.out
+eval_tap $? 30 'AdminGetListNativeSession' test.out
 
-#- 29 AdminQueryParties
+#- 31 AdminQueryParties
 ./ng net.accelbyte.sdk.cli.Main session adminQueryParties \
     --namespace "$AB_NAMESPACE" \
-    --isSoftDeleted '7RfgEpbX' \
-    --joinability 'O0gmWUk6' \
-    --key 'ubBQPjJ3' \
-    --leaderID 'vrnOa2nl' \
-    --limit '99' \
-    --memberID 'Ce5RhzPv' \
-    --memberStatus 'y8pRYvv3' \
-    --offset '25' \
-    --order 'OyROHc5F' \
-    --orderBy 'qIWpdmqc' \
-    --partyID 'nWGJl6ar' \
-    --value 'PxhoQMbp' \
+    --isSoftDeleted 'XrQi6TSe' \
+    --joinability 'WHKh7fWt' \
+    --key 'JM1BJRHH' \
+    --leaderID '3i1xtlBm' \
+    --limit '4' \
+    --memberID 'mKZNkWEc' \
+    --memberStatus 'WjHcSCuA' \
+    --offset '2' \
+    --order 'ib1Kmabt' \
+    --orderBy 'RYE2Fxbg' \
+    --partyID 'O4xPHGxX' \
+    --value 'LmYMqAtu' \
     > test.out 2>&1
-eval_tap $? 29 'AdminQueryParties' test.out
+eval_tap $? 31 'AdminQueryParties' test.out
 
-#- 30 AdminGetPlatformCredentials
+#- 32 AdminGetPlatformCredentials
 ./ng net.accelbyte.sdk.cli.Main session adminGetPlatformCredentials \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 30 'AdminGetPlatformCredentials' test.out
+eval_tap $? 32 'AdminGetPlatformCredentials' test.out
 
-#- 31 AdminUpdatePlatformCredentials
+#- 33 AdminUpdatePlatformCredentials
 ./ng net.accelbyte.sdk.cli.Main session adminUpdatePlatformCredentials \
     --namespace "$AB_NAMESPACE" \
-    --body '{"psn": {"clientId": "StfcEF3k", "clientSecret": "J5Nujgbg", "scope": "2svrbkQU"}}' \
+    --body '{"psn": {"clientId": "TYRj2uRv", "clientSecret": "3hMwkh48", "scope": "lIx3gc3C"}}' \
     > test.out 2>&1
-eval_tap $? 31 'AdminUpdatePlatformCredentials' test.out
+eval_tap $? 33 'AdminUpdatePlatformCredentials' test.out
 
-#- 32 AdminDeletePlatformCredentials
+#- 34 AdminDeletePlatformCredentials
 ./ng net.accelbyte.sdk.cli.Main session adminDeletePlatformCredentials \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 32 'AdminDeletePlatformCredentials' test.out
+eval_tap $? 34 'AdminDeletePlatformCredentials' test.out
 
-#- 33 AdminGetRecentPlayer
+#- 35 AdminGetRecentPlayer
 ./ng net.accelbyte.sdk.cli.Main session adminGetRecentPlayer \
     --namespace "$AB_NAMESPACE" \
-    --limit '40' \
-    --userId 'yhi5JGqk' \
+    --limit '8' \
+    --userId 'PT5wBWYu' \
     > test.out 2>&1
-eval_tap $? 33 'AdminGetRecentPlayer' test.out
+eval_tap $? 35 'AdminGetRecentPlayer' test.out
 
-#- 34 AdminGetRecentTeamPlayer
+#- 36 AdminGetRecentTeamPlayer
 ./ng net.accelbyte.sdk.cli.Main session adminGetRecentTeamPlayer \
     --namespace "$AB_NAMESPACE" \
-    --limit '93' \
-    --userId 'lw9oPDMo' \
+    --limit '97' \
+    --userId 'l3BX6NKm' \
     > test.out 2>&1
-eval_tap $? 34 'AdminGetRecentTeamPlayer' test.out
+eval_tap $? 36 'AdminGetRecentTeamPlayer' test.out
 
-#- 35 AdminReadSessionStorage
+#- 37 AdminReadSessionStorage
 ./ng net.accelbyte.sdk.cli.Main session adminReadSessionStorage \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'cmdia3mF' \
+    --sessionId 'eMRE8uii' \
     > test.out 2>&1
-eval_tap $? 35 'AdminReadSessionStorage' test.out
+eval_tap $? 37 'AdminReadSessionStorage' test.out
 
-#- 36 AdminDeleteUserSessionStorage
+#- 38 AdminDeleteUserSessionStorage
 ./ng net.accelbyte.sdk.cli.Main session adminDeleteUserSessionStorage \
     --namespace "$AB_NAMESPACE" \
-    --sessionId '3rEfJPh0' \
+    --sessionId 'OvLbAMhj' \
     > test.out 2>&1
-eval_tap $? 36 'AdminDeleteUserSessionStorage' test.out
+eval_tap $? 38 'AdminDeleteUserSessionStorage' test.out
 
-#- 37 AdminReadUserSessionStorage
+#- 39 AdminReadUserSessionStorage
 ./ng net.accelbyte.sdk.cli.Main session adminReadUserSessionStorage \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'VLeDz891' \
-    --userId 'gy1tr2ri' \
+    --sessionId '3z7z90eh' \
+    --userId 'FRlDuAOr' \
     > test.out 2>&1
-eval_tap $? 37 'AdminReadUserSessionStorage' test.out
+eval_tap $? 39 'AdminReadUserSessionStorage' test.out
 
-#- 38 AdminQueryPlayerAttributes
+#- 40 AdminQueryPlayerAttributes
 ./ng net.accelbyte.sdk.cli.Main session adminQueryPlayerAttributes \
     --namespace "$AB_NAMESPACE" \
-    --users 'VO5XYaKC' \
+    --users 'Ac54kPLV' \
     > test.out 2>&1
-eval_tap $? 38 'AdminQueryPlayerAttributes' test.out
+eval_tap $? 40 'AdminQueryPlayerAttributes' test.out
 
-#- 39 AdminGetPlayerAttributes
+#- 41 AdminGetPlayerAttributes
 ./ng net.accelbyte.sdk.cli.Main session adminGetPlayerAttributes \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ISUIxZe0' \
+    --userId 'HcgMdX04' \
     > test.out 2>&1
-eval_tap $? 39 'AdminGetPlayerAttributes' test.out
+eval_tap $? 41 'AdminGetPlayerAttributes' test.out
 
-#- 40 CreateGameSession
+#- 42 CreateGameSession
 ./ng net.accelbyte.sdk.cli.Main session createGameSession \
     --namespace "$AB_NAMESPACE" \
-    --body '{"attributes": {"0K3Af3tw": {}, "Uvy1i0gy": {}, "hhRDb7pS": {}}, "autoJoin": false, "backfillTicketID": "liwyhUiS", "clientVersion": "EPrGP70Y", "configurationName": "Hrk7toSJ", "deployment": "ReCxiyJZ", "dsSource": "xfrKXzDr", "fallbackClaimKeys": ["nkgnfyrn", "j83l6yJU", "T6V0wFYB"], "inactiveTimeout": 99, "inviteTimeout": 90, "joinability": "gJ9AvYpp", "matchPool": "vqxBhOOy", "maxPlayers": 96, "minPlayers": 25, "preferredClaimKeys": ["ghk6ZFxh", "AeKUETOh", "3QmX5ywb"], "requestedRegions": ["rYOeH8bT", "SuCGECE8", "zX0q584l"], "serverName": "MA6ZZ5Df", "teams": [{"UserIDs": ["2Csh2djc", "E37KCTxO", "Pg8PeDr5"], "parties": [{"partyID": "0yj6xf6X", "userIDs": ["Bj3fMxtX", "kbY4JURl", "ZeR32fqY"]}, {"partyID": "N2HODF2l", "userIDs": ["vkQHSF2a", "UIPMpGmv", "wXJVGk0C"]}, {"partyID": "hmNVL52A", "userIDs": ["7X8FUyZq", "ePlrYfth", "1ZtniNn7"]}]}, {"UserIDs": ["BSjLB5sN", "wwS7NUi8", "tWSsDKJc"], "parties": [{"partyID": "iykGGraC", "userIDs": ["uLJR9PyG", "mflnoGTY", "G88S2pl5"]}, {"partyID": "4Vd1cwCN", "userIDs": ["XTQ1lQtq", "mo4XVWGA", "LbPzf3Pc"]}, {"partyID": "gJooWuON", "userIDs": ["tljUQQYR", "Trh8iWoL", "59NHllWR"]}]}, {"UserIDs": ["bruWufQB", "4cZocvly", "NfPyZ1PK"], "parties": [{"partyID": "nde7qC1Y", "userIDs": ["u6dhP3Pe", "7vtxJitT", "zLZTBU21"]}, {"partyID": "id3tMW5a", "userIDs": ["G3wUSqe6", "rtR86m3N", "7Wmozbr8"]}, {"partyID": "x08iAuXW", "userIDs": ["sQsac4aR", "9BVTmFJp", "IurYpLZD"]}]}], "textChat": true, "ticketIDs": ["hndbCbro", "fEvZsosc", "loH0Do7W"], "tieTeamsSessionLifetime": true, "type": "3YEgpR51"}' \
+    --body '{"attributes": {"nPjTlbfw": {}, "dTKH0NR5": {}, "8Lwb5TlA": {}}, "autoJoin": false, "backfillTicketID": "9zjScgB4", "clientVersion": "jf7g15Gd", "configurationName": "BWIj6yVe", "deployment": "VB6CIXx5", "dsSource": "1kTLjxOn", "fallbackClaimKeys": ["DZDURORN", "WhOWkx29", "H2JHGG3e"], "inactiveTimeout": 71, "inviteTimeout": 71, "joinability": "Uh6BWzPF", "matchPool": "CU7wOims", "maxPlayers": 94, "minPlayers": 74, "preferredClaimKeys": ["wxdTuLfr", "N577RFsD", "Gk2S0LVo"], "requestedRegions": ["ZVr3w72B", "Gux6sVvK", "vmw6zcpc"], "serverName": "mLXK5Jnl", "teams": [{"UserIDs": ["Zig8V758", "hCLnExhv", "14G7n2Uw"], "parties": [{"partyID": "tr3wsvbA", "userIDs": ["VHqRrNhT", "96Nh40yA", "bUGaXxl2"]}, {"partyID": "0jEvTcUx", "userIDs": ["F0kw7po4", "xefJKiuD", "U0GsPoWJ"]}, {"partyID": "g42XXt4J", "userIDs": ["hmpH77z5", "RXd7woJy", "0Yv6114i"]}]}, {"UserIDs": ["YW4HJ5lW", "ZAFH25iW", "F6SQJXjj"], "parties": [{"partyID": "CvQOnDLH", "userIDs": ["OKXt6XKB", "3I14KEp9", "QqluWLMm"]}, {"partyID": "AEFdJxR6", "userIDs": ["OcEQ1Sa2", "ZRuDL0py", "uldPqocj"]}, {"partyID": "Oe64aXCI", "userIDs": ["xYFxKBbD", "VKFJrj43", "ygZBTrw4"]}]}, {"UserIDs": ["YgPRq5eK", "HxAhU9mV", "vz7NXdB0"], "parties": [{"partyID": "BXMtYuBf", "userIDs": ["sTIAoX2S", "UTV4bw6S", "49HI6Um5"]}, {"partyID": "QGQwzSjb", "userIDs": ["fO45I8Me", "3uXEpk3W", "HfWGw69b"]}, {"partyID": "XszZ64OA", "userIDs": ["42RUBU7I", "hbdVFzwQ", "Hw0daAYO"]}]}], "textChat": false, "ticketIDs": ["cCdpqlSK", "0kZ3zBgP", "uewTzPtJ"], "tieTeamsSessionLifetime": false, "type": "ACPt7ask"}' \
     > test.out 2>&1
-eval_tap $? 40 'CreateGameSession' test.out
+eval_tap $? 42 'CreateGameSession' test.out
 
-#- 41 PublicQueryGameSessionsByAttributes
+#- 43 PublicQueryGameSessionsByAttributes
 ./ng net.accelbyte.sdk.cli.Main session publicQueryGameSessionsByAttributes \
     --namespace "$AB_NAMESPACE" \
-    --body '{"KeFBnNXN": {}, "azCjgEv8": {}, "1qlrPmCY": {}}' \
+    --body '{"cHVi6wOt": {}, "tcJEH6Q4": {}, "7P09fF4z": {}}' \
     > test.out 2>&1
-eval_tap $? 41 'PublicQueryGameSessionsByAttributes' test.out
+eval_tap $? 43 'PublicQueryGameSessionsByAttributes' test.out
 
-#- 42 PublicSessionJoinCode
+#- 44 PublicSessionJoinCode
 ./ng net.accelbyte.sdk.cli.Main session publicSessionJoinCode \
     --namespace "$AB_NAMESPACE" \
-    --body '{"code": "RqQxXYrG"}' \
+    --body '{"code": "8hrqA8lV"}' \
     > test.out 2>&1
-eval_tap $? 42 'PublicSessionJoinCode' test.out
+eval_tap $? 44 'PublicSessionJoinCode' test.out
 
-#- 43 GetGameSessionByPodName
+#- 45 GetGameSessionByPodName
 ./ng net.accelbyte.sdk.cli.Main session getGameSessionByPodName \
     --namespace "$AB_NAMESPACE" \
-    --podName 'hiT8CNao' \
+    --podName 'nR0OHWNK' \
     > test.out 2>&1
-eval_tap $? 43 'GetGameSessionByPodName' test.out
+eval_tap $? 45 'GetGameSessionByPodName' test.out
 
-#- 44 GetGameSession
+#- 46 GetGameSession
 ./ng net.accelbyte.sdk.cli.Main session getGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'qLRH9bLC' \
+    --sessionId '51TExJ5x' \
     > test.out 2>&1
-eval_tap $? 44 'GetGameSession' test.out
+eval_tap $? 46 'GetGameSession' test.out
 
-#- 45 UpdateGameSession
+#- 47 UpdateGameSession
 ./ng net.accelbyte.sdk.cli.Main session updateGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'H569yoYV' \
-    --body '{"attributes": {"jfoPIShr": {}, "fy4jZJn4": {}, "3a5wgYP9": {}}, "backfillTicketID": "5NkrVLVD", "clientVersion": "KsmtRNE9", "deployment": "tB2EqCdZ", "fallbackClaimKeys": ["Ml46ZJnk", "rJbyLjsk", "2xS3eZp1"], "inactiveTimeout": 69, "inviteTimeout": 72, "joinability": "oVWpAaq9", "matchPool": "zdDT5vFw", "maxPlayers": 29, "minPlayers": 22, "preferredClaimKeys": ["pFLJeXFH", "gUoBDdHC", "BARQYxgY"], "requestedRegions": ["2PYneqoC", "p5LUHZ27", "9OnXqlyF"], "teams": [{"UserIDs": ["6Qtr8wUA", "H64XlOIL", "OLTGORn1"], "parties": [{"partyID": "6UlPCp6g", "userIDs": ["MvlxTUm5", "b3yFFUdZ", "hz17uZ2v"]}, {"partyID": "ZI3i7B7Y", "userIDs": ["aE3OtHwp", "7WIU710Q", "6WIm25gp"]}, {"partyID": "udhzwffo", "userIDs": ["L0VoedIr", "zp9U0vA2", "sPzuhnLm"]}]}, {"UserIDs": ["h80IiPrt", "Ll4noLOD", "GMSITHbh"], "parties": [{"partyID": "Nyse26r0", "userIDs": ["hZ19pcDt", "gvrR0ODu", "rZg3LrMO"]}, {"partyID": "KmGwFvFN", "userIDs": ["vw8XCp2X", "FZJOduqA", "taZMl5l0"]}, {"partyID": "LZL3cTci", "userIDs": ["KVZ9Faxh", "rJ1uS0kd", "Ib27x5el"]}]}, {"UserIDs": ["wx36CWq7", "wlxIOBve", "nhyeF7Po"], "parties": [{"partyID": "y8WGNV6U", "userIDs": ["dF9UN81H", "ELPyFeJh", "Ha8Mfvkz"]}, {"partyID": "zeaMSZuG", "userIDs": ["yYSyHc3o", "IwD2hVXr", "ubfAjSbW"]}, {"partyID": "mcURDc4c", "userIDs": ["YDHjHuCS", "M6AEsTo5", "DSBmrZlN"]}]}], "ticketIDs": ["5Q6T6N4E", "LANytppv", "aXV56jFU"], "tieTeamsSessionLifetime": false, "type": "WBw8dzlT", "version": 50}' \
+    --sessionId 'qCaykuEX' \
+    --body '{"attributes": {"kCQWGDK8": {}, "dUIaHP6D": {}, "hGP4BwWb": {}}, "backfillTicketID": "vOTO8NSs", "clientVersion": "fbNqoUiK", "deployment": "e5Ygu3Ad", "fallbackClaimKeys": ["bhZyDN70", "3NicD8Kf", "c9JSDvbc"], "inactiveTimeout": 98, "inviteTimeout": 54, "joinability": "LGore2AL", "matchPool": "zIzVohmG", "maxPlayers": 72, "minPlayers": 79, "preferredClaimKeys": ["OkulWcxB", "IN8T4NyI", "SJ2QQl3P"], "requestedRegions": ["GWdcwooV", "hmwRj4nP", "1zwr7MHr"], "teams": [{"UserIDs": ["k45kP3WF", "h9MUgQhy", "mf9Vxn3c"], "parties": [{"partyID": "YlzJPuGm", "userIDs": ["3zYNhLp2", "s0hsUzcd", "Qe21leea"]}, {"partyID": "RGJByIVb", "userIDs": ["Tca9n9Fj", "EVucV7VR", "Fvye0nS2"]}, {"partyID": "GvpT9Ifb", "userIDs": ["CJ8DIGw4", "dvE3lE8q", "OVcoFtpR"]}]}, {"UserIDs": ["7G8agDAb", "P0DTKiGn", "O1Qbw564"], "parties": [{"partyID": "yAigPb0U", "userIDs": ["GRdxGJ7S", "ALDaR1fw", "ujwJpgJw"]}, {"partyID": "VrxUGmJ5", "userIDs": ["Ww6DqXGa", "ozW97NeY", "hQ4MeNlR"]}, {"partyID": "9nToIY4X", "userIDs": ["KPuPe139", "eNr5Gmby", "M2OVKUfG"]}]}, {"UserIDs": ["MNC1IKBa", "pNFvL6yr", "LH7T7mAM"], "parties": [{"partyID": "3vQBX1St", "userIDs": ["kdnkstCB", "uXEGgz3w", "R6cRxxVH"]}, {"partyID": "5B8myQ7n", "userIDs": ["cJc3oawo", "9zYzJczW", "LpF0pxLT"]}, {"partyID": "cFHj8NXp", "userIDs": ["AOg8aylH", "Jo993Kw7", "d8d40EHH"]}]}], "ticketIDs": ["RQdeTOsV", "oog7YjJ6", "gdewXGhF"], "tieTeamsSessionLifetime": false, "type": "L7HQhIDP", "version": 21}' \
     > test.out 2>&1
-eval_tap $? 45 'UpdateGameSession' test.out
+eval_tap $? 47 'UpdateGameSession' test.out
 
-#- 46 DeleteGameSession
+#- 48 DeleteGameSession
 ./ng net.accelbyte.sdk.cli.Main session deleteGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'BMCRGfxA' \
+    --sessionId 'iSsQkahc' \
     > test.out 2>&1
-eval_tap $? 46 'DeleteGameSession' test.out
+eval_tap $? 48 'DeleteGameSession' test.out
 
-#- 47 PatchUpdateGameSession
+#- 49 PatchUpdateGameSession
 ./ng net.accelbyte.sdk.cli.Main session patchUpdateGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'kx4PMGli' \
-    --body '{"attributes": {"7C8O0r3s": {}, "simLbtFP": {}, "9uLhpHbI": {}}, "backfillTicketID": "XWW8ycAW", "clientVersion": "Qqu7w0CQ", "deployment": "Qs5F3wYx", "fallbackClaimKeys": ["cMp4W5jb", "8euTJp67", "evSsZ9eW"], "inactiveTimeout": 16, "inviteTimeout": 72, "joinability": "kr6AWuE2", "matchPool": "ksddeGFc", "maxPlayers": 66, "minPlayers": 33, "preferredClaimKeys": ["lzYnKeDE", "0wUtGdZY", "pPg8vNWL"], "requestedRegions": ["q8zbVDLK", "LuxZqzBv", "6Zmgmoz9"], "teams": [{"UserIDs": ["wdSnFEcE", "iCn4rGt0", "KBfWvYEe"], "parties": [{"partyID": "cmJ5dhHq", "userIDs": ["xiuK4LOT", "WflBdY05", "V4DHGFT4"]}, {"partyID": "yzM7YYpr", "userIDs": ["UUcvUrFr", "i3t9DScj", "VtuM7IZy"]}, {"partyID": "40wbn2Ml", "userIDs": ["AeSFMqb4", "AAITZJZX", "dE4wv6vh"]}]}, {"UserIDs": ["VV7HTXFM", "PFRmilvE", "e2b4vZJq"], "parties": [{"partyID": "O6sNIzMg", "userIDs": ["QsLu5yif", "TnPKPt99", "hhSGwJb6"]}, {"partyID": "Gs295FGQ", "userIDs": ["xbK4YpZ6", "i6XmgTp4", "ehmfbNfM"]}, {"partyID": "aUNOFIff", "userIDs": ["tthM8sMy", "TSt4gWKu", "PieiLcjm"]}]}, {"UserIDs": ["m2yG5ztr", "tLAAEQtx", "ukCMn1C8"], "parties": [{"partyID": "y3bCI8NK", "userIDs": ["XEZ1F5PW", "bpGpsvaW", "hbPFGD42"]}, {"partyID": "Upmtw8W3", "userIDs": ["TKxr3bao", "x7fBiQp8", "dfl0354H"]}, {"partyID": "YwfVsmRA", "userIDs": ["RCxJjVnI", "pdbThn14", "JNE5mk7l"]}]}], "ticketIDs": ["DaDWMLD4", "WwIpJcyF", "h5iyD0Ue"], "tieTeamsSessionLifetime": false, "type": "Sz7MjTJA", "version": 43}' \
+    --sessionId 'eu1jcmgP' \
+    --body '{"attributes": {"1Hc6MJWf": {}, "zdy209F8": {}, "bI5fWxZG": {}}, "backfillTicketID": "3OT1pt8h", "clientVersion": "NrVWVxU0", "deployment": "Mu8ApxU7", "fallbackClaimKeys": ["AsdPxUYn", "JIqe0tZb", "mcKh2hvh"], "inactiveTimeout": 12, "inviteTimeout": 74, "joinability": "CeG4PIkL", "matchPool": "ta33yy3s", "maxPlayers": 72, "minPlayers": 17, "preferredClaimKeys": ["PSQO9lg9", "E26fa5m9", "jdqLBlZ2"], "requestedRegions": ["VQU00dLM", "NFWANmWn", "ivHTdSCD"], "teams": [{"UserIDs": ["dzIasdYQ", "HV5s3FEj", "af6B0PXl"], "parties": [{"partyID": "tti5QOKW", "userIDs": ["WTQUQ7R4", "7uG7hbW3", "B1dyAlO6"]}, {"partyID": "ZXJUOyl5", "userIDs": ["Mvcb6YLA", "rJ8mCMzQ", "4lYhnb5n"]}, {"partyID": "b8QiRyyS", "userIDs": ["iXAJM8ig", "u3Tgjo43", "VxRTPxfc"]}]}, {"UserIDs": ["GLTQi4JQ", "VjpW3iJq", "DQVJ33ED"], "parties": [{"partyID": "D4P5DTr3", "userIDs": ["KN8UxZDH", "an9e56ri", "gAoKm6W8"]}, {"partyID": "c1carZJd", "userIDs": ["4PDOgv5B", "REvPH5gX", "YBgbccPR"]}, {"partyID": "Cu8tCGpf", "userIDs": ["xwTDlEZw", "YwBVsHhS", "wNMmYEil"]}]}, {"UserIDs": ["6UtgzuPE", "WDRzBO4R", "mFN842X7"], "parties": [{"partyID": "96XqGgvM", "userIDs": ["DImJdIj5", "rO7U1oix", "uo4WGqYI"]}, {"partyID": "T9ENuEEL", "userIDs": ["KFdeAinG", "NujIVs5J", "QW7Tz2in"]}, {"partyID": "RJBUm0ao", "userIDs": ["E6hQIrTH", "6EZP1hnY", "EvuvZUoK"]}]}], "ticketIDs": ["UhyKxVEm", "Hwly3FDW", "956aL1gZ"], "tieTeamsSessionLifetime": false, "type": "EHKwk8Co", "version": 41}' \
     > test.out 2>&1
-eval_tap $? 47 'PatchUpdateGameSession' test.out
+eval_tap $? 49 'PatchUpdateGameSession' test.out
 
-#- 48 UpdateGameSessionBackfillTicketID
+#- 50 UpdateGameSessionBackfillTicketID
 ./ng net.accelbyte.sdk.cli.Main session updateGameSessionBackfillTicketID \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'jE77rfcr' \
-    --body '{"backfillTicketID": "jemaEVJZ"}' \
+    --sessionId '0dfdnV6F' \
+    --body '{"backfillTicketID": "O7wmeTSZ"}' \
     > test.out 2>&1
-eval_tap $? 48 'UpdateGameSessionBackfillTicketID' test.out
+eval_tap $? 50 'UpdateGameSessionBackfillTicketID' test.out
 
-#- 49 GameSessionGenerateCode
+#- 51 GameSessionGenerateCode
 ./ng net.accelbyte.sdk.cli.Main session gameSessionGenerateCode \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'vq8VbFEp' \
+    --sessionId '0htt1ad4' \
     > test.out 2>&1
-eval_tap $? 49 'GameSessionGenerateCode' test.out
+eval_tap $? 51 'GameSessionGenerateCode' test.out
 
-#- 50 PublicRevokeGameSessionCode
+#- 52 PublicRevokeGameSessionCode
 ./ng net.accelbyte.sdk.cli.Main session publicRevokeGameSessionCode \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'xprdO8rv' \
+    --sessionId 'obLENcfp' \
     > test.out 2>&1
-eval_tap $? 50 'PublicRevokeGameSessionCode' test.out
+eval_tap $? 52 'PublicRevokeGameSessionCode' test.out
 
-#- 51 PublicGameSessionInvite
+#- 53 PublicGameSessionInvite
 ./ng net.accelbyte.sdk.cli.Main session publicGameSessionInvite \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'U5rWSNGk' \
-    --body '{"platformID": "MQGj1PRB", "userID": "iIN219tw"}' \
+    --sessionId 'EFAphLhT' \
+    --body '{"platformID": "yx1OT6pC", "userID": "tYf86MQk"}' \
     > test.out 2>&1
-eval_tap $? 51 'PublicGameSessionInvite' test.out
+eval_tap $? 53 'PublicGameSessionInvite' test.out
 
-#- 52 JoinGameSession
+#- 54 JoinGameSession
 ./ng net.accelbyte.sdk.cli.Main session joinGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'nOsHq00p' \
+    --sessionId '7gXx1vCM' \
     > test.out 2>&1
-eval_tap $? 52 'JoinGameSession' test.out
+eval_tap $? 54 'JoinGameSession' test.out
 
-#- 53 PublicPromoteGameSessionLeader
+#- 55 PublicPromoteGameSessionLeader
 ./ng net.accelbyte.sdk.cli.Main session publicPromoteGameSessionLeader \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'WyspcwNk' \
-    --body '{"leaderID": "eSdwTYul"}' \
+    --sessionId 'Rl5EzlHd' \
+    --body '{"leaderID": "DChqwrkN"}' \
     > test.out 2>&1
-eval_tap $? 53 'PublicPromoteGameSessionLeader' test.out
+eval_tap $? 55 'PublicPromoteGameSessionLeader' test.out
 
-#- 54 LeaveGameSession
+#- 56 LeaveGameSession
 ./ng net.accelbyte.sdk.cli.Main session leaveGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'mCFLDcpn' \
+    --sessionId 'I0OQhA9D' \
     > test.out 2>&1
-eval_tap $? 54 'LeaveGameSession' test.out
+eval_tap $? 56 'LeaveGameSession' test.out
 
-#- 55 PublicGameSessionReject
+#- 57 PublicGameSessionReject
 ./ng net.accelbyte.sdk.cli.Main session publicGameSessionReject \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'qHVHmByn' \
+    --sessionId 'b5TrNrLv' \
     > test.out 2>&1
-eval_tap $? 55 'PublicGameSessionReject' test.out
+eval_tap $? 57 'PublicGameSessionReject' test.out
 
-#- 56 GetSessionServerSecret
+#- 58 GetSessionServerSecret
 ./ng net.accelbyte.sdk.cli.Main session getSessionServerSecret \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'kSMDPX5j' \
+    --sessionId 'Jp6F1nkJ' \
     > test.out 2>&1
-eval_tap $? 56 'GetSessionServerSecret' test.out
+eval_tap $? 58 'GetSessionServerSecret' test.out
 
-#- 57 AppendTeamGameSession
+#- 59 AppendTeamGameSession
 ./ng net.accelbyte.sdk.cli.Main session appendTeamGameSession \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'RLmaUYJu' \
-    --body '{"additionalMembers": [{"partyID": "PfKHRtFL", "userIDs": ["kQMCABN3", "Rd7MGDNF", "m08JH345"]}, {"partyID": "ccsDvktW", "userIDs": ["50ZbDmHQ", "xfa2kjoB", "Yl2gnMdT"]}, {"partyID": "UJnBKrxL", "userIDs": ["52HjiLOa", "T8hept9x", "DKEkfZYF"]}], "proposedTeams": [{"UserIDs": ["9poMObPS", "61wVw1YE", "bWEZE3np"], "parties": [{"partyID": "mZRgm1wI", "userIDs": ["qeNx40ag", "YDn5O0lL", "vhHR4jTY"]}, {"partyID": "I7aZbBjy", "userIDs": ["fN7g5sty", "k7FeqeCz", "AJIWDhIe"]}, {"partyID": "xJFCv79t", "userIDs": ["hsdCDhEC", "ZgDsuKbH", "f5FLQ3Qs"]}]}, {"UserIDs": ["oLZx8OBK", "xIlI9ADa", "xcwogj7I"], "parties": [{"partyID": "Ps12QsIy", "userIDs": ["89dqSfvh", "JCOY68jH", "a4zZVvVY"]}, {"partyID": "kPF1gooH", "userIDs": ["5E41JCSg", "LmjQB86i", "vnnc7IvE"]}, {"partyID": "BKEdRNrH", "userIDs": ["MLOSn7br", "1n79u63d", "ZKXSOZjy"]}]}, {"UserIDs": ["uNsaalKa", "vkKykDGy", "FCNemysK"], "parties": [{"partyID": "8cq2QDp4", "userIDs": ["Rnk3MGuY", "kjfVGfUs", "9eOM05Tp"]}, {"partyID": "St4lA2hJ", "userIDs": ["3i13PTU2", "tu6MBlV6", "khuGI9yB"]}, {"partyID": "njYqMFbr", "userIDs": ["l0FFmnDM", "iBtyc2Lo", "0sXKFNkk"]}]}], "version": 58}' \
+    --sessionId 'WRSJD232' \
+    --body '{"additionalMembers": [{"partyID": "9Rfn8BDh", "userIDs": ["Cv1cui6A", "jO3jdPQl", "9XWHtaYu"]}, {"partyID": "mAY8qGKY", "userIDs": ["1NcNFdQS", "PqFido2D", "Sxq5akzA"]}, {"partyID": "98mg89dO", "userIDs": ["ACDeKHH8", "aqvlxN63", "o4juKiI0"]}], "proposedTeams": [{"UserIDs": ["5cIgQcyy", "1JtFAsku", "Q6jhs2mR"], "parties": [{"partyID": "8vMYpzGf", "userIDs": ["IP4MjY5j", "FjRwoWLC", "62AZyApP"]}, {"partyID": "BQSiv3Gm", "userIDs": ["1nQuXPdo", "xZCqXtvX", "hSt9BzOo"]}, {"partyID": "CTJhJPn6", "userIDs": ["9jJPuVaw", "ZOr6rAXX", "QBDPYUcG"]}]}, {"UserIDs": ["tyE8Hj82", "CNuMYPys", "e66N9F3X"], "parties": [{"partyID": "luOwYGcx", "userIDs": ["871a28ac", "5fJgHd4d", "0l9ZhzLY"]}, {"partyID": "ZkaSUpbR", "userIDs": ["IfBTYBgE", "ONLRln98", "WshgqvWE"]}, {"partyID": "HPqT7vPA", "userIDs": ["N12iIb6r", "MEtqbsnM", "eZWQ2epc"]}]}, {"UserIDs": ["jT9YDpfx", "FMlAtsSA", "XwFqoPgN"], "parties": [{"partyID": "fa6BxSFM", "userIDs": ["Xu6AfMrY", "qxr7tg6M", "5hSk3oNU"]}, {"partyID": "4bv0RGad", "userIDs": ["ZY7MOiIz", "95f6BELr", "uV75mFQB"]}, {"partyID": "FMAtCR50", "userIDs": ["BLMJ0vEm", "T16xGVWx", "KgmsHLHF"]}]}], "version": 36}' \
     > test.out 2>&1
-eval_tap $? 57 'AppendTeamGameSession' test.out
+eval_tap $? 59 'AppendTeamGameSession' test.out
 
-#- 58 PublicPartyJoinCode
+#- 60 PublicPartyJoinCode
 ./ng net.accelbyte.sdk.cli.Main session publicPartyJoinCode \
     --namespace "$AB_NAMESPACE" \
-    --body '{"code": "VIZ1xXaa"}' \
+    --body '{"code": "qHQHfxti"}' \
     > test.out 2>&1
-eval_tap $? 58 'PublicPartyJoinCode' test.out
+eval_tap $? 60 'PublicPartyJoinCode' test.out
 
-#- 59 PublicGetParty
+#- 61 PublicGetParty
 ./ng net.accelbyte.sdk.cli.Main session publicGetParty \
     --namespace "$AB_NAMESPACE" \
-    --partyId '2OMKfCBG' \
+    --partyId 'FvL0v7zL' \
     > test.out 2>&1
-eval_tap $? 59 'PublicGetParty' test.out
+eval_tap $? 61 'PublicGetParty' test.out
 
-#- 60 PublicUpdateParty
+#- 62 PublicUpdateParty
 ./ng net.accelbyte.sdk.cli.Main session publicUpdateParty \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'dGu4XE8X' \
-    --body '{"attributes": {"2xdnYJVz": {}, "guTidf42": {}, "kwnIoFhw": {}}, "inactiveTimeout": 59, "inviteTimeout": 60, "joinability": "fiK9c7kU", "maxPlayers": 84, "minPlayers": 23, "type": "Z1egNtXG", "version": 73}' \
+    --partyId 'BWFVfYI7' \
+    --body '{"attributes": {"31J2dJDA": {}, "UDXFjP5z": {}, "iY7AxHeD": {}}, "inactiveTimeout": 8, "inviteTimeout": 17, "joinability": "M2nQiNTb", "maxPlayers": 6, "minPlayers": 53, "type": "jF6fXE8v", "version": 20}' \
     > test.out 2>&1
-eval_tap $? 60 'PublicUpdateParty' test.out
+eval_tap $? 62 'PublicUpdateParty' test.out
 
-#- 61 PublicPatchUpdateParty
+#- 63 PublicPatchUpdateParty
 ./ng net.accelbyte.sdk.cli.Main session publicPatchUpdateParty \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'LBQNrRjy' \
-    --body '{"attributes": {"DnPI9yIk": {}, "NRIrzi49": {}, "XgOWtkqq": {}}, "inactiveTimeout": 64, "inviteTimeout": 32, "joinability": "qUmb0thp", "maxPlayers": 5, "minPlayers": 47, "type": "kzVGhA8W", "version": 43}' \
+    --partyId 'M07yKixq' \
+    --body '{"attributes": {"hc5tqGjT": {}, "XzjquojB": {}, "9gnmg0vD": {}}, "inactiveTimeout": 66, "inviteTimeout": 0, "joinability": "9hTf4PgA", "maxPlayers": 60, "minPlayers": 24, "type": "aalhtbX2", "version": 74}' \
     > test.out 2>&1
-eval_tap $? 61 'PublicPatchUpdateParty' test.out
+eval_tap $? 63 'PublicPatchUpdateParty' test.out
 
-#- 62 PublicGeneratePartyCode
+#- 64 PublicGeneratePartyCode
 ./ng net.accelbyte.sdk.cli.Main session publicGeneratePartyCode \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'OqZCj3Hd' \
+    --partyId 'Ilbllwh4' \
     > test.out 2>&1
-eval_tap $? 62 'PublicGeneratePartyCode' test.out
+eval_tap $? 64 'PublicGeneratePartyCode' test.out
 
-#- 63 PublicRevokePartyCode
+#- 65 PublicRevokePartyCode
 ./ng net.accelbyte.sdk.cli.Main session publicRevokePartyCode \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'qdFXW7DQ' \
+    --partyId 'I5tBBmqQ' \
     > test.out 2>&1
-eval_tap $? 63 'PublicRevokePartyCode' test.out
+eval_tap $? 65 'PublicRevokePartyCode' test.out
 
-#- 64 PublicPartyInvite
+#- 66 PublicPartyInvite
 ./ng net.accelbyte.sdk.cli.Main session publicPartyInvite \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'ECmIvBgF' \
-    --body '{"platformID": "kDkyzf6J", "userID": "ewqTTFOL"}' \
+    --partyId 'QKwByjlW' \
+    --body '{"platformID": "aiswxyQr", "userID": "tY4GVJzg"}' \
     > test.out 2>&1
-eval_tap $? 64 'PublicPartyInvite' test.out
+eval_tap $? 66 'PublicPartyInvite' test.out
 
-#- 65 PublicPromotePartyLeader
+#- 67 PublicPromotePartyLeader
 ./ng net.accelbyte.sdk.cli.Main session publicPromotePartyLeader \
     --namespace "$AB_NAMESPACE" \
-    --partyId '73llIvpd' \
-    --body '{"leaderID": "qZ7YHd2Z"}' \
+    --partyId 'lmH2h7fF' \
+    --body '{"leaderID": "SWQn8iJh"}' \
     > test.out 2>&1
-eval_tap $? 65 'PublicPromotePartyLeader' test.out
+eval_tap $? 67 'PublicPromotePartyLeader' test.out
 
-#- 66 PublicPartyJoin
+#- 68 PublicPartyJoin
 ./ng net.accelbyte.sdk.cli.Main session publicPartyJoin \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'uzOC4MEr' \
+    --partyId '6W45JKBr' \
     > test.out 2>&1
-eval_tap $? 66 'PublicPartyJoin' test.out
+eval_tap $? 68 'PublicPartyJoin' test.out
 
-#- 67 PublicPartyLeave
+#- 69 PublicPartyLeave
 ./ng net.accelbyte.sdk.cli.Main session publicPartyLeave \
     --namespace "$AB_NAMESPACE" \
-    --partyId '0OMv73AF' \
+    --partyId 'Tw0ZdXGW' \
     > test.out 2>&1
-eval_tap $? 67 'PublicPartyLeave' test.out
+eval_tap $? 69 'PublicPartyLeave' test.out
 
-#- 68 PublicPartyReject
+#- 70 PublicPartyReject
 ./ng net.accelbyte.sdk.cli.Main session publicPartyReject \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'qe2uxrCg' \
+    --partyId 'KLnWvvG6' \
     > test.out 2>&1
-eval_tap $? 68 'PublicPartyReject' test.out
+eval_tap $? 70 'PublicPartyReject' test.out
 
-#- 69 PublicPartyKick
+#- 71 PublicPartyKick
 ./ng net.accelbyte.sdk.cli.Main session publicPartyKick \
     --namespace "$AB_NAMESPACE" \
-    --partyId 'lqQXlqM6' \
-    --userId 'sIoN8mjH' \
+    --partyId 'uEPIxaJx' \
+    --userId 'tzYBqib8' \
     > test.out 2>&1
-eval_tap $? 69 'PublicPartyKick' test.out
+eval_tap $? 71 'PublicPartyKick' test.out
 
-#- 70 PublicCreateParty
+#- 72 PublicCreateParty
 ./ng net.accelbyte.sdk.cli.Main session publicCreateParty \
     --namespace "$AB_NAMESPACE" \
-    --body '{"attributes": {"4bLgJ1hk": {}, "9k5V8iJa": {}, "IW2wNsqg": {}}, "configurationName": "aIya1YeY", "inactiveTimeout": 4, "inviteTimeout": 17, "joinability": "hRhZyNzr", "maxPlayers": 51, "members": [{"ID": "qQoPIeU3", "PlatformID": "xnsDhQsl", "PlatformUserID": "xzIIWsve"}, {"ID": "XGBDkw5X", "PlatformID": "3OE0J0Mh", "PlatformUserID": "E0iwoHs0"}, {"ID": "MNfrCofY", "PlatformID": "ptht0Lx0", "PlatformUserID": "YkbueHSp"}], "minPlayers": 52, "textChat": false, "type": "BszZv8r8"}' \
+    --body '{"attributes": {"zdlfPoml": {}, "iGBjggWS": {}, "zTEVqSPI": {}}, "configurationName": "3yWzOOQ1", "inactiveTimeout": 81, "inviteTimeout": 87, "joinability": "zLUszVRM", "maxPlayers": 100, "members": [{"ID": "a6Dsy9Zf", "PlatformID": "3iLK5WDT", "PlatformUserID": "GIlhoPw2"}, {"ID": "I9WBm4Qm", "PlatformID": "54LQPcEd", "PlatformUserID": "mgr34esV"}, {"ID": "Rs8sXCR0", "PlatformID": "blrUPpti", "PlatformUserID": "ykToJ5CQ"}], "minPlayers": 75, "textChat": false, "type": "H9yHsK9w"}' \
     > test.out 2>&1
-eval_tap $? 70 'PublicCreateParty' test.out
+eval_tap $? 72 'PublicCreateParty' test.out
 
-#- 71 PublicGetRecentPlayer
+#- 73 PublicGetRecentPlayer
 ./ng net.accelbyte.sdk.cli.Main session publicGetRecentPlayer \
     --namespace "$AB_NAMESPACE" \
-    --limit '27' \
+    --limit '78' \
     > test.out 2>&1
-eval_tap $? 71 'PublicGetRecentPlayer' test.out
+eval_tap $? 73 'PublicGetRecentPlayer' test.out
 
-#- 72 PublicGetRecentTeamPlayer
+#- 74 PublicGetRecentTeamPlayer
 ./ng net.accelbyte.sdk.cli.Main session publicGetRecentTeamPlayer \
     --namespace "$AB_NAMESPACE" \
-    --limit '64' \
+    --limit '100' \
     > test.out 2>&1
-eval_tap $? 72 'PublicGetRecentTeamPlayer' test.out
+eval_tap $? 74 'PublicGetRecentTeamPlayer' test.out
 
-#- 73 PublicUpdateInsertSessionStorageLeader
+#- 75 PublicUpdateInsertSessionStorageLeader
 ./ng net.accelbyte.sdk.cli.Main session publicUpdateInsertSessionStorageLeader \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'WjNpFRJS' \
-    --body '{"E1f4x6Kp": {}, "CcHcbC7v": {}, "mh8YLq6T": {}}' \
+    --sessionId 'Fv7j4OKB' \
+    --body '{"TkqxhmaQ": {}, "lbKRESVg": {}, "tprJ7trs": {}}' \
     > test.out 2>&1
-eval_tap $? 73 'PublicUpdateInsertSessionStorageLeader' test.out
+eval_tap $? 75 'PublicUpdateInsertSessionStorageLeader' test.out
 
-#- 74 PublicUpdateInsertSessionStorage
+#- 76 PublicUpdateInsertSessionStorage
 ./ng net.accelbyte.sdk.cli.Main session publicUpdateInsertSessionStorage \
     --namespace "$AB_NAMESPACE" \
-    --sessionId 'WhubEGXu' \
-    --userId 'ECTEVqGA' \
-    --body '{"y9D6cfBt": {}, "dQ1EvtKl": {}, "x4tbJ8Ue": {}}' \
+    --sessionId 'wy9wzu3S' \
+    --userId 'lDOTF5iC' \
+    --body '{"gTjYi80B": {}, "EYQrTjkS": {}, "O6O5hdOu": {}}' \
     > test.out 2>&1
-eval_tap $? 74 'PublicUpdateInsertSessionStorage' test.out
+eval_tap $? 76 'PublicUpdateInsertSessionStorage' test.out
 
-#- 75 PublicGetBulkPlayerCurrentPlatform
+#- 77 PublicGetBulkPlayerCurrentPlatform
 ./ng net.accelbyte.sdk.cli.Main session publicGetBulkPlayerCurrentPlatform \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userIDs": ["hr6pb66Q", "greZeUNf", "ZCRkqT9q"]}' \
+    --body '{"userIDs": ["cs2xhYPI", "jkvlbxhB", "yzpqLixs"]}' \
     > test.out 2>&1
-eval_tap $? 75 'PublicGetBulkPlayerCurrentPlatform' test.out
+eval_tap $? 77 'PublicGetBulkPlayerCurrentPlatform' test.out
 
-#- 76 PublicGetPlayerAttributes
+#- 78 PublicGetPlayerAttributes
 ./ng net.accelbyte.sdk.cli.Main session publicGetPlayerAttributes \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 76 'PublicGetPlayerAttributes' test.out
+eval_tap $? 78 'PublicGetPlayerAttributes' test.out
 
-#- 77 PublicStorePlayerAttributes
+#- 79 PublicStorePlayerAttributes
 ./ng net.accelbyte.sdk.cli.Main session publicStorePlayerAttributes \
     --namespace "$AB_NAMESPACE" \
-    --body '{"crossplayEnabled": true, "currentPlatform": "PhXafXOU", "data": {"yeY7koPW": {}, "RfqOj3XQ": {}, "LtXTwfBa": {}}, "platforms": [{"name": "OG0VJ70G", "userID": "kM7OdsPl"}, {"name": "DW1OZaCA", "userID": "v9tJ9Kqc"}, {"name": "bA5NnosX", "userID": "uC0zNorG"}], "roles": ["hRUcwD8F", "WQ50QfjY", "HNEajOQi"], "simultaneousPlatform": "Y3CXH7X0"}' \
+    --body '{"crossplayEnabled": true, "currentPlatform": "d9geEmdE", "data": {"9sumS6NU": {}, "atHpEXXm": {}, "28P0rYyw": {}}, "platforms": [{"name": "2mOVerhz", "userID": "lKb7YzN7"}, {"name": "1ZNi3wLt", "userID": "qkaA7vXM"}, {"name": "AkYth7Mq", "userID": "mZ5M33dr"}], "roles": ["qjBgxr25", "9YQ7hmrz", "csVONrD2"], "simultaneousPlatform": "LxDP9gbe"}' \
     > test.out 2>&1
-eval_tap $? 77 'PublicStorePlayerAttributes' test.out
+eval_tap $? 79 'PublicStorePlayerAttributes' test.out
 
-#- 78 PublicDeletePlayerAttributes
+#- 80 PublicDeletePlayerAttributes
 ./ng net.accelbyte.sdk.cli.Main session publicDeletePlayerAttributes \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
-eval_tap $? 78 'PublicDeletePlayerAttributes' test.out
+eval_tap $? 80 'PublicDeletePlayerAttributes' test.out
 
-#- 79 PublicQueryMyGameSessions
+#- 81 PublicQueryMyGameSessions
 ./ng net.accelbyte.sdk.cli.Main session publicQueryMyGameSessions \
     --namespace "$AB_NAMESPACE" \
-    --order 'yowvgF64' \
-    --orderBy 'WYdYznbZ' \
-    --status 'BUojkFK4' \
+    --order 'uj7RHdCH' \
+    --orderBy 'yXKN9QoD' \
+    --status 'ofwDdPuJ' \
     > test.out 2>&1
-eval_tap $? 79 'PublicQueryMyGameSessions' test.out
+eval_tap $? 81 'PublicQueryMyGameSessions' test.out
 
-#- 80 PublicQueryMyParties
+#- 82 PublicQueryMyParties
 ./ng net.accelbyte.sdk.cli.Main session publicQueryMyParties \
     --namespace "$AB_NAMESPACE" \
-    --order 'Y3gWhRWk' \
-    --orderBy 'flgqdiXE' \
-    --status 'tSzny2Ap' \
+    --order 'GpiLMoj1' \
+    --orderBy '6FEaX2y5' \
+    --status 'vxkI1hGb' \
     > test.out 2>&1
-eval_tap $? 80 'PublicQueryMyParties' test.out
+eval_tap $? 82 'PublicQueryMyParties' test.out
 
 
 rm -f "tmp.dat"
