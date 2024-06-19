@@ -45,6 +45,7 @@ public class AdminGetUserPlatformAccountsV3 extends Operation {
   private String before;
   private Integer limit;
   private String platformId;
+  private String targetNamespace;
 
   /**
    * @param namespace required
@@ -60,13 +61,15 @@ public class AdminGetUserPlatformAccountsV3 extends Operation {
       String after,
       String before,
       Integer limit,
-      String platformId) {
+      String platformId,
+      String targetNamespace) {
     this.namespace = namespace;
     this.userId = userId;
     this.after = after;
     this.before = before;
     this.limit = limit;
     this.platformId = platformId;
+    this.targetNamespace = targetNamespace;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -91,6 +94,9 @@ public class AdminGetUserPlatformAccountsV3 extends Operation {
     queryParams.put("before", this.before == null ? null : Arrays.asList(this.before));
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put("platformId", this.platformId == null ? null : Arrays.asList(this.platformId));
+    queryParams.put(
+        "targetNamespace",
+        this.targetNamespace == null ? null : Arrays.asList(this.targetNamespace));
     return queryParams;
   }
 
@@ -122,6 +128,7 @@ public class AdminGetUserPlatformAccountsV3 extends Operation {
     result.put("before", "None");
     result.put("limit", "None");
     result.put("platformId", "None");
+    result.put("targetNamespace", "None");
     return result;
   }
 }

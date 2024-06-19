@@ -84,6 +84,7 @@ public class TokenGrantV4 extends Operation {
   private String codeChallengeMethod;
   private String additionalData;
   private String clientId;
+  private String clientSecret;
   private String code;
   private String codeVerifier;
   private String extendNamespace;
@@ -107,6 +108,7 @@ public class TokenGrantV4 extends Operation {
       String codeChallengeMethod,
       String additionalData,
       String clientId,
+      String clientSecret,
       String code,
       String codeVerifier,
       String extendNamespace,
@@ -121,6 +123,7 @@ public class TokenGrantV4 extends Operation {
     this.codeChallengeMethod = codeChallengeMethod;
     this.additionalData = additionalData;
     this.clientId = clientId;
+    this.clientSecret = clientSecret;
     this.code = code;
     this.codeVerifier = codeVerifier;
     this.extendNamespace = extendNamespace;
@@ -133,7 +136,7 @@ public class TokenGrantV4 extends Operation {
     this.grantType = grantType;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
-    securities.add("Bearer");
+    securities.add("Basic");
   }
 
   @Override
@@ -155,6 +158,9 @@ public class TokenGrantV4 extends Operation {
     }
     if (this.clientId != null) {
       formDataParams.put("client_id", this.clientId);
+    }
+    if (this.clientSecret != null) {
+      formDataParams.put("client_secret", this.clientSecret);
     }
     if (this.code != null) {
       formDataParams.put("code", this.code);

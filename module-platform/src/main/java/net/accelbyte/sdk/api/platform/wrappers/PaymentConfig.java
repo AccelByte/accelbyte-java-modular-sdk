@@ -34,6 +34,34 @@ public class PaymentConfig {
   }
 
   /**
+   * @see GetPaymentMerchantConfig
+   */
+  public PaymentDomainWhitelistConfigInfo getPaymentMerchantConfig(GetPaymentMerchantConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UpdatePaymentDomainWhitelistConfig
+   */
+  public PaymentDomainWhitelistConfigInfo updatePaymentDomainWhitelistConfig(
+      UpdatePaymentDomainWhitelistConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see TestAdyenConfig
    */
   public TestResult testAdyenConfig(TestAdyenConfig input) throws Exception {
@@ -77,6 +105,19 @@ public class PaymentConfig {
    */
   public PaymentMerchantConfigInfo debugMatchedPaymentMerchantConfig(
       DebugMatchedPaymentMerchantConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see TestNeonPayConfig
+   */
+  public TestResult testNeonPayConfig(TestNeonPayConfig input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -139,9 +180,9 @@ public class PaymentConfig {
   }
 
   /**
-   * @see GetPaymentMerchantConfig
+   * @see GetPaymentMerchantConfig1
    */
-  public PaymentMerchantConfigInfo getPaymentMerchantConfig(GetPaymentMerchantConfig input)
+  public PaymentMerchantConfigInfo getPaymentMerchantConfig1(GetPaymentMerchantConfig1 input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -222,6 +263,32 @@ public class PaymentConfig {
    * @see TestCheckoutConfigById
    */
   public TestResult testCheckoutConfigById(TestCheckoutConfigById input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UpdateNeonPayConfig
+   */
+  public PaymentMerchantConfigInfo updateNeonPayConfig(UpdateNeonPayConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see TestNeonPayConfigById
+   */
+  public TestResult testNeonPayConfigById(TestNeonPayConfigById input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

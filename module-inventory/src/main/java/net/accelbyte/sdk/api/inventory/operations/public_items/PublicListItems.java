@@ -42,7 +42,6 @@ public class PublicListItems extends Operation {
   private String namespace;
   private Integer limit;
   private Integer offset;
-  private Integer qtyGte;
   private String sortBy;
   private String sourceItemId;
   private String tags;
@@ -60,7 +59,6 @@ public class PublicListItems extends Operation {
       String namespace,
       Integer limit,
       Integer offset,
-      Integer qtyGte,
       String sortBy,
       String sourceItemId,
       String tags) {
@@ -68,7 +66,6 @@ public class PublicListItems extends Operation {
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
-    this.qtyGte = qtyGte;
     this.sortBy = sortBy;
     this.sourceItemId = sourceItemId;
     this.tags = tags;
@@ -95,8 +92,6 @@ public class PublicListItems extends Operation {
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
-    queryParams.put(
-        "qtyGte", this.qtyGte == null ? null : Arrays.asList(String.valueOf(this.qtyGte)));
     queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
     queryParams.put(
         "sourceItemId", this.sourceItemId == null ? null : Arrays.asList(this.sourceItemId));
@@ -130,7 +125,6 @@ public class PublicListItems extends Operation {
     Map<String, String> result = new HashMap<>();
     result.put("limit", "None");
     result.put("offset", "None");
-    result.put("qtyGte", "None");
     result.put("sortBy", "None");
     result.put("sourceItemId", "None");
     result.put("tags", "None");
@@ -141,9 +135,6 @@ public class PublicListItems extends Operation {
     CreatedAt("createdAt"),
     CreatedAtasc("createdAt:asc"),
     CreatedAtdesc("createdAt:desc"),
-    Qty("qty"),
-    Qtyasc("qty:asc"),
-    Qtydesc("qty:desc"),
     UpdatedAt("updatedAt"),
     UpdatedAtasc("updatedAt:asc"),
     UpdatedAtdesc("updatedAt:desc");

@@ -46,6 +46,19 @@ public class Artifacts {
   }
 
   /**
+   * @see ArtifactBulkDelete
+   */
+  public void artifactBulkDelete(ArtifactBulkDelete input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see ArtifactUsageGet
    */
   public ApiArtifactUsageResponse artifactUsageGet(ArtifactUsageGet input) throws Exception {

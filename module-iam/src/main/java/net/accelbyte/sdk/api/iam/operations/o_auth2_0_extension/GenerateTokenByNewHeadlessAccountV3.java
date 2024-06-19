@@ -55,7 +55,7 @@ public class GenerateTokenByNewHeadlessAccountV3 extends Operation {
     this.linkingToken = linkingToken;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
-    securities.add("Bearer");
+    securities.add("Basic");
   }
 
   @Override

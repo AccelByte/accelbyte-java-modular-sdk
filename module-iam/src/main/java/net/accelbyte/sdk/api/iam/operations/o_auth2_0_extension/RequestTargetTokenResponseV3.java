@@ -52,7 +52,7 @@ public class RequestTargetTokenResponseV3 extends Operation {
     this.code = code;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
-    securities.add("Bearer");
+    securities.add("Basic");
   }
 
   @Override

@@ -652,9 +652,9 @@ public class Item {
   }
 
   /**
-   * @see QueryItems1
+   * @see QueryItemsV2
    */
-  public FullItemPagingResult queryItems1(QueryItems1 input) throws Exception {
+  public FullItemPagingResult queryItemsV2(QueryItemsV2 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

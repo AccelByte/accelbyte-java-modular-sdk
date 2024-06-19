@@ -47,6 +47,33 @@ public class Config {
   }
 
   /**
+   * @see AdminGetLogConfig
+   */
+  public LogconfigConfiguration adminGetLogConfig(AdminGetLogConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminPatchUpdateLogConfig
+   */
+  public LogconfigConfiguration adminPatchUpdateLogConfig(AdminPatchUpdateLogConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminGetConfigV1
    */
   public ModelsConfigReq adminGetConfigV1(AdminGetConfigV1 input) throws Exception {

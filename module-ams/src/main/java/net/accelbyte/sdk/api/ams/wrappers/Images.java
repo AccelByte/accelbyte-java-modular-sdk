@@ -59,6 +59,19 @@ public class Images {
   }
 
   /**
+   * @see ImageMarkForDeletion
+   */
+  public void imageMarkForDeletion(ImageMarkForDeletion input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see ImagePatch
    */
   public ApiImageDetails imagePatch(ImagePatch input) throws Exception {
@@ -68,6 +81,19 @@ public class Images {
 
     final HttpResponse httpResponse = sdk.runRequest(input);
     return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see ImageUnmarkForDeletion
+   */
+  public void imageUnmarkForDeletion(ImageUnmarkForDeletion input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
 }
