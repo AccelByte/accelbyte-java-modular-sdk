@@ -37,7 +37,7 @@ def createGithubRelease(tag_name, prerelease = false, name = null, body = null) 
 
 pipeline {
   agent {
-    label "justice-codegen-sdk"
+    label "extend-builder-batch"
   }
   stages {
     stage('Prepare') {
