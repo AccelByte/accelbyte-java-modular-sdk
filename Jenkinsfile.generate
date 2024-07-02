@@ -17,7 +17,7 @@ sdkCodegenRepoName = "justice-codegen-modular-sdk"
 mockServerRepoName = "justice-codegen-sdk-mock-server"
 sdkRepoName="justice-codegen-java-modular-sdk"
 
-sdkSpecEnvironmentName = "demo"
+sdkSpecEnvironmentName = "stage"
 sdkCodegenGenerateBranchName = "master"
 sdkGenerateBranchName = "rc-nightly"
 
