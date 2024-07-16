@@ -34,6 +34,8 @@ sdkCodegenExe = "accelbyte-codegen-linux_amd64"
 breakingChangeCheckExitCode = 0
 outstandingDeprecationCount = 0
 
+jobChannel = env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK ? env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK : "#activity-justice-codegen-modular-sdk"
+
 def getTimestampUtc() {
   now = new Date()
   return now.format("yyyy-MM-dd'T'HH:mm:ss+00:00", TimeZone.getTimeZone('UTC'))
@@ -224,7 +226,7 @@ pipeline {
                   |<https://bitbucket.org/accelbyte/${sdkRepoName}/pull-requests/new?source=${sdkGenerateBranchName}|Compare or Create Pull Request>
                   ${additionalInfo}
                   |""".stripMargin()
-        slackSend(channel: "#activity-justice-codegen-modular-sdk", color: '#36B37E', message: message)
+        slackSend(channel: jobChannel, color: '#36B37E', message: message)
       }
     }
     failure {
@@ -237,7 +239,7 @@ pipeline {
             :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
 
             |""".stripMargin()
-        slackSend(channel: "#activity-justice-codegen-modular-sdk", color: '#FF0000', message: message)
+        slackSend(channel: jobChannel, color: '#FF0000', message: message)
       }
     }
   }

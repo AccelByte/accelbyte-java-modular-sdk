@@ -8,6 +8,8 @@ githubPat = 'accelbyte-sdk-sdkbuild-pat-github'
 githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
 sdkName = "AccelByte Java Extend Modular SDK"
 
+jobChannel = env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK ? env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK : "#activity-justice-codegen-modular-sdk"
+
 def createGithubRelease(tag_name, prerelease = false, name = null, body = null) {
   def request = ['tag_name': tag_name]
   if (name) {
@@ -161,7 +163,7 @@ pipeline {
 //            |${params.ACTION}
 //
 //            |""".stripMargin()
-//        slackSend(channel: '#activity-justice-codegen-modular-sdk', color: '#FF0000', message: message)
+//        slackSend(channel: jobChannel, color: '#FF0000', message: message)
 //      }
 //    }
 //  }
