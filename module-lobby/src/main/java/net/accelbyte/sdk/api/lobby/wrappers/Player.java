@@ -143,6 +143,19 @@ public class Player {
   }
 
   /**
+   * @see AdminBulkUnblockPlayersV1
+   */
+  public void adminBulkUnblockPlayersV1(AdminBulkUnblockPlayersV1 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicPlayerBlockPlayersV1
    */
   public void publicPlayerBlockPlayersV1(PublicPlayerBlockPlayersV1 input) throws Exception {

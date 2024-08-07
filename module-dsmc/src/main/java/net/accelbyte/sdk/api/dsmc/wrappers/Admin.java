@@ -33,6 +33,58 @@ public class Admin {
   }
 
   /**
+   * @see GetWorkerConfig
+   */
+  public ModelsWorkerConfig getWorkerConfig(GetWorkerConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UpdateWorkerConfig
+   */
+  public void updateWorkerConfig(UpdateWorkerConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see CreateWorkerConfig
+   */
+  public ModelsWorkerConfig createWorkerConfig(CreateWorkerConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AddBuffer
+   */
+  public ModelsAddBufferResponse addBuffer(AddBuffer input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see ListServer
    */
   public ModelsListServerResponse listServer(ListServer input) throws Exception {
@@ -101,7 +153,7 @@ public class Admin {
   /**
    * @see GetServer
    */
-  public ModelsServer getServer(GetServer input) throws Exception {
+  public ModelsServerDetailsResponse getServer(GetServer input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -154,6 +206,33 @@ public class Admin {
    * @see DeleteSession
    */
   public void deleteSession(DeleteSession input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see RunGhostCleanerRequestHandler
+   */
+  public void runGhostCleanerRequestHandler(RunGhostCleanerRequestHandler input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see RunZombieCleanerRequestHandler
+   */
+  public void runZombieCleanerRequestHandler(RunZombieCleanerRequestHandler input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

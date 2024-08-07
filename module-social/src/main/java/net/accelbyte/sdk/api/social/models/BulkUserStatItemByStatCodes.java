@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.dslogmanager.models;
+package net.accelbyte.sdk.api.social.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,24 +23,21 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class ModelsNotifPayloadServerStatusChange extends Model {
+public class BulkUserStatItemByStatCodes extends Model {
 
-  @JsonProperty("match")
-  private ModelsMatchResult match;
-
-  @JsonProperty("server")
-  private ModelsServer server;
+  @JsonProperty("statCodes")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> statCodes;
 
   @JsonIgnore
-  public ModelsNotifPayloadServerStatusChange createFromJson(String json)
-      throws JsonProcessingException {
+  public BulkUserStatItemByStatCodes createFromJson(String json) throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<ModelsNotifPayloadServerStatusChange> createFromJsonList(String json)
+  public List<BulkUserStatItemByStatCodes> createFromJsonList(String json)
       throws JsonProcessingException {
     return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsNotifPayloadServerStatusChange>>() {});
+        .readValue(json, new TypeReference<List<BulkUserStatItemByStatCodes>>() {});
   }
 }

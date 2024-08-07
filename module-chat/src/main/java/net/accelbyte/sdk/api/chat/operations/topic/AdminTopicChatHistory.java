@@ -49,6 +49,7 @@ public class AdminTopicChatHistory extends Operation {
   private String senderUserId;
   private String shardId;
   private Integer startCreatedAt;
+  private Boolean unfiltered;
 
   /**
    * @param namespace required
@@ -68,7 +69,8 @@ public class AdminTopicChatHistory extends Operation {
       String order,
       String senderUserId,
       String shardId,
-      Integer startCreatedAt) {
+      Integer startCreatedAt,
+      Boolean unfiltered) {
     this.namespace = namespace;
     this.topic = topic;
     this.endCreatedAt = endCreatedAt;
@@ -79,6 +81,7 @@ public class AdminTopicChatHistory extends Operation {
     this.senderUserId = senderUserId;
     this.shardId = shardId;
     this.startCreatedAt = startCreatedAt;
+    this.unfiltered = unfiltered;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -113,6 +116,9 @@ public class AdminTopicChatHistory extends Operation {
     queryParams.put(
         "startCreatedAt",
         this.startCreatedAt == null ? null : Arrays.asList(String.valueOf(this.startCreatedAt)));
+    queryParams.put(
+        "unfiltered",
+        this.unfiltered == null ? null : Arrays.asList(String.valueOf(this.unfiltered)));
     return queryParams;
   }
 
@@ -148,6 +154,7 @@ public class AdminTopicChatHistory extends Operation {
     result.put("senderUserId", "None");
     result.put("shardId", "None");
     result.put("startCreatedAt", "None");
+    result.put("unfiltered", "None");
     return result;
   }
 }

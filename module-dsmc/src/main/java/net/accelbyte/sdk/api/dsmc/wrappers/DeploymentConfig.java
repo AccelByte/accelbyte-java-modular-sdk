@@ -224,9 +224,37 @@ public class DeploymentConfig {
   }
 
   /**
+   * @see DeleteCreatingServerCountQueue
+   */
+  public void deleteCreatingServerCountQueue(DeleteCreatingServerCountQueue input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see GetAllDeploymentClient
    */
   public ModelsListDeploymentResponse getAllDeploymentClient(GetAllDeploymentClient input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see GetDeploymentClient
+   */
+  public ModelsDeploymentWithOverride getDeploymentClient(GetDeploymentClient input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

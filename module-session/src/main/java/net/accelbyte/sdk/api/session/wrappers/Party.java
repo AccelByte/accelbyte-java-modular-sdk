@@ -207,6 +207,19 @@ public class Party {
   }
 
   /**
+   * @see PublicPartyCancel
+   */
+  public void publicPartyCancel(PublicPartyCancel input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicPartyKick
    */
   public ApimodelsKickResponse publicPartyKick(PublicPartyKick input) throws Exception {

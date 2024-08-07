@@ -6,36 +6,30 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.dsmc.operations.image_config;
+package net.accelbyte.sdk.api.session.operations.party;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.util.Helper;
 
 /**
- * ExportImages
+ * publicPartyCancel
  *
- * <p>Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
- *
- * <p>Required scope: social
- *
- * <p>This endpoint export a dedicated servers images in a namespace.
+ * <p>Cancel a party invitation.
  */
 @Getter
 @Setter
-public class ExportImages extends Operation {
+public class PublicPartyCancel extends Operation {
   /** generated field's value */
-  private String path = "/dsmcontroller/admin/namespaces/{namespace}/images/export";
+  private String path =
+      "/session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/cancel";
 
-  private String method = "GET";
+  private String method = "DELETE";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
@@ -43,14 +37,21 @@ public class ExportImages extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private String partyId;
+  private String userId;
+
   /**
    * @param namespace required
+   * @param partyId required
+   * @param userId required
    */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public ExportImages(String customBasePath, String namespace) {
+  public PublicPartyCancel(String customBasePath, String namespace, String partyId, String userId) {
     this.namespace = namespace;
+    this.partyId = partyId;
+    this.userId = userId;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -62,6 +63,12 @@ public class ExportImages extends Operation {
     if (this.namespace != null) {
       pathParams.put("namespace", this.namespace);
     }
+    if (this.partyId != null) {
+      pathParams.put("partyId", this.partyId);
+    }
+    if (this.userId != null) {
+      pathParams.put("userId", this.userId);
+    }
     return pathParams;
   }
 
@@ -70,16 +77,20 @@ public class ExportImages extends Operation {
     if (this.namespace == null) {
       return false;
     }
+    if (this.partyId == null) {
+      return false;
+    }
+    if (this.userId == null) {
+      return false;
+    }
     return true;
   }
 
-  public List<ModelsImageRecord> parseResponse(int code, String contentType, InputStream payload)
+  public void handleEmptyResponse(int code, String contentType, InputStream payload)
       throws HttpResponseException, IOException {
-    if (code != 200) {
+    if (code != 204) {
       final String json = Helper.convertInputStreamToString(payload);
       throw new HttpResponseException(code, json);
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsImageRecord>>() {});
   }
 }

@@ -37,11 +37,13 @@ public class AdminQueryGameSessionDetail extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private String endDate;
   private String gameSessionID;
   private Integer limit;
   private Integer offset;
   private String order;
   private String orderBy;
+  private String startDate;
   private String userID;
 
   /**
@@ -53,18 +55,22 @@ public class AdminQueryGameSessionDetail extends Operation {
   public AdminQueryGameSessionDetail(
       String customBasePath,
       String namespace,
+      String endDate,
       String gameSessionID,
       Integer limit,
       Integer offset,
       String order,
       String orderBy,
+      String startDate,
       String userID) {
     this.namespace = namespace;
+    this.endDate = endDate;
     this.gameSessionID = gameSessionID;
     this.limit = limit;
     this.offset = offset;
     this.order = order;
     this.orderBy = orderBy;
+    this.startDate = startDate;
     this.userID = userID;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -83,6 +89,7 @@ public class AdminQueryGameSessionDetail extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("endDate", this.endDate == null ? null : Arrays.asList(this.endDate));
     queryParams.put(
         "gameSessionID", this.gameSessionID == null ? null : Arrays.asList(this.gameSessionID));
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
@@ -90,6 +97,7 @@ public class AdminQueryGameSessionDetail extends Operation {
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
     queryParams.put("order", this.order == null ? null : Arrays.asList(this.order));
     queryParams.put("orderBy", this.orderBy == null ? null : Arrays.asList(this.orderBy));
+    queryParams.put("startDate", this.startDate == null ? null : Arrays.asList(this.startDate));
     queryParams.put("userID", this.userID == null ? null : Arrays.asList(this.userID));
     return queryParams;
   }
@@ -115,11 +123,13 @@ public class AdminQueryGameSessionDetail extends Operation {
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
+    result.put("endDate", "None");
     result.put("gameSessionID", "None");
     result.put("limit", "None");
     result.put("offset", "None");
     result.put("order", "None");
     result.put("orderBy", "None");
+    result.put("startDate", "None");
     result.put("userID", "None");
     return result;
   }

@@ -40,6 +40,7 @@ public class PublicRequestDataRetrieval extends Operation {
   private String namespace;
 
   private String userId;
+  private String languageTag;
   private String password;
 
   /**
@@ -51,9 +52,10 @@ public class PublicRequestDataRetrieval extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicRequestDataRetrieval(
-      String customBasePath, String namespace, String userId, String password) {
+      String customBasePath, String namespace, String userId, String languageTag, String password) {
     this.namespace = namespace;
     this.userId = userId;
+    this.languageTag = languageTag;
     this.password = password;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -75,6 +77,9 @@ public class PublicRequestDataRetrieval extends Operation {
   @Override
   public Map<String, Object> getFormParams() {
     Map<String, Object> formDataParams = new HashMap<>();
+    if (this.languageTag != null) {
+      formDataParams.put("languageTag", this.languageTag);
+    }
     if (this.password != null) {
       formDataParams.put("password", this.password);
     }
