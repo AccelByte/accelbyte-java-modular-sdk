@@ -3,7 +3,7 @@ package tictactoe.client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.concurrent.TimeUnit;
 import net.accelbyte.sdk.core.AccelByteSDK;
-import net.accelbyte.sdk.core.client.OkhttpWebSocketClient;
+import net.accelbyte.sdk.core.client.LobbyWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
 import okhttp3.MediaType;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class App {
 
   public static void main(String[] args) throws Exception {
-    OkhttpWebSocketClient ws = null;
+    LobbyWebSocketClient ws = null;
 
     try {
       final String lambdaUrl = System.getenv("LAMBDA_URL"); // e.g. http://localhost:3000/tictactoe
@@ -54,8 +54,7 @@ public class App {
 
       // Connect to lobby websocket to get notification from lambda
 
-      ws =
-          OkhttpWebSocketClient.create(
+      ws = LobbyWebSocketClient.create(
               sdk.getSdkConfiguration().getConfigRepository(),
               sdk.getSdkConfiguration().getTokenRepository(),
               new WebSocketListener() {
@@ -67,6 +66,7 @@ public class App {
                   }
                 }
               });
+      ws.connect();
 
       System.out.println("Press Ctrl+C to exit");
 

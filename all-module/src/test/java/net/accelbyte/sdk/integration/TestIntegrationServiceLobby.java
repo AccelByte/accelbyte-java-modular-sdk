@@ -12,7 +12,7 @@ import net.accelbyte.sdk.api.lobby.models.ModelFreeFormNotificationRequest;
 import net.accelbyte.sdk.api.lobby.operations.admin.FreeFormNotification;
 import net.accelbyte.sdk.api.lobby.wrappers.Admin;
 import net.accelbyte.sdk.api.lobby.ws_models.PartyCreateRequest;
-import net.accelbyte.sdk.core.client.OkhttpWebSocketClient;
+import net.accelbyte.sdk.core.client.LobbyWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
 import okhttp3.WebSocket;
@@ -73,9 +73,11 @@ class TestIntegrationServiceLobby extends TestIntegration {
           }
         };
 
-    final OkhttpWebSocketClient ws =
-        OkhttpWebSocketClient.create(
-            new DefaultConfigRepository(), DefaultTokenRepository.getInstance(), listener);
+    final LobbyWebSocketClient ws =
+            LobbyWebSocketClient.create(
+            new DefaultConfigRepository(), DefaultTokenRepository.getInstance(), listener, 0, 5, 0);
+
+    ws.connect();
 
     final String requestMessage = PartyCreateRequest.builder().id(request_id).build().toWSM();
 

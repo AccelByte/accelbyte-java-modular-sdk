@@ -1,72 +1,51 @@
-/*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
- * This is licensed software from AccelByte Inc, for limitations
- * and restrictions contact your company contract manager.
- */
-
 package net.accelbyte.sdk.core.client;
 
-import java.util.concurrent.TimeUnit;
 import lombok.extern.java.Log;
-import net.accelbyte.sdk.api.lobby.ws_models.RefreshTokenRequest;
 import net.accelbyte.sdk.core.repository.ConfigRepository;
 import net.accelbyte.sdk.core.repository.TokenRepository;
-import net.accelbyte.sdk.core.repository.TokenRepositoryCallback;
-import net.accelbyte.sdk.core.util.Helper;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 
 @Log
-public class OkhttpWebSocketClient extends TokenRepositoryCallback {
+// @deprecated 2024-08-08 - Use LobbyWebSocketClient instead as it allows you flexibility to control when to trigger connect().
+@Deprecated
+public class OkhttpWebSocketClient extends LobbyWebSocketClient {
 
+  // OkhttpWebSocketClient, with websocket reconnect disabled
   public static OkhttpWebSocketClient create(
-      ConfigRepository configRepository,
-      TokenRepository tokenRepository,
-      WebSocketListener listener)
-      throws Exception {
-    final OkHttpClient client = new OkHttpClient.Builder().readTimeout(0, TimeUnit.SECONDS).build();
-    String baseURL = configRepository.getBaseURL();
-    if (baseURL == null || baseURL.isEmpty()) {
-      throw new IllegalArgumentException("Base URL cannot be null or empty");
-    }
-    String url = configRepository.getBaseURL() + "/lobby/";
-    String accessToken = tokenRepository.getToken();
-    Request request =
-        new Request.Builder()
-            .url(url)
-            .addHeader("Authorization", String.format("Bearer %s", accessToken))
-            .build();
-    WebSocket websocket = client.newWebSocket(request, listener);
-    OkhttpWebSocketClient webSocketClient = new OkhttpWebSocketClient(websocket);
-    tokenRepository.registerTokenRepositoryCallback(webSocketClient);
+          ConfigRepository configRepository,
+          TokenRepository tokenRepository,
+          WebSocketListener listener) throws Exception {
+    OkhttpWebSocketClient webSocketClient =
+            new OkhttpWebSocketClient(
+                    configRepository, tokenRepository, listener, 0, 0);
     return webSocketClient;
   }
 
-  private final WebSocket websocket;
-
-  private OkhttpWebSocketClient(WebSocket websocket) {
-    this.websocket = websocket;
+  // OkhttpWebSocketClient, with websocket reconnect
+  // reconnectDelayMs = 0 to turn off websocket reconnect
+  // pingIntervalMs = 0 to turn off websocket ping frames
+  public static OkhttpWebSocketClient create(
+          ConfigRepository configRepository,
+          TokenRepository tokenRepository,
+          WebSocketListener listener,
+          int reconnectDelayMs,
+          int pingIntervalMs) throws Exception {
+    OkhttpWebSocketClient webSocketClient =
+            new OkhttpWebSocketClient(
+                    configRepository, tokenRepository, listener, reconnectDelayMs, pingIntervalMs);
+    return webSocketClient;
   }
 
-  public void sendMessage(String message) {
-    if (this.websocket != null) {
-      this.websocket.send(message);
-    }
-  }
+  // reconnectDelayMs = 0 to turn off websocket reconnect
+  // pingIntervalMs = 0 to turn off websocket ping frames
+  public OkhttpWebSocketClient(
+          ConfigRepository configRepository,
+          TokenRepository tokenRepository,
+          WebSocketListener webSocketListener,
+          int reconnectDelayMs,
+          int pingIntervalMs) throws Exception {
+    super(configRepository, tokenRepository, webSocketListener, reconnectDelayMs, -1, pingIntervalMs);
 
-  public void close(int code, String reason) {
-    if (this.websocket != null) {
-      this.websocket.close(code, reason);
-    }
-  }
-
-  @Override
-  public void onAccessTokenRefreshed(String newToken) {
-    log.info("send websocket refresh token request because token refreshed");
-    RefreshTokenRequest request =
-        RefreshTokenRequest.builder().id(Helper.generateUUID()).token(newToken).build();
-    sendMessage(request.toWSM());
+    connect();
   }
 }

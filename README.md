@@ -272,6 +272,50 @@ if (!logout) {
 }
 ```
 
+### Websocket
+- **Automatic Ping Interval:** by default, automatic ping frames are not sent.
+
+  To enable the feature, for the LobbyWebSocketClient.create() call, simply pass in:
+    - `pingIntervalMs` > 0 to set the number of seconds between each automatic ping (until the connection is closed)
+    - `pingIntervalMs` = 0 means disabled
+
+- **Websocket Reconnection:**  Websocket Reconnection is a feature to help support auto-reconnection on websocket disconnects resulting from RFC 6455 status codes between 1001 to 2999. By default, the feature is off.
+
+  To enable the feature, for the LobbyWebSocketClient.create() call, simply pass in:
+    - `reconnectDelayMs` > 0 to control the delay between each reconnect attempt (with exponential backoff)
+    - `reconnectDelayMs` = 0 means disabled
+    - `maxNumReconnectAttempts` to control the maximum number of reconnection attempts
+    - `maxNumReconnectAttempts` = -1 means unlimited reconnect attempts (`reconnectDelayMs` must be > 0 to enable)
+
+Example:
+```java
+final WebSocketListener listener =
+    new WebSocketListener() {
+        @Override
+        public void onMessage(@NotNull WebSocket webSocket, @NotNull String text) {
+            log.info("Received onMessage: " + text);
+            ...
+        }
+    };
+
+final int RECONNECT_DELAY_MS = 60000;  // 1m (0 to disable)
+final int MAX_NUM_RECONNECT_ATTEMPTS = 10; // -1 for unlimited reconnect attempts (RECONNECT_DELAY_MS must be > 0 to enable)
+
+final int PING_INTERVAL_MS = 30000;  // 30s (0 to disable)
+
+final LobbyWebSocketClient ws =
+        LobbyWebSocketClient.create(
+            new DefaultConfigRepository(), DefaultTokenRepository.getInstance(), listener, RECONNECT_DELAY_MS, MAX_NUM_RECONNECT_ATTEMPTS, PING_INTERVAL_MS);
+
+ws.connect();
+
+final String requestMessage = PartyCreateRequest.builder().id(request_id).build().toWSM();
+ws.sendMessage(requestMessage);
+...
+```
+**Lobby session preservation logic upon reconnect:**
+In the event of a disconnection and a reconnection, the previous lobby session id will be requested for reuse via the "X-Ab-LobbySessionID" header with the cached value from the previous lobby session.
+
 ## Samples
 
 Sample apps are available in the [samples](samples) directory.

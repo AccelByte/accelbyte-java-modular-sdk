@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.lobby.ws_models.ErrorNotif;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.cli.utils.CLIHelper;
-import net.accelbyte.sdk.core.client.OkhttpWebSocketClient;
+import net.accelbyte.sdk.core.client.LobbyWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.util.Helper;
 import okhttp3.WebSocket;
@@ -51,14 +51,14 @@ public class LobbyWebsocket implements Callable<Integer> {
 
     // create listener object
     Listener listener = new Listener();
-    OkhttpWebSocketClient ws = null;
+    LobbyWebSocketClient ws = null;
     if (!unitTest) {
       message = message + "\n" + Helper.generateUUID();
     }
     // create websocket object
-    ws =
-        OkhttpWebSocketClient.create(
+    ws = LobbyWebSocketClient.create(
             new DefaultConfigRepository(), CLITokenRepositoryImpl.getInstance(), listener);
+    ws.connect();
     String requestType = CLIHelper.getLobbyWsMessageType(message);
     long startTime = System.currentTimeMillis();
     ws.sendMessage(message);

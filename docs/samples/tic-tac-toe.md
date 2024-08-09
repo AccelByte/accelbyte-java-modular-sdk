@@ -144,7 +144,7 @@ if (!isLoginOk) {
 Only take action on game start or board update messages from Tic Tac Toe lambda.
 
 ```java
-ws = OkhttpWebSocketClient.create(
+ws = LobbyWebSocketClient.create(
         sdk.getSdkConfiguration().getConfigRepository(),
         sdk.getSdkConfiguration().getTokenRepository(),
         new WebSocketListener() {
@@ -155,6 +155,7 @@ ws = OkhttpWebSocketClient.create(
             }
         }
         });
+ws.connect();
 ```
 
 #### Start Game
