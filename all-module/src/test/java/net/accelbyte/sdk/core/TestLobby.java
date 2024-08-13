@@ -149,11 +149,12 @@ class TestLobby {
         final MockServerConfigRepository configRepo = new MockServerConfigRepository();
 
         final TestLobbyListener lobbyListener = new TestLobbyListener();
+        final DefaultTokenRepository tokenRepo =  new DefaultTokenRepository();
 
         final LobbyWebSocketClient ws =
                 LobbyWebSocketClient.create(
                         configRepo,
-                        DefaultTokenRepository.getInstance(),
+                        tokenRepo,
                         lobbyListener,
                         RECONNECT_DELAY_MS,
                         MAX_NUM_RECONNECT_ATTEMPTS,
@@ -197,9 +198,13 @@ class TestLobby {
 
         // Manually trigger a token refresh to test the token callback still works to trigger a ws message -> echo back
         lobbyListener.resetTokenLatch();
-        DefaultTokenRepository.getInstance().storeToken("mockToken1");
+        tokenRepo.storeToken("mockToken1");
+        assertEquals("mockToken1", tokenRepo.getToken());
+
         // only the 2nd token will trigger a token refresh (by design)
-        DefaultTokenRepository.getInstance().storeToken("mockToken2");
+        tokenRepo.storeToken("mockToken2");
+        assertEquals("mockToken2", tokenRepo.getToken());
+
         lobbyListener.getTokenLatch().await(20, TimeUnit.SECONDS);
         log.info("waited for token message arrived, or timed out");
         assertEquals("mockToken2", lobbyListener.getToken());
