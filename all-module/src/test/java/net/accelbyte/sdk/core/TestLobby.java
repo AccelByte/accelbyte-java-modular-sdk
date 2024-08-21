@@ -52,6 +52,9 @@ class TestLobby {
         @Getter
         private CountDownLatch onClosedLatch = new CountDownLatch(1);
 
+        @Getter
+        private CountDownLatch onFailureLatch = new CountDownLatch(1);
+
         public void resetLobbySessionIdLatch() {
             lobbySesionIdLatch = new CountDownLatch(1);
         }
@@ -66,6 +69,10 @@ class TestLobby {
 
         public void resetOnClosedLatch() {
             onClosedLatch = new CountDownLatch(1);
+        }
+
+        public void resetOnFailureLatch() {
+            onFailureLatch = new CountDownLatch(1);
         }
 
         public void resetPartyRequestLatch() {
@@ -115,6 +122,7 @@ class TestLobby {
 
         @Override
         public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+            onFailureLatch.countDown();
             log.info("Client onFailure");
         }
     }
@@ -190,18 +198,22 @@ class TestLobby {
         assertTrue(ws.isConnected());
         lobbyListener.resetOnOpenedLatch();
 
+        lobbyListener.getLobbySesionIdLatch().await(5, TimeUnit.SECONDS);
         String newLobbySessionId = (String) ws.getData(LobbyWebSocketClient.LOBBY_SESSION_ID_DATAMAP_KEY);
         assertEquals(lobbyListener.getLobbySessionId(), newLobbySessionId);
+        lobbyListener.resetLobbySessionIdLatch();
 
         // Assert that the originalLobbySessionId is equal to newLobbySessionId
         assertEquals(originalLobbySessionId, newLobbySessionId);
 
         // Manually trigger a token refresh to test the token callback still works to trigger a ws message -> echo back
         lobbyListener.resetTokenLatch();
+        log.info("Simulating token is updated to mockToken1");
         tokenRepo.storeToken("mockToken1");
         assertEquals("mockToken1", tokenRepo.getToken());
 
         // only the 2nd token will trigger a token refresh (by design)
+        log.info("Simulating token is updated to mockToken2");
         tokenRepo.storeToken("mockToken2");
         assertEquals("mockToken2", tokenRepo.getToken());
 
@@ -252,9 +264,9 @@ class TestLobby {
         forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
 
         // Assert that the websocket connection has disconnected.
-        lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS);
+        lobbyListener.getOnFailureLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS);
         assertFalse(ws.isConnected());
-        lobbyListener.resetOnClosedLatch();
+        lobbyListener.resetOnFailureLatch();
 
         // Assert that the websocket connection has reconnected.
         lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 5000, TimeUnit.MILLISECONDS);
@@ -302,14 +314,14 @@ class TestLobby {
         // Connect to the Mock Server’s Lobby Service.
         ws.connect();
 
-        // Await for the connectNotif message, or timeout
-        lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS);
-        lobbyListener.resetLobbySessionIdLatch();
-
-        // Assert we're connected
+        // Check for OnOpened and connected
         lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS);
         assertTrue(ws.isConnected());
         lobbyListener.resetOnOpenedLatch();
+
+        // Await for the connectNotif message, or timeout
+        lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS);
+        lobbyListener.resetLobbySessionIdLatch();
 
         // Assert that the value from the WebSocket Client using GetData("LobbySessionId") is equal to originalLobbySessionId.
         final String originalLobbySessionId = (String) ws.getData(LobbyWebSocketClient.LOBBY_SESSION_ID_DATAMAP_KEY);
@@ -320,7 +332,7 @@ class TestLobby {
         forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
 
         // make sure we get onClosed
-        lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS);
+        lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS+3000, TimeUnit.MILLISECONDS);
         lobbyListener.resetOnClosedLatch();
 
         // Wait for X second to allow reconnection to happen (shouldn't be).

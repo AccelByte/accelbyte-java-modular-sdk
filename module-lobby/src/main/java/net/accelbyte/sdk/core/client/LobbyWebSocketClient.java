@@ -81,8 +81,14 @@ public class LobbyWebSocketClient extends BaseWebSocketClient {
 
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
-        super.onOpen(webSocket, response);
+        numReconnectAttempts = 0;
+
+        isSocketConnected = true;
+        log.info("Websocket is opened successfully");
+
+        // register cbs first, then notify listener onOpen
         registerCallbacks();
+        webSocketListener.onOpen(webSocket, response);
     }
 
     @Override
