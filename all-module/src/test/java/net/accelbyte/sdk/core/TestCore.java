@@ -159,32 +159,32 @@ class TestCore {
                         return testParams;
                     }
 
-                    @Override
-                    protected Map<String, String> getCollectionFormatMap() {
-                        return Collections.singletonMap("?key=1&", format);
-                    }
-                };
-        final HttpResponse res = sdk.runRequest(op);
-        final HttpbinAnythingResponse result =
-                op.parseResponse(res.getCode(), res.getContentType(), res.getPayload());
-        assertNotNull(result);
-        assertEquals("GET", result.getMethod());
-        assertTrue(result.getArgs().size() == testParams.size());
-        String delimiter = ","; // Collection format CSV by default
-        if ("ssv".equals(format)) {
-            delimiter = " ";
-        } else if ("tsv".equals(format)) {
-            delimiter = "\t";
-        } else if ("pipes".equals(format)) {
-            delimiter = "|";
-        }
-        if ("multi".equals(format)) {
-            assertEquals("[?value\"1a&, ?value\"1b&]", result.getArgs().get("?key=1&").toString());
-        } else {
-            assertEquals(
-                    "\"?value\"\"1a&\"" + delimiter + "\"?value\"\"1b&\"", result.getArgs().get("?key=1&"));
-        }
+          @Override
+          protected Map<String, String> getCollectionFormatMap() {
+            return Collections.singletonMap("?key=1&", format);
+          }
+        };
+    final HttpResponse res = sdk.runRequest(op);
+    final HttpbinAnythingResponse result =
+        op.parseResponse(res.getCode(), res.getContentType(), res.getPayload());
+    assertNotNull(result);
+    assertEquals("GET", result.getMethod());
+    assertTrue(result.getArgs().size() == testParams.size());
+    String delimiter = ","; // Collection format CSV by default
+    if ("ssv".equals(format)) {
+      delimiter = " ";
+    } else if ("tsv".equals(format)) {
+      delimiter = "\t";
+    } else if ("pipes".equals(format)) {
+      delimiter = "|";
     }
+    if ("multi".equals(format)) {
+      assertEquals("[?value\"1a&, ?value\"1b&]", result.getArgs().get("?key=1&").toString());
+    } else {
+      assertEquals(
+          "?value\"1a&" + delimiter + "?value\"1b&", result.getArgs().get("?key=1&"));
+    }
+  }
 
     @ParameterizedTest
     @ValueSource(strings = {"GET"})
