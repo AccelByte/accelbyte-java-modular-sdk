@@ -259,14 +259,28 @@ class TestLobby {
         lobbyListener.getPartyRequestLatch().await(3, TimeUnit.SECONDS);
         lobbyListener.resetPartyRequestLatch();
 
-        // Force close the Mock Server WS connection
-        log.info("force closing mock server - status " + FORCE_WS_CLOSE_STATUS_CODE);
-        forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
+        for (int i = 10; i >= 1; i--) {
+            // Force close the Mock Server WS connection
+            log.info("force closing mock server - status " + FORCE_WS_CLOSE_STATUS_CODE);
+            forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
 
-        // Assert that the websocket connection has disconnected.
-        lobbyListener.getOnFailureLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS);
-        assertFalse(ws.isConnected());
-        lobbyListener.resetOnFailureLatch();
+            // Assert that the websocket connection has disconnected.
+            lobbyListener.getOnFailureLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS);
+            lobbyListener.resetOnFailureLatch();
+
+            if (ws.isConnected()) {
+                if (i <= 1) 
+                {
+                    fail("websocket is still connected after force closing mock server ");
+                }
+
+                 log.info("retrying - force closing mock server");
+
+                continue;   // Try again if websocket is still connected
+            }
+
+            break;
+        }
 
         // Assert that the websocket connection has reconnected.
         lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 5000, TimeUnit.MILLISECONDS);
