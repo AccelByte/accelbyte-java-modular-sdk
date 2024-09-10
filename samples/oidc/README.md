@@ -14,7 +14,7 @@ A sample app to showcase OIDC login using AccelByte Java Extend SDK and PhantAut
       
       For example https://test.accelbyte.io
 
-    * [Create an OAuth Client](https://docs.accelbyte.io/guides/access/iam-client.html) with confidential client type 
+    * [Create an OAuth Client](https://docs.accelbyte.io/gaming-services/services/access/authorization/manage-access-control-for-applications/#create-an-iam-client) with confidential client type 
 
         Keep the `Client ID` and `Client Secret`
 

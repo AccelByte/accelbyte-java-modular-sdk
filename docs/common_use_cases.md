@@ -2,7 +2,7 @@
 
 ## Achievement
 
-Source: [TestIntegrationServiceAchievement.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceAchievement.java)
+Source: [TestIntegrationServiceAchievement.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceAchievement.java)
 
 ### Create an achievement
 
@@ -94,7 +94,7 @@ achievementsWrapper.adminDeleteAchievement(
 ```
 ## AMS
 
-Source: [TestIntegrationServiceAms.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceAms.java)
+Source: [TestIntegrationServiceAms.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceAms.java)
 
 ### Get AMS info for info region operation
 
@@ -111,7 +111,7 @@ final ApiAMSRegionsResponse infoRegions =
 ```
 ## Basic
 
-Source: [TestIntegrationServiceBasic.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceBasic.java)
+Source: [TestIntegrationServiceBasic.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceBasic.java)
 
 ### Create a user profile
 
@@ -157,9 +157,69 @@ final UserProfilePrivateInfo deleteUserProfileResult =
     userProfileWrapper.deleteUserProfile(
         DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build());
 ```
+## Chat
+
+Source: [TestIntegrationServiceChat.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceChat.java)
+
+### Add word to profanity filter
+
+```java
+final AdminProfanityCreate adminProfanityCreateOp =
+    AdminProfanityCreate.builder()
+        .namespace(namespace)
+        .body(
+            ModelsDictionaryInsertRequest.builder()
+                .falseNegative(new ArrayList<String>())
+                .falsePositive(new ArrayList<String>())
+                .word(profanityWord1)
+                .wordType("FALSEPOSITIVE")
+                .build())
+        .build();
+
+final ModelsDictionary adminProfanityCreateResponse =
+    profanityWrapper.adminProfanityCreate(adminProfanityCreateOp);
+```
+
+### Update word in profanity filter
+
+```java
+final AdminProfanityUpdate adminProfanityUpdateOp =
+    AdminProfanityUpdate.builder()
+        .id(profanityId)
+        .namespace(namespace)
+        .body(
+            ModelsDictionaryUpdateRequest.builder()
+                .falseNegative(new ArrayList<String>())
+                .falsePositive(new ArrayList<String>())
+                .word(profanityWord2)
+                .wordType("FALSEPOSITIVE")
+                .build())
+        .build();
+
+profanityWrapper.adminProfanityUpdate(adminProfanityUpdateOp);
+```
+
+### Query word in profanity filter
+
+```java
+final AdminProfanityQuery adminProfanityQueryOp =
+    AdminProfanityQuery.builder().namespace(namespace).startWith(profanityPrefix).build();
+
+final ModelsDictionaryQueryResult adminProfanityQueryResponse =
+    profanityWrapper.adminProfanityQuery(adminProfanityQueryOp);
+```
+
+### Delete word from profanity filter
+
+```java
+final AdminProfanityDelete adminProfanityDeleteOp =
+    AdminProfanityDelete.builder().id(profanityId).namespace(namespace).build();
+
+profanityWrapper.adminProfanityDelete(adminProfanityDeleteOp);
+```
 ## CloudSave
 
-Source: [TestIntegrationServiceCloudSave.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceCloudSave.java)
+Source: [TestIntegrationServiceCloudSave.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceCloudSave.java)
 
 ### Create a game record
 
@@ -211,70 +271,9 @@ publicGameRecordWrapper.putGameRecordHandlerV1(
 publicGameRecordWrapper.deleteGameRecordHandlerV1(
     DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build());
 ```
-
-### Create a player record
-
-```java
-final DummyPlayerRecord createPlayerRecordBody =
-    DummyPlayerRecord.builder()
-        .Foo(playerRecordFoo)
-        .FooBar(playerRecordFooBar)
-        .FooValue(playerRecordFooValue)
-        .build();
-
-publicPlayerRecord.postPlayerRecordHandlerV1(
-    PostPlayerRecordHandlerV1.builder()
-        .namespace(this.namespace)
-        .userId(userId)
-        .key(playerRecordKey)
-        .body(createPlayerRecordBody)
-        .build());
-```
-
-### Get a player record
-
-```java
-final ModelsPlayerRecordResponse getPlayerRecordResult =
-    publicPlayerRecord.getPlayerRecordHandlerV1(
-        GetPlayerRecordHandlerV1.builder()
-            .namespace(this.namespace)
-            .userId(userId)
-            .key(playerRecordKey)
-            .build());
-```
-
-### Update a player record
-
-```java
-DummyPlayerRecord updateRecord =
-    DummyPlayerRecord.builder()
-        .Foo(playerRecordFoo)
-        .FooBar(playerRecordFooBarUpdate)
-        .FooValue(playerRecordFooValue)
-        .build();
-
-publicPlayerRecord.putPlayerRecordHandlerV1(
-    PutPlayerRecordHandlerV1.builder()
-        .namespace(this.namespace)
-        .userId(userId)
-        .key(playerRecordKey)
-        .body(updateRecord)
-        .build());
-```
-
-### Delete a player record
-
-```java
-publicPlayerRecord.deletePlayerRecordHandlerV1(
-    DeletePlayerRecordHandlerV1.builder()
-        .namespace(this.namespace)
-        .userId(userId)
-        .key(playerRecordKey)
-        .build());
-```
 ## EventLog
 
-Source: [TestIntegrationServiceEventLog.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceEventLog.java)
+Source: [TestIntegrationServiceEventLog.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceEventLog.java)
 
 ### Get a set of events
 
@@ -308,7 +307,7 @@ final ModelsEventResponseV2 getEventSpecificUserResult =
 ```
 ## GameTelemetry
 
-Source: [TestIntegrationServiceGameTelemetry.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGameTelemetry.java)
+Source: [TestIntegrationServiceGameTelemetry.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGameTelemetry.java)
 
 ### Save game telemetry
 
@@ -349,12 +348,12 @@ final PlayTimeResponse getTelemetry =
 ```
 ## GDPR
 
-Source: [TestIntegrationServiceGdpr.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGdpr.java)
+Source: [TestIntegrationServiceGdpr.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGdpr.java)
 
 ### Save admin email configuration
 
 ```java
-dataRetrievalWrapper.saveAdminEmailConfiguration(
+configurationWrapper.saveAdminEmailConfiguration(
     SaveAdminEmailConfiguration.builder()
         .namespace(this.namespace)
         .body(Arrays.asList(new String[] {email1}))
@@ -365,14 +364,14 @@ dataRetrievalWrapper.saveAdminEmailConfiguration(
 
 ```java
 final List<String> emails =
-    dataRetrievalWrapper.getAdminEmailConfiguration(
+    configurationWrapper.getAdminEmailConfiguration(
         GetAdminEmailConfiguration.builder().namespace(this.namespace).build());
 ```
 
 ### Update admin email configuration
 
 ```java
-dataRetrievalWrapper.updateAdminEmailConfiguration(
+configurationWrapper.updateAdminEmailConfiguration(
     UpdateAdminEmailConfiguration.builder()
         .namespace(this.namespace)
         .body(Arrays.asList(new String[] {email2}))
@@ -382,7 +381,7 @@ dataRetrievalWrapper.updateAdminEmailConfiguration(
 ### Delete admin email configuration
 
 ```java
-dataRetrievalWrapper.deleteAdminEmailConfiguration(
+configurationWrapper.deleteAdminEmailConfiguration(
     DeleteAdminEmailConfiguration.builder()
         .namespace(this.namespace)
         .emails(Arrays.asList(new String[] {email2}))
@@ -390,7 +389,7 @@ dataRetrievalWrapper.deleteAdminEmailConfiguration(
 ```
 ## Group
 
-Source: [TestIntegrationServiceGroup.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGroup.java)
+Source: [TestIntegrationServiceGroup.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGroup.java)
 
 ### Create group configuration
 
@@ -470,7 +469,7 @@ configurationWrapper.deleteGroupConfigurationV1(
 ```
 ## IAM
 
-Source: [TestIntegrationServiceIam.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceIam.java)
+Source: [TestIntegrationServiceIam.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceIam.java)
 
 ### Create a user (v3)
 
@@ -540,7 +539,7 @@ usersWrapper.adminDeleteUserInformationV3(
 ```
 ## Leaderboard
 
-Source: [TestIntegrationServiceLeaderboard.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLeaderboard.java)
+Source: [TestIntegrationServiceLeaderboard.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLeaderboard.java)
 
 ### Create a leaderboard
 
@@ -608,7 +607,7 @@ leaderboardConfigWrapper.deleteLeaderboardConfigurationAdminV1(
 ```
 ## Legal
 
-Source: [TestIntegrationServiceLegal.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLegal.java)
+Source: [TestIntegrationServiceLegal.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLegal.java)
 
 ### Get agreements
 
@@ -618,7 +617,7 @@ final List<RetrieveAcceptedAgreementResponse> agreements =
 ```
 ## Lobby
 
-Source: [TestIntegrationServiceLobby.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLobby.java)
+Source: [TestIntegrationServiceLobby.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLobby.java)
 
 ### Sending a free from notification to users
 
@@ -631,7 +630,7 @@ adminWrapper.freeFormNotification(
 ```
 ## Matchmaking
 
-Source: [TestIntegrationServiceMatchmaking.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceMatchmaking.java)
+Source: [TestIntegrationServiceMatchmaking.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceMatchmaking.java)
 
 ### Create a channel
 
@@ -719,7 +718,7 @@ matchmakingWrapper.deleteChannelHandler(
 ```
 ## MatchmakingV2
 
-Source: [TestIntegrationServiceMatch2.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceMatch2.java)
+Source: [TestIntegrationServiceMatch2.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceMatch2.java)
 
 ### Create a match rule set
 
@@ -801,7 +800,7 @@ ruleSetsWrapper.deleteRuleSet(
 ```
 ## Platform
 
-Source: [TestIntegrationServicePlatform.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServicePlatform.java)
+Source: [TestIntegrationServicePlatform.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServicePlatform.java)
 
 ### Create a store
 
@@ -896,7 +895,7 @@ org.apache.commons.io.IOUtils.closeQuietly(exportRewardsResult);
 ```
 ## Reporting
 
-Source: [TestIntegrationServiceReporting.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceReporting.java)
+Source: [TestIntegrationServiceReporting.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceReporting.java)
 
 ### Create a reason
 
@@ -947,7 +946,7 @@ adminReasonsWrapper.deleteReason(
 ```
 ## SeasonPass
 
-Source: [TestIntegrationServiceSeasonPass.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSeasonPass.java)
+Source: [TestIntegrationServiceSeasonPass.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSeasonPass.java)
 
 ### Create season
 
@@ -1020,9 +1019,66 @@ seasonWrapper.deleteSeason(
         .seasonId(createSeasonResult.getId())
         .build());
 ```
+## SessionBrowser
+
+Source: [TestIntegrationServiceSessionBrowser.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSessionBrowser.java)
+
+### Create a session
+
+```java
+final ModelsCreateSessionRequest createSession =
+    ModelsCreateSessionRequest.builder()
+        .namespace(this.namespace)
+        .sessionType(sessionType)
+        .gameVersion(sessionGameVersion)
+        .username(sessionUsername)
+        .gameSessionSetting(
+            ModelsGameSessionSetting.builder()
+                .mode(mode)
+                .allowJoinInProgress(true)
+                .mapName(mapName)
+                .maxPlayer(100)
+                .build())
+        .build();
+
+final ModelsSessionResponse createSessionResult =
+    sessionWrapper.createSession(
+        CreateSession.builder().namespace(this.namespace).body(createSession).build());
+```
+
+### Get a session
+
+```java
+final ModelsSessionResponse getSessionResult =
+    sessionWrapper.getSession(
+        GetSession.builder().namespace(this.namespace).sessionID(sessionId).build());
+```
+
+### Update a session
+
+```java
+final ModelsUpdateSessionRequest updateSession =
+    ModelsUpdateSessionRequest.builder().gameMaxPlayer(150).build();
+
+final ModelsSessionResponse updateSessionResult =
+    sessionWrapper.updateSession(
+        UpdateSession.builder()
+            .namespace(this.namespace)
+            .sessionID(sessionId)
+            .body(updateSession)
+            .build());
+```
+
+### Delete a session
+
+```java
+final ModelsAdminSessionResponse deleteSessionResult =
+    sessionWrapper.adminDeleteSession(
+        AdminDeleteSession.builder().namespace(this.namespace).sessionID(sessionId).build());
+```
 ## Session
 
-Source: [TestIntegrationServiceSession.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSession.java)
+Source: [TestIntegrationServiceSession.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSession.java)
 
 ### Create session configuration template
 
@@ -1178,66 +1234,9 @@ player2PartyWrapper.publicPartyLeave(
         .partyId(partyId)
         .build());
 ```
-## SessionBrowser
-
-Source: [TestIntegrationServiceSessionBrowser.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSessionBrowser.java)
-
-### Create a session
-
-```java
-final ModelsCreateSessionRequest createSession =
-    ModelsCreateSessionRequest.builder()
-        .namespace(this.namespace)
-        .sessionType(sessionType)
-        .gameVersion(sessionGameVersion)
-        .username(sessionUsername)
-        .gameSessionSetting(
-            ModelsGameSessionSetting.builder()
-                .mode(mode)
-                .allowJoinInProgress(true)
-                .mapName(mapName)
-                .maxPlayer(100)
-                .build())
-        .build();
-
-final ModelsSessionResponse createSessionResult =
-    sessionWrapper.createSession(
-        CreateSession.builder().namespace(this.namespace).body(createSession).build());
-```
-
-### Get a session
-
-```java
-final ModelsSessionResponse getSessionResult =
-    sessionWrapper.getSession(
-        GetSession.builder().namespace(this.namespace).sessionID(sessionId).build());
-```
-
-### Update a session
-
-```java
-final ModelsUpdateSessionRequest updateSession =
-    ModelsUpdateSessionRequest.builder().gameMaxPlayer(150).build();
-
-final ModelsSessionResponse updateSessionResult =
-    sessionWrapper.updateSession(
-        UpdateSession.builder()
-            .namespace(this.namespace)
-            .sessionID(sessionId)
-            .body(updateSession)
-            .build());
-```
-
-### Delete a session
-
-```java
-final ModelsAdminSessionResponse deleteSessionResult =
-    sessionWrapper.adminDeleteSession(
-        AdminDeleteSession.builder().namespace(this.namespace).sessionID(sessionId).build());
-```
 ## Social
 
-Source: [TestIntegrationServiceSocial.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSocial.java)
+Source: [TestIntegrationServiceSocial.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSocial.java)
 
 ### Create a statistic
 
@@ -1355,7 +1354,7 @@ userStatisticWrapper.deleteUserStatItems(
 ```
 ## UGC
 
-Source: [TestIntegrationServiceUgc.java](../src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceUgc.java)
+Source: [TestIntegrationServiceUgc.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceUgc.java)
 
 ### Create a tag
 
@@ -1397,4 +1396,3 @@ final ModelsCreateTagResponse updateTagResult =
 adminTagWrapper.adminDeleteTag(
     AdminDeleteTag.builder().namespace(this.namespace).tagId(tagId).build());
 ```
-
