@@ -17,7 +17,8 @@ import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +30,7 @@ class TestLobby {
     public class TestLobbyListener extends WebSocketListener {
 
         @Getter
-        private ConcurrentLinkedQueue<String> statuses = new ConcurrentLinkedQueue<>();
+        private List<String> statuses = new ArrayList<>();
 
         @Getter
         private String lobbySessionId;
@@ -59,8 +60,7 @@ class TestLobby {
         private CountDownLatch onFailureLatch = new CountDownLatch(1);
 
         public void resetStatuses() {
-            while (statuses.poll() != null) {
-            }
+            statuses.clear();
         }
 
         public void resetLobbySessionIdLatch() {
@@ -113,7 +113,7 @@ class TestLobby {
 
         @Override
         public void onOpen(WebSocket webSocket, Response response) {
-            statuses.offer("open");
+            statuses.add("open");
             onOpenedLatch.countDown();
             log.info("Client onOpen");
         }
@@ -125,7 +125,7 @@ class TestLobby {
 
         @Override
         public void onClosed(WebSocket webSocket, int code, String reason) {
-            statuses.offer("closed");
+            statuses.add("closed");
             onClosedLatch.countDown();
             log.info("Client onClosed");
         }
