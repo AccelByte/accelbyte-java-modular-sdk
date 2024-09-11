@@ -104,7 +104,7 @@ public class Misc {
   /**
    * @see GetLanguages
    */
-  public Map<String, ?> getLanguages(GetLanguages input) throws Exception {
+  public Map<String, String> getLanguages(GetLanguages input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

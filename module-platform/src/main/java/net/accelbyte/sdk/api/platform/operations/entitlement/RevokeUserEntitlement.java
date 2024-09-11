@@ -33,7 +33,7 @@ public class RevokeUserEntitlement extends Operation {
       "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke";
 
   private String method = "PUT";
-  private List<String> consumes = Arrays.asList();
+  private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
 
@@ -42,6 +42,7 @@ public class RevokeUserEntitlement extends Operation {
 
   private String namespace;
   private String userId;
+  private EntitlementRevokeRequest body;
 
   /**
    * @param entitlementId required
@@ -52,10 +53,15 @@ public class RevokeUserEntitlement extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public RevokeUserEntitlement(
-      String customBasePath, String entitlementId, String namespace, String userId) {
+      String customBasePath,
+      String entitlementId,
+      String namespace,
+      String userId,
+      EntitlementRevokeRequest body) {
     this.entitlementId = entitlementId;
     this.namespace = namespace;
     this.userId = userId;
+    this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -74,6 +80,11 @@ public class RevokeUserEntitlement extends Operation {
       pathParams.put("userId", this.userId);
     }
     return pathParams;
+  }
+
+  @Override
+  public EntitlementRevokeRequest getBodyParams() {
+    return this.body;
   }
 
   @Override

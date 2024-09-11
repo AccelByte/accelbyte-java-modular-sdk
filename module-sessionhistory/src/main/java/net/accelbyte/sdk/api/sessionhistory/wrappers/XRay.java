@@ -298,6 +298,20 @@ public class XRay {
   }
 
   /**
+   * @see CreateXrayBulkTicketObservability
+   */
+  public ApimodelsXRayBulkTicketObservabilityResponse createXrayBulkTicketObservability(
+      CreateXrayBulkTicketObservability input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see QueryXrayTimelineByTicketID
    */
   public ApimodelsXRayTicketQueryResponse queryXrayTimelineByTicketID(

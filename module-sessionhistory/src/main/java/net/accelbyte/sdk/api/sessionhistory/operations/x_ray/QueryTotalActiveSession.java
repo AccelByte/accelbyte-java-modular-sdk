@@ -38,6 +38,7 @@ public class QueryTotalActiveSession extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private List<String> matchPool;
   private String region;
   private String endDate;
   private String startDate;
@@ -51,8 +52,14 @@ public class QueryTotalActiveSession extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryTotalActiveSession(
-      String customBasePath, String namespace, String region, String endDate, String startDate) {
+      String customBasePath,
+      String namespace,
+      List<String> matchPool,
+      String region,
+      String endDate,
+      String startDate) {
     this.namespace = namespace;
+    this.matchPool = matchPool;
     this.region = region;
     this.endDate = endDate;
     this.startDate = startDate;
@@ -73,6 +80,13 @@ public class QueryTotalActiveSession extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "matchPool",
+        this.matchPool == null
+            ? null
+            : this.matchPool.stream()
+                .map(i -> String.valueOf(i))
+                .collect(java.util.stream.Collectors.toList()));
     queryParams.put("region", this.region == null ? null : Arrays.asList(this.region));
     queryParams.put("endDate", this.endDate == null ? null : Arrays.asList(this.endDate));
     queryParams.put("startDate", this.startDate == null ? null : Arrays.asList(this.startDate));
@@ -106,6 +120,7 @@ public class QueryTotalActiveSession extends Operation {
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
+    result.put("matchPool", "csv");
     result.put("region", "None");
     result.put("endDate", "None");
     result.put("startDate", "None");

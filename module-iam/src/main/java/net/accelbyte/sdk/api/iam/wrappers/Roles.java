@@ -464,7 +464,9 @@ public class Roles {
 
   /**
    * @see AdminRemoveRoleMembersV3
+   * @deprecated
    */
+  @Deprecated
   public void adminRemoveRoleMembersV3(AdminRemoveRoleMembersV3 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

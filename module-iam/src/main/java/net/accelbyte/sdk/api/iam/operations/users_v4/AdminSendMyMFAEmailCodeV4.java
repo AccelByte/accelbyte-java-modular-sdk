@@ -37,12 +37,15 @@ public class AdminSendMyMFAEmailCodeV4 extends Operation {
   /** fields as input parameter */
   private String action;
 
+  private String languageTag;
+
   /** */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminSendMyMFAEmailCodeV4(String customBasePath, String action) {
+  public AdminSendMyMFAEmailCodeV4(String customBasePath, String action, String languageTag) {
     this.action = action;
+    this.languageTag = languageTag;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -53,6 +56,9 @@ public class AdminSendMyMFAEmailCodeV4 extends Operation {
     Map<String, Object> formDataParams = new HashMap<>();
     if (this.action != null) {
       formDataParams.put("action", this.action);
+    }
+    if (this.languageTag != null) {
+      formDataParams.put("languageTag", this.languageTag);
     }
     return formDataParams;
   }

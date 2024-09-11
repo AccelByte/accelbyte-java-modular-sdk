@@ -88,6 +88,19 @@ public class GameSession {
   }
 
   /**
+   * @see AdminKickGameSessionMember
+   */
+  public void adminKickGameSessionMember(AdminKickGameSessionMember input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminUpdateGameSessionMember
    */
   public ApimodelsUpdateGameSessionMemberStatusResponse adminUpdateGameSessionMember(
@@ -294,6 +307,19 @@ public class GameSession {
    * @see LeaveGameSession
    */
   public void leaveGameSession(LeaveGameSession input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicKickGameSessionMember
+   */
+  public void publicKickGameSessionMember(PublicKickGameSessionMember input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

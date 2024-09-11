@@ -61,6 +61,34 @@ public class LeaderboardDataV3 {
   }
 
   /**
+   * @see DeleteAllUserRankingByCycleIdAdminV3
+   */
+  public void deleteAllUserRankingByCycleIdAdminV3(DeleteAllUserRankingByCycleIdAdminV3 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see DeleteUserRankingByCycleIdAdminV3
+   */
+  public void deleteUserRankingByCycleIdAdminV3(DeleteUserRankingByCycleIdAdminV3 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see DeleteUserRankingByLeaderboardCodeAdminV3
    */
   public void deleteUserRankingByLeaderboardCodeAdminV3(

@@ -21,7 +21,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * queryXrayMatchPool
  *
- * <p>Query xray match pool.
+ * <p>Query xray match pool. query can using matchpool array with separate ","
  */
 @Getter
 @Setter
@@ -38,7 +38,7 @@ public class QueryXrayMatchPool extends Operation {
   /** fields as input parameter */
   private String namespace;
 
-  private String poolName;
+  private List<String> poolName;
   private String endDate;
   private String startDate;
 
@@ -52,7 +52,11 @@ public class QueryXrayMatchPool extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public QueryXrayMatchPool(
-      String customBasePath, String namespace, String poolName, String endDate, String startDate) {
+      String customBasePath,
+      String namespace,
+      List<String> poolName,
+      String endDate,
+      String startDate) {
     this.namespace = namespace;
     this.poolName = poolName;
     this.endDate = endDate;
@@ -69,7 +73,7 @@ public class QueryXrayMatchPool extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     if (this.poolName != null) {
-      pathParams.put("poolName", this.poolName);
+      pathParams.put("poolName", this.poolName == null ? null : String.valueOf(this.poolName));
     }
     return pathParams;
   }

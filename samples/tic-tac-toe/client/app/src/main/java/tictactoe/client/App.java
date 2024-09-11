@@ -54,7 +54,8 @@ public class App {
 
       // Connect to lobby websocket to get notification from lambda
 
-      ws = LobbyWebSocketClient.create(
+      ws =
+          LobbyWebSocketClient.create(
               sdk.getSdkConfiguration().getConfigRepository(),
               sdk.getSdkConfiguration().getTokenRepository(),
               new WebSocketListener() {

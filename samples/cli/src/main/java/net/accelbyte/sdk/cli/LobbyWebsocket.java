@@ -56,7 +56,8 @@ public class LobbyWebsocket implements Callable<Integer> {
       message = message + "\n" + Helper.generateUUID();
     }
     // create websocket object
-    ws = LobbyWebSocketClient.create(
+    ws =
+        LobbyWebSocketClient.create(
             new DefaultConfigRepository(), CLITokenRepositoryImpl.getInstance(), listener);
     ws.connect();
     String requestType = CLIHelper.getLobbyWsMessageType(message);

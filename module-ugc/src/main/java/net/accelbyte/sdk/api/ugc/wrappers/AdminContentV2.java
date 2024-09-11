@@ -89,6 +89,19 @@ public class AdminContentV2 {
   }
 
   /**
+   * @see AdminCopyContent
+   */
+  public ModelsContentDownloadResponseV2 adminCopyContent(AdminCopyContent input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminUpdateOfficialContentFileLocation
    */
   public ModelsUpdateContentResponseV2 adminUpdateOfficialContentFileLocation(

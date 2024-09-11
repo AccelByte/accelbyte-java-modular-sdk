@@ -6,6 +6,8 @@
 
 package net.accelbyte.sdk.core.client;
 
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 import lombok.extern.java.Log;
 import net.accelbyte.sdk.core.repository.ConfigRepository;
 import net.accelbyte.sdk.core.repository.TokenRepository;
@@ -14,9 +16,6 @@ import okhttp3.Request;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
-
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 @Log
 public class BaseWebSocketClient extends WebSocketListener {
@@ -34,7 +33,13 @@ public class BaseWebSocketClient extends WebSocketListener {
       throws Exception {
     BaseWebSocketClient webSocketClient =
         new BaseWebSocketClient(
-            configRepository, tokenRepository, listener, reconnectDelayMs, maxNumReconnectAttempts, pingIntervalMs, wsServicePathName);
+            configRepository,
+            tokenRepository,
+            listener,
+            reconnectDelayMs,
+            maxNumReconnectAttempts,
+            pingIntervalMs,
+            wsServicePathName);
     return webSocketClient;
   }
 
@@ -93,8 +98,10 @@ public class BaseWebSocketClient extends WebSocketListener {
       throw new IllegalArgumentException("maxNumReconnectAttempts can't be 0");
     if (pingIntervalMs < 0) throw new IllegalArgumentException("pingIntervalMs can't be negative");
 
-    if (wsServicePathName == null) throw new IllegalArgumentException("Websocket service path name can't be null");
-    if (wsServicePathName.isEmpty()) throw new IllegalArgumentException("Websocket service path name can't be an empty string");
+    if (wsServicePathName == null)
+      throw new IllegalArgumentException("Websocket service path name can't be null");
+    if (wsServicePathName.isEmpty())
+      throw new IllegalArgumentException("Websocket service path name can't be an empty string");
 
     this.configRepository = configRepository;
     this.tokenRepository = tokenRepository;
@@ -128,7 +135,12 @@ public class BaseWebSocketClient extends WebSocketListener {
       if (isReconnecting) {
         numReconnectAttempts++;
         long currentReconnectDelayMs = reconnectDelay(numReconnectAttempts);
-        log.info("# reconnect attempts: " + numReconnectAttempts + ", attempting to reconnect in " + currentReconnectDelayMs + "ms");
+        log.info(
+            "# reconnect attempts: "
+                + numReconnectAttempts
+                + ", attempting to reconnect in "
+                + currentReconnectDelayMs
+                + "ms");
         Thread.sleep(currentReconnectDelayMs);
       }
 
@@ -270,6 +282,7 @@ public class BaseWebSocketClient extends WebSocketListener {
   protected boolean shouldReconnect(int code) {
     return shouldReconnect(code, "");
   }
+
   protected boolean shouldReconnect(int code, String reason) {
     return shouldReconnect(code, reason, -1);
   }
@@ -303,7 +316,9 @@ public class BaseWebSocketClient extends WebSocketListener {
   }
 
   private boolean isExceedingMaxAttempts(int numReconnectAttempts) {
-    return this.maxNumReconnectAttempts > 0 && numReconnectAttempts > 0 && numReconnectAttempts >= this.maxNumReconnectAttempts;
+    return this.maxNumReconnectAttempts > 0
+        && numReconnectAttempts > 0
+        && numReconnectAttempts >= this.maxNumReconnectAttempts;
   }
 
   protected boolean isReconnectEnabled() {

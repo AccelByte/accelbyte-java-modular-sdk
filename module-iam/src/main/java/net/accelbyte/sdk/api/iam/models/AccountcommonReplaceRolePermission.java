@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.platform.models;
+package net.accelbyte.sdk.api.iam.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,27 +23,24 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class EntitlementDecrement extends Model {
+public class AccountcommonReplaceRolePermission extends Model {
 
-  @JsonProperty("options")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> options;
+  @JsonProperty("replacement")
+  private AccountcommonOverrideRolePermission replacement;
 
-  @JsonProperty("requestId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String requestId;
-
-  @JsonProperty("useCount")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer useCount;
+  @JsonProperty("target")
+  private String target;
 
   @JsonIgnore
-  public EntitlementDecrement createFromJson(String json) throws JsonProcessingException {
+  public AccountcommonReplaceRolePermission createFromJson(String json)
+      throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<EntitlementDecrement> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<EntitlementDecrement>>() {});
+  public List<AccountcommonReplaceRolePermission> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<AccountcommonReplaceRolePermission>>() {});
   }
 }

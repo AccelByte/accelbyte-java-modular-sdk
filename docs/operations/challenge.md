@@ -27,6 +27,14 @@
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | PUT | AdminUpdateGoals | [AdminUpdateGoals](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminUpdateGoals.java) | [AdminUpdateGoals](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminUpdateGoals.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | DELETE | AdminDeleteGoal | [AdminDeleteGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminDeleteGoal.java) | [AdminDeleteGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminDeleteGoal.java) |
 
+### Plugins Wrapper:  [Plugins](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/Plugins.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/challenge/v1/admin/namespaces/{namespace}/plugins/assignment` | GET | AdminGetAssignmentPlugin | [AdminGetAssignmentPlugin](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/plugins/AdminGetAssignmentPlugin.java) | [AdminGetAssignmentPlugin](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/plugins/AdminGetAssignmentPlugin.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/plugins/assignment` | PUT | AdminUpdateAssignmentPlugin | [AdminUpdateAssignmentPlugin](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/plugins/AdminUpdateAssignmentPlugin.java) | [AdminUpdateAssignmentPlugin](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/plugins/AdminUpdateAssignmentPlugin.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/plugins/assignment` | POST | AdminCreateAssignmentPlugin | [AdminCreateAssignmentPlugin](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/plugins/AdminCreateAssignmentPlugin.java) | [AdminCreateAssignmentPlugin](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/plugins/AdminCreateAssignmentPlugin.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/plugins/assignment` | DELETE | AdminDeleteAssignmentPlugin | [AdminDeleteAssignmentPlugin](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/plugins/AdminDeleteAssignmentPlugin.java) | [AdminDeleteAssignmentPlugin](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/plugins/AdminDeleteAssignmentPlugin.java) |
+
 ### Challenge Progression Wrapper:  [ChallengeProgression](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeProgression.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -76,6 +84,10 @@
 | `model.ListPeriodsResponse` | [ModelListPeriodsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListPeriodsResponse.java) |
 | `model.ListUserRewardsResponse` | [ModelListUserRewardsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListUserRewardsResponse.java) |
 | `model.Pagination` | [ModelPagination](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPagination.java) |
+| `model.PluginAsignmentAppConfig` | [ModelPluginAsignmentAppConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAsignmentAppConfig.java) |
+| `model.PluginAssignmentCustomConfig` | [ModelPluginAssignmentCustomConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAssignmentCustomConfig.java) |
+| `model.PluginAssignmentRequest` | [ModelPluginAssignmentRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAssignmentRequest.java) |
+| `model.PluginAssignmentResponse` | [ModelPluginAssignmentResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAssignmentResponse.java) |
 | `model.Predicate` | [ModelPredicate](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPredicate.java) |
 | `model.Requirement` | [ModelRequirement](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelRequirement.java) |
 | `model.RequirementProgressionResponse` | [ModelRequirementProgressionResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelRequirementProgressionResponse.java) |
