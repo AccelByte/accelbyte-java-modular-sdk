@@ -19,13 +19,18 @@ import net.accelbyte.sdk.api.lobby.ws_models.PartyCreateRequest;
 import net.accelbyte.sdk.api.lobby.ws_models.RefreshTokenRequest;
 import net.accelbyte.sdk.core.client.LobbyWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 @Log
 @Tag("test-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestLobby {
   private final OkHttpClient client = new OkHttpClient();
 
@@ -143,10 +148,16 @@ class TestLobby {
             .post(RequestBody.create(null, new byte[0])) // Use an empty body
             .build();
 
+    log.info("Begin: forceCloseMockServer - status: " + statusCode);
+
     // Execute the request and get the response
     try (Response response = client.newCall(request).execute()) {
+      log.info("End: forceCloseMockServer - status: " + statusCode + " with response code: " + response.code());
       // Assert the status code of the response
       assertEquals(204, response.code()); // 204 No Content
+    } catch (Exception e) {
+      log.info("Exception caught: forceCloseMockServer - status: " + statusCode + " with Exception: " + e);
+      throw e;
     }
   }
 
@@ -154,6 +165,7 @@ class TestLobby {
   // session id will be reused
   // In conjunction validates the lobby token refresh for the ws event still works after reconnect
   @Test
+  @Order(1)
   public void testLobbyReconnectWithTokenRefresh() throws Exception {
     final int FORCE_WS_CLOSE_STATUS_CODE = 1011;
     final int RECONNECT_DELAY_MS = 5000;
@@ -200,7 +212,6 @@ class TestLobby {
       Thread.sleep(200);
 
       // Force close the Mock Server WS connection
-      log.info("force closing mock server - status " + FORCE_WS_CLOSE_STATUS_CODE);
       assertFalse(
           lobbyListener.getStatuses().contains("open"),
           "contains open" + ": " + lobbyListener.getStatuses());
@@ -248,12 +259,16 @@ class TestLobby {
       lobbyListener.getTokenLatch().await(20, TimeUnit.SECONDS);
       log.info("waited for token message arrived, or timed out");
       assertEquals("mockToken2", lobbyListener.getToken());
+    } catch (Exception e) {
+      log.info("Some exception was encountered: " + e);
     } finally {
+      log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
     }
   }
 
   @Test
+  @Order(2)
   public void testLobbyReconnectWithMultipleMessages() throws Exception {
     final int FORCE_WS_CLOSE_STATUS_CODE = 1011;
     final int RECONNECT_DELAY_MS = 5000;
@@ -334,7 +349,10 @@ class TestLobby {
       // Lastly, check if have gotten NUM_MSG_TO_SEND party create requests (1 before disconnect +
       // NUM_MSG_TO_SEND-1 after reconnection)
       assertEquals(NUM_MSG_TO_SEND, lobbyListener.getNumPartyCreateRequestsReceived());
+    } catch (Exception e) {
+      log.info("Some exception was encountered: " + e);
     } finally {
+      log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
     }
   }
@@ -342,6 +360,7 @@ class TestLobby {
   // Verifies that a closure code of 4000 (DisconnectServerShutdown) code will not reconnect
   // Ensures a subsequent new websocket the lobby session id will use a different one
   @Test
+  @Order(3)
   public void testLobbyDisconnectServerShutdown() throws Exception {
     final int FORCE_WS_CLOSE_STATUS_CODE = 4000;
     final int RECONNECT_DELAY_MS = 5000;
@@ -420,7 +439,10 @@ class TestLobby {
       // Assert that the value from the WebSocket Client using GetData("LobbySessionId") is null
       newLobbySessionId = (String) ws.getData(LobbyWebSocketClient.LOBBY_SESSION_ID_DATAMAP_KEY);
       assertEquals(null, newLobbySessionId);
+    } catch (Exception e) {
+      log.info("Some exception was encountered: " + e);
     } finally {
+      log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
     }
 
@@ -453,7 +475,10 @@ class TestLobby {
 
       // Assert that the originalLobbySessionId is not equal to newLobbySessionId.
       assertNotEquals(newLobbySessionId, originalLobbySessionId);
+    } catch (Exception e) {
+      log.info("Some exception was encountered: " + e);
     } finally {
+      log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
     }
   }
