@@ -352,6 +352,7 @@ class TestLobby {
       assertEquals(NUM_MSG_TO_SEND, lobbyListener.getNumPartyCreateRequestsReceived());
     } catch (Exception e) {
       log.info("Some exception was encountered: " + e);
+      throw e;
     } finally {
       log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
@@ -442,6 +443,7 @@ class TestLobby {
       assertEquals(null, newLobbySessionId);
     } catch (Exception e) {
       log.info("Some exception was encountered: " + e);
+      throw e;
     } finally {
       log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
@@ -478,6 +480,7 @@ class TestLobby {
       assertNotEquals(newLobbySessionId, originalLobbySessionId);
     } catch (Exception e) {
       log.info("Some exception was encountered: " + e);
+      throw e;
     } finally {
       log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
