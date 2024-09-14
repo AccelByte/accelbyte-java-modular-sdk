@@ -192,7 +192,7 @@ class TestLobby {
       ws.connect();
 
       // Assert we're connected
-      lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS));
       assertTrue(
           lobbyListener.getStatuses().contains("open"),
           "contains open" + ": " + lobbyListener.getStatuses());
@@ -200,7 +200,7 @@ class TestLobby {
       lobbyListener.resetOnOpenedLatch();
 
       // Await for the connectNotif message, or timeout
-      lobbyListener.getLobbySesionIdLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getLobbySesionIdLatch().await(5, TimeUnit.SECONDS));
       lobbyListener.resetLobbySessionIdLatch();
 
       // Assert that the value from the WebSocket Client using GetData("LobbySessionId") is equal to
@@ -218,9 +218,9 @@ class TestLobby {
       lobbyListener.resetStatuses();
       forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
 
-      lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS);
+      assertTrue(lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS));
       lobbyListener.resetOnClosedLatch();
-      lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS);
+      assertTrue(lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS));
       lobbyListener.resetOnOpenedLatch();
 
       Thread.sleep(RECONNECT_DELAY_MS + 3000);
@@ -235,7 +235,7 @@ class TestLobby {
           "contains open" + ": " + lobbyListener.getStatuses());
       lobbyListener.resetStatuses();
 
-      lobbyListener.getLobbySesionIdLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getLobbySesionIdLatch().await(5, TimeUnit.SECONDS));
       String newLobbySessionId =
           (String) ws.getData(LobbyWebSocketClient.LOBBY_SESSION_ID_DATAMAP_KEY);
       assertEquals(lobbyListener.getLobbySessionId(), newLobbySessionId);
@@ -256,11 +256,12 @@ class TestLobby {
       tokenRepo.storeToken("mockToken2");
       assertEquals("mockToken2", tokenRepo.getToken());
 
-      lobbyListener.getTokenLatch().await(20, TimeUnit.SECONDS);
-      log.info("waited for token message arrived, or timed out");
+      assertTrue(lobbyListener.getTokenLatch().await(20, TimeUnit.SECONDS));
+      log.info("token message arrived");
       assertEquals("mockToken2", lobbyListener.getToken());
     } catch (Exception e) {
       log.info("Some exception was encountered: " + e);
+      throw e;
     } finally {
       log.info("cleanup: close websocket");
       ws.close(1000, "Normal close");
@@ -294,7 +295,7 @@ class TestLobby {
       ws.connect();
 
       // Assert we're connected
-      lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS));
       assertTrue(
           lobbyListener.getStatuses().contains("open"),
           "contains open" + ": " + lobbyListener.getStatuses());
@@ -305,7 +306,7 @@ class TestLobby {
       ws.sendMessage(PartyCreateRequest.builder().id("partyCreateRequestId_1").build().toWSM());
 
       // awaits for the party request message to be echo-ed back
-      lobbyListener.getPartyRequestLatch().await(3, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getPartyRequestLatch().await(3, TimeUnit.SECONDS));
       lobbyListener.resetPartyRequestLatch();
 
       Thread.sleep(200);
@@ -342,7 +343,7 @@ class TestLobby {
         ws.sendMessage(
             PartyCreateRequest.builder().id("partyCreateRequestId_" + i).build().toWSM());
         // awaits for the party request message to be echo-ed back
-        lobbyListener.getPartyRequestLatch().await(3, TimeUnit.SECONDS);
+        assertTrue(lobbyListener.getPartyRequestLatch().await(3, TimeUnit.SECONDS));
         lobbyListener.resetPartyRequestLatch();
       }
 
@@ -389,7 +390,7 @@ class TestLobby {
       ws.connect();
 
       // Check for OnOpened and connected
-      lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS));
       assertTrue(
           lobbyListener.getStatuses().contains("open"),
           "contains open" + ": " + lobbyListener.getStatuses());
@@ -397,7 +398,7 @@ class TestLobby {
       lobbyListener.resetOnOpenedLatch();
 
       // Await for the connectNotif message, or timeout
-      lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS));
       lobbyListener.resetLobbySessionIdLatch();
 
       // Assert that the value from the WebSocket Client using GetData("LobbySessionId") is equal to
@@ -416,7 +417,7 @@ class TestLobby {
       lobbyListener.resetStatuses();
       forceCloseMockServer(configRepo.getBaseURL(), FORCE_WS_CLOSE_STATUS_CODE, lobbyListener);
 
-      lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS);
+      assertTrue(lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS));
       lobbyListener.resetOnClosedLatch();
 
       Thread.sleep(RECONNECT_DELAY_MS + 3000);
@@ -460,13 +461,13 @@ class TestLobby {
       ws.connect();
 
       // Wait til onOpened
-      lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getOnOpenedLatch().await(5, TimeUnit.SECONDS));
       assertTrue(ws.isConnected());
       lobbyListener.resetOnOpenedLatch();
 
       // Wait for the connectNotif message, store lobbySessionId from the connectNotif message into
       // the temporary variable: newLobbySessionId.
-      lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS);
+      assertTrue(lobbyListener.getLobbySesionIdLatch().await(10, TimeUnit.SECONDS));
       lobbyListener.resetLobbySessionIdLatch();
       newLobbySessionId = lobbyListener.getLobbySessionId();
       assertEquals(
