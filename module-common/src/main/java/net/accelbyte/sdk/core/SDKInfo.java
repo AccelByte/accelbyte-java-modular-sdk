@@ -26,7 +26,7 @@ public class SDKInfo {
     instance.moduleInformation = stringBuilder.toString();
   }
 
-  private String sdkName = "AccelByteJavaSDK";
+  private String sdkName = "ModularJavaSDK";
 
   private String moduleInformation = "";
 
