@@ -1,19 +1,19 @@
 package net.accelbyte.sdk.core.repository;
 
-import java.util.Date;
+import java.time.Instant;
 
-public class DefaultTokenRefreshRepository extends DefaultTokenRepository implements TokenRefresh {
-  private Date tokenExpiresAt = null;
+public class DefaultTokenRefreshRepository extends DefaultTokenRepository implements TokenRefreshV2 {
+  private Instant tokenExpiresAt = null;
   private String refreshToken = null;
-  private Date refreshTokenExpiresAt = null;
+  private Instant refreshTokenExpiresAt = null;
 
   @Override
-  public void setTokenExpiresAt(Date dateTime) {
+  public void setTokenExpiresAt(Instant dateTime) {
     this.tokenExpiresAt = dateTime;
   }
 
   @Override
-  public Date getTokenExpiresAt() {
+  public Instant getTokenExpiresAt() {
     return this.tokenExpiresAt;
   }
 
@@ -33,12 +33,12 @@ public class DefaultTokenRefreshRepository extends DefaultTokenRepository implem
   }
 
   @Override
-  public void setRefreshTokenExpiresAt(Date dateTime) {
-    this.refreshTokenExpiresAt = dateTime;
+  public void setRefreshTokenExpiresAt(Instant instant) {
+    this.refreshTokenExpiresAt = instant;
   }
 
   @Override
-  public Date getRefreshTokenExpiresAt() {
+  public Instant getRefreshTokenExpiresAt() {
     return this.refreshTokenExpiresAt;
   }
 }

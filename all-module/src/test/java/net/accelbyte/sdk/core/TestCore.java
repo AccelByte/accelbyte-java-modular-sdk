@@ -728,7 +728,7 @@ class TestCore {
 
     // Simulate token expiry within threshold and refresh token still valid for 24
     // hours
-    tokenRefreshRepository.setTokenExpiresAt(Date.from(Instant.now().plusSeconds(60)));
+    tokenRefreshRepository.setTokenExpiresAt(Instant.now().plusSeconds(60));
 
     wrapper.getCountryLocationV3(GetCountryLocationV3.builder().build());
 
@@ -756,7 +756,7 @@ class TestCore {
             == null); // Login client does not return refresh token
 
     // Simulate token expiry within threshold
-    tokenRefreshRepository.setTokenExpiresAt(Date.from(Instant.now().plusSeconds(60)));
+    tokenRefreshRepository.setTokenExpiresAt(Instant.now().plusSeconds(60));
 
     wrapper.getCountryLocationV3(GetCountryLocationV3.builder().build());
 

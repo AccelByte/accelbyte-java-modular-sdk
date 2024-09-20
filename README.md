@@ -119,7 +119,7 @@ Use the following to get SDK instance with automatic token refresh functionality
 ```java
 AccelByteConfig config = new AccelByteConfig(
       new OkhttpClient(),
-      new DefaultTokenRefreshRepository();   // Using DefaultTokenRefreshRepository which implements TokenRefresh interface to enable automatic token refresh
+      new DefaultTokenRefreshRepository();   // Using DefaultTokenRefreshRepository which implements TokenRefreshV2 interface to enable automatic token refresh
       new DefaultConfigRepository());     // Using DefaultConfigRepository, make sure the required environment variables are set
 
 AccelByteSDK sdk = new AccelByteSDK(config);

@@ -4,13 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
 import java.time.Instant;
-import java.util.Date;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.AccessTokenPayload;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRefreshRepository;
-import net.accelbyte.sdk.core.repository.TokenRefresh;
+import net.accelbyte.sdk.core.repository.TokenRefreshV2;
 import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
@@ -35,14 +34,14 @@ public class TestIntegrationLoginOrRefresh extends TestIntegration {
 
     final int expirationDuration = 10; // in seconds
 
-    final Date firstLoginTime = Date.from(Instant.now());
+    final Instant firstLoginTime = Instant.now();
     final boolean firstLoginOk = sdk.loginOrRefreshUser(username, password);
 
     assertTrue(firstLoginOk);
 
     final String firstLoginToken = sdk.getSdkConfiguration().getTokenRepository().getToken();
-    final Date firstLoginTokenExpiredTime =
-        ((TokenRefresh) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
+    final Instant firstLoginTokenExpiredTime =
+        ((TokenRefreshV2) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
 
     assertTrue(
         getTimeDifferenceInSeconds(firstLoginTime, firstLoginTokenExpiredTime)
@@ -57,14 +56,14 @@ public class TestIntegrationLoginOrRefresh extends TestIntegration {
     Thread.sleep(
         expirationDuration * 1_000); // sleep for 2 second, since expiredAt was set 1.8 second
 
-    final Date secondLoginTime = Date.from(Instant.now());
+    final Instant secondLoginTime = Instant.now();
     final boolean secondLoginOk = sdk.loginOrRefreshUser(username, password);
 
     assertTrue(secondLoginOk);
 
     final String secondLoginToken = sdk.getSdkConfiguration().getTokenRepository().getToken();
-    final Date secondLoginExpiredTime =
-        ((TokenRefresh) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
+    final Instant secondLoginExpiredTime =
+        ((TokenRefreshV2) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
     assertTrue(
         getTimeDifferenceInSeconds(secondLoginTime, secondLoginExpiredTime) <= expirationDuration);
 
@@ -91,14 +90,14 @@ public class TestIntegrationLoginOrRefresh extends TestIntegration {
 
     final int expirationDuration = 10; // in second
 
-    final Date firstLoginTime = Date.from(Instant.now());
+    final Instant firstLoginTime = Instant.now();
     final boolean firstLoginOk = sdk.loginOrRefreshClient();
 
     assertTrue(firstLoginOk);
 
     final String firstLoginToken = sdk.getSdkConfiguration().getTokenRepository().getToken();
-    final Date firstLoginTokenExpiredTime =
-        ((TokenRefresh) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
+    final Instant firstLoginTokenExpiredTime =
+        ((TokenRefreshV2) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
     assertTrue(
         getTimeDifferenceInSeconds(firstLoginTime, firstLoginTokenExpiredTime)
             <= expirationDuration);
@@ -112,14 +111,14 @@ public class TestIntegrationLoginOrRefresh extends TestIntegration {
     Thread.sleep(
         expirationDuration * 1_000); // sleep for 2 second, since expiredAt was set 1.8 second
 
-    final Date secondLoginTime = Date.from(Instant.now());
+    final Instant secondLoginTime = Instant.now();
     final boolean secondLoginOk = sdk.loginOrRefreshClient();
 
     assertTrue(secondLoginOk);
 
     final String secondLoginToken = sdk.getSdkConfiguration().getTokenRepository().getToken();
-    final Date secondLoginTokenExpiredTime =
-        ((TokenRefresh) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
+    final Instant secondLoginTokenExpiredTime =
+        ((TokenRefreshV2) sdk.getSdkConfiguration().getTokenRepository()).getTokenExpiresAt();
     assertTrue(
         getTimeDifferenceInSeconds(secondLoginTime, secondLoginTokenExpiredTime)
             <= expirationDuration);
@@ -151,8 +150,7 @@ public class TestIntegrationLoginOrRefresh extends TestIntegration {
     }
   }
 
-  private int getTimeDifferenceInSeconds(Date date1, Date date2) {
-    long differenceInMillis = Math.abs(date1.getTime() - date2.getTime());
-    return (int) (differenceInMillis / 1000);
+  private int getTimeDifferenceInSeconds(Instant date1, Instant date2) {
+    return (int) (date1.getEpochSecond() - date2.getEpochSecond());
   }
 }

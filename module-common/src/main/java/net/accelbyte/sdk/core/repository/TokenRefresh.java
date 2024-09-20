@@ -8,6 +8,8 @@ package net.accelbyte.sdk.core.repository;
 
 import java.util.Date;
 
+
+// @deprecated 2024-09-18 - Use TokenRefreshV2 instead as it uses the preferred java.time Instant instead of Date
 public interface TokenRefresh {
   void setTokenExpiresAt(Date dateTime) throws Exception;
 

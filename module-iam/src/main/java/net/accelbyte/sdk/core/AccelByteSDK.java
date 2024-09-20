@@ -555,13 +555,13 @@ public class AccelByteSDK implements RequestRunner {
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefresh) {
-        final TokenRefresh tokenRefresh = (TokenRefresh) tokenRepository;
+      if (tokenRepository instanceof TokenRefreshV2) {
+        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
         final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
         final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(Date.from(utcNow.plusSeconds(expiresIn)));
+        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
         tokenRefresh.storeRefreshToken(token.getRefreshToken());
-        tokenRefresh.setRefreshTokenExpiresAt(Date.from(utcNow.plusSeconds(refreshExpiresIn)));
+        tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
         scheduleRefreshTokenTask(expiresIn);
       }
 
@@ -585,10 +585,10 @@ public class AccelByteSDK implements RequestRunner {
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefresh) {
-        final TokenRefresh tokenRefresh = (TokenRefresh) tokenRepository;
+      if (tokenRepository instanceof TokenRefreshV2) {
+        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
         final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(Date.from(utcNow.plusSeconds(expiresIn)));
+        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
         tokenRefresh.storeRefreshToken(null);
         tokenRefresh.setRefreshTokenExpiresAt(null);
         scheduleRefreshTokenTask(expiresIn);
@@ -604,9 +604,9 @@ public class AccelByteSDK implements RequestRunner {
   @SneakyThrows // TODO: remove unused exception from getToken, getTokenExpiredAt
   public boolean loginOrRefreshClient() {
     TokenRepository tokenRepo = sdkConfiguration.getTokenRepository();
-    TokenRefresh refreshRepo;
-    if (tokenRepo instanceof TokenRefresh) {
-      refreshRepo = (TokenRefresh) tokenRepo;
+    TokenRefreshV2 refreshRepo;
+    if (tokenRepo instanceof TokenRefreshV2) {
+      refreshRepo = (TokenRefreshV2) tokenRepo;
     } else {
       throw new IllegalArgumentException(
           "Token repository is not a Refresh Repository"); // TODO: restructure the inheritance
@@ -627,9 +627,9 @@ public class AccelByteSDK implements RequestRunner {
   @SneakyThrows // TODO: remove unused exception from getToken, getTokenExpiredAt
   public boolean loginOrRefreshUser(String username, String password) {
     TokenRepository tokenRepo = sdkConfiguration.getTokenRepository();
-    TokenRefresh refreshRepo;
-    if (tokenRepo instanceof TokenRefresh) {
-      refreshRepo = (TokenRefresh) tokenRepo;
+    TokenRefreshV2 refreshRepo;
+    if (tokenRepo instanceof TokenRefreshV2) {
+      refreshRepo = (TokenRefreshV2) tokenRepo;
     } else {
       throw new IllegalArgumentException(
           "Token repository is not a Refresh Repository"); // TODO: restructure the inheritance
@@ -667,13 +667,13 @@ public class AccelByteSDK implements RequestRunner {
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefresh) {
-        final TokenRefresh tokenRefresh = (TokenRefresh) tokenRepository;
+      if (tokenRepository instanceof TokenRefreshV2) {
+        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
         final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
         final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(Date.from(utcNow.plusSeconds(expiresIn)));
+        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
         tokenRefresh.storeRefreshToken(token.getRefreshToken());
-        tokenRefresh.setRefreshTokenExpiresAt(Date.from(utcNow.plusSeconds(refreshExpiresIn)));
+        tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
         scheduleRefreshTokenTask(expiresIn);
       }
 
@@ -713,18 +713,18 @@ public class AccelByteSDK implements RequestRunner {
         return false; // Cannot perform token refresh
       }
 
-      if (!(tokenRepository instanceof TokenRefresh)) {
+      if (!(tokenRepository instanceof TokenRefreshV2)) {
         return false; // Cannot perform token refresh
       }
 
-      final TokenRefresh tokenRefresh = (TokenRefresh) tokenRepository;
+      final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
 
-      final Date accessTokenExpiresAt = tokenRefresh.getTokenExpiresAt();
+      final Instant accessTokenExpiresAt = tokenRefresh.getTokenExpiresAt();
       final String refreshToken = tokenRefresh.getRefreshToken();
 
       final boolean isLoginUserOrLoginPlatform = refreshToken != null && !refreshToken.isEmpty();
 
-      final Date refreshTokenExpiresAt =
+      final Instant refreshTokenExpiresAt =
           isLoginUserOrLoginPlatform ? tokenRefresh.getRefreshTokenExpiresAt() : null;
 
       if (accessTokenExpiresAt == null) {
@@ -752,9 +752,9 @@ public class AccelByteSDK implements RequestRunner {
           final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
           final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
           tokenRepository.storeToken(token.getAccessToken());
-          tokenRefresh.setTokenExpiresAt(Date.from(utcNow.plusSeconds(expiresIn)));
+          tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
           tokenRefresh.storeRefreshToken(token.getRefreshToken());
-          tokenRefresh.setRefreshTokenExpiresAt(Date.from(utcNow.plusSeconds(refreshExpiresIn)));
+          tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
           scheduleRefreshTokenTask(expiresIn);
 
           return true; // Token refresh successful
@@ -832,8 +832,8 @@ public class AccelByteSDK implements RequestRunner {
     try {
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.removeToken();
-      if (tokenRepository instanceof TokenRefresh) {
-        final TokenRefresh tokenRefresh = (TokenRefresh) tokenRepository;
+      if (tokenRepository instanceof TokenRefreshV2) {
+        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
         tokenRefresh.setTokenExpiresAt(null);
         tokenRefresh.removeRefreshToken();
         tokenRefresh.setRefreshTokenExpiresAt(null);
@@ -877,9 +877,9 @@ public class AccelByteSDK implements RequestRunner {
     }
   }
 
-  private static boolean isExpired(Date expiresAt) {
-    final long tokenExpiresAtEpoch = expiresAt.getTime();
-    final long utcNowEpoch = Date.from(Instant.now()).getTime();
+  private static boolean isExpired(Instant expiresAt) {
+    final long tokenExpiresAtEpoch = expiresAt.getEpochSecond();
+    final long utcNowEpoch = Instant.now().getEpochSecond();
 
     final boolean isExpired = (tokenExpiresAtEpoch - utcNowEpoch) <= 0;
 

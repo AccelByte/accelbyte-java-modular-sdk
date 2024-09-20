@@ -55,7 +55,7 @@ public class TestIntegrationTokenRefresh extends TestIntegration {
             && !"".equals(tokenRefreshRepository.getRefreshToken()));
 
     // Simulate token expiry within threshold
-    tokenRefreshRepository.setTokenExpiresAt(Date.from(Instant.now().plusSeconds(60)));
+    tokenRefreshRepository.setTokenExpiresAt(Instant.now().plusSeconds(60));
 
     wrapper.getCountryLocationV3(GetCountryLocationV3.builder().build());
 
@@ -87,7 +87,7 @@ public class TestIntegrationTokenRefresh extends TestIntegration {
     // token
 
     // Simulate token expiry within threshold
-    tokenRefreshRepository.setTokenExpiresAt(Date.from(Instant.now().plusSeconds(60)));
+    tokenRefreshRepository.setTokenExpiresAt(Instant.now().plusSeconds(60));
 
     wrapper.getCountryLocationV3(GetCountryLocationV3.builder().build());
 
