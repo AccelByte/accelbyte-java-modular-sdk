@@ -17,7 +17,6 @@ includeBuild("../../../") {
         substitute module('net.accelbyte.sdk:module-cloudsave') using project(':module-cloudsave')
         substitute module('net.accelbyte.sdk:module-dslogmanager') using project(':module-dslogmanager')
         substitute module('net.accelbyte.sdk:module-dsmc') using project(':module-dsmc')
-        substitute module('net.accelbyte.sdk:module-eventlog') using project(':module-eventlog')
         substitute module('net.accelbyte.sdk:module-gametelemetry') using project(':module-gametelemetry')
         substitute module('net.accelbyte.sdk:module-gdpr') using project(':module-gdpr')
         substitute module('net.accelbyte.sdk:module-group') using project(':module-group')

@@ -271,40 +271,7 @@ publicGameRecordWrapper.putGameRecordHandlerV1(
 publicGameRecordWrapper.deleteGameRecordHandlerV1(
     DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build());
 ```
-## EventLog
 
-Source: [TestIntegrationServiceEventLog.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceEventLog.java)
-
-### Get a set of events
-
-```java
-final ModelsGenericQueryPayload queryEventStreamBody =
-    ModelsGenericQueryPayload.builder()
-        .clientId(sdk.getSdkConfiguration().getConfigRepository().getClientId())
-        .build();
-
-final ModelsEventResponseV2 queryEventStreamResult =
-    eventV2Wrapper.queryEventStreamHandler(
-        QueryEventStreamHandler.builder()
-            .namespace(this.namespace)
-            .offset(0)
-            .pageSize(10)
-            .body(queryEventStreamBody)
-            .build());
-```
-
-### Get specific user events
-
-```java
-final ModelsEventResponseV2 getEventSpecificUserResult =
-    eventV2Wrapper.getEventSpecificUserV2Handler(
-        GetEventSpecificUserV2Handler.builder()
-            .namespace(this.namespace)
-            .userId(getUserResult.getUserId())
-            .offset(0)
-            .pageSize(10)
-            .build());
-```
 ## GameTelemetry
 
 Source: [TestIntegrationServiceGameTelemetry.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceGameTelemetry.java)

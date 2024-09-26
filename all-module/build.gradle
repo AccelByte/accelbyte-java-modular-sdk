@@ -6,7 +6,6 @@ dependencies {
     api project(':module-cloudsave')
     api project(':module-dslogmanager')
     api project(':module-dsmc')
-    api project(':module-eventlog')
     api project(':module-gametelemetry')
     api project(':module-gdpr')
     api project(':module-group')

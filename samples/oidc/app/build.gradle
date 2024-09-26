@@ -30,7 +30,6 @@ dependencies {
     implementation 'net.accelbyte.sdk:module-cloudsave:+'
     implementation 'net.accelbyte.sdk:module-dslogmanager:+'
     implementation 'net.accelbyte.sdk:module-dsmc:+'
-    implementation 'net.accelbyte.sdk:module-eventlog:+'
     implementation 'net.accelbyte.sdk:module-gametelemetry:+'
     implementation 'net.accelbyte.sdk:module-gdpr:+'
     implementation 'net.accelbyte.sdk:module-group:+'
