@@ -152,11 +152,19 @@ class TestLobby {
 
     // Execute the request and get the response
     try (Response response = client.newCall(request).execute()) {
-      log.info("End: forceCloseMockServer - status: " + statusCode + " with response code: " + response.code());
+      log.info(
+          "End: forceCloseMockServer - status: "
+              + statusCode
+              + " with response code: "
+              + response.code());
       // Assert the status code of the response
       assertEquals(204, response.code()); // 204 No Content
     } catch (Exception e) {
-      log.info("Exception caught: forceCloseMockServer - status: " + statusCode + " with Exception: " + e);
+      log.info(
+          "Exception caught: forceCloseMockServer - status: "
+              + statusCode
+              + " with Exception: "
+              + e);
       throw e;
     }
   }
@@ -220,7 +228,8 @@ class TestLobby {
 
       assertTrue(lobbyListener.getOnClosedLatch().await(RECONNECT_DELAY_MS, TimeUnit.MILLISECONDS));
       lobbyListener.resetOnClosedLatch();
-      assertTrue(lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS));
+      assertTrue(
+          lobbyListener.getOnOpenedLatch().await(RECONNECT_DELAY_MS + 3000, TimeUnit.MILLISECONDS));
       lobbyListener.resetOnOpenedLatch();
 
       Thread.sleep(RECONNECT_DELAY_MS + 3000);

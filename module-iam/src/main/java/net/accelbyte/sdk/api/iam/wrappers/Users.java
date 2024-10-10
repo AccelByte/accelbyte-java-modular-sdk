@@ -2443,6 +2443,20 @@ public class Users {
   }
 
   /**
+   * @see PublicGetMyProfileAllowUpdateStatusV3
+   */
+  public ModelUserProfileUpdateAllowStatus publicGetMyProfileAllowUpdateStatusV3(
+      PublicGetMyProfileAllowUpdateStatusV3 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicSendVerificationLinkV3
    */
   public void publicSendVerificationLinkV3(PublicSendVerificationLinkV3 input) throws Exception {

@@ -2,7 +2,8 @@ package net.accelbyte.sdk.core.repository;
 
 import java.time.Instant;
 
-public class DefaultTokenRefreshRepository extends DefaultTokenRepository implements TokenRefreshV2 {
+public class DefaultTokenRefreshRepository extends DefaultTokenRepository
+    implements TokenRefreshV2 {
   private Instant tokenExpiresAt = null;
   private String refreshToken = null;
   private Instant refreshTokenExpiresAt = null;

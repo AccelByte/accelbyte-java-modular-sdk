@@ -156,7 +156,9 @@ public class DevicesV4 {
 
   /**
    * @see AdminDecryptDeviceV4
+   * @deprecated
    */
+  @Deprecated
   public ModelDeviceIDDecryptResponseV4 adminDecryptDeviceV4(AdminDecryptDeviceV4 input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

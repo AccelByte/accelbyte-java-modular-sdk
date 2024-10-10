@@ -34,9 +34,10 @@ public class Entitlement {
   }
 
   /**
-   * @see QueryEntitlements
+   * @see QueryEntitlements1
    */
-  public EntitlementPagingSlicedResult queryEntitlements(QueryEntitlements input) throws Exception {
+  public EntitlementPagingSlicedResult queryEntitlements1(QueryEntitlements1 input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -47,10 +48,9 @@ public class Entitlement {
   }
 
   /**
-   * @see QueryEntitlements1
+   * @see QueryEntitlements
    */
-  public EntitlementPagingSlicedResult queryEntitlements1(QueryEntitlements1 input)
-      throws Exception {
+  public EntitlementPagingSlicedResult queryEntitlements(QueryEntitlements input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

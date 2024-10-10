@@ -8,7 +8,6 @@
 
 package net.accelbyte.sdk.api.platform.wrappers;
 
-import java.io.*;
 import java.util.*;
 import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operations.payment_station.*;
@@ -133,7 +132,7 @@ public class PaymentStation {
   /**
    * @see PublicGetQRCode
    */
-  public InputStream publicGetQRCode(PublicGetQRCode input) throws Exception {
+  public BinarySchema publicGetQRCode(PublicGetQRCode input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
