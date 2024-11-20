@@ -23,6 +23,13 @@
 | `/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}` | POST | AdminPostPlayerAdminRecordV1 | [AdminPostPlayerAdminRecordV1](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/admin_record/AdminPostPlayerAdminRecordV1.java) | [AdminPostPlayerAdminRecordV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/admin_record/AdminPostPlayerAdminRecordV1.java) |
 | `/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}` | DELETE | AdminDeleteAdminPlayerRecordV1 | [AdminDeleteAdminPlayerRecordV1](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/admin_record/AdminDeleteAdminPlayerRecordV1.java) | [AdminDeleteAdminPlayerRecordV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/admin_record/AdminDeleteAdminPlayerRecordV1.java) |
 
+### TTLConfig Wrapper:  [TTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/wrappers/TTLConfig.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}/ttl` | DELETE | DeleteAdminGameRecordTTLConfig | [DeleteAdminGameRecordTTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/ttl_config/DeleteAdminGameRecordTTLConfig.java) | [DeleteAdminGameRecordTTLConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/ttl_config/DeleteAdminGameRecordTTLConfig.java) |
+| `/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/ttl` | DELETE | DeleteGameBinaryRecordTTLConfig | [DeleteGameBinaryRecordTTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/ttl_config/DeleteGameBinaryRecordTTLConfig.java) | [DeleteGameBinaryRecordTTLConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/ttl_config/DeleteGameBinaryRecordTTLConfig.java) |
+| `/cloudsave/v1/admin/namespaces/{namespace}/records/{key}/ttl` | DELETE | DeleteGameRecordTTLConfig | [DeleteGameRecordTTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/ttl_config/DeleteGameRecordTTLConfig.java) | [DeleteGameRecordTTLConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/ttl_config/DeleteGameRecordTTLConfig.java) |
+
 ### AdminGameBinaryRecord Wrapper:  [AdminGameBinaryRecord](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/wrappers/AdminGameBinaryRecord.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -33,12 +40,6 @@
 | `/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}` | DELETE | AdminDeleteGameBinaryRecordV1 | [AdminDeleteGameBinaryRecordV1](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/admin_game_binary_record/AdminDeleteGameBinaryRecordV1.java) | [AdminDeleteGameBinaryRecordV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/admin_game_binary_record/AdminDeleteGameBinaryRecordV1.java) |
 | `/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/metadata` | PUT | AdminPutGameBinaryRecorMetadataV1 | [AdminPutGameBinaryRecorMetadataV1](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/admin_game_binary_record/AdminPutGameBinaryRecorMetadataV1.java) | [AdminPutGameBinaryRecorMetadataV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/admin_game_binary_record/AdminPutGameBinaryRecorMetadataV1.java) |
 | `/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/presigned` | POST | AdminPostGameBinaryPresignedURLV1 | [AdminPostGameBinaryPresignedURLV1](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/admin_game_binary_record/AdminPostGameBinaryPresignedURLV1.java) | [AdminPostGameBinaryPresignedURLV1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/admin_game_binary_record/AdminPostGameBinaryPresignedURLV1.java) |
-
-### TTLConfig Wrapper:  [TTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/wrappers/TTLConfig.java)
-| Endpoint | Method | ID | Class | Example |
-|---|---|---|---|---|
-| `/cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/ttl` | DELETE | DeleteGameBinaryRecordTTLConfig | [DeleteGameBinaryRecordTTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/ttl_config/DeleteGameBinaryRecordTTLConfig.java) | [DeleteGameBinaryRecordTTLConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/ttl_config/DeleteGameBinaryRecordTTLConfig.java) |
-| `/cloudsave/v1/admin/namespaces/{namespace}/records/{key}/ttl` | DELETE | DeleteGameRecordTTLConfig | [DeleteGameRecordTTLConfig](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/operations/ttl_config/DeleteGameRecordTTLConfig.java) | [DeleteGameRecordTTLConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/cloudsave/ttl_config/DeleteGameRecordTTLConfig.java) |
 
 ### AdminConcurrentRecord Wrapper:  [AdminConcurrentRecord](../../module-cloudsave/src/main/java/net/accelbyte/sdk/api/cloudsave/wrappers/AdminConcurrentRecord.java)
 | Endpoint | Method | ID | Class | Example |

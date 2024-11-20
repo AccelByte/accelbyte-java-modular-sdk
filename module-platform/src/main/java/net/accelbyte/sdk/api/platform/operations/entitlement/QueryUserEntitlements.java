@@ -49,6 +49,7 @@ public class QueryUserEntitlements extends Operation {
   private String entitlementName;
   private List<String> features;
   private Boolean fuzzyMatchName;
+  private Boolean ignoreActiveDate;
   private List<String> itemId;
   private Integer limit;
   private Integer offset;
@@ -72,6 +73,7 @@ public class QueryUserEntitlements extends Operation {
       String entitlementName,
       List<String> features,
       Boolean fuzzyMatchName,
+      Boolean ignoreActiveDate,
       List<String> itemId,
       Integer limit,
       Integer offset,
@@ -85,6 +87,7 @@ public class QueryUserEntitlements extends Operation {
     this.entitlementName = entitlementName;
     this.features = features;
     this.fuzzyMatchName = fuzzyMatchName;
+    this.ignoreActiveDate = ignoreActiveDate;
     this.itemId = itemId;
     this.limit = limit;
     this.offset = offset;
@@ -132,6 +135,11 @@ public class QueryUserEntitlements extends Operation {
         "fuzzyMatchName",
         this.fuzzyMatchName == null ? null : Arrays.asList(String.valueOf(this.fuzzyMatchName)));
     queryParams.put(
+        "ignoreActiveDate",
+        this.ignoreActiveDate == null
+            ? null
+            : Arrays.asList(String.valueOf(this.ignoreActiveDate)));
+    queryParams.put(
         "itemId",
         this.itemId == null
             ? null
@@ -176,6 +184,7 @@ public class QueryUserEntitlements extends Operation {
     result.put("entitlementName", "None");
     result.put("features", "multi");
     result.put("fuzzyMatchName", "None");
+    result.put("ignoreActiveDate", "None");
     result.put("itemId", "multi");
     result.put("limit", "None");
     result.put("offset", "None");

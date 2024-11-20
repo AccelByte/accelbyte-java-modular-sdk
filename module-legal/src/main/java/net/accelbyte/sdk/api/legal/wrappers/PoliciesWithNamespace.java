@@ -32,6 +32,19 @@ public class PoliciesWithNamespace {
   }
 
   /**
+   * @see DeletePolicy
+   */
+  public void deletePolicy(DeletePolicy input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see UpdatePolicy1
    */
   public void updatePolicy1(UpdatePolicy1 input) throws Exception {

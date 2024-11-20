@@ -212,6 +212,20 @@ public class Entitlement {
   }
 
   /**
+   * @see GetUserEntitlementsByIds
+   */
+  public List<EntitlementInfo> getUserEntitlementsByIds(GetUserEntitlementsByIds input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see GetUserEntitlementByItemId
    */
   public EntitlementInfo getUserEntitlementByItemId(GetUserEntitlementByItemId input)

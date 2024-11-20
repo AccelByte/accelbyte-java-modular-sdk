@@ -48,7 +48,7 @@ public class AMSInfo {
   /**
    * @see InfoSupportedInstances
    */
-  public ApiAvailableInstanceTypesResponse infoSupportedInstances(InfoSupportedInstances input)
+  public ApiInstanceTypesForNamespaceResponse infoSupportedInstances(InfoSupportedInstances input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

@@ -69,6 +69,7 @@
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
 | `/gdpr/s2s/namespaces/{namespace}/requests/finished` | GET | S2SGetListFinishedPersonalDataRequest | [S2SGetListFinishedPersonalDataRequest](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGetListFinishedPersonalDataRequest.java) | [S2SGetListFinishedPersonalDataRequest](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gdpr/data_retrieval_s2s/S2SGetListFinishedPersonalDataRequest.java) |
+| `/gdpr/s2s/namespaces/{namespace}/requests/{requestId}` | GET | S2SGetDataRequestByRequestID | [S2SGetDataRequestByRequestID](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGetDataRequestByRequestID.java) | [S2SGetDataRequestByRequestID](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gdpr/data_retrieval_s2s/S2SGetDataRequestByRequestID.java) |
 | `/gdpr/s2s/namespaces/{namespace}/users/{userId}/requests` | POST | S2SRequestDataRetrieval | [S2SRequestDataRetrieval](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SRequestDataRetrieval.java) | [S2SRequestDataRetrieval](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gdpr/data_retrieval_s2s/S2SRequestDataRetrieval.java) |
 | `/gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate` | POST | S2SGeneratePersonalDataURL | [S2SGeneratePersonalDataURL](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/operations/data_retrieval_s2s/S2SGeneratePersonalDataURL.java) | [S2SGeneratePersonalDataURL](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/gdpr/data_retrieval_s2s/S2SGeneratePersonalDataURL.java) |
 
@@ -86,6 +87,7 @@
 | `dto.ListFinishedDataRequests` | [DtoListFinishedDataRequests](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoListFinishedDataRequests.java) |
 | `dto.PlatformAccountClosureClientRequest` | [DtoPlatformAccountClosureClientRequest](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureClientRequest.java) |
 | `dto.PlatformAccountClosureClientResponse` | [DtoPlatformAccountClosureClientResponse](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoPlatformAccountClosureClientResponse.java) |
+| `dto.S2SDataRequestSummary` | [DtoS2SDataRequestSummary](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoS2SDataRequestSummary.java) |
 | `dto.ServiceConfigDTO` | [DtoServiceConfigDTO](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigDTO.java) |
 | `dto.ServiceConfigurationDTO` | [DtoServiceConfigurationDTO](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigurationDTO.java) |
 | `dto.ServiceConfigurationUpdateRequest` | [DtoServiceConfigurationUpdateRequest](../../module-gdpr/src/main/java/net/accelbyte/sdk/api/gdpr/models/DtoServiceConfigurationUpdateRequest.java) |

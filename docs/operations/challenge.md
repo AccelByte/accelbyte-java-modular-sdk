@@ -77,6 +77,7 @@
 | `model.ClaimUserRewardsReq` | [ModelClaimUserRewardsReq](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUserRewardsReq.java) |
 | `model.ClaimUsersRewardsRequest` | [ModelClaimUsersRewardsRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUsersRewardsRequest.java) |
 | `model.ClaimUsersRewardsResponse` | [ModelClaimUsersRewardsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUsersRewardsResponse.java) |
+| `model.ClaimableUserReward` | [ModelClaimableUserReward](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimableUserReward.java) |
 | `model.CreateChallengeRequest` | [ModelCreateChallengeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateChallengeRequest.java) |
 | `model.CreateGoalRequest` | [ModelCreateGoalRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateGoalRequest.java) |
 | `model.EvaluatePlayerProgressionRequest` | [ModelEvaluatePlayerProgressionRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelEvaluatePlayerProgressionRequest.java) |

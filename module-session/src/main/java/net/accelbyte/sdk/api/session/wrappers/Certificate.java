@@ -33,10 +33,12 @@ public class Certificate {
   }
 
   /**
-   * @see HandleUploadXboxPFXCertificate
+   * @see AdminUploadXBoxCertificate
+   * @deprecated
    */
-  public ModelsPlatformCredentials handleUploadXboxPFXCertificate(
-      HandleUploadXboxPFXCertificate input) throws Exception {
+  @Deprecated
+  public ModelsPlatformCredentials adminUploadXBoxCertificate(AdminUploadXBoxCertificate input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

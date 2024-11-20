@@ -24,7 +24,7 @@
 | `/ams/v1/admin/namespaces/{namespace}/account` | GET | AdminAccountGet | [AdminAccountGet](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AdminAccountGet.java) | [AdminAccountGet](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AdminAccountGet.java) |
 | `/ams/v1/admin/namespaces/{namespace}/account` | POST | AdminAccountCreate | [AdminAccountCreate](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AdminAccountCreate.java) | [AdminAccountCreate](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AdminAccountCreate.java) |
 | `/ams/v1/admin/namespaces/{namespace}/account/link` | GET | AdminAccountLinkTokenGet | [AdminAccountLinkTokenGet](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AdminAccountLinkTokenGet.java) | [AdminAccountLinkTokenGet](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AdminAccountLinkTokenGet.java) |
-| `/ams/v1/admin/namespaces/{namespace}/account/link` | POST | AdminAccountLinkTokenPost | [AdminAccountLinkTokenPost](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AdminAccountLinkTokenPost.java) | [AdminAccountLinkTokenPost](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AdminAccountLinkTokenPost.java) |
+| `/ams/v1/admin/namespaces/{namespace}/account/link` | POST | AdminAccountLink | [AdminAccountLink](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AdminAccountLink.java) | [AdminAccountLink](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AdminAccountLink.java) |
 | `/ams/v1/namespaces/{namespace}/account` | GET | AccountGet | [AccountGet](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/operations/account/AccountGet.java) | [AccountGet](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/ams/account/AccountGet.java) |
 
 ### Artifacts Wrapper:  [Artifacts](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/wrappers/Artifacts.java)
@@ -116,9 +116,8 @@
 | `api.ArtifactTypeSamplingRules` | [ApiArtifactTypeSamplingRules](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiArtifactTypeSamplingRules.java) |
 | `api.ArtifactURLResponse` | [ApiArtifactURLResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiArtifactURLResponse.java) |
 | `api.ArtifactUsageResponse` | [ApiArtifactUsageResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiArtifactUsageResponse.java) |
-| `api.AvailableInstanceType` | [ApiAvailableInstanceType](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiAvailableInstanceType.java) |
-| `api.AvailableInstanceTypesResponse` | [ApiAvailableInstanceTypesResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiAvailableInstanceTypesResponse.java) |
 | `api.Capacity` | [ApiCapacity](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiCapacity.java) |
+| `api.CoredumpSamplingRules` | [ApiCoredumpSamplingRules](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiCoredumpSamplingRules.java) |
 | `api.DSHistoryEvent` | [ApiDSHistoryEvent](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiDSHistoryEvent.java) |
 | `api.DSHistoryList` | [ApiDSHistoryList](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiDSHistoryList.java) |
 | `api.DSHostConfiguration` | [ApiDSHostConfiguration](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiDSHostConfiguration.java) |
@@ -148,6 +147,8 @@
 | `api.ImageListItem` | [ApiImageListItem](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiImageListItem.java) |
 | `api.ImageStorage` | [ApiImageStorage](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiImageStorage.java) |
 | `api.ImageUpdate` | [ApiImageUpdate](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiImageUpdate.java) |
+| `api.InstanceTypeForNamespaceResponse` | [ApiInstanceTypeForNamespaceResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiInstanceTypeForNamespaceResponse.java) |
+| `api.InstanceTypesForNamespaceResponse` | [ApiInstanceTypesForNamespaceResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiInstanceTypesForNamespaceResponse.java) |
 | `api.PagingInfo` | [ApiPagingInfo](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiPagingInfo.java) |
 | `api.PortConfiguration` | [ApiPortConfiguration](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiPortConfiguration.java) |
 | `api.QoSEndpointResponse` | [ApiQoSEndpointResponse](../../module-ams/src/main/java/net/accelbyte/sdk/api/ams/models/ApiQoSEndpointResponse.java) |

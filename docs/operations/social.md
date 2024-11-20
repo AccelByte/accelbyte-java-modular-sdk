@@ -159,6 +159,8 @@
 | `BulkUserStatItemInc` | [BulkUserStatItemInc](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/BulkUserStatItemInc.java) |
 | `BulkUserStatItemReset` | [BulkUserStatItemReset](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/BulkUserStatItemReset.java) |
 | `BulkUserStatItemUpdate` | [BulkUserStatItemUpdate](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/BulkUserStatItemUpdate.java) |
+| `CycleOverride` | [CycleOverride](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/CycleOverride.java) |
+| `CycleOverrideRequest` | [CycleOverrideRequest](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/CycleOverrideRequest.java) |
 | `ErrorEntity` | [ErrorEntity](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/ErrorEntity.java) |
 | `FieldValidationError` | [FieldValidationError](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/FieldValidationError.java) |
 | `GameProfileHeader` | [GameProfileHeader](../../module-social/src/main/java/net/accelbyte/sdk/api/social/models/GameProfileHeader.java) |

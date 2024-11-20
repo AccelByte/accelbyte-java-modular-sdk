@@ -73,10 +73,9 @@ public class Account {
   }
 
   /**
-   * @see AdminAccountLinkTokenPost
+   * @see AdminAccountLink
    */
-  public ApiAccountLinkResponse adminAccountLinkTokenPost(AdminAccountLinkTokenPost input)
-      throws Exception {
+  public ApiAccountLinkResponse adminAccountLink(AdminAccountLink input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

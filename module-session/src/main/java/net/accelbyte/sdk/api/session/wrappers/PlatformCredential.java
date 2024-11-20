@@ -73,4 +73,32 @@ public class PlatformCredential {
     input.handleEmptyResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
+
+  /**
+   * @see AdminDeletePlatformCredentialsByPlatformId
+   */
+  public void adminDeletePlatformCredentialsByPlatformId(
+      AdminDeletePlatformCredentialsByPlatformId input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminSyncPlatformCredentials
+   */
+  public ApimodelsXblCertificateResponseBody adminSyncPlatformCredentials(
+      AdminSyncPlatformCredentials input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

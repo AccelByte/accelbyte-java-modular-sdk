@@ -53,7 +53,7 @@
 ### Certificate Wrapper:  [Certificate](../../module-session/src/main/java/net/accelbyte/sdk/api/session/wrappers/Certificate.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
-| `/session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl` | PUT | HandleUploadXboxPFXCertificate | [HandleUploadXboxPFXCertificate](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/certificate/HandleUploadXboxPFXCertificate.java) | [HandleUploadXboxPFXCertificate](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/certificate/HandleUploadXboxPFXCertificate.java) |
+| [DEPRECATED] `/session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl` | PUT | AdminUploadXBoxCertificate | [AdminUploadXBoxCertificate](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/certificate/AdminUploadXBoxCertificate.java) | [AdminUploadXBoxCertificate](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/certificate/AdminUploadXBoxCertificate.java) |
 
 ### Max Active Wrapper:  [MaxActive](../../module-session/src/main/java/net/accelbyte/sdk/api/session/wrappers/MaxActive.java)
 | Endpoint | Method | ID | Class | Example |
@@ -101,6 +101,7 @@
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
 | `/session/v1/admin/namespaces/{namespace}/parties` | GET | AdminQueryParties | [AdminQueryParties](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/party/AdminQueryParties.java) | [AdminQueryParties](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/party/AdminQueryParties.java) |
+| `/session/v1/admin/namespaces/{namespace}/parties/bulk` | DELETE | AdminDeleteBulkParties | [AdminDeleteBulkParties](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/party/AdminDeleteBulkParties.java) | [AdminDeleteBulkParties](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/party/AdminDeleteBulkParties.java) |
 | `/session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync` | POST | AdminSyncNativeSession | [AdminSyncNativeSession](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/party/AdminSyncNativeSession.java) | [AdminSyncNativeSession](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/party/AdminSyncNativeSession.java) |
 | `/session/v1/public/namespaces/{namespace}/parties/users/me/join/code` | POST | PublicPartyJoinCode | [PublicPartyJoinCode](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/party/PublicPartyJoinCode.java) | [PublicPartyJoinCode](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/party/PublicPartyJoinCode.java) |
 | `/session/v1/public/namespaces/{namespace}/parties/{partyId}` | GET | PublicGetParty | [PublicGetParty](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/party/PublicGetParty.java) | [PublicGetParty](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/party/PublicGetParty.java) |
@@ -124,6 +125,8 @@
 | `/session/v1/admin/namespaces/{namespace}/platform-credentials` | GET | AdminGetPlatformCredentials | [AdminGetPlatformCredentials](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminGetPlatformCredentials.java) | [AdminGetPlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminGetPlatformCredentials.java) |
 | `/session/v1/admin/namespaces/{namespace}/platform-credentials` | PUT | AdminUpdatePlatformCredentials | [AdminUpdatePlatformCredentials](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminUpdatePlatformCredentials.java) | [AdminUpdatePlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminUpdatePlatformCredentials.java) |
 | `/session/v1/admin/namespaces/{namespace}/platform-credentials` | DELETE | AdminDeletePlatformCredentials | [AdminDeletePlatformCredentials](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminDeletePlatformCredentials.java) | [AdminDeletePlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminDeletePlatformCredentials.java) |
+| `/session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}` | DELETE | AdminDeletePlatformCredentialsByPlatformId | [AdminDeletePlatformCredentialsByPlatformId](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminDeletePlatformCredentialsByPlatformId.java) | [AdminDeletePlatformCredentialsByPlatformId](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminDeletePlatformCredentialsByPlatformId.java) |
+| `/session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/sync` | PUT | AdminSyncPlatformCredentials | [AdminSyncPlatformCredentials](../../module-session/src/main/java/net/accelbyte/sdk/api/session/operations/platform_credential/AdminSyncPlatformCredentials.java) | [AdminSyncPlatformCredentials](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/session/platform_credential/AdminSyncPlatformCredentials.java) |
 
 ### Recent Player Wrapper:  [RecentPlayer](../../module-session/src/main/java/net/accelbyte/sdk/api/session/wrappers/RecentPlayer.java)
 | Endpoint | Method | ID | Class | Example |
@@ -170,6 +173,8 @@
 | `apimodels.DSInformationResponse` | [ApimodelsDSInformationResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDSInformationResponse.java) |
 | `apimodels.DeleteBulkGameSessionRequest` | [ApimodelsDeleteBulkGameSessionRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkGameSessionRequest.java) |
 | `apimodels.DeleteBulkGameSessionsAPIResponse` | [ApimodelsDeleteBulkGameSessionsAPIResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkGameSessionsAPIResponse.java) |
+| `apimodels.DeleteBulkPartySessionRequest` | [ApimodelsDeleteBulkPartySessionRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkPartySessionRequest.java) |
+| `apimodels.DeleteBulkPartySessionsAPIResponse` | [ApimodelsDeleteBulkPartySessionsAPIResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsDeleteBulkPartySessionsAPIResponse.java) |
 | `apimodels.EnvironmentVariableListResponse` | [ApimodelsEnvironmentVariableListResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsEnvironmentVariableListResponse.java) |
 | `apimodels.EnvironmentVariableResponse` | [ApimodelsEnvironmentVariableResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsEnvironmentVariableResponse.java) |
 | `apimodels.GameSessionQueryResponse` | [ApimodelsGameSessionQueryResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsGameSessionQueryResponse.java) |
@@ -178,6 +183,7 @@
 | `apimodels.JoinByCodeRequest` | [ApimodelsJoinByCodeRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsJoinByCodeRequest.java) |
 | `apimodels.KickResponse` | [ApimodelsKickResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsKickResponse.java) |
 | `apimodels.NativeSessionPagingResponse` | [ApimodelsNativeSessionPagingResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsNativeSessionPagingResponse.java) |
+| `apimodels.PSNAppServerCredentialRecord` | [ApimodelsPSNAppServerCredentialRecord](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPSNAppServerCredentialRecord.java) |
 | `apimodels.Pagination` | [ApimodelsPagination](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPagination.java) |
 | `apimodels.PartyQueryResponse` | [ApimodelsPartyQueryResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPartyQueryResponse.java) |
 | `apimodels.PartySessionResponse` | [ApimodelsPartySessionResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPartySessionResponse.java) |
@@ -192,6 +198,7 @@
 | `apimodels.PutPlatformCredentialsRequest` | [ApimodelsPutPlatformCredentialsRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsPutPlatformCredentialsRequest.java) |
 | `apimodels.RequestMember` | [ApimodelsRequestMember](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsRequestMember.java) |
 | `apimodels.ResponseDeleteBulkGameSessions` | [ApimodelsResponseDeleteBulkGameSessions](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsResponseDeleteBulkGameSessions.java) |
+| `apimodels.ResponseDeleteBulkPartySessions` | [ApimodelsResponseDeleteBulkPartySessions](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsResponseDeleteBulkPartySessions.java) |
 | `apimodels.ServerSecret` | [ApimodelsServerSecret](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsServerSecret.java) |
 | `apimodels.SessionInviteRequest` | [ApimodelsSessionInviteRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsSessionInviteRequest.java) |
 | `apimodels.SessionInviteResponse` | [ApimodelsSessionInviteResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsSessionInviteResponse.java) |
@@ -203,6 +210,7 @@
 | `apimodels.UpdateGameSessionRequest` | [ApimodelsUpdateGameSessionRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdateGameSessionRequest.java) |
 | `apimodels.UpdatePartyRequest` | [ApimodelsUpdatePartyRequest](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUpdatePartyRequest.java) |
 | `apimodels.UserResponse` | [ApimodelsUserResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsUserResponse.java) |
+| `apimodels.XblCertificateResponseBody` | [ApimodelsXblCertificateResponseBody](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ApimodelsXblCertificateResponseBody.java) |
 | `logconfig.Configuration` | [LogconfigConfiguration](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/LogconfigConfiguration.java) |
 | `model.NativeSession` | [ModelNativeSession](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelNativeSession.java) |
 | `model.NativeSessionMember` | [ModelNativeSessionMember](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelNativeSessionMember.java) |
@@ -221,4 +229,5 @@
 | `models.Team` | [ModelsTeam](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelsTeam.java) |
 | `models.UserInfoResponse` | [ModelsUserInfoResponse](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelsUserInfoResponse.java) |
 | `models.UserPlatformInfo` | [ModelsUserPlatformInfo](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelsUserPlatformInfo.java) |
+| `models.XBLCertificateCredential` | [ModelsXBLCertificateCredential](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ModelsXBLCertificateCredential.java) |
 | `response.Error` | [ResponseError](../../module-session/src/main/java/net/accelbyte/sdk/api/session/models/ResponseError.java) |

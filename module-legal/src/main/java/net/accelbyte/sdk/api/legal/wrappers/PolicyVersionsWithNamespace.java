@@ -34,6 +34,19 @@ public class PolicyVersionsWithNamespace {
   }
 
   /**
+   * @see DeletePolicyVersion
+   */
+  public void deletePolicyVersion(DeletePolicyVersion input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see UpdatePolicyVersion1
    */
   public UpdatePolicyVersionResponse updatePolicyVersion1(UpdatePolicyVersion1 input)
@@ -51,6 +64,19 @@ public class PolicyVersionsWithNamespace {
    * @see PublishPolicyVersion1
    */
   public void publishPolicyVersion1(PublishPolicyVersion1 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    input.handleEmptyResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UnpublishPolicyVersion
+   */
+  public void unpublishPolicyVersion(UnpublishPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
