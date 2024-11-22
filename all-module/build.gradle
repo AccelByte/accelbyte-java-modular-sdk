@@ -4,6 +4,7 @@ dependencies {
     api project(':module-achievement')
     api project(':module-basic')
     api project(':module-cloudsave')
+    api project(':module-csm')
     api project(':module-dslogmanager')
     api project(':module-dsmc')
     api project(':module-gametelemetry')
