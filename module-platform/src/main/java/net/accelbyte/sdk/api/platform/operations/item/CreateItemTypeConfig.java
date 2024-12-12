@@ -87,6 +87,9 @@ public class CreateItemTypeConfig extends Operation {
         if (code == 204) {
             response.setSuccess(true);
         }
+        else if (code == 201) {
+            response.setSuccess(true);
+        }
         else if (code == 400) {
             final String json = Helper.convertInputStreamToString(payload);
             response.setError400(new ErrorEntity().createFromJson(json));

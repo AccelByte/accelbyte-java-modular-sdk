@@ -111,6 +111,9 @@ public class CreateUserStatItem extends Operation {
         if (code == 204) {
             response.setSuccess(true);
         }
+        else if (code == 201) {
+            response.setSuccess(true);
+        }
         else if (code == 401) {
             final String json = Helper.convertInputStreamToString(payload);
             response.setError401(new ErrorEntity().createFromJson(json));

@@ -27,7 +27,7 @@ public abstract class BaseApiResponse {
     {
         if (!isSuccess && error.isAvailable())
             throw new ApiResponseException(this,true);
-        else
+        else if (!isSuccess)
             throw new ApiResponseException(this,false);
     }
 }
