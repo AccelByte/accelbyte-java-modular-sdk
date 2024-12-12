@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Setter
 public class PublicVerifyUserByLinkV3OpResponse extends ApiResponseWithData<String> {
     
-    private String error302 = "";
-
 
     public String getFullOperationId() {
         return "net.accelbyte.sdk.api.iam.operations.users.PublicVerifyUserByLinkV3";

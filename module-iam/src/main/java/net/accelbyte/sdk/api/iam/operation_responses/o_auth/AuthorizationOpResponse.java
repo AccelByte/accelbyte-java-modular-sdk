@@ -23,8 +23,6 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Setter
 public class AuthorizationOpResponse extends ApiResponseWithData<String> {
     
-    private String error302 = "";
-
 
     public String getFullOperationId() {
         return "net.accelbyte.sdk.api.iam.operations.o_auth.Authorization";

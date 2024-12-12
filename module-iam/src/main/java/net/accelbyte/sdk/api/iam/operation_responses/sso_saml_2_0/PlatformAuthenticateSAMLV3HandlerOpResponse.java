@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Setter
 public class PlatformAuthenticateSAMLV3HandlerOpResponse extends ApiResponseWithData<String> {
     
-    private String error302 = "";
-
 
     public String getFullOperationId() {
         return "net.accelbyte.sdk.api.iam.operations.sso_saml_2_0.PlatformAuthenticateSAMLV3Handler";

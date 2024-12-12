@@ -139,8 +139,8 @@ public class UserAuthenticationV3 extends Operation {
         }
         else if (code == 302) {
             final String data = Helper.convertInputStreamToString(payload);
-            response.setError302(data);
-            response.setError(new ApiError("-1", data));
+            response.setData(data);
+            response.setSuccess(true);
         }
 
         return response;
