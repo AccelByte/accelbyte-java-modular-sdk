@@ -8,82 +8,85 @@
 
 package net.accelbyte.sdk.api.challenge.wrappers;
 
+
 import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.operations.plugins.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.challenge.operation_responses.plugins.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class Plugins {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public Plugins(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("challenge");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public Plugins(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see AdminGetAssignmentPlugin
-   */
-  public ModelPluginAssignmentResponse adminGetAssignmentPlugin(AdminGetAssignmentPlugin input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Plugins(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("challenge");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see AdminUpdateAssignmentPlugin
-   */
-  public ModelPluginAssignmentResponse adminUpdateAssignmentPlugin(
-      AdminUpdateAssignmentPlugin input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Plugins(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetAssignmentPlugin
+     */
+    public AdminGetAssignmentPluginOpResponse adminGetAssignmentPlugin(AdminGetAssignmentPlugin input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminCreateAssignmentPlugin
-   */
-  public ModelPluginAssignmentResponse adminCreateAssignmentPlugin(
-      AdminCreateAssignmentPlugin input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminUpdateAssignmentPlugin
+     */
+    public AdminUpdateAssignmentPluginOpResponse adminUpdateAssignmentPlugin(AdminUpdateAssignmentPlugin input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminDeleteAssignmentPlugin
-   */
-  public void adminDeleteAssignmentPlugin(AdminDeleteAssignmentPlugin input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminCreateAssignmentPlugin
+     */
+    public AdminCreateAssignmentPluginOpResponse adminCreateAssignmentPlugin(AdminCreateAssignmentPlugin input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see AdminDeleteAssignmentPlugin
+     */
+    public AdminDeleteAssignmentPluginOpResponse adminDeleteAssignmentPlugin(AdminDeleteAssignmentPlugin input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

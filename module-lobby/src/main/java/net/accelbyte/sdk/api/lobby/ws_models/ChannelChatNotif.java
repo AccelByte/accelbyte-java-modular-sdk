@@ -8,71 +8,98 @@
 
 package net.accelbyte.sdk.api.lobby.ws_models;
 
-import static net.accelbyte.sdk.core.util.Helper.parseWSM;
-
-import java.util.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.*;
+
+import static net.accelbyte.sdk.core.util.Helper.generateUUID;
+import static net.accelbyte.sdk.core.util.Helper.parseWSM;
+import static net.accelbyte.sdk.core.util.Helper.getWSMType;
+import static net.accelbyte.sdk.core.util.Helper.listToWSMList;
+import static net.accelbyte.sdk.core.util.Helper.convertJsonToMap;
+import static net.accelbyte.sdk.core.util.Helper.convertWSMListToListString;
+import static net.accelbyte.sdk.core.util.Helper.convertWSMListToListInteger;
+
 @Getter
 @Setter
 public class ChannelChatNotif {
-  private String channelSlug;
-  private String from;
-  private String payload;
-  private String sentAt;
+    private String channelSlug;
+    private String from;
+    private String payload;
+    private String sentAt;
 
-  private ChannelChatNotif() {}
+    private ChannelChatNotif() {}
 
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public ChannelChatNotif(String channelSlug, String from, String payload, String sentAt) {
-    this.channelSlug = channelSlug;
-    this.from = from;
-    this.payload = payload;
-    this.sentAt = sentAt;
-  }
-
-  public static String getType() {
-    return "channelChatNotif";
-  }
-
-  public static ChannelChatNotif createFromWSM(String message) {
-    ChannelChatNotif result = new ChannelChatNotif();
-    Map<String, String> response = parseWSM(message);
-    result.channelSlug = response.get("channelSlug") != null ? response.get("channelSlug") : null;
-    result.from = response.get("from") != null ? response.get("from") : null;
-    result.payload = response.get("payload") != null ? response.get("payload") : null;
-    result.sentAt = response.get("sentAt") != null ? response.get("sentAt") : null;
-    return result;
-  }
-
-  public String toWSM() {
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("type: ").append(ChannelChatNotif.getType());
-    if (channelSlug != null) {
-      stringBuilder.append("\n").append("channelSlug: ").append(channelSlug);
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public ChannelChatNotif (
+        String channelSlug,
+        String from,
+        String payload,
+        String sentAt
+    ) {
+        this.channelSlug = channelSlug;
+        this.from = from;
+        this.payload = payload;
+        this.sentAt = sentAt;
     }
-    if (from != null) {
-      stringBuilder.append("\n").append("from: ").append(from);
-    }
-    if (payload != null) {
-      stringBuilder.append("\n").append("payload: ").append(payload);
-    }
-    if (sentAt != null) {
-      stringBuilder.append("\n").append("sentAt: ").append(sentAt);
-    }
-    return stringBuilder.toString();
-  }
 
-  public static Map<String, String> getFieldInfo() {
-    Map<String, String> result = new HashMap<>();
-    result.put("channelSlug", "channelSlug");
-    result.put("from", "from");
-    result.put("payload", "payload");
-    result.put("sentAt", "sentAt");
-    return result;
-  }
+    public static String getType(){
+        return "channelChatNotif";
+    }
+
+    public static ChannelChatNotif createFromWSM(String message) {
+        ChannelChatNotif result = new ChannelChatNotif();
+        Map<String, String> response = parseWSM(message);
+        result.channelSlug = response.get("channelSlug") != null ? response.get("channelSlug") : null;
+        result.from = response.get("from") != null ? response.get("from") : null;
+        result.payload = response.get("payload") != null ? response.get("payload") : null;
+        result.sentAt = response.get("sentAt") != null ? response.get("sentAt") : null;
+        return result;
+    }
+
+    public String toWSM() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("type: ").append(ChannelChatNotif.getType());
+        if (channelSlug != null) {
+            stringBuilder
+                    .append("\n")
+                    .append("channelSlug: ")
+                    .append(channelSlug);
+        }
+        if (from != null) {
+            stringBuilder
+                    .append("\n")
+                    .append("from: ")
+                    .append(from);
+        }
+        if (payload != null) {
+            stringBuilder
+                    .append("\n")
+                    .append("payload: ")
+                    .append(payload);
+        }
+        if (sentAt != null) {
+            stringBuilder
+                    .append("\n")
+                    .append("sentAt: ")
+                    .append(sentAt);
+        }
+        return stringBuilder.toString();
+    }
+
+    public static Map<String, String> getFieldInfo() {
+        Map<String, String> result = new HashMap<>();
+        result.put("channelSlug","channelSlug");
+        result.put("from","from");
+        result.put("payload","payload");
+        result.put("sentAt","sentAt");
+        return result;
+    }
 }

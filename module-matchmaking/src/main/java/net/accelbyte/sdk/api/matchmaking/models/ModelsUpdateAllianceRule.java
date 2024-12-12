@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,39 +23,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsUpdateAllianceRule extends Model {
 
-  @JsonProperty("combination")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsCombination combination;
+    @JsonProperty("combination")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsCombination combination;
 
-  @JsonProperty("maxNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer maxNumber;
+    @JsonProperty("maxNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer maxNumber;
 
-  @JsonProperty("minNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer minNumber;
+    @JsonProperty("minNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer minNumber;
 
-  @JsonProperty("playerMaxNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer playerMaxNumber;
+    @JsonProperty("playerMaxNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer playerMaxNumber;
 
-  @JsonProperty("playerMinNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer playerMinNumber;
+    @JsonProperty("playerMinNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer playerMinNumber;
 
-  @JsonIgnore
-  public ModelsUpdateAllianceRule createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsUpdateAllianceRule> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsUpdateAllianceRule>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsUpdateAllianceRule createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsUpdateAllianceRule> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsUpdateAllianceRule>>() {});
+    }
+
+
 }

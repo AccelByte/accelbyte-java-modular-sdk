@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,28 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelCreateTemplateRequest extends Model {
 
-  @JsonProperty("templateContent")
-  private String templateContent;
+    @JsonProperty("templateContent")
+    private String templateContent;
 
-  @JsonProperty("templateLanguage")
-  private String templateLanguage;
+    @JsonProperty("templateLanguage")
+    private String templateLanguage;
 
-  @JsonProperty("templateSlug")
-  private String templateSlug;
+    @JsonProperty("templateSlug")
+    private String templateSlug;
 
-  @JsonIgnore
-  public ModelCreateTemplateRequest createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelCreateTemplateRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelCreateTemplateRequest>>() {});
-  }
+
+    @JsonIgnore
+    public ModelCreateTemplateRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelCreateTemplateRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelCreateTemplateRequest>>() {});
+    }
+
+
 }

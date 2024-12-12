@@ -10,83 +10,130 @@ package net.accelbyte.sdk.api.ugc.operations.admin_content;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.ugc.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.ugc.operation_responses.admin_content.AdminDownloadContentPreviewOpResponse;
 
 /**
  * AdminDownloadContentPreview
  *
- * <p>Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
- *
- * <p>NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of
- * a content
+ * Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+ * 
+ *  NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
  */
 @Getter
 @Setter
 public class AdminDownloadContentPreview extends Operation {
-  /** generated field's value */
-  private String path = "/ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview";
+    /**
+     * generated field's value
+     */
+    private String path = "/ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String contentId;
+    private String namespace;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param contentId required
+    * @param namespace required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public AdminDownloadContentPreview(
+            String customBasePath,            String contentId,
+            String namespace
+    )
+    {
+        this.contentId = contentId;
+        this.namespace = namespace;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String contentId;
-
-  private String namespace;
-
-  /**
-   * @param contentId required
-   * @param namespace required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public AdminDownloadContentPreview(String customBasePath, String contentId, String namespace) {
-    this.contentId = contentId;
-    this.namespace = namespace;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.contentId != null) {
-      pathParams.put("contentId", this.contentId);
+        securities.add("Bearer");
     }
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
-    }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.contentId == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.contentId != null){
+            pathParams.put("contentId", this.contentId);
+        }
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    if (this.namespace == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public ModelsGetContentPreviewResponse parseResponse(
-      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.contentId == null) {
+            return false;
+        }
+        if(this.namespace == null) {
+            return false;
+        }
+        return true;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ModelsGetContentPreviewResponse().createFromJson(json);
-  }
+
+    public AdminDownloadContentPreviewOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final AdminDownloadContentPreviewOpResponse response = new AdminDownloadContentPreviewOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new ModelsGetContentPreviewResponse().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new ResponseError().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ResponseError().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseError().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public ModelsGetContentPreviewResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ModelsGetContentPreviewResponse().createFromJson(json);
+    }
+    */
+
 }

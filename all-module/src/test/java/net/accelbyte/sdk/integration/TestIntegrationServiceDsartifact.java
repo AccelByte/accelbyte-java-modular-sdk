@@ -43,7 +43,7 @@ class TestIntegrationServiceDsArtifact extends TestIntegration {
                 .namespace(namespace)
                 .limit(20)
                 .build();
-    final ModelsListAllQueueResponse response = wrapper.listAllQueue(operation);
+    final ModelsListAllQueueResponse response = wrapper.listAllQueue(operation).ensureSuccess();
 
     assertNotNull(response);
   }
@@ -58,7 +58,7 @@ class TestIntegrationServiceDsArtifact extends TestIntegration {
                 .builder()
                 .limit(20)
                 .build();
-    final ModelsListTerminatedServersResponse response = wrapper.listTerminatedServers(operation);
+    final ModelsListTerminatedServersResponse response = wrapper.listTerminatedServers(operation).ensureSuccess();
 
     assertNotNull(response);
   }

@@ -8,95 +8,99 @@
 
 package net.accelbyte.sdk.api.iam.wrappers;
 
+
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.operations.input_validations.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.iam.operation_responses.input_validations.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class InputValidations {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public InputValidations(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public InputValidations(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see AdminGetInputValidations
-   */
-  public ModelInputValidationsResponse adminGetInputValidations(AdminGetInputValidations input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public InputValidations(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see AdminUpdateInputValidations
-   */
-  public void adminUpdateInputValidations(AdminUpdateInputValidations input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public InputValidations(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetInputValidations
+     */
+    public AdminGetInputValidationsOpResponse adminGetInputValidations(AdminGetInputValidations input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminResetInputValidations
-   */
-  public void adminResetInputValidations(AdminResetInputValidations input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminUpdateInputValidations
+     */
+    public AdminUpdateInputValidationsOpResponse adminUpdateInputValidations(AdminUpdateInputValidations input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetInputValidations
-   */
-  public ModelInputValidationsPublicResponse publicGetInputValidations(
-      PublicGetInputValidations input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminResetInputValidations
+     */
+    public AdminResetInputValidationsOpResponse adminResetInputValidations(AdminResetInputValidations input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetInputValidationByField
-   */
-  public ModelInputValidationConfigVersion publicGetInputValidationByField(
-      PublicGetInputValidationByField input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetInputValidations
+     */
+    public PublicGetInputValidationsOpResponse publicGetInputValidations(PublicGetInputValidations input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see PublicGetInputValidationByField
+     */
+    public PublicGetInputValidationByFieldOpResponse publicGetInputValidationByField(PublicGetInputValidationByField input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

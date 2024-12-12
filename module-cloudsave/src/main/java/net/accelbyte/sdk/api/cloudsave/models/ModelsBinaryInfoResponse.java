@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.cloudsave.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,38 +23,40 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsBinaryInfoResponse extends Model {
 
-  @JsonProperty("content_type")
-  private String contentType;
+    @JsonProperty("content_type")
+    private String contentType;
 
-  @JsonProperty("created_at")
-  private String createdAt;
+    @JsonProperty("created_at")
+    private String createdAt;
 
-  @JsonProperty("file_location")
-  private String fileLocation;
+    @JsonProperty("file_location")
+    private String fileLocation;
 
-  @JsonProperty("updated_at")
-  private String updatedAt;
+    @JsonProperty("updated_at")
+    private String updatedAt;
 
-  @JsonProperty("url")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String url;
+    @JsonProperty("url")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String url;
 
-  @JsonProperty("version")
-  private Integer version;
+    @JsonProperty("version")
+    private Integer version;
 
-  @JsonIgnore
-  public ModelsBinaryInfoResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsBinaryInfoResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsBinaryInfoResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsBinaryInfoResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsBinaryInfoResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsBinaryInfoResponse>>() {});
+    }
+
+
 }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,53 +23,57 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiArtifactResponse extends Model {
 
-  @JsonProperty("artifactType")
-  private String artifactType;
+    @JsonProperty("artifactType")
+    private String artifactType;
 
-  @JsonProperty("createdOn")
-  private String createdOn;
+    @JsonProperty("createdOn")
+    private String createdOn;
 
-  @JsonProperty("dsId")
-  private String dsId;
+    @JsonProperty("dsId")
+    private String dsId;
 
-  @JsonProperty("expiresOn")
-  private String expiresOn;
+    @JsonProperty("expiresOn")
+    private String expiresOn;
 
-  @JsonProperty("filename")
-  private String filename;
+    @JsonProperty("filename")
+    private String filename;
 
-  @JsonProperty("fleetId")
-  private String fleetId;
+    @JsonProperty("fleetId")
+    private String fleetId;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("imageId")
-  private String imageId;
+    @JsonProperty("imageId")
+    private String imageId;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("region")
-  private String region;
+    @JsonProperty("region")
+    private String region;
 
-  @JsonProperty("sizeBytes")
-  private Long sizeBytes;
+    @JsonProperty("sizeBytes")
+    private Long sizeBytes;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonIgnore
-  public ApiArtifactResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiArtifactResponse> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiArtifactResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ApiArtifactResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiArtifactResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiArtifactResponse>>() {});
+    }
+
+
 }

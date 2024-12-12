@@ -71,7 +71,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
 
     final StoreInfo createStoreResult =
         storeWrapper.createStore(
-            CreateStore.builder().namespace(this.namespace).body(createStoreBody).build());
+            CreateStore.builder().namespace(this.namespace).body(createStoreBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -84,7 +84,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
 
     final StoreInfo getStoreBody =
         storeWrapper.getStore(
-            GetStore.builder().namespace(this.namespace).storeId(storeId).build());
+            GetStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
 
     // ESAC
 
@@ -102,7 +102,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
                 .namespace(this.namespace)
                 .storeId(storeId)
                 .body(updateStoreBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -127,7 +127,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
                 .namespace(namespace)
                 .storeId(storeId)
                 .body(exportStoreBody)
-                .build());
+                .build()).ensureSuccess();
     java.nio.file.Files.copy(
         exportStoreResult,
         exportStoreFile.toPath(),
@@ -147,7 +147,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
                 .namespace(namespace)
                 .storeId(storeId)
                 .file(exportStoreFile)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -157,7 +157,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
 
     final StoreInfo deleteStoreResult =
         storeWrapper.deleteStore(
-            DeleteStore.builder().namespace(this.namespace).storeId(storeId).build());
+            DeleteStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
 
     // ESAC
 
@@ -174,7 +174,7 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     // CASE Export rewards
 
     final InputStream exportRewardsResult =
-        rewardWrapper.exportRewards(ExportRewards.builder().namespace(namespace).build());
+        rewardWrapper.exportRewards(ExportRewards.builder().namespace(namespace).build()).ensureSuccess();
     java.nio.file.Files.copy(
         exportRewardsResult,
         exportRewardFile.toPath(),

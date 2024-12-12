@@ -10,80 +10,130 @@ package net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.leaderboard.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.leaderboard.operation_responses.leaderboard_data.CreateArchivedLeaderboardRankingDataV1HandlerOpResponse;
 
 /**
  * CreateArchivedLeaderboardRankingDataV1Handler
  *
- * <p>Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all
- * data of the leaderboard on every slug, remove the leaderboard code on stat mapping, and remove
- * the leaderboard on the queue reset. This will be a bulk endpoint
+ * 
+ * 
+ * Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
+ * remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
  */
 @Getter
 @Setter
 public class CreateArchivedLeaderboardRankingDataV1Handler extends Operation {
-  /** generated field's value */
-  private String path = "/leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived";
+    /**
+     * generated field's value
+     */
+    private String path = "/leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived";
+    private String method = "POST";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private ModelsArchiveLeaderboardReq body;
 
-  private String method = "POST";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    * @param body required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public CreateArchivedLeaderboardRankingDataV1Handler(
+            String customBasePath,            String namespace,
+            ModelsArchiveLeaderboardReq body
+    )
+    {
+        this.namespace = namespace;
+        this.body = body;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private ModelsArchiveLeaderboardReq body;
-
-  /**
-   * @param namespace required
-   * @param body required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public CreateArchivedLeaderboardRankingDataV1Handler(
-      String customBasePath, String namespace, ModelsArchiveLeaderboardReq body) {
-    this.namespace = namespace;
-    this.body = body;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    return pathParams;
-  }
 
-  @Override
-  public ModelsArchiveLeaderboardReq getBodyParams() {
-    return this.body;
-  }
-
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    return true;
-  }
 
-  public void handleEmptyResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 201) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+    @Override
+    public ModelsArchiveLeaderboardReq getBodyParams(){
+        return this.body;
     }
-  }
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        if(this.body == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public CreateArchivedLeaderboardRankingDataV1HandlerOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final CreateArchivedLeaderboardRankingDataV1HandlerOpResponse response = new CreateArchivedLeaderboardRankingDataV1HandlerOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if (code == 400) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError400(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError400().translateToApiError());
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 403) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError403(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError403().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 201){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+    }
+    */
+
 }

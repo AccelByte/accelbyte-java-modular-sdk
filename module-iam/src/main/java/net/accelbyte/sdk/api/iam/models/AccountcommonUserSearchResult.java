@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,34 +23,36 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonUserSearchResult extends Model {
 
-  @JsonProperty("DisplayName")
-  private String displayName;
+    @JsonProperty("DisplayName")
+    private String displayName;
 
-  @JsonProperty("EmailAddress")
-  private String emailAddress;
+    @JsonProperty("EmailAddress")
+    private String emailAddress;
 
-  @JsonProperty("LinkedPlatforms")
-  private List<AccountcommonUserLinkedPlatform> linkedPlatforms;
+    @JsonProperty("LinkedPlatforms")
+    private List<AccountcommonUserLinkedPlatform> linkedPlatforms;
 
-  @JsonProperty("PhoneNumber")
-  private String phoneNumber;
+    @JsonProperty("PhoneNumber")
+    private String phoneNumber;
 
-  @JsonProperty("UserId")
-  private String userId;
+    @JsonProperty("UserId")
+    private String userId;
 
-  @JsonIgnore
-  public AccountcommonUserSearchResult createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<AccountcommonUserSearchResult> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<AccountcommonUserSearchResult>>() {});
-  }
+
+    @JsonIgnore
+    public AccountcommonUserSearchResult createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AccountcommonUserSearchResult> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonUserSearchResult>>() {});
+    }
+
+
 }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,33 +23,36 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class InvoiceCurrencySummary extends Model {
 
-  @JsonProperty("currency")
-  private CurrencySummary currency;
+    @JsonProperty("currency")
+    private CurrencySummary currency;
 
-  @JsonProperty("salesVolume")
-  private Long salesVolume;
+    @JsonProperty("salesVolume")
+    private Long salesVolume;
 
-  @JsonProperty("subtotalPrice")
-  private Long subtotalPrice;
+    @JsonProperty("subtotalPrice")
+    private Long subtotalPrice;
 
-  @JsonProperty("totalPrice")
-  private Long totalPrice;
+    @JsonProperty("totalPrice")
+    private Long totalPrice;
 
-  @JsonProperty("totalTax")
-  private Long totalTax;
+    @JsonProperty("totalTax")
+    private Long totalTax;
 
-  @JsonIgnore
-  public InvoiceCurrencySummary createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<InvoiceCurrencySummary> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<InvoiceCurrencySummary>>() {});
-  }
+
+    @JsonIgnore
+    public InvoiceCurrencySummary createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<InvoiceCurrencySummary> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<InvoiceCurrencySummary>>() {});
+    }
+
+
 }

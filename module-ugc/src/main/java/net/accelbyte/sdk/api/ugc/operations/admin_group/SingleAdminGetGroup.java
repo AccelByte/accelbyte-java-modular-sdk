@@ -10,80 +10,128 @@ package net.accelbyte.sdk.api.ugc.operations.admin_group;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.ugc.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.ugc.operation_responses.admin_group.SingleAdminGetGroupOpResponse;
 
 /**
  * SingleAdminGetGroup
  *
- * <p>Get user group by group ID
+ * Get user group by group ID
  */
 @Getter
 @Setter
 public class SingleAdminGetGroup extends Operation {
-  /** generated field's value */
-  private String path = "/ugc/v1/admin/namespaces/{namespace}/groups/{groupId}";
+    /**
+     * generated field's value
+     */
+    private String path = "/ugc/v1/admin/namespaces/{namespace}/groups/{groupId}";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String groupId;
+    private String namespace;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param groupId required
+    * @param namespace required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public SingleAdminGetGroup(
+            String customBasePath,            String groupId,
+            String namespace
+    )
+    {
+        this.groupId = groupId;
+        this.namespace = namespace;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String groupId;
-
-  private String namespace;
-
-  /**
-   * @param groupId required
-   * @param namespace required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public SingleAdminGetGroup(String customBasePath, String groupId, String namespace) {
-    this.groupId = groupId;
-    this.namespace = namespace;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.groupId != null) {
-      pathParams.put("groupId", this.groupId);
+        securities.add("Bearer");
     }
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
-    }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.groupId == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.groupId != null){
+            pathParams.put("groupId", this.groupId);
+        }
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    if (this.namespace == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public ModelsCreateGroupResponse parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.groupId == null) {
+            return false;
+        }
+        if(this.namespace == null) {
+            return false;
+        }
+        return true;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ModelsCreateGroupResponse().createFromJson(json);
-  }
+
+    public SingleAdminGetGroupOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final SingleAdminGetGroupOpResponse response = new SingleAdminGetGroupOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new ModelsCreateGroupResponse().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new ResponseError().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ResponseError().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseError().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public ModelsCreateGroupResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ModelsCreateGroupResponse().createFromJson(json);
+    }
+    */
+
 }

@@ -9,175 +9,187 @@
 package net.accelbyte.sdk.api.basic.wrappers;
 
 import java.util.*;
+
 import net.accelbyte.sdk.api.basic.models.*;
 import net.accelbyte.sdk.api.basic.operations.misc.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.basic.operation_responses.misc.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class Misc {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public Misc(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("basic");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public Misc(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see GetCountries
-   * @deprecated
-   */
-  @Deprecated
-  public List<CountryObject> getCountries(GetCountries input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Misc(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("basic");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see GetCountryGroups
-   */
-  public List<RetrieveCountryGroupResponse> getCountryGroups(GetCountryGroups input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Misc(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetCountries
+     * @deprecated
+     */
+    @Deprecated
+    public GetCountriesOpResponse getCountries(GetCountries input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AddCountryGroup
-   */
-  public AddCountryGroupResponse addCountryGroup(AddCountryGroup input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetCountryGroups
+     */
+    public GetCountryGroupsOpResponse getCountryGroups(GetCountryGroups input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see UpdateCountryGroup
-   */
-  public CountryGroupObject updateCountryGroup(UpdateCountryGroup input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AddCountryGroup
+     */
+    public AddCountryGroupOpResponse addCountryGroup(AddCountryGroup input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see DeleteCountryGroup
-   */
-  public void deleteCountryGroup(DeleteCountryGroup input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see UpdateCountryGroup
+     */
+    public UpdateCountryGroupOpResponse updateCountryGroup(UpdateCountryGroup input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see GetLanguages
-   */
-  public Map<String, String> getLanguages(GetLanguages input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see DeleteCountryGroup
+     */
+    public DeleteCountryGroupOpResponse deleteCountryGroup(DeleteCountryGroup input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see GetTimeZones
-   */
-  public List<String> getTimeZones(GetTimeZones input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetLanguages
+     */
+    public GetLanguagesOpResponse getLanguages(GetLanguages input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetTime
-   */
-  public RetrieveTimeResponse publicGetTime(PublicGetTime input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see GetTimeZones
+     */
+    public GetTimeZonesOpResponse getTimeZones(GetTimeZones input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetCountries
-   * @deprecated
-   */
-  @Deprecated
-  public List<CountryObject> publicGetCountries(PublicGetCountries input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetTime
+     */
+    public PublicGetTimeOpResponse publicGetTime(PublicGetTime input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetLanguages
-   */
-  public Map<String, ?> publicGetLanguages(PublicGetLanguages input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetCountries
+     * @deprecated
+     */
+    @Deprecated
+    public PublicGetCountriesOpResponse publicGetCountries(PublicGetCountries input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetTimeZones
-   */
-  public List<String> publicGetTimeZones(PublicGetTimeZones input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetLanguages
+     */
+    public PublicGetLanguagesOpResponse publicGetLanguages(PublicGetLanguages input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see PublicGetTimeZones
+     */
+    public PublicGetTimeZonesOpResponse publicGetTimeZones(PublicGetTimeZones input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

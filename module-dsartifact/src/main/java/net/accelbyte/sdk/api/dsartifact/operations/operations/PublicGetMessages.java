@@ -8,59 +8,98 @@
 
 package net.accelbyte.sdk.api.dsartifact.operations.operations;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.dsartifact.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.dsartifact.operation_responses.operations.PublicGetMessagesOpResponse;
 
 /**
  * publicGetMessages
  *
- * <p>get the list of messages.
+ * get the list of messages.
  */
 @Getter
 @Setter
 public class PublicGetMessages extends Operation {
-  /** generated field's value */
-  private String path = "/dsartifact/v1/messages";
+    /**
+     * generated field's value
+     */
+    private String path = "/dsartifact/v1/messages";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public PublicGetMessages(
+            String customBasePath    )
+    {
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-
-  /** */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public PublicGetMessages(String customBasePath) {
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public boolean isValid() {
-    return true;
-  }
-
-  public List<LogAppMessageDeclaration> parseResponse(
-      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+        securities.add("Bearer");
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<LogAppMessageDeclaration>>() {});
-  }
+
+
+
+
+
+
+    @Override
+    public boolean isValid() {
+        return true;
+    }
+
+    public PublicGetMessagesOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final PublicGetMessagesOpResponse response = new PublicGetMessagesOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+
+            response.setSuccess(true);
+            response.setData(new ObjectMapper().readValue(json, new TypeReference<List<LogAppMessageDeclaration>>() {}));
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseError().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public List<LogAppMessageDeclaration> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ObjectMapper().readValue(json, new TypeReference<List<LogAppMessageDeclaration>>() {});
+    }
+    */
+
 }

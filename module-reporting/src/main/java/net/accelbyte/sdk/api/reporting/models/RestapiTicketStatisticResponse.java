@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.reporting.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,28 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class RestapiTicketStatisticResponse extends Model {
 
-  @JsonProperty("moderatedCount")
-  private Long moderatedCount;
+    @JsonProperty("moderatedCount")
+    private Long moderatedCount;
 
-  @JsonProperty("openCount")
-  private Long openCount;
+    @JsonProperty("openCount")
+    private Long openCount;
 
-  @JsonProperty("totalCount")
-  private Long totalCount;
+    @JsonProperty("totalCount")
+    private Long totalCount;
 
-  @JsonIgnore
-  public RestapiTicketStatisticResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<RestapiTicketStatisticResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<RestapiTicketStatisticResponse>>() {});
-  }
+
+    @JsonIgnore
+    public RestapiTicketStatisticResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<RestapiTicketStatisticResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<RestapiTicketStatisticResponse>>() {});
+    }
+
+
 }

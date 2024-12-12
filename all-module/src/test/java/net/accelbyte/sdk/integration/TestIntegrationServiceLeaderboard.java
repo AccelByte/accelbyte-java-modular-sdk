@@ -71,7 +71,7 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             .build();
     final CreateStat createStatReq =
         CreateStat.builder().namespace(namespace).body(statCreate).build();
-    StatInfo createStateResult = statConfiguration.createStat(createStatReq);
+    StatInfo createStateResult = statConfiguration.createStat(createStatReq).ensureSuccess();
 
     assertNotNull(createStateResult);
     assertEquals(leaderboardCode, createStateResult.getStatCode());
@@ -98,7 +98,7 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             CreateLeaderboardConfigurationAdminV1.builder()
                 .namespace(this.namespace)
                 .body(createLeaderboardBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -112,7 +112,7 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             GetLeaderboardConfigurationAdminV1.builder()
                 .namespace(this.namespace)
                 .leaderboardCode(leaderboardCode)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -135,7 +135,7 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
                 .namespace(this.namespace)
                 .leaderboardCode(leaderboardCode)
                 .body(updateLeaderboardBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -159,7 +159,7 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             GetLeaderboardConfigurationAdminV1.builder()
                 .namespace(this.namespace)
                 .leaderboardCode(leaderboardCode)
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(getLeaderboardConfirmResult);
     assertTrue(getLeaderboardConfirmResult.getIsDeleted());

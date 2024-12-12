@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,49 +23,51 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonUserInformationV3 extends Model {
 
-  @JsonProperty("country")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String country;
+    @JsonProperty("country")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String country;
 
-  @JsonProperty("displayName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String displayName;
+    @JsonProperty("displayName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String displayName;
 
-  @JsonProperty("emailAddresses")
-  private List<String> emailAddresses;
+    @JsonProperty("emailAddresses")
+    private List<String> emailAddresses;
 
-  @JsonProperty("phoneNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String phoneNumber;
+    @JsonProperty("phoneNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String phoneNumber;
 
-  @JsonProperty("platformUsers")
-  private List<AccountcommonPlatformUserInformationV3> platformUsers;
+    @JsonProperty("platformUsers")
+    private List<AccountcommonPlatformUserInformationV3> platformUsers;
 
-  @JsonProperty("uniqueDisplayName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String uniqueDisplayName;
+    @JsonProperty("uniqueDisplayName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String uniqueDisplayName;
 
-  @JsonProperty("username")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String username;
+    @JsonProperty("username")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String username;
 
-  @JsonProperty("xboxUserId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String xboxUserId;
+    @JsonProperty("xboxUserId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String xboxUserId;
 
-  @JsonIgnore
-  public AccountcommonUserInformationV3 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<AccountcommonUserInformationV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<AccountcommonUserInformationV3>>() {});
-  }
+
+    @JsonIgnore
+    public AccountcommonUserInformationV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AccountcommonUserInformationV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonUserInformationV3>>() {});
+    }
+
+
 }

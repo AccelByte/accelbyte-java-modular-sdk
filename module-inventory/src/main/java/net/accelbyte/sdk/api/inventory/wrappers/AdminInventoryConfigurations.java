@@ -8,97 +8,99 @@
 
 package net.accelbyte.sdk.api.inventory.wrappers;
 
+
 import net.accelbyte.sdk.api.inventory.models.*;
 import net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.inventory.operation_responses.admin_inventory_configurations.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class AdminInventoryConfigurations {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public AdminInventoryConfigurations(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("inventory");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public AdminInventoryConfigurations(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see AdminListInventoryConfigurations
-   */
-  public ApimodelsListInventoryConfigurationsResp adminListInventoryConfigurations(
-      AdminListInventoryConfigurations input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public AdminInventoryConfigurations(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("inventory");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see AdminCreateInventoryConfiguration
-   */
-  public ApimodelsInventoryConfigurationResp adminCreateInventoryConfiguration(
-      AdminCreateInventoryConfiguration input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public AdminInventoryConfigurations(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminListInventoryConfigurations
+     */
+    public AdminListInventoryConfigurationsOpResponse adminListInventoryConfigurations(AdminListInventoryConfigurations input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminGetInventoryConfiguration
-   */
-  public ApimodelsInventoryConfigurationResp adminGetInventoryConfiguration(
-      AdminGetInventoryConfiguration input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminCreateInventoryConfiguration
+     */
+    public AdminCreateInventoryConfigurationOpResponse adminCreateInventoryConfiguration(AdminCreateInventoryConfiguration input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminUpdateInventoryConfiguration
-   */
-  public ApimodelsInventoryConfigurationResp adminUpdateInventoryConfiguration(
-      AdminUpdateInventoryConfiguration input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetInventoryConfiguration
+     */
+    public AdminGetInventoryConfigurationOpResponse adminGetInventoryConfiguration(AdminGetInventoryConfiguration input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminDeleteInventoryConfiguration
-   */
-  public void adminDeleteInventoryConfiguration(AdminDeleteInventoryConfiguration input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminUpdateInventoryConfiguration
+     */
+    public AdminUpdateInventoryConfigurationOpResponse adminUpdateInventoryConfiguration(AdminUpdateInventoryConfiguration input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see AdminDeleteInventoryConfiguration
+     */
+    public AdminDeleteInventoryConfigurationOpResponse adminDeleteInventoryConfiguration(AdminDeleteInventoryConfiguration input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

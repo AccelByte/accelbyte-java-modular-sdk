@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,26 +23,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class EntitlementConfigInfo extends Model {
 
-  @JsonProperty("enableEntitlementOriginFeature")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean enableEntitlementOriginFeature;
+    @JsonProperty("enableEntitlementOriginFeature")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean enableEntitlementOriginFeature;
 
-  @JsonProperty("namespace")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String namespace;
+    @JsonProperty("namespace")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String namespace;
 
-  @JsonIgnore
-  public EntitlementConfigInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<EntitlementConfigInfo> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<EntitlementConfigInfo>>() {});
-  }
+
+    @JsonIgnore
+    public EntitlementConfigInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<EntitlementConfigInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<EntitlementConfigInfo>>() {});
+    }
+
+
 }

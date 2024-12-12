@@ -8,204 +8,211 @@
 
 package net.accelbyte.sdk.api.lobby.wrappers;
 
+
 import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.api.lobby.operations.player.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.lobby.operation_responses.player.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class Player {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public Player(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public Player(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see AdminGetLobbyCCU
-   */
-  public ModelsGetLobbyCcuResponse adminGetLobbyCCU(AdminGetLobbyCCU input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Player(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see AdminGetBulkPlayerBlockedPlayersV1
-   */
-  public ModelsGetBulkAllPlayerBlockedUsersResponse adminGetBulkPlayerBlockedPlayersV1(
-      AdminGetBulkPlayerBlockedPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public Player(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetLobbyCCU
+     */
+    public AdminGetLobbyCCUOpResponse adminGetLobbyCCU(AdminGetLobbyCCU input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminGetAllPlayerSessionAttribute
-   */
-  public ModelsGetAllPlayerSessionAttributeResponse adminGetAllPlayerSessionAttribute(
-      AdminGetAllPlayerSessionAttribute input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetBulkPlayerBlockedPlayersV1
+     */
+    public AdminGetBulkPlayerBlockedPlayersV1OpResponse adminGetBulkPlayerBlockedPlayersV1(AdminGetBulkPlayerBlockedPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminSetPlayerSessionAttribute
-   */
-  public void adminSetPlayerSessionAttribute(AdminSetPlayerSessionAttribute input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetAllPlayerSessionAttribute
+     */
+    public AdminGetAllPlayerSessionAttributeOpResponse adminGetAllPlayerSessionAttribute(AdminGetAllPlayerSessionAttribute input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminGetPlayerSessionAttribute
-   */
-  public ModelsGetPlayerSessionAttributeResponse adminGetPlayerSessionAttribute(
-      AdminGetPlayerSessionAttribute input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminSetPlayerSessionAttribute
+     */
+    public AdminSetPlayerSessionAttributeOpResponse adminSetPlayerSessionAttribute(AdminSetPlayerSessionAttribute input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminGetPlayerBlockedPlayersV1
-   */
-  public ModelsGetAllPlayerBlockedUsersResponse adminGetPlayerBlockedPlayersV1(
-      AdminGetPlayerBlockedPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetPlayerSessionAttribute
+     */
+    public AdminGetPlayerSessionAttributeOpResponse adminGetPlayerSessionAttribute(AdminGetPlayerSessionAttribute input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminGetPlayerBlockedByPlayersV1
-   */
-  public ModelsGetAllPlayerBlockedByUsersResponse adminGetPlayerBlockedByPlayersV1(
-      AdminGetPlayerBlockedByPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetPlayerBlockedPlayersV1
+     */
+    public AdminGetPlayerBlockedPlayersV1OpResponse adminGetPlayerBlockedPlayersV1(AdminGetPlayerBlockedPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminBulkBlockPlayersV1
-   */
-  public void adminBulkBlockPlayersV1(AdminBulkBlockPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetPlayerBlockedByPlayersV1
+     */
+    public AdminGetPlayerBlockedByPlayersV1OpResponse adminGetPlayerBlockedByPlayersV1(AdminGetPlayerBlockedByPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminBulkUnblockPlayersV1
-   */
-  public void adminBulkUnblockPlayersV1(AdminBulkUnblockPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminBulkBlockPlayersV1
+     */
+    public AdminBulkBlockPlayersV1OpResponse adminBulkBlockPlayersV1(AdminBulkBlockPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicPlayerBlockPlayersV1
-   */
-  public void publicPlayerBlockPlayersV1(PublicPlayerBlockPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminBulkUnblockPlayersV1
+     */
+    public AdminBulkUnblockPlayersV1OpResponse adminBulkUnblockPlayersV1(AdminBulkUnblockPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetPlayerBlockedPlayersV1
-   */
-  public ModelsGetAllPlayerBlockedUsersResponse publicGetPlayerBlockedPlayersV1(
-      PublicGetPlayerBlockedPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicPlayerBlockPlayersV1
+     */
+    public PublicPlayerBlockPlayersV1OpResponse publicPlayerBlockPlayersV1(PublicPlayerBlockPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetPlayerBlockedByPlayersV1
-   */
-  public ModelsGetAllPlayerBlockedByUsersResponse publicGetPlayerBlockedByPlayersV1(
-      PublicGetPlayerBlockedByPlayersV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetPlayerBlockedPlayersV1
+     */
+    public PublicGetPlayerBlockedPlayersV1OpResponse publicGetPlayerBlockedPlayersV1(PublicGetPlayerBlockedPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicUnblockPlayerV1
-   */
-  public void publicUnblockPlayerV1(PublicUnblockPlayerV1 input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetPlayerBlockedByPlayersV1
+     */
+    public PublicGetPlayerBlockedByPlayersV1OpResponse publicGetPlayerBlockedByPlayersV1(PublicGetPlayerBlockedByPlayersV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see PublicUnblockPlayerV1
+     */
+    public PublicUnblockPlayerV1OpResponse publicUnblockPlayerV1(PublicUnblockPlayerV1 input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

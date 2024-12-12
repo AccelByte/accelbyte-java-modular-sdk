@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.session.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,131 +23,133 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsPublicConfiguration extends Model {
 
-  @JsonProperty("PSNBaseURL")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String psnBaseURL;
+    @JsonProperty("PSNBaseURL")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String psnBaseURL;
 
-  @JsonProperty("appName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String appName;
+    @JsonProperty("appName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String appName;
 
-  @JsonProperty("attributes")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Map<String, ?> attributes;
+    @JsonProperty("attributes")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, ?> attributes;
 
-  @JsonProperty("autoJoin")
-  private Boolean autoJoin;
+    @JsonProperty("autoJoin")
+    private Boolean autoJoin;
 
-  @JsonProperty("clientVersion")
-  private String clientVersion;
+    @JsonProperty("clientVersion")
+    private String clientVersion;
 
-  @JsonProperty("customURLGRPC")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String customURLGRPC;
+    @JsonProperty("customURLGRPC")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String customURLGRPC;
 
-  @JsonProperty("deployment")
-  private String deployment;
+    @JsonProperty("deployment")
+    private String deployment;
 
-  @JsonProperty("disableCodeGeneration")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean disableCodeGeneration;
+    @JsonProperty("disableCodeGeneration")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean disableCodeGeneration;
 
-  @JsonProperty("disableResendInvite")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean disableResendInvite;
+    @JsonProperty("disableResendInvite")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean disableResendInvite;
 
-  @JsonProperty("dsManualSetReady")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean dsManualSetReady;
+    @JsonProperty("dsManualSetReady")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean dsManualSetReady;
 
-  @JsonProperty("dsSource")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String dsSource;
+    @JsonProperty("dsSource")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String dsSource;
 
-  @JsonProperty("enableSecret")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean enableSecret;
+    @JsonProperty("enableSecret")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean enableSecret;
 
-  @JsonProperty("fallbackClaimKeys")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> fallbackClaimKeys;
+    @JsonProperty("fallbackClaimKeys")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> fallbackClaimKeys;
 
-  @JsonProperty("grpcSessionConfig")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsExtendConfiguration grpcSessionConfig;
+    @JsonProperty("grpcSessionConfig")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsExtendConfiguration grpcSessionConfig;
 
-  @JsonProperty("immutableStorage")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean immutableStorage;
+    @JsonProperty("immutableStorage")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean immutableStorage;
 
-  @JsonProperty("inactiveTimeout")
-  private Integer inactiveTimeout;
+    @JsonProperty("inactiveTimeout")
+    private Integer inactiveTimeout;
 
-  @JsonProperty("inviteTimeout")
-  private Integer inviteTimeout;
+    @JsonProperty("inviteTimeout")
+    private Integer inviteTimeout;
 
-  @JsonProperty("joinability")
-  private String joinability;
+    @JsonProperty("joinability")
+    private String joinability;
 
-  @JsonProperty("leaderElectionGracePeriod")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer leaderElectionGracePeriod;
+    @JsonProperty("leaderElectionGracePeriod")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer leaderElectionGracePeriod;
 
-  @JsonProperty("manualRejoin")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean manualRejoin;
+    @JsonProperty("manualRejoin")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean manualRejoin;
 
-  @JsonProperty("maxActiveSession")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer maxActiveSession;
+    @JsonProperty("maxActiveSession")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer maxActiveSession;
 
-  @JsonProperty("maxPlayers")
-  private Integer maxPlayers;
+    @JsonProperty("maxPlayers")
+    private Integer maxPlayers;
 
-  @JsonProperty("minPlayers")
-  private Integer minPlayers;
+    @JsonProperty("minPlayers")
+    private Integer minPlayers;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("nativeSessionSetting")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsNativeSessionSetting nativeSessionSetting;
+    @JsonProperty("nativeSessionSetting")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsNativeSessionSetting nativeSessionSetting;
 
-  @JsonProperty("persistent")
-  private Boolean persistent;
+    @JsonProperty("persistent")
+    private Boolean persistent;
 
-  @JsonProperty("preferredClaimKeys")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> preferredClaimKeys;
+    @JsonProperty("preferredClaimKeys")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> preferredClaimKeys;
 
-  @JsonProperty("requestedRegions")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> requestedRegions;
+    @JsonProperty("requestedRegions")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> requestedRegions;
 
-  @JsonProperty("textChat")
-  private Boolean textChat;
+    @JsonProperty("textChat")
+    private Boolean textChat;
 
-  @JsonProperty("tieTeamsSessionLifetime")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean tieTeamsSessionLifetime;
+    @JsonProperty("tieTeamsSessionLifetime")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean tieTeamsSessionLifetime;
 
-  @JsonProperty("type")
-  private String type;
+    @JsonProperty("type")
+    private String type;
 
-  @JsonIgnore
-  public ApimodelsPublicConfiguration createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApimodelsPublicConfiguration> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApimodelsPublicConfiguration>>() {});
-  }
+
+    @JsonIgnore
+    public ApimodelsPublicConfiguration createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApimodelsPublicConfiguration> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsPublicConfiguration>>() {});
+    }
+
+
 }

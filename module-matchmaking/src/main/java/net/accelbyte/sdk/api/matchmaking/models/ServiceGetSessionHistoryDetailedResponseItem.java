@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,67 +23,67 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ServiceGetSessionHistoryDetailedResponseItem extends Model {
 
-  @JsonProperty("_id")
-  private String id;
+    @JsonProperty("_id")
+    private String id;
 
-  @JsonProperty("channel")
-  private String channel;
+    @JsonProperty("channel")
+    private String channel;
 
-  @JsonProperty("client_version")
-  private String clientVersion;
+    @JsonProperty("client_version")
+    private String clientVersion;
 
-  @JsonProperty("created_at")
-  private String createdAt;
+    @JsonProperty("created_at")
+    private String createdAt;
 
-  @JsonProperty("event_description")
-  private String eventDescription;
+    @JsonProperty("event_description")
+    private String eventDescription;
 
-  @JsonProperty("event_name")
-  private String eventName;
+    @JsonProperty("event_name")
+    private String eventName;
 
-  @JsonProperty("game_mode")
-  private String gameMode;
+    @JsonProperty("game_mode")
+    private String gameMode;
 
-  @JsonProperty("joinable")
-  private Boolean joinable;
+    @JsonProperty("joinable")
+    private Boolean joinable;
 
-  @JsonProperty("match_id")
-  private String matchId;
+    @JsonProperty("match_id")
+    private String matchId;
 
-  @JsonProperty("matching_allies")
-  private List<ModelsMatchingAlly> matchingAllies;
+    @JsonProperty("matching_allies")
+    private List<ModelsMatchingAlly> matchingAllies;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("party_id")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String partyId;
+    @JsonProperty("party_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String partyId;
 
-  @JsonProperty("region")
-  private String region;
+    @JsonProperty("region")
+    private String region;
 
-  @JsonProperty("server_name")
-  private String serverName;
+    @JsonProperty("server_name")
+    private String serverName;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonIgnore
-  public ServiceGetSessionHistoryDetailedResponseItem createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ServiceGetSessionHistoryDetailedResponseItem> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(
-            json, new TypeReference<List<ServiceGetSessionHistoryDetailedResponseItem>>() {});
-  }
+
+    @JsonIgnore
+    public ServiceGetSessionHistoryDetailedResponseItem createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ServiceGetSessionHistoryDetailedResponseItem> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ServiceGetSessionHistoryDetailedResponseItem>>() {});
+    }
+
+
 }

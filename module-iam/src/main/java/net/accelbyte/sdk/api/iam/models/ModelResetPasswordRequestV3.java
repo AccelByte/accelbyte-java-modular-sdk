@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,36 +23,38 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelResetPasswordRequestV3 extends Model {
 
-  @JsonProperty("clientId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String clientId;
+    @JsonProperty("clientId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String clientId;
 
-  @JsonProperty("code")
-  private String code;
+    @JsonProperty("code")
+    private String code;
 
-  @JsonProperty("emailAddress")
-  private String emailAddress;
+    @JsonProperty("emailAddress")
+    private String emailAddress;
 
-  @JsonProperty("languageTag")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String languageTag;
+    @JsonProperty("languageTag")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String languageTag;
 
-  @JsonProperty("newPassword")
-  private String newPassword;
+    @JsonProperty("newPassword")
+    private String newPassword;
 
-  @JsonIgnore
-  public ModelResetPasswordRequestV3 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelResetPasswordRequestV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelResetPasswordRequestV3>>() {});
-  }
+
+    @JsonIgnore
+    public ModelResetPasswordRequestV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelResetPasswordRequestV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelResetPasswordRequestV3>>() {});
+    }
+
+
 }

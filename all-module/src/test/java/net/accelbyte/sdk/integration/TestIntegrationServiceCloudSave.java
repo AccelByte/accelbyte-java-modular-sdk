@@ -71,7 +71,7 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
 
     final ModelsGameRecordResponse getGameRecordResult =
         publicGameRecordWrapper.getGameRecordHandlerV1(
-            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build());
+            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
 
     // ESAC
 
@@ -105,7 +105,7 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
 
     final ModelsGameRecordResponse getGameRecordConfirmResult =
         publicGameRecordWrapper.getGameRecordHandlerV1(
-            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build());
+            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
 
     assertNotNull(getGameRecordConfirmResult);
     final Map<String, ?> gameRecordValue2 = getGameRecordConfirmResult.getValue();

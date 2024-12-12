@@ -84,7 +84,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
             .build())
         .build();
 
-    final ApimodelAppItem createAppV2Res = appV2Wrapper.createAppV2(createAppV2Op);
+    final ApimodelAppItem createAppV2Res = appV2Wrapper.createAppV2(createAppV2Op).ensureSuccess();
 
     // ESAC
 
@@ -97,7 +97,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
         .namespace(namespace)
         .build();
 
-    final ApimodelAppItem getAppv2Res = appV2Wrapper.getAppV2(getAppV2Op);
+    final ApimodelAppItem getAppv2Res = appV2Wrapper.getAppV2(getAppV2Op).ensureSuccess();
 
     // ESAC
 
@@ -109,7 +109,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
       final ApimodelAppItem response = appV2Wrapper.getAppV2(GetAppV2.builder()
           .app(EXTEND_APP_NAME)
           .namespace(namespace)
-          .build());
+          .build()).ensureSuccess();
 
       if (response.getAppStatus().equals("app-undeployed")) {
         return;
@@ -142,7 +142,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
             .build())
         .build();
 
-    final ApimodelSaveConfigurationV2Response saveSecretV2Res = wrapper.saveSecretV2(saveSecretV2Op);
+    final ApimodelSaveConfigurationV2Response saveSecretV2Res = wrapper.saveSecretV2(saveSecretV2Op).ensureSuccess();
 
     // ESAC
 
@@ -158,7 +158,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
         .build();
 
     final ApimodelGetListOfConfigurationsV2Response getListOfSecretsV2Res = wrapper
-        .getListOfSecretsV2(getListOfSecretsV2Op);
+        .getListOfSecretsV2(getListOfSecretsV2Op).ensureSuccess();
 
     // ESAC
 
@@ -176,7 +176,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
             .build())
         .build();
 
-    final ApimodelUpdateConfigurationV2Response updateSecretV2Res = wrapper.updateSecretV2(updateSecretV2Op);
+    final ApimodelUpdateConfigurationV2Response updateSecretV2Res = wrapper.updateSecretV2(updateSecretV2Op).ensureSuccess();
 
     // ESAC
 
@@ -213,7 +213,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
             .build())
         .build();
 
-    final ApimodelSaveConfigurationV2Response saveVariableV2Res = wrapper.saveVariableV2(saveVariableV2Op);
+    final ApimodelSaveConfigurationV2Response saveVariableV2Res = wrapper.saveVariableV2(saveVariableV2Op).ensureSuccess();
 
     // ESAC
 
@@ -228,7 +228,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
         .namespace(namespace)
         .build();
     final ApimodelGetListOfConfigurationsV2Response getListOfVariablesV2Res = wrapper
-        .getListOfVariablesV2(getListOfVariablesV2Op);
+        .getListOfVariablesV2(getListOfVariablesV2Op).ensureSuccess();
 
     // ESAC
 
@@ -245,7 +245,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
             .applyMask(true)
             .build())
         .build();
-    final ApimodelUpdateConfigurationV2Response updateVariableV2Res = wrapper.updateVariableV2(updateVariableV2Op);
+    final ApimodelUpdateConfigurationV2Response updateVariableV2Res = wrapper.updateVariableV2(updateVariableV2Op).ensureSuccess();
 
     // ESAC
 

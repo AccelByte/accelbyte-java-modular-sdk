@@ -506,7 +506,7 @@ public class AccelByteSDK implements RequestRunner {
               .clientId(clientId)
               .responseTypeFromEnum(AuthorizeV3.ResponseType.Code)
               .build();
-      final String authorizeResponse = oAuth20.authorizeV3(authorizeV3);
+      final String authorizeResponse = oAuth20.authorizeV3(authorizeV3).ensureSuccess();
 
       final List<NameValuePair> authorizeParams =
           URLEncodedUtils.parse(new URI(authorizeResponse), StandardCharsets.UTF_8);
@@ -527,7 +527,7 @@ public class AccelByteSDK implements RequestRunner {
               .requestId(requestId)
               .build();
       final String authenticationResponse =
-          oAuth20Extension.userAuthenticationV3(userAuthenticationV3);
+          oAuth20Extension.userAuthenticationV3(userAuthenticationV3).ensureSuccess();
 
       final List<NameValuePair> authenticationParams =
           URLEncodedUtils.parse(new URI(authenticationResponse), StandardCharsets.UTF_8);
@@ -551,7 +551,7 @@ public class AccelByteSDK implements RequestRunner {
               .codeVerifier(codeVerifier)
               .grantTypeFromEnum(TokenGrantV3.GrantType.AuthorizationCode)
               .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3);
+      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -581,7 +581,7 @@ public class AccelByteSDK implements RequestRunner {
           TokenGrantV3.builder()
               .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
               .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3);
+      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -663,7 +663,7 @@ public class AccelByteSDK implements RequestRunner {
               .platformId(platformId)
               .platformToken(platformToken)
               .build();
-      final OauthmodelTokenResponse token = oAuth20.platformTokenGrantV3(tokenGrantV3);
+      final OauthmodelTokenResponse token = oAuth20.platformTokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -747,7 +747,7 @@ public class AccelByteSDK implements RequestRunner {
                   .grantTypeFromEnum(TokenGrantV3.GrantType.RefreshToken)
                   .build();
           final OauthmodelTokenWithDeviceCookieResponseV3 token =
-              oAuth20.tokenGrantV3(tokenGrantV3);
+              oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
           final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
           final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
@@ -894,7 +894,7 @@ public class AccelByteSDK implements RequestRunner {
           public List<Permission> load(RoleCacheKey key) throws Exception {
             final Roles rolesWrapper = new Roles(sdk);
             final AdminGetRoleV3 param = AdminGetRoleV3.builder().roleId(key.getRoleId()).build();
-            final ModelRoleResponseV3 getRoleV3Result = rolesWrapper.adminGetRoleV3(param);
+            final ModelRoleResponseV3 getRoleV3Result = rolesWrapper.adminGetRoleV3(param).ensureSuccess();
 
             // go ref: getRolePermission
             List<Permission> permissions =
@@ -932,7 +932,7 @@ public class AccelByteSDK implements RequestRunner {
           public Map<String, RSAPublicKey> load(String key) throws Exception {
             final OAuth20 oauthWrapper = new OAuth20(sdk);
             final OauthcommonJWKSet getJwksV3Result =
-                oauthWrapper.getJWKSV3(GetJWKSV3.builder().build());
+                oauthWrapper.getJWKSV3(GetJWKSV3.builder().build()).ensureSuccess();
 
             final Decoder urlDecoder = Base64.getUrlDecoder();
             final KeyFactory rsaKeyFactory = KeyFactory.getInstance("RSA");
@@ -976,7 +976,7 @@ public class AccelByteSDK implements RequestRunner {
           public OauthapiRevocationList load(String key) throws Exception {
             final OAuth20 oauthWrapper = new OAuth20(sdk);
             final OauthapiRevocationList getRevocationListV3Result =
-                oauthWrapper.getRevocationListV3(GetRevocationListV3.builder().build());
+                oauthWrapper.getRevocationListV3(GetRevocationListV3.builder().build()).ensureSuccess();
 
             return getRevocationListV3Result;
           }
@@ -996,7 +996,7 @@ public class AccelByteSDK implements RequestRunner {
             final Namespace namespaceWrapper = new Namespace(sdk);
             final NamespaceContext namespaceContext =
                 namespaceWrapper.getNamespaceContext(
-                    GetNamespaceContext.builder().namespace(key).build());
+                    GetNamespaceContext.builder().namespace(key).build()).ensureSuccess();
 
             return namespaceContext;
           }

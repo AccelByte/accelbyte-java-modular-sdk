@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ugc.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,45 +23,48 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsContentRequestV2 extends Model {
 
-  @JsonProperty("contentType")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String contentType;
+    @JsonProperty("contentType")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String contentType;
 
-  @JsonProperty("customAttributes")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Map<String, ?> customAttributes;
+    @JsonProperty("customAttributes")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, ?> customAttributes;
 
-  @JsonProperty("fileExtension")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String fileExtension;
+    @JsonProperty("fileExtension")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String fileExtension;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("subType")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String subType;
+    @JsonProperty("subType")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String subType;
 
-  @JsonProperty("tags")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> tags;
+    @JsonProperty("tags")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> tags;
 
-  @JsonProperty("type")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String type;
+    @JsonProperty("type")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String type;
 
-  @JsonIgnore
-  public ModelsContentRequestV2 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsContentRequestV2> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsContentRequestV2>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsContentRequestV2 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsContentRequestV2> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsContentRequestV2>>() {});
+    }
+
+
 }

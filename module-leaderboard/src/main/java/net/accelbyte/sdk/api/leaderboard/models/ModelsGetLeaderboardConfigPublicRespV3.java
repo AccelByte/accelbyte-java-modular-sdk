@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.leaderboard.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,38 +23,39 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsGetLeaderboardConfigPublicRespV3 extends Model {
 
-  @JsonProperty("allTime")
-  private Boolean allTime;
+    @JsonProperty("allTime")
+    private Boolean allTime;
 
-  @JsonProperty("cycleIds")
-  private List<String> cycleIds;
+    @JsonProperty("cycleIds")
+    private List<String> cycleIds;
 
-  @JsonProperty("iconURL")
-  private String iconURL;
+    @JsonProperty("iconURL")
+    private String iconURL;
 
-  @JsonProperty("leaderboardCode")
-  private String leaderboardCode;
+    @JsonProperty("leaderboardCode")
+    private String leaderboardCode;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("statCode")
-  private String statCode;
+    @JsonProperty("statCode")
+    private String statCode;
 
-  @JsonIgnore
-  public ModelsGetLeaderboardConfigPublicRespV3 createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsGetLeaderboardConfigPublicRespV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsGetLeaderboardConfigPublicRespV3>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsGetLeaderboardConfigPublicRespV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsGetLeaderboardConfigPublicRespV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsGetLeaderboardConfigPublicRespV3>>() {});
+    }
+
+
 }

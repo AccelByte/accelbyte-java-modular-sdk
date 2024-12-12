@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.leaderboard.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,26 +23,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsGetAllLeaderboardConfigsPublicRespV3 extends Model {
 
-  @JsonProperty("data")
-  private List<ModelsGetLeaderboardConfigPublicRespV3> data;
+    @JsonProperty("data")
+    private List<ModelsGetLeaderboardConfigPublicRespV3> data;
 
-  @JsonProperty("paging")
-  private ModelsPaginationV3 paging;
+    @JsonProperty("paging")
+    private ModelsPaginationV3 paging;
 
-  @JsonIgnore
-  public ModelsGetAllLeaderboardConfigsPublicRespV3 createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsGetAllLeaderboardConfigsPublicRespV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsGetAllLeaderboardConfigsPublicRespV3>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsGetAllLeaderboardConfigsPublicRespV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsGetAllLeaderboardConfigsPublicRespV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsGetAllLeaderboardConfigsPublicRespV3>>() {});
+    }
+
+
 }

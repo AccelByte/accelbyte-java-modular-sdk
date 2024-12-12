@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ugc.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,54 +23,56 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsUpdateContentRequest extends Model {
 
-  @JsonProperty("contentType")
-  private String contentType;
+    @JsonProperty("contentType")
+    private String contentType;
 
-  @JsonProperty("customAttributes")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Map<String, ?> customAttributes;
+    @JsonProperty("customAttributes")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, ?> customAttributes;
 
-  @JsonProperty("fileExtension")
-  private String fileExtension;
+    @JsonProperty("fileExtension")
+    private String fileExtension;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("payload")
-  private String payload;
+    @JsonProperty("payload")
+    private String payload;
 
-  @JsonProperty("preview")
-  private String preview;
+    @JsonProperty("preview")
+    private String preview;
 
-  @JsonProperty("previewMetadata")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsPreviewMetadata previewMetadata;
+    @JsonProperty("previewMetadata")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsPreviewMetadata previewMetadata;
 
-  @JsonProperty("subType")
-  private String subType;
+    @JsonProperty("subType")
+    private String subType;
 
-  @JsonProperty("tags")
-  private List<String> tags;
+    @JsonProperty("tags")
+    private List<String> tags;
 
-  @JsonProperty("type")
-  private String type;
+    @JsonProperty("type")
+    private String type;
 
-  @JsonProperty("updateContentFile")
-  private Boolean updateContentFile;
+    @JsonProperty("updateContentFile")
+    private Boolean updateContentFile;
 
-  @JsonIgnore
-  public ModelsUpdateContentRequest createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsUpdateContentRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsUpdateContentRequest>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsUpdateContentRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsUpdateContentRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsUpdateContentRequest>>() {});
+    }
+
+
 }

@@ -10,70 +10,113 @@ package net.accelbyte.sdk.api.legal.operations.localized_policy_versions;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.legal.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.legal.operation_responses.localized_policy_versions.RetrieveSingleLocalizedPolicyVersion2OpResponse;
 
 /**
  * retrieveSingleLocalizedPolicyVersion_2
  *
- * <p>Retrieve specific localized policy version including the policy version and base policy
- * version where the localized policy version located. Other detail info:
+ * Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+ * Other detail info:
  */
 @Getter
 @Setter
 public class RetrieveSingleLocalizedPolicyVersion2 extends Operation {
-  /** generated field's value */
-  private String path = "/agreement/public/localized-policy-versions/{localizedPolicyVersionId}";
+    /**
+     * generated field's value
+     */
+    private String path = "/agreement/public/localized-policy-versions/{localizedPolicyVersionId}";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String localizedPolicyVersionId;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param localizedPolicyVersionId required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public RetrieveSingleLocalizedPolicyVersion2(
+            String customBasePath,            String localizedPolicyVersionId
+    )
+    {
+        this.localizedPolicyVersionId = localizedPolicyVersionId;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String localizedPolicyVersionId;
-
-  /**
-   * @param localizedPolicyVersionId required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public RetrieveSingleLocalizedPolicyVersion2(
-      String customBasePath, String localizedPolicyVersionId) {
-    this.localizedPolicyVersionId = localizedPolicyVersionId;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.localizedPolicyVersionId != null) {
-      pathParams.put("localizedPolicyVersionId", this.localizedPolicyVersionId);
     }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.localizedPolicyVersionId == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.localizedPolicyVersionId != null){
+            pathParams.put("localizedPolicyVersionId", this.localizedPolicyVersionId);
+        }
+        return pathParams;
     }
-    return true;
-  }
 
-  public RetrieveLocalizedPolicyVersionPublicResponse parseResponse(
-      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.localizedPolicyVersionId == null) {
+            return false;
+        }
+        return true;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new RetrieveLocalizedPolicyVersionPublicResponse().createFromJson(json);
-  }
+
+    public RetrieveSingleLocalizedPolicyVersion2OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final RetrieveSingleLocalizedPolicyVersion2OpResponse response = new RetrieveSingleLocalizedPolicyVersion2OpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new RetrieveLocalizedPolicyVersionPublicResponse().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 403) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError403(new ErrorEntity().createFromJson(json));
+            response.setError(response.getError403().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ErrorEntity().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public RetrieveLocalizedPolicyVersionPublicResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new RetrieveLocalizedPolicyVersionPublicResponse().createFromJson(json);
+    }
+    */
+
 }

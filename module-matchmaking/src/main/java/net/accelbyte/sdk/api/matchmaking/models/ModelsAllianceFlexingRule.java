@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,37 +23,39 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsAllianceFlexingRule extends Model {
 
-  @JsonProperty("combination")
-  private ModelsCombination combination;
+    @JsonProperty("combination")
+    private ModelsCombination combination;
 
-  @JsonProperty("duration")
-  private Long duration;
+    @JsonProperty("duration")
+    private Long duration;
 
-  @JsonProperty("max_number")
-  private Integer maxNumber;
+    @JsonProperty("max_number")
+    private Integer maxNumber;
 
-  @JsonProperty("min_number")
-  private Integer minNumber;
+    @JsonProperty("min_number")
+    private Integer minNumber;
 
-  @JsonProperty("player_max_number")
-  private Integer playerMaxNumber;
+    @JsonProperty("player_max_number")
+    private Integer playerMaxNumber;
 
-  @JsonProperty("player_min_number")
-  private Integer playerMinNumber;
+    @JsonProperty("player_min_number")
+    private Integer playerMinNumber;
 
-  @JsonIgnore
-  public ModelsAllianceFlexingRule createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsAllianceFlexingRule> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsAllianceFlexingRule>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsAllianceFlexingRule createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsAllianceFlexingRule> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsAllianceFlexingRule>>() {});
+    }
+
+
 }

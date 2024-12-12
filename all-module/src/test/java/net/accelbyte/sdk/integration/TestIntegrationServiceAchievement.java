@@ -87,7 +87,7 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
             AdminCreateNewAchievement.builder()
                 .namespace(this.namespace)
                 .body(createAchievementBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -109,7 +109,7 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
                 .namespace(this.namespace)
                 .achievementCode(achievementCode)
                 .body(updateAchievementBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -123,7 +123,7 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
             AdminGetAchievement.builder()
                 .namespace(this.namespace)
                 .achievementCode(achievementCode)
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(getAchievementResult);
     assertEquals(getAchievementResult.getGoalValue(), 2000f);
@@ -135,7 +135,7 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
 
     final ModelsPaginatedAchievementResponse getAchievementListResult =
         achievementsWrapper.adminListAchievements(
-            AdminListAchievements.builder().namespace(this.namespace).limit(100).offset(0).build());
+            AdminListAchievements.builder().namespace(this.namespace).limit(100).offset(0).build()).ensureSuccess();
 
     assertNotNull(getAchievementListResult);
     assertTrue(getAchievementListResult.getData().size() > 0);

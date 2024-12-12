@@ -10,93 +10,131 @@ package net.accelbyte.sdk.api.platform.operations.subscription;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.platform.operation_responses.subscription.PublicGetUserSubscriptionOpResponse;
 
 /**
  * publicGetUserSubscription
  *
- * <p>Get user subscription. Other detail info:
- *
- * <p>* Returns : subscription
+ * Get user subscription.
+ * Other detail info:
+ * 
+ *   * Returns : subscription
  */
 @Getter
 @Setter
 public class PublicGetUserSubscription extends Operation {
-  /** generated field's value */
-  private String path =
-      "/platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}";
+    /**
+     * generated field's value
+     */
+    private String path = "/platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private String subscriptionId;
+    private String userId;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    * @param subscriptionId required
+    * @param userId required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public PublicGetUserSubscription(
+            String customBasePath,            String namespace,
+            String subscriptionId,
+            String userId
+    )
+    {
+        this.namespace = namespace;
+        this.subscriptionId = subscriptionId;
+        this.userId = userId;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private String subscriptionId;
-  private String userId;
-
-  /**
-   * @param namespace required
-   * @param subscriptionId required
-   * @param userId required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public PublicGetUserSubscription(
-      String customBasePath, String namespace, String subscriptionId, String userId) {
-    this.namespace = namespace;
-    this.subscriptionId = subscriptionId;
-    this.userId = userId;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    if (this.subscriptionId != null) {
-      pathParams.put("subscriptionId", this.subscriptionId);
-    }
-    if (this.userId != null) {
-      pathParams.put("userId", this.userId);
-    }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        if (this.subscriptionId != null){
+            pathParams.put("subscriptionId", this.subscriptionId);
+        }
+        if (this.userId != null){
+            pathParams.put("userId", this.userId);
+        }
+        return pathParams;
     }
-    if (this.subscriptionId == null) {
-      return false;
-    }
-    if (this.userId == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public SubscriptionInfo parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        if(this.subscriptionId == null) {
+            return false;
+        }
+        if(this.userId == null) {
+            return false;
+        }
+        return true;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new SubscriptionInfo().createFromJson(json);
-  }
+
+    public PublicGetUserSubscriptionOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final PublicGetUserSubscriptionOpResponse response = new PublicGetUserSubscriptionOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new SubscriptionInfo().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ErrorEntity().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public SubscriptionInfo parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new SubscriptionInfo().createFromJson(json);
+    }
+    */
+
 }

@@ -123,7 +123,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
 
     final ApiRuleSetPayload ruleSetDetailsResult =
         ruleSetsWrapper.ruleSetDetails(
-            RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build());
+            RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build()).ensureSuccess();
 
     // ESAC
 
@@ -156,14 +156,14 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     // CASE List match pools
 
     final ApiListMatchPoolsResponse matchPoolListResult =
-        matchPoolsWrapper.matchPoolList(MatchPoolList.builder().namespace(namespace).build());
+        matchPoolsWrapper.matchPoolList(MatchPoolList.builder().namespace(namespace).build()).ensureSuccess();
 
     // ESAC
 
     assertNotNull(matchPoolListResult);
     MatchPoolDetails matchPoolDetails =
         MatchPoolDetails.builder().namespace(namespace).pool(poolName).build();
-    ApiMatchPool matchPool = matchPoolsWrapper.matchPoolDetails(matchPoolDetails);
+    ApiMatchPool matchPool = matchPoolsWrapper.matchPoolDetails(matchPoolDetails).ensureSuccess();
     assertNotNull(matchPool);
 
     final AccelByteSDK player1Sdk =
@@ -192,7 +192,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player1UserId = createUserResult.getUserId();
 
@@ -212,7 +212,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
                               Collections.singletonList(
                                   ApimodelsRequestMember.builder().id(player1UserId).build()))
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       final String partySessionId = publicCreatePartyResult.getId();
 
@@ -227,7 +227,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
                           .matchPool(poolName)
                           .sessionID(partySessionId)
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -279,7 +279,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
 
     final ApiListMatchFunctionsResponse response =
         matchFunctionsWrapper.matchFunctionList(
-            MatchFunctionList.builder().namespace(this.namespace).build());
+            MatchFunctionList.builder().namespace(this.namespace).build()).ensureSuccess();
 
     assertNotNull(response);
   }

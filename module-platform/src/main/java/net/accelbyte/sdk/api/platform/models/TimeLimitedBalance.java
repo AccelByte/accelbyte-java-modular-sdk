@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class TimeLimitedBalance extends Model {
 
-  @JsonProperty("balance")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Long balance;
+    @JsonProperty("balance")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long balance;
 
-  @JsonProperty("balanceSource")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String balanceSource;
+    @JsonProperty("balanceSource")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String balanceSource;
 
-  @JsonProperty("expireAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String expireAt;
+    @JsonProperty("expireAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String expireAt;
 
-  @JsonIgnore
-  public TimeLimitedBalance createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<TimeLimitedBalance> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<TimeLimitedBalance>>() {});
-  }
+
+    @JsonIgnore
+    public TimeLimitedBalance createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<TimeLimitedBalance> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<TimeLimitedBalance>>() {});
+    }
+
+
 }

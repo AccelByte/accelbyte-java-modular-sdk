@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.csm.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,40 +23,42 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelCSMAppLimitsResponse extends Model {
 
-  @JsonProperty("autoscaling")
-  private ModelCSMAutoscalingDefaults autoscaling;
+    @JsonProperty("autoscaling")
+    private ModelCSMAutoscalingDefaults autoscaling;
 
-  @JsonProperty("extendAppCPULimit")
-  private Integer extendAppCPULimit;
+    @JsonProperty("extendAppCPULimit")
+    private Integer extendAppCPULimit;
 
-  @JsonProperty("extendAppEventHandlerCPULimit")
-  private Integer extendAppEventHandlerCPULimit;
+    @JsonProperty("extendAppEventHandlerCPULimit")
+    private Integer extendAppEventHandlerCPULimit;
 
-  @JsonProperty("extendAppMemoryLimit")
-  private Integer extendAppMemoryLimit;
+    @JsonProperty("extendAppMemoryLimit")
+    private Integer extendAppMemoryLimit;
 
-  @JsonProperty("extendAppReplicaLimit")
-  private Integer extendAppReplicaLimit;
+    @JsonProperty("extendAppReplicaLimit")
+    private Integer extendAppReplicaLimit;
 
-  @JsonProperty("extendAppeEventHandlerMemoryLimit")
-  private Integer extendAppeEventHandlerMemoryLimit;
+    @JsonProperty("extendAppeEventHandlerMemoryLimit")
+    private Integer extendAppeEventHandlerMemoryLimit;
 
-  @JsonProperty("maxSubscriberCount")
-  private Integer maxSubscriberCount;
+    @JsonProperty("maxSubscriberCount")
+    private Integer maxSubscriberCount;
 
-  @JsonIgnore
-  public ApimodelCSMAppLimitsResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApimodelCSMAppLimitsResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApimodelCSMAppLimitsResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ApimodelCSMAppLimitsResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApimodelCSMAppLimitsResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelCSMAppLimitsResponse>>() {});
+    }
+
+
 }

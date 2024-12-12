@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.leaderboard.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,31 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsUserRankingResponseV3 extends Model {
 
-  @JsonProperty("allTime")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsUserRankingResponseDetailV3 allTime;
+    @JsonProperty("allTime")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsUserRankingResponseDetailV3 allTime;
 
-  @JsonProperty("cycles")
-  private List<ModelsUserCycleRankingResponseDetail> cycles;
+    @JsonProperty("cycles")
+    private List<ModelsUserCycleRankingResponseDetail> cycles;
 
-  @JsonProperty("userId")
-  private String userId;
+    @JsonProperty("userId")
+    private String userId;
 
-  @JsonIgnore
-  public ModelsUserRankingResponseV3 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsUserRankingResponseV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsUserRankingResponseV3>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsUserRankingResponseV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsUserRankingResponseV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsUserRankingResponseV3>>() {});
+    }
+
+
 }

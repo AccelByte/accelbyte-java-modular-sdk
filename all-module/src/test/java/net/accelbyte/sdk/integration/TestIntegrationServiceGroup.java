@@ -78,7 +78,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
               GetGroupConfigurationAdminV1.builder()
                   .namespace(this.namespace)
                   .configurationCode(initialConfigCode)
-                  .build());
+                  .build()).ensureSuccess();
 
       assertNotNull(getGroupConfigResult);
 
@@ -91,7 +91,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
       if (isNotAvailable) {
         final ModelsCreateGroupConfigurationResponseV1 initiateGroupConfigResult =
             configurationWrapper.initiateGroupConfigurationAdminV1(
-                InitiateGroupConfigurationAdminV1.builder().namespace(this.namespace).build());
+                InitiateGroupConfigurationAdminV1.builder().namespace(this.namespace).build()).ensureSuccess();
 
         defaultAdminRoleId = initiateGroupConfigResult.getGroupAdminRoleId();
         defaultMemberRoleId = initiateGroupConfigResult.getGroupMemberRoleId();
@@ -118,7 +118,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
               CreateGroupConfigurationAdminV1.builder()
                   .namespace(this.namespace)
                   .body(createGroupConfigBody)
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -141,7 +141,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
               .build();
 
       final ModelsGetGroupMemberListResponseV1 getUserGroupInfoResult =
-          groupMemberWrapper.getUserGroupInformationPublicV2(getUserGroupInfoBody);
+          groupMemberWrapper.getUserGroupInformationPublicV2(getUserGroupInfoBody).ensureSuccess();
 
       for (ModelsGetUserGroupInformationResponseV1 data : getUserGroupInfoResult.getData()) {
         final LeaveGroupPublicV2 leaveGroupBody =
@@ -174,7 +174,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
             .build();
     final ModelsGroupResponseV1 createGroupResult =
         groupWrapper.createNewGroupPublicV1(
-            CreateNewGroupPublicV1.builder().namespace(this.namespace).body(createGroup).build());
+            CreateNewGroupPublicV1.builder().namespace(this.namespace).body(createGroup).build()).ensureSuccess();
 
     // ESAC
 
@@ -187,7 +187,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
 
     final ModelsGroupResponseV1 getSingleGroupResult =
         groupWrapper.getSingleGroupPublicV1(
-            GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build());
+            GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build()).ensureSuccess();
 
     // ESAC
 
@@ -204,7 +204,7 @@ public class TestIntegrationServiceGroup extends TestIntegration {
                 .namespace(this.namespace)
                 .groupId(groupId)
                 .body(updateGroup)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 

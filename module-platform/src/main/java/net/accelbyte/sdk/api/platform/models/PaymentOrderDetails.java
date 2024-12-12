@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,47 +23,51 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class PaymentOrderDetails extends Model {
 
-  @JsonProperty("charging")
-  private Boolean charging;
+    @JsonProperty("charging")
+    private Boolean charging;
 
-  @JsonProperty("currencyCode")
-  private String currencyCode;
+    @JsonProperty("currencyCode")
+    private String currencyCode;
 
-  @JsonProperty("currencySymbol")
-  private String currencySymbol;
+    @JsonProperty("currencySymbol")
+    private String currencySymbol;
 
-  @JsonProperty("description")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String description;
+    @JsonProperty("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String description;
 
-  @JsonProperty("displayName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String displayName;
+    @JsonProperty("displayName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String displayName;
 
-  @JsonProperty("price")
-  private String price;
+    @JsonProperty("price")
+    private String price;
 
-  @JsonProperty("region")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String region;
+    @JsonProperty("region")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String region;
 
-  @JsonProperty("sandbox")
-  private Boolean sandbox;
+    @JsonProperty("sandbox")
+    private Boolean sandbox;
 
-  @JsonProperty("title")
-  private String title;
+    @JsonProperty("title")
+    private String title;
 
-  @JsonIgnore
-  public PaymentOrderDetails createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<PaymentOrderDetails> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<PaymentOrderDetails>>() {});
-  }
+
+    @JsonIgnore
+    public PaymentOrderDetails createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<PaymentOrderDetails> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<PaymentOrderDetails>>() {});
+    }
+
+
 }

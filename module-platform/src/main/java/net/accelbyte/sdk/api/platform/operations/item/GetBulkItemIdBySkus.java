@@ -8,106 +8,132 @@
 
 package net.accelbyte.sdk.api.platform.operations.item;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.platform.operation_responses.item.GetBulkItemIdBySkusOpResponse;
 
 /**
  * getBulkItemIdBySkus
  *
- * <p>This API is used to get an list of itemId by list of sku.
- *
- * <p>Other detail info:
- *
- * <p>* Returns : item data
+ * This API is used to get an list of itemId by list of sku.
+ * 
+ * Other detail info:
+ * 
+ *   * Returns : item data
  */
 @Getter
 @Setter
 public class GetBulkItemIdBySkus extends Operation {
-  /** generated field's value */
-  private String path = "/platform/admin/namespaces/{namespace}/items/itemId/bySkus";
+    /**
+     * generated field's value
+     */
+    private String path = "/platform/admin/namespaces/{namespace}/items/itemId/bySkus";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private List<String> sku;
+    private String storeId;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public GetBulkItemIdBySkus(
+            String customBasePath,            String namespace,
+            List<String> sku,
+            String storeId
+    )
+    {
+        this.namespace = namespace;
+        this.sku = sku;
+        this.storeId = storeId;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private List<String> sku;
-  private String storeId;
-
-  /**
-   * @param namespace required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public GetBulkItemIdBySkus(
-      String customBasePath, String namespace, List<String> sku, String storeId) {
-    this.namespace = namespace;
-    this.sku = sku;
-    this.storeId = storeId;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    return pathParams;
-  }
 
-  @Override
-  public Map<String, List<String>> getQueryParams() {
-    Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(
-        "sku",
-        this.sku == null
-            ? null
-            : this.sku.stream()
-                .map(i -> String.valueOf(i))
-                .collect(java.util.stream.Collectors.toList()));
-    queryParams.put("storeId", this.storeId == null ? null : Arrays.asList(this.storeId));
-    return queryParams;
-  }
-
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    return true;
-  }
 
-  public List<ItemId> parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+    @Override
+    public Map<String, List<String>> getQueryParams(){
+        Map<String, List<String>> queryParams = new HashMap<>();
+        queryParams.put("sku", this.sku == null ? null : this.sku.stream().map(i -> String.valueOf(i)).collect(java.util.stream.Collectors.toList()));
+        queryParams.put("storeId", this.storeId == null ? null : Arrays.asList(this.storeId));
+        return queryParams;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ObjectMapper().readValue(json, new TypeReference<List<ItemId>>() {});
-  }
 
-  @Override
-  protected Map<String, String> getCollectionFormatMap() {
-    Map<String, String> result = new HashMap<>();
-    result.put("sku", "multi");
-    result.put("storeId", "None");
-    return result;
-  }
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public GetBulkItemIdBySkusOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final GetBulkItemIdBySkusOpResponse response = new GetBulkItemIdBySkusOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+
+            response.setSuccess(true);
+            response.setData(new ObjectMapper().readValue(json, new TypeReference<List<ItemId>>() {}));
+        }
+
+        return response;
+    }
+
+    /*
+    public List<ItemId> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ObjectMapper().readValue(json, new TypeReference<List<ItemId>>() {});
+    }
+    */
+
+    @Override
+    protected Map<String, String> getCollectionFormatMap() {
+        Map<String, String> result = new HashMap<>();
+        result.put("sku", "multi");
+        result.put("storeId", "None");
+        return result;
+    }
 }

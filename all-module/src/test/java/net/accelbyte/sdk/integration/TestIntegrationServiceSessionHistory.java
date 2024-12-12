@@ -33,7 +33,7 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
 
     // Get all game sessions history
     ApimodelsGameSessionDetailQueryResponse gameSessionHistoryResp =
-        gameSessionDetailWrapper.adminQueryGameSessionDetail(adminQueryGameSessionDetail);
+        gameSessionDetailWrapper.adminQueryGameSessionDetail(adminQueryGameSessionDetail).ensureSuccess();
     assertNotNull(gameSessionHistoryResp);
 
     if ((gameSessionHistoryResp != null) && (gameSessionHistoryResp.getData() != null)) {
@@ -45,7 +45,7 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
         AdminQueryMatchmakingDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
 
     ApimodelsMatchmakingDetailQueryResponse matchMakingHistoryResp =
-        gameSessionDetailWrapper.adminQueryMatchmakingDetail(adminQueryMatchmakingDetail);
+        gameSessionDetailWrapper.adminQueryMatchmakingDetail(adminQueryMatchmakingDetail).ensureSuccess();
     assertNotNull(matchMakingHistoryResp);
 
     if ((matchMakingHistoryResp != null) && (matchMakingHistoryResp.getData() != null)) {

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,80 +23,82 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class LootBoxPluginConfigUpdate extends Model {
 
-  @JsonProperty("appConfig")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private AppConfig appConfig;
+    @JsonProperty("appConfig")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private AppConfig appConfig;
 
-  @JsonProperty("customConfig")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private BaseCustomConfig customConfig;
+    @JsonProperty("customConfig")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private BaseCustomConfig customConfig;
 
-  @JsonProperty("extendType")
-  private String extendType;
-
-  @JsonIgnore
-  public String getExtendType() {
-    return this.extendType;
-  }
-
-  @JsonIgnore
-  public ExtendType getExtendTypeAsEnum() {
-    return ExtendType.valueOf(this.extendType);
-  }
-
-  @JsonIgnore
-  public void setExtendType(final String extendType) {
-    this.extendType = extendType;
-  }
-
-  @JsonIgnore
-  public void setExtendTypeFromEnum(final ExtendType extendType) {
-    this.extendType = extendType.toString();
-  }
-
-  @JsonIgnore
-  public LootBoxPluginConfigUpdate createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
-
-  @JsonIgnore
-  public List<LootBoxPluginConfigUpdate> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<LootBoxPluginConfigUpdate>>() {});
-  }
-
-  public enum ExtendType {
-    APP("APP"),
-    CUSTOM("CUSTOM");
-
-    private String value;
-
-    ExtendType(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class LootBoxPluginConfigUpdateBuilder {
+    @JsonProperty("extendType")
     private String extendType;
 
-    public LootBoxPluginConfigUpdateBuilder extendType(final String extendType) {
-      this.extendType = extendType;
-      return this;
+
+
+    @JsonIgnore
+    public String getExtendType() {
+        return this.extendType;
     }
 
-    public LootBoxPluginConfigUpdateBuilder extendTypeFromEnum(final ExtendType extendType) {
-      this.extendType = extendType.toString();
-      return this;
+    @JsonIgnore
+    public ExtendType getExtendTypeAsEnum() {
+        return ExtendType.valueOf(this.extendType);
     }
-  }
+
+    @JsonIgnore
+    public void setExtendType(final String extendType) {
+        this.extendType = extendType;
+    }
+
+    @JsonIgnore
+    public void setExtendTypeFromEnum(final ExtendType extendType) {
+        this.extendType = extendType.toString();
+    }
+
+    @JsonIgnore
+    public LootBoxPluginConfigUpdate createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<LootBoxPluginConfigUpdate> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<LootBoxPluginConfigUpdate>>() {});
+    }
+
+
+    public enum ExtendType {
+        APP("APP"),
+        CUSTOM("CUSTOM");
+
+        private String value;
+
+        ExtendType(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public static class LootBoxPluginConfigUpdateBuilder {
+        private String extendType;
+
+
+        public LootBoxPluginConfigUpdateBuilder extendType(final String extendType) {
+            this.extendType = extendType;
+            return this;
+        }
+
+        public LootBoxPluginConfigUpdateBuilder extendTypeFromEnum(final ExtendType extendType) {
+            this.extendType = extendType.toString();
+            return this;
+        }
+    }
 }

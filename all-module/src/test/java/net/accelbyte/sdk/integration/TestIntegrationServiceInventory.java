@@ -39,7 +39,7 @@ class TestIntegrationServiceInventory extends TestIntegration {
     final Users usersWrapper = new Users(sdk);
 
     final ModelUserResponseV3 getUserResult =
-        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build());
+        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build()).ensureSuccess();
 
     assertNotNull(getUserResult);
 
@@ -65,7 +65,7 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminCreateInventoryConfiguration.builder()
                     .body(createInventoryConfigBody)
                     .namespace(this.namespace)
-                    .build());
+                    .build()).ensureSuccess();
 
     assertNotNull(createInventoryConfigResult);
 
@@ -82,7 +82,7 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminCreateInventory.builder()
                     .body(createInventoryBody)
                     .namespace(this.namespace)
-                    .build());
+                    .build()).ensureSuccess();
 
     assertNotNull(createInventoryResult);
 
@@ -93,7 +93,7 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminGetInventory.builder()
                     .inventoryId(createInventoryResult.getId())
                     .namespace(this.namespace)
-                    .build());
+                    .build()).ensureSuccess();
 
     assertNotNull(getInventoryResult);
 
@@ -108,7 +108,7 @@ class TestIntegrationServiceInventory extends TestIntegration {
                     .body(updateInventoryBody)
                     .inventoryId(createInventoryResult.getId())
                     .namespace(this.namespace)
-                    .build());
+                    .build()).ensureSuccess();
 
     assertNotNull(updateInventoryResult);
 

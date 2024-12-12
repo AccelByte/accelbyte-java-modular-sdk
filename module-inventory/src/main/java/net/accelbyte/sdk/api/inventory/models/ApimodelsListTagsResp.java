@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.inventory.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,24 +23,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsListTagsResp extends Model {
 
-  @JsonProperty("data")
-  private List<ApimodelsCreateTagResp> data;
+    @JsonProperty("data")
+    private List<ApimodelsCreateTagResp> data;
 
-  @JsonProperty("paging")
-  private ApimodelsPaging paging;
+    @JsonProperty("paging")
+    private ApimodelsPaging paging;
 
-  @JsonIgnore
-  public ApimodelsListTagsResp createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApimodelsListTagsResp> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsListTagsResp>>() {});
-  }
+
+    @JsonIgnore
+    public ApimodelsListTagsResp createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApimodelsListTagsResp> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsListTagsResp>>() {});
+    }
+
+
 }

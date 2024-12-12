@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,41 +23,44 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class SubItemAvailablePrice extends Model {
 
-  @JsonProperty("discountedPrice")
-  private Integer discountedPrice;
+    @JsonProperty("discountedPrice")
+    private Integer discountedPrice;
 
-  @JsonProperty("itemId")
-  private String itemId;
+    @JsonProperty("itemId")
+    private String itemId;
 
-  @JsonProperty("itemName")
-  private String itemName;
+    @JsonProperty("itemName")
+    private String itemName;
 
-  @JsonProperty("itemSku")
-  private String itemSku;
+    @JsonProperty("itemSku")
+    private String itemSku;
 
-  @JsonProperty("owned")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean owned;
+    @JsonProperty("owned")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean owned;
 
-  @JsonProperty("price")
-  private Integer price;
+    @JsonProperty("price")
+    private Integer price;
 
-  @JsonProperty("quantity")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer quantity;
+    @JsonProperty("quantity")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer quantity;
 
-  @JsonIgnore
-  public SubItemAvailablePrice createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<SubItemAvailablePrice> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<SubItemAvailablePrice>>() {});
-  }
+
+    @JsonIgnore
+    public SubItemAvailablePrice createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<SubItemAvailablePrice> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<SubItemAvailablePrice>>() {});
+    }
+
+
 }

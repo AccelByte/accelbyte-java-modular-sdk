@@ -95,7 +95,7 @@ public class TestIntegrationServiceGameTelemetry extends TestIntegration {
         gameTelemetryWrapper.protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
             ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.builder()
                 .steamId(steamId)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 

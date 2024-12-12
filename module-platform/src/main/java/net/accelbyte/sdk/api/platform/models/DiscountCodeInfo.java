@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,37 +23,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class DiscountCodeInfo extends Model {
 
-  @JsonProperty("campaignId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String campaignId;
+    @JsonProperty("campaignId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String campaignId;
 
-  @JsonProperty("campaignName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String campaignName;
+    @JsonProperty("campaignName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String campaignName;
 
-  @JsonProperty("code")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String code;
+    @JsonProperty("code")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String code;
 
-  @JsonProperty("deduction")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer deduction;
+    @JsonProperty("deduction")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer deduction;
 
-  @JsonProperty("discountConfig")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private DiscountConfig discountConfig;
+    @JsonProperty("discountConfig")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private DiscountConfig discountConfig;
 
-  @JsonIgnore
-  public DiscountCodeInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<DiscountCodeInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<DiscountCodeInfo>>() {});
-  }
+
+    @JsonIgnore
+    public DiscountCodeInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<DiscountCodeInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<DiscountCodeInfo>>() {});
+    }
+
+
 }

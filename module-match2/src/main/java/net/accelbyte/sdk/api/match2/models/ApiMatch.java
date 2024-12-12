@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.match2.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,45 +23,49 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiMatch extends Model {
 
-  @JsonProperty("backfill")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean backfill;
+    @JsonProperty("backfill")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean backfill;
 
-  @JsonProperty("clientVersion")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String clientVersion;
+    @JsonProperty("clientVersion")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String clientVersion;
 
-  @JsonProperty("matchAttributes")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Map<String, ?> matchAttributes;
+    @JsonProperty("matchAttributes")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, ?> matchAttributes;
 
-  @JsonProperty("regionPreference")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> regionPreference;
+    @JsonProperty("regionPreference")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> regionPreference;
 
-  @JsonProperty("serverName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String serverName;
+    @JsonProperty("serverName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String serverName;
 
-  @JsonProperty("teams")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ApiTeam> teams;
+    @JsonProperty("teams")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ApiTeam> teams;
 
-  @JsonProperty("tickets")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ApiTicket> tickets;
+    @JsonProperty("tickets")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ApiTicket> tickets;
 
-  @JsonIgnore
-  public ApiMatch createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiMatch> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiMatch>>() {});
-  }
+
+    @JsonIgnore
+    public ApiMatch createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiMatch> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiMatch>>() {});
+    }
+
+
 }

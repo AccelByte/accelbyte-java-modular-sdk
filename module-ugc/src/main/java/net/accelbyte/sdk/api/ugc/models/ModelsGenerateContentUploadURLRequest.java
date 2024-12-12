@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ugc.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,28 +23,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsGenerateContentUploadURLRequest extends Model {
 
-  @JsonProperty("contentType")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String contentType;
+    @JsonProperty("contentType")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String contentType;
 
-  @JsonProperty("fileExtension")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String fileExtension;
+    @JsonProperty("fileExtension")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String fileExtension;
 
-  @JsonIgnore
-  public ModelsGenerateContentUploadURLRequest createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsGenerateContentUploadURLRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsGenerateContentUploadURLRequest>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsGenerateContentUploadURLRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsGenerateContentUploadURLRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsGenerateContentUploadURLRequest>>() {});
+    }
+
+
 }

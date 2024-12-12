@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.cloudsave.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsBulkUpdatePlayerRecordByKeyResponse extends Model {
 
-  @JsonProperty("detail")
-  private Map<String, ?> detail;
+    @JsonProperty("detail")
+    private Map<String, ?> detail;
 
-  @JsonProperty("success")
-  private Boolean success;
+    @JsonProperty("success")
+    private Boolean success;
 
-  @JsonProperty("user_id")
-  private String userId;
+    @JsonProperty("user_id")
+    private String userId;
 
-  @JsonIgnore
-  public ModelsBulkUpdatePlayerRecordByKeyResponse createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsBulkUpdatePlayerRecordByKeyResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsBulkUpdatePlayerRecordByKeyResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsBulkUpdatePlayerRecordByKeyResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsBulkUpdatePlayerRecordByKeyResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsBulkUpdatePlayerRecordByKeyResponse>>() {});
+    }
+
+
 }

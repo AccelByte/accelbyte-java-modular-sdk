@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.csm.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,43 +23,44 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class GeneratedGetDeploymentListV1DataItem extends Model {
 
-  @JsonProperty("deletedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String deletedAt;
+    @JsonProperty("deletedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String deletedAt;
 
-  @JsonProperty("deploymentId")
-  private String deploymentId;
+    @JsonProperty("deploymentId")
+    private String deploymentId;
 
-  @JsonProperty("imageTag")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String imageTag;
+    @JsonProperty("imageTag")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String imageTag;
 
-  @JsonProperty("message")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String message;
+    @JsonProperty("message")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String message;
 
-  @JsonProperty("status")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String status;
+    @JsonProperty("status")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String status;
 
-  @JsonProperty("updatedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String updatedAt;
 
-  @JsonIgnore
-  public GeneratedGetDeploymentListV1DataItem createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<GeneratedGetDeploymentListV1DataItem> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<GeneratedGetDeploymentListV1DataItem>>() {});
-  }
+
+    @JsonIgnore
+    public GeneratedGetDeploymentListV1DataItem createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<GeneratedGetDeploymentListV1DataItem> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<GeneratedGetDeploymentListV1DataItem>>() {});
+    }
+
+
 }

@@ -81,13 +81,13 @@ class TestIntegrationServiceDsmc extends TestIntegration {
 
     final ModelsListServerResponse listLocalServerResult =
         dsmcAdminWrapper.listLocalServer(
-            ListLocalServer.builder().namespace(this.namespace).build());
+            ListLocalServer.builder().namespace(this.namespace).build()).ensureSuccess();
 
     assertNotNull(listLocalServerResult);
 
     ModelsDeploymentWithOverride getDeploymentResult =
         dsmcDeploymentConfigWrapper.getDeployment(
-            GetDeployment.builder().deployment(targetDeployment).namespace(namespace).build());
+            GetDeployment.builder().deployment(targetDeployment).namespace(namespace).build()).ensureSuccess();
 
     assertNotNull(getDeploymentResult);
     assertNotNull(getDeploymentResult.getGameVersion());
@@ -113,7 +113,7 @@ class TestIntegrationServiceDsmc extends TestIntegration {
 
     final ModelsSessionResponse createSessionResult =
         sessionBrowserWrapper.createSession(
-            CreateSession.builder().namespace(targetNamespace).body(createSessionBody).build());
+            CreateSession.builder().namespace(targetNamespace).body(createSessionBody).build()).ensureSuccess();
 
     assertNotNull(createSessionResult);
     assertEquals(targetUsername, createSessionResult.getUsername());
@@ -158,7 +158,7 @@ class TestIntegrationServiceDsmc extends TestIntegration {
             net.accelbyte.sdk.api.dsmc.operations.session.CreateSession.builder()
                 .namespace(targetNamespace)
                 .body(createSessionDsmcBody)
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(createSessionDsmcResult);
 
@@ -167,7 +167,7 @@ class TestIntegrationServiceDsmc extends TestIntegration {
             net.accelbyte.sdk.api.dsmc.operations.session.GetSession.builder()
                 .namespace(targetNamespace)
                 .sessionID(sessionId)
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(getSessionDsmcResult);
 
@@ -246,7 +246,7 @@ class TestIntegrationServiceDsmc extends TestIntegration {
 
     ModelsAdminSessionResponse deleteSessionResult =
         sessionBrowserWrapper.adminDeleteSession(
-            AdminDeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build());
+            AdminDeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build()).ensureSuccess();
 
     assertNotNull(deleteSessionResult);
   }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,26 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class BloomFilterJSON extends Model {
 
-  @JsonProperty("bits")
-  private List<java.math.BigInteger> bits;
+    @JsonProperty("bits")
+    private List<java.math.BigInteger> bits;
 
-  @JsonProperty("k")
-  private Integer k;
+    @JsonProperty("k")
+    private Integer k;
 
-  @JsonProperty("m")
-  private Integer m;
+    @JsonProperty("m")
+    private Integer m;
 
-  @JsonIgnore
-  public BloomFilterJSON createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<BloomFilterJSON> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<BloomFilterJSON>>() {});
-  }
+
+    @JsonIgnore
+    public BloomFilterJSON createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<BloomFilterJSON> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<BloomFilterJSON>>() {});
+    }
+
+
 }

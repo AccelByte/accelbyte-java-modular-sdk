@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,26 +23,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AccountCreateTestUsersRequestV4 extends Model {
 
-  @JsonProperty("count")
-  private Integer count;
+    @JsonProperty("count")
+    private Integer count;
 
-  @JsonProperty("userInfo")
-  private AccountUserInfo userInfo;
+    @JsonProperty("userInfo")
+    private AccountUserInfo userInfo;
 
-  @JsonIgnore
-  public AccountCreateTestUsersRequestV4 createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<AccountCreateTestUsersRequestV4> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<AccountCreateTestUsersRequestV4>>() {});
-  }
+
+    @JsonIgnore
+    public AccountCreateTestUsersRequestV4 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AccountCreateTestUsersRequestV4> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AccountCreateTestUsersRequestV4>>() {});
+    }
+
+
 }

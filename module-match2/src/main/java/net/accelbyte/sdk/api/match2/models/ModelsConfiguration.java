@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.match2.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,47 +23,51 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsConfiguration extends Model {
 
-  @JsonProperty("clientVersion")
-  private String clientVersion;
+    @JsonProperty("clientVersion")
+    private String clientVersion;
 
-  @JsonProperty("deployment")
-  private String deployment;
+    @JsonProperty("deployment")
+    private String deployment;
 
-  @JsonProperty("inactiveTimeout")
-  private Integer inactiveTimeout;
+    @JsonProperty("inactiveTimeout")
+    private Integer inactiveTimeout;
 
-  @JsonProperty("inviteTimeout")
-  private Integer inviteTimeout;
+    @JsonProperty("inviteTimeout")
+    private Integer inviteTimeout;
 
-  @JsonProperty("joinability")
-  private String joinability;
+    @JsonProperty("joinability")
+    private String joinability;
 
-  @JsonProperty("maxPlayers")
-  private Integer maxPlayers;
+    @JsonProperty("maxPlayers")
+    private Integer maxPlayers;
 
-  @JsonProperty("minPlayers")
-  private Integer minPlayers;
+    @JsonProperty("minPlayers")
+    private Integer minPlayers;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("requestedRegions")
-  private List<String> requestedRegions;
+    @JsonProperty("requestedRegions")
+    private List<String> requestedRegions;
 
-  @JsonProperty("type")
-  private String type;
+    @JsonProperty("type")
+    private String type;
 
-  @JsonIgnore
-  public ModelsConfiguration createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsConfiguration> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsConfiguration>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsConfiguration createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsConfiguration> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsConfiguration>>() {});
+    }
+
+
 }

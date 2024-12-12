@@ -55,7 +55,7 @@ public class TestIntegrationServiceChat extends TestIntegration {
             .build();
 
     final ModelsDictionary adminProfanityCreateResponse =
-        profanityWrapper.adminProfanityCreate(adminProfanityCreateOp);
+        profanityWrapper.adminProfanityCreate(adminProfanityCreateOp).ensureSuccess();
 
     // ESAC
 
@@ -88,7 +88,7 @@ public class TestIntegrationServiceChat extends TestIntegration {
         AdminProfanityQuery.builder().namespace(namespace).startWith(profanityPrefix).build();
 
     final ModelsDictionaryQueryResult adminProfanityQueryResponse =
-        profanityWrapper.adminProfanityQuery(adminProfanityQueryOp);
+        profanityWrapper.adminProfanityQuery(adminProfanityQueryOp).ensureSuccess();
 
     // ESAC
 

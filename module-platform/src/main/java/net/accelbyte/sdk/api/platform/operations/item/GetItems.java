@@ -8,110 +8,146 @@
 
 package net.accelbyte.sdk.api.platform.operations.item;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.platform.operation_responses.item.GetItemsOpResponse;
 
 /**
  * getItems
  *
- * <p>This API is used to get items.
- *
- * <p>Other detail info:
- *
- * <p>* Returns : the list of items info
+ * This API is used to get items.
+ * 
+ * Other detail info:
+ * 
+ *   * Returns : the list of items info
  */
 @Getter
 @Setter
 public class GetItems extends Operation {
-  /** generated field's value */
-  private String path = "/platform/admin/namespaces/{namespace}/items/byIds";
+    /**
+     * generated field's value
+     */
+    private String path = "/platform/admin/namespaces/{namespace}/items/byIds";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private Boolean activeOnly;
+    private String storeId;
+    private String itemIds;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    * @param itemIds required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public GetItems(
+            String customBasePath,            String namespace,
+            Boolean activeOnly,
+            String storeId,
+            String itemIds
+    )
+    {
+        this.namespace = namespace;
+        this.activeOnly = activeOnly;
+        this.storeId = storeId;
+        this.itemIds = itemIds;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private Boolean activeOnly;
-  private String storeId;
-  private String itemIds;
-
-  /**
-   * @param namespace required
-   * @param itemIds required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public GetItems(
-      String customBasePath, String namespace, Boolean activeOnly, String storeId, String itemIds) {
-    this.namespace = namespace;
-    this.activeOnly = activeOnly;
-    this.storeId = storeId;
-    this.itemIds = itemIds;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    return pathParams;
-  }
 
-  @Override
-  public Map<String, List<String>> getQueryParams() {
-    Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(
-        "activeOnly",
-        this.activeOnly == null ? null : Arrays.asList(String.valueOf(this.activeOnly)));
-    queryParams.put("storeId", this.storeId == null ? null : Arrays.asList(this.storeId));
-    queryParams.put("itemIds", this.itemIds == null ? null : Arrays.asList(this.itemIds));
-    return queryParams;
-  }
-
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    if (this.itemIds == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public List<FullItemInfo> parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+    @Override
+    public Map<String, List<String>> getQueryParams(){
+        Map<String, List<String>> queryParams = new HashMap<>();
+        queryParams.put("activeOnly", this.activeOnly == null ? null : Arrays.asList(String.valueOf(this.activeOnly)));
+        queryParams.put("storeId", this.storeId == null ? null : Arrays.asList(this.storeId));
+        queryParams.put("itemIds", this.itemIds == null ? null : Arrays.asList(this.itemIds));
+        return queryParams;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ObjectMapper().readValue(json, new TypeReference<List<FullItemInfo>>() {});
-  }
 
-  @Override
-  protected Map<String, String> getCollectionFormatMap() {
-    Map<String, String> result = new HashMap<>();
-    result.put("activeOnly", "None");
-    result.put("storeId", "None");
-    result.put("itemIds", "None");
-    return result;
-  }
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        if(this.itemIds == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public GetItemsOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final GetItemsOpResponse response = new GetItemsOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+
+            response.setSuccess(true);
+            response.setData(new ObjectMapper().readValue(json, new TypeReference<List<FullItemInfo>>() {}));
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ErrorEntity().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public List<FullItemInfo> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ObjectMapper().readValue(json, new TypeReference<List<FullItemInfo>>() {});
+    }
+    */
+
+    @Override
+    protected Map<String, String> getCollectionFormatMap() {
+        Map<String, String> result = new HashMap<>();
+        result.put("activeOnly", "None");
+        result.put("storeId", "None");
+        result.put("itemIds", "None");
+        return result;
+    }
 }

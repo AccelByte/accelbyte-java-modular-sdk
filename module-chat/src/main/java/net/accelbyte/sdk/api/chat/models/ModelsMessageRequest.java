@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.chat.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,86 +23,90 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsMessageRequest extends Model {
 
-  @JsonProperty("message")
-  private String message;
+    @JsonProperty("message")
+    private String message;
 
-  @JsonProperty("timestamp")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Long timestamp;
+    @JsonProperty("timestamp")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long timestamp;
 
-  @JsonProperty("topicId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String topicId;
+    @JsonProperty("topicId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String topicId;
 
-  @JsonProperty("topicType")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String topicType;
-
-  @JsonProperty("userId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String userId;
-
-  @JsonIgnore
-  public String getTopicType() {
-    return this.topicType;
-  }
-
-  @JsonIgnore
-  public TopicType getTopicTypeAsEnum() {
-    return TopicType.valueOf(this.topicType);
-  }
-
-  @JsonIgnore
-  public void setTopicType(final String topicType) {
-    this.topicType = topicType;
-  }
-
-  @JsonIgnore
-  public void setTopicTypeFromEnum(final TopicType topicType) {
-    this.topicType = topicType.toString();
-  }
-
-  @JsonIgnore
-  public ModelsMessageRequest createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
-
-  @JsonIgnore
-  public List<ModelsMessageRequest> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMessageRequest>>() {});
-  }
-
-  public enum TopicType {
-    GROUP("GROUP"),
-    PERSONAL("PERSONAL");
-
-    private String value;
-
-    TopicType(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class ModelsMessageRequestBuilder {
+    @JsonProperty("topicType")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String topicType;
 
-    public ModelsMessageRequestBuilder topicType(final String topicType) {
-      this.topicType = topicType;
-      return this;
+    @JsonProperty("userId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String userId;
+
+
+
+    @JsonIgnore
+    public String getTopicType() {
+        return this.topicType;
     }
 
-    public ModelsMessageRequestBuilder topicTypeFromEnum(final TopicType topicType) {
-      this.topicType = topicType.toString();
-      return this;
+    @JsonIgnore
+    public TopicType getTopicTypeAsEnum() {
+        return TopicType.valueOf(this.topicType);
     }
-  }
+
+    @JsonIgnore
+    public void setTopicType(final String topicType) {
+        this.topicType = topicType;
+    }
+
+    @JsonIgnore
+    public void setTopicTypeFromEnum(final TopicType topicType) {
+        this.topicType = topicType.toString();
+    }
+
+    @JsonIgnore
+    public ModelsMessageRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsMessageRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMessageRequest>>() {});
+    }
+
+
+    public enum TopicType {
+        GROUP("GROUP"),
+        PERSONAL("PERSONAL");
+
+        private String value;
+
+        TopicType(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public static class ModelsMessageRequestBuilder {
+        private String topicType;
+
+
+        public ModelsMessageRequestBuilder topicType(final String topicType) {
+            this.topicType = topicType;
+            return this;
+        }
+
+        public ModelsMessageRequestBuilder topicTypeFromEnum(final TopicType topicType) {
+            this.topicType = topicType.toString();
+            return this;
+        }
+    }
 }

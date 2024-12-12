@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,37 +23,39 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonPermissionV3 extends Model {
 
-  @JsonProperty("action")
-  private Integer action;
+    @JsonProperty("action")
+    private Integer action;
 
-  @JsonProperty("resource")
-  private String resource;
+    @JsonProperty("resource")
+    private String resource;
 
-  @JsonProperty("schedAction")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer schedAction;
+    @JsonProperty("schedAction")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer schedAction;
 
-  @JsonProperty("schedCron")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String schedCron;
+    @JsonProperty("schedCron")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String schedCron;
 
-  @JsonProperty("schedRange")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> schedRange;
+    @JsonProperty("schedRange")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> schedRange;
 
-  @JsonIgnore
-  public AccountcommonPermissionV3 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<AccountcommonPermissionV3> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<AccountcommonPermissionV3>>() {});
-  }
+
+    @JsonIgnore
+    public AccountcommonPermissionV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AccountcommonPermissionV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonPermissionV3>>() {});
+    }
+
+
 }

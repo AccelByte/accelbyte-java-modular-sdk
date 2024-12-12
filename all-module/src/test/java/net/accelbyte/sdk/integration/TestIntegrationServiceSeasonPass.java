@@ -61,7 +61,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     // Get or create store
 
     final List<StoreInfo> storeListResp =
-        platformStoreWrapper.listStores(ListStores.builder().namespace(this.namespace).build());
+        platformStoreWrapper.listStores(ListStores.builder().namespace(this.namespace).build()).ensureSuccess();
     assertNotNull(storeListResp);
 
     StoreInfo selectedStore = null;
@@ -78,7 +78,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
 
       selectedStore =
           platformStoreWrapper.createStore(
-              CreateStore.builder().body(storeCreate).namespace(this.namespace).build());
+              CreateStore.builder().body(storeCreate).namespace(this.namespace).build()).ensureSuccess();
     }
 
     // Create category
@@ -142,7 +142,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
                 .namespace(this.namespace)
                 .storeId(selectedStore.getStoreId())
                 .body(createItemBody)
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(createItemResult);
 
@@ -179,7 +179,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
 
     final SeasonInfo createSeasonResult =
         seasonWrapper.createSeason(
-            CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build());
+            CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -192,7 +192,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
             GetSeason.builder()
                 .namespace(this.namespace)
                 .seasonId(createSeasonResult.getId())
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -208,7 +208,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
                 .namespace(this.namespace)
                 .seasonId(createSeasonResult.getId())
                 .body(updateSeasonBody)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -231,7 +231,7 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
             DeleteStore.builder()
                 .namespace(this.namespace)
                 .storeId(selectedStore.getStoreId())
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(deleteStoreResult);
   }

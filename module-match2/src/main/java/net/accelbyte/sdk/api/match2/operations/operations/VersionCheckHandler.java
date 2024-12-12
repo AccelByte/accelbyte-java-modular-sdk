@@ -10,47 +10,79 @@ package net.accelbyte.sdk.api.match2.operations.operations;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.util.Helper;
 
-/** versionCheckHandler */
+import net.accelbyte.sdk.api.match2.models.*;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.match2.operation_responses.operations.VersionCheckHandlerOpResponse;
+
+/**
+ * versionCheckHandler
+ */
 @Getter
 @Setter
 public class VersionCheckHandler extends Operation {
-  /** generated field's value */
-  private String path = "/match2/version";
+    /**
+     * generated field's value
+     */
+    private String path = "/match2/version";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList();
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList();
-  private String locationQuery = null;
+    /**
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public VersionCheckHandler(
+            String customBasePath    )
+    {
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-
-  /** */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public VersionCheckHandler(String customBasePath) {
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public boolean isValid() {
-    return true;
-  }
-
-  public void handleEmptyResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+        securities.add("Bearer");
     }
-  }
+
+
+
+
+
+
+    @Override
+    public boolean isValid() {
+        return true;
+    }
+
+    public VersionCheckHandlerOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final VersionCheckHandlerOpResponse response = new VersionCheckHandlerOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+
+        return response;
+    }
+
+    /*
+    public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+    }
+    */
+
 }

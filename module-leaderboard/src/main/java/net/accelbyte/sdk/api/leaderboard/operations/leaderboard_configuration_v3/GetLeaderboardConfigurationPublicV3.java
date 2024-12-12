@@ -10,82 +10,140 @@ package net.accelbyte.sdk.api.leaderboard.operations.leaderboard_configuration_v
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.leaderboard.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.leaderboard.operation_responses.leaderboard_configuration_v3.GetLeaderboardConfigurationPublicV3OpResponse;
 
 /**
  * getLeaderboardConfigurationPublicV3
  *
- * <p>This endpoint returns a leaderboard configuration
+ * 
+ * 
+ * This endpoint returns a leaderboard configuration
  */
 @Getter
 @Setter
 public class GetLeaderboardConfigurationPublicV3 extends Operation {
-  /** generated field's value */
-  private String path =
-      "/leaderboard/v3/public/namespaces/{namespace}/leaderboards/{leaderboardCode}";
+    /**
+     * generated field's value
+     */
+    private String path = "/leaderboard/v3/public/namespaces/{namespace}/leaderboards/{leaderboardCode}";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String leaderboardCode;
+    private String namespace;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param leaderboardCode required
+    * @param namespace required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public GetLeaderboardConfigurationPublicV3(
+            String customBasePath,            String leaderboardCode,
+            String namespace
+    )
+    {
+        this.leaderboardCode = leaderboardCode;
+        this.namespace = namespace;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String leaderboardCode;
-
-  private String namespace;
-
-  /**
-   * @param leaderboardCode required
-   * @param namespace required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public GetLeaderboardConfigurationPublicV3(
-      String customBasePath, String leaderboardCode, String namespace) {
-    this.leaderboardCode = leaderboardCode;
-    this.namespace = namespace;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.leaderboardCode != null) {
-      pathParams.put("leaderboardCode", this.leaderboardCode);
+        securities.add("Bearer");
     }
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
-    }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.leaderboardCode == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.leaderboardCode != null){
+            pathParams.put("leaderboardCode", this.leaderboardCode);
+        }
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    if (this.namespace == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public ModelsGetLeaderboardConfigPublicRespV3 parseResponse(
-      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.leaderboardCode == null) {
+            return false;
+        }
+        if(this.namespace == null) {
+            return false;
+        }
+        return true;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ModelsGetLeaderboardConfigPublicRespV3().createFromJson(json);
-  }
+
+    public GetLeaderboardConfigurationPublicV3OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final GetLeaderboardConfigurationPublicV3OpResponse response = new GetLeaderboardConfigurationPublicV3OpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new ModelsGetLeaderboardConfigPublicRespV3().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 400) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError400(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError400().translateToApiError());
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 403) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError403(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError403().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseErrorResponse().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public ModelsGetLeaderboardConfigPublicRespV3 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ModelsGetLeaderboardConfigPublicRespV3().createFromJson(json);
+    }
+    */
+
 }

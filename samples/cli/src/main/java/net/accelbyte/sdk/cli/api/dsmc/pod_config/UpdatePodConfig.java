@@ -8,9 +8,8 @@
 
 package net.accelbyte.sdk.cli.api.dsmc.pod_config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
-import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.dsmc.models.*;
 import net.accelbyte.sdk.api.dsmc.wrappers.PodConfig;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -19,69 +18,67 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.Callable;
+
 @Command(name = "updatePodConfig", mixinStandardHelpOptions = true)
 public class UpdatePodConfig implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(UpdatePodConfig.class);
+    private static final Logger log = LogManager.getLogger(UpdatePodConfig.class);
 
-  @Option(
-      names = {"--name"},
-      description = "name")
-  String name;
+    @Option(names = {"--name"}, description = "name")
+    String name;
 
-  @Option(
-      names = {"--namespace"},
-      description = "namespace")
-  String namespace;
+    @Option(names = {"--namespace"}, description = "namespace")
+    String namespace;
 
-  @Option(
-      names = {"--body"},
-      description = "body")
-  String body;
+    @Option(names = {"--body"}, description = "body")
+    String body;
 
-  @Option(
-      names = {"--logging"},
-      description = "logger")
-  boolean logging;
 
-  public static void main(String[] args) {
-    int exitCode = new CommandLine(new UpdatePodConfig()).execute(args);
-    System.exit(exitCode);
-  }
+    @Option(names = {"--logging"}, description = "logger")
+    boolean logging;
 
-  @Override
-  public Integer call() {
-    try {
-      final OkhttpClient httpClient = new OkhttpClient();
-      if (logging) {
-        httpClient.setLogger(new OkhttpLogger());
-      }
-      final AccelByteSDK sdk =
-          new AccelByteSDK(
-              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final PodConfig wrapper = new PodConfig(sdk);
-      final net.accelbyte.sdk.api.dsmc.operations.pod_config.UpdatePodConfig operation =
-          net.accelbyte.sdk.api.dsmc.operations.pod_config.UpdatePodConfig.builder()
-              .name(name)
-              .namespace(namespace)
-              .body(new ObjectMapper().readValue(body, ModelsUpdatePodConfigRequest.class))
-              .build();
-      final ModelsPodConfigRecord response = wrapper.updatePodConfig(operation);
-      final String responseString =
-          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-      log.info("Operation successful\n{}", responseString);
-      return 0;
-    } catch (HttpResponseException e) {
-      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-    } catch (Exception e) {
-      log.error("An exception was thrown", e);
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new UpdatePodConfig()).execute(args);
+        System.exit(exitCode);
     }
-    return 1;
-  }
+
+    @Override
+    public Integer call() {
+        try {
+            final OkhttpClient httpClient = new OkhttpClient();
+            if (logging) {
+                httpClient.setLogger(new OkhttpLogger());
+            }
+            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+            final PodConfig wrapper = new PodConfig(sdk);
+            final net.accelbyte.sdk.api.dsmc.operations.pod_config.UpdatePodConfig operation =
+                    net.accelbyte.sdk.api.dsmc.operations.pod_config.UpdatePodConfig.builder()
+                            .name(name)
+                            .namespace(namespace)
+                            .body(new ObjectMapper().readValue(body, ModelsUpdatePodConfigRequest.class)) 
+                            .build();
+            final ModelsPodConfigRecord response =
+                    wrapper.updatePodConfig(operation).ensureSuccess();
+            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+            log.info("Operation successful\n{}", responseString);
+            return 0;
+        } catch (HttpResponseException e) {
+            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+        } catch (Exception e) {
+            log.error("An exception was thrown", e);
+        }
+        return 1;
+    }
 }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ugc.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,28 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsCreateTagResponse extends Model {
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("tag")
-  private String tag;
+    @JsonProperty("tag")
+    private String tag;
 
-  @JsonIgnore
-  public ModelsCreateTagResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsCreateTagResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsCreateTagResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsCreateTagResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsCreateTagResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsCreateTagResponse>>() {});
+    }
+
+
 }

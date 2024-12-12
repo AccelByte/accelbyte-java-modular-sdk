@@ -10,81 +10,140 @@ package net.accelbyte.sdk.api.iam.operations.users_v4;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.iam.operation_responses.users_v4.PublicUpgradeHeadlessAccountV4OpResponse;
 
 /**
  * PublicUpgradeHeadlessAccountV4
  *
- * <p>Upgrade headless account to full account without verifying email address. Client does not need
- * to provide verification code which sent to email address. action code : 10124
+ * Upgrade headless account to full account without verifying email address. Client does not need to provide verification code which sent to email address.
+ * action code : 10124
  */
 @Getter
 @Setter
 public class PublicUpgradeHeadlessAccountV4 extends Operation {
-  /** generated field's value */
-  private String path = "/iam/v4/public/namespaces/{namespace}/users/me/headless/verify";
+    /**
+     * generated field's value
+     */
+    private String path = "/iam/v4/public/namespaces/{namespace}/users/me/headless/verify";
+    private String method = "POST";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private AccountUpgradeHeadlessAccountRequestV4 body;
 
-  private String method = "POST";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    * @param body required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public PublicUpgradeHeadlessAccountV4(
+            String customBasePath,            String namespace,
+            AccountUpgradeHeadlessAccountRequestV4 body
+    )
+    {
+        this.namespace = namespace;
+        this.body = body;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private AccountUpgradeHeadlessAccountRequestV4 body;
-
-  /**
-   * @param namespace required
-   * @param body required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public PublicUpgradeHeadlessAccountV4(
-      String customBasePath, String namespace, AccountUpgradeHeadlessAccountRequestV4 body) {
-    this.namespace = namespace;
-    this.body = body;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    return pathParams;
-  }
 
-  @Override
-  public AccountUpgradeHeadlessAccountRequestV4 getBodyParams() {
-    return this.body;
-  }
-
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
-    return true;
-  }
 
-  public AccountUserResponseV4 parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+    @Override
+    public AccountUpgradeHeadlessAccountRequestV4 getBodyParams(){
+        return this.body;
     }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new AccountUserResponseV4().createFromJson(json);
-  }
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        if(this.body == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public PublicUpgradeHeadlessAccountV4OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final PublicUpgradeHeadlessAccountV4OpResponse response = new PublicUpgradeHeadlessAccountV4OpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new AccountUserResponseV4().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 400) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError400(new RestErrorResponse().createFromJson(json));
+            response.setError(response.getError400().translateToApiError());
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new RestErrorResponse().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new RestErrorResponse().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+        else if (code == 409) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError409(new RestErrorResponse().createFromJson(json));
+            response.setError(response.getError409().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new RestErrorResponse().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public AccountUserResponseV4 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new AccountUserResponseV4().createFromJson(json);
+    }
+    */
+
 }

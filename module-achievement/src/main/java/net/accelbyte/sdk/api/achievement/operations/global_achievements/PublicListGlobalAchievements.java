@@ -10,162 +10,206 @@ package net.accelbyte.sdk.api.achievement.operations.global_achievements;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import net.accelbyte.sdk.api.achievement.models.*;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.achievement.operation_responses.global_achievements.PublicListGlobalAchievementsOpResponse;
 
 /**
  * PublicListGlobalAchievements
  *
- * <p>Required permission `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
- *
- * <p>Note:
- *
- * <p>Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+ * 
+ * 
+ * Required permission
+ * `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
+ * 
+ * 
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * 
+ * 
+ * Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
  */
 @Getter
 @Setter
 public class PublicListGlobalAchievements extends Operation {
-  /** generated field's value */
-  private String path = "/achievement/v1/public/namespaces/{namespace}/global/achievements";
+    /**
+     * generated field's value
+     */
+    private String path = "/achievement/v1/public/namespaces/{namespace}/global/achievements";
+    private String method = "GET";
+    private List<String> consumes = Arrays.asList("application/json");
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private String achievementCodes;
+    private Integer limit;
+    private Integer offset;
+    private String sortBy;
+    private String status;
+    private List<String> tags;
 
-  private String method = "GET";
-  private List<String> consumes = Arrays.asList("application/json");
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public PublicListGlobalAchievements(
+            String customBasePath,            String namespace,
+            String achievementCodes,
+            Integer limit,
+            Integer offset,
+            String sortBy,
+            String status,
+            List<String> tags
+    )
+    {
+        this.namespace = namespace;
+        this.achievementCodes = achievementCodes;
+        this.limit = limit;
+        this.offset = offset;
+        this.sortBy = sortBy;
+        this.status = status;
+        this.tags = tags;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private String achievementCodes;
-  private Integer limit;
-  private Integer offset;
-  private String sortBy;
-  private String status;
-  private List<String> tags;
-
-  /**
-   * @param namespace required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public PublicListGlobalAchievements(
-      String customBasePath,
-      String namespace,
-      String achievementCodes,
-      Integer limit,
-      Integer offset,
-      String sortBy,
-      String status,
-      List<String> tags) {
-    this.namespace = namespace;
-    this.achievementCodes = achievementCodes;
-    this.limit = limit;
-    this.offset = offset;
-    this.sortBy = sortBy;
-    this.status = status;
-    this.tags = tags;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
-    }
-    return pathParams;
-  }
-
-  @Override
-  public Map<String, List<String>> getQueryParams() {
-    Map<String, List<String>> queryParams = new HashMap<>();
-    queryParams.put(
-        "achievementCodes",
-        this.achievementCodes == null ? null : Arrays.asList(this.achievementCodes));
-    queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
-    queryParams.put(
-        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
-    queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
-    queryParams.put("status", this.status == null ? null : Arrays.asList(this.status));
-    queryParams.put(
-        "tags",
-        this.tags == null
-            ? null
-            : this.tags.stream()
-                .map(i -> String.valueOf(i))
-                .collect(java.util.stream.Collectors.toList()));
-    return queryParams;
-  }
-
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
-    }
-    return true;
-  }
-
-  public ModelsPaginatedGlobalAchievementResponse parseResponse(
-      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    if (code != 200) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
-    }
-    final String json = Helper.convertInputStreamToString(payload);
-    return new ModelsPaginatedGlobalAchievementResponse().createFromJson(json);
-  }
-
-  @Override
-  protected Map<String, String> getCollectionFormatMap() {
-    Map<String, String> result = new HashMap<>();
-    result.put("achievementCodes", "None");
-    result.put("limit", "None");
-    result.put("offset", "None");
-    result.put("sortBy", "None");
-    result.put("status", "None");
-    result.put("tags", "csv");
-    return result;
-  }
-
-  public enum SortBy {
-    AchievedAt("achievedAt"),
-    AchievedAtasc("achievedAt:asc"),
-    AchievedAtdesc("achievedAt:desc"),
-    CreatedAt("createdAt"),
-    CreatedAtasc("createdAt:asc"),
-    CreatedAtdesc("createdAt:desc");
-
-    private String value;
-
-    SortBy(String value) {
-      this.value = value;
+        securities.add("Bearer");
     }
 
     @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class PublicListGlobalAchievementsBuilder {
-    private String sortBy;
-
-    public PublicListGlobalAchievementsBuilder sortBy(final String sortBy) {
-      this.sortBy = sortBy;
-      return this;
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        return pathParams;
     }
 
-    public PublicListGlobalAchievementsBuilder sortByFromEnum(final SortBy sortBy) {
-      this.sortBy = sortBy.toString();
-      return this;
+    @Override
+    public Map<String, List<String>> getQueryParams(){
+        Map<String, List<String>> queryParams = new HashMap<>();
+        queryParams.put("achievementCodes", this.achievementCodes == null ? null : Arrays.asList(this.achievementCodes));
+        queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
+        queryParams.put("offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+        queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
+        queryParams.put("status", this.status == null ? null : Arrays.asList(this.status));
+        queryParams.put("tags", this.tags == null ? null : this.tags.stream().map(i -> String.valueOf(i)).collect(java.util.stream.Collectors.toList()));
+        return queryParams;
     }
-  }
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public PublicListGlobalAchievementsOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final PublicListGlobalAchievementsOpResponse response = new PublicListGlobalAchievementsOpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if ((code == 200) || (code == 201)) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setData(new ModelsPaginatedGlobalAchievementResponse().createFromJson(json));
+            response.setSuccess(true);
+        }
+        else if (code == 400) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError400(new ResponseError().createFromJson(json));
+            response.setError(response.getError400().translateToApiError());
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new ResponseError().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new ResponseError().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public ModelsPaginatedGlobalAchievementResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 200){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+        final String json = Helper.convertInputStreamToString(payload);
+        return new ModelsPaginatedGlobalAchievementResponse().createFromJson(json);
+    }
+    */
+
+    @Override
+    protected Map<String, String> getCollectionFormatMap() {
+        Map<String, String> result = new HashMap<>();
+        result.put("achievementCodes", "None");
+        result.put("limit", "None");
+        result.put("offset", "None");
+        result.put("sortBy", "None");
+        result.put("status", "None");
+        result.put("tags", "csv");
+        return result;
+    }
+    public enum SortBy {
+        AchievedAt("achievedAt"),
+        AchievedAtasc("achievedAt:asc"),
+        AchievedAtdesc("achievedAt:desc"),
+        CreatedAt("createdAt"),
+        CreatedAtasc("createdAt:asc"),
+        CreatedAtdesc("createdAt:desc");
+
+        private String value;
+
+        SortBy(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+
+    public static class PublicListGlobalAchievementsBuilder {
+        private String sortBy;
+
+
+        public PublicListGlobalAchievementsBuilder sortBy(final String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        public PublicListGlobalAchievementsBuilder sortByFromEnum(final SortBy sortBy) {
+            this.sortBy = sortBy.toString();
+            return this;
+        }
+    }
 }

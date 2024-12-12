@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.reporting.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class RestapiExtensionCategoryApiRequest extends Model {
 
-  @JsonProperty("extensionCategory")
-  private String extensionCategory;
+    @JsonProperty("extensionCategory")
+    private String extensionCategory;
 
-  @JsonProperty("extensionCategoryName")
-  private String extensionCategoryName;
+    @JsonProperty("extensionCategoryName")
+    private String extensionCategoryName;
 
-  @JsonProperty("serviceSource")
-  private String serviceSource;
+    @JsonProperty("serviceSource")
+    private String serviceSource;
 
-  @JsonIgnore
-  public RestapiExtensionCategoryApiRequest createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<RestapiExtensionCategoryApiRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<RestapiExtensionCategoryApiRequest>>() {});
-  }
+
+    @JsonIgnore
+    public RestapiExtensionCategoryApiRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<RestapiExtensionCategoryApiRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<RestapiExtensionCategoryApiRequest>>() {});
+    }
+
+
 }

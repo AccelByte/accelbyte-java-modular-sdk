@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.reporting.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,41 +23,43 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class RestapiAdminReasonResponse extends Model {
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("description")
-  private String description;
+    @JsonProperty("description")
+    private String description;
 
-  @JsonProperty("groups")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<RestapiPublicReasonGroupResponse> groups;
+    @JsonProperty("groups")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<RestapiPublicReasonGroupResponse> groups;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("title")
-  private String title;
+    @JsonProperty("title")
+    private String title;
 
-  @JsonProperty("updatedAt")
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    private String updatedAt;
 
-  @JsonIgnore
-  public RestapiAdminReasonResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<RestapiAdminReasonResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<RestapiAdminReasonResponse>>() {});
-  }
+
+    @JsonIgnore
+    public RestapiAdminReasonResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<RestapiAdminReasonResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<RestapiAdminReasonResponse>>() {});
+    }
+
+
 }

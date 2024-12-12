@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ImportStoreResult extends Model {
 
-  @JsonProperty("errors")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ImportStoreError> errors;
+    @JsonProperty("errors")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ImportStoreError> errors;
 
-  @JsonProperty("storeInfo")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private StoreInfo storeInfo;
+    @JsonProperty("storeInfo")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private StoreInfo storeInfo;
 
-  @JsonProperty("success")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean success;
+    @JsonProperty("success")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean success;
 
-  @JsonIgnore
-  public ImportStoreResult createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ImportStoreResult> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ImportStoreResult>>() {});
-  }
+
+    @JsonIgnore
+    public ImportStoreResult createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ImportStoreResult> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ImportStoreResult>>() {});
+    }
+
+
 }

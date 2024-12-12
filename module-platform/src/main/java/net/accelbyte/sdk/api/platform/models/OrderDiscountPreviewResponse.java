@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,43 +23,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class OrderDiscountPreviewResponse extends Model {
 
-  @JsonProperty("deduction")
-  private Integer deduction;
+    @JsonProperty("deduction")
+    private Integer deduction;
 
-  @JsonProperty("deductionDetails")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<DeductionDetail> deductionDetails;
+    @JsonProperty("deductionDetails")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<DeductionDetail> deductionDetails;
 
-  @JsonProperty("discountedPrice")
-  private Integer discountedPrice;
+    @JsonProperty("discountedPrice")
+    private Integer discountedPrice;
 
-  @JsonProperty("finalPrice")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer finalPrice;
+    @JsonProperty("finalPrice")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer finalPrice;
 
-  @JsonProperty("itemId")
-  private String itemId;
+    @JsonProperty("itemId")
+    private String itemId;
 
-  @JsonProperty("price")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer price;
+    @JsonProperty("price")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer price;
 
-  @JsonProperty("quantity")
-  private Integer quantity;
+    @JsonProperty("quantity")
+    private Integer quantity;
 
-  @JsonIgnore
-  public OrderDiscountPreviewResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<OrderDiscountPreviewResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<OrderDiscountPreviewResponse>>() {});
-  }
+
+    @JsonIgnore
+    public OrderDiscountPreviewResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<OrderDiscountPreviewResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<OrderDiscountPreviewResponse>>() {});
+    }
+
+
 }

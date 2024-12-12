@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.session.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,43 +23,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsMemberActiveSession extends Model {
 
-  @JsonProperty("CreatedAt")
-  private String createdAt;
+    @JsonProperty("CreatedAt")
+    private String createdAt;
 
-  @JsonProperty("ID")
-  private String id;
+    @JsonProperty("ID")
+    private String id;
 
-  @JsonProperty("MemberID")
-  private String memberID;
+    @JsonProperty("MemberID")
+    private String memberID;
 
-  @JsonProperty("Namespace")
-  private String namespace;
+    @JsonProperty("Namespace")
+    private String namespace;
 
-  @JsonProperty("SessionIDs")
-  private List<String> sessionIDs;
+    @JsonProperty("SessionIDs")
+    private List<String> sessionIDs;
 
-  @JsonProperty("SessionTemplate")
-  private String sessionTemplate;
+    @JsonProperty("SessionTemplate")
+    private String sessionTemplate;
 
-  @JsonProperty("Total")
-  private Integer total;
+    @JsonProperty("Total")
+    private Integer total;
 
-  @JsonProperty("UpdatedAt")
-  private String updatedAt;
+    @JsonProperty("UpdatedAt")
+    private String updatedAt;
 
-  @JsonIgnore
-  public ModelsMemberActiveSession createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsMemberActiveSession> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsMemberActiveSession>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsMemberActiveSession createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsMemberActiveSession> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMemberActiveSession>>() {});
+    }
+
+
 }

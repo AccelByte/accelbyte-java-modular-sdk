@@ -86,7 +86,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
 
     final StatInfo createStatResult =
         statConfigWrapper.createStat(
-            CreateStat.builder().namespace(this.namespace).body(createStatBody).build());
+            CreateStat.builder().namespace(this.namespace).body(createStatBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -97,7 +97,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
 
     final StatInfo getStatResult =
         statConfigWrapper.getStat(
-            GetStat.builder().namespace(this.namespace).statCode(statCode).build());
+            GetStat.builder().namespace(this.namespace).statCode(statCode).build()).ensureSuccess();
 
     assertNotNull(getStatResult);
     assertEquals(statName, getStatResult.getName());
@@ -114,7 +114,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
                 .namespace(this.namespace)
                 .statCode(statCode)
                 .body(updateStat)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -132,7 +132,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Export statistics
 
     final InputStream exportStatsResult =
-        statConfigWrapper.exportStats(ExportStats.builder().namespace(namespace).build());
+        statConfigWrapper.exportStats(ExportStats.builder().namespace(namespace).build()).ensureSuccess();
     java.nio.file.Files.copy(
         exportStatsResult,
         exportStatsFile.toPath(),
@@ -165,7 +165,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     final Users usersWrapper = new Users(sdk);
 
     final ModelUserResponseV3 getUserResult =
-        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build());
+        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build()).ensureSuccess();
 
     assertNotNull(getUserResult);
 
@@ -192,7 +192,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
                 .statCodes(statCode)
                 .offset(0)
                 .limit(10)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -208,7 +208,7 @@ public class TestIntegrationServiceSocial extends TestIntegration {
                 .userId(userId)
                 .statCode(statCode)
                 .body(StatItemInc.builder().inc(5f).build())
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 

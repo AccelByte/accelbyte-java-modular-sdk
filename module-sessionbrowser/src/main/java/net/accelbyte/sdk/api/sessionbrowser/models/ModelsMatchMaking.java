@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.sessionbrowser.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,72 +23,76 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsMatchMaking extends Model {
 
-  @JsonProperty("channel")
-  private String channel;
+    @JsonProperty("channel")
+    private String channel;
 
-  @JsonProperty("client_version")
-  private String clientVersion;
+    @JsonProperty("client_version")
+    private String clientVersion;
 
-  @JsonProperty("created_at")
-  private String createdAt;
+    @JsonProperty("created_at")
+    private String createdAt;
 
-  @JsonProperty("deployment")
-  private String deployment;
+    @JsonProperty("deployment")
+    private String deployment;
 
-  @JsonProperty("event")
-  private String event;
+    @JsonProperty("event")
+    private String event;
 
-  @JsonProperty("game_mode")
-  private String gameMode;
+    @JsonProperty("game_mode")
+    private String gameMode;
 
-  @JsonProperty("joinable")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean joinable;
+    @JsonProperty("joinable")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean joinable;
 
-  @JsonProperty("match_id")
-  private String matchId;
+    @JsonProperty("match_id")
+    private String matchId;
 
-  @JsonProperty("matching_allies")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ModelsMatchingAlly> matchingAllies;
+    @JsonProperty("matching_allies")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ModelsMatchingAlly> matchingAllies;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("party_attributes")
-  private Map<String, ?> partyAttributes;
+    @JsonProperty("party_attributes")
+    private Map<String, ?> partyAttributes;
 
-  @JsonProperty("party_id")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String partyId;
+    @JsonProperty("party_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String partyId;
 
-  @JsonProperty("queued_at")
-  private Long queuedAt;
+    @JsonProperty("queued_at")
+    private Long queuedAt;
 
-  @JsonProperty("region")
-  private String region;
+    @JsonProperty("region")
+    private String region;
 
-  @JsonProperty("server_name")
-  private String serverName;
+    @JsonProperty("server_name")
+    private String serverName;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonProperty("sub_game_mode")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> subGameMode;
+    @JsonProperty("sub_game_mode")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> subGameMode;
 
-  @JsonIgnore
-  public ModelsMatchMaking createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsMatchMaking> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMatchMaking>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsMatchMaking createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsMatchMaking> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMatchMaking>>() {});
+    }
+
+
 }

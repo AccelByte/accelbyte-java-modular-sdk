@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.chat.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,43 +23,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsPublicConfigResponse extends Model {
 
-  @JsonProperty("chatRateLimitBurst")
-  private Integer chatRateLimitBurst;
+    @JsonProperty("chatRateLimitBurst")
+    private Integer chatRateLimitBurst;
 
-  @JsonProperty("chatRateLimitDuration")
-  private Long chatRateLimitDuration;
+    @JsonProperty("chatRateLimitDuration")
+    private Long chatRateLimitDuration;
 
-  @JsonProperty("generalRateLimitBurst")
-  private Integer generalRateLimitBurst;
+    @JsonProperty("generalRateLimitBurst")
+    private Integer generalRateLimitBurst;
 
-  @JsonProperty("generalRateLimitDuration")
-  private Long generalRateLimitDuration;
+    @JsonProperty("generalRateLimitDuration")
+    private Long generalRateLimitDuration;
 
-  @JsonProperty("maxChatMessageLength")
-  private Integer maxChatMessageLength;
+    @JsonProperty("maxChatMessageLength")
+    private Integer maxChatMessageLength;
 
-  @JsonProperty("spamChatBurst")
-  private Integer spamChatBurst;
+    @JsonProperty("spamChatBurst")
+    private Integer spamChatBurst;
 
-  @JsonProperty("spamChatDuration")
-  private Long spamChatDuration;
+    @JsonProperty("spamChatDuration")
+    private Long spamChatDuration;
 
-  @JsonProperty("spamMuteDuration")
-  private Long spamMuteDuration;
+    @JsonProperty("spamMuteDuration")
+    private Long spamMuteDuration;
 
-  @JsonIgnore
-  public ModelsPublicConfigResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsPublicConfigResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsPublicConfigResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsPublicConfigResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsPublicConfigResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsPublicConfigResponse>>() {});
+    }
+
+
 }

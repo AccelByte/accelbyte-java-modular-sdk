@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,32 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelNotificationTopicResponseV1 extends Model {
 
-  @JsonProperty("createdAt")
-  private Long createdAt;
+    @JsonProperty("createdAt")
+    private Long createdAt;
 
-  @JsonProperty("description")
-  private String description;
+    @JsonProperty("description")
+    private String description;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("topicName")
-  private String topicName;
+    @JsonProperty("topicName")
+    private String topicName;
 
-  @JsonIgnore
-  public ModelNotificationTopicResponseV1 createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelNotificationTopicResponseV1> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelNotificationTopicResponseV1>>() {});
-  }
+
+    @JsonIgnore
+    public ModelNotificationTopicResponseV1 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelNotificationTopicResponseV1> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelNotificationTopicResponseV1>>() {});
+    }
+
+
 }

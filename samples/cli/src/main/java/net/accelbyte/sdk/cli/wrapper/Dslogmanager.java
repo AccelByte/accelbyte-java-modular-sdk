@@ -9,26 +9,29 @@
 package net.accelbyte.sdk.cli.wrapper;
 
 import net.accelbyte.sdk.cli.api.dslogmanager.admin.*;
+import net.accelbyte.sdk.cli.api.dslogmanager.terminated_servers.*;
 import net.accelbyte.sdk.cli.api.dslogmanager.all_terminated_servers.*;
 import net.accelbyte.sdk.cli.api.dslogmanager.dslogmanager_operations.*;
-import net.accelbyte.sdk.cli.api.dslogmanager.terminated_servers.*;
+
 import picocli.CommandLine.Command;
 
-@Command(
-    name = "dslogmanager",
-    mixinStandardHelpOptions = true,
-    subcommands = {
-      GetServerLogs.class,
-      ListTerminatedServers.class,
-      DownloadServerLogs.class,
-      CheckServerLogs.class,
-      BatchDownloadServerLogs.class,
-      ListMetadataServers.class,
-      ListAllTerminatedServers.class,
-      PublicGetMessages.class,
-    })
+@Command(name = "dslogmanager",
+        mixinStandardHelpOptions = true,
+        subcommands = {
+                GetServerLogs.class,
+                ListTerminatedServers.class,
+                DownloadServerLogs.class,
+                CheckServerLogs.class,
+                BatchDownloadServerLogs.class,
+                ListMetadataServers.class,
+                ListAllTerminatedServers.class,
+                PublicGetMessages.class,
+        }
+)
 public class Dslogmanager implements Runnable {
 
-  @Override
-  public void run() {}
+    @Override
+    public void run() {
+
+    }
 }

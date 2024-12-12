@@ -8,8 +8,8 @@
 
 package net.accelbyte.sdk.cli.api.matchmaking.matchmaking;
 
-import java.util.*;
-import java.util.concurrent.Callable;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.accelbyte.sdk.api.matchmaking.models.*;
 import net.accelbyte.sdk.api.matchmaking.wrappers.Matchmaking;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -18,69 +18,65 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.Callable;
+
 @Command(name = "deleteSessionInChannel", mixinStandardHelpOptions = true)
 public class DeleteSessionInChannel implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(DeleteSessionInChannel.class);
+    private static final Logger log = LogManager.getLogger(DeleteSessionInChannel.class);
 
-  @Option(
-      names = {"--channelName"},
-      description = "channelName")
-  String channelName;
+    @Option(names = {"--channelName"}, description = "channelName")
+    String channelName;
 
-  @Option(
-      names = {"--matchID"},
-      description = "matchID")
-  String matchID;
+    @Option(names = {"--matchID"}, description = "matchID")
+    String matchID;
 
-  @Option(
-      names = {"--namespace"},
-      description = "namespace")
-  String namespace;
+    @Option(names = {"--namespace"}, description = "namespace")
+    String namespace;
 
-  @Option(
-      names = {"--logging"},
-      description = "logger")
-  boolean logging;
 
-  public static void main(String[] args) {
-    int exitCode = new CommandLine(new DeleteSessionInChannel()).execute(args);
-    System.exit(exitCode);
-  }
+    @Option(names = {"--logging"}, description = "logger")
+    boolean logging;
 
-  @Override
-  public Integer call() {
-    try {
-      final OkhttpClient httpClient = new OkhttpClient();
-      if (logging) {
-        httpClient.setLogger(new OkhttpLogger());
-      }
-      final AccelByteSDK sdk =
-          new AccelByteSDK(
-              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final Matchmaking wrapper = new Matchmaking(sdk);
-      final net.accelbyte.sdk.api.matchmaking.operations.matchmaking.DeleteSessionInChannel
-          operation =
-              net.accelbyte.sdk.api.matchmaking.operations.matchmaking.DeleteSessionInChannel
-                  .builder()
-                  .channelName(channelName)
-                  .matchID(matchID)
-                  .namespace(namespace)
-                  .build();
-      wrapper.deleteSessionInChannel(operation);
-      log.info("Operation successful");
-      return 0;
-    } catch (HttpResponseException e) {
-      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-    } catch (Exception e) {
-      log.error("An exception was thrown", e);
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new DeleteSessionInChannel()).execute(args);
+        System.exit(exitCode);
     }
-    return 1;
-  }
+
+    @Override
+    public Integer call() {
+        try {
+            final OkhttpClient httpClient = new OkhttpClient();
+            if (logging) {
+                httpClient.setLogger(new OkhttpLogger());
+            }
+            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+            final Matchmaking wrapper = new Matchmaking(sdk);
+            final net.accelbyte.sdk.api.matchmaking.operations.matchmaking.DeleteSessionInChannel operation =
+                    net.accelbyte.sdk.api.matchmaking.operations.matchmaking.DeleteSessionInChannel.builder()
+                            .channelName(channelName)
+                            .matchID(matchID)
+                            .namespace(namespace)
+                            .build();
+                    wrapper.deleteSessionInChannel(operation).ensureSuccess();
+            log.info("Operation successful");
+            return 0;
+        } catch (HttpResponseException e) {
+            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+        } catch (Exception e) {
+            log.error("An exception was thrown", e);
+        }
+        return 1;
+    }
 }

@@ -38,7 +38,7 @@ public class TestIntegrationServiceLegal extends TestIntegration {
     // CASE Get agreements
 
     final List<RetrieveAcceptedAgreementResponse> agreements =
-        agreementWrapper.retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build());
+        agreementWrapper.retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build()).ensureSuccess();
 
     // ESAC
 

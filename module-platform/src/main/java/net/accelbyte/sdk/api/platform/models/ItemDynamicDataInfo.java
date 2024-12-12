@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,32 +23,36 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ItemDynamicDataInfo extends Model {
 
-  @JsonProperty("availableCount")
-  private Integer availableCount;
+    @JsonProperty("availableCount")
+    private Integer availableCount;
 
-  @JsonProperty("itemId")
-  private String itemId;
+    @JsonProperty("itemId")
+    private String itemId;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("userAvailableCount")
-  private Long userAvailableCount;
+    @JsonProperty("userAvailableCount")
+    private Long userAvailableCount;
 
-  @JsonProperty("userPurchaseLimit")
-  private Long userPurchaseLimit;
+    @JsonProperty("userPurchaseLimit")
+    private Long userPurchaseLimit;
 
-  @JsonIgnore
-  public ItemDynamicDataInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ItemDynamicDataInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ItemDynamicDataInfo>>() {});
-  }
+
+    @JsonIgnore
+    public ItemDynamicDataInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ItemDynamicDataInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ItemDynamicDataInfo>>() {});
+    }
+
+
 }

@@ -107,7 +107,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
             AdminGetConfigurationTemplateV1.builder()
                 .name(cfgTemplateName)
                 .namespace(namespace)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -130,7 +130,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                         .joinability("OPEN")
                         .maxPlayers(4)
                         .build())
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -213,7 +213,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
 
@@ -231,7 +231,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player2UserId = createUserResult2.getUserId();
 
@@ -251,7 +251,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                       ApimodelsCreateGameSessionRequest.builder()
                           .configurationName(cfgTemplateName)
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -263,7 +263,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       final ApimodelsGameSessionResponse joinGameSessionResult =
           player2GameSessionWrapper.joinGameSession(
-              JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build());
+              JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build()).ensureSuccess();
 
       assertNotNull(joinGameSessionResult);
 
@@ -276,7 +276,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
               net.accelbyte.sdk.api.session.operations.game_session.GetGameSession.builder()
                   .namespace(namespace)
                   .sessionId(gameSessionId)
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -341,7 +341,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
             PublicQueryGameSessionsByAttributes.builder()
                 .namespace(namespace)
                 .body(Collections.emptyMap())
-                .build());
+                .build()).ensureSuccess();
 
     assertNotNull(publicQueryGameSessionsResult);
   }
@@ -411,7 +411,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
 
@@ -429,7 +429,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player2UserId = createUserResult2.getUserId();
 
@@ -452,7 +452,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                               Collections.singletonList(
                                   ApimodelsRequestMember.builder().id(player1UserId).build()))
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -468,7 +468,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
               PublicPartyJoinCode.builder()
                   .namespace(namespace)
                   .body(ApimodelsJoinByCodeRequest.builder().code(joinCode).build())
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -478,7 +478,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       final ApimodelsPartySessionResponse publicGetPartyResult1 =
           partyWrapper.publicGetParty(
-              PublicGetParty.builder().namespace(namespace).partyId(partyId).build());
+              PublicGetParty.builder().namespace(namespace).partyId(partyId).build()).ensureSuccess();
 
       // ESAC
 
@@ -503,7 +503,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       final ApimodelsPartySessionResponse publicGetPartyResult2 =
           partyWrapper.publicGetParty(
-              PublicGetParty.builder().namespace(namespace).partyId(partyId).build());
+              PublicGetParty.builder().namespace(namespace).partyId(partyId).build()).ensureSuccess();
 
       assertNotNull(publicGetPartyResult2);
       assertEquals(2, publicGetPartyResult2.getMembers().size());

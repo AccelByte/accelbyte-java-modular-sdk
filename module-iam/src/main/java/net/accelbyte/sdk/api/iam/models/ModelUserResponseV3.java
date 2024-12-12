@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,128 +23,132 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelUserResponseV3 extends Model {
 
-  @JsonProperty("authType")
-  private String authType;
+    @JsonProperty("authType")
+    private String authType;
 
-  @JsonProperty("avatarUrl")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String avatarUrl;
+    @JsonProperty("avatarUrl")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String avatarUrl;
 
-  @JsonProperty("bans")
-  private List<ModelUserActiveBanResponseV3> bans;
+    @JsonProperty("bans")
+    private List<ModelUserActiveBanResponseV3> bans;
 
-  @JsonProperty("country")
-  private String country;
+    @JsonProperty("country")
+    private String country;
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("dateOfBirth")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String dateOfBirth;
+    @JsonProperty("dateOfBirth")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String dateOfBirth;
 
-  @JsonProperty("deletionDate")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String deletionDate;
+    @JsonProperty("deletionDate")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String deletionDate;
 
-  @JsonProperty("deletionStatus")
-  private Boolean deletionStatus;
+    @JsonProperty("deletionStatus")
+    private Boolean deletionStatus;
 
-  @JsonProperty("displayName")
-  private String displayName;
+    @JsonProperty("displayName")
+    private String displayName;
 
-  @JsonProperty("emailAddress")
-  private String emailAddress;
+    @JsonProperty("emailAddress")
+    private String emailAddress;
 
-  @JsonProperty("emailVerified")
-  private Boolean emailVerified;
+    @JsonProperty("emailVerified")
+    private Boolean emailVerified;
 
-  @JsonProperty("enabled")
-  private Boolean enabled;
+    @JsonProperty("enabled")
+    private Boolean enabled;
 
-  @JsonProperty("lastDateOfBirthChangedTime")
-  private String lastDateOfBirthChangedTime;
+    @JsonProperty("lastDateOfBirthChangedTime")
+    private String lastDateOfBirthChangedTime;
 
-  @JsonProperty("lastEnabledChangedTime")
-  private String lastEnabledChangedTime;
+    @JsonProperty("lastEnabledChangedTime")
+    private String lastEnabledChangedTime;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("namespaceRoles")
-  private List<AccountcommonNamespaceRole> namespaceRoles;
+    @JsonProperty("namespaceRoles")
+    private List<AccountcommonNamespaceRole> namespaceRoles;
 
-  @JsonProperty("newEmailAddress")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String newEmailAddress;
+    @JsonProperty("newEmailAddress")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String newEmailAddress;
 
-  @JsonProperty("oldEmailAddress")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String oldEmailAddress;
+    @JsonProperty("oldEmailAddress")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String oldEmailAddress;
 
-  @JsonProperty("permissions")
-  private List<ModelUserPermissionsResponseV3> permissions;
+    @JsonProperty("permissions")
+    private List<ModelUserPermissionsResponseV3> permissions;
 
-  @JsonProperty("phoneNumber")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String phoneNumber;
+    @JsonProperty("phoneNumber")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String phoneNumber;
 
-  @JsonProperty("phoneVerified")
-  private Boolean phoneVerified;
+    @JsonProperty("phoneVerified")
+    private Boolean phoneVerified;
 
-  @JsonProperty("platformAvatarUrl")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String platformAvatarUrl;
+    @JsonProperty("platformAvatarUrl")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String platformAvatarUrl;
 
-  @JsonProperty("platformDisplayName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String platformDisplayName;
+    @JsonProperty("platformDisplayName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String platformDisplayName;
 
-  @JsonProperty("platformId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String platformId;
+    @JsonProperty("platformId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String platformId;
 
-  @JsonProperty("platformInfos")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ModelUserPlatformInfo> platformInfos;
+    @JsonProperty("platformInfos")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ModelUserPlatformInfo> platformInfos;
 
-  @JsonProperty("platformUserId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String platformUserId;
+    @JsonProperty("platformUserId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String platformUserId;
 
-  @JsonProperty("roles")
-  private List<String> roles;
+    @JsonProperty("roles")
+    private List<String> roles;
 
-  @JsonProperty("skipLoginQueue")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean skipLoginQueue;
+    @JsonProperty("skipLoginQueue")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean skipLoginQueue;
 
-  @JsonProperty("testAccount")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean testAccount;
+    @JsonProperty("testAccount")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean testAccount;
 
-  @JsonProperty("uniqueDisplayName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String uniqueDisplayName;
+    @JsonProperty("uniqueDisplayName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String uniqueDisplayName;
 
-  @JsonProperty("userId")
-  private String userId;
+    @JsonProperty("userId")
+    private String userId;
 
-  @JsonProperty("userName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String userName;
+    @JsonProperty("userName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String userName;
 
-  @JsonIgnore
-  public ModelUserResponseV3 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelUserResponseV3> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelUserResponseV3>>() {});
-  }
+
+    @JsonIgnore
+    public ModelUserResponseV3 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelUserResponseV3> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelUserResponseV3>>() {});
+    }
+
+
 }

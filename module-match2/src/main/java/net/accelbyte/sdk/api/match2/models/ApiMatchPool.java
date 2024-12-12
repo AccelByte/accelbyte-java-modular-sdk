@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.match2.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,56 +23,60 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiMatchPool extends Model {
 
-  @JsonProperty("auto_accept_backfill_proposal")
-  private Boolean autoAcceptBackfillProposal;
+    @JsonProperty("auto_accept_backfill_proposal")
+    private Boolean autoAcceptBackfillProposal;
 
-  @JsonProperty("backfill_proposal_expiration_seconds")
-  private Integer backfillProposalExpirationSeconds;
+    @JsonProperty("backfill_proposal_expiration_seconds")
+    private Integer backfillProposalExpirationSeconds;
 
-  @JsonProperty("backfill_ticket_expiration_seconds")
-  private Integer backfillTicketExpirationSeconds;
+    @JsonProperty("backfill_ticket_expiration_seconds")
+    private Integer backfillTicketExpirationSeconds;
 
-  @JsonProperty("best_latency_calculation_method")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String bestLatencyCalculationMethod;
+    @JsonProperty("best_latency_calculation_method")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String bestLatencyCalculationMethod;
 
-  @JsonProperty("crossplay_disabled")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean crossplayDisabled;
+    @JsonProperty("crossplay_disabled")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean crossplayDisabled;
 
-  @JsonProperty("match_function")
-  private String matchFunction;
+    @JsonProperty("match_function")
+    private String matchFunction;
 
-  @JsonProperty("match_function_override")
-  private ApiMatchFunctionOverride matchFunctionOverride;
+    @JsonProperty("match_function_override")
+    private ApiMatchFunctionOverride matchFunctionOverride;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("platform_group_enabled")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean platformGroupEnabled;
+    @JsonProperty("platform_group_enabled")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean platformGroupEnabled;
 
-  @JsonProperty("rule_set")
-  private String ruleSet;
+    @JsonProperty("rule_set")
+    private String ruleSet;
 
-  @JsonProperty("session_template")
-  private String sessionTemplate;
+    @JsonProperty("session_template")
+    private String sessionTemplate;
 
-  @JsonProperty("ticket_expiration_seconds")
-  private Integer ticketExpirationSeconds;
+    @JsonProperty("ticket_expiration_seconds")
+    private Integer ticketExpirationSeconds;
 
-  @JsonIgnore
-  public ApiMatchPool createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiMatchPool> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiMatchPool>>() {});
-  }
+
+    @JsonIgnore
+    public ApiMatchPool createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiMatchPool> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiMatchPool>>() {});
+    }
+
+
 }

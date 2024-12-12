@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,32 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonClientPermissionSet extends Model {
 
-  @JsonProperty("docLink")
-  private String docLink;
+    @JsonProperty("docLink")
+    private String docLink;
 
-  @JsonProperty("groups")
-  private List<AccountcommonPermissionGroup> groups;
+    @JsonProperty("groups")
+    private List<AccountcommonPermissionGroup> groups;
 
-  @JsonProperty("module")
-  private String module;
+    @JsonProperty("module")
+    private String module;
 
-  @JsonProperty("moduleId")
-  private String moduleId;
+    @JsonProperty("moduleId")
+    private String moduleId;
 
-  @JsonIgnore
-  public AccountcommonClientPermissionSet createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<AccountcommonClientPermissionSet> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<AccountcommonClientPermissionSet>>() {});
-  }
+
+    @JsonIgnore
+    public AccountcommonClientPermissionSet createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AccountcommonClientPermissionSet> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonClientPermissionSet>>() {});
+    }
+
+
 }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,25 +23,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class CheckoutConfig extends Model {
 
-  @JsonProperty("publicKey")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String publicKey;
+    @JsonProperty("publicKey")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String publicKey;
 
-  @JsonProperty("secretKey")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String secretKey;
+    @JsonProperty("secretKey")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String secretKey;
 
-  @JsonIgnore
-  public CheckoutConfig createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<CheckoutConfig> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<CheckoutConfig>>() {});
-  }
+
+    @JsonIgnore
+    public CheckoutConfig createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<CheckoutConfig> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<CheckoutConfig>>() {});
+    }
+
+
 }

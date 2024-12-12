@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,41 +23,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class SteamIAPConfig extends Model {
 
-  @JsonProperty("appId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String appId;
+    @JsonProperty("appId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String appId;
 
-  @JsonProperty("createdAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String createdAt;
+    @JsonProperty("createdAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String createdAt;
 
-  @JsonProperty("namespace")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String namespace;
+    @JsonProperty("namespace")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String namespace;
 
-  @JsonProperty("publisherAuthenticationKey")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String publisherAuthenticationKey;
+    @JsonProperty("publisherAuthenticationKey")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String publisherAuthenticationKey;
 
-  @JsonProperty("rvn")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Integer rvn;
+    @JsonProperty("rvn")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer rvn;
 
-  @JsonProperty("updatedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String updatedAt;
 
-  @JsonIgnore
-  public SteamIAPConfig createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<SteamIAPConfig> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<SteamIAPConfig>>() {});
-  }
+
+    @JsonIgnore
+    public SteamIAPConfig createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<SteamIAPConfig> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<SteamIAPConfig>>() {});
+    }
+
+
 }

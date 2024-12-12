@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,46 +23,48 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiFleetListItemResponse extends Model {
 
-  @JsonProperty("active")
-  private Boolean active;
+    @JsonProperty("active")
+    private Boolean active;
 
-  @JsonProperty("counts")
-  private List<ApiFleetRegionalServerCounts> counts;
+    @JsonProperty("counts")
+    private List<ApiFleetRegionalServerCounts> counts;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("image")
-  private String image;
+    @JsonProperty("image")
+    private String image;
 
-  @JsonProperty("instanceProvider")
-  private String instanceProvider;
+    @JsonProperty("instanceProvider")
+    private String instanceProvider;
 
-  @JsonProperty("isLocal")
-  private Boolean isLocal;
+    @JsonProperty("isLocal")
+    private Boolean isLocal;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("onDemand")
-  private Boolean onDemand;
+    @JsonProperty("onDemand")
+    private Boolean onDemand;
 
-  @JsonProperty("regions")
-  private List<String> regions;
+    @JsonProperty("regions")
+    private List<String> regions;
 
-  @JsonIgnore
-  public ApiFleetListItemResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiFleetListItemResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApiFleetListItemResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ApiFleetListItemResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiFleetListItemResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiFleetListItemResponse>>() {});
+    }
+
+
 }

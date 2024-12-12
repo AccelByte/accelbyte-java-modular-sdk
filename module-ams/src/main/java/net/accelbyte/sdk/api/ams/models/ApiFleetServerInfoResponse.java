@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,61 +23,63 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiFleetServerInfoResponse extends Model {
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("fleetId")
-  private String fleetId;
+    @JsonProperty("fleetId")
+    private String fleetId;
 
-  @JsonProperty("fleetName")
-  private String fleetName;
+    @JsonProperty("fleetName")
+    private String fleetName;
 
-  @JsonProperty("imageCmd")
-  private String imageCmd;
+    @JsonProperty("imageCmd")
+    private String imageCmd;
 
-  @JsonProperty("imageId")
-  private String imageId;
+    @JsonProperty("imageId")
+    private String imageId;
 
-  @JsonProperty("instanceType")
-  private String instanceType;
+    @JsonProperty("instanceType")
+    private String instanceType;
 
-  @JsonProperty("ipAddress")
-  private String ipAddress;
+    @JsonProperty("ipAddress")
+    private String ipAddress;
 
-  @JsonProperty("portConfiguration")
-  private List<ApiPortConfiguration> portConfiguration;
+    @JsonProperty("portConfiguration")
+    private List<ApiPortConfiguration> portConfiguration;
 
-  @JsonProperty("ports")
-  private Map<String, Integer> ports;
+    @JsonProperty("ports")
+    private Map<String, Integer> ports;
 
-  @JsonProperty("region")
-  private String region;
+    @JsonProperty("region")
+    private String region;
 
-  @JsonProperty("serverConfiguration")
-  private String serverConfiguration;
+    @JsonProperty("serverConfiguration")
+    private String serverConfiguration;
 
-  @JsonProperty("serverId")
-  private String serverId;
+    @JsonProperty("serverId")
+    private String serverId;
 
-  @JsonProperty("sessionId")
-  private String sessionId;
+    @JsonProperty("sessionId")
+    private String sessionId;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonIgnore
-  public ApiFleetServerInfoResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiFleetServerInfoResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApiFleetServerInfoResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ApiFleetServerInfoResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiFleetServerInfoResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiFleetServerInfoResponse>>() {});
+    }
+
+
 }

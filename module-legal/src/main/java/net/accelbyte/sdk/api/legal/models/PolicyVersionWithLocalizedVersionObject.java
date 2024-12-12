@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,56 +23,57 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class PolicyVersionWithLocalizedVersionObject extends Model {
 
-  @JsonProperty("createdAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String createdAt;
+    @JsonProperty("createdAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String createdAt;
 
-  @JsonProperty("description")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String description;
+    @JsonProperty("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String description;
 
-  @JsonProperty("displayVersion")
-  private String displayVersion;
+    @JsonProperty("displayVersion")
+    private String displayVersion;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("isCommitted")
-  private Boolean isCommitted;
+    @JsonProperty("isCommitted")
+    private Boolean isCommitted;
 
-  @JsonProperty("isInEffect")
-  private Boolean isInEffect;
+    @JsonProperty("isInEffect")
+    private Boolean isInEffect;
 
-  @JsonProperty("localizedPolicyVersions")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<LocalizedPolicyVersionObject> localizedPolicyVersions;
+    @JsonProperty("localizedPolicyVersions")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<LocalizedPolicyVersionObject> localizedPolicyVersions;
 
-  @JsonProperty("publishedDate")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String publishedDate;
+    @JsonProperty("publishedDate")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String publishedDate;
 
-  @JsonProperty("status")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String status;
+    @JsonProperty("status")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String status;
 
-  @JsonProperty("updatedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String updatedAt;
 
-  @JsonIgnore
-  public PolicyVersionWithLocalizedVersionObject createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<PolicyVersionWithLocalizedVersionObject> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<PolicyVersionWithLocalizedVersionObject>>() {});
-  }
+
+    @JsonIgnore
+    public PolicyVersionWithLocalizedVersionObject createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<PolicyVersionWithLocalizedVersionObject> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<PolicyVersionWithLocalizedVersionObject>>() {});
+    }
+
+
 }

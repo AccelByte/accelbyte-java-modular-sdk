@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.session.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,31 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsPlatformCredentials extends Model {
 
-  @JsonProperty("psn")
-  private ModelsPSNAppServerCredentials psn;
+    @JsonProperty("psn")
+    private ModelsPSNAppServerCredentials psn;
 
-  @JsonProperty("updatedAt")
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    private String updatedAt;
 
-  @JsonProperty("xbox")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private ModelsXBLCertificateCredential xbox;
+    @JsonProperty("xbox")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private ModelsXBLCertificateCredential xbox;
 
-  @JsonIgnore
-  public ModelsPlatformCredentials createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsPlatformCredentials> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsPlatformCredentials>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsPlatformCredentials createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsPlatformCredentials> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsPlatformCredentials>>() {});
+    }
+
+
 }

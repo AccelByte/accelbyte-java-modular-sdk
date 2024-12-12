@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,25 +23,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsBlockedByPlayerData extends Model {
 
-  @JsonProperty("blockedAt")
-  private String blockedAt;
+    @JsonProperty("blockedAt")
+    private String blockedAt;
 
-  @JsonProperty("userId")
-  private String userId;
+    @JsonProperty("userId")
+    private String userId;
 
-  @JsonIgnore
-  public ModelsBlockedByPlayerData createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsBlockedByPlayerData> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsBlockedByPlayerData>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsBlockedByPlayerData createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsBlockedByPlayerData> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsBlockedByPlayerData>>() {});
+    }
+
+
 }

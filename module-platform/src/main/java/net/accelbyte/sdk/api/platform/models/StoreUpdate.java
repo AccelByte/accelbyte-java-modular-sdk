@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,40 +23,44 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class StoreUpdate extends Model {
 
-  @JsonProperty("defaultLanguage")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String defaultLanguage;
+    @JsonProperty("defaultLanguage")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String defaultLanguage;
 
-  @JsonProperty("defaultRegion")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String defaultRegion;
+    @JsonProperty("defaultRegion")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String defaultRegion;
 
-  @JsonProperty("description")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String description;
+    @JsonProperty("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String description;
 
-  @JsonProperty("supportedLanguages")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> supportedLanguages;
+    @JsonProperty("supportedLanguages")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> supportedLanguages;
 
-  @JsonProperty("supportedRegions")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> supportedRegions;
+    @JsonProperty("supportedRegions")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> supportedRegions;
 
-  @JsonProperty("title")
-  private String title;
+    @JsonProperty("title")
+    private String title;
 
-  @JsonIgnore
-  public StoreUpdate createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<StoreUpdate> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<StoreUpdate>>() {});
-  }
+
+    @JsonIgnore
+    public StoreUpdate createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<StoreUpdate> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<StoreUpdate>>() {});
+    }
+
+
 }

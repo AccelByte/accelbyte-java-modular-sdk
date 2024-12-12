@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.basic.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,94 +23,98 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class NamespaceInfo extends Model {
 
-  @JsonProperty("clientId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String clientId;
+    @JsonProperty("clientId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String clientId;
 
-  @JsonProperty("createdAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String createdAt;
+    @JsonProperty("createdAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String createdAt;
 
-  @JsonProperty("displayName")
-  private String displayName;
+    @JsonProperty("displayName")
+    private String displayName;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("parentNamespace")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String parentNamespace;
+    @JsonProperty("parentNamespace")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String parentNamespace;
 
-  @JsonProperty("status")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String status;
-
-  @JsonProperty("updatedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String updatedAt;
-
-  @JsonIgnore
-  public String getStatus() {
-    return this.status;
-  }
-
-  @JsonIgnore
-  public Status getStatusAsEnum() {
-    return Status.valueOf(this.status);
-  }
-
-  @JsonIgnore
-  public void setStatus(final String status) {
-    this.status = status;
-  }
-
-  @JsonIgnore
-  public void setStatusFromEnum(final Status status) {
-    this.status = status.toString();
-  }
-
-  @JsonIgnore
-  public NamespaceInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
-
-  @JsonIgnore
-  public List<NamespaceInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<NamespaceInfo>>() {});
-  }
-
-  public enum Status {
-    ACTIVE("ACTIVE"),
-    DELETED("DELETED"),
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    Status(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class NamespaceInfoBuilder {
+    @JsonProperty("status")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String status;
 
-    public NamespaceInfoBuilder status(final String status) {
-      this.status = status;
-      return this;
+    @JsonProperty("updatedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String updatedAt;
+
+
+
+    @JsonIgnore
+    public String getStatus() {
+        return this.status;
     }
 
-    public NamespaceInfoBuilder statusFromEnum(final Status status) {
-      this.status = status.toString();
-      return this;
+    @JsonIgnore
+    public Status getStatusAsEnum() {
+        return Status.valueOf(this.status);
     }
-  }
+
+    @JsonIgnore
+    public void setStatus(final String status) {
+        this.status = status;
+    }
+
+    @JsonIgnore
+    public void setStatusFromEnum(final Status status) {
+        this.status = status.toString();
+    }
+
+    @JsonIgnore
+    public NamespaceInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<NamespaceInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<NamespaceInfo>>() {});
+    }
+
+
+    public enum Status {
+        ACTIVE("ACTIVE"),
+        DELETED("DELETED"),
+        INACTIVE("INACTIVE");
+
+        private String value;
+
+        Status(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public static class NamespaceInfoBuilder {
+        private String status;
+
+
+        public NamespaceInfoBuilder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public NamespaceInfoBuilder statusFromEnum(final Status status) {
+            this.status = status.toString();
+            return this;
+        }
+    }
 }

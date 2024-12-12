@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,27 +23,28 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class PaymentProviderConfigPagingSlicedResult extends Model {
 
-  @JsonProperty("data")
-  private List<PaymentProviderConfigInfo> data;
+    @JsonProperty("data")
+    private List<PaymentProviderConfigInfo> data;
 
-  @JsonProperty("paging")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Paging paging;
+    @JsonProperty("paging")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Paging paging;
 
-  @JsonIgnore
-  public PaymentProviderConfigPagingSlicedResult createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<PaymentProviderConfigPagingSlicedResult> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<PaymentProviderConfigPagingSlicedResult>>() {});
-  }
+
+    @JsonIgnore
+    public PaymentProviderConfigPagingSlicedResult createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<PaymentProviderConfigPagingSlicedResult> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<PaymentProviderConfigPagingSlicedResult>>() {});
+    }
+
+
 }

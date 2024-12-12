@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,68 +23,70 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class RetrieveBasePolicyResponse extends Model {
 
-  @JsonProperty("affectedClientIds")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> affectedClientIds;
+    @JsonProperty("affectedClientIds")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> affectedClientIds;
 
-  @JsonProperty("basePolicyName")
-  private String basePolicyName;
+    @JsonProperty("basePolicyName")
+    private String basePolicyName;
 
-  @JsonProperty("createdAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String createdAt;
+    @JsonProperty("createdAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String createdAt;
 
-  @JsonProperty("description")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String description;
+    @JsonProperty("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String description;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("isHidden")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean isHidden;
+    @JsonProperty("isHidden")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean isHidden;
 
-  @JsonProperty("isHiddenPublic")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean isHiddenPublic;
+    @JsonProperty("isHiddenPublic")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean isHiddenPublic;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("policies")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<PolicyObject> policies;
+    @JsonProperty("policies")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<PolicyObject> policies;
 
-  @JsonProperty("policyTypeId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String policyTypeId;
+    @JsonProperty("policyTypeId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String policyTypeId;
 
-  @JsonProperty("policyTypeName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String policyTypeName;
+    @JsonProperty("policyTypeName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String policyTypeName;
 
-  @JsonProperty("tags")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> tags;
+    @JsonProperty("tags")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> tags;
 
-  @JsonProperty("updatedAt")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String updatedAt;
 
-  @JsonIgnore
-  public RetrieveBasePolicyResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<RetrieveBasePolicyResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<RetrieveBasePolicyResponse>>() {});
-  }
+
+    @JsonIgnore
+    public RetrieveBasePolicyResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<RetrieveBasePolicyResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<RetrieveBasePolicyResponse>>() {});
+    }
+
+
 }

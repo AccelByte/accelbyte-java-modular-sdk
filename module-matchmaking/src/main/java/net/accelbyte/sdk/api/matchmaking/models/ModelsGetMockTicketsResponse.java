@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,49 +23,51 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsGetMockTicketsResponse extends Model {
 
-  @JsonProperty("cancelled_count")
-  private Integer cancelledCount;
+    @JsonProperty("cancelled_count")
+    private Integer cancelledCount;
 
-  @JsonProperty("highest_mmr")
-  private Integer highestMmr;
+    @JsonProperty("highest_mmr")
+    private Integer highestMmr;
 
-  @JsonProperty("in_queue_count")
-  private Integer inQueueCount;
+    @JsonProperty("in_queue_count")
+    private Integer inQueueCount;
 
-  @JsonProperty("lowest_mmr")
-  private Integer lowestMmr;
+    @JsonProperty("lowest_mmr")
+    private Integer lowestMmr;
 
-  @JsonProperty("matched_count")
-  private Integer matchedCount;
+    @JsonProperty("matched_count")
+    private Integer matchedCount;
 
-  @JsonProperty("mmr_in_queue")
-  private Map<String, Integer> mmrInQueue;
+    @JsonProperty("mmr_in_queue")
+    private Map<String, Integer> mmrInQueue;
 
-  @JsonProperty("mmr_matched")
-  private Map<String, Integer> mmrMatched;
+    @JsonProperty("mmr_matched")
+    private Map<String, Integer> mmrMatched;
 
-  @JsonProperty("mmr_timeout")
-  private Map<String, Integer> mmrTimeout;
+    @JsonProperty("mmr_timeout")
+    private Map<String, Integer> mmrTimeout;
 
-  @JsonProperty("tickets")
-  private List<ModelsMockTicket> tickets;
+    @JsonProperty("tickets")
+    private List<ModelsMockTicket> tickets;
 
-  @JsonProperty("timeout_count")
-  private Integer timeoutCount;
+    @JsonProperty("timeout_count")
+    private Integer timeoutCount;
 
-  @JsonIgnore
-  public ModelsGetMockTicketsResponse createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsGetMockTicketsResponse> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsGetMockTicketsResponse>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsGetMockTicketsResponse createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsGetMockTicketsResponse> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsGetMockTicketsResponse>>() {});
+    }
+
+
 }

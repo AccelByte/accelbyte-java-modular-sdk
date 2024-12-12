@@ -56,7 +56,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     try {
       final UserProfilePrivateInfo getProfileResult =
           userProfileWrapper.getMyProfileInfo(
-              GetMyProfileInfo.builder().namespace(this.namespace).build());
+              GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
 
       assertNotNull(getProfileResult);
 
@@ -64,7 +64,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
       final UserProfilePrivateInfo deleteUserProfileResult =
           userProfileWrapper.deleteUserProfile(
-              DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build());
+              DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
 
       assertNotNull(deleteUserProfileResult);
     } catch (HttpResponseException hex) {
@@ -89,7 +89,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
     final UserProfilePrivateInfo createProfileResult =
         userProfileWrapper.createMyProfile(
-            CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build());
+            CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -100,7 +100,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
     final UserProfilePrivateInfo getProfileResult =
         userProfileWrapper.getMyProfileInfo(
-            GetMyProfileInfo.builder().namespace(this.namespace).build());
+            GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
 
     // ESAC
 
@@ -114,7 +114,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
     final UserProfilePrivateInfo updateProfileResult =
         userProfileWrapper.updateMyProfile(
-            UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build());
+            UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -127,7 +127,7 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
     final UserProfilePrivateInfo deleteUserProfileResult =
         userProfileWrapper.deleteUserProfile(
-            DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build());
+            DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
 
     // ESAC
 

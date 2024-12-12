@@ -74,7 +74,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
 
     final ModelUserCreateResponseV3 createUserV3Result =
         usersWrapper.publicCreateUserV3(
-            PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build());
+            PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build()).ensureSuccess();
 
     // ESAC
 
@@ -125,7 +125,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
 
     final AccountCreateUserResponseV4 createUserResult =
         usersV4Wrapper.publicCreateUserV4(
-            PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build());
+            PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build()).ensureSuccess();
 
     // ESAC
 
@@ -138,7 +138,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
 
     final ModelUserPublicInfoResponseV4 getUserResult =
         usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-            PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build());
+            PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
 
     // ESAC
 
@@ -156,7 +156,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
                 .namespace(this.namespace)
                 .userId(userId)
                 .body(updateUser)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,31 +23,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelUpgradeHeadlessAccountWithVerificationCodeRequest extends Model {
 
-  @JsonProperty("Code")
-  private String code;
+    @JsonProperty("Code")
+    private String code;
 
-  @JsonProperty("Password")
-  private String password;
+    @JsonProperty("Password")
+    private String password;
 
-  @JsonProperty("loginId")
-  private String loginId;
+    @JsonProperty("loginId")
+    private String loginId;
 
-  @JsonIgnore
-  public ModelUpgradeHeadlessAccountWithVerificationCodeRequest createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelUpgradeHeadlessAccountWithVerificationCodeRequest> createFromJsonList(
-      String json) throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(
-            json,
-            new TypeReference<List<ModelUpgradeHeadlessAccountWithVerificationCodeRequest>>() {});
-  }
+
+    @JsonIgnore
+    public ModelUpgradeHeadlessAccountWithVerificationCodeRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelUpgradeHeadlessAccountWithVerificationCodeRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelUpgradeHeadlessAccountWithVerificationCodeRequest>>() {});
+    }
+
+
 }

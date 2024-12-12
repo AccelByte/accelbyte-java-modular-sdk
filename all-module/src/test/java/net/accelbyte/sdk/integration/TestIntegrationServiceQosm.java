@@ -50,7 +50,7 @@ class TestIntegrationServiceQosm extends TestIntegration {
     final Server qosmServerWrapper = new Server(sdk);
 
     final ModelsListServerResponse serverList =
-        qosmPublicWrapper.listServer(ListServer.builder().build());
+        qosmPublicWrapper.listServer(ListServer.builder().build()).ensureSuccess();
 
     assertNotNull(serverList);
 

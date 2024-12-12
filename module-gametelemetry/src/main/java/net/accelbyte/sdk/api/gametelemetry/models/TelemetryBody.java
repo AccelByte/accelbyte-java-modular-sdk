@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.gametelemetry.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,42 +23,46 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class TelemetryBody extends Model {
 
-  @JsonProperty("ClientTimestamp")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String clientTimestamp;
+    @JsonProperty("ClientTimestamp")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String clientTimestamp;
 
-  @JsonProperty("DeviceType")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String deviceType;
+    @JsonProperty("DeviceType")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String deviceType;
 
-  @JsonProperty("EventId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String eventId;
+    @JsonProperty("EventId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String eventId;
 
-  @JsonProperty("EventName")
-  private String eventName;
+    @JsonProperty("EventName")
+    private String eventName;
 
-  @JsonProperty("EventNamespace")
-  private String eventNamespace;
+    @JsonProperty("EventNamespace")
+    private String eventNamespace;
 
-  @JsonProperty("EventTimestamp")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String eventTimestamp;
+    @JsonProperty("EventTimestamp")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String eventTimestamp;
 
-  @JsonProperty("Payload")
-  private Map<String, ?> payload;
+    @JsonProperty("Payload")
+    private Map<String, ?> payload;
 
-  @JsonIgnore
-  public TelemetryBody createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<TelemetryBody> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<TelemetryBody>>() {});
-  }
+
+    @JsonIgnore
+    public TelemetryBody createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<TelemetryBody> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<TelemetryBody>>() {});
+    }
+
+
 }

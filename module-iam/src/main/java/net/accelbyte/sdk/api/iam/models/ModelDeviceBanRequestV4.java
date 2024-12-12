@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,40 +23,42 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelDeviceBanRequestV4 extends Model {
 
-  @JsonProperty("comment")
-  private String comment;
+    @JsonProperty("comment")
+    private String comment;
 
-  @JsonProperty("deviceId")
-  private String deviceId;
+    @JsonProperty("deviceId")
+    private String deviceId;
 
-  @JsonProperty("deviceType")
-  private String deviceType;
+    @JsonProperty("deviceType")
+    private String deviceType;
 
-  @JsonProperty("enabled")
-  private Boolean enabled;
+    @JsonProperty("enabled")
+    private Boolean enabled;
 
-  @JsonProperty("endDate")
-  private String endDate;
+    @JsonProperty("endDate")
+    private String endDate;
 
-  @JsonProperty("ext")
-  private Map<String, ?> ext;
+    @JsonProperty("ext")
+    private Map<String, ?> ext;
 
-  @JsonProperty("reason")
-  private String reason;
+    @JsonProperty("reason")
+    private String reason;
 
-  @JsonIgnore
-  public ModelDeviceBanRequestV4 createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelDeviceBanRequestV4> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelDeviceBanRequestV4>>() {});
-  }
+
+    @JsonIgnore
+    public ModelDeviceBanRequestV4 createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelDeviceBanRequestV4> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelDeviceBanRequestV4>>() {});
+    }
+
+
 }

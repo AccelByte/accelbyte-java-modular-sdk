@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,56 +23,60 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiImageListItem extends Model {
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("deleteAt")
-  private ApiTime deleteAt;
+    @JsonProperty("deleteAt")
+    private ApiTime deleteAt;
 
-  @JsonProperty("executable")
-  private String executable;
+    @JsonProperty("executable")
+    private String executable;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("isProtected")
-  private Boolean isProtected;
+    @JsonProperty("isProtected")
+    private Boolean isProtected;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("referencingConfigs")
-  private Integer referencingConfigs;
+    @JsonProperty("referencingConfigs")
+    private Integer referencingConfigs;
 
-  @JsonProperty("referencingFleets")
-  private Integer referencingFleets;
+    @JsonProperty("referencingFleets")
+    private Integer referencingFleets;
 
-  @JsonProperty("sizeInByte")
-  private Long sizeInByte;
+    @JsonProperty("sizeInByte")
+    private Long sizeInByte;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonProperty("tags")
-  private List<String> tags;
+    @JsonProperty("tags")
+    private List<String> tags;
 
-  @JsonProperty("uploadedAt")
-  private String uploadedAt;
+    @JsonProperty("uploadedAt")
+    private String uploadedAt;
 
-  @JsonProperty("uploadedBy")
-  private String uploadedBy;
+    @JsonProperty("uploadedBy")
+    private String uploadedBy;
 
-  @JsonIgnore
-  public ApiImageListItem createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiImageListItem> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiImageListItem>>() {});
-  }
+
+    @JsonIgnore
+    public ApiImageListItem createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiImageListItem> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiImageListItem>>() {});
+    }
+
+
 }

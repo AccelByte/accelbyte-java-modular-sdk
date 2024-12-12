@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,36 +23,37 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ItemPurchaseConditionValidateResult extends Model {
 
-  @JsonProperty("itemId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String itemId;
+    @JsonProperty("itemId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String itemId;
 
-  @JsonProperty("purchasable")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Boolean purchasable;
+    @JsonProperty("purchasable")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Boolean purchasable;
 
-  @JsonProperty("sku")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String sku;
+    @JsonProperty("sku")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String sku;
 
-  @JsonProperty("validateDetails")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ConditionGroupValidateResult> validateDetails;
+    @JsonProperty("validateDetails")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ConditionGroupValidateResult> validateDetails;
 
-  @JsonIgnore
-  public ItemPurchaseConditionValidateResult createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ItemPurchaseConditionValidateResult> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ItemPurchaseConditionValidateResult>>() {});
-  }
+
+    @JsonIgnore
+    public ItemPurchaseConditionValidateResult createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ItemPurchaseConditionValidateResult> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ItemPurchaseConditionValidateResult>>() {});
+    }
+
+
 }

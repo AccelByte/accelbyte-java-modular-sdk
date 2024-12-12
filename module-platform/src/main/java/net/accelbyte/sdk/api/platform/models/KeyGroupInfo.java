@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,96 +23,100 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class KeyGroupInfo extends Model {
 
-  @JsonProperty("boothName")
-  private String boothName;
+    @JsonProperty("boothName")
+    private String boothName;
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("description")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String description;
+    @JsonProperty("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String description;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("name")
-  private String name;
+    @JsonProperty("name")
+    private String name;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("status")
-  private String status;
-
-  @JsonProperty("tags")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<String> tags;
-
-  @JsonProperty("updatedAt")
-  private String updatedAt;
-
-  @JsonIgnore
-  public String getStatus() {
-    return this.status;
-  }
-
-  @JsonIgnore
-  public Status getStatusAsEnum() {
-    return Status.valueOf(this.status);
-  }
-
-  @JsonIgnore
-  public void setStatus(final String status) {
-    this.status = status;
-  }
-
-  @JsonIgnore
-  public void setStatusFromEnum(final Status status) {
-    this.status = status.toString();
-  }
-
-  @JsonIgnore
-  public KeyGroupInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
-
-  @JsonIgnore
-  public List<KeyGroupInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<KeyGroupInfo>>() {});
-  }
-
-  public enum Status {
-    ACTIVE("ACTIVE"),
-    INACTIVE("INACTIVE");
-
-    private String value;
-
-    Status(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class KeyGroupInfoBuilder {
+    @JsonProperty("status")
     private String status;
 
-    public KeyGroupInfoBuilder status(final String status) {
-      this.status = status;
-      return this;
+    @JsonProperty("tags")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> tags;
+
+    @JsonProperty("updatedAt")
+    private String updatedAt;
+
+
+
+    @JsonIgnore
+    public String getStatus() {
+        return this.status;
     }
 
-    public KeyGroupInfoBuilder statusFromEnum(final Status status) {
-      this.status = status.toString();
-      return this;
+    @JsonIgnore
+    public Status getStatusAsEnum() {
+        return Status.valueOf(this.status);
     }
-  }
+
+    @JsonIgnore
+    public void setStatus(final String status) {
+        this.status = status;
+    }
+
+    @JsonIgnore
+    public void setStatusFromEnum(final Status status) {
+        this.status = status.toString();
+    }
+
+    @JsonIgnore
+    public KeyGroupInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<KeyGroupInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<KeyGroupInfo>>() {});
+    }
+
+
+    public enum Status {
+        ACTIVE("ACTIVE"),
+        INACTIVE("INACTIVE");
+
+        private String value;
+
+        Status(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public static class KeyGroupInfoBuilder {
+        private String status;
+
+
+        public KeyGroupInfoBuilder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public KeyGroupInfoBuilder statusFromEnum(final Status status) {
+            this.status = status.toString();
+            return this;
+        }
+    }
 }

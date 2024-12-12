@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,98 +23,102 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class AppleIAPConfigInfo extends Model {
 
-  @JsonProperty("appAppleId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Long appAppleId;
+    @JsonProperty("appAppleId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long appAppleId;
 
-  @JsonProperty("authKeyFileName")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String authKeyFileName;
+    @JsonProperty("authKeyFileName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String authKeyFileName;
 
-  @JsonProperty("bundleId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String bundleId;
+    @JsonProperty("bundleId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String bundleId;
 
-  @JsonProperty("issuerId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String issuerId;
+    @JsonProperty("issuerId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String issuerId;
 
-  @JsonProperty("keyId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String keyId;
+    @JsonProperty("keyId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String keyId;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("password")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String password;
+    @JsonProperty("password")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String password;
 
-  @JsonProperty("version")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String version;
-
-  @JsonIgnore
-  public String getVersion() {
-    return this.version;
-  }
-
-  @JsonIgnore
-  public Version getVersionAsEnum() {
-    return Version.valueOf(this.version);
-  }
-
-  @JsonIgnore
-  public void setVersion(final String version) {
-    this.version = version;
-  }
-
-  @JsonIgnore
-  public void setVersionFromEnum(final Version version) {
-    this.version = version.toString();
-  }
-
-  @JsonIgnore
-  public AppleIAPConfigInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
-
-  @JsonIgnore
-  public List<AppleIAPConfigInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<AppleIAPConfigInfo>>() {});
-  }
-
-  public enum Version {
-    V1("V1"),
-    V2("V2");
-
-    private String value;
-
-    Version(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return this.value;
-    }
-  }
-
-  public static class AppleIAPConfigInfoBuilder {
+    @JsonProperty("version")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String version;
 
-    public AppleIAPConfigInfoBuilder version(final String version) {
-      this.version = version;
-      return this;
+
+
+    @JsonIgnore
+    public String getVersion() {
+        return this.version;
     }
 
-    public AppleIAPConfigInfoBuilder versionFromEnum(final Version version) {
-      this.version = version.toString();
-      return this;
+    @JsonIgnore
+    public Version getVersionAsEnum() {
+        return Version.valueOf(this.version);
     }
-  }
+
+    @JsonIgnore
+    public void setVersion(final String version) {
+        this.version = version;
+    }
+
+    @JsonIgnore
+    public void setVersionFromEnum(final Version version) {
+        this.version = version.toString();
+    }
+
+    @JsonIgnore
+    public AppleIAPConfigInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<AppleIAPConfigInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<AppleIAPConfigInfo>>() {});
+    }
+
+
+    public enum Version {
+        V1("V1"),
+        V2("V2");
+
+        private String value;
+
+        Version(String value){
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public static class AppleIAPConfigInfoBuilder {
+        private String version;
+
+
+        public AppleIAPConfigInfoBuilder version(final String version) {
+            this.version = version;
+            return this;
+        }
+
+        public AppleIAPConfigInfoBuilder versionFromEnum(final Version version) {
+            this.version = version.toString();
+            return this;
+        }
+    }
 }

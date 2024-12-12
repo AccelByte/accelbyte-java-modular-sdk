@@ -8,167 +8,169 @@
 
 package net.accelbyte.sdk.api.gdpr.wrappers;
 
+
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.operations.data_deletion.*;
-import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.api.gdpr.operation_responses.data_deletion.*;
 import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.core.HttpResponse;
 
 public class DataDeletion {
 
-  private RequestRunner sdk;
-  private String customBasePath = "";
+    private RequestRunner sdk;
+    private String customBasePath = "";
 
-  public DataDeletion(RequestRunner sdk) {
-    this.sdk = sdk;
-    String configCustomBasePath =
-        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("gdpr");
-    if (!configCustomBasePath.equals("")) {
-      this.customBasePath = configCustomBasePath;
-    }
-  }
-
-  public DataDeletion(RequestRunner sdk, String customBasePath) {
-    this.sdk = sdk;
-    this.customBasePath = customBasePath;
-  }
-
-  /**
-   * @see AdminGetListDeletionDataRequest
-   */
-  public ModelsListDeletionDataResponse adminGetListDeletionDataRequest(
-      AdminGetListDeletionDataRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public DataDeletion(RequestRunner sdk){
+        this.sdk = sdk;
+        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("gdpr");
+        if (!configCustomBasePath.equals("")) {
+            this.customBasePath = configCustomBasePath;
+        }
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see AdminGetUserAccountDeletionRequest
-   */
-  public ModelsDeletionData adminGetUserAccountDeletionRequest(
-      AdminGetUserAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+    public DataDeletion(RequestRunner sdk, String customBasePath){
+        this.sdk = sdk;
+        this.customBasePath = customBasePath;
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetListDeletionDataRequest
+     */
+    public AdminGetListDeletionDataRequestOpResponse adminGetListDeletionDataRequest(AdminGetListDeletionDataRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminSubmitUserAccountDeletionRequest
-   */
-  public ModelsRequestDeleteResponse adminSubmitUserAccountDeletionRequest(
-      AdminSubmitUserAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminGetUserAccountDeletionRequest
+     */
+    public AdminGetUserAccountDeletionRequestOpResponse adminGetUserAccountDeletionRequest(AdminGetUserAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see AdminCancelUserAccountDeletionRequest
-   */
-  public void adminCancelUserAccountDeletionRequest(AdminCancelUserAccountDeletionRequest input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminSubmitUserAccountDeletionRequest
+     */
+    public AdminSubmitUserAccountDeletionRequestOpResponse adminSubmitUserAccountDeletionRequest(AdminSubmitUserAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicSubmitUserAccountDeletionRequest
-   */
-  public ModelsRequestDeleteResponse publicSubmitUserAccountDeletionRequest(
-      PublicSubmitUserAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see AdminCancelUserAccountDeletionRequest
+     */
+    public AdminCancelUserAccountDeletionRequestOpResponse adminCancelUserAccountDeletionRequest(AdminCancelUserAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicCancelUserAccountDeletionRequest
-   */
-  public void publicCancelUserAccountDeletionRequest(PublicCancelUserAccountDeletionRequest input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicSubmitUserAccountDeletionRequest
+     */
+    public PublicSubmitUserAccountDeletionRequestOpResponse publicSubmitUserAccountDeletionRequest(PublicSubmitUserAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetUserAccountDeletionStatus
-   */
-  public ModelsDeletionStatus publicGetUserAccountDeletionStatus(
-      PublicGetUserAccountDeletionStatus input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicCancelUserAccountDeletionRequest
+     */
+    public PublicCancelUserAccountDeletionRequestOpResponse publicCancelUserAccountDeletionRequest(PublicCancelUserAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicSubmitMyAccountDeletionRequest
-   */
-  public ModelsRequestDeleteResponse publicSubmitMyAccountDeletionRequest(
-      PublicSubmitMyAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicGetUserAccountDeletionStatus
+     */
+    public PublicGetUserAccountDeletionStatusOpResponse publicGetUserAccountDeletionStatus(PublicGetUserAccountDeletionStatus input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicCancelMyAccountDeletionRequest
-   */
-  public void publicCancelMyAccountDeletionRequest(PublicCancelMyAccountDeletionRequest input)
-      throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    input.handleEmptyResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicSubmitMyAccountDeletionRequest
+     */
+    public PublicSubmitMyAccountDeletionRequestOpResponse publicSubmitMyAccountDeletionRequest(PublicSubmitMyAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
 
-  /**
-   * @see PublicGetMyAccountDeletionStatus
-   */
-  public ModelsDeletionStatus publicGetMyAccountDeletionStatus(
-      PublicGetMyAccountDeletionStatus input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
     }
 
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
+    /**
+     * @see PublicCancelMyAccountDeletionRequest
+     */
+    public PublicCancelMyAccountDeletionRequestOpResponse publicCancelMyAccountDeletionRequest(PublicCancelMyAccountDeletionRequest input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
+    /**
+     * @see PublicGetMyAccountDeletionStatus
+     */
+    public PublicGetMyAccountDeletionStatusOpResponse publicGetMyAccountDeletionStatus(PublicGetMyAccountDeletionStatus input) throws Exception {
+        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+            input.setCustomBasePath(customBasePath);
+        }
+
+        final HttpResponse httpResponse = sdk.runRequest(input);
+        return input.parseResponse(
+            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
+        );
+    }
+
 }

@@ -50,7 +50,7 @@ public class TestIntegrationServiceUgc extends TestIntegration {
 
     final ModelsCreateTagResponse createTagResult =
         adminTagWrapper.adminCreateTag(
-            AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build());
+            AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build()).ensureSuccess();
 
     // ESAC
 
@@ -63,7 +63,7 @@ public class TestIntegrationServiceUgc extends TestIntegration {
 
     final ModelsPaginatedGetTagResponse getTagResult =
         adminTagWrapper.adminGetTag(
-            AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build());
+            AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build()).ensureSuccess();
 
     // ESAC
 
@@ -80,7 +80,7 @@ public class TestIntegrationServiceUgc extends TestIntegration {
                 .namespace(this.namespace)
                 .tagId(tagId)
                 .body(updateTag)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 

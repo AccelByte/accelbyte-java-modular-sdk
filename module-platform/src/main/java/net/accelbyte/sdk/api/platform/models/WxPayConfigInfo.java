@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,37 +23,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class WxPayConfigInfo extends Model {
 
-  @JsonProperty("appId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String appId;
+    @JsonProperty("appId")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String appId;
 
-  @JsonProperty("certPath")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String certPath;
+    @JsonProperty("certPath")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String certPath;
 
-  @JsonProperty("key")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String key;
+    @JsonProperty("key")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String key;
 
-  @JsonProperty("mchid")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String mchid;
+    @JsonProperty("mchid")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String mchid;
 
-  @JsonProperty("returnUrl")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String returnUrl;
+    @JsonProperty("returnUrl")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String returnUrl;
 
-  @JsonIgnore
-  public WxPayConfigInfo createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<WxPayConfigInfo> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<WxPayConfigInfo>>() {});
-  }
+
+    @JsonIgnore
+    public WxPayConfigInfo createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<WxPayConfigInfo> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<WxPayConfigInfo>>() {});
+    }
+
+
 }

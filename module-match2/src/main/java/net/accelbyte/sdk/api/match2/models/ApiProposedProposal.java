@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.match2.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,29 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApiProposedProposal extends Model {
 
-  @JsonProperty("backfillID")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String backfillID;
+    @JsonProperty("backfillID")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String backfillID;
 
-  @JsonProperty("proposalID")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String proposalID;
+    @JsonProperty("proposalID")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String proposalID;
 
-  @JsonProperty("status")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String status;
+    @JsonProperty("status")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String status;
 
-  @JsonIgnore
-  public ApiProposedProposal createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApiProposedProposal> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiProposedProposal>>() {});
-  }
+
+    @JsonIgnore
+    public ApiProposedProposal createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApiProposedProposal> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApiProposedProposal>>() {});
+    }
+
+
 }

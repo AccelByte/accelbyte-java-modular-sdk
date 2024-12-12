@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.dsmc.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,31 +23,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsDeleteZombieRequest extends Model {
 
-  @JsonProperty("JobCount")
-  private Integer jobCount;
+    @JsonProperty("JobCount")
+    private Integer jobCount;
 
-  @JsonProperty("Region")
-  private String region;
+    @JsonProperty("Region")
+    private String region;
 
-  @JsonProperty("TimeoutSecond")
-  private Integer timeoutSecond;
+    @JsonProperty("TimeoutSecond")
+    private Integer timeoutSecond;
 
-  @JsonProperty("ZombieCount")
-  private Integer zombieCount;
+    @JsonProperty("ZombieCount")
+    private Integer zombieCount;
 
-  @JsonIgnore
-  public ModelsDeleteZombieRequest createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsDeleteZombieRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ModelsDeleteZombieRequest>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsDeleteZombieRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsDeleteZombieRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsDeleteZombieRequest>>() {});
+    }
+
+
 }

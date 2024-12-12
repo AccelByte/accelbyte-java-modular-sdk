@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,22 +23,25 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ModelsMatchOptionRule extends Model {
 
-  @JsonProperty("options")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<ModelsMatchOption> options;
+    @JsonProperty("options")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<ModelsMatchOption> options;
 
-  @JsonIgnore
-  public ModelsMatchOptionRule createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ModelsMatchOptionRule> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMatchOptionRule>>() {});
-  }
+
+    @JsonIgnore
+    public ModelsMatchOptionRule createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ModelsMatchOptionRule> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMatchOptionRule>>() {});
+    }
+
+
 }

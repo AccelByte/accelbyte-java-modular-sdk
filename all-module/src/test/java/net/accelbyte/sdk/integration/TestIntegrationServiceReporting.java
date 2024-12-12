@@ -73,7 +73,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                         .title(reasonTitle)
                         .description(reasonDescription)
                         .build())
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -85,7 +85,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
 
     final RestapiPublicReasonListResponse publicGetReasonResponse =
         wrapper.publicGetReasons(
-            PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build());
+            PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build()).ensureSuccess();
 
     // ESAC
 
@@ -119,7 +119,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
       final AccountCreateUserResponseV4 createUserResult2 =
           usersV4Wrapper.publicCreateUserV4(
               PublicCreateUserV4.builder()
@@ -134,7 +134,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
-                  .build());
+                  .build()).ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
       player2UserId = createUserResult2.getUserId();
@@ -166,7 +166,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                             .objectId(UUID.randomUUID().toString().replace("-", ""))
                             .objectType(UUID.randomUUID().toString().replace("-", ""))
                             .build())
-                    .build());
+                    .build()).ensureSuccess();
 
         // ESAC
 

@@ -59,7 +59,7 @@ public class TestIntegrationServiceGdpr extends TestIntegration {
 
     final List<String> emails =
         configurationWrapper.getAdminEmailConfiguration(
-            GetAdminEmailConfiguration.builder().namespace(this.namespace).build());
+            GetAdminEmailConfiguration.builder().namespace(this.namespace).build()).ensureSuccess();
 
     // ESAC
 

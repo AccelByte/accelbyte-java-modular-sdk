@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,35 +23,38 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class GoogleIAPConfigRequest extends Model {
 
-  @JsonProperty("applicationName")
-  private String applicationName;
+    @JsonProperty("applicationName")
+    private String applicationName;
 
-  @JsonProperty("notificationTokenAudience")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String notificationTokenAudience;
+    @JsonProperty("notificationTokenAudience")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String notificationTokenAudience;
 
-  @JsonProperty("notificationTokenEmail")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String notificationTokenEmail;
+    @JsonProperty("notificationTokenEmail")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String notificationTokenEmail;
 
-  @JsonProperty("packageName")
-  private String packageName;
+    @JsonProperty("packageName")
+    private String packageName;
 
-  @JsonProperty("serviceAccountId")
-  private String serviceAccountId;
+    @JsonProperty("serviceAccountId")
+    private String serviceAccountId;
 
-  @JsonIgnore
-  public GoogleIAPConfigRequest createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<GoogleIAPConfigRequest> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<GoogleIAPConfigRequest>>() {});
-  }
+
+    @JsonIgnore
+    public GoogleIAPConfigRequest createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<GoogleIAPConfigRequest> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<GoogleIAPConfigRequest>>() {});
+    }
+
+
 }

@@ -10,87 +10,146 @@ package net.accelbyte.sdk.api.lobby.operations.lobby_operations;
 
 import java.io.*;
 import java.util.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import net.accelbyte.sdk.core.HttpResponseException;
+
+import net.accelbyte.sdk.api.lobby.models.*;
 import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.util.Helper;
+import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.api.lobby.operation_responses.lobby_operations.AdminJoinPartyV1OpResponse;
 
 /**
  * adminJoinPartyV1
  *
- * <p>Admin join a player into a party.
+ * Admin join a player into a party.
  */
 @Getter
 @Setter
 public class AdminJoinPartyV1 extends Operation {
-  /** generated field's value */
-  private String path =
-      "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}";
+    /**
+     * generated field's value
+     */
+    private String path = "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}";
+    private String method = "POST";
+    private List<String> consumes = Arrays.asList();
+    private List<String> produces = Arrays.asList("application/json");
+    private String locationQuery = null;
+    /**
+     * fields as input parameter
+     */
+    private String namespace;
+    private String partyId;
+    private String userId;
 
-  private String method = "POST";
-  private List<String> consumes = Arrays.asList();
-  private List<String> produces = Arrays.asList("application/json");
-  private String locationQuery = null;
+    /**
+    * @param namespace required
+    * @param partyId required
+    * @param userId required
+    */
+    @Builder
+    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+    @Deprecated
+    public AdminJoinPartyV1(
+            String customBasePath,            String namespace,
+            String partyId,
+            String userId
+    )
+    {
+        this.namespace = namespace;
+        this.partyId = partyId;
+        this.userId = userId;
+        super.customBasePath = customBasePath != null ? customBasePath : "";
 
-  /** fields as input parameter */
-  private String namespace;
-
-  private String partyId;
-  private String userId;
-
-  /**
-   * @param namespace required
-   * @param partyId required
-   * @param userId required
-   */
-  @Builder
-  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-  @Deprecated
-  public AdminJoinPartyV1(String customBasePath, String namespace, String partyId, String userId) {
-    this.namespace = namespace;
-    this.partyId = partyId;
-    this.userId = userId;
-    super.customBasePath = customBasePath != null ? customBasePath : "";
-
-    securities.add("Bearer");
-  }
-
-  @Override
-  public Map<String, String> getPathParams() {
-    Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+        securities.add("Bearer");
     }
-    if (this.partyId != null) {
-      pathParams.put("partyId", this.partyId);
-    }
-    if (this.userId != null) {
-      pathParams.put("userId", this.userId);
-    }
-    return pathParams;
-  }
 
-  @Override
-  public boolean isValid() {
-    if (this.namespace == null) {
-      return false;
+    @Override
+    public Map<String, String> getPathParams(){
+        Map<String, String> pathParams = new HashMap<>();
+        if (this.namespace != null){
+            pathParams.put("namespace", this.namespace);
+        }
+        if (this.partyId != null){
+            pathParams.put("partyId", this.partyId);
+        }
+        if (this.userId != null){
+            pathParams.put("userId", this.userId);
+        }
+        return pathParams;
     }
-    if (this.partyId == null) {
-      return false;
-    }
-    if (this.userId == null) {
-      return false;
-    }
-    return true;
-  }
 
-  public void handleEmptyResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    if (code != 202) {
-      final String json = Helper.convertInputStreamToString(payload);
-      throw new HttpResponseException(code, json);
+
+
+
+
+    @Override
+    public boolean isValid() {
+        if(this.namespace == null) {
+            return false;
+        }
+        if(this.partyId == null) {
+            return false;
+        }
+        if(this.userId == null) {
+            return false;
+        }
+        return true;
     }
-  }
+
+    public AdminJoinPartyV1OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        final AdminJoinPartyV1OpResponse response = new AdminJoinPartyV1OpResponse();
+
+        response.setHttpStatusCode(code);
+        response.setContentType(contentType);
+
+        if (code == 204) {
+            response.setSuccess(true);
+        }
+        else if (code == 400) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError400(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError400().translateToApiError());
+        }
+        else if (code == 401) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError401(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError401().translateToApiError());
+        }
+        else if (code == 403) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError403(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError403().translateToApiError());
+        }
+        else if (code == 404) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError404(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError404().translateToApiError());
+        }
+        else if (code == 412) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError412(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError412().translateToApiError());
+        }
+        else if (code == 500) {
+            final String json = Helper.convertInputStreamToString(payload);
+            response.setError500(new RestapiErrorResponseBody().createFromJson(json));
+            response.setError(response.getError500().translateToApiError());
+        }
+
+        return response;
+    }
+
+    /*
+    public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+        if(code != 202){
+            final String json = Helper.convertInputStreamToString(payload);
+            throw new HttpResponseException(code, json);
+        }
+    }
+    */
+
 }

@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,44 +23,48 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class CurrencyWallet extends Model {
 
-  @JsonProperty("balance")
-  private Long balance;
+    @JsonProperty("balance")
+    private Long balance;
 
-  @JsonProperty("currencyCode")
-  private String currencyCode;
+    @JsonProperty("currencyCode")
+    private String currencyCode;
 
-  @JsonProperty("currencySymbol")
-  private String currencySymbol;
+    @JsonProperty("currencySymbol")
+    private String currencySymbol;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("totalPermanentBalance")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Long totalPermanentBalance;
+    @JsonProperty("totalPermanentBalance")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long totalPermanentBalance;
 
-  @JsonProperty("totalTimeLimitedBalance")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private Long totalTimeLimitedBalance;
+    @JsonProperty("totalTimeLimitedBalance")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long totalTimeLimitedBalance;
 
-  @JsonProperty("userId")
-  private String userId;
+    @JsonProperty("userId")
+    private String userId;
 
-  @JsonProperty("walletInfos")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private List<WalletInfo> walletInfos;
+    @JsonProperty("walletInfos")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<WalletInfo> walletInfos;
 
-  @JsonIgnore
-  public CurrencyWallet createFromJson(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<CurrencyWallet> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<CurrencyWallet>>() {});
-  }
+
+    @JsonIgnore
+    public CurrencyWallet createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<CurrencyWallet> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<CurrencyWallet>>() {});
+    }
+
+
 }

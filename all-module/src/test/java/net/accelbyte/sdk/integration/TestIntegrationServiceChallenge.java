@@ -76,7 +76,7 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
             AdminCreateChallenge.builder()
                 .namespace(this.namespace)
                 .body(newChallengeRequest)
-                .build());
+                .build()).ensureSuccess();
 
     // ESAC
 
@@ -92,7 +92,7 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
               AdminGetChallenge.builder()
                   .namespace(this.namespace)
                   .challengeCode(challengeCode)
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -112,7 +112,7 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
                   .namespace(this.namespace)
                   .challengeCode(challengeCode)
                   .body(updateRequest)
-                  .build());
+                  .build()).ensureSuccess();
 
       // ESAC
 
@@ -148,7 +148,7 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
                   .namespace(this.namespace)
                   .challengeCode(challengeCode)
                   .body(newGoalRequest)
-                  .build());
+                  .build()).ensureSuccess();
       assertNotNull(newGoalResponse);
 
       // ESAC

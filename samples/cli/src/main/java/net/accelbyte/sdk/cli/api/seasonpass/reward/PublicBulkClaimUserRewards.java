@@ -8,9 +8,8 @@
 
 package net.accelbyte.sdk.cli.api.seasonpass.reward;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
-import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.seasonpass.models.*;
 import net.accelbyte.sdk.api.seasonpass.wrappers.Reward;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -19,65 +18,63 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.Callable;
+
 @Command(name = "publicBulkClaimUserRewards", mixinStandardHelpOptions = true)
 public class PublicBulkClaimUserRewards implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(PublicBulkClaimUserRewards.class);
+    private static final Logger log = LogManager.getLogger(PublicBulkClaimUserRewards.class);
 
-  @Option(
-      names = {"--namespace"},
-      description = "namespace")
-  String namespace;
+    @Option(names = {"--namespace"}, description = "namespace")
+    String namespace;
 
-  @Option(
-      names = {"--userId"},
-      description = "userId")
-  String userId;
+    @Option(names = {"--userId"}, description = "userId")
+    String userId;
 
-  @Option(
-      names = {"--logging"},
-      description = "logger")
-  boolean logging;
 
-  public static void main(String[] args) {
-    int exitCode = new CommandLine(new PublicBulkClaimUserRewards()).execute(args);
-    System.exit(exitCode);
-  }
+    @Option(names = {"--logging"}, description = "logger")
+    boolean logging;
 
-  @Override
-  public Integer call() {
-    try {
-      final OkhttpClient httpClient = new OkhttpClient();
-      if (logging) {
-        httpClient.setLogger(new OkhttpLogger());
-      }
-      final AccelByteSDK sdk =
-          new AccelByteSDK(
-              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final Reward wrapper = new Reward(sdk);
-      final net.accelbyte.sdk.api.seasonpass.operations.reward.PublicBulkClaimUserRewards
-          operation =
-              net.accelbyte.sdk.api.seasonpass.operations.reward.PublicBulkClaimUserRewards
-                  .builder()
-                  .namespace(namespace)
-                  .userId(userId)
-                  .build();
-      final ClaimableRewards response = wrapper.publicBulkClaimUserRewards(operation);
-      final String responseString =
-          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-      log.info("Operation successful\n{}", responseString);
-      return 0;
-    } catch (HttpResponseException e) {
-      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-    } catch (Exception e) {
-      log.error("An exception was thrown", e);
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new PublicBulkClaimUserRewards()).execute(args);
+        System.exit(exitCode);
     }
-    return 1;
-  }
+
+    @Override
+    public Integer call() {
+        try {
+            final OkhttpClient httpClient = new OkhttpClient();
+            if (logging) {
+                httpClient.setLogger(new OkhttpLogger());
+            }
+            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+            final Reward wrapper = new Reward(sdk);
+            final net.accelbyte.sdk.api.seasonpass.operations.reward.PublicBulkClaimUserRewards operation =
+                    net.accelbyte.sdk.api.seasonpass.operations.reward.PublicBulkClaimUserRewards.builder()
+                            .namespace(namespace)
+                            .userId(userId)
+                            .build();
+            final ClaimableRewards response =
+                    wrapper.publicBulkClaimUserRewards(operation).ensureSuccess();
+            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+            log.info("Operation successful\n{}", responseString);
+            return 0;
+        } catch (HttpResponseException e) {
+            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+        } catch (Exception e) {
+            log.error("An exception was thrown", e);
+        }
+        return 1;
+    }
 }

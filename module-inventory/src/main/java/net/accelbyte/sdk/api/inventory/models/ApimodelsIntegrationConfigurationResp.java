@@ -8,12 +8,14 @@
 
 package net.accelbyte.sdk.api.inventory.models;
 
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.*;
 import lombok.*;
+
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,44 +23,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor = @__(@Deprecated))
+@AllArgsConstructor(onConstructor=@__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsIntegrationConfigurationResp extends Model {
 
-  @JsonProperty("createdAt")
-  private String createdAt;
+    @JsonProperty("createdAt")
+    private String createdAt;
 
-  @JsonProperty("id")
-  private String id;
+    @JsonProperty("id")
+    private String id;
 
-  @JsonProperty("itemTypes")
-  private List<String> itemTypes;
+    @JsonProperty("itemTypes")
+    private List<String> itemTypes;
 
-  @JsonProperty("namespace")
-  private String namespace;
+    @JsonProperty("namespace")
+    private String namespace;
 
-  @JsonProperty("serviceName")
-  private String serviceName;
+    @JsonProperty("serviceName")
+    private String serviceName;
 
-  @JsonProperty("status")
-  private String status;
+    @JsonProperty("status")
+    private String status;
 
-  @JsonProperty("targetInventoryCode")
-  private String targetInventoryCode;
+    @JsonProperty("targetInventoryCode")
+    private String targetInventoryCode;
 
-  @JsonProperty("updatedAt")
-  private String updatedAt;
+    @JsonProperty("updatedAt")
+    private String updatedAt;
 
-  @JsonIgnore
-  public ApimodelsIntegrationConfigurationResp createFromJson(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, this.getClass());
-  }
 
-  @JsonIgnore
-  public List<ApimodelsIntegrationConfigurationResp> createFromJsonList(String json)
-      throws JsonProcessingException {
-    return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApimodelsIntegrationConfigurationResp>>() {});
-  }
+
+    @JsonIgnore
+    public ApimodelsIntegrationConfigurationResp createFromJson(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, this.getClass());
+    }
+
+    @JsonIgnore
+    public List<ApimodelsIntegrationConfigurationResp> createFromJsonList(String json) throws JsonProcessingException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsIntegrationConfigurationResp>>() {});
+    }
+
+
 }
