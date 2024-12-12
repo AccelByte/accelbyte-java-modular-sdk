@@ -99,6 +99,9 @@ public class DeleteMatchFunction extends Operation {
         if (code == 204) {
             response.setSuccess(true);
         }
+        else if ((code == 200) || (code == 201) || (code == 202)) {
+            response.setSuccess(true);
+        }
         else if (code == 401) {
             final String json = Helper.convertInputStreamToString(payload);
             response.setError401(new ResponseError().createFromJson(json));

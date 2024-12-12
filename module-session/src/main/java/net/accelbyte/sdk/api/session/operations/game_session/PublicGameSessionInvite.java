@@ -116,7 +116,7 @@ public class PublicGameSessionInvite extends Operation {
         if (code == 204) {
             response.setSuccess(true);
         }
-        else if (code == 201) {
+        else if ((code == 200) || (code == 201) || (code == 202)) {
             response.setSuccess(true);
         }
         else if (code == 400) {
