@@ -84,6 +84,7 @@ package getting.started;
 
 import net.accelbyte.sdk.api.iam.models.OauthmodelCountryLocationResponse;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.GetCountryLocationV3;
+import net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0_extension.GetCountryLocationV3OpResponse;
 import net.accelbyte.sdk.api.iam.wrappers.OAuth20Extension;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.OkhttpClient;
@@ -116,11 +117,12 @@ public class App {
         // Call an AccelByte Gaming Services endpoint e.g. GetCountryLocationV3
 
         OAuth20Extension wrapper = new OAuth20Extension(sdk);
-        GetCountryLocationV3 operation = GetCountryLocationV3.builder()
-                .build();
-        OauthmodelCountryLocationResponse response = wrapper.getCountryLocationV3(operation);
-
-        System.out.println(response.getCountryName());
+        GetCountryLocationV3 operation = GetCountryLocationV3.builder().build();
+        
+        GetCountryLocationV3OpResponse response = wrapper.getCountryLocationV3(operation);
+        response.ensureSuccess();
+        
+        System.out.println(response.getData().getCountryName());
     }
 }
 ```

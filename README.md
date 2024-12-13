@@ -249,6 +249,46 @@ try {
 }
 ```
 
+### Working with Call Response
+
+Every operation in Java Modular SDK will returns a response object. Use this object to do check whether the call is success or not, get the response data or error object.
+
+- `isSuccess()` getter method will be `true` if the call is success, otherwise `false`.
+- `getData()` getter method contains response data from service. This property is **optional** depending whether the endpoint has response or not.
+- `getError()` getter method contains error object if call failed, otherwise null.
+
+Known errors are available in `<ServiceName>Errors` static class. E.g `BasicErrors`, `IamErrors`, and so on.
+
+```java
+UserProfile userProfile = new UserProfile(sdk);
+
+GetMyProfileInfoOpResponse response = userProfile.getMyProfileInfo(new GetMyProfileInfo("accelbyte"));
+
+if (response.isSuccess())
+{
+    // do something with response data
+}
+else
+{
+    // do something with response error object
+
+    // get error code
+    String errorCode = response.getError().getCode();
+
+    // get error message
+    String errorMessage = response.getError().getMessage();
+
+    // or throw an exception
+    response.getError().throwException();
+
+    // compare to known error to handle more specific error
+    if (response.getError().isEqualWith(BasicErrors.error11440))
+    {
+        //do something if user profile not found.
+    }
+}
+```
+
 ### Refresh Token
 
 ```java

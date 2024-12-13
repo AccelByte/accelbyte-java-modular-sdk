@@ -178,13 +178,14 @@ get("/callback", (req, res) -> {
         return "Login platform failed!";
     }
     
-    // Try to call AccelByte API after login success
-    
-    final OAuth20Extension oauth20Extension = new OAuth20Extension(sdk);
-    final GetCountryLocationV3 getCountryOperation = GetCountryLocationV3.builder()
-            .build();
-    final OauthmodelCountryLocationResponse getCountryResponse = oauth20Extension.getCountryLocationV3(getCountryOperation);
+    // Try to call AccelByte API after login success          
+              
+    final OAuth20Extension wrapper = new OAuth20Extension(sdk);
+    final GetCountryLocationV3 operation = GetCountryLocationV3.builder().build();
 
-    return "Success: " + objectMapper.writeValueAsString(getCountryResponse);
+    final GetCountryLocationV3OpResponse response = wrapper.getCountryLocationV3(operation);
+    response.ensureSuccess();
+
+    return "Success: " + objectMapper.writeValueAsString(response.getData());
 });
 ```
