@@ -158,7 +158,7 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
     final GetUserStatItems operation =
         GetUserStatItems.builder().namespace(namespace).userId(userId).statCodes(statCodes).build();
 
-    final UserStatItemPagingSlicedResult result = wrapper.getUserStatItems(operation);
+    final UserStatItemPagingSlicedResult result = wrapper.getUserStatItems(operation).ensureSuccess();
 
     return APIGatewayV2HTTPResponse.builder()
         .withHeaders(headers)

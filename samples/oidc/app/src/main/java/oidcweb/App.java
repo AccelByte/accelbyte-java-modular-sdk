@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import net.accelbyte.sdk.api.iam.models.OauthmodelCountryLocationResponse;
 import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.GetCountryLocationV3;
+import net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0_extension.GetCountryLocationV3OpResponse;
 import net.accelbyte.sdk.api.iam.wrappers.OAuth20Extension;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.OkhttpClient;
@@ -116,14 +117,15 @@ public class App {
             return "Login platform failed!";
           }
 
-          // Try to call AccelByte API after login success
+          // Try to call AccelByte API after login success          
+              
+          final OAuth20Extension wrapper = new OAuth20Extension(sdk);
+          final GetCountryLocationV3 operation = GetCountryLocationV3.builder().build();
 
-          final OAuth20Extension oauth20Extension = new OAuth20Extension(sdk);
-          final GetCountryLocationV3 getCountryOperation = GetCountryLocationV3.builder().build();
-          final OauthmodelCountryLocationResponse getCountryResponse =
-              oauth20Extension.getCountryLocationV3(getCountryOperation);
+          final GetCountryLocationV3OpResponse response = wrapper.getCountryLocationV3(operation);
+          response.ensureSuccess();
 
-          return "Success: " + objectMapper.writeValueAsString(getCountryResponse);
+          return "Success: " + objectMapper.writeValueAsString(response.getData());
         });
   }
 }

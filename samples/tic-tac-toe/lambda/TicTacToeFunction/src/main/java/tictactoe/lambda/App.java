@@ -115,7 +115,7 @@ public class App
     verifyTokenV3Op.setPreferredSecurityMethod(Operation.Security.Basic.toString());
 
     final OauthmodelTokenResponseV3 verifyTokenV3Result =
-        oauth20Wrapper.verifyTokenV3(verifyTokenV3Op);
+        oauth20Wrapper.verifyTokenV3(verifyTokenV3Op).ensureSuccess();
 
     final String userId = verifyTokenV3Result.getUserId();
 
@@ -171,14 +171,14 @@ public class App
             .namespace(Namespace)
             .userId(game.player1)
             .body(notifBody)
-            .build());
+            .build()).ensureSuccess();
 
     notifWrapper.freeFormNotificationByUserID(
         FreeFormNotificationByUserID.builder()
             .namespace(Namespace)
             .userId(game.player2)
             .body(notifBody)
-            .build());
+            .build()).ensureSuccess();
 
     return response.withStatusCode(200).withBody(getSuccessJson("ok - player 2 - game start"));
   }
@@ -232,14 +232,14 @@ public class App
             .namespace(Namespace)
             .userId(game.player1)
             .body(notifBody)
-            .build());
+            .build()).ensureSuccess();
 
     notifWrapper.freeFormNotificationByUserID(
         FreeFormNotificationByUserID.builder()
             .namespace(Namespace)
             .userId(game.player2)
             .body(notifBody)
-            .build());
+            .build()).ensureSuccess();
 
     return response.withStatusCode(200).withBody(getSuccessJson("ok"));
   }
