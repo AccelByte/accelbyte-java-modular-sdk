@@ -22,7 +22,7 @@ public class ApiError {
     public ApiError(String code, String message) {
         this.code = code;
         this.message = message;
-        this.isAvailable = (code != "");
+        this.isAvailable = !code.equals("");
     }
 
     public Exception throwException() {
@@ -31,6 +31,6 @@ public class ApiError {
     }
 
     public boolean isEqualWith(ApiError error) {
-        return this.code == error.getCode();
+        return this.code.equals(error.getCode());
     }
 }
