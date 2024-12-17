@@ -18,6 +18,7 @@ import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.GetGameReco
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.PostGameRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.PutGameRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.wrappers.PublicGameRecord;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.DummyGameRecord;
 import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
@@ -118,20 +119,21 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     // CASE Delete a game record
 
     publicGameRecordWrapper.deleteGameRecordHandlerV1(
-        DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build());
+        DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
 
     // ESAC
 
     // Confirm if game record is deleted
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
           publicGameRecordWrapper.getGameRecordHandlerV1(
               GetGameRecordHandlerV1.builder()
                   .namespace(this.namespace)
                   .key(gameRecordKey)
-                  .build());
+                  .build())
+                  .ensureSuccess();
         });
   }
 

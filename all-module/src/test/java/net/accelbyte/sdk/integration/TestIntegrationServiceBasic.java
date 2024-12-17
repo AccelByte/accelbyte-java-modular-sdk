@@ -20,6 +20,7 @@ import net.accelbyte.sdk.api.basic.operations.user_profile.DeleteUserProfile;
 import net.accelbyte.sdk.api.basic.operations.user_profile.GetMyProfileInfo;
 import net.accelbyte.sdk.api.basic.operations.user_profile.UpdateMyProfile;
 import net.accelbyte.sdk.api.basic.wrappers.UserProfile;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -136,10 +137,10 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     // Confirm if user profile is deleted
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
           userProfileWrapper.getMyProfileInfo(
-              GetMyProfileInfo.builder().namespace(this.namespace).build());
+              GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
         });
   }
 

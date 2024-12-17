@@ -28,6 +28,7 @@ import net.accelbyte.sdk.api.iam.operations.users_v4.PublicCreateUserV4;
 import net.accelbyte.sdk.api.iam.operations.users_v4.PublicGetUserPublicInfoByUserIdV4;
 import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.api.iam.wrappers.UsersV4;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -86,13 +87,13 @@ public class TestIntegrationServiceIam extends TestIntegration {
     // Clean up
 
     usersWrapper.adminDeleteUserInformationV3(
-        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build());
+        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
             usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build());
+                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
         });
   }
 
@@ -175,17 +176,17 @@ public class TestIntegrationServiceIam extends TestIntegration {
     // CASE Delete a user
 
     usersWrapper.adminDeleteUserInformationV3(
-        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build());
+        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
 
     // ESAC
 
     // Confirm if user is deleted
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
             usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build());
+                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
         });
   }
 

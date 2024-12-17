@@ -31,6 +31,7 @@ import net.accelbyte.sdk.api.group.operations.group_member.LeaveGroupPublicV2;
 import net.accelbyte.sdk.api.group.wrappers.Configuration;
 import net.accelbyte.sdk.api.group.wrappers.Group;
 import net.accelbyte.sdk.api.group.wrappers.GroupMember;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -221,10 +222,10 @@ public class TestIntegrationServiceGroup extends TestIntegration {
     // Confirm if group is deleted
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
           groupWrapper.getSingleGroupPublicV1(
-              GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build());
+              GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build()).ensureSuccess();
         });
 
     // CASE Delete group configuration
@@ -233,7 +234,8 @@ public class TestIntegrationServiceGroup extends TestIntegration {
         DeleteGroupConfigurationV1.builder()
             .namespace(this.namespace)
             .configurationCode(configCode)
-            .build());
+            .build())
+            .ensureSuccess();
 
     // ESAC
   }

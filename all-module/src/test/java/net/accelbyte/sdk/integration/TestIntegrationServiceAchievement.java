@@ -24,6 +24,7 @@ import net.accelbyte.sdk.api.achievement.operations.achievements.AdminGetAchieve
 import net.accelbyte.sdk.api.achievement.operations.achievements.AdminListAchievements;
 import net.accelbyte.sdk.api.achievement.operations.achievements.AdminUpdateAchievement;
 import net.accelbyte.sdk.api.achievement.wrappers.Achievements;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -148,20 +149,22 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
         AdminDeleteAchievement.builder()
             .namespace(this.namespace)
             .achievementCode(achievementCode)
-            .build());
+            .build())
+            .ensureSuccess();
 
     // ESAC
 
     // Confirm if achievement is deleted
 
     assertThrows(
-        HttpResponseException.class,
+        ApiResponseException.class,
         () -> {
           achievementsWrapper.adminGetAchievement(
               AdminGetAchievement.builder()
                   .namespace(this.namespace)
                   .achievementCode(achievementCode)
-                  .build());
+                  .build())
+                  .ensureSuccess();
         });
   }
 
