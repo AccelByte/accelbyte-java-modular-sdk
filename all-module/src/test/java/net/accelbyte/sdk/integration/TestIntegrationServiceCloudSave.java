@@ -13,22 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 import net.accelbyte.sdk.api.cloudsave.models.ModelsGameRecordResponse;
+import net.accelbyte.sdk.api.cloudsave.models.ModelsPlayerRecordResponse;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.DeleteGameRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.GetGameRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.PostGameRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.operations.public_game_record.PutGameRecordHandlerV1;
+import net.accelbyte.sdk.api.cloudsave.operations.public_player_record.DeletePlayerRecordHandlerV1;
+import net.accelbyte.sdk.api.cloudsave.operations.public_player_record.GetPlayerRecordHandlerV1;
+import net.accelbyte.sdk.api.cloudsave.operations.public_player_record.PostPlayerRecordHandlerV1;
+import net.accelbyte.sdk.api.cloudsave.operations.public_player_record.PutPlayerRecordHandlerV1;
 import net.accelbyte.sdk.api.cloudsave.wrappers.PublicGameRecord;
+import net.accelbyte.sdk.api.cloudsave.wrappers.PublicPlayerRecord;
+import net.accelbyte.sdk.api.iam.models.ModelUserResponseV3;
+import net.accelbyte.sdk.api.iam.operations.users.AdminGetMyUserV3;
+import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.DummyGameRecord;
-import net.accelbyte.sdk.core.HttpResponseException;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestMethodOrder;
+import net.accelbyte.sdk.core.DummyPlayerRecord;
+import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -135,6 +137,97 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
                   .build())
                   .ensureSuccess();
         });
+  }
+
+  @Test
+  @Order(1)
+  public void testPlayerRecord() throws Exception {
+    final String playerRecordKey = "foo_bar_record";
+    final String playerRecordFoo = "bar";
+    final String playerRecordFooBar = "foo";
+    final String playerRecordFooBarUpdate = "foo_update";
+    final int playerRecordFooValue = 4893;
+
+    final PublicPlayerRecord publicPlayerRecordWrapper = new PublicPlayerRecord(sdk);
+    
+    final Users usersWrapper = new Users(sdk);
+
+    final ModelUserResponseV3 getUserResult =
+        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build()).ensureSuccess();
+
+    assertNotNull(getUserResult);
+
+    final String userId = getUserResult.getUserId();
+
+    // CASE Create a player record
+
+    final DummyPlayerRecord createPlayerRecordBody =
+        DummyPlayerRecord.builder()
+            .Foo(playerRecordFoo)
+            .FooBar(playerRecordFooBar)
+            .FooValue(playerRecordFooValue)
+            .build();
+
+    publicPlayerRecordWrapper.postPlayerRecordHandlerV1(
+        PostPlayerRecordHandlerV1.builder()
+            .namespace(this.namespace)
+            .key(playerRecordKey)
+            .body(createPlayerRecordBody)
+            .userId(userId)
+            .build());
+
+    // ESAC
+
+    // CASE Get a player record
+
+    final ModelsPlayerRecordResponse getPlayerRecordResult =
+        publicPlayerRecordWrapper.getPlayerRecordHandlerV1(
+            GetPlayerRecordHandlerV1.builder()
+                .namespace(this.namespace)
+                .key(playerRecordKey)
+                .userId(userId)
+            .build()).ensureSuccess();
+
+    // ESAC
+
+    assertNotNull(getPlayerRecordResult);
+
+    final Map<String, ?> playerRecordValue1 = getPlayerRecordResult.getValue();
+
+    assertNotNull(playerRecordValue1);
+    assertTrue(playerRecordValue1.containsKey("foo_bar"));
+    assertEquals(playerRecordFooBar, playerRecordValue1.get("foo_bar").toString());
+
+    // CASE Update a player record
+
+    DummyPlayerRecord updatePlayerRecord =
+        DummyPlayerRecord.builder()
+            .Foo(playerRecordFoo)
+            .FooBar(playerRecordFooBarUpdate)
+            .FooValue(playerRecordFooValue)
+            .build();
+
+    publicPlayerRecordWrapper.putPlayerRecordHandlerV1(
+        PutPlayerRecordHandlerV1.builder()
+            .namespace(this.namespace)
+            .key(playerRecordKey)
+            .body(updatePlayerRecord)
+            .userId(userId)
+            .build());
+
+    // ESAC
+
+    // CASE Delete a player record
+
+    publicPlayerRecordWrapper.deletePlayerRecordHandlerV1(
+        DeletePlayerRecordHandlerV1.builder()
+            .namespace(this.namespace)
+            .key(playerRecordKey)
+            .userId(userId)
+        .build());
+
+    // ESAC
+
   }
 
   @AfterAll

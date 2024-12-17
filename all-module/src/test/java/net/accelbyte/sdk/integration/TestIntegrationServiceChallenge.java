@@ -18,10 +18,15 @@ import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.models.ModelCreateChallengeRequest.*;
 import net.accelbyte.sdk.api.challenge.models.ModelPredicate.*;
 import net.accelbyte.sdk.api.challenge.models.ModelRequirement.Operator;
+import net.accelbyte.sdk.api.challenge.operation_responses.player_reward.PublicGetUserRewardsOpResponse;
 import net.accelbyte.sdk.api.challenge.operations.challenge_configuration.*;
 import net.accelbyte.sdk.api.challenge.operations.goal_configuration.*;
+import net.accelbyte.sdk.api.challenge.operations.player_reward.PublicGetUserRewards;
 import net.accelbyte.sdk.api.challenge.wrappers.ChallengeConfiguration;
 import net.accelbyte.sdk.api.challenge.wrappers.GoalConfiguration;
+import net.accelbyte.sdk.api.challenge.wrappers.PlayerReward;
+import net.accelbyte.sdk.api.platform.operations.reward.GetReward;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -51,6 +56,7 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
 
     final ChallengeConfiguration challengeConfigWrapper = new ChallengeConfiguration(sdk);
     final GoalConfiguration goalConfigWrapper = new GoalConfiguration(sdk);
+    final PlayerReward playerRewardWrapper = new PlayerReward(sdk);
 
     final String startTime =
         Instant.now()
@@ -98,6 +104,18 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
 
       assertNotNull(getChallengeResult);
       assertEquals(getChallengeResult.getName(), challengeName);
+
+      // CASE Public get user rewards
+
+      final ModelListUserRewardsResponse getRewardsResult =
+        playerRewardWrapper.publicGetUserRewards(
+              PublicGetUserRewards.builder()
+                  .namespace(this.namespace)
+                  .build()).ensureSuccess();
+
+      // ESAC
+
+      assertNotNull(getRewardsResult);
 
       final String updatedChallengeName = challengeName + " UPDATE";
 

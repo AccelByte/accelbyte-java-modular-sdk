@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collections;
 import net.accelbyte.sdk.api.achievement.models.ModelsAchievementRequest;
@@ -18,11 +21,7 @@ import net.accelbyte.sdk.api.achievement.models.ModelsAchievementResponse;
 import net.accelbyte.sdk.api.achievement.models.ModelsAchievementUpdateRequest;
 import net.accelbyte.sdk.api.achievement.models.ModelsIcon;
 import net.accelbyte.sdk.api.achievement.models.ModelsPaginatedAchievementResponse;
-import net.accelbyte.sdk.api.achievement.operations.achievements.AdminCreateNewAchievement;
-import net.accelbyte.sdk.api.achievement.operations.achievements.AdminDeleteAchievement;
-import net.accelbyte.sdk.api.achievement.operations.achievements.AdminGetAchievement;
-import net.accelbyte.sdk.api.achievement.operations.achievements.AdminListAchievements;
-import net.accelbyte.sdk.api.achievement.operations.achievements.AdminUpdateAchievement;
+import net.accelbyte.sdk.api.achievement.operations.achievements.*;
 import net.accelbyte.sdk.api.achievement.wrappers.Achievements;
 import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.HttpResponseException;
@@ -131,6 +130,32 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
     assertEquals(getAchievementResult.getName().get(achievementLanguage), achievementName);
 
     // ESAC
+
+    // CASE Export achievement
+
+    final File exportAchievementFile = new File("export-store.zip");
+
+    if (exportAchievementFile.exists()) {
+      exportAchievementFile.delete();
+    }
+
+    exportAchievementFile.deleteOnExit();
+
+    final InputStream exportAchievementsResult =
+        achievementsWrapper.exportAchievements(
+            ExportAchievements.builder()
+                .namespace(this.namespace)
+                .build()).ensureSuccess();
+    java.nio.file.Files.copy(
+            exportAchievementsResult,
+            exportAchievementFile.toPath(),
+            java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+    org.apache.commons.io.IOUtils.closeQuietly(exportAchievementsResult);
+
+    // ESAC
+    
+    assertTrue(exportAchievementFile.exists());
+    assertTrue(Files.size(exportAchievementFile.toPath()) > 0);
 
     // CASE Get a list of achievements
 

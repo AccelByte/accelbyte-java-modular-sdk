@@ -60,28 +60,39 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
 
     // Get or create store
 
+    // CASE Get stores
+
     final List<StoreInfo> storeListResp =
         platformStoreWrapper.listStores(ListStores.builder().namespace(this.namespace).build()).ensureSuccess();
+    
+    // ESAC
+
     assertNotNull(storeListResp);
 
     StoreInfo selectedStore = null;
     if (storeListResp.size() > 0) {
       selectedStore = storeListResp.get(0);
     } else {
-      final StoreCreate storeCreate =
-          StoreCreate.builder()
-              .defaultLanguage("en-US")
-              .defaultRegion("US")
-              .description(storeTitle)
-              .title(storeTitle)
-              .build();
+    
+        // CASE Create store
 
-      selectedStore =
-          platformStoreWrapper.createStore(
-              CreateStore.builder().body(storeCreate).namespace(this.namespace).build()).ensureSuccess();
+        final StoreCreate storeCreate =
+            StoreCreate.builder()
+                .defaultLanguage("en-US")
+                .defaultRegion("US")
+                .description(storeTitle)
+                .title(storeTitle)
+                .build();
+
+        selectedStore =
+            platformStoreWrapper.createStore(
+                CreateStore.builder().body(storeCreate).namespace(this.namespace).build()).ensureSuccess();
+        
+        // ESAC
+
     }
 
-    // Create category
+    // CASE Create category
 
     Map<String, String> lDisplayNames = new HashMap<>();
     lDisplayNames.put("en-US", categoryPath);
@@ -99,7 +110,9 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
             .body(createCategoryBody)
             .build());
 
-    // Create item
+    // ESAC
+
+    // CASE Create item
 
     final net.accelbyte.sdk.api.platform.models.Localization usLocalName =
         net.accelbyte.sdk.api.platform.models.Localization.builder().title(itemName).build();
@@ -143,6 +156,8 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
                 .storeId(selectedStore.getStoreId())
                 .body(createItemBody)
                 .build()).ensureSuccess();
+
+    // ESAC
 
     assertNotNull(createItemResult);
 

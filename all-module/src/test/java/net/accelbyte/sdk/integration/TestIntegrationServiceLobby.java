@@ -6,11 +6,15 @@
 
 package net.accelbyte.sdk.integration;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import net.accelbyte.sdk.api.lobby.models.ModelFreeFormNotificationRequest;
+import net.accelbyte.sdk.api.lobby.operation_responses.config.AdminExportConfigV1OpResponse;
 import net.accelbyte.sdk.api.lobby.operations.admin.FreeFormNotification;
+import net.accelbyte.sdk.api.lobby.operations.config.AdminExportConfigV1;
 import net.accelbyte.sdk.api.lobby.wrappers.Admin;
+import net.accelbyte.sdk.api.lobby.wrappers.Config;
 import net.accelbyte.sdk.api.lobby.ws_models.PartyCreateRequest;
 import net.accelbyte.sdk.core.client.LobbyWebSocketClient;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
@@ -43,6 +47,7 @@ class TestIntegrationServiceLobby extends TestIntegration {
     final String message = "This is a Java Server SDK integration test";
 
     final Admin adminWrapper = new Admin(sdk);
+    final Config configWrapper = new Config(sdk);
 
     // CASE Sending a free from notification to users
 
@@ -53,6 +58,16 @@ class TestIntegrationServiceLobby extends TestIntegration {
         FreeFormNotification.builder().namespace(this.namespace).body(notifBody).build());
 
     // ESAC
+
+    // CASE Admin export config
+
+    final AdminExportConfigV1OpResponse adminExportConfigResp =
+      configWrapper.adminExportConfigV1(
+        AdminExportConfigV1.builder().namespace(this.namespace).build());
+
+    // ESAC
+    
+    assertNotNull(adminExportConfigResp);
   }
 
   @Test

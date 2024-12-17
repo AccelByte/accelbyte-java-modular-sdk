@@ -20,6 +20,7 @@ import net.accelbyte.sdk.api.platform.models.StoreCreate;
 import net.accelbyte.sdk.api.platform.models.StoreInfo;
 import net.accelbyte.sdk.api.platform.models.StoreUpdate;
 import net.accelbyte.sdk.api.platform.operations.reward.ExportRewards;
+import net.accelbyte.sdk.api.platform.operations.reward.ImportRewards;
 import net.accelbyte.sdk.api.platform.operations.store.CreateStore;
 import net.accelbyte.sdk.api.platform.operations.store.DeleteStore;
 import net.accelbyte.sdk.api.platform.operations.store.ExportStore1;
@@ -185,6 +186,16 @@ public class TestIntegrationServicePlatform extends TestIntegration {
 
     assertTrue(exportRewardFile.exists());
     assertTrue(Files.size(exportRewardFile.toPath()) > 0);
+
+    // CASE Import rewards
+
+    rewardWrapper.importRewards(ImportRewards.builder()
+        .namespace(this.namespace)
+        .file(exportRewardFile)
+        .replaceExisting(false)
+        .build()).ensureSuccess();
+
+    // ESAC
   }
 
   @AfterAll

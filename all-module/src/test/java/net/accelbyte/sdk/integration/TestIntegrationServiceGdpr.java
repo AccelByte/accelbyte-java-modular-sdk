@@ -10,11 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
 import java.util.List;
+
+import net.accelbyte.sdk.api.gdpr.operation_responses.data_retrieval.PublicGetUserPersonalDataRequestsOpResponse;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.DeleteAdminEmailConfiguration;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.GetAdminEmailConfiguration;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.SaveAdminEmailConfiguration;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.UpdateAdminEmailConfiguration;
+import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.PublicGetUserPersonalDataRequests;
 import net.accelbyte.sdk.api.gdpr.wrappers.Configuration;
+import net.accelbyte.sdk.api.gdpr.wrappers.DataRetrieval;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -44,6 +49,20 @@ public class TestIntegrationServiceGdpr extends TestIntegration {
     final String email2 = "email2@dummy.com";
 
     final Configuration configurationWrapper = new Configuration(sdk);
+    final DataRetrieval dataRetrievalWrapper = new DataRetrieval(sdk);
+
+    // CASE Get user personal data request
+
+    final PublicGetUserPersonalDataRequestsOpResponse getUserPersonalData =
+      dataRetrievalWrapper.publicGetUserPersonalDataRequests(
+        PublicGetUserPersonalDataRequests.builder()
+            .namespace(this.namespace)
+            .userId(this.username)
+            .build());
+
+    // ESAC
+
+    assertNotNull(getUserPersonalData);
 
     // CASE Save admin email configuration
 

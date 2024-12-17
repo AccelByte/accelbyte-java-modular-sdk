@@ -45,6 +45,7 @@ import net.accelbyte.sdk.api.session.models.ApimodelsPartySessionResponse;
 import net.accelbyte.sdk.api.session.models.ApimodelsRequestMember;
 import net.accelbyte.sdk.api.session.operations.configuration_template.AdminCreateConfigurationTemplateV1;
 import net.accelbyte.sdk.api.session.operations.configuration_template.AdminDeleteConfigurationTemplateV1;
+import net.accelbyte.sdk.api.session.operations.party.PublicPartyLeave;
 import net.accelbyte.sdk.api.session.wrappers.ConfigurationTemplate;
 import net.accelbyte.sdk.api.session.wrappers.Party;
 import net.accelbyte.sdk.core.AccelByteSDK;
@@ -161,9 +162,15 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     // ESAC
 
     assertNotNull(matchPoolListResult);
+
+    // CASE Match pool details
+
     MatchPoolDetails matchPoolDetails =
         MatchPoolDetails.builder().namespace(namespace).pool(poolName).build();
     ApiMatchPool matchPool = matchPoolsWrapper.matchPoolDetails(matchPoolDetails).ensureSuccess();
+    
+    // CASE
+
     assertNotNull(matchPool);
 
     final AccelByteSDK player1Sdk =
@@ -240,6 +247,14 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
           DeleteMatchTicket.builder().namespace(namespace).ticketid(ticketId).build());
 
       // ESAC
+
+      // CASE Public party leave
+
+      player1PartyWrapper.publicPartyLeave(
+          PublicPartyLeave.builder().namespace(namespace).partyId(publicCreatePartyResult.getId()).build());
+
+      // ESAC
+
     } finally {
       player1Sdk.logout();
 
@@ -278,10 +293,14 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
   public void testMatchFunction() throws Exception {
     final MatchFunctions matchFunctionsWrapper = new MatchFunctions(sdk);
 
+    // CASE Match function list
+
     final ApiListMatchFunctionsResponse response =
         matchFunctionsWrapper.matchFunctionList(
             MatchFunctionList.builder().namespace(this.namespace).build()).ensureSuccess();
 
+    // ESAC
+    
     assertNotNull(response);
   }
 

@@ -338,6 +338,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
   public void testQueryGameSessions() throws Exception {
     final GameSession gameSessionWrapper = new GameSession(sdk);
 
+    // CASE Query public game sessions by attributes
+
     final ApimodelsGameSessionQueryResponse publicQueryGameSessionsResult =
         gameSessionWrapper.publicQueryGameSessionsByAttributes(
             PublicQueryGameSessionsByAttributes.builder()
@@ -345,6 +347,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
                 .body(Collections.emptyMap())
                 .build()).ensureSuccess();
 
+    // ESAC
+    
     assertNotNull(publicQueryGameSessionsResult);
   }
 
@@ -501,6 +505,16 @@ public class TestIntegrationServiceSession extends TestIntegration {
           net.accelbyte.sdk.api.session.operations.party.PublicPartyLeave.builder()
               .namespace(namespace)
               .partyId(partyId)
+              .build());
+
+      // ESAC
+
+      // CASE Query parties
+
+      partyWrapper.adminQueryParties(
+          net.accelbyte.sdk.api.session.operations.party.AdminQueryParties.builder()
+              .namespace(namespace)
+              .key(publicCreatePartyResult.getCode())
               .build());
 
       // ESAC

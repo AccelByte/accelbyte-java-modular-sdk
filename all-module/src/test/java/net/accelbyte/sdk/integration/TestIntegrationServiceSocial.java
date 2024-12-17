@@ -19,15 +19,20 @@ import net.accelbyte.sdk.api.iam.models.ModelUserResponseV3;
 import net.accelbyte.sdk.api.iam.operations.users.AdminGetMyUserV3;
 import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.api.social.models.StatCreate;
+import net.accelbyte.sdk.api.social.models.StatImportInfo;
 import net.accelbyte.sdk.api.social.models.StatInfo;
 import net.accelbyte.sdk.api.social.models.StatItemInc;
 import net.accelbyte.sdk.api.social.models.StatItemIncResult;
+import net.accelbyte.sdk.api.social.models.StatPagingSlicedResult;
 import net.accelbyte.sdk.api.social.models.StatUpdate;
 import net.accelbyte.sdk.api.social.models.UserStatItemPagingSlicedResult;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.CreateStat;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.DeleteStat;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.ExportStats;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.GetStat;
+import net.accelbyte.sdk.api.social.operations.stat_configuration.GetStats;
+import net.accelbyte.sdk.api.social.operations.stat_configuration.ImportStats;
+import net.accelbyte.sdk.api.social.operations.stat_configuration.QueryStats;
 import net.accelbyte.sdk.api.social.operations.stat_configuration.UpdateStat;
 import net.accelbyte.sdk.api.social.operations.user_statistic.CreateUserStatItem;
 import net.accelbyte.sdk.api.social.operations.user_statistic.DeleteUserStatItems;
@@ -35,6 +40,7 @@ import net.accelbyte.sdk.api.social.operations.user_statistic.GetUserStatItems;
 import net.accelbyte.sdk.api.social.operations.user_statistic.IncUserStatItemValue;
 import net.accelbyte.sdk.api.social.wrappers.StatConfiguration;
 import net.accelbyte.sdk.api.social.wrappers.UserStatistic;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -60,8 +66,9 @@ public class TestIntegrationServiceSocial extends TestIntegration {
       return; // SKIP
     }
 
+    final String nameSuffix = TestHelper.generateRandomId(3);
     final String statName = "Java Server SDK Integration Test";
-    final String statCode = "javaserversdkteststat";
+    final String statCode = "javaserversdkteststat" + nameSuffix;
     final String statDescription = "This is a test";
     final String statDescriptionUpdated = "This is a test";
     final List<String> statTags = Arrays.asList(new String[] {"java", "server_sdk", "test"});
@@ -104,6 +111,16 @@ public class TestIntegrationServiceSocial extends TestIntegration {
 
     // ESAC
 
+    // CASE Get a statistic
+
+    final StatPagingSlicedResult getStatsResult =
+        statConfigWrapper.getStats(
+            GetStats.builder().namespace(this.namespace).build()).ensureSuccess();
+
+    assertNotNull(getStatsResult);
+
+    // ESAC
+
     // CASE Update a statistic
 
     final StatUpdate updateStat = StatUpdate.builder().description(statDescriptionUpdated).build();
@@ -143,6 +160,32 @@ public class TestIntegrationServiceSocial extends TestIntegration {
 
     assertTrue(exportStatsFile.exists());
     assertTrue(Files.size(exportStatsFile.toPath()) > 0);
+
+    // CASE Import statistics
+
+    final StatImportInfo importStatsResult =
+        statConfigWrapper.importStats(ImportStats.builder()
+            .namespace(this.namespace)
+            .replaceExisting(false)
+            .file(exportStatsFile)
+        .build()).ensureSuccess();
+  
+    // ESAC
+
+    assertNotNull(importStatsResult);
+
+    // CASE Query statistics
+
+    final StatPagingSlicedResult queryStatsResult =
+        statConfigWrapper.queryStats(QueryStats.builder()
+            .namespace(this.namespace)
+            .keyword(statCode)
+        .build()).ensureSuccess();
+  
+    // ESAC
+
+    assertNotNull(queryStatsResult);
+    assertTrue(queryStatsResult.getData().size() > 0);
 
     // CASE Delete a statistic
 
