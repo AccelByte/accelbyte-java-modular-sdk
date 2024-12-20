@@ -32,6 +32,8 @@ pipeline {
           sh "mkdir -p /opt/cov-analysis && rm -rf /opt/cov-analysis/* && tar xf /opt/cov-analysis.tar.gz -C /opt/cov-analysis --strip-components=1"
 
           sh "git config --global --add safe.directory '*' && git clean -xfd"
+          sh "which java"
+          sh "java -version"
           sh "PATH=/opt/cov-analysis/bin:\$PATH cov-build --dir cov-int bash gradlew build -x test --no-daemon"
           sh "tar caf cov-int.tar.gz cov-int"
 
