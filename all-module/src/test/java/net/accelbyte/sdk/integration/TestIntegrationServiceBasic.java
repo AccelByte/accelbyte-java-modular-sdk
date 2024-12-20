@@ -57,7 +57,8 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     try {
       final UserProfilePrivateInfo getProfileResult =
           userProfileWrapper.getMyProfileInfo(
-              GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
+              GetMyProfileInfo.builder().namespace(this.namespace).build())
+                .ensureSuccess();
 
       assertNotNull(getProfileResult);
 
@@ -65,14 +66,15 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
       final UserProfilePrivateInfo deleteUserProfileResult =
           userProfileWrapper.deleteUserProfile(
-              DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+              DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build())
+                .ensureSuccess();
 
       assertNotNull(deleteUserProfileResult);
-    } catch (HttpResponseException hex) {
-      final int httpCode = hex.getHttpCode();
-      final String errorMessage = hex.getErrorMessage();
+    } catch (ApiResponseException hex) {
+      final int httpCode = hex.getStatusCode();
+      final String errorCode = hex.getCode();
       final boolean isUserProfileNotFound =
-          httpCode == 404 && errorMessage.contains("11440"); // User profile not found
+          httpCode == 404 && errorCode.equals("11440"); // User profile not found
       if (!isUserProfileNotFound) {
         throw hex; // Error other than user profile not found is not acceptable
       }

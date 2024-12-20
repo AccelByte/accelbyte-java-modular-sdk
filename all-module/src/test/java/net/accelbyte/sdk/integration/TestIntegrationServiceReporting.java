@@ -31,6 +31,7 @@ import net.accelbyte.sdk.api.reporting.wrappers.PublicReasons;
 import net.accelbyte.sdk.api.reporting.wrappers.PublicReports;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -114,8 +115,9 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                           .authTypeFromEnum(AuthType.EMAILPASSWD)
                           .emailAddress(player1Username + "@test.com")
                           .password(player1Password)
-                          .displayName("Java Server SDK Test")
+                          .displayName("Java Server SDK Test")                          
                           .username(player1Username)
+                          .uniqueDisplayName(player1Username)
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
@@ -131,6 +133,7 @@ public class TestIntegrationServiceReporting extends TestIntegration {
                           .password(player2Password)
                           .displayName("Java Server SDK Test")
                           .username(player2Username)
+                          .uniqueDisplayName(player2Username)
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())
@@ -173,8 +176,8 @@ public class TestIntegrationServiceReporting extends TestIntegration {
         final String ticketId = submitReportResponse.getTicketId();
 
         assertTrue(ticketId != null && !ticketId.equals(""));
-      } catch (HttpResponseException hrex) {
-        if (hrex.getErrorMessage().contains("84101")) { // Reason not found
+      } catch (ApiResponseException hrex) {
+        if (hrex.getCode().equals("84101")) { // Reason not found
           // Ignore for now due to intermittent issue in integration test environment
         } else {
           throw hrex;

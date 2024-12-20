@@ -18,6 +18,7 @@ import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.P
 import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut;
 import net.accelbyte.sdk.api.gametelemetry.wrappers.GametelemetryOperations;
 import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.ApiResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -80,10 +81,10 @@ public class TestIntegrationServiceGameTelemetry extends TestIntegration {
                   .build());
 
       // ESAC
-    } catch (HttpResponseException hex) {
-      final int httpCode = hex.getHttpCode();
-      final String message = hex.getErrorMessage();
-      isUserNotFound = httpCode == 404 && message != null && message.contains("20008");
+    } catch (ApiResponseException hex) {
+      final int httpCode = hex.getStatusCode();
+      final String errorCode = hex.getCode();
+      isUserNotFound = httpCode == 404 && errorCode != null && errorCode.equals("20008");
       if (!isUserNotFound) {
         throw hex; // Error response other than user not found is not acceptable for this test
       }

@@ -85,9 +85,9 @@ public class TestIntegrationServiceGroup extends TestIntegration {
 
       defaultAdminRoleId = getGroupConfigResult.getGroupAdminRoleId();
       defaultMemberRoleId = getGroupConfigResult.getGroupMemberRoleId();
-    } catch (HttpResponseException rex) {
+    } catch (ApiResponseException rex) {
       // No inital configuration yet
-      final boolean isNotAvailable = rex.getErrorMessage().contains("73131");
+      final boolean isNotAvailable = rex.getCode().equals("73131");
 
       if (isNotAvailable) {
         final ModelsCreateGroupConfigurationResponseV1 initiateGroupConfigResult =
@@ -124,9 +124,9 @@ public class TestIntegrationServiceGroup extends TestIntegration {
       // ESAC
 
       assertNotNull(createGroupConfigResult);
-    } catch (HttpResponseException rex) {
+    } catch (ApiResponseException rex) {
       // Unable to create global configuration: global configuration already exist
-      boolean isAlreadyExist = rex.getErrorMessage().contains("73130");
+      boolean isAlreadyExist = rex.getCode().equals("73130");
 
       if (!isAlreadyExist) {
         throw rex;
@@ -153,9 +153,9 @@ public class TestIntegrationServiceGroup extends TestIntegration {
 
         groupMemberWrapper.leaveGroupPublicV2(leaveGroupBody);
       }
-    } catch (HttpResponseException rex) {
+    } catch (ApiResponseException rex) {
       // User does not belong to any group
-      final boolean doesNotBelongToAnyGroup = rex.getErrorMessage().contains("73034");
+      final boolean doesNotBelongToAnyGroup = rex.getCode().equals("73034");
 
       if (!doesNotBelongToAnyGroup) {
         throw rex;

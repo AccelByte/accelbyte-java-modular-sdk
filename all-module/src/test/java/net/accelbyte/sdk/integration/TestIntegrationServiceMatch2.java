@@ -189,6 +189,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
                           .password(player1Password)
                           .displayName("Java Server SDK Test")
                           .username(player1Username)
+                          .uniqueDisplayName(player1Username)
                           .country("ID")
                           .dateOfBirth("1995-01-10")
                           .build())

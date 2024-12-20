@@ -27,6 +27,7 @@ import net.accelbyte.sdk.api.csm.operations.configuration_v2.UpdateVariableV2;
 import net.accelbyte.sdk.api.csm.wrappers.AppV2;
 import net.accelbyte.sdk.api.csm.wrappers.ConfigurationV2;
 import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.ApiResponseException;
 
 import org.junit.jupiter.api.*;
 
@@ -51,8 +52,8 @@ public class TestIntegrationServiceCsm extends TestIntegration {
           .build());
 
       isExtendAppExists = true;
-    } catch (HttpResponseException hrex) {
-      if (hrex.getHttpCode() != 404) {
+    } catch (ApiResponseException hrex) {
+      if (hrex.getStatusCode() != 404) {
         throw hrex;
       }
     }

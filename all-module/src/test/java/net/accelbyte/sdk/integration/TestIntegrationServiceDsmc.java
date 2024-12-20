@@ -34,6 +34,7 @@ import net.accelbyte.sdk.api.sessionbrowser.wrappers.Session;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponse;
 import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.ApiResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.client.DefaultHttpRetryPolicy;
 import net.accelbyte.sdk.core.client.DefaultHttpRetryPolicy.RetryIntervalType;
@@ -226,9 +227,10 @@ class TestIntegrationServiceDsmc extends TestIntegration {
           ModelsClaimSessionRequest.builder().sessionId(sessionId).build();
 
       dsmcSessionReliableWrapper.claimServer(
-          ClaimServer.builder().namespace(targetNamespace).body(claimServerBody).build());
-    } catch (HttpResponseException hrex) {
-      if (hrex.getHttpCode() == 425) {
+          ClaimServer.builder().namespace(targetNamespace).body(claimServerBody).build())
+            .ensureSuccess();
+    } catch (ApiResponseException hrex) {
+      if (hrex.getStatusCode() == 425) {
         // Due test environment issue, ignore if we get 425 - 720219 ClaimServerNotReady
         // during integration test for now
       } else {

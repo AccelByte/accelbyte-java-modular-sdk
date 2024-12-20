@@ -120,6 +120,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
             .password(userPassword)
             .displayName(userDisplayName)
             .username(userName)
+            .uniqueDisplayName(userName)
             .country(userCountry)
             .dateOfBirth(userDateOfBirth)
             .build();
