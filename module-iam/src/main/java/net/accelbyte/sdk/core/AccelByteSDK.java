@@ -151,7 +151,8 @@ public class AccelByteSDK implements RequestRunner {
       } else {
         final OAuth20 oAuth20 = new OAuth20(this);
 
-        oAuth20.verifyTokenV3(VerifyTokenV3.builder().token(authContext.getToken()).build());
+        oAuth20.verifyTokenV3(VerifyTokenV3.builder().token(authContext.getToken()).build())
+          .ensureSuccess();
       }
 
       if (Strings.isNullOrEmpty(permission.getResource())) {
