@@ -71,6 +71,7 @@ public class TestIntegrationServiceIam extends TestIntegration {
             .displayName(userDisplayName)
             .country(userCountry)
             .dateOfBirth(userDateOfBirth)
+            .uniqueDisplayName(username)
             .build();
 
     final ModelUserCreateResponseV3 createUserV3Result =

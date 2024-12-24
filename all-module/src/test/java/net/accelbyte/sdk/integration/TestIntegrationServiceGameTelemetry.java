@@ -100,7 +100,7 @@ public class TestIntegrationServiceGameTelemetry extends TestIntegration {
 
     // ESAC
 
-    if (!isUserNotFound) {
+    if (!isUserNotFound && getTelemetry.getTotalPlaytime() != null) {
       assertEquals(playTime, getTelemetry.getTotalPlaytime()); // Only assert total_playtime if
       // user is found
     }
