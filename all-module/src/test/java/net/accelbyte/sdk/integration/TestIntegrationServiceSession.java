@@ -198,6 +198,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
       final String player1Password = TestHelper.generateRandomPassword(10);
       final String player2Username = ("javasdk_" + TestHelper.generateRandomId(8));
       final String player2Password = TestHelper.generateRandomPassword(10);
+      final String player1EmailAdd = player1Username + "@test.com";
+      final String player2EmailAdd = player2Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult1 =
           usersV4Wrapper.publicCreateUserV4(
@@ -206,7 +208,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                   .body(
                       AccountCreateUserRequestV4.builder()
                           .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1Username + "@test.com")
+                          .emailAddress(player1EmailAdd)
                           .password(player1Password)
                           .displayName("Java Server SDK Test")
                           .username(player1Username)
@@ -225,7 +227,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                   .body(
                       AccountCreateUserRequestV4.builder()
                           .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player2Username + "@test.com")
+                          .emailAddress(player2EmailAdd)
                           .password(player2Password)
                           .displayName("Java Server SDK Test")
                           .username(player2Username)
@@ -237,8 +239,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       player2UserId = createUserResult2.getUserId();
 
-      player1Sdk.loginUser(player1Username, player1Password);
-      player2Sdk.loginUser(player2Username, player2Password);
+      player1Sdk.loginUser(player1EmailAdd, player1Password);
+      player2Sdk.loginUser(player2EmailAdd, player2Password);
 
       final GameSession player1GameSessionWrapper = new GameSession(player1Sdk);
       final GameSession player2GameSessionWrapper = new GameSession(player2Sdk);
@@ -402,6 +404,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
       final String player1Password = TestHelper.generateRandomPassword(10);
       final String player2Username = ("javasdk_" + TestHelper.generateRandomId(8));
       final String player2Password = TestHelper.generateRandomPassword(10);
+      final String player1EmailAdd = player1Username + "@test.com";
+      final String player2EmailAdd = player2Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult1 =
           usersV4Wrapper.publicCreateUserV4(
@@ -410,7 +414,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                   .body(
                       AccountCreateUserRequestV4.builder()
                           .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1Username + "@test.com")
+                          .emailAddress(player1EmailAdd)
                           .password(player1Password)
                           .displayName("Java Server SDK Test")
                           .username(player1Username)
@@ -429,7 +433,7 @@ public class TestIntegrationServiceSession extends TestIntegration {
                   .body(
                       AccountCreateUserRequestV4.builder()
                           .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player2Username + "@test.com")
+                          .emailAddress(player2EmailAdd)
                           .password(player2Password)
                           .displayName("Java Server SDK Test")
                           .username(player2Username)
@@ -441,8 +445,8 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       player2UserId = createUserResult2.getUserId();
 
-      player1Sdk.loginUser(player1Username, player1Password);
-      player2Sdk.loginUser(player2Username, player2Password);
+      player1Sdk.loginUser(player1EmailAdd, player1Password);
+      player2Sdk.loginUser(player2EmailAdd, player2Password);
 
       final Party player1PartyWrapper = new Party(player1Sdk);
       final Party player2PartyWrapper = new Party(player2Sdk);
