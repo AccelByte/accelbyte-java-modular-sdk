@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,29 +21,25 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class OrderGrantInfo extends Model {
 
-    @JsonProperty("credits")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<CreditSummary> credits;
+  @JsonProperty("credits")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<CreditSummary> credits;
 
-    @JsonProperty("entitlements")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<EntitlementSummary> entitlements;
+  @JsonProperty("entitlements")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<EntitlementSummary> entitlements;
 
+  @JsonIgnore
+  public OrderGrantInfo createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public OrderGrantInfo createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<OrderGrantInfo> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<OrderGrantInfo>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<OrderGrantInfo> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<OrderGrantInfo>>() {});
+  }
 }

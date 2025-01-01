@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.basic.operation_responses.misc;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.basic.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicGetTimeOpResponse extends ApiResponseWithData<RetrieveTimeResponse> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.basic.operations.misc.PublicGetTime";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.basic.operations.misc.PublicGetTime";
+  }
 }

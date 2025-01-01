@@ -32,9 +32,8 @@ import net.accelbyte.sdk.api.sessionbrowser.operations.session.AdminDeleteSessio
 import net.accelbyte.sdk.api.sessionbrowser.operations.session.CreateSession;
 import net.accelbyte.sdk.api.sessionbrowser.wrappers.Session;
 import net.accelbyte.sdk.core.AccelByteSDK;
-import net.accelbyte.sdk.core.HttpResponse;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.ApiResponseException;
+import net.accelbyte.sdk.core.HttpResponse;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.client.DefaultHttpRetryPolicy;
 import net.accelbyte.sdk.core.client.DefaultHttpRetryPolicy.RetryIntervalType;
@@ -81,14 +80,17 @@ class TestIntegrationServiceDsmc extends TestIntegration {
     final DeploymentConfig dsmcDeploymentConfigWrapper = new DeploymentConfig(sdk);
 
     final ModelsListServerResponse listLocalServerResult =
-        dsmcAdminWrapper.listLocalServer(
-            ListLocalServer.builder().namespace(this.namespace).build()).ensureSuccess();
+        dsmcAdminWrapper
+            .listLocalServer(ListLocalServer.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     assertNotNull(listLocalServerResult);
 
     ModelsDeploymentWithOverride getDeploymentResult =
-        dsmcDeploymentConfigWrapper.getDeployment(
-            GetDeployment.builder().deployment(targetDeployment).namespace(namespace).build()).ensureSuccess();
+        dsmcDeploymentConfigWrapper
+            .getDeployment(
+                GetDeployment.builder().deployment(targetDeployment).namespace(namespace).build())
+            .ensureSuccess();
 
     assertNotNull(getDeploymentResult);
     assertNotNull(getDeploymentResult.getGameVersion());
@@ -113,8 +115,10 @@ class TestIntegrationServiceDsmc extends TestIntegration {
             .build();
 
     final ModelsSessionResponse createSessionResult =
-        sessionBrowserWrapper.createSession(
-            CreateSession.builder().namespace(targetNamespace).body(createSessionBody).build()).ensureSuccess();
+        sessionBrowserWrapper
+            .createSession(
+                CreateSession.builder().namespace(targetNamespace).body(createSessionBody).build())
+            .ensureSuccess();
 
     assertNotNull(createSessionResult);
     assertEquals(targetUsername, createSessionResult.getUsername());
@@ -155,20 +159,24 @@ class TestIntegrationServiceDsmc extends TestIntegration {
             .build();
 
     final net.accelbyte.sdk.api.dsmc.models.ModelsSessionResponse createSessionDsmcResult =
-        dsmcSessionWrapper.createSession(
-            net.accelbyte.sdk.api.dsmc.operations.session.CreateSession.builder()
-                .namespace(targetNamespace)
-                .body(createSessionDsmcBody)
-                .build()).ensureSuccess();
+        dsmcSessionWrapper
+            .createSession(
+                net.accelbyte.sdk.api.dsmc.operations.session.CreateSession.builder()
+                    .namespace(targetNamespace)
+                    .body(createSessionDsmcBody)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(createSessionDsmcResult);
 
     final net.accelbyte.sdk.api.dsmc.models.ModelsSessionResponse getSessionDsmcResult =
-        dsmcSessionWrapper.getSession(
-            net.accelbyte.sdk.api.dsmc.operations.session.GetSession.builder()
-                .namespace(targetNamespace)
-                .sessionID(sessionId)
-                .build()).ensureSuccess();
+        dsmcSessionWrapper
+            .getSession(
+                net.accelbyte.sdk.api.dsmc.operations.session.GetSession.builder()
+                    .namespace(targetNamespace)
+                    .sessionID(sessionId)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getSessionDsmcResult);
 
@@ -226,9 +234,10 @@ class TestIntegrationServiceDsmc extends TestIntegration {
       ModelsClaimSessionRequest claimServerBody =
           ModelsClaimSessionRequest.builder().sessionId(sessionId).build();
 
-      dsmcSessionReliableWrapper.claimServer(
-          ClaimServer.builder().namespace(targetNamespace).body(claimServerBody).build())
-            .ensureSuccess();
+      dsmcSessionReliableWrapper
+          .claimServer(
+              ClaimServer.builder().namespace(targetNamespace).body(claimServerBody).build())
+          .ensureSuccess();
     } catch (ApiResponseException hrex) {
       if (hrex.getStatusCode() == 425) {
         // Due test environment issue, ignore if we get 425 - 720219 ClaimServerNotReady
@@ -247,8 +256,13 @@ class TestIntegrationServiceDsmc extends TestIntegration {
     // Delete session (SessionBrowser)
 
     ModelsAdminSessionResponse deleteSessionResult =
-        sessionBrowserWrapper.adminDeleteSession(
-            AdminDeleteSession.builder().namespace(targetNamespace).sessionID(sessionId).build()).ensureSuccess();
+        sessionBrowserWrapper
+            .adminDeleteSession(
+                AdminDeleteSession.builder()
+                    .namespace(targetNamespace)
+                    .sessionID(sessionId)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(deleteSessionResult);
   }

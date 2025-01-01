@@ -10,21 +10,17 @@ package net.accelbyte.sdk.api.platform.operation_responses.wallet;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Deprecated
 @Getter
 @Setter
 public class QueryWalletsOpResponse extends ApiResponseWithData<WalletPagingSlicedResult> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.wallet.QueryWallets";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.wallet.QueryWallets";
+  }
 }

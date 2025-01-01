@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.challenge.operation_responses.challenge_configurat
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.challenge.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AdminGetPeriodsOpResponse extends ApiResponseWithData<ModelListPeriodsResponse> {
-    
-    private IamErrorResponse error401 = null;
 
-    private IamErrorResponse error403 = null;
+  private IamErrorResponse error401 = null;
 
-    private ResponseError error404 = null;
+  private IamErrorResponse error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.challenge.operations.challenge_configuration.AdminGetPeriods";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.challenge.operations.challenge_configuration.AdminGetPeriods";
+  }
 }

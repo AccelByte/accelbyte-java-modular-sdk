@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.achievement;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class AchievementErrors
-{
-}
+public class AchievementErrors {}

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApiDSHostConfiguration extends Model {
 
-    @JsonProperty("instanceId")
-    private String instanceId;
+  @JsonProperty("instanceId")
+  private String instanceId;
 
-    @JsonProperty("instanceProvider")
-    private String instanceProvider;
+  @JsonProperty("instanceProvider")
+  private String instanceProvider;
 
-    @JsonProperty("instanceType")
-    private String instanceType;
+  @JsonProperty("instanceType")
+  private String instanceType;
 
-    @JsonProperty("serversPerVm")
-    private Integer serversPerVm;
+  @JsonProperty("serversPerVm")
+  private Integer serversPerVm;
 
+  @JsonIgnore
+  public ApiDSHostConfiguration createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApiDSHostConfiguration createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApiDSHostConfiguration> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApiDSHostConfiguration>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApiDSHostConfiguration> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApiDSHostConfiguration>>() {});
+  }
 }

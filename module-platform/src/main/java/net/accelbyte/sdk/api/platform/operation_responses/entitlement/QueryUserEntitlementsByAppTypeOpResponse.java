@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.platform.operation_responses.entitlement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class QueryUserEntitlementsByAppTypeOpResponse extends ApiResponseWithData<AppEntitlementPagingSlicedResult> {
-    
+public class QueryUserEntitlementsByAppTypeOpResponse
+    extends ApiResponseWithData<AppEntitlementPagingSlicedResult> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.entitlement.QueryUserEntitlementsByAppType";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.entitlement.QueryUserEntitlementsByAppType";
+  }
 }

@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.lobby.operation_responses.player;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminBulkUnblockPlayersV1OpResponse extends ApiResponse {
-    
-    private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error401 = null;
+  private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error403 = null;
+  private RestapiErrorResponseBody error401 = null;
 
-    private RestapiErrorResponseBody error500 = null;
+  private RestapiErrorResponseBody error403 = null;
 
+  private RestapiErrorResponseBody error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.player.AdminBulkUnblockPlayersV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.player.AdminBulkUnblockPlayersV1";
+  }
 }

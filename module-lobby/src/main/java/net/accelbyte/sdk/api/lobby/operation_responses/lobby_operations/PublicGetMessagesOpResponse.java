@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.lobby.operation_responses.lobby_operations;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetMessagesOpResponse extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
-    
-    private RestapiErrorResponseBody error500 = null;
+public class PublicGetMessagesOpResponse
+    extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
 
+  private RestapiErrorResponseBody error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.lobby_operations.PublicGetMessages";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.lobby_operations.PublicGetMessages";
+  }
 }

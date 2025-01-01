@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.platform.operation_responses.iap;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class UpdateGoogleP12FileOpResponse extends ApiResponseWithData<GoogleIAPConfigInfo> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.iap.UpdateGoogleP12File";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.iap.UpdateGoogleP12File";
+  }
 }

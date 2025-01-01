@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.social.operation_responses.global_statistic;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.social.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetGlobalStatItemsOpResponse extends ApiResponseWithData<GlobalStatItemPagingSlicedResult> {
-    
-    private ErrorEntity error401 = null;
+public class GetGlobalStatItemsOpResponse
+    extends ApiResponseWithData<GlobalStatItemPagingSlicedResult> {
 
-    private ErrorEntity error403 = null;
+  private ErrorEntity error401 = null;
 
-    private ErrorEntity error500 = null;
+  private ErrorEntity error403 = null;
 
+  private ErrorEntity error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.social.operations.global_statistic.GetGlobalStatItems";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.social.operations.global_statistic.GetGlobalStatItems";
+  }
 }

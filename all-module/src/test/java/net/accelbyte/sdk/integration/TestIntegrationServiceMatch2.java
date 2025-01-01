@@ -123,8 +123,10 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     // CASE Get a match rule set
 
     final ApiRuleSetPayload ruleSetDetailsResult =
-        ruleSetsWrapper.ruleSetDetails(
-            RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build()).ensureSuccess();
+        ruleSetsWrapper
+            .ruleSetDetails(
+                RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -157,7 +159,9 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     // CASE List match pools
 
     final ApiListMatchPoolsResponse matchPoolListResult =
-        matchPoolsWrapper.matchPoolList(MatchPoolList.builder().namespace(namespace).build()).ensureSuccess();
+        matchPoolsWrapper
+            .matchPoolList(MatchPoolList.builder().namespace(namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -168,7 +172,7 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     MatchPoolDetails matchPoolDetails =
         MatchPoolDetails.builder().namespace(namespace).pool(poolName).build();
     ApiMatchPool matchPool = matchPoolsWrapper.matchPoolDetails(matchPoolDetails).ensureSuccess();
-    
+
     // CASE
 
     assertNotNull(matchPool);
@@ -187,21 +191,23 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
       final String player1EmailAdd = player1Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1EmailAdd)
-                          .password(player1Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player1Username)
-                          .uniqueDisplayName(player1Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player1EmailAdd)
+                              .password(player1Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player1Username)
+                              .uniqueDisplayName(player1Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player1UserId = createUserResult.getUserId();
 
@@ -211,32 +217,36 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
       final MatchTickets player1MatchTicketWrapper = new MatchTickets(player1Sdk);
 
       final ApimodelsPartySessionResponse publicCreatePartyResult =
-          player1PartyWrapper.publicCreateParty(
-              net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
-                  .namespace(namespace)
-                  .body(
-                      ApimodelsCreatePartyRequest.builder()
-                          .configurationName(cfgTemplateName)
-                          .members(
-                              Collections.singletonList(
-                                  ApimodelsRequestMember.builder().id(player1UserId).build()))
-                          .build())
-                  .build()).ensureSuccess();
+          player1PartyWrapper
+              .publicCreateParty(
+                  net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
+                      .namespace(namespace)
+                      .body(
+                          ApimodelsCreatePartyRequest.builder()
+                              .configurationName(cfgTemplateName)
+                              .members(
+                                  Collections.singletonList(
+                                      ApimodelsRequestMember.builder().id(player1UserId).build()))
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       final String partySessionId = publicCreatePartyResult.getId();
 
       // CASE Player create a match ticket
 
       final ApiMatchTicketResponse createMatchTicketResult =
-          player1MatchTicketWrapper.createMatchTicket(
-              CreateMatchTicket.builder()
-                  .namespace(namespace)
-                  .body(
-                      ApiMatchTicketRequest.builder()
-                          .matchPool(poolName)
-                          .sessionID(partySessionId)
-                          .build())
-                  .build()).ensureSuccess();
+          player1MatchTicketWrapper
+              .createMatchTicket(
+                  CreateMatchTicket.builder()
+                      .namespace(namespace)
+                      .body(
+                          ApiMatchTicketRequest.builder()
+                              .matchPool(poolName)
+                              .sessionID(partySessionId)
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -252,7 +262,10 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
       // CASE Public party leave
 
       player1PartyWrapper.publicPartyLeave(
-          PublicPartyLeave.builder().namespace(namespace).partyId(publicCreatePartyResult.getId()).build());
+          PublicPartyLeave.builder()
+              .namespace(namespace)
+              .partyId(publicCreatePartyResult.getId())
+              .build());
 
       // ESAC
 
@@ -297,11 +310,12 @@ public class TestIntegrationServiceMatch2 extends TestIntegration {
     // CASE Match function list
 
     final ApiListMatchFunctionsResponse response =
-        matchFunctionsWrapper.matchFunctionList(
-            MatchFunctionList.builder().namespace(this.namespace).build()).ensureSuccess();
+        matchFunctionsWrapper
+            .matchFunctionList(MatchFunctionList.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
-    
+
     assertNotNull(response);
   }
 

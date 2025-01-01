@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class TwitchSyncRequest extends Model {
 
-    @JsonProperty("gameId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String gameId;
+  @JsonProperty("gameId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String gameId;
 
-    @JsonProperty("language")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String language;
+  @JsonProperty("language")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String language;
 
-    @JsonProperty("region")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String region;
+  @JsonProperty("region")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String region;
 
+  @JsonIgnore
+  public TwitchSyncRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public TwitchSyncRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<TwitchSyncRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<TwitchSyncRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<TwitchSyncRequest> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<TwitchSyncRequest>>() {});
+  }
 }

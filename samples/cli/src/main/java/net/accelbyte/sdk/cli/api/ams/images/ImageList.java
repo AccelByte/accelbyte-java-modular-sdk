@@ -8,8 +8,9 @@
 
 package net.accelbyte.sdk.cli.api.ams.images;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
+import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.ams.models.*;
 import net.accelbyte.sdk.api.ams.wrappers.Images;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -18,95 +19,111 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
-import java.util.concurrent.Callable;
-
 @Command(name = "imageList", mixinStandardHelpOptions = true)
 public class ImageList implements Callable<Integer> {
 
-    private static final Logger log = LogManager.getLogger(ImageList.class);
+  private static final Logger log = LogManager.getLogger(ImageList.class);
 
-    @Option(names = {"--namespace"}, description = "namespace")
-    String namespace;
+  @Option(
+      names = {"--namespace"},
+      description = "namespace")
+  String namespace;
 
-    @Option(names = {"--count"}, description = "count")
-    Integer count;
+  @Option(
+      names = {"--count"},
+      description = "count")
+  Integer count;
 
-    @Option(names = {"--inUse"}, description = "inUse")
-    String inUse;
+  @Option(
+      names = {"--inUse"},
+      description = "inUse")
+  String inUse;
 
-    @Option(names = {"--isProtected"}, description = "isProtected")
-    Boolean isProtected;
+  @Option(
+      names = {"--isProtected"},
+      description = "isProtected")
+  Boolean isProtected;
 
-    @Option(names = {"--name"}, description = "name")
-    String name;
+  @Option(
+      names = {"--name"},
+      description = "name")
+  String name;
 
-    @Option(names = {"--offset"}, description = "offset")
-    Integer offset;
+  @Option(
+      names = {"--offset"},
+      description = "offset")
+  Integer offset;
 
-    @Option(names = {"--sortBy"}, description = "sortBy")
-    String sortBy;
+  @Option(
+      names = {"--sortBy"},
+      description = "sortBy")
+  String sortBy;
 
-    @Option(names = {"--sortDirection"}, description = "sortDirection")
-    String sortDirection;
+  @Option(
+      names = {"--sortDirection"},
+      description = "sortDirection")
+  String sortDirection;
 
-    @Option(names = {"--status"}, description = "status")
-    String status;
+  @Option(
+      names = {"--status"},
+      description = "status")
+  String status;
 
-    @Option(names = {"--tag"}, description = "tag")
-    String tag;
+  @Option(
+      names = {"--tag"},
+      description = "tag")
+  String tag;
 
+  @Option(
+      names = {"--logging"},
+      description = "logger")
+  boolean logging;
 
-    @Option(names = {"--logging"}, description = "logger")
-    boolean logging;
+  public static void main(String[] args) {
+    int exitCode = new CommandLine(new ImageList()).execute(args);
+    System.exit(exitCode);
+  }
 
-    public static void main(String[] args) {
-        int exitCode = new CommandLine(new ImageList()).execute(args);
-        System.exit(exitCode);
+  @Override
+  public Integer call() {
+    try {
+      final OkhttpClient httpClient = new OkhttpClient();
+      if (logging) {
+        httpClient.setLogger(new OkhttpLogger());
+      }
+      final AccelByteSDK sdk =
+          new AccelByteSDK(
+              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+      final Images wrapper = new Images(sdk);
+      final net.accelbyte.sdk.api.ams.operations.images.ImageList operation =
+          net.accelbyte.sdk.api.ams.operations.images.ImageList.builder()
+              .namespace(namespace)
+              .count(count)
+              .inUse(inUse)
+              .isProtected(isProtected)
+              .name(name)
+              .offset(offset)
+              .sortBy(sortBy)
+              .sortDirection(sortDirection)
+              .status(status)
+              .tag(tag)
+              .build();
+      final ApiImageList response = wrapper.imageList(operation).ensureSuccess();
+      final String responseString =
+          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+      log.info("Operation successful\n{}", responseString);
+      return 0;
+    } catch (HttpResponseException e) {
+      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+    } catch (Exception e) {
+      log.error("An exception was thrown", e);
     }
-
-    @Override
-    public Integer call() {
-        try {
-            final OkhttpClient httpClient = new OkhttpClient();
-            if (logging) {
-                httpClient.setLogger(new OkhttpLogger());
-            }
-            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-            final Images wrapper = new Images(sdk);
-            final net.accelbyte.sdk.api.ams.operations.images.ImageList operation =
-                    net.accelbyte.sdk.api.ams.operations.images.ImageList.builder()
-                            .namespace(namespace)
-                            .count(count)
-                            .inUse(inUse)
-                            .isProtected(isProtected)
-                            .name(name)
-                            .offset(offset)
-                            .sortBy(sortBy)
-                            .sortDirection(sortDirection)
-                            .status(status)
-                            .tag(tag)
-                            .build();
-            final ApiImageList response =
-                    wrapper.imageList(operation).ensureSuccess();
-            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-            log.info("Operation successful\n{}", responseString);
-            return 0;
-        } catch (HttpResponseException e) {
-            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-        } catch (Exception e) {
-            log.error("An exception was thrown", e);
-        }
-        return 1;
-    }
+    return 1;
+  }
 }

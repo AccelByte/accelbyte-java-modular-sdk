@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.iam.operation_responses.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicWebLinkPlatformOpResponse extends ApiResponseWithData<ModelWebLinkingResponse> {
-    
-    private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error401 = null;
+  private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error404 = null;
+  private RestErrorResponse error401 = null;
 
+  private RestErrorResponse error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.users.PublicWebLinkPlatform";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.users.PublicWebLinkPlatform";
+  }
 }

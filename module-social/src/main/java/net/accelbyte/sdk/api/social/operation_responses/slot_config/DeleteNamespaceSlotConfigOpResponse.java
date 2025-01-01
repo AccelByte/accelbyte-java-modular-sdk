@@ -10,21 +10,17 @@ package net.accelbyte.sdk.api.social.operation_responses.slot_config;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.social.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Deprecated
 @Getter
 @Setter
 public class DeleteNamespaceSlotConfigOpResponse extends ApiResponse {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.social.operations.slot_config.DeleteNamespaceSlotConfig";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.social.operations.slot_config.DeleteNamespaceSlotConfig";
+  }
 }

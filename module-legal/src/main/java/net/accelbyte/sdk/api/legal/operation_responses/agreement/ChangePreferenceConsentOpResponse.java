@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.legal.operation_responses.agreement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class ChangePreferenceConsentOpResponse extends ApiResponse {
-    
-    private ErrorEntity error404 = null;
 
+  private ErrorEntity error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.agreement.ChangePreferenceConsent";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.agreement.ChangePreferenceConsent";
+  }
 }

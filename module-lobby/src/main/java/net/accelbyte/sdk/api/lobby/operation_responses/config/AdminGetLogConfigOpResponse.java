@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.lobby.operation_responses.config;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AdminGetLogConfigOpResponse extends ApiResponseWithData<LogconfigConfiguration> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.config.AdminGetLogConfig";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.config.AdminGetLogConfig";
+  }
 }

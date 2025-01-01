@@ -8,132 +8,124 @@
 
 package net.accelbyte.sdk.api.legal.operations.base_legal_policies_with_namespace;
 
-import java.io.*;
-import java.util.*;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.*;
+import java.util.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.legal.operation_responses.base_legal_policies_with_namespace.RetrieveAllPolicyTypes1OpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * retrieveAllPolicyTypes_1
  *
- * Retrieve all supported policy types.
+ * <p>Retrieve all supported policy types.
  */
 @Getter
 @Setter
 public class RetrieveAllPolicyTypes1 extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/agreement/admin/namespaces/{namespace}/policy-types";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList();
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private Integer offset;
-    private Integer limit;
+  /** generated field's value */
+  private String path = "/agreement/admin/namespaces/{namespace}/policy-types";
 
-    /**
-    * @param namespace required
-    * @param limit required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public RetrieveAllPolicyTypes1(
-            String customBasePath,            String namespace,
-            Integer offset,
-            Integer limit
-    )
-    {
-        this.namespace = namespace;
-        this.offset = offset;
-        this.limit = limit;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList();
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private Integer offset;
+  private Integer limit;
+
+  /**
+   * @param namespace required
+   * @param limit required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public RetrieveAllPolicyTypes1(
+      String customBasePath, String namespace, Integer offset, Integer limit) {
+    this.namespace = namespace;
+    this.offset = offset;
+    this.limit = limit;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
+    return queryParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.limit == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public RetrieveAllPolicyTypes1OpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final RetrieveAllPolicyTypes1OpResponse response = new RetrieveAllPolicyTypes1OpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+
+      response.setSuccess(true);
+      response.setData(
+          new ObjectMapper()
+              .readValue(json, new TypeReference<List<RetrievePolicyTypeResponse>>() {}));
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-    @Override
-    public Map<String, List<String>> getQueryParams(){
-        Map<String, List<String>> queryParams = new HashMap<>();
-        queryParams.put("offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
-        queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
-        return queryParams;
-    }
+  /*
+  public List<RetrievePolicyTypeResponse> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ObjectMapper().readValue(json, new TypeReference<List<RetrievePolicyTypeResponse>>() {});
+  }
+  */
 
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.limit == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public RetrieveAllPolicyTypes1OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final RetrieveAllPolicyTypes1OpResponse response = new RetrieveAllPolicyTypes1OpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-
-            response.setSuccess(true);
-            response.setData(new ObjectMapper().readValue(json, new TypeReference<List<RetrievePolicyTypeResponse>>() {}));
-        }
-
-        return response;
-    }
-
-    /*
-    public List<RetrievePolicyTypeResponse> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ObjectMapper().readValue(json, new TypeReference<List<RetrievePolicyTypeResponse>>() {});
-    }
-    */
-
-    @Override
-    protected Map<String, String> getCollectionFormatMap() {
-        Map<String, String> result = new HashMap<>();
-        result.put("offset", "None");
-        result.put("limit", "None");
-        return result;
-    }
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("offset", "None");
+    result.put("limit", "None");
+    return result;
+  }
 }

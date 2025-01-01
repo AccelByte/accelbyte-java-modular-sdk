@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.dslogmanager.operation_responses.all_terminated_se
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dslogmanager.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class ListAllTerminatedServersOpResponse extends ApiResponseWithData<ModelsListTerminatedServersResponse> {
-    
-    private ResponseError error400 = null;
+public class ListAllTerminatedServersOpResponse
+    extends ApiResponseWithData<ModelsListTerminatedServersResponse> {
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dslogmanager.operations.all_terminated_servers.ListAllTerminatedServers";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dslogmanager.operations.all_terminated_servers.ListAllTerminatedServers";
+  }
 }

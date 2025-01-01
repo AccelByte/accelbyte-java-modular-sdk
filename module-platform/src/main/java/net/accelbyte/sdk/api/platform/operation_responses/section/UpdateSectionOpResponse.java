@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.platform.operation_responses.section;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class UpdateSectionOpResponse extends ApiResponseWithData<FullSectionInfo> {
-    
-    private ErrorEntity error400 = null;
 
-    private ErrorEntity error404 = null;
+  private ErrorEntity error400 = null;
 
-    private ErrorEntity error409 = null;
+  private ErrorEntity error404 = null;
 
-    private ValidationErrorEntity error422 = null;
+  private ErrorEntity error409 = null;
 
+  private ValidationErrorEntity error422 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.section.UpdateSection";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.section.UpdateSection";
+  }
 }

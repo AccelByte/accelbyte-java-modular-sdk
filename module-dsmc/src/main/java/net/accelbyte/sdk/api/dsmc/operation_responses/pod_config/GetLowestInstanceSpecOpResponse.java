@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.dsmc.operation_responses.pod_config;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dsmc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GetLowestInstanceSpecOpResponse extends ApiResponseWithData<ModelsInstanceSpec> {
-    
-    private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dsmc.operations.pod_config.GetLowestInstanceSpec";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dsmc.operations.pod_config.GetLowestInstanceSpec";
+  }
 }

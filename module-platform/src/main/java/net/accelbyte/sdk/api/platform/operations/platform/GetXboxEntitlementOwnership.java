@@ -10,124 +10,118 @@ package net.accelbyte.sdk.api.platform.operations.platform;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.platform.operation_responses.platform.GetXboxEntitlementOwnershipOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * getXboxEntitlementOwnership
  *
- * Get Xbox entitlement ownership by product sku.
+ * <p>Get Xbox entitlement ownership by product sku.
  */
 @Getter
 @Setter
 public class GetXboxEntitlementOwnership extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/platform/admin/namespaces/{namespace}/platforms/xbl/entitlements/{productSku}/ownership";
-    private String method = "POST";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private String productSku;
-    private XblEntitlementOwnershipRequest body;
+  /** generated field's value */
+  private String path =
+      "/platform/admin/namespaces/{namespace}/platforms/xbl/entitlements/{productSku}/ownership";
 
-    /**
-    * @param namespace required
-    * @param productSku required
-    * @param body required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public GetXboxEntitlementOwnership(
-            String customBasePath,            String namespace,
-            String productSku,
-            XblEntitlementOwnershipRequest body
-    )
-    {
-        this.namespace = namespace;
-        this.productSku = productSku;
-        this.body = body;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "POST";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private String productSku;
+  private XblEntitlementOwnershipRequest body;
+
+  /**
+   * @param namespace required
+   * @param productSku required
+   * @param body required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public GetXboxEntitlementOwnership(
+      String customBasePath,
+      String namespace,
+      String productSku,
+      XblEntitlementOwnershipRequest body) {
+    this.namespace = namespace;
+    this.productSku = productSku;
+    this.body = body;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    if (this.productSku != null) {
+      pathParams.put("productSku", this.productSku);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public XblEntitlementOwnershipRequest getBodyParams() {
+    return this.body;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.productSku == null) {
+      return false;
+    }
+    if (this.body == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public GetXboxEntitlementOwnershipOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final GetXboxEntitlementOwnershipOpResponse response =
+        new GetXboxEntitlementOwnershipOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new PlatformOwnership().createFromJson(json));
+      response.setSuccess(true);
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        if (this.productSku != null){
-            pathParams.put("productSku", this.productSku);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-
-
-    @Override
-    public XblEntitlementOwnershipRequest getBodyParams(){
-        return this.body;
-    }
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.productSku == null) {
-            return false;
-        }
-        if(this.body == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public GetXboxEntitlementOwnershipOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final GetXboxEntitlementOwnershipOpResponse response = new GetXboxEntitlementOwnershipOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new PlatformOwnership().createFromJson(json));
-            response.setSuccess(true);
-        }
-
-        return response;
-    }
-
-    /*
-    public PlatformOwnership parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new PlatformOwnership().createFromJson(json);
-    }
-    */
+  /*
+  public PlatformOwnership parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new PlatformOwnership().createFromJson(json);
+  }
+  */
 
 }

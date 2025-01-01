@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.achievement.operation_responses.anonymization;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.achievement.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminAnonymizeUserAchievementOpResponse extends ApiResponse {
-    
-    private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.achievement.operations.anonymization.AdminAnonymizeUserAchievement";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.achievement.operations.anonymization.AdminAnonymizeUserAchievement";
+  }
 }

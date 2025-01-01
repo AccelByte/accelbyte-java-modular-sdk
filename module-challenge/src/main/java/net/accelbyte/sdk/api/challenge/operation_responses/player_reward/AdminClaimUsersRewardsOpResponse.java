@@ -10,30 +10,27 @@ package net.accelbyte.sdk.api.challenge.operation_responses.player_reward;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.challenge.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminClaimUsersRewardsOpResponse extends ApiResponseWithData<List<ModelClaimUsersRewardsResponse>> {
-    
-    private ResponseError error400 = null;
+public class AdminClaimUsersRewardsOpResponse
+    extends ApiResponseWithData<List<ModelClaimUsersRewardsResponse>> {
 
-    private IamErrorResponse error401 = null;
+  private ResponseError error400 = null;
 
-    private IamErrorResponse error403 = null;
+  private IamErrorResponse error401 = null;
 
-    private IamErrorResponse error404 = null;
+  private IamErrorResponse error403 = null;
 
-    private ResponseError error500 = null;
+  private IamErrorResponse error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.challenge.operations.player_reward.AdminClaimUsersRewards";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.challenge.operations.player_reward.AdminClaimUsersRewards";
+  }
 }

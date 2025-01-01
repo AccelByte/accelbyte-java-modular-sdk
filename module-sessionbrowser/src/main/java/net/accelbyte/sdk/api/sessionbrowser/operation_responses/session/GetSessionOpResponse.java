@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.sessionbrowser.operation_responses.session;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.sessionbrowser.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
+@Deprecated
 @Getter
 @Setter
 public class GetSessionOpResponse extends ApiResponseWithData<ModelsSessionResponse> {
-    
-    private ResponseError error404 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.sessionbrowser.operations.session.GetSession";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.sessionbrowser.operations.session.GetSession";
+  }
 }

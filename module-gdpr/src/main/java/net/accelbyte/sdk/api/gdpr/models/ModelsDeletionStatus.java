@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.gdpr.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,40 +21,36 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsDeletionStatus extends Model {
 
-    @JsonProperty("DeletionDate")
-    private String deletionDate;
+  @JsonProperty("DeletionDate")
+  private String deletionDate;
 
-    @JsonProperty("DeletionStatus")
-    private Boolean deletionStatus;
+  @JsonProperty("DeletionStatus")
+  private Boolean deletionStatus;
 
-    @JsonProperty("DisplayName")
-    private String displayName;
+  @JsonProperty("DisplayName")
+  private String displayName;
 
-    @JsonProperty("ExecutionDate")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String executionDate;
+  @JsonProperty("ExecutionDate")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String executionDate;
 
-    @JsonProperty("Status")
-    private String status;
+  @JsonProperty("Status")
+  private String status;
 
-    @JsonProperty("UserID")
-    private String userID;
+  @JsonProperty("UserID")
+  private String userID;
 
+  @JsonIgnore
+  public ModelsDeletionStatus createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsDeletionStatus createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsDeletionStatus> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsDeletionStatus>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsDeletionStatus> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsDeletionStatus>>() {});
+  }
 }

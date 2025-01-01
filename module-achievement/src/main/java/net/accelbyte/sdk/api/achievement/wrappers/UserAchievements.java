@@ -8,99 +8,98 @@
 
 package net.accelbyte.sdk.api.achievement.wrappers;
 
-
 import net.accelbyte.sdk.api.achievement.models.*;
-import net.accelbyte.sdk.api.achievement.operations.user_achievements.*;
 import net.accelbyte.sdk.api.achievement.operation_responses.user_achievements.*;
-import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.api.achievement.operations.user_achievements.*;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class UserAchievements {
 
-    private RequestRunner sdk;
-    private String customBasePath = "";
+  private RequestRunner sdk;
+  private String customBasePath = "";
 
-    public UserAchievements(RequestRunner sdk){
-        this.sdk = sdk;
-        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("achievement");
-        if (!configCustomBasePath.equals("")) {
-            this.customBasePath = configCustomBasePath;
-        }
+  public UserAchievements(RequestRunner sdk) {
+    this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("achievement");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public UserAchievements(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
+  }
+
+  /**
+   * @see AdminListUserAchievements
+   */
+  public AdminListUserAchievementsOpResponse adminListUserAchievements(
+      AdminListUserAchievements input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    public UserAchievements(RequestRunner sdk, String customBasePath){
-        this.sdk = sdk;
-        this.customBasePath = customBasePath;
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminResetAchievement
+   */
+  public AdminResetAchievementOpResponse adminResetAchievement(AdminResetAchievement input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminListUserAchievements
-     */
-    public AdminListUserAchievementsOpResponse adminListUserAchievements(AdminListUserAchievements input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see AdminUnlockAchievement
+   */
+  public AdminUnlockAchievementOpResponse adminUnlockAchievement(AdminUnlockAchievement input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminResetAchievement
-     */
-    public AdminResetAchievementOpResponse adminResetAchievement(AdminResetAchievement input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see PublicListUserAchievements
+   */
+  public PublicListUserAchievementsOpResponse publicListUserAchievements(
+      PublicListUserAchievements input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminUnlockAchievement
-     */
-    public AdminUnlockAchievementOpResponse adminUnlockAchievement(AdminUnlockAchievement input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see PublicUnlockAchievement
+   */
+  public PublicUnlockAchievementOpResponse publicUnlockAchievement(PublicUnlockAchievement input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see PublicListUserAchievements
-     */
-    public PublicListUserAchievementsOpResponse publicListUserAchievements(PublicListUserAchievements input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
-    /**
-     * @see PublicUnlockAchievement
-     */
-    public PublicUnlockAchievementOpResponse publicUnlockAchievement(PublicUnlockAchievement input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,42 +21,40 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelUserCreateResponse extends Model {
 
-    @JsonProperty("AuthType")
-    private String authType;
+  @JsonProperty("AuthType")
+  private String authType;
 
-    @JsonProperty("Country")
-    private String country;
+  @JsonProperty("Country")
+  private String country;
 
-    @JsonProperty("DateOfBirth")
-    private String dateOfBirth;
+  @JsonProperty("DateOfBirth")
+  private String dateOfBirth;
 
-    @JsonProperty("DisplayName")
-    private String displayName;
+  @JsonProperty("DisplayName")
+  private String displayName;
 
-    @JsonProperty("LoginId")
-    private String loginId;
+  @JsonProperty("LoginId")
+  private String loginId;
 
-    @JsonProperty("Namespace")
-    private String namespace;
+  @JsonProperty("Namespace")
+  private String namespace;
 
-    @JsonProperty("UserId")
-    private String userId;
+  @JsonProperty("UserId")
+  private String userId;
 
+  @JsonIgnore
+  public ModelUserCreateResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelUserCreateResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelUserCreateResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelUserCreateResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelUserCreateResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelUserCreateResponse>>() {});
+  }
 }

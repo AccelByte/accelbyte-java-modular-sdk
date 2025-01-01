@@ -8,56 +8,46 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
-import net.accelbyte.sdk.core.Model;
 import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ResponseErrorV1 extends Model {
 
-    @JsonProperty("errorCode")
-    private Integer errorCode;
+  @JsonProperty("errorCode")
+  private Integer errorCode;
 
-    @JsonProperty("errorMessage")
-    private String errorMessage;
+  @JsonProperty("errorMessage")
+  private String errorMessage;
 
+  @JsonIgnore
+  public ResponseErrorV1 createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
+  @JsonIgnore
+  public List<ResponseErrorV1> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ResponseErrorV1>>() {});
+  }
 
-    @JsonIgnore
-    public ResponseErrorV1 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
+  public ApiError translateToApiError() {
 
-    @JsonIgnore
-    public List<ResponseErrorV1> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ResponseErrorV1>>() {});
-    }
+    final String theCode = errorCode != null ? Integer.toString(errorCode) : "";
 
-    public ApiError translateToApiError() {
+    final String theMessage = errorMessage != null ? errorMessage : "";
 
-        final String theCode = 
-            errorCode != null ? Integer.toString(errorCode) :
-            "";
-        
-        final String theMessage = 
-            errorMessage != null ? errorMessage : 
-            "";
-        
-        return new ApiError(theCode, theMessage);
-    }
-
-
+    return new ApiError(theCode, theMessage);
+  }
 }

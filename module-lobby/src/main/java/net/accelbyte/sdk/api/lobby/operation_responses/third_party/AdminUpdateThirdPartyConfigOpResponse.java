@@ -10,28 +10,26 @@ package net.accelbyte.sdk.api.lobby.operation_responses.third_party;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
+@Deprecated
 @Getter
 @Setter
-public class AdminUpdateThirdPartyConfigOpResponse extends ApiResponseWithData<ModelsUpdateConfigResponse> {
-    
-    private RestapiErrorResponseV1 error400 = null;
+public class AdminUpdateThirdPartyConfigOpResponse
+    extends ApiResponseWithData<ModelsUpdateConfigResponse> {
 
-    private RestapiErrorResponseV1 error401 = null;
+  private RestapiErrorResponseV1 error400 = null;
 
-    private RestapiErrorResponseV1 error403 = null;
+  private RestapiErrorResponseV1 error401 = null;
 
-    private RestapiErrorResponseV1 error500 = null;
+  private RestapiErrorResponseV1 error403 = null;
 
+  private RestapiErrorResponseV1 error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.third_party.AdminUpdateThirdPartyConfig";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.third_party.AdminUpdateThirdPartyConfig";
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.group.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,30 +21,28 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsMemberRoleResponseV1 extends Model {
 
-    @JsonProperty("memberRoleId")
-    private String memberRoleId;
+  @JsonProperty("memberRoleId")
+  private String memberRoleId;
 
-    @JsonProperty("memberRoleName")
-    private String memberRoleName;
+  @JsonProperty("memberRoleName")
+  private String memberRoleName;
 
-    @JsonProperty("memberRolePermissions")
-    private List<ModelsRolePermission> memberRolePermissions;
+  @JsonProperty("memberRolePermissions")
+  private List<ModelsRolePermission> memberRolePermissions;
 
+  @JsonIgnore
+  public ModelsMemberRoleResponseV1 createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsMemberRoleResponseV1 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsMemberRoleResponseV1> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsMemberRoleResponseV1>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsMemberRoleResponseV1> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsMemberRoleResponseV1>>() {});
+  }
 }

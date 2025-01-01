@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.platform.operation_responses.payment_station;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicGetPaymentUrlOpResponse extends ApiResponseWithData<PaymentUrl> {
-    
-    private ErrorEntity error400 = null;
 
-    private ErrorEntity error403 = null;
+  private ErrorEntity error400 = null;
 
-    private ErrorEntity error404 = null;
+  private ErrorEntity error403 = null;
 
+  private ErrorEntity error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.payment_station.PublicGetPaymentUrl";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.payment_station.PublicGetPaymentUrl";
+  }
 }

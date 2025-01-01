@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.gdpr.operation_responses.configuration;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.gdpr.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetPlatformAccountClosureServicesConfigurationOpResponse extends ApiResponseWithData<DtoServicesConfigurationResponse> {
-    
-    private ResponseError error401 = null;
+public class AdminGetPlatformAccountClosureServicesConfigurationOpResponse
+    extends ApiResponseWithData<DtoServicesConfigurationResponse> {
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.gdpr.operations.configuration.AdminGetPlatformAccountClosureServicesConfiguration";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.gdpr.operations.configuration.AdminGetPlatformAccountClosureServicesConfiguration";
+  }
 }

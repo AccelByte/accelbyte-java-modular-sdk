@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.session;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class SessionErrors
-{
-}
+public class SessionErrors {}

@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.iam.operation_responses.config;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetConfigValueV3OpResponse extends ApiResponseWithData<ModelConfigValueResponseV3> {
-    
-    private RestErrorResponse error400 = null;
+public class PublicGetConfigValueV3OpResponse
+    extends ApiResponseWithData<ModelConfigValueResponseV3> {
 
-    private RestErrorResponse error500 = null;
+  private RestErrorResponse error400 = null;
 
+  private RestErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.config.PublicGetConfigValueV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.config.PublicGetConfigValueV3";
+  }
 }

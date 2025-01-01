@@ -8,8 +8,9 @@
 
 package net.accelbyte.sdk.cli.api.iam.o_auth2_0_v4;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
+import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.api.iam.wrappers.OAuth20V4;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -18,63 +19,66 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
-import java.util.concurrent.Callable;
-
 @Command(name = "requestTargetTokenResponseV4", mixinStandardHelpOptions = true)
 public class RequestTargetTokenResponseV4 implements Callable<Integer> {
 
-    private static final Logger log = LogManager.getLogger(RequestTargetTokenResponseV4.class);
+  private static final Logger log = LogManager.getLogger(RequestTargetTokenResponseV4.class);
 
-    @Option(names = {"--additionalData"}, description = "additionalData")
-    String additionalData;
+  @Option(
+      names = {"--additionalData"},
+      description = "additionalData")
+  String additionalData;
 
-    @Option(names = {"--code"}, description = "code")
-    String code;
+  @Option(
+      names = {"--code"},
+      description = "code")
+  String code;
 
+  @Option(
+      names = {"--logging"},
+      description = "logger")
+  boolean logging;
 
-    @Option(names = {"--logging"}, description = "logger")
-    boolean logging;
+  public static void main(String[] args) {
+    int exitCode = new CommandLine(new RequestTargetTokenResponseV4()).execute(args);
+    System.exit(exitCode);
+  }
 
-    public static void main(String[] args) {
-        int exitCode = new CommandLine(new RequestTargetTokenResponseV4()).execute(args);
-        System.exit(exitCode);
+  @Override
+  public Integer call() {
+    try {
+      final OkhttpClient httpClient = new OkhttpClient();
+      if (logging) {
+        httpClient.setLogger(new OkhttpLogger());
+      }
+      final AccelByteSDK sdk =
+          new AccelByteSDK(
+              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+      final OAuth20V4 wrapper = new OAuth20V4(sdk);
+      final net.accelbyte.sdk.api.iam.operations.o_auth2_0_v4.RequestTargetTokenResponseV4
+          operation =
+              net.accelbyte.sdk.api.iam.operations.o_auth2_0_v4.RequestTargetTokenResponseV4
+                  .builder()
+                  .additionalData(additionalData != null ? additionalData : null)
+                  .code(code != null ? code : null)
+                  .build();
+      final OauthmodelTokenResponseV3 response =
+          wrapper.requestTargetTokenResponseV4(operation).ensureSuccess();
+      final String responseString =
+          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+      log.info("Operation successful\n{}", responseString);
+      return 0;
+    } catch (HttpResponseException e) {
+      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+    } catch (Exception e) {
+      log.error("An exception was thrown", e);
     }
-
-    @Override
-    public Integer call() {
-        try {
-            final OkhttpClient httpClient = new OkhttpClient();
-            if (logging) {
-                httpClient.setLogger(new OkhttpLogger());
-            }
-            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-            final OAuth20V4 wrapper = new OAuth20V4(sdk);
-            final net.accelbyte.sdk.api.iam.operations.o_auth2_0_v4.RequestTargetTokenResponseV4 operation =
-                    net.accelbyte.sdk.api.iam.operations.o_auth2_0_v4.RequestTargetTokenResponseV4.builder()
-                            .additionalData(additionalData != null ? additionalData : null)
-                            .code(code != null ? code : null)
-                            .build();
-            final OauthmodelTokenResponseV3 response =
-                    wrapper.requestTargetTokenResponseV4(operation).ensureSuccess();
-            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-            log.info("Operation successful\n{}", responseString);
-            return 0;
-        } catch (HttpResponseException e) {
-            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-        } catch (Exception e) {
-            log.error("An exception was thrown", e);
-        }
-        return 1;
-    }
+    return 1;
+  }
 }

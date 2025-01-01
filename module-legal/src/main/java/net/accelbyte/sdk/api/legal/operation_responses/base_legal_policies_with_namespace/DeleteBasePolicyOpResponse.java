@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.legal.operation_responses.base_legal_policies_with
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteBasePolicyOpResponse extends ApiResponse {
-    
-    private ErrorEntity error400 = null;
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.base_legal_policies_with_namespace.DeleteBasePolicy";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.base_legal_policies_with_namespace.DeleteBasePolicy";
+  }
 }

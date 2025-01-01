@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.gdpr.operation_responses.data_deletion;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.gdpr.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetMyAccountDeletionStatusOpResponse extends ApiResponseWithData<ModelsDeletionStatus> {
-    
-    private ResponseError error401 = null;
+public class PublicGetMyAccountDeletionStatusOpResponse
+    extends ApiResponseWithData<ModelsDeletionStatus> {
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error403 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.gdpr.operations.data_deletion.PublicGetMyAccountDeletionStatus";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.gdpr.operations.data_deletion.PublicGetMyAccountDeletionStatus";
+  }
 }

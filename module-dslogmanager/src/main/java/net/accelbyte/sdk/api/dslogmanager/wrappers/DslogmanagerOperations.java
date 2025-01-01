@@ -9,43 +9,41 @@
 package net.accelbyte.sdk.api.dslogmanager.wrappers;
 
 import java.util.*;
-
 import net.accelbyte.sdk.api.dslogmanager.models.*;
-import net.accelbyte.sdk.api.dslogmanager.operations.dslogmanager_operations.*;
 import net.accelbyte.sdk.api.dslogmanager.operation_responses.dslogmanager_operations.*;
-import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.api.dslogmanager.operations.dslogmanager_operations.*;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class DslogmanagerOperations {
 
-    private RequestRunner sdk;
-    private String customBasePath = "";
+  private RequestRunner sdk;
+  private String customBasePath = "";
 
-    public DslogmanagerOperations(RequestRunner sdk){
-        this.sdk = sdk;
-        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("dslogmanager");
-        if (!configCustomBasePath.equals("")) {
-            this.customBasePath = configCustomBasePath;
-        }
+  public DslogmanagerOperations(RequestRunner sdk) {
+    this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("dslogmanager");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public DslogmanagerOperations(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
+  }
+
+  /**
+   * @see PublicGetMessages
+   */
+  public PublicGetMessagesOpResponse publicGetMessages(PublicGetMessages input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    public DslogmanagerOperations(RequestRunner sdk, String customBasePath){
-        this.sdk = sdk;
-        this.customBasePath = customBasePath;
-    }
-
-    /**
-     * @see PublicGetMessages
-     */
-    public PublicGetMessagesOpResponse publicGetMessages(PublicGetMessages input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

@@ -8,81 +8,60 @@
 
 package net.accelbyte.sdk.api.lobby.ws_models;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static net.accelbyte.sdk.core.util.Helper.generateUUID;
+import static net.accelbyte.sdk.core.util.Helper.parseWSM;
+
+import java.util.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.*;
-
-import static net.accelbyte.sdk.core.util.Helper.generateUUID;
-import static net.accelbyte.sdk.core.util.Helper.parseWSM;
-import static net.accelbyte.sdk.core.util.Helper.getWSMType;
-import static net.accelbyte.sdk.core.util.Helper.listToWSMList;
-import static net.accelbyte.sdk.core.util.Helper.convertJsonToMap;
-import static net.accelbyte.sdk.core.util.Helper.convertWSMListToListString;
-import static net.accelbyte.sdk.core.util.Helper.convertWSMListToListInteger;
-
 @Getter
 @Setter
 public class RefreshTokenRequest {
-    private String id;
-    private String token;
+  private String id;
+  private String token;
 
-    private RefreshTokenRequest() {}
+  private RefreshTokenRequest() {}
 
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public RefreshTokenRequest (
-        String id,
-        String token
-    ) {
-        this.id = id;
-        this.token = token;
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public RefreshTokenRequest(String id, String token) {
+    this.id = id;
+    this.token = token;
+  }
+
+  public static String getType() {
+    return "refreshTokenRequest";
+  }
+
+  public static RefreshTokenRequest createFromWSM(String message) {
+    RefreshTokenRequest result = new RefreshTokenRequest();
+    Map<String, String> response = parseWSM(message);
+    result.id = response.get("id") != null ? response.get("id") : null;
+    result.token = response.get("token") != null ? response.get("token") : null;
+    return result;
+  }
+
+  public String toWSM() {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("type: ").append(RefreshTokenRequest.getType());
+    if (id != null) {
+      stringBuilder.append("\n").append("id: ").append(id);
+    } else {
+      stringBuilder.append("\n").append("id: ").append(generateUUID());
     }
-
-    public static String getType(){
-        return "refreshTokenRequest";
+    if (token != null) {
+      stringBuilder.append("\n").append("token: ").append(token);
     }
+    return stringBuilder.toString();
+  }
 
-    public static RefreshTokenRequest createFromWSM(String message) {
-        RefreshTokenRequest result = new RefreshTokenRequest();
-        Map<String, String> response = parseWSM(message);
-        result.id = response.get("id") != null ? response.get("id") : null;
-        result.token = response.get("token") != null ? response.get("token") : null;
-        return result;
-    }
-
-    public String toWSM() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("type: ").append(RefreshTokenRequest.getType());
-        if (id != null) {
-            stringBuilder
-                    .append("\n")
-                    .append("id: ")
-                    .append(id);
-        } else {
-            stringBuilder
-                    .append("\n")
-                    .append("id: ")
-                    .append(generateUUID());
-        }
-        if (token != null) {
-            stringBuilder
-                    .append("\n")
-                    .append("token: ")
-                    .append(token);
-        }
-        return stringBuilder.toString();
-    }
-
-    public static Map<String, String> getFieldInfo() {
-        Map<String, String> result = new HashMap<>();
-        result.put("id","id");
-        result.put("token","token");
-        return result;
-    }
+  public static Map<String, String> getFieldInfo() {
+    Map<String, String> result = new HashMap<>();
+    result.put("id", "id");
+    result.put("token", "token");
+    return result;
+  }
 }

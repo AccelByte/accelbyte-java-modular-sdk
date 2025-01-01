@@ -18,15 +18,12 @@ import net.accelbyte.sdk.api.challenge.models.*;
 import net.accelbyte.sdk.api.challenge.models.ModelCreateChallengeRequest.*;
 import net.accelbyte.sdk.api.challenge.models.ModelPredicate.*;
 import net.accelbyte.sdk.api.challenge.models.ModelRequirement.Operator;
-import net.accelbyte.sdk.api.challenge.operation_responses.player_reward.PublicGetUserRewardsOpResponse;
 import net.accelbyte.sdk.api.challenge.operations.challenge_configuration.*;
 import net.accelbyte.sdk.api.challenge.operations.goal_configuration.*;
 import net.accelbyte.sdk.api.challenge.operations.player_reward.PublicGetUserRewards;
 import net.accelbyte.sdk.api.challenge.wrappers.ChallengeConfiguration;
 import net.accelbyte.sdk.api.challenge.wrappers.GoalConfiguration;
 import net.accelbyte.sdk.api.challenge.wrappers.PlayerReward;
-import net.accelbyte.sdk.api.platform.operations.reward.GetReward;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -78,11 +75,13 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
             .build();
 
     final ModelChallengeResponse challengeResult =
-        challengeConfigWrapper.adminCreateChallenge(
-            AdminCreateChallenge.builder()
-                .namespace(this.namespace)
-                .body(newChallengeRequest)
-                .build()).ensureSuccess();
+        challengeConfigWrapper
+            .adminCreateChallenge(
+                AdminCreateChallenge.builder()
+                    .namespace(this.namespace)
+                    .body(newChallengeRequest)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -94,11 +93,13 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
       // CASE Get challenge
 
       final ModelChallengeResponse getChallengeResult =
-          challengeConfigWrapper.adminGetChallenge(
-              AdminGetChallenge.builder()
-                  .namespace(this.namespace)
-                  .challengeCode(challengeCode)
-                  .build()).ensureSuccess();
+          challengeConfigWrapper
+              .adminGetChallenge(
+                  AdminGetChallenge.builder()
+                      .namespace(this.namespace)
+                      .challengeCode(challengeCode)
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -108,10 +109,10 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
       // CASE Public get user rewards
 
       final ModelListUserRewardsResponse getRewardsResult =
-        playerRewardWrapper.publicGetUserRewards(
-              PublicGetUserRewards.builder()
-                  .namespace(this.namespace)
-                  .build()).ensureSuccess();
+          playerRewardWrapper
+              .publicGetUserRewards(
+                  PublicGetUserRewards.builder().namespace(this.namespace).build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -125,12 +126,14 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
           ModelUpdateChallengeRequest.builder().name(updatedChallengeName).build();
 
       final ModelChallengeResponse updateChallengeResult =
-          challengeConfigWrapper.adminUpdateChallenge(
-              AdminUpdateChallenge.builder()
-                  .namespace(this.namespace)
-                  .challengeCode(challengeCode)
-                  .body(updateRequest)
-                  .build()).ensureSuccess();
+          challengeConfigWrapper
+              .adminUpdateChallenge(
+                  AdminUpdateChallenge.builder()
+                      .namespace(this.namespace)
+                      .challengeCode(challengeCode)
+                      .body(updateRequest)
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -161,12 +164,14 @@ public class TestIntegrationServiceChallenge extends TestIntegration {
               .build();
 
       final ModelGoalResponse newGoalResponse =
-          goalConfigWrapper.adminCreateGoal(
-              AdminCreateGoal.builder()
-                  .namespace(this.namespace)
-                  .challengeCode(challengeCode)
-                  .body(newGoalRequest)
-                  .build()).ensureSuccess();
+          goalConfigWrapper
+              .adminCreateGoal(
+                  AdminCreateGoal.builder()
+                      .namespace(this.namespace)
+                      .challengeCode(challengeCode)
+                      .body(newGoalRequest)
+                      .build())
+              .ensureSuccess();
       assertNotNull(newGoalResponse);
 
       // ESAC

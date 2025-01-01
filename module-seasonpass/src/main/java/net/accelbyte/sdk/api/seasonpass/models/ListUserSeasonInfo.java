@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.seasonpass.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,49 +21,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ListUserSeasonInfo extends Model {
 
-    @JsonProperty("cleared")
-    private Boolean cleared;
+  @JsonProperty("cleared")
+  private Boolean cleared;
 
-    @JsonProperty("currentTierIndex")
-    private Integer currentTierIndex;
+  @JsonProperty("currentTierIndex")
+  private Integer currentTierIndex;
 
-    @JsonProperty("enrolledAt")
-    private String enrolledAt;
+  @JsonProperty("enrolledAt")
+  private String enrolledAt;
 
-    @JsonProperty("id")
-    private String id;
+  @JsonProperty("id")
+  private String id;
 
-    @JsonProperty("lastTierIndex")
-    private Integer lastTierIndex;
+  @JsonProperty("lastTierIndex")
+  private Integer lastTierIndex;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("season")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private SeasonSummary season;
+  @JsonProperty("season")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private SeasonSummary season;
 
-    @JsonProperty("seasonId")
-    private String seasonId;
+  @JsonProperty("seasonId")
+  private String seasonId;
 
-    @JsonProperty("userId")
-    private String userId;
+  @JsonProperty("userId")
+  private String userId;
 
+  @JsonIgnore
+  public ListUserSeasonInfo createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ListUserSeasonInfo createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ListUserSeasonInfo> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ListUserSeasonInfo>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ListUserSeasonInfo> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ListUserSeasonInfo>>() {});
+  }
 }

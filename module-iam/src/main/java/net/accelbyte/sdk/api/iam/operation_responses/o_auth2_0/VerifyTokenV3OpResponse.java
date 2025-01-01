@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class VerifyTokenV3OpResponse extends ApiResponseWithData<OauthmodelTokenResponseV3> {
-    
-    private String error400 = "";
 
+  private String error400 = "";
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.VerifyTokenV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.VerifyTokenV3";
+  }
 }

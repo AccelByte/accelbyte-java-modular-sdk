@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.matchmaking.operation_responses.matchmaking_operat
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.matchmaking.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class VersionCheckHandlerOpResponse extends ApiResponse {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.matchmaking.operations.matchmaking_operations.VersionCheckHandler";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.matchmaking.operations.matchmaking_operations.VersionCheckHandler";
+  }
 }

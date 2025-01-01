@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,28 +21,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class DownloadExportedAgreementsInCSVResponse extends Model {
 
-    @JsonProperty("done")
-    private Boolean done;
+  @JsonProperty("done")
+  private Boolean done;
 
-    @JsonProperty("downloadUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String downloadUrl;
+  @JsonProperty("downloadUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String downloadUrl;
 
+  @JsonIgnore
+  public DownloadExportedAgreementsInCSVResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public DownloadExportedAgreementsInCSVResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<DownloadExportedAgreementsInCSVResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<DownloadExportedAgreementsInCSVResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<DownloadExportedAgreementsInCSVResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<DownloadExportedAgreementsInCSVResponse>>() {});
+  }
 }

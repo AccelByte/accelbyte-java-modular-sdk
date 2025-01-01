@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,42 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApiFleetServerHistoryEventResponse extends Model {
 
-    @JsonProperty("createdAt")
-    private String createdAt;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-    @JsonProperty("exitCode")
-    private Integer exitCode;
+  @JsonProperty("exitCode")
+  private Integer exitCode;
 
-    @JsonProperty("fleetId")
-    private String fleetId;
+  @JsonProperty("fleetId")
+  private String fleetId;
 
-    @JsonProperty("newState")
-    private String newState;
+  @JsonProperty("newState")
+  private String newState;
 
-    @JsonProperty("oldState")
-    private String oldState;
+  @JsonProperty("oldState")
+  private String oldState;
 
-    @JsonProperty("reason")
-    private String reason;
+  @JsonProperty("reason")
+  private String reason;
 
-    @JsonProperty("serverId")
-    private String serverId;
+  @JsonProperty("serverId")
+  private String serverId;
 
+  @JsonIgnore
+  public ApiFleetServerHistoryEventResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApiFleetServerHistoryEventResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApiFleetServerHistoryEventResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApiFleetServerHistoryEventResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApiFleetServerHistoryEventResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ApiFleetServerHistoryEventResponse>>() {});
+  }
 }

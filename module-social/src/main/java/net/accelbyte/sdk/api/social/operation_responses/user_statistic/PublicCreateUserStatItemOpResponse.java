@@ -10,32 +10,28 @@ package net.accelbyte.sdk.api.social.operation_responses.user_statistic;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.social.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class PublicCreateUserStatItemOpResponse extends ApiResponse {
-    
-    private ErrorEntity error401 = null;
 
-    private ErrorEntity error403 = null;
+  private ErrorEntity error401 = null;
 
-    private ErrorEntity error404 = null;
+  private ErrorEntity error403 = null;
 
-    private ErrorEntity error409 = null;
+  private ErrorEntity error404 = null;
 
-    private ValidationErrorEntity error422 = null;
+  private ErrorEntity error409 = null;
 
-    private ErrorEntity error500 = null;
+  private ValidationErrorEntity error422 = null;
 
+  private ErrorEntity error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.social.operations.user_statistic.PublicCreateUserStatItem";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.social.operations.user_statistic.PublicCreateUserStatItem";
+  }
 }

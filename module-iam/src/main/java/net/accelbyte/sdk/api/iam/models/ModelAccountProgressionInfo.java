@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,36 +21,46 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelAccountProgressionInfo extends Model {
 
-    @JsonProperty("displayName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String displayName;
+  @JsonProperty("displayName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String displayName;
 
-    @JsonProperty("email")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String email;
+  @JsonProperty("email")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String email;
 
-    @JsonProperty("linkedGames")
-    private List<String> linkedGames;
+  @JsonProperty("linkedGames")
+  private List<String> linkedGames;
 
-    @JsonProperty("userName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String userName;
+  @JsonProperty("platformId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String platformId;
 
+  @JsonProperty("progressions")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<ModelProgressionInfo> progressions;
 
+  @JsonProperty("uniqueDisplayName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String uniqueDisplayName;
 
-    @JsonIgnore
-    public ModelAccountProgressionInfo createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
+  @JsonProperty("userName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String userName;
 
-    @JsonIgnore
-    public List<ModelAccountProgressionInfo> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelAccountProgressionInfo>>() {});
-    }
+  @JsonIgnore
+  public ModelAccountProgressionInfo createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
+  @JsonIgnore
+  public List<ModelAccountProgressionInfo> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelAccountProgressionInfo>>() {});
+  }
 }

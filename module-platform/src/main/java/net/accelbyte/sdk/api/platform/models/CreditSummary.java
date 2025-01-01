@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,37 +21,33 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class CreditSummary extends Model {
 
-    @JsonProperty("amount")
-    private Long amount;
+  @JsonProperty("amount")
+  private Long amount;
 
-    @JsonProperty("currencyCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String currencyCode;
+  @JsonProperty("currencyCode")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String currencyCode;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("userId")
-    private String userId;
+  @JsonProperty("userId")
+  private String userId;
 
-    @JsonProperty("walletId")
-    private String walletId;
+  @JsonProperty("walletId")
+  private String walletId;
 
+  @JsonIgnore
+  public CreditSummary createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public CreditSummary createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<CreditSummary> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<CreditSummary>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<CreditSummary> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<CreditSummary>>() {});
+  }
 }

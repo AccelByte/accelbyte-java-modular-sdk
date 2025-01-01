@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.inventory;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class InventoryErrors
-{
-}
+public class InventoryErrors {}

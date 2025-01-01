@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelLinkHeadlessAccountRequest extends Model {
 
-    @JsonProperty("chosenNamespaces")
-    private List<String> chosenNamespaces;
+  @JsonProperty("chosenNamespaces")
+  private List<String> chosenNamespaces;
 
-    @JsonProperty("oneTimeLinkCode")
-    private String oneTimeLinkCode;
+  @JsonProperty("oneTimeLinkCode")
+  private String oneTimeLinkCode;
 
+  @JsonIgnore
+  public ModelLinkHeadlessAccountRequest createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelLinkHeadlessAccountRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelLinkHeadlessAccountRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelLinkHeadlessAccountRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelLinkHeadlessAccountRequest> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelLinkHeadlessAccountRequest>>() {});
+  }
 }

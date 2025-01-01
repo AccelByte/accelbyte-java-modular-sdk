@@ -71,8 +71,10 @@ public class TestIntegrationServicePlatform extends TestIntegration {
             .build();
 
     final StoreInfo createStoreResult =
-        storeWrapper.createStore(
-            CreateStore.builder().namespace(this.namespace).body(createStoreBody).build()).ensureSuccess();
+        storeWrapper
+            .createStore(
+                CreateStore.builder().namespace(this.namespace).body(createStoreBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -84,8 +86,9 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     // CASE Get a store
 
     final StoreInfo getStoreBody =
-        storeWrapper.getStore(
-            GetStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
+        storeWrapper
+            .getStore(GetStore.builder().namespace(this.namespace).storeId(storeId).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -98,12 +101,14 @@ public class TestIntegrationServicePlatform extends TestIntegration {
         StoreUpdate.builder().description(storeDescriptionUpdate).build();
 
     final StoreInfo updateStoreResult =
-        storeWrapper.updateStore(
-            UpdateStore.builder()
-                .namespace(this.namespace)
-                .storeId(storeId)
-                .body(updateStoreBody)
-                .build()).ensureSuccess();
+        storeWrapper
+            .updateStore(
+                UpdateStore.builder()
+                    .namespace(this.namespace)
+                    .storeId(storeId)
+                    .body(updateStoreBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -123,12 +128,14 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     final ExportStoreRequest exportStoreBody = ExportStoreRequest.builder().build();
 
     final InputStream exportStoreResult =
-        storeWrapper.exportStore1(
-            ExportStore1.builder()
-                .namespace(namespace)
-                .storeId(storeId)
-                .body(exportStoreBody)
-                .build()).ensureSuccess();
+        storeWrapper
+            .exportStore1(
+                ExportStore1.builder()
+                    .namespace(namespace)
+                    .storeId(storeId)
+                    .body(exportStoreBody)
+                    .build())
+            .ensureSuccess();
     java.nio.file.Files.copy(
         exportStoreResult,
         exportStoreFile.toPath(),
@@ -143,12 +150,14 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     // CASE Import a store
 
     final ImportStoreResult importStoreResult =
-        storeWrapper.importStore1(
-            ImportStore1.builder()
-                .namespace(namespace)
-                .storeId(storeId)
-                .file(exportStoreFile)
-                .build()).ensureSuccess();
+        storeWrapper
+            .importStore1(
+                ImportStore1.builder()
+                    .namespace(namespace)
+                    .storeId(storeId)
+                    .file(exportStoreFile)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -157,8 +166,9 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     // CASE Delete a store
 
     final StoreInfo deleteStoreResult =
-        storeWrapper.deleteStore(
-            DeleteStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
+        storeWrapper
+            .deleteStore(DeleteStore.builder().namespace(this.namespace).storeId(storeId).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -175,7 +185,9 @@ public class TestIntegrationServicePlatform extends TestIntegration {
     // CASE Export rewards
 
     final InputStream exportRewardsResult =
-        rewardWrapper.exportRewards(ExportRewards.builder().namespace(namespace).build()).ensureSuccess();
+        rewardWrapper
+            .exportRewards(ExportRewards.builder().namespace(namespace).build())
+            .ensureSuccess();
     java.nio.file.Files.copy(
         exportRewardsResult,
         exportRewardFile.toPath(),
@@ -189,11 +201,14 @@ public class TestIntegrationServicePlatform extends TestIntegration {
 
     // CASE Import rewards
 
-    rewardWrapper.importRewards(ImportRewards.builder()
-        .namespace(this.namespace)
-        .file(exportRewardFile)
-        .replaceExisting(false)
-        .build()).ensureSuccess();
+    rewardWrapper
+        .importRewards(
+            ImportRewards.builder()
+                .namespace(this.namespace)
+                .file(exportRewardFile)
+                .replaceExisting(false)
+                .build())
+        .ensureSuccess();
 
     // ESAC
   }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,74 +21,73 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class PublicEntitlementMetadata extends Model {
 
-    @JsonProperty("operationSource")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+  @JsonProperty("operationSource")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String operationSource;
+
+  @JsonIgnore
+  public String getOperationSource() {
+    return this.operationSource;
+  }
+
+  @JsonIgnore
+  public OperationSource getOperationSourceAsEnum() {
+    return OperationSource.valueOf(this.operationSource);
+  }
+
+  @JsonIgnore
+  public void setOperationSource(final String operationSource) {
+    this.operationSource = operationSource;
+  }
+
+  @JsonIgnore
+  public void setOperationSourceFromEnum(final OperationSource operationSource) {
+    this.operationSource = operationSource.toString();
+  }
+
+  @JsonIgnore
+  public PublicEntitlementMetadata createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
+
+  @JsonIgnore
+  public List<PublicEntitlementMetadata> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<PublicEntitlementMetadata>>() {});
+  }
+
+  public enum OperationSource {
+    INVENTORY("INVENTORY");
+
+    private String value;
+
+    OperationSource(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class PublicEntitlementMetadataBuilder {
     private String operationSource;
 
-
-
-    @JsonIgnore
-    public String getOperationSource() {
-        return this.operationSource;
+    public PublicEntitlementMetadataBuilder operationSource(final String operationSource) {
+      this.operationSource = operationSource;
+      return this;
     }
 
-    @JsonIgnore
-    public OperationSource getOperationSourceAsEnum() {
-        return OperationSource.valueOf(this.operationSource);
+    public PublicEntitlementMetadataBuilder operationSourceFromEnum(
+        final OperationSource operationSource) {
+      this.operationSource = operationSource.toString();
+      return this;
     }
-
-    @JsonIgnore
-    public void setOperationSource(final String operationSource) {
-        this.operationSource = operationSource;
-    }
-
-    @JsonIgnore
-    public void setOperationSourceFromEnum(final OperationSource operationSource) {
-        this.operationSource = operationSource.toString();
-    }
-
-    @JsonIgnore
-    public PublicEntitlementMetadata createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<PublicEntitlementMetadata> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<PublicEntitlementMetadata>>() {});
-    }
-
-
-    public enum OperationSource {
-        INVENTORY("INVENTORY");
-
-        private String value;
-
-        OperationSource(String value){
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-    }
-
-    public static class PublicEntitlementMetadataBuilder {
-        private String operationSource;
-
-
-        public PublicEntitlementMetadataBuilder operationSource(final String operationSource) {
-            this.operationSource = operationSource;
-            return this;
-        }
-
-        public PublicEntitlementMetadataBuilder operationSourceFromEnum(final OperationSource operationSource) {
-            this.operationSource = operationSource.toString();
-            return this;
-        }
-    }
+  }
 }

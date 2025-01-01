@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.ams;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class AmsErrors
-{
-}
+public class AmsErrors {}

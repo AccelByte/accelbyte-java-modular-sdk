@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.achievement.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsPSNEvent extends Model {
 
-    @JsonProperty("dateTime")
-    private String dateTime;
+  @JsonProperty("dateTime")
+  private String dateTime;
 
-    @JsonProperty("eventData")
-    private ModelsPSNEventData eventData;
+  @JsonProperty("eventData")
+  private ModelsPSNEventData eventData;
 
-    @JsonProperty("eventId")
-    private String eventId;
+  @JsonProperty("eventId")
+  private String eventId;
 
-    @JsonProperty("version")
-    private String version;
+  @JsonProperty("version")
+  private String version;
 
+  @JsonIgnore
+  public ModelsPSNEvent createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsPSNEvent createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsPSNEvent> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsPSNEvent>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsPSNEvent> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsPSNEvent>>() {});
+  }
 }

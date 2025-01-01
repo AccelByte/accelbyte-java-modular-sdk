@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.csm;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class CsmErrors
-{
-}
+public class CsmErrors {}

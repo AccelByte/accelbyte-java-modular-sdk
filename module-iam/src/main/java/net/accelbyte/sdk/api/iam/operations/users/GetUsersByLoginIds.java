@@ -10,25 +10,22 @@ package net.accelbyte.sdk.api.iam.operations.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.iam.operation_responses.users.GetUsersByLoginIdsOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * GetUsersByLoginIds
  *
- * ## The endpoint is going to be deprecated
- * ### Endpoint migration guide
- * - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
- * - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
+ * <p>## The endpoint is going to be deprecated ### Endpoint migration guide - **Substitute
+ * endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
+ * - **Substitute endpoint(query by user id list):
+ * _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
  *
  * @deprecated
  */
@@ -36,113 +33,102 @@ import net.accelbyte.sdk.api.iam.operation_responses.users.GetUsersByLoginIdsOpR
 @Getter
 @Setter
 public class GetUsersByLoginIds extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/iam/namespaces/{namespace}/users/listByLoginIds";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private String loginIds;
+  /** generated field's value */
+  private String path = "/iam/namespaces/{namespace}/users/listByLoginIds";
 
-    /**
-    * @param namespace required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public GetUsersByLoginIds(
-            String customBasePath,            String namespace,
-            String loginIds
-    )
-    {
-        this.namespace = namespace;
-        this.loginIds = loginIds;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private String loginIds;
+
+  /**
+   * @param namespace required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public GetUsersByLoginIds(String customBasePath, String namespace, String loginIds) {
+    this.namespace = namespace;
+    this.loginIds = loginIds;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("loginIds", this.loginIds == null ? null : Arrays.asList(this.loginIds));
+    return queryParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public GetUsersByLoginIdsOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final GetUsersByLoginIdsOpResponse response = new GetUsersByLoginIdsOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ModelPublicUsersResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError403(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-    @Override
-    public Map<String, List<String>> getQueryParams(){
-        Map<String, List<String>> queryParams = new HashMap<>();
-        queryParams.put("loginIds", this.loginIds == null ? null : Arrays.asList(this.loginIds));
-        return queryParams;
-    }
+  /*
+  public ModelPublicUsersResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ModelPublicUsersResponse().createFromJson(json);
+  }
+  */
 
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public GetUsersByLoginIdsOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final GetUsersByLoginIdsOpResponse response = new GetUsersByLoginIdsOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ModelPublicUsersResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 400) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError400(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError400().translateToApiError());
-        }
-        else if (code == 401) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError401(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError401().translateToApiError());
-        }
-        else if (code == 403) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError403(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError403().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ModelPublicUsersResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ModelPublicUsersResponse().createFromJson(json);
-    }
-    */
-
-    @Override
-    protected Map<String, String> getCollectionFormatMap() {
-        Map<String, String> result = new HashMap<>();
-        result.put("loginIds", "None");
-        return result;
-    }
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("loginIds", "None");
+    return result;
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.social.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,25 +21,21 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class StatItemInc extends Model {
 
-    @JsonProperty("inc")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Float inc;
+  @JsonProperty("inc")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Float inc;
 
+  @JsonIgnore
+  public StatItemInc createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public StatItemInc createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<StatItemInc> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<StatItemInc>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<StatItemInc> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<StatItemInc>>() {});
+  }
 }

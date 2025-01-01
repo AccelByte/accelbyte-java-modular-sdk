@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelNotificationTemplateResponse extends Model {
 
-    @JsonProperty("templateLocalizations")
-    private List<ModelLocalization> templateLocalizations;
+  @JsonProperty("templateLocalizations")
+  private List<ModelLocalization> templateLocalizations;
 
-    @JsonProperty("templateSlug")
-    private String templateSlug;
+  @JsonProperty("templateSlug")
+  private String templateSlug;
 
+  @JsonIgnore
+  public ModelNotificationTemplateResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelNotificationTemplateResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelNotificationTemplateResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelNotificationTemplateResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelNotificationTemplateResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelNotificationTemplateResponse>>() {});
+  }
 }

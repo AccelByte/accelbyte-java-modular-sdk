@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ugc.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsContentDownloaderResponse extends Model {
 
-    @JsonProperty("contentId")
-    private String contentId;
+  @JsonProperty("contentId")
+  private String contentId;
 
-    @JsonProperty("createdTime")
-    private String createdTime;
+  @JsonProperty("createdTime")
+  private String createdTime;
 
-    @JsonProperty("downloadedBy")
-    private String downloadedBy;
+  @JsonProperty("downloadedBy")
+  private String downloadedBy;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
+  @JsonIgnore
+  public ModelsContentDownloaderResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsContentDownloaderResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsContentDownloaderResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsContentDownloaderResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsContentDownloaderResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsContentDownloaderResponse>>() {});
+  }
 }

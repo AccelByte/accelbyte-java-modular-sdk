@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,28 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class RevokeEntitlementPayload extends Model {
 
-    @JsonProperty("count")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Integer count;
+  @JsonProperty("count")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Integer count;
 
-    @JsonProperty("entitlementId")
-    private String entitlementId;
+  @JsonProperty("entitlementId")
+  private String entitlementId;
 
+  @JsonIgnore
+  public RevokeEntitlementPayload createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public RevokeEntitlementPayload createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<RevokeEntitlementPayload> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<RevokeEntitlementPayload>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<RevokeEntitlementPayload> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<RevokeEntitlementPayload>>() {});
+  }
 }

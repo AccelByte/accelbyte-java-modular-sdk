@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.lobby.operation_responses.player;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AdminGetLobbyCCUOpResponse extends ApiResponseWithData<ModelsGetLobbyCcuResponse> {
-    
-    private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error401 = null;
+  private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error403 = null;
+  private RestapiErrorResponseBody error401 = null;
 
-    private RestapiErrorResponseBody error404 = null;
+  private RestapiErrorResponseBody error403 = null;
 
-    private RestapiErrorResponseBody error500 = null;
+  private RestapiErrorResponseBody error404 = null;
 
+  private RestapiErrorResponseBody error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.player.AdminGetLobbyCCU";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.player.AdminGetLobbyCCU";
+  }
 }

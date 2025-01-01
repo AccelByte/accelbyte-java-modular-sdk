@@ -166,19 +166,23 @@ public class App
             .message("GAME START")
             .build();
 
-    notifWrapper.freeFormNotificationByUserID(
-        FreeFormNotificationByUserID.builder()
-            .namespace(Namespace)
-            .userId(game.player1)
-            .body(notifBody)
-            .build()).ensureSuccess();
+    notifWrapper
+        .freeFormNotificationByUserID(
+            FreeFormNotificationByUserID.builder()
+                .namespace(Namespace)
+                .userId(game.player1)
+                .body(notifBody)
+                .build())
+        .ensureSuccess();
 
-    notifWrapper.freeFormNotificationByUserID(
-        FreeFormNotificationByUserID.builder()
-            .namespace(Namespace)
-            .userId(game.player2)
-            .body(notifBody)
-            .build()).ensureSuccess();
+    notifWrapper
+        .freeFormNotificationByUserID(
+            FreeFormNotificationByUserID.builder()
+                .namespace(Namespace)
+                .userId(game.player2)
+                .body(notifBody)
+                .build())
+        .ensureSuccess();
 
     return response.withStatusCode(200).withBody(getSuccessJson("ok - player 2 - game start"));
   }
@@ -227,19 +231,23 @@ public class App
             .message("BOARD UPDATE")
             .build();
 
-    notifWrapper.freeFormNotificationByUserID(
-        FreeFormNotificationByUserID.builder()
-            .namespace(Namespace)
-            .userId(game.player1)
-            .body(notifBody)
-            .build()).ensureSuccess();
+    notifWrapper
+        .freeFormNotificationByUserID(
+            FreeFormNotificationByUserID.builder()
+                .namespace(Namespace)
+                .userId(game.player1)
+                .body(notifBody)
+                .build())
+        .ensureSuccess();
 
-    notifWrapper.freeFormNotificationByUserID(
-        FreeFormNotificationByUserID.builder()
-            .namespace(Namespace)
-            .userId(game.player2)
-            .body(notifBody)
-            .build()).ensureSuccess();
+    notifWrapper
+        .freeFormNotificationByUserID(
+            FreeFormNotificationByUserID.builder()
+                .namespace(Namespace)
+                .userId(game.player2)
+                .body(notifBody)
+                .build())
+        .ensureSuccess();
 
     return response.withStatusCode(200).withBody(getSuccessJson("ok"));
   }

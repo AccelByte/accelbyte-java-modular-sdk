@@ -10,30 +10,27 @@ package net.accelbyte.sdk.api.inventory.operation_responses.admin_inventories;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.inventory.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminUpdateUserInventoriesByInventoryCodeOpResponse extends ApiResponseWithData<List<ApimodelsInventoryResp>> {
-    
-    private ApimodelsErrorResponse error400 = null;
+public class AdminUpdateUserInventoriesByInventoryCodeOpResponse
+    extends ApiResponseWithData<List<ApimodelsInventoryResp>> {
 
-    private ApimodelsErrorResponse error401 = null;
+  private ApimodelsErrorResponse error400 = null;
 
-    private ApimodelsErrorResponse error403 = null;
+  private ApimodelsErrorResponse error401 = null;
 
-    private ApimodelsErrorResponse error404 = null;
+  private ApimodelsErrorResponse error403 = null;
 
-    private ApimodelsErrorResponse error500 = null;
+  private ApimodelsErrorResponse error404 = null;
 
+  private ApimodelsErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminUpdateUserInventoriesByInventoryCode";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminUpdateUserInventoriesByInventoryCode";
+  }
 }

@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.seasonpass.operation_responses.season;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.seasonpass.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetCurrentUserSeasonOpResponse extends ApiResponseWithData<ClaimableUserSeasonInfo> {
-    
-    private ErrorEntity error400 = null;
+public class PublicGetCurrentUserSeasonOpResponse
+    extends ApiResponseWithData<ClaimableUserSeasonInfo> {
 
-    private ErrorEntity error404 = null;
+  private ErrorEntity error400 = null;
 
+  private ErrorEntity error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.seasonpass.operations.season.PublicGetCurrentUserSeason";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.seasonpass.operations.season.PublicGetCurrentUserSeason";
+  }
 }

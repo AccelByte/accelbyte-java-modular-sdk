@@ -29,6 +29,14 @@
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | PUT | AdminUpdateGoals | [AdminUpdateGoals](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminUpdateGoals.java) | [AdminUpdateGoals](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminUpdateGoals.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | DELETE | AdminDeleteGoal | [AdminDeleteGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminDeleteGoal.java) | [AdminDeleteGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminDeleteGoal.java) |
 
+### Schedules Wrapper:  [Schedules](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/Schedules.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/schedules` | GET | AdminListSchedulesByGoal | [AdminListSchedulesByGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/schedules/AdminListSchedulesByGoal.java) | [AdminListSchedulesByGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/schedules/AdminListSchedulesByGoal.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/schedules` | GET | AdminListSchedules | [AdminListSchedules](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/schedules/AdminListSchedules.java) | [AdminListSchedules](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/schedules/AdminListSchedules.java) |
+| `/challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/schedules` | GET | PublicListSchedulesByGoal | [PublicListSchedulesByGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/schedules/PublicListSchedulesByGoal.java) | [PublicListSchedulesByGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/schedules/PublicListSchedulesByGoal.java) |
+| `/challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/schedules` | GET | PublicListSchedules | [PublicListSchedules](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/schedules/PublicListSchedules.java) | [PublicListSchedules](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/schedules/PublicListSchedules.java) |
+
 ### Plugins Wrapper:  [Plugins](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/Plugins.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -82,6 +90,7 @@
 | `model.CreateGoalRequest` | [ModelCreateGoalRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateGoalRequest.java) |
 | `model.EvaluatePlayerProgressionRequest` | [ModelEvaluatePlayerProgressionRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelEvaluatePlayerProgressionRequest.java) |
 | `model.GetGoalsResponse` | [ModelGetGoalsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGetGoalsResponse.java) |
+| `model.GoalInSchedulesResponse` | [ModelGoalInSchedulesResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalInSchedulesResponse.java) |
 | `model.GoalMeta` | [ModelGoalMeta](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalMeta.java) |
 | `model.GoalOrder` | [ModelGoalOrder](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalOrder.java) |
 | `model.GoalProgressionResponse` | [ModelGoalProgressionResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalProgressionResponse.java) |
@@ -89,6 +98,8 @@
 | `model.GoalSchedule` | [ModelGoalSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalSchedule.java) |
 | `model.ListChallengeResponse` | [ModelListChallengeResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListChallengeResponse.java) |
 | `model.ListPeriodsResponse` | [ModelListPeriodsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListPeriodsResponse.java) |
+| `model.ListScheduleByGoalResponse` | [ModelListScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListScheduleByGoalResponse.java) |
+| `model.ListSchedulesResponse` | [ModelListSchedulesResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListSchedulesResponse.java) |
 | `model.ListUserRewardsResponse` | [ModelListUserRewardsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListUserRewardsResponse.java) |
 | `model.Pagination` | [ModelPagination](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPagination.java) |
 | `model.PluginAsignmentAppConfig` | [ModelPluginAsignmentAppConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAsignmentAppConfig.java) |
@@ -101,6 +112,8 @@
 | `model.ResetConfig` | [ModelResetConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelResetConfig.java) |
 | `model.Reward` | [ModelReward](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelReward.java) |
 | `model.Schedule` | [ModelSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelSchedule.java) |
+| `model.ScheduleByGoalResponse` | [ModelScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelScheduleByGoalResponse.java) |
+| `model.ScheduleResponse` | [ModelScheduleResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelScheduleResponse.java) |
 | `model.UpdateChallengeRequest` | [ModelUpdateChallengeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateChallengeRequest.java) |
 | `model.UpdateChallengeScheduleRequest` | [ModelUpdateChallengeScheduleRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateChallengeScheduleRequest.java) |
 | `model.UpdateGoalRequest` | [ModelUpdateGoalRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateGoalRequest.java) |

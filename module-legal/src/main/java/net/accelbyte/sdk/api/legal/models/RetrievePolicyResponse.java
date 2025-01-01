@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,78 +21,75 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class RetrievePolicyResponse extends Model {
 
-    @JsonProperty("countries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> countries;
+  @JsonProperty("countries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> countries;
 
-    @JsonProperty("countryCode")
-    private String countryCode;
+  @JsonProperty("countryCode")
+  private String countryCode;
 
-    @JsonProperty("countryGroupCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String countryGroupCode;
+  @JsonProperty("countryGroupCode")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String countryGroupCode;
 
-    @JsonProperty("countryGroupName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String countryGroupName;
+  @JsonProperty("countryGroupName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String countryGroupName;
 
-    @JsonProperty("countryType")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String countryType;
+  @JsonProperty("countryType")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String countryType;
 
-    @JsonProperty("createdAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String createdAt;
+  @JsonProperty("createdAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String createdAt;
 
-    @JsonProperty("description")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String description;
+  @JsonProperty("description")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String description;
 
-    @JsonProperty("id")
-    private String id;
+  @JsonProperty("id")
+  private String id;
 
-    @JsonProperty("isDefaultOpted")
-    private Boolean isDefaultOpted;
+  @JsonProperty("isDefaultOpted")
+  private Boolean isDefaultOpted;
 
-    @JsonProperty("isDefaultSelection")
-    private Boolean isDefaultSelection;
+  @JsonProperty("isDefaultSelection")
+  private Boolean isDefaultSelection;
 
-    @JsonProperty("isMandatory")
-    private Boolean isMandatory;
+  @JsonProperty("isMandatory")
+  private Boolean isMandatory;
 
-    @JsonProperty("policyName")
-    private String policyName;
+  @JsonProperty("policyName")
+  private String policyName;
 
-    @JsonProperty("policyVersions")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<PolicyVersionObject> policyVersions;
+  @JsonProperty("policyVersions")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<PolicyVersionObject> policyVersions;
 
-    @JsonProperty("readableId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String readableId;
+  @JsonProperty("readableId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String readableId;
 
-    @JsonProperty("shouldNotifyOnUpdate")
-    private Boolean shouldNotifyOnUpdate;
+  @JsonProperty("shouldNotifyOnUpdate")
+  private Boolean shouldNotifyOnUpdate;
 
-    @JsonProperty("updatedAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String updatedAt;
+  @JsonProperty("updatedAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String updatedAt;
 
+  @JsonIgnore
+  public RetrievePolicyResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public RetrievePolicyResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<RetrievePolicyResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<RetrievePolicyResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<RetrievePolicyResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<RetrievePolicyResponse>>() {});
+  }
 }

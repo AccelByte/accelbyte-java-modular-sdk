@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class SendMFAAuthenticationCodeOpResponse extends ApiResponse {
-    
-    private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error403 = null;
+  private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error404 = null;
+  private RestErrorResponse error403 = null;
 
-    private RestErrorResponse error429 = null;
+  private RestErrorResponse error404 = null;
 
-    private RestErrorResponse error500 = null;
+  private RestErrorResponse error429 = null;
 
+  private RestErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.SendMFAAuthenticationCode";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.SendMFAAuthenticationCode";
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,89 +21,85 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class PaymentRequest extends Model {
 
-    @JsonProperty("amount")
-    private Long amount;
+  @JsonProperty("amount")
+  private Long amount;
 
-    @JsonProperty("metadata")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, ?> metadata;
+  @JsonProperty("metadata")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> metadata;
 
-    @JsonProperty("walletPlatform")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+  @JsonProperty("walletPlatform")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String walletPlatform;
+
+  @JsonIgnore
+  public String getWalletPlatform() {
+    return this.walletPlatform;
+  }
+
+  @JsonIgnore
+  public WalletPlatform getWalletPlatformAsEnum() {
+    return WalletPlatform.valueOf(this.walletPlatform);
+  }
+
+  @JsonIgnore
+  public void setWalletPlatform(final String walletPlatform) {
+    this.walletPlatform = walletPlatform;
+  }
+
+  @JsonIgnore
+  public void setWalletPlatformFromEnum(final WalletPlatform walletPlatform) {
+    this.walletPlatform = walletPlatform.toString();
+  }
+
+  @JsonIgnore
+  public PaymentRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
+
+  @JsonIgnore
+  public List<PaymentRequest> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<PaymentRequest>>() {});
+  }
+
+  public enum WalletPlatform {
+    Epic("Epic"),
+    GooglePlay("GooglePlay"),
+    IOS("IOS"),
+    Nintendo("Nintendo"),
+    Oculus("Oculus"),
+    Other("Other"),
+    Playstation("Playstation"),
+    Steam("Steam"),
+    Xbox("Xbox");
+
+    private String value;
+
+    WalletPlatform(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class PaymentRequestBuilder {
     private String walletPlatform;
 
-
-
-    @JsonIgnore
-    public String getWalletPlatform() {
-        return this.walletPlatform;
+    public PaymentRequestBuilder walletPlatform(final String walletPlatform) {
+      this.walletPlatform = walletPlatform;
+      return this;
     }
 
-    @JsonIgnore
-    public WalletPlatform getWalletPlatformAsEnum() {
-        return WalletPlatform.valueOf(this.walletPlatform);
+    public PaymentRequestBuilder walletPlatformFromEnum(final WalletPlatform walletPlatform) {
+      this.walletPlatform = walletPlatform.toString();
+      return this;
     }
-
-    @JsonIgnore
-    public void setWalletPlatform(final String walletPlatform) {
-        this.walletPlatform = walletPlatform;
-    }
-
-    @JsonIgnore
-    public void setWalletPlatformFromEnum(final WalletPlatform walletPlatform) {
-        this.walletPlatform = walletPlatform.toString();
-    }
-
-    @JsonIgnore
-    public PaymentRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<PaymentRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<PaymentRequest>>() {});
-    }
-
-
-    public enum WalletPlatform {
-        Epic("Epic"),
-        GooglePlay("GooglePlay"),
-        IOS("IOS"),
-        Nintendo("Nintendo"),
-        Oculus("Oculus"),
-        Other("Other"),
-        Playstation("Playstation"),
-        Steam("Steam"),
-        Xbox("Xbox");
-
-        private String value;
-
-        WalletPlatform(String value){
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-    }
-
-    public static class PaymentRequestBuilder {
-        private String walletPlatform;
-
-
-        public PaymentRequestBuilder walletPlatform(final String walletPlatform) {
-            this.walletPlatform = walletPlatform;
-            return this;
-        }
-
-        public PaymentRequestBuilder walletPlatformFromEnum(final WalletPlatform walletPlatform) {
-            this.walletPlatform = walletPlatform.toString();
-            return this;
-        }
-    }
+  }
 }

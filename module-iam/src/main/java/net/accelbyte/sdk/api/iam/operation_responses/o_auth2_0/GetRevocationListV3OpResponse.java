@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GetRevocationListV3OpResponse extends ApiResponseWithData<OauthapiRevocationList> {
-    
-    private RestErrorResponse error401 = null;
 
+  private RestErrorResponse error401 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.GetRevocationListV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.o_auth2_0.GetRevocationListV3";
+  }
 }

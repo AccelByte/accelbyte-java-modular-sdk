@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,32 +21,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelUserMFAStatusResponseV4 extends Model {
 
-    @JsonProperty("defaultFactor")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String defaultFactor;
+  @JsonProperty("defaultFactor")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String defaultFactor;
 
-    @JsonProperty("enabled")
-    private Boolean enabled;
+  @JsonProperty("enabled")
+  private Boolean enabled;
 
-    @JsonProperty("enabledFactors")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> enabledFactors;
+  @JsonProperty("enabledFactors")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> enabledFactors;
 
+  @JsonIgnore
+  public ModelUserMFAStatusResponseV4 createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelUserMFAStatusResponseV4 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelUserMFAStatusResponseV4> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelUserMFAStatusResponseV4>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelUserMFAStatusResponseV4> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelUserMFAStatusResponseV4>>() {});
+  }
 }

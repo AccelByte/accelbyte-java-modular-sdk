@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.dslogmanager;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class DslogmanagerErrors
-{
-}
+public class DslogmanagerErrors {}

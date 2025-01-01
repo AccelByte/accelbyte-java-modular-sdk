@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.platform.operation_responses.iap;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeletePlaystationIAPConfigOpResponse extends ApiResponse {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.iap.DeletePlaystationIAPConfig";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.iap.DeletePlaystationIAPConfig";
+  }
 }

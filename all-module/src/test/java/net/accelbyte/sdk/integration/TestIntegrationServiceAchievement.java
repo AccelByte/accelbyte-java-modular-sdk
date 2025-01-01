@@ -24,7 +24,6 @@ import net.accelbyte.sdk.api.achievement.models.ModelsPaginatedAchievementRespon
 import net.accelbyte.sdk.api.achievement.operations.achievements.*;
 import net.accelbyte.sdk.api.achievement.wrappers.Achievements;
 import net.accelbyte.sdk.core.ApiResponseException;
-import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -83,11 +82,13 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
             .build();
 
     final ModelsAchievementResponse createAchievementResult =
-        achievementsWrapper.adminCreateNewAchievement(
-            AdminCreateNewAchievement.builder()
-                .namespace(this.namespace)
-                .body(createAchievementBody)
-                .build()).ensureSuccess();
+        achievementsWrapper
+            .adminCreateNewAchievement(
+                AdminCreateNewAchievement.builder()
+                    .namespace(this.namespace)
+                    .body(createAchievementBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -104,12 +105,14 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
             .build();
 
     final ModelsAchievementResponse updateAchievementResult =
-        achievementsWrapper.adminUpdateAchievement(
-            AdminUpdateAchievement.builder()
-                .namespace(this.namespace)
-                .achievementCode(achievementCode)
-                .body(updateAchievementBody)
-                .build()).ensureSuccess();
+        achievementsWrapper
+            .adminUpdateAchievement(
+                AdminUpdateAchievement.builder()
+                    .namespace(this.namespace)
+                    .achievementCode(achievementCode)
+                    .body(updateAchievementBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -119,11 +122,13 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
     // CASE Get an achievement by achievement code
 
     final ModelsAchievementResponse getAchievementResult =
-        achievementsWrapper.adminGetAchievement(
-            AdminGetAchievement.builder()
-                .namespace(this.namespace)
-                .achievementCode(achievementCode)
-                .build()).ensureSuccess();
+        achievementsWrapper
+            .adminGetAchievement(
+                AdminGetAchievement.builder()
+                    .namespace(this.namespace)
+                    .achievementCode(achievementCode)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getAchievementResult);
     assertEquals(getAchievementResult.getGoalValue(), 2000f);
@@ -142,26 +147,31 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
     exportAchievementFile.deleteOnExit();
 
     final InputStream exportAchievementsResult =
-        achievementsWrapper.exportAchievements(
-            ExportAchievements.builder()
-                .namespace(this.namespace)
-                .build()).ensureSuccess();
+        achievementsWrapper
+            .exportAchievements(ExportAchievements.builder().namespace(this.namespace).build())
+            .ensureSuccess();
     java.nio.file.Files.copy(
-            exportAchievementsResult,
-            exportAchievementFile.toPath(),
-            java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+        exportAchievementsResult,
+        exportAchievementFile.toPath(),
+        java.nio.file.StandardCopyOption.REPLACE_EXISTING);
     org.apache.commons.io.IOUtils.closeQuietly(exportAchievementsResult);
 
     // ESAC
-    
+
     assertTrue(exportAchievementFile.exists());
     assertTrue(Files.size(exportAchievementFile.toPath()) > 0);
 
     // CASE Get a list of achievements
 
     final ModelsPaginatedAchievementResponse getAchievementListResult =
-        achievementsWrapper.adminListAchievements(
-            AdminListAchievements.builder().namespace(this.namespace).limit(100).offset(0).build()).ensureSuccess();
+        achievementsWrapper
+            .adminListAchievements(
+                AdminListAchievements.builder()
+                    .namespace(this.namespace)
+                    .limit(100)
+                    .offset(0)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getAchievementListResult);
     assertTrue(getAchievementListResult.getData().size() > 0);
@@ -170,12 +180,13 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
 
     // CASE Delete an achievement
 
-    achievementsWrapper.adminDeleteAchievement(
-        AdminDeleteAchievement.builder()
-            .namespace(this.namespace)
-            .achievementCode(achievementCode)
-            .build())
-            .ensureSuccess();
+    achievementsWrapper
+        .adminDeleteAchievement(
+            AdminDeleteAchievement.builder()
+                .namespace(this.namespace)
+                .achievementCode(achievementCode)
+                .build())
+        .ensureSuccess();
 
     // ESAC
 
@@ -184,12 +195,13 @@ public class TestIntegrationServiceAchievement extends TestIntegration {
     assertThrows(
         ApiResponseException.class,
         () -> {
-          achievementsWrapper.adminGetAchievement(
-              AdminGetAchievement.builder()
-                  .namespace(this.namespace)
-                  .achievementCode(achievementCode)
-                  .build())
-                  .ensureSuccess();
+          achievementsWrapper
+              .adminGetAchievement(
+                  AdminGetAchievement.builder()
+                      .namespace(this.namespace)
+                      .achievementCode(achievementCode)
+                      .build())
+              .ensureSuccess();
         });
   }
 

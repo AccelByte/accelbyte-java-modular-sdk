@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.session.operation_responses.session_storage;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.session.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AdminReadSessionStorageOpResponse extends ApiResponseWithData<Map<String, ?>> {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.session.operations.session_storage.AdminReadSessionStorage";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.session.operations.session_storage.AdminReadSessionStorage";
+  }
 }

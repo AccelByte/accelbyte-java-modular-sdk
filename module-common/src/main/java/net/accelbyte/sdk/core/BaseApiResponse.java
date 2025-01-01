@@ -4,7 +4,7 @@
  * and restrictions contact your company contract manager.
  */
 
- package net.accelbyte.sdk.core;
+package net.accelbyte.sdk.core;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,22 +12,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class BaseApiResponse {
-    
-    private boolean isSuccess = false;
 
-    private int httpStatusCode = 200;
+  private boolean isSuccess = false;
 
-    private String contentType = "";
+  private int httpStatusCode = 200;
 
-    private ApiError error = ApiError.empty;
+  private String contentType = "";
 
-    public abstract String getFullOperationId();
+  private ApiError error = ApiError.empty;
 
-    public void throwExceptionIfError() throws ApiResponseException
-    {
-        if (!isSuccess && error.isAvailable())
-            throw new ApiResponseException(this,true);
-        else if (!isSuccess)
-            throw new ApiResponseException(this,false);
-    }
+  public abstract String getFullOperationId();
+
+  public void throwExceptionIfError() throws ApiResponseException {
+    if (!isSuccess && error.isAvailable()) throw new ApiResponseException(this, true);
+    else if (!isSuccess) throw new ApiResponseException(this, false);
+  }
 }

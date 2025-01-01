@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.inventory.operation_responses.admin_inventory_conf
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.inventory.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetInventoryConfigurationOpResponse extends ApiResponseWithData<ApimodelsInventoryConfigurationResp> {
-    
-    private ApimodelsErrorResponse error400 = null;
+public class AdminGetInventoryConfigurationOpResponse
+    extends ApiResponseWithData<ApimodelsInventoryConfigurationResp> {
 
-    private ApimodelsErrorResponse error404 = null;
+  private ApimodelsErrorResponse error400 = null;
 
-    private ApimodelsErrorResponse error500 = null;
+  private ApimodelsErrorResponse error404 = null;
 
+  private ApimodelsErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.AdminGetInventoryConfiguration";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.inventory.operations.admin_inventory_configurations.AdminGetInventoryConfiguration";
+  }
 }

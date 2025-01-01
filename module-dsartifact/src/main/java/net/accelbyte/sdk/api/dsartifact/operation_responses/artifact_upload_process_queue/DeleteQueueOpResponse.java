@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.dsartifact.operation_responses.artifact_upload_pro
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dsartifact.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteQueueOpResponse extends ApiResponse {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error400 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dsartifact.operations.artifact_upload_process_queue.DeleteQueue";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dsartifact.operations.artifact_upload_process_queue.DeleteQueue";
+  }
 }

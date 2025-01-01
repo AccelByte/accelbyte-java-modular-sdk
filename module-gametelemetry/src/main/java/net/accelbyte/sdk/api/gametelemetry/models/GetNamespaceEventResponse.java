@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.gametelemetry.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,49 +21,47 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class GetNamespaceEventResponse extends Model {
 
-    @JsonProperty("EventId")
-    private String eventId;
+  @JsonProperty("EventId")
+  private String eventId;
 
-    @JsonProperty("EventName")
-    private String eventName;
+  @JsonProperty("EventName")
+  private String eventName;
 
-    @JsonProperty("EventNamespace")
-    private String eventNamespace;
+  @JsonProperty("EventNamespace")
+  private String eventNamespace;
 
-    @JsonProperty("EventTimestamp")
-    private String eventTimestamp;
+  @JsonProperty("EventTimestamp")
+  private String eventTimestamp;
 
-    @JsonProperty("FlightId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String flightId;
+  @JsonProperty("FlightId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String flightId;
 
-    @JsonProperty("Payload")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, ?> payload;
+  @JsonProperty("Payload")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> payload;
 
-    @JsonProperty("UserId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String userId;
+  @JsonProperty("UserId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String userId;
 
-    @JsonProperty("UserNamespace")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String userNamespace;
+  @JsonProperty("UserNamespace")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String userNamespace;
 
+  @JsonIgnore
+  public GetNamespaceEventResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public GetNamespaceEventResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<GetNamespaceEventResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<GetNamespaceEventResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<GetNamespaceEventResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<GetNamespaceEventResponse>>() {});
+  }
 }

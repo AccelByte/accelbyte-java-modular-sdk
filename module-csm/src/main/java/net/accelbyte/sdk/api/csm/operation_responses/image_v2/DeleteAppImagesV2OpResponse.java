@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.csm.operation_responses.image_v2;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.csm.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteAppImagesV2OpResponse extends ApiResponse {
-    
-    private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error404 = null;
+  private ResponseErrorResponse error403 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error404 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.csm.operations.image_v2.DeleteAppImagesV2";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.csm.operations.image_v2.DeleteAppImagesV2";
+  }
 }

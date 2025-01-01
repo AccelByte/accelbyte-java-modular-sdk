@@ -73,8 +73,13 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     // CASE Get a game record
 
     final ModelsGameRecordResponse getGameRecordResult =
-        publicGameRecordWrapper.getGameRecordHandlerV1(
-            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
+        publicGameRecordWrapper
+            .getGameRecordHandlerV1(
+                GetGameRecordHandlerV1.builder()
+                    .namespace(this.namespace)
+                    .key(gameRecordKey)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -107,8 +112,13 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     // Confirm if game record is updated
 
     final ModelsGameRecordResponse getGameRecordConfirmResult =
-        publicGameRecordWrapper.getGameRecordHandlerV1(
-            GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
+        publicGameRecordWrapper
+            .getGameRecordHandlerV1(
+                GetGameRecordHandlerV1.builder()
+                    .namespace(this.namespace)
+                    .key(gameRecordKey)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getGameRecordConfirmResult);
     final Map<String, ?> gameRecordValue2 = getGameRecordConfirmResult.getValue();
@@ -120,8 +130,13 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
 
     // CASE Delete a game record
 
-    publicGameRecordWrapper.deleteGameRecordHandlerV1(
-        DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
+    publicGameRecordWrapper
+        .deleteGameRecordHandlerV1(
+            DeleteGameRecordHandlerV1.builder()
+                .namespace(this.namespace)
+                .key(gameRecordKey)
+                .build())
+        .ensureSuccess();
 
     // ESAC
 
@@ -130,12 +145,13 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     assertThrows(
         ApiResponseException.class,
         () -> {
-          publicGameRecordWrapper.getGameRecordHandlerV1(
-              GetGameRecordHandlerV1.builder()
-                  .namespace(this.namespace)
-                  .key(gameRecordKey)
-                  .build())
-                  .ensureSuccess();
+          publicGameRecordWrapper
+              .getGameRecordHandlerV1(
+                  GetGameRecordHandlerV1.builder()
+                      .namespace(this.namespace)
+                      .key(gameRecordKey)
+                      .build())
+              .ensureSuccess();
         });
   }
 
@@ -149,7 +165,7 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     final int playerRecordFooValue = 4893;
 
     final PublicPlayerRecord publicPlayerRecordWrapper = new PublicPlayerRecord(sdk);
-    
+
     final Users usersWrapper = new Users(sdk);
 
     final ModelUserResponseV3 getUserResult =
@@ -181,12 +197,14 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
     // CASE Get a player record
 
     final ModelsPlayerRecordResponse getPlayerRecordResult =
-        publicPlayerRecordWrapper.getPlayerRecordHandlerV1(
-            GetPlayerRecordHandlerV1.builder()
-                .namespace(this.namespace)
-                .key(playerRecordKey)
-                .userId(userId)
-            .build()).ensureSuccess();
+        publicPlayerRecordWrapper
+            .getPlayerRecordHandlerV1(
+                GetPlayerRecordHandlerV1.builder()
+                    .namespace(this.namespace)
+                    .key(playerRecordKey)
+                    .userId(userId)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -224,7 +242,7 @@ public class TestIntegrationServiceCloudSave extends TestIntegration {
             .namespace(this.namespace)
             .key(playerRecordKey)
             .userId(userId)
-        .build());
+            .build());
 
     // ESAC
 

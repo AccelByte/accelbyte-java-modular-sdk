@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.gdpr;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class GdprErrors
-{
-}
+public class GdprErrors {}

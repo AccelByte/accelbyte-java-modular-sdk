@@ -10,127 +10,121 @@ package net.accelbyte.sdk.api.legal.operations.agreement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.legal.operation_responses.agreement.RetrieveAllUsersByPolicyVersionOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * retrieveAllUsersByPolicyVersion
  *
- * This API will return users who has accepted a specific policy version.
+ * <p>This API will return users who has accepted a specific policy version.
  */
 @Getter
 @Setter
 public class RetrieveAllUsersByPolicyVersion extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/agreement/admin/agreements/policy-versions/users";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList();
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String keyword;
-    private Integer limit;
-    private Integer offset;
-    private String policyVersionId;
+  /** generated field's value */
+  private String path = "/agreement/admin/agreements/policy-versions/users";
 
-    /**
-    * @param policyVersionId required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public RetrieveAllUsersByPolicyVersion(
-            String customBasePath,            String keyword,
-            Integer limit,
-            Integer offset,
-            String policyVersionId
-    )
-    {
-        this.keyword = keyword;
-        this.limit = limit;
-        this.offset = offset;
-        this.policyVersionId = policyVersionId;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList();
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String keyword;
+
+  private Integer limit;
+  private Integer offset;
+  private String policyVersionId;
+
+  /**
+   * @param policyVersionId required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public RetrieveAllUsersByPolicyVersion(
+      String customBasePath,
+      String keyword,
+      Integer limit,
+      Integer offset,
+      String policyVersionId) {
+    this.keyword = keyword;
+    this.limit = limit;
+    this.offset = offset;
+    this.policyVersionId = policyVersionId;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("keyword", this.keyword == null ? null : Arrays.asList(this.keyword));
+    queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
+    queryParams.put(
+        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put(
+        "policyVersionId",
+        this.policyVersionId == null ? null : Arrays.asList(this.policyVersionId));
+    return queryParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.policyVersionId == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public RetrieveAllUsersByPolicyVersionOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final RetrieveAllUsersByPolicyVersionOpResponse response =
+        new RetrieveAllUsersByPolicyVersionOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new PagedRetrieveUserAcceptedAgreementResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new ErrorEntity().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
     }
 
+    return response;
+  }
 
-    @Override
-    public Map<String, List<String>> getQueryParams(){
-        Map<String, List<String>> queryParams = new HashMap<>();
-        queryParams.put("keyword", this.keyword == null ? null : Arrays.asList(this.keyword));
-        queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
-        queryParams.put("offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
-        queryParams.put("policyVersionId", this.policyVersionId == null ? null : Arrays.asList(this.policyVersionId));
-        return queryParams;
-    }
+  /*
+  public PagedRetrieveUserAcceptedAgreementResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new PagedRetrieveUserAcceptedAgreementResponse().createFromJson(json);
+  }
+  */
 
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.policyVersionId == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public RetrieveAllUsersByPolicyVersionOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final RetrieveAllUsersByPolicyVersionOpResponse response = new RetrieveAllUsersByPolicyVersionOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new PagedRetrieveUserAcceptedAgreementResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 404) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError404(new ErrorEntity().createFromJson(json));
-            response.setError(response.getError404().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public PagedRetrieveUserAcceptedAgreementResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new PagedRetrieveUserAcceptedAgreementResponse().createFromJson(json);
-    }
-    */
-
-    @Override
-    protected Map<String, String> getCollectionFormatMap() {
-        Map<String, String> result = new HashMap<>();
-        result.put("keyword", "None");
-        result.put("limit", "None");
-        result.put("offset", "None");
-        result.put("policyVersionId", "None");
-        return result;
-    }
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("keyword", "None");
+    result.put("limit", "None");
+    result.put("offset", "None");
+    result.put("policyVersionId", "None");
+    return result;
+  }
 }

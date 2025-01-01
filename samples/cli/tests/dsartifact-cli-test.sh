@@ -55,71 +55,71 @@ touch "tmp.dat"
 
 #- 2 ListNodesIPAddress
 ./ng net.accelbyte.sdk.cli.Main dsartifact listNodesIPAddress \
-    --limit '55' \
-    --next 'JfjSoK2P' \
-    --nodeIP 'YqCts96k' \
-    --previous 'YSlbBVCL' \
+    --limit '82' \
+    --next 'RqDXiOJ7' \
+    --nodeIP 'baqgYLzi' \
+    --previous 'Fc6ycttO' \
     > test.out 2>&1
 eval_tap $? 2 'ListNodesIPAddress' test.out
 
 #- 3 DeleteNodeByID
 ./ng net.accelbyte.sdk.cli.Main dsartifact deleteNodeByID \
-    --nodeIP 'UGv82MeB' \
-    --podName 'hZUgKxAW' \
+    --nodeIP 'v6scbyS3' \
+    --podName 'j5OVekbE' \
     > test.out 2>&1
 eval_tap $? 3 'DeleteNodeByID' test.out
 
 #- 4 ListQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact listQueue \
-    --limit '69' \
-    --next 'nAqRZc7h' \
-    --previous 'PB9Z3Tfq' \
-    --nodeIP '9dmiQrhp' \
+    --limit '65' \
+    --next 'KKmG6eya' \
+    --previous 'leFZp8BK' \
+    --nodeIP 'xPd2yrEH' \
     > test.out 2>&1
 eval_tap $? 4 'ListQueue' test.out
 
 #- 5 GetActiveQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact getActiveQueue \
-    --nodeIP 'd6pHoQbI' \
+    --nodeIP 'jv6RsrcY' \
     > test.out 2>&1
 eval_tap $? 5 'GetActiveQueue' test.out
 
 #- 6 SetActiveQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact setActiveQueue \
-    --nodeIP 'JjZRrPxd' \
-    --podName 'eB2nbvG1' \
+    --nodeIP 'nL83T1Mx' \
+    --podName 'GhUFYstl' \
     > test.out 2>&1
 eval_tap $? 6 'SetActiveQueue' test.out
 
 #- 7 DeleteActiveQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact deleteActiveQueue \
-    --nodeIP 'B3vrQmxE' \
+    --nodeIP 'DwKeb889' \
     > test.out 2>&1
 eval_tap $? 7 'DeleteActiveQueue' test.out
 
 #- 8 ReportFailedUpload
 ./ng net.accelbyte.sdk.cli.Main dsartifact reportFailedUpload \
-    --nodeIP 'nYTTE3ph' \
-    --podName 'lu1G4Tzx' \
+    --nodeIP '3dRSHyFr' \
+    --podName 'mEjAZ0hE' \
     > test.out 2>&1
 eval_tap $? 8 'ReportFailedUpload' test.out
 
 #- 9 DeleteQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact deleteQueue \
     --namespace "$AB_NAMESPACE" \
-    --nodeIP 'BnICT66q' \
-    --podName 'eEvKGcwC' \
+    --nodeIP '2EF5l2ur' \
+    --podName 'YjlFlUXb' \
     > test.out 2>&1
 eval_tap $? 9 'DeleteQueue' test.out
 
 #- 10 ListAllActiveQueue
 ./ng net.accelbyte.sdk.cli.Main dsartifact listAllActiveQueue \
     --namespace "$AB_NAMESPACE" \
-    --limit '61' \
-    --next 'ZlfBgR0O' \
-    --nodeIP 'QooeIYgS' \
-    --podName 'eOScsh3a' \
-    --previous 'G6noC0bE' \
+    --limit '8' \
+    --next 'W8X5sulC' \
+    --nodeIP '5g01bm6B' \
+    --podName 'XSY90j6b' \
+    --previous 'THMqeGni' \
     > test.out 2>&1
 eval_tap $? 10 'ListAllActiveQueue' test.out
 
@@ -127,59 +127,59 @@ eval_tap $? 10 'ListAllActiveQueue' test.out
 ./ng net.accelbyte.sdk.cli.Main dsartifact listAllQueue \
     --namespace "$AB_NAMESPACE" \
     --excludeUploading  \
-    --limit '63' \
-    --next 'pxxJbDge' \
-    --nodeIP 'SRwTBf4k' \
-    --order 'rVpZ1qUf' \
-    --podName 'kF16nRrF' \
-    --previous '3Qa434Zw' \
+    --limit '32' \
+    --next 'G95W6ZT7' \
+    --nodeIP 'W4xnOxCY' \
+    --order '7IQTPWB9' \
+    --podName 'SOFwtTsQ' \
+    --previous 'BbgQ4mu2' \
     > test.out 2>&1
 eval_tap $? 11 'ListAllQueue' test.out
 
 #- 12 ListTerminatedServersWithNamespace
 ./ng net.accelbyte.sdk.cli.Main dsartifact listTerminatedServersWithNamespace \
     --namespace "$AB_NAMESPACE" \
-    --deployment 'WcTLBTbF' \
-    --gameMode 'tzvi8rb9' \
-    --limit '7' \
-    --next 'unlmTJlB' \
-    --partyId '46RCHg7q' \
-    --podName 'CWUJjCQ5' \
-    --previous '5u1Y1kBO' \
-    --provider 'lM4RHKep' \
-    --region 'JZh5fUDV' \
-    --sessionId 'GorpXiSl' \
-    --userId 'AG31VUBJ' \
+    --deployment 'J5TZx18b' \
+    --gameMode 'X8SWk5PX' \
+    --limit '78' \
+    --next 'w6EqFHMs' \
+    --partyId 'iUB9U58H' \
+    --podName 'pBaxRcCq' \
+    --previous 'x2690Z9S' \
+    --provider 'UKbRLyuW' \
+    --region 'a9XxVS8U' \
+    --sessionId 'xMhlEKU3' \
+    --userId 'rOYyQeRM' \
     > test.out 2>&1
 eval_tap $? 12 'ListTerminatedServersWithNamespace' test.out
 
 #- 13 DownloadServerArtifacts
 ./ng net.accelbyte.sdk.cli.Main dsartifact downloadServerArtifacts \
     --namespace "$AB_NAMESPACE" \
-    --podName 'Pse5owoo' \
+    --podName 'SehhiE18' \
     > test.out 2>&1
 eval_tap $? 13 'DownloadServerArtifacts' test.out
 
 #- 14 CheckServerArtifact
 ./ng net.accelbyte.sdk.cli.Main dsartifact checkServerArtifact \
     --namespace "$AB_NAMESPACE" \
-    --podName 'zcsCjSl9' \
+    --podName 'fgTbvcJi' \
     > test.out 2>&1
 eval_tap $? 14 'CheckServerArtifact' test.out
 
 #- 15 ListTerminatedServers
 ./ng net.accelbyte.sdk.cli.Main dsartifact listTerminatedServers \
-    --deployment 'kRgMMnIU' \
-    --gameMode 'Xs6Pnq59' \
-    --limit '77' \
-    --next 'SszUPEIx' \
-    --partyId 'Fa00SpYC' \
-    --podName 'xMObxyjx' \
-    --previous 'I5BwTZDY' \
-    --provider 'Zq4I1XjC' \
-    --region 'QRsFFwa6' \
-    --sessionId 'XBom9FiL' \
-    --userId '6jpjuvNx' \
+    --deployment 'FKntlDo4' \
+    --gameMode 'axouiruA' \
+    --limit '58' \
+    --next 'ApHGzjeC' \
+    --partyId 'FY0oHzCC' \
+    --podName 'ktyq2gGq' \
+    --previous 'Tc2J8IOn' \
+    --provider 'rRALV8KA' \
+    --region 'uEGkMZNn' \
+    --sessionId 'eFBdclm1' \
+    --userId 'HMj7W40k' \
     > test.out 2>&1
 eval_tap $? 15 'ListTerminatedServers' test.out
 

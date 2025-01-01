@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,42 +21,40 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelUserLoginHistoryResponse extends Model {
 
-    @JsonProperty("ApplicationName")
-    private String applicationName;
+  @JsonProperty("ApplicationName")
+  private String applicationName;
 
-    @JsonProperty("City")
-    private String city;
+  @JsonProperty("City")
+  private String city;
 
-    @JsonProperty("Country")
-    private String country;
+  @JsonProperty("Country")
+  private String country;
 
-    @JsonProperty("DeviceId")
-    private String deviceId;
+  @JsonProperty("DeviceId")
+  private String deviceId;
 
-    @JsonProperty("State")
-    private String state;
+  @JsonProperty("State")
+  private String state;
 
-    @JsonProperty("Timestamp")
-    private Long timestamp;
+  @JsonProperty("Timestamp")
+  private Long timestamp;
 
-    @JsonProperty("deviceName")
-    private String deviceName;
+  @JsonProperty("deviceName")
+  private String deviceName;
 
+  @JsonIgnore
+  public ModelUserLoginHistoryResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelUserLoginHistoryResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelUserLoginHistoryResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelUserLoginHistoryResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelUserLoginHistoryResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelUserLoginHistoryResponse>>() {});
+  }
 }

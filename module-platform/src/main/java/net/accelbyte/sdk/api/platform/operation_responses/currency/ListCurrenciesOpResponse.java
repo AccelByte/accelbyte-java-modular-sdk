@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.platform.operation_responses.currency;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class ListCurrenciesOpResponse extends ApiResponseWithData<List<CurrencyInfo>> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.currency.ListCurrencies";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.currency.ListCurrencies";
+  }
 }

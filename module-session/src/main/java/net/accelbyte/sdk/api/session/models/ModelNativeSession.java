@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.session.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelNativeSession extends Model {
 
-    @JsonProperty("CreatedAt")
-    private String createdAt;
+  @JsonProperty("CreatedAt")
+  private String createdAt;
 
-    @JsonProperty("DeletedAt")
-    private String deletedAt;
+  @JsonProperty("DeletedAt")
+  private String deletedAt;
 
-    @JsonProperty("PushContextID")
-    private String pushContextID;
+  @JsonProperty("PushContextID")
+  private String pushContextID;
 
-    @JsonProperty("id")
-    private String id;
+  @JsonProperty("id")
+  private String id;
 
-    @JsonProperty("members")
-    private List<ModelNativeSessionMember> members;
+  @JsonProperty("members")
+  private List<ModelNativeSessionMember> members;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("nativeSessionPlatforms")
-    private Map<String, String> nativeSessionPlatforms;
+  @JsonProperty("nativeSessionPlatforms")
+  private Map<String, String> nativeSessionPlatforms;
 
-    @JsonProperty("persistent")
-    private Boolean persistent;
+  @JsonProperty("persistent")
+  private Boolean persistent;
 
+  @JsonIgnore
+  public ModelNativeSession createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelNativeSession createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelNativeSession> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelNativeSession>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelNativeSession> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelNativeSession>>() {});
+  }
 }

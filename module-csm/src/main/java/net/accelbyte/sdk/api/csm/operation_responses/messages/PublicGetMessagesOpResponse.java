@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.csm.operation_responses.messages;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.csm.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetMessagesOpResponse extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
-    
-    private String error500 = "";
+public class PublicGetMessagesOpResponse
+    extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
 
+  private String error500 = "";
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.csm.operations.messages.PublicGetMessages";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.csm.operations.messages.PublicGetMessages";
+  }
 }

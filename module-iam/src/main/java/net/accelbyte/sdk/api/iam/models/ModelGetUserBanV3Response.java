@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,25 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelGetUserBanV3Response extends Model {
 
-    @JsonProperty("data")
-    private List<ModelUserBanResponseV3> data;
+  @JsonProperty("data")
+  private List<ModelUserBanResponseV3> data;
 
-    @JsonProperty("paging")
-    private AccountcommonPaginationV3 paging;
+  @JsonProperty("paging")
+  private AccountcommonPaginationV3 paging;
 
+  @JsonIgnore
+  public ModelGetUserBanV3Response createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelGetUserBanV3Response createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelGetUserBanV3Response> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelGetUserBanV3Response>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelGetUserBanV3Response> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelGetUserBanV3Response>>() {});
+  }
 }

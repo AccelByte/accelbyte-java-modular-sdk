@@ -8,43 +8,42 @@
 
 package net.accelbyte.sdk.api.session.wrappers;
 
-
 import net.accelbyte.sdk.api.session.models.*;
-import net.accelbyte.sdk.api.session.operations.dsmc_default_configuration.*;
 import net.accelbyte.sdk.api.session.operation_responses.dsmc_default_configuration.*;
-import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.api.session.operations.dsmc_default_configuration.*;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class DSMCDefaultConfiguration {
 
-    private RequestRunner sdk;
-    private String customBasePath = "";
+  private RequestRunner sdk;
+  private String customBasePath = "";
 
-    public DSMCDefaultConfiguration(RequestRunner sdk){
-        this.sdk = sdk;
-        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("session");
-        if (!configCustomBasePath.equals("")) {
-            this.customBasePath = configCustomBasePath;
-        }
+  public DSMCDefaultConfiguration(RequestRunner sdk) {
+    this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("session");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public DSMCDefaultConfiguration(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
+  }
+
+  /**
+   * @see AdminGetDSMCConfigurationDefault
+   */
+  public AdminGetDSMCConfigurationDefaultOpResponse adminGetDSMCConfigurationDefault(
+      AdminGetDSMCConfigurationDefault input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    public DSMCDefaultConfiguration(RequestRunner sdk, String customBasePath){
-        this.sdk = sdk;
-        this.customBasePath = customBasePath;
-    }
-
-    /**
-     * @see AdminGetDSMCConfigurationDefault
-     */
-    public AdminGetDSMCConfigurationDefaultOpResponse adminGetDSMCConfigurationDefault(AdminGetDSMCConfigurationDefault input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

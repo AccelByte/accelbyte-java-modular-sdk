@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.cloudsave.operation_responses.admin_record;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.cloudsave.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetAdminPlayerRecordV1OpResponse extends ApiResponseWithData<ModelsAdminPlayerRecordResponse> {
-    
-    private ModelsResponseError error401 = null;
+public class AdminGetAdminPlayerRecordV1OpResponse
+    extends ApiResponseWithData<ModelsAdminPlayerRecordResponse> {
 
-    private ModelsResponseError error403 = null;
+  private ModelsResponseError error401 = null;
 
-    private ModelsResponseError error404 = null;
+  private ModelsResponseError error403 = null;
 
-    private ModelsResponseError error500 = null;
+  private ModelsResponseError error404 = null;
 
+  private ModelsResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.cloudsave.operations.admin_record.AdminGetAdminPlayerRecordV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.cloudsave.operations.admin_record.AdminGetAdminPlayerRecordV1";
+  }
 }

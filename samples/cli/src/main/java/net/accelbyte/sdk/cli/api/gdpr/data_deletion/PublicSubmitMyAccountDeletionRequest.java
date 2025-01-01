@@ -8,8 +8,9 @@
 
 package net.accelbyte.sdk.cli.api.gdpr.data_deletion;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
+import java.util.concurrent.Callable;
 import net.accelbyte.sdk.api.gdpr.models.*;
 import net.accelbyte.sdk.api.gdpr.wrappers.DataDeletion;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -18,63 +19,67 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
-import java.util.concurrent.Callable;
-
 @Command(name = "publicSubmitMyAccountDeletionRequest", mixinStandardHelpOptions = true)
 public class PublicSubmitMyAccountDeletionRequest implements Callable<Integer> {
 
-    private static final Logger log = LogManager.getLogger(PublicSubmitMyAccountDeletionRequest.class);
+  private static final Logger log =
+      LogManager.getLogger(PublicSubmitMyAccountDeletionRequest.class);
 
-    @Option(names = {"--platformId"}, description = "platformId")
-    String platformId;
+  @Option(
+      names = {"--platformId"},
+      description = "platformId")
+  String platformId;
 
-    @Option(names = {"--platformToken"}, description = "platformToken")
-    String platformToken;
+  @Option(
+      names = {"--platformToken"},
+      description = "platformToken")
+  String platformToken;
 
+  @Option(
+      names = {"--logging"},
+      description = "logger")
+  boolean logging;
 
-    @Option(names = {"--logging"}, description = "logger")
-    boolean logging;
+  public static void main(String[] args) {
+    int exitCode = new CommandLine(new PublicSubmitMyAccountDeletionRequest()).execute(args);
+    System.exit(exitCode);
+  }
 
-    public static void main(String[] args) {
-        int exitCode = new CommandLine(new PublicSubmitMyAccountDeletionRequest()).execute(args);
-        System.exit(exitCode);
+  @Override
+  public Integer call() {
+    try {
+      final OkhttpClient httpClient = new OkhttpClient();
+      if (logging) {
+        httpClient.setLogger(new OkhttpLogger());
+      }
+      final AccelByteSDK sdk =
+          new AccelByteSDK(
+              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+      final DataDeletion wrapper = new DataDeletion(sdk);
+      final net.accelbyte.sdk.api.gdpr.operations.data_deletion.PublicSubmitMyAccountDeletionRequest
+          operation =
+              net.accelbyte.sdk.api.gdpr.operations.data_deletion
+                  .PublicSubmitMyAccountDeletionRequest.builder()
+                  .platformId(platformId != null ? platformId : null)
+                  .platformToken(platformToken != null ? platformToken : null)
+                  .build();
+      final ModelsRequestDeleteResponse response =
+          wrapper.publicSubmitMyAccountDeletionRequest(operation).ensureSuccess();
+      final String responseString =
+          new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+      log.info("Operation successful\n{}", responseString);
+      return 0;
+    } catch (HttpResponseException e) {
+      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+    } catch (Exception e) {
+      log.error("An exception was thrown", e);
     }
-
-    @Override
-    public Integer call() {
-        try {
-            final OkhttpClient httpClient = new OkhttpClient();
-            if (logging) {
-                httpClient.setLogger(new OkhttpLogger());
-            }
-            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-            final DataDeletion wrapper = new DataDeletion(sdk);
-            final net.accelbyte.sdk.api.gdpr.operations.data_deletion.PublicSubmitMyAccountDeletionRequest operation =
-                    net.accelbyte.sdk.api.gdpr.operations.data_deletion.PublicSubmitMyAccountDeletionRequest.builder()
-                            .platformId(platformId != null ? platformId : null)
-                            .platformToken(platformToken != null ? platformToken : null)
-                            .build();
-            final ModelsRequestDeleteResponse response =
-                    wrapper.publicSubmitMyAccountDeletionRequest(operation).ensureSuccess();
-            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-            log.info("Operation successful\n{}", responseString);
-            return 0;
-        } catch (HttpResponseException e) {
-            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-        } catch (Exception e) {
-            log.error("An exception was thrown", e);
-        }
-        return 1;
-    }
+    return 1;
+  }
 }

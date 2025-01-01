@@ -37,8 +37,10 @@ public class TestIntegrationServiceDsLogManager extends TestIntegration {
     final TerminatedServers terminatedServersWrapper = new TerminatedServers(sdk);
 
     final ModelsListTerminatedServersResponse terminatedServersResult =
-        terminatedServersWrapper.listTerminatedServers(
-            ListTerminatedServers.builder().namespace(this.namespace).limit(10).build()).ensureSuccess();
+        terminatedServersWrapper
+            .listTerminatedServers(
+                ListTerminatedServers.builder().namespace(this.namespace).limit(10).build())
+            .ensureSuccess();
 
     assertNotNull(terminatedServersResult);
   }

@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.leaderboard.operation_responses.user_data_v3;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.leaderboard.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetUserLeaderboardRankingsAdminV3OpResponse extends ApiResponseWithData<ModelsGetAllUserLeaderboardsRespV3> {
-    
-    private ResponseErrorResponse error401 = null;
+public class GetUserLeaderboardRankingsAdminV3OpResponse
+    extends ApiResponseWithData<ModelsGetAllUserLeaderboardsRespV3> {
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error403 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.leaderboard.operations.user_data_v3.GetUserLeaderboardRankingsAdminV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.leaderboard.operations.user_data_v3.GetUserLeaderboardRankingsAdminV3";
+  }
 }

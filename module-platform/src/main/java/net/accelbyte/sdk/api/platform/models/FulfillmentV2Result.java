@@ -8,134 +8,126 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
-import net.accelbyte.sdk.core.Model;
 import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class FulfillmentV2Result extends Model {
 
-    @JsonProperty("creditSummaries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<CreditSummary> creditSummaries;
+  @JsonProperty("creditSummaries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<CreditSummary> creditSummaries;
 
-    @JsonProperty("entitlementSummaries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<EntitlementSummary> entitlementSummaries;
+  @JsonProperty("entitlementSummaries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<EntitlementSummary> entitlementSummaries;
 
-    @JsonProperty("id")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String id;
+  @JsonProperty("id")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String id;
 
-    @JsonProperty("items")
-    private List<FulfillmentItem> items;
+  @JsonProperty("items")
+  private List<FulfillmentItem> items;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("state")
+  @JsonProperty("state")
+  private String state;
+
+  @JsonProperty("stateInfo")
+  private FulfillmentStateInfo stateInfo;
+
+  @JsonProperty("subscriptionSummaries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<SubscriptionSummary> subscriptionSummaries;
+
+  @JsonProperty("transactionId")
+  private String transactionId;
+
+  @JsonProperty("userId")
+  private String userId;
+
+  @JsonIgnore
+  public String getState() {
+    return this.state;
+  }
+
+  @JsonIgnore
+  public State getStateAsEnum() {
+    return State.valueOf(this.state);
+  }
+
+  @JsonIgnore
+  public void setState(final String state) {
+    this.state = state;
+  }
+
+  @JsonIgnore
+  public void setStateFromEnum(final State state) {
+    this.state = state.toString();
+  }
+
+  @JsonIgnore
+  public FulfillmentV2Result createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
+
+  @JsonIgnore
+  public List<FulfillmentV2Result> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<FulfillmentV2Result>>() {});
+  }
+
+  public ApiError translateToApiError() {
+
+    final String theCode = "";
+
+    final String theMessage = "";
+
+    return new ApiError(theCode, theMessage);
+  }
+
+  public enum State {
+    FULFILLED("FULFILLED"),
+    FULFILLFAILED("FULFILL_FAILED"),
+    REVOKED("REVOKED"),
+    REVOKEFAILED("REVOKE_FAILED");
+
+    private String value;
+
+    State(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class FulfillmentV2ResultBuilder {
     private String state;
 
-    @JsonProperty("stateInfo")
-    private FulfillmentStateInfo stateInfo;
-
-    @JsonProperty("subscriptionSummaries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<SubscriptionSummary> subscriptionSummaries;
-
-    @JsonProperty("transactionId")
-    private String transactionId;
-
-    @JsonProperty("userId")
-    private String userId;
-
-
-
-    @JsonIgnore
-    public String getState() {
-        return this.state;
+    public FulfillmentV2ResultBuilder state(final String state) {
+      this.state = state;
+      return this;
     }
 
-    @JsonIgnore
-    public State getStateAsEnum() {
-        return State.valueOf(this.state);
+    public FulfillmentV2ResultBuilder stateFromEnum(final State state) {
+      this.state = state.toString();
+      return this;
     }
-
-    @JsonIgnore
-    public void setState(final String state) {
-        this.state = state;
-    }
-
-    @JsonIgnore
-    public void setStateFromEnum(final State state) {
-        this.state = state.toString();
-    }
-
-    @JsonIgnore
-    public FulfillmentV2Result createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<FulfillmentV2Result> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<FulfillmentV2Result>>() {});
-    }
-
-    public ApiError translateToApiError() {
-
-        final String theCode = 
-            "";
-        
-        final String theMessage = 
-            "";
-        
-        return new ApiError(theCode, theMessage);
-    }
-
-
-    public enum State {
-        FULFILLED("FULFILLED"),
-        FULFILLFAILED("FULFILL_FAILED"),
-        REVOKED("REVOKED"),
-        REVOKEFAILED("REVOKE_FAILED");
-
-        private String value;
-
-        State(String value){
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-    }
-
-    public static class FulfillmentV2ResultBuilder {
-        private String state;
-
-
-        public FulfillmentV2ResultBuilder state(final String state) {
-            this.state = state;
-            return this;
-        }
-
-        public FulfillmentV2ResultBuilder stateFromEnum(final State state) {
-            this.state = state.toString();
-            return this;
-        }
-    }
+  }
 }

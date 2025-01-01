@@ -40,7 +40,6 @@ import net.accelbyte.sdk.api.social.operations.user_statistic.GetUserStatItems;
 import net.accelbyte.sdk.api.social.operations.user_statistic.IncUserStatItemValue;
 import net.accelbyte.sdk.api.social.wrappers.StatConfiguration;
 import net.accelbyte.sdk.api.social.wrappers.UserStatistic;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -92,8 +91,9 @@ public class TestIntegrationServiceSocial extends TestIntegration {
             .build();
 
     final StatInfo createStatResult =
-        statConfigWrapper.createStat(
-            CreateStat.builder().namespace(this.namespace).body(createStatBody).build()).ensureSuccess();
+        statConfigWrapper
+            .createStat(CreateStat.builder().namespace(this.namespace).body(createStatBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -103,8 +103,9 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Get a statistic
 
     final StatInfo getStatResult =
-        statConfigWrapper.getStat(
-            GetStat.builder().namespace(this.namespace).statCode(statCode).build()).ensureSuccess();
+        statConfigWrapper
+            .getStat(GetStat.builder().namespace(this.namespace).statCode(statCode).build())
+            .ensureSuccess();
 
     assertNotNull(getStatResult);
     assertEquals(statName, getStatResult.getName());
@@ -114,8 +115,9 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Get a statistic
 
     final StatPagingSlicedResult getStatsResult =
-        statConfigWrapper.getStats(
-            GetStats.builder().namespace(this.namespace).build()).ensureSuccess();
+        statConfigWrapper
+            .getStats(GetStats.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     assertNotNull(getStatsResult);
 
@@ -126,12 +128,14 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     final StatUpdate updateStat = StatUpdate.builder().description(statDescriptionUpdated).build();
 
     final StatInfo updateStatResult =
-        statConfigWrapper.updateStat(
-            UpdateStat.builder()
-                .namespace(this.namespace)
-                .statCode(statCode)
-                .body(updateStat)
-                .build()).ensureSuccess();
+        statConfigWrapper
+            .updateStat(
+                UpdateStat.builder()
+                    .namespace(this.namespace)
+                    .statCode(statCode)
+                    .body(updateStat)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -149,7 +153,9 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Export statistics
 
     final InputStream exportStatsResult =
-        statConfigWrapper.exportStats(ExportStats.builder().namespace(namespace).build()).ensureSuccess();
+        statConfigWrapper
+            .exportStats(ExportStats.builder().namespace(namespace).build())
+            .ensureSuccess();
     java.nio.file.Files.copy(
         exportStatsResult,
         exportStatsFile.toPath(),
@@ -164,12 +170,15 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Import statistics
 
     final StatImportInfo importStatsResult =
-        statConfigWrapper.importStats(ImportStats.builder()
-            .namespace(this.namespace)
-            .replaceExisting(false)
-            .file(exportStatsFile)
-        .build()).ensureSuccess();
-  
+        statConfigWrapper
+            .importStats(
+                ImportStats.builder()
+                    .namespace(this.namespace)
+                    .replaceExisting(false)
+                    .file(exportStatsFile)
+                    .build())
+            .ensureSuccess();
+
     // ESAC
 
     assertNotNull(importStatsResult);
@@ -177,11 +186,10 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Query statistics
 
     final StatPagingSlicedResult queryStatsResult =
-        statConfigWrapper.queryStats(QueryStats.builder()
-            .namespace(this.namespace)
-            .keyword(statCode)
-        .build()).ensureSuccess();
-  
+        statConfigWrapper
+            .queryStats(QueryStats.builder().namespace(this.namespace).keyword(statCode).build())
+            .ensureSuccess();
+
     // ESAC
 
     assertNotNull(queryStatsResult);
@@ -228,14 +236,16 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Get user stat items
 
     final UserStatItemPagingSlicedResult getUserStatItemsResult =
-        userStatisticWrapper.getUserStatItems(
-            GetUserStatItems.builder()
-                .namespace(this.namespace)
-                .userId(userId)
-                .statCodes(statCode)
-                .offset(0)
-                .limit(10)
-                .build()).ensureSuccess();
+        userStatisticWrapper
+            .getUserStatItems(
+                GetUserStatItems.builder()
+                    .namespace(this.namespace)
+                    .userId(userId)
+                    .statCodes(statCode)
+                    .offset(0)
+                    .limit(10)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -245,13 +255,15 @@ public class TestIntegrationServiceSocial extends TestIntegration {
     // CASE Update user stat item value
 
     final StatItemIncResult incUserStatItemValueResult =
-        userStatisticWrapper.incUserStatItemValue(
-            IncUserStatItemValue.builder()
-                .namespace(this.namespace)
-                .userId(userId)
-                .statCode(statCode)
-                .body(StatItemInc.builder().inc(5f).build())
-                .build()).ensureSuccess();
+        userStatisticWrapper
+            .incUserStatItemValue(
+                IncUserStatItemValue.builder()
+                    .namespace(this.namespace)
+                    .userId(userId)
+                    .statCode(statCode)
+                    .body(StatItemInc.builder().inc(5f).build())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 

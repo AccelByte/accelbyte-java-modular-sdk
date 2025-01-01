@@ -8,51 +8,45 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
-import net.accelbyte.sdk.core.Model;
 import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelBulkFriendsResponse extends Model {
 
-    @JsonProperty("rowsAffected")
-    private Integer rowsAffected;
+  @JsonProperty("rowsAffected")
+  private Integer rowsAffected;
 
+  @JsonIgnore
+  public ModelBulkFriendsResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
+  @JsonIgnore
+  public List<ModelBulkFriendsResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelBulkFriendsResponse>>() {});
+  }
 
-    @JsonIgnore
-    public ModelBulkFriendsResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
+  public ApiError translateToApiError() {
 
-    @JsonIgnore
-    public List<ModelBulkFriendsResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelBulkFriendsResponse>>() {});
-    }
+    final String theCode = "";
 
-    public ApiError translateToApiError() {
+    final String theMessage = "";
 
-        final String theCode = 
-            "";
-        
-        final String theMessage = 
-            "";
-        
-        return new ApiError(theCode, theMessage);
-    }
-
-
+    return new ApiError(theCode, theMessage);
+  }
 }

@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.lobby.operation_responses.notification;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetNotificationTopicV1AdminOpResponse extends ApiResponseWithData<ModelNotificationTopicResponseV1> {
-    
-    private RestapiErrorResponseV1 error401 = null;
+public class GetNotificationTopicV1AdminOpResponse
+    extends ApiResponseWithData<ModelNotificationTopicResponseV1> {
 
-    private RestapiErrorResponseV1 error403 = null;
+  private RestapiErrorResponseV1 error401 = null;
 
-    private RestapiErrorResponseV1 error404 = null;
+  private RestapiErrorResponseV1 error403 = null;
 
-    private RestapiErrorResponseV1 error500 = null;
+  private RestapiErrorResponseV1 error404 = null;
 
+  private RestapiErrorResponseV1 error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.notification.GetNotificationTopicV1Admin";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.notification.GetNotificationTopicV1Admin";
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.leaderboard.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,51 +21,49 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsLeaderboardConfigReq extends Model {
 
-    @JsonProperty("daily")
-    private ModelsDailyConfig daily;
+  @JsonProperty("daily")
+  private ModelsDailyConfig daily;
 
-    @JsonProperty("descending")
-    private Boolean descending;
+  @JsonProperty("descending")
+  private Boolean descending;
 
-    @JsonProperty("iconURL")
-    private String iconURL;
+  @JsonProperty("iconURL")
+  private String iconURL;
 
-    @JsonProperty("leaderboardCode")
-    private String leaderboardCode;
+  @JsonProperty("leaderboardCode")
+  private String leaderboardCode;
 
-    @JsonProperty("monthly")
-    private ModelsMonthlyConfig monthly;
+  @JsonProperty("monthly")
+  private ModelsMonthlyConfig monthly;
 
-    @JsonProperty("name")
-    private String name;
+  @JsonProperty("name")
+  private String name;
 
-    @JsonProperty("seasonPeriod")
-    private Integer seasonPeriod;
+  @JsonProperty("seasonPeriod")
+  private Integer seasonPeriod;
 
-    @JsonProperty("startTime")
-    private String startTime;
+  @JsonProperty("startTime")
+  private String startTime;
 
-    @JsonProperty("statCode")
-    private String statCode;
+  @JsonProperty("statCode")
+  private String statCode;
 
-    @JsonProperty("weekly")
-    private ModelsWeeklyConfig weekly;
+  @JsonProperty("weekly")
+  private ModelsWeeklyConfig weekly;
 
+  @JsonIgnore
+  public ModelsLeaderboardConfigReq createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsLeaderboardConfigReq createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsLeaderboardConfigReq> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsLeaderboardConfigReq>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsLeaderboardConfigReq> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsLeaderboardConfigReq>>() {});
+  }
 }

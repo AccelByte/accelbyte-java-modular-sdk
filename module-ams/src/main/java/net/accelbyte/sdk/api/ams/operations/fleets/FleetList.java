@@ -10,133 +10,203 @@ package net.accelbyte.sdk.api.ams.operations.fleets;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ams.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.ams.operation_responses.fleets.FleetListOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * FleetList
  *
- * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+ * <p>Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
  */
 @Getter
 @Setter
 public class FleetList extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/ams/v1/admin/namespaces/{namespace}/fleets";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private Boolean active;
-    private String name;
-    private String region;
+  /** generated field's value */
+  private String path = "/ams/v1/admin/namespaces/{namespace}/fleets";
 
-    /**
-    * @param namespace required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public FleetList(
-            String customBasePath,            String namespace,
-            Boolean active,
-            String name,
-            String region
-    )
-    {
-        this.namespace = namespace;
-        this.active = active;
-        this.name = name;
-        this.region = region;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private Boolean active;
+  private Integer count;
+  private String desc;
+  private String name;
+  private Integer offset;
+  private String region;
+  private String sortBy;
+
+  /**
+   * @param namespace required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public FleetList(
+      String customBasePath,
+      String namespace,
+      Boolean active,
+      Integer count,
+      String desc,
+      String name,
+      Integer offset,
+      String region,
+      String sortBy) {
+    this.namespace = namespace;
+    this.active = active;
+    this.count = count;
+    this.desc = desc;
+    this.name = name;
+    this.offset = offset;
+    this.region = region;
+    this.sortBy = sortBy;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "active", this.active == null ? null : Arrays.asList(String.valueOf(this.active)));
+    queryParams.put("count", this.count == null ? null : Arrays.asList(String.valueOf(this.count)));
+    queryParams.put("desc", this.desc == null ? null : Arrays.asList(this.desc));
+    queryParams.put("name", this.name == null ? null : Arrays.asList(this.name));
+    queryParams.put(
+        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put("region", this.region == null ? null : Arrays.asList(this.region));
+    queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
+    return queryParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public FleetListOpResponse parseResponse(int code, String contentType, InputStream payload)
+      throws HttpResponseException, IOException {
+    final FleetListOpResponse response = new FleetListOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ApiFleetListResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
+    }
+
+    return response;
+  }
+
+  /*
+  public ApiFleetListResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ApiFleetListResponse().createFromJson(json);
+  }
+  */
+
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("active", "None");
+    result.put("count", "None");
+    result.put("desc", "None");
+    result.put("name", "None");
+    result.put("offset", "None");
+    result.put("region", "None");
+    result.put("sortBy", "None");
+    return result;
+  }
+
+  public enum Desc {
+    Asc("asc"),
+    Desc("desc");
+
+    private String value;
+
+    Desc(String value) {
+      this.value = value;
     }
 
     @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        return pathParams;
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public enum SortBy {
+    Active("active"),
+    Name("name");
+
+    private String value;
+
+    SortBy(String value) {
+      this.value = value;
     }
 
     @Override
-    public Map<String, List<String>> getQueryParams(){
-        Map<String, List<String>> queryParams = new HashMap<>();
-        queryParams.put("active", this.active == null ? null : Arrays.asList(String.valueOf(this.active)));
-        queryParams.put("name", this.name == null ? null : Arrays.asList(this.name));
-        queryParams.put("region", this.region == null ? null : Arrays.asList(this.region));
-        return queryParams;
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class FleetListBuilder {
+    private String desc;
+    private String sortBy;
+
+    public FleetListBuilder desc(final String desc) {
+      this.desc = desc;
+      return this;
     }
 
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        return true;
+    public FleetListBuilder descFromEnum(final Desc desc) {
+      this.desc = desc.toString();
+      return this;
     }
 
-    public FleetListOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final FleetListOpResponse response = new FleetListOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ApiFleetListResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 500) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError500(new ResponseErrorResponse().createFromJson(json));
-            response.setError(response.getError500().translateToApiError());
-        }
-
-        return response;
+    public FleetListBuilder sortBy(final String sortBy) {
+      this.sortBy = sortBy;
+      return this;
     }
 
-    /*
-    public ApiFleetListResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ApiFleetListResponse().createFromJson(json);
+    public FleetListBuilder sortByFromEnum(final SortBy sortBy) {
+      this.sortBy = sortBy.toString();
+      return this;
     }
-    */
-
-    @Override
-    protected Map<String, String> getCollectionFormatMap() {
-        Map<String, String> result = new HashMap<>();
-        result.put("active", "None");
-        result.put("name", "None");
-        result.put("region", "None");
-        return result;
-    }
+  }
 }

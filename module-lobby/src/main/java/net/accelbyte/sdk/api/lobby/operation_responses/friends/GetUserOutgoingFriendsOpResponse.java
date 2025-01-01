@@ -10,30 +10,27 @@ package net.accelbyte.sdk.api.lobby.operation_responses.friends;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.lobby.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetUserOutgoingFriendsOpResponse extends ApiResponseWithData<List<ModelGetUserOutgoingFriendsResponse>> {
-    
-    private RestapiErrorResponseV1 error400 = null;
+public class GetUserOutgoingFriendsOpResponse
+    extends ApiResponseWithData<List<ModelGetUserOutgoingFriendsResponse>> {
 
-    private RestapiErrorResponseV1 error401 = null;
+  private RestapiErrorResponseV1 error400 = null;
 
-    private RestapiErrorResponseV1 error403 = null;
+  private RestapiErrorResponseV1 error401 = null;
 
-    private RestapiErrorResponseV1 error404 = null;
+  private RestapiErrorResponseV1 error403 = null;
 
-    private RestapiErrorResponseV1 error500 = null;
+  private RestapiErrorResponseV1 error404 = null;
 
+  private RestapiErrorResponseV1 error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.lobby.operations.friends.GetUserOutgoingFriends";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.lobby.operations.friends.GetUserOutgoingFriends";
+  }
 }

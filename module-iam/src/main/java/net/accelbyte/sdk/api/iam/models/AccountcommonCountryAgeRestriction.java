@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonCountryAgeRestriction extends Model {
 
-    @JsonProperty("AgeRestriction")
-    private Integer ageRestriction;
+  @JsonProperty("AgeRestriction")
+  private Integer ageRestriction;
 
-    @JsonProperty("CountryCode")
-    private String countryCode;
+  @JsonProperty("CountryCode")
+  private String countryCode;
 
-    @JsonProperty("CountryName")
-    private String countryName;
+  @JsonProperty("CountryName")
+  private String countryName;
 
-    @JsonProperty("Enable")
-    private Boolean enable;
+  @JsonProperty("Enable")
+  private Boolean enable;
 
+  @JsonIgnore
+  public AccountcommonCountryAgeRestriction createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public AccountcommonCountryAgeRestriction createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<AccountcommonCountryAgeRestriction> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonCountryAgeRestriction>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<AccountcommonCountryAgeRestriction> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<AccountcommonCountryAgeRestriction>>() {});
+  }
 }

@@ -10,140 +10,125 @@ package net.accelbyte.sdk.api.iam.operations.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.iam.operation_responses.users.AdminGetBulkUserByEmailAddressV3OpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * AdminGetBulkUserByEmailAddressV3
  *
- * This endpoint search user by the list of email addresses
- * action code : 10132
+ * <p>This endpoint search user by the list of email addresses action code : 10132
  */
 @Getter
 @Setter
 public class AdminGetBulkUserByEmailAddressV3 extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/iam/v3/admin/namespaces/{namespace}/users/search/bulk";
-    private String method = "POST";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private ModelListEmailAddressRequest body;
+  /** generated field's value */
+  private String path = "/iam/v3/admin/namespaces/{namespace}/users/search/bulk";
 
-    /**
-    * @param namespace required
-    * @param body required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public AdminGetBulkUserByEmailAddressV3(
-            String customBasePath,            String namespace,
-            ModelListEmailAddressRequest body
-    )
-    {
-        this.namespace = namespace;
-        this.body = body;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "POST";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private ModelListEmailAddressRequest body;
+
+  /**
+   * @param namespace required
+   * @param body required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public AdminGetBulkUserByEmailAddressV3(
+      String customBasePath, String namespace, ModelListEmailAddressRequest body) {
+    this.namespace = namespace;
+    this.body = body;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public ModelListEmailAddressRequest getBodyParams() {
+    return this.body;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.body == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public AdminGetBulkUserByEmailAddressV3OpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final AdminGetBulkUserByEmailAddressV3OpResponse response =
+        new AdminGetBulkUserByEmailAddressV3OpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ModelListUserResponseV3().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError403(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-
-
-    @Override
-    public ModelListEmailAddressRequest getBodyParams(){
-        return this.body;
-    }
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.body == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public AdminGetBulkUserByEmailAddressV3OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final AdminGetBulkUserByEmailAddressV3OpResponse response = new AdminGetBulkUserByEmailAddressV3OpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ModelListUserResponseV3().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 400) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError400(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError400().translateToApiError());
-        }
-        else if (code == 401) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError401(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError401().translateToApiError());
-        }
-        else if (code == 403) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError403(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError403().translateToApiError());
-        }
-        else if (code == 404) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError404(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError404().translateToApiError());
-        }
-        else if (code == 500) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError500(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError500().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ModelListUserResponseV3 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ModelListUserResponseV3().createFromJson(json);
-    }
-    */
+  /*
+  public ModelListUserResponseV3 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ModelListUserResponseV3().createFromJson(json);
+  }
+  */
 
 }

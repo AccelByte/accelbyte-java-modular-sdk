@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.dslogmanager.operation_responses.dslogmanager_oper
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dslogmanager.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetMessagesOpResponse extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
-    
-    private ResponseError error500 = null;
+public class PublicGetMessagesOpResponse
+    extends ApiResponseWithData<List<LogAppMessageDeclaration>> {
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dslogmanager.operations.dslogmanager_operations.PublicGetMessages";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dslogmanager.operations.dslogmanager_operations.PublicGetMessages";
+  }
 }

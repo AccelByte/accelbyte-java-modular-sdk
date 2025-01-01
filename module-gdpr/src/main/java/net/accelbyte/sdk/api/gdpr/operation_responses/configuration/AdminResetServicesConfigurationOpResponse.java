@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.gdpr.operation_responses.configuration;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.gdpr.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminResetServicesConfigurationOpResponse extends ApiResponse {
-    
-    private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.gdpr.operations.configuration.AdminResetServicesConfiguration";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.gdpr.operations.configuration.AdminResetServicesConfiguration";
+  }
 }

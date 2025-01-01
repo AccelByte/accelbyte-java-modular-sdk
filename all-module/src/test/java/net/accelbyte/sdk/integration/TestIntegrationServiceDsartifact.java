@@ -58,7 +58,8 @@ class TestIntegrationServiceDsArtifact extends TestIntegration {
                 .builder()
                 .limit(20)
                 .build();
-    final ModelsListTerminatedServersResponse response = wrapper.listTerminatedServers(operation).ensureSuccess();
+    final ModelsListTerminatedServersResponse response =
+        wrapper.listTerminatedServers(operation).ensureSuccess();
 
     assertNotNull(response);
   }

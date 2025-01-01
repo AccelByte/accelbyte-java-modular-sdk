@@ -10,161 +10,141 @@ package net.accelbyte.sdk.api.iam.operations.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.iam.operation_responses.users.PublicWebLinkPlatformOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * PublicWebLinkPlatform
  *
- * This endpoint is used to generate third party login page which will redirected to establish endpoint.
- * Supported platforms:
- * - ps4web
- * - xblweb
- * - steamopenid
- * - epicgames
- * - facebook
- * - twitch
- * - google
- * - apple
- * - snapchat
- * - discord
- * - amazon
- * - oculusweb
+ * <p>This endpoint is used to generate third party login page which will redirected to establish
+ * endpoint. Supported platforms: - ps4web - xblweb - steamopenid - epicgames - facebook - twitch -
+ * google - apple - snapchat - discord - amazon - oculusweb
  */
 @Getter
 @Setter
 public class PublicWebLinkPlatform extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList();
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private String platformId;
-    private String clientId;
-    private String redirectUri;
+  /** generated field's value */
+  private String path =
+      "/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link";
 
-    /**
-    * @param namespace required
-    * @param platformId required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public PublicWebLinkPlatform(
-            String customBasePath,            String namespace,
-            String platformId,
-            String clientId,
-            String redirectUri
-    )
-    {
-        this.namespace = namespace;
-        this.platformId = platformId;
-        this.clientId = clientId;
-        this.redirectUri = redirectUri;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList();
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private String platformId;
+  private String clientId;
+  private String redirectUri;
+
+  /**
+   * @param namespace required
+   * @param platformId required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public PublicWebLinkPlatform(
+      String customBasePath,
+      String namespace,
+      String platformId,
+      String clientId,
+      String redirectUri) {
+    this.namespace = namespace;
+    this.platformId = platformId;
+    this.clientId = clientId;
+    this.redirectUri = redirectUri;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    if (this.platformId != null) {
+      pathParams.put("platformId", this.platformId);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("clientId", this.clientId == null ? null : Arrays.asList(this.clientId));
+    queryParams.put(
+        "redirectUri", this.redirectUri == null ? null : Arrays.asList(this.redirectUri));
+    return queryParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.platformId == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public PublicWebLinkPlatformOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final PublicWebLinkPlatformOpResponse response = new PublicWebLinkPlatformOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ModelWebLinkingResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        if (this.platformId != null){
-            pathParams.put("platformId", this.platformId);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-    @Override
-    public Map<String, List<String>> getQueryParams(){
-        Map<String, List<String>> queryParams = new HashMap<>();
-        queryParams.put("clientId", this.clientId == null ? null : Arrays.asList(this.clientId));
-        queryParams.put("redirectUri", this.redirectUri == null ? null : Arrays.asList(this.redirectUri));
-        return queryParams;
-    }
+  /*
+  public ModelWebLinkingResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ModelWebLinkingResponse().createFromJson(json);
+  }
+  */
 
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.platformId == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public PublicWebLinkPlatformOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final PublicWebLinkPlatformOpResponse response = new PublicWebLinkPlatformOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ModelWebLinkingResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 400) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError400(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError400().translateToApiError());
-        }
-        else if (code == 401) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError401(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError401().translateToApiError());
-        }
-        else if (code == 404) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError404(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError404().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ModelWebLinkingResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ModelWebLinkingResponse().createFromJson(json);
-    }
-    */
-
-    @Override
-    protected Map<String, String> getCollectionFormatMap() {
-        Map<String, String> result = new HashMap<>();
-        result.put("clientId", "None");
-        result.put("redirectUri", "None");
-        return result;
-    }
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("clientId", "None");
+    result.put("redirectUri", "None");
+    return result;
+  }
 }

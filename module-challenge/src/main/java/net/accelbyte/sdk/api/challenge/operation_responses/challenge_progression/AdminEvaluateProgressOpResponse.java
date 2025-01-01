@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.challenge.operation_responses.challenge_progressio
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.challenge.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminEvaluateProgressOpResponse extends ApiResponse {
-    
-    private IamErrorResponse error400 = null;
 
-    private IamErrorResponse error401 = null;
+  private IamErrorResponse error400 = null;
 
-    private IamErrorResponse error403 = null;
+  private IamErrorResponse error401 = null;
 
-    private ResponseError error404 = null;
+  private IamErrorResponse error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.challenge.operations.challenge_progression.AdminEvaluateProgress";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.challenge.operations.challenge_progression.AdminEvaluateProgress";
+  }
 }

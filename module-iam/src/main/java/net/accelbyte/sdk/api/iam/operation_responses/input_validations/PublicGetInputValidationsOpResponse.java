@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.iam.operation_responses.input_validations;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetInputValidationsOpResponse extends ApiResponseWithData<ModelInputValidationsPublicResponse> {
-    
-    private String error404 = "";
+public class PublicGetInputValidationsOpResponse
+    extends ApiResponseWithData<ModelInputValidationsPublicResponse> {
 
-    private RestErrorResponse error500 = null;
+  private String error404 = "";
 
+  private RestErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.input_validations.PublicGetInputValidations";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.input_validations.PublicGetInputValidations";
+  }
 }

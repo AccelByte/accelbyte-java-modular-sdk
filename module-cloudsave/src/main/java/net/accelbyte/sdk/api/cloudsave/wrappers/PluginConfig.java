@@ -8,85 +8,83 @@
 
 package net.accelbyte.sdk.api.cloudsave.wrappers;
 
-
 import net.accelbyte.sdk.api.cloudsave.models.*;
-import net.accelbyte.sdk.api.cloudsave.operations.plugin_config.*;
 import net.accelbyte.sdk.api.cloudsave.operation_responses.plugin_config.*;
-import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.api.cloudsave.operations.plugin_config.*;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class PluginConfig {
 
-    private RequestRunner sdk;
-    private String customBasePath = "";
+  private RequestRunner sdk;
+  private String customBasePath = "";
 
-    public PluginConfig(RequestRunner sdk){
-        this.sdk = sdk;
-        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("cloudsave");
-        if (!configCustomBasePath.equals("")) {
-            this.customBasePath = configCustomBasePath;
-        }
+  public PluginConfig(RequestRunner sdk) {
+    this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("cloudsave");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public PluginConfig(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
+  }
+
+  /**
+   * @see GetPluginConfig
+   */
+  public GetPluginConfigOpResponse getPluginConfig(GetPluginConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    public PluginConfig(RequestRunner sdk, String customBasePath){
-        this.sdk = sdk;
-        this.customBasePath = customBasePath;
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see CreatePluginConfig
+   */
+  public CreatePluginConfigOpResponse createPluginConfig(CreatePluginConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see GetPluginConfig
-     */
-    public GetPluginConfigOpResponse getPluginConfig(GetPluginConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see DeletePluginConfig
+   */
+  public DeletePluginConfigOpResponse deletePluginConfig(DeletePluginConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see CreatePluginConfig
-     */
-    public CreatePluginConfigOpResponse createPluginConfig(CreatePluginConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see UpdatePluginConfig
+   */
+  public UpdatePluginConfigOpResponse updatePluginConfig(UpdatePluginConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see DeletePluginConfig
-     */
-    public DeletePluginConfigOpResponse deletePluginConfig(DeletePluginConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
-    /**
-     * @see UpdatePluginConfig
-     */
-    public UpdatePluginConfigOpResponse updatePluginConfig(UpdatePluginConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

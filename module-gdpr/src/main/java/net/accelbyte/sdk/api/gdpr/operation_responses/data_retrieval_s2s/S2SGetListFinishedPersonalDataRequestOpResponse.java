@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.gdpr.operation_responses.data_retrieval_s2s;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.gdpr.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class S2SGetListFinishedPersonalDataRequestOpResponse extends ApiResponseWithData<DtoListFinishedDataRequests> {
-    
-    private ResponseError error400 = null;
+public class S2SGetListFinishedPersonalDataRequestOpResponse
+    extends ApiResponseWithData<DtoListFinishedDataRequests> {
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error403 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.S2SGetListFinishedPersonalDataRequest";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.gdpr.operations.data_retrieval_s2s.S2SGetListFinishedPersonalDataRequest";
+  }
 }

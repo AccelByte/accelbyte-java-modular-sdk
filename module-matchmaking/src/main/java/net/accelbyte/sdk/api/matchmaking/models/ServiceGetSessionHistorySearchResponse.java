@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ServiceGetSessionHistorySearchResponse extends Model {
 
-    @JsonProperty("data")
-    private List<ServiceGetSessionHistorySearchResponseItem> data;
+  @JsonProperty("data")
+  private List<ServiceGetSessionHistorySearchResponseItem> data;
 
-    @JsonProperty("pagination")
-    private ModelsPagination pagination;
+  @JsonProperty("pagination")
+  private ModelsPagination pagination;
 
+  @JsonIgnore
+  public ServiceGetSessionHistorySearchResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ServiceGetSessionHistorySearchResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ServiceGetSessionHistorySearchResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ServiceGetSessionHistorySearchResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ServiceGetSessionHistorySearchResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ServiceGetSessionHistorySearchResponse>>() {});
+  }
 }

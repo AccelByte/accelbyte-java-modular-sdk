@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.group.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsKickGroupMemberResponseV1 extends Model {
 
-    @JsonProperty("groupId")
-    private String groupId;
+  @JsonProperty("groupId")
+  private String groupId;
 
-    @JsonProperty("kickedUserId")
-    private String kickedUserId;
+  @JsonProperty("kickedUserId")
+  private String kickedUserId;
 
+  @JsonIgnore
+  public ModelsKickGroupMemberResponseV1 createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsKickGroupMemberResponseV1 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsKickGroupMemberResponseV1> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsKickGroupMemberResponseV1>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsKickGroupMemberResponseV1> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsKickGroupMemberResponseV1>>() {});
+  }
 }

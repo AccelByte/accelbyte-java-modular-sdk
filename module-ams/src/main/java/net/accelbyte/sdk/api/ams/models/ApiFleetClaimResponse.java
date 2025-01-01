@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,30 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApiFleetClaimResponse extends Model {
 
-    @JsonProperty("ip")
-    private String ip;
+  @JsonProperty("ip")
+  private String ip;
 
-    @JsonProperty("ports")
-    private Map<String, Integer> ports;
+  @JsonProperty("ports")
+  private Map<String, Integer> ports;
 
-    @JsonProperty("region")
-    private String region;
+  @JsonProperty("region")
+  private String region;
 
-    @JsonProperty("serverId")
-    private String serverId;
+  @JsonProperty("serverId")
+  private String serverId;
 
+  @JsonIgnore
+  public ApiFleetClaimResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApiFleetClaimResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApiFleetClaimResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApiFleetClaimResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApiFleetClaimResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApiFleetClaimResponse>>() {});
+  }
 }

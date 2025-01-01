@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.iam.operation_responses.third_party_credential;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class RetrieveActiveOIDCClientsPublicV3OpResponse extends ApiResponseWithData<List<ModelPublicThirdPartyPlatformInfo>> {
-    
-    private RestErrorResponse error404 = null;
+public class RetrieveActiveOIDCClientsPublicV3OpResponse
+    extends ApiResponseWithData<List<ModelPublicThirdPartyPlatformInfo>> {
 
-    private RestErrorResponse error500 = null;
+  private RestErrorResponse error404 = null;
 
+  private RestErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.third_party_credential.RetrieveActiveOIDCClientsPublicV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.third_party_credential.RetrieveActiveOIDCClientsPublicV3";
+  }
 }

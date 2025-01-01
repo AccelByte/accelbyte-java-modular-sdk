@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class TimeZoneTrans extends Model {
 
-    @JsonProperty("index")
-    private Integer index;
+  @JsonProperty("index")
+  private Integer index;
 
-    @JsonProperty("isstd")
-    private Boolean isstd;
+  @JsonProperty("isstd")
+  private Boolean isstd;
 
-    @JsonProperty("isutc")
-    private Boolean isutc;
+  @JsonProperty("isutc")
+  private Boolean isutc;
 
-    @JsonProperty("when")
-    private Long when;
+  @JsonProperty("when")
+  private Long when;
 
+  @JsonIgnore
+  public TimeZoneTrans createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public TimeZoneTrans createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<TimeZoneTrans> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<TimeZoneTrans>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<TimeZoneTrans> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<TimeZoneTrans>>() {});
+  }
 }

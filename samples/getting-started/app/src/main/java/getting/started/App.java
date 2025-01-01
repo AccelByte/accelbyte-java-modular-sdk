@@ -1,8 +1,7 @@
 package getting.started;
 
-import net.accelbyte.sdk.api.iam.models.OauthmodelCountryLocationResponse;
-import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.GetCountryLocationV3;
 import net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0_extension.GetCountryLocationV3OpResponse;
+import net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.GetCountryLocationV3;
 import net.accelbyte.sdk.api.iam.wrappers.OAuth20Extension;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.OkhttpClient;

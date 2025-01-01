@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
 import java.util.List;
-
 import net.accelbyte.sdk.api.gdpr.operation_responses.data_retrieval.PublicGetUserPersonalDataRequestsOpResponse;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.DeleteAdminEmailConfiguration;
 import net.accelbyte.sdk.api.gdpr.operations.configuration.GetAdminEmailConfiguration;
@@ -19,7 +18,6 @@ import net.accelbyte.sdk.api.gdpr.operations.configuration.UpdateAdminEmailConfi
 import net.accelbyte.sdk.api.gdpr.operations.data_retrieval.PublicGetUserPersonalDataRequests;
 import net.accelbyte.sdk.api.gdpr.wrappers.Configuration;
 import net.accelbyte.sdk.api.gdpr.wrappers.DataRetrieval;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -54,11 +52,11 @@ public class TestIntegrationServiceGdpr extends TestIntegration {
     // CASE Get user personal data request
 
     final PublicGetUserPersonalDataRequestsOpResponse getUserPersonalData =
-      dataRetrievalWrapper.publicGetUserPersonalDataRequests(
-        PublicGetUserPersonalDataRequests.builder()
-            .namespace(this.namespace)
-            .userId(this.username)
-            .build());
+        dataRetrievalWrapper.publicGetUserPersonalDataRequests(
+            PublicGetUserPersonalDataRequests.builder()
+                .namespace(this.namespace)
+                .userId(this.username)
+                .build());
 
     // ESAC
 
@@ -77,8 +75,10 @@ public class TestIntegrationServiceGdpr extends TestIntegration {
     // CASE Get admin email configuration
 
     final List<String> emails =
-        configurationWrapper.getAdminEmailConfiguration(
-            GetAdminEmailConfiguration.builder().namespace(this.namespace).build()).ensureSuccess();
+        configurationWrapper
+            .getAdminEmailConfiguration(
+                GetAdminEmailConfiguration.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
 

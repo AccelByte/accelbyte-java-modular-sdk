@@ -26,9 +26,7 @@ import net.accelbyte.sdk.api.csm.operations.configuration_v2.UpdateSecretV2;
 import net.accelbyte.sdk.api.csm.operations.configuration_v2.UpdateVariableV2;
 import net.accelbyte.sdk.api.csm.wrappers.AppV2;
 import net.accelbyte.sdk.api.csm.wrappers.ConfigurationV2;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.ApiResponseException;
-
 import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
@@ -46,10 +44,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
     boolean isExtendAppExists = false;
 
     try {
-      appV2Wrapper.getAppV2(GetAppV2.builder()
-          .app(EXTEND_APP_NAME)
-          .namespace(namespace)
-          .build());
+      appV2Wrapper.getAppV2(GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build());
 
       isExtendAppExists = true;
     } catch (ApiResponseException hrex) {
@@ -59,11 +54,8 @@ public class TestIntegrationServiceCsm extends TestIntegration {
     }
 
     if (isExtendAppExists) {
-      appV2Wrapper.deleteAppV2(DeleteAppV2.builder()
-          .app(EXTEND_APP_NAME)
-          .namespace(namespace)
-          .forced("true")
-          .build());
+      appV2Wrapper.deleteAppV2(
+          DeleteAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).forced("true").build());
     }
   }
 
@@ -74,16 +66,18 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Create Extend app
 
-    final CreateAppV2 createAppV2Op = CreateAppV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .body(ApimodelCreateAppV2Request.builder()
-            .cpu(ApimodelCPURequest.builder().requestCPU(100).build())
-            .description("test integration create extend app for extend sdk")
-            .memory(ApimodelMemoryRequest.builder().requestMemory(100).build())
-            .scenario("service-extension")
-            .build())
-        .build();
+    final CreateAppV2 createAppV2Op =
+        CreateAppV2.builder()
+            .app(EXTEND_APP_NAME)
+            .namespace(namespace)
+            .body(
+                ApimodelCreateAppV2Request.builder()
+                    .cpu(ApimodelCPURequest.builder().requestCPU(100).build())
+                    .description("test integration create extend app for extend sdk")
+                    .memory(ApimodelMemoryRequest.builder().requestMemory(100).build())
+                    .scenario("service-extension")
+                    .build())
+            .build();
 
     final ApimodelAppItem createAppV2Res = appV2Wrapper.createAppV2(createAppV2Op).ensureSuccess();
 
@@ -93,10 +87,8 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Get Extend app
 
-    final GetAppV2 getAppV2Op = GetAppV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .build();
+    final GetAppV2 getAppV2Op =
+        GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
 
     final ApimodelAppItem getAppv2Res = appV2Wrapper.getAppV2(getAppV2Op).ensureSuccess();
 
@@ -107,10 +99,10 @@ public class TestIntegrationServiceCsm extends TestIntegration {
     final int waitAppCreatedCount = 60;
 
     for (int i = 0; i < waitAppCreatedCount; i++) {
-      final ApimodelAppItem response = appV2Wrapper.getAppV2(GetAppV2.builder()
-          .app(EXTEND_APP_NAME)
-          .namespace(namespace)
-          .build()).ensureSuccess();
+      final ApimodelAppItem response =
+          appV2Wrapper
+              .getAppV2(GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build())
+              .ensureSuccess();
 
       if (response.getAppStatus().equals("app-undeployed")) {
         return;
@@ -131,19 +123,21 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Save secret variable
 
-    final SaveSecretV2 saveSecretV2Op = SaveSecretV2
-        .builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .body(ApimodelSaveConfigurationV2Request.builder()
-            .configName("THIS_IS_A_SECRET")
-            .value("ssshhhh")
-            .source("plaintext")
-            .applyMask(true)
-            .build())
-        .build();
+    final SaveSecretV2 saveSecretV2Op =
+        SaveSecretV2.builder()
+            .app(EXTEND_APP_NAME)
+            .namespace(namespace)
+            .body(
+                ApimodelSaveConfigurationV2Request.builder()
+                    .configName("THIS_IS_A_SECRET")
+                    .value("ssshhhh")
+                    .source("plaintext")
+                    .applyMask(true)
+                    .build())
+            .build();
 
-    final ApimodelSaveConfigurationV2Response saveSecretV2Res = wrapper.saveSecretV2(saveSecretV2Op).ensureSuccess();
+    final ApimodelSaveConfigurationV2Response saveSecretV2Res =
+        wrapper.saveSecretV2(saveSecretV2Op).ensureSuccess();
 
     // ESAC
 
@@ -153,13 +147,11 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Get secret variable list
 
-    final GetListOfSecretsV2 getListOfSecretsV2Op = GetListOfSecretsV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .build();
+    final GetListOfSecretsV2 getListOfSecretsV2Op =
+        GetListOfSecretsV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
 
-    final ApimodelGetListOfConfigurationsV2Response getListOfSecretsV2Res = wrapper
-        .getListOfSecretsV2(getListOfSecretsV2Op).ensureSuccess();
+    final ApimodelGetListOfConfigurationsV2Response getListOfSecretsV2Res =
+        wrapper.getListOfSecretsV2(getListOfSecretsV2Op).ensureSuccess();
 
     // ESAC
 
@@ -167,17 +159,20 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Update secret variable
 
-    final UpdateSecretV2 updateSecretV2Op = UpdateSecretV2.builder()
-        .app(EXTEND_APP_NAME)
-        .configId(secretConfigId)
-        .namespace(namespace)
-        .body(ApimodelUpdateConfigurationV2Request.builder()
-            .value("silence")
-            .applyMask(true)
-            .build())
-        .build();
+    final UpdateSecretV2 updateSecretV2Op =
+        UpdateSecretV2.builder()
+            .app(EXTEND_APP_NAME)
+            .configId(secretConfigId)
+            .namespace(namespace)
+            .body(
+                ApimodelUpdateConfigurationV2Request.builder()
+                    .value("silence")
+                    .applyMask(true)
+                    .build())
+            .build();
 
-    final ApimodelUpdateConfigurationV2Response updateSecretV2Res = wrapper.updateSecretV2(updateSecretV2Op).ensureSuccess();
+    final ApimodelUpdateConfigurationV2Response updateSecretV2Res =
+        wrapper.updateSecretV2(updateSecretV2Op).ensureSuccess();
 
     // ESAC
 
@@ -185,11 +180,12 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Delete secret variable
 
-    final DeleteSecretV2 operation = DeleteSecretV2.builder()
-        .app(EXTEND_APP_NAME)
-        .configId(secretConfigId)
-        .namespace(namespace)
-        .build();
+    final DeleteSecretV2 operation =
+        DeleteSecretV2.builder()
+            .app(EXTEND_APP_NAME)
+            .configId(secretConfigId)
+            .namespace(namespace)
+            .build();
 
     wrapper.deleteSecretV2(operation);
 
@@ -203,18 +199,21 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Save environment variable
 
-    final SaveVariableV2 saveVariableV2Op = SaveVariableV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .body(ApimodelSaveConfigurationV2Request.builder()
-            .configName("MY_ENV_VAR")
-            .value("helloworld!")
-            .source("plaintext")
-            .applyMask(true)
-            .build())
-        .build();
+    final SaveVariableV2 saveVariableV2Op =
+        SaveVariableV2.builder()
+            .app(EXTEND_APP_NAME)
+            .namespace(namespace)
+            .body(
+                ApimodelSaveConfigurationV2Request.builder()
+                    .configName("MY_ENV_VAR")
+                    .value("helloworld!")
+                    .source("plaintext")
+                    .applyMask(true)
+                    .build())
+            .build();
 
-    final ApimodelSaveConfigurationV2Response saveVariableV2Res = wrapper.saveVariableV2(saveVariableV2Op).ensureSuccess();
+    final ApimodelSaveConfigurationV2Response saveVariableV2Res =
+        wrapper.saveVariableV2(saveVariableV2Op).ensureSuccess();
 
     // ESAC
 
@@ -224,12 +223,10 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Get environment variable list
 
-    final GetListOfVariablesV2 getListOfVariablesV2Op = GetListOfVariablesV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .build();
-    final ApimodelGetListOfConfigurationsV2Response getListOfVariablesV2Res = wrapper
-        .getListOfVariablesV2(getListOfVariablesV2Op).ensureSuccess();
+    final GetListOfVariablesV2 getListOfVariablesV2Op =
+        GetListOfVariablesV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
+    final ApimodelGetListOfConfigurationsV2Response getListOfVariablesV2Res =
+        wrapper.getListOfVariablesV2(getListOfVariablesV2Op).ensureSuccess();
 
     // ESAC
 
@@ -237,16 +234,19 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Update environment variable
 
-    final UpdateVariableV2 updateVariableV2Op = UpdateVariableV2.builder()
-        .app(EXTEND_APP_NAME)
-        .configId(envConfigId)
-        .namespace(namespace)
-        .body(ApimodelUpdateConfigurationV2Request.builder()
-            .value("hellosekai!")
-            .applyMask(true)
-            .build())
-        .build();
-    final ApimodelUpdateConfigurationV2Response updateVariableV2Res = wrapper.updateVariableV2(updateVariableV2Op).ensureSuccess();
+    final UpdateVariableV2 updateVariableV2Op =
+        UpdateVariableV2.builder()
+            .app(EXTEND_APP_NAME)
+            .configId(envConfigId)
+            .namespace(namespace)
+            .body(
+                ApimodelUpdateConfigurationV2Request.builder()
+                    .value("hellosekai!")
+                    .applyMask(true)
+                    .build())
+            .build();
+    final ApimodelUpdateConfigurationV2Response updateVariableV2Res =
+        wrapper.updateVariableV2(updateVariableV2Op).ensureSuccess();
 
     // ESAC
 
@@ -254,11 +254,12 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Delete environment variable
 
-    final DeleteVariableV2 operation = DeleteVariableV2.builder()
-        .app(EXTEND_APP_NAME)
-        .configId(envConfigId)
-        .namespace(namespace)
-        .build();
+    final DeleteVariableV2 operation =
+        DeleteVariableV2.builder()
+            .app(EXTEND_APP_NAME)
+            .configId(envConfigId)
+            .namespace(namespace)
+            .build();
 
     wrapper.deleteVariableV2(operation);
 
@@ -271,11 +272,8 @@ public class TestIntegrationServiceCsm extends TestIntegration {
 
     // CASE Delete Extend app
 
-    final DeleteAppV2 deleteAppV2Op = DeleteAppV2.builder()
-        .app(EXTEND_APP_NAME)
-        .namespace(namespace)
-        .forced("true")
-        .build();
+    final DeleteAppV2 deleteAppV2Op =
+        DeleteAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).forced("true").build();
 
     appV2Wrapper.deleteAppV2(deleteAppV2Op);
 

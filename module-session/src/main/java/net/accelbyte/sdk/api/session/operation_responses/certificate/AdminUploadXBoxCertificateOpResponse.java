@@ -10,31 +10,28 @@ package net.accelbyte.sdk.api.session.operation_responses.certificate;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.session.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Deprecated
 @Getter
 @Setter
-public class AdminUploadXBoxCertificateOpResponse extends ApiResponseWithData<ModelsPlatformCredentials> {
-    
-    private ResponseError error400 = null;
+public class AdminUploadXBoxCertificateOpResponse
+    extends ApiResponseWithData<ModelsPlatformCredentials> {
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.session.operations.certificate.AdminUploadXBoxCertificate";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.session.operations.certificate.AdminUploadXBoxCertificate";
+  }
 }

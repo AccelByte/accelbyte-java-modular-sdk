@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.dsartifact;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class DsartifactErrors
-{
-}
+public class DsartifactErrors {}

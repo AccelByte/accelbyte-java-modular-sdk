@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.platform.operation_responses.dlc;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetMyDLCContentOpResponse extends ApiResponseWithData<SimpleUserDLCRewardContentsResponse> {
-    
+public class PublicGetMyDLCContentOpResponse
+    extends ApiResponseWithData<SimpleUserDLCRewardContentsResponse> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.dlc.PublicGetMyDLCContent";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.dlc.PublicGetMyDLCContent";
+  }
 }

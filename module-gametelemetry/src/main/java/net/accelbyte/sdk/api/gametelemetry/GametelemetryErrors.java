@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.gametelemetry;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class GametelemetryErrors
-{
-}
+public class GametelemetryErrors {}

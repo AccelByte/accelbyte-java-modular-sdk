@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.match2;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class Match2Errors
-{
-}
+public class Match2Errors {}

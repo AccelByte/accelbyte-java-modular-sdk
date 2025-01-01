@@ -7,6 +7,7 @@
 package net.accelbyte.sdk.integration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import net.accelbyte.sdk.api.lobby.models.ModelFreeFormNotificationRequest;
@@ -62,11 +63,11 @@ class TestIntegrationServiceLobby extends TestIntegration {
     // CASE Admin export config
 
     final AdminExportConfigV1OpResponse adminExportConfigResp =
-      configWrapper.adminExportConfigV1(
-        AdminExportConfigV1.builder().namespace(this.namespace).build());
+        configWrapper.adminExportConfigV1(
+            AdminExportConfigV1.builder().namespace(this.namespace).build());
 
     // ESAC
-    
+
     assertNotNull(adminExportConfigResp);
   }
 

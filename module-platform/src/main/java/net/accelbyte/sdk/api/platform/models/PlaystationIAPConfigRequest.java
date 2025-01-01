@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,44 +21,42 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class PlaystationIAPConfigRequest extends Model {
 
-    @JsonProperty("backOfficeServerClientId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String backOfficeServerClientId;
+  @JsonProperty("backOfficeServerClientId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String backOfficeServerClientId;
 
-    @JsonProperty("backOfficeServerClientSecret")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String backOfficeServerClientSecret;
+  @JsonProperty("backOfficeServerClientSecret")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String backOfficeServerClientSecret;
 
-    @JsonProperty("enableStreamJob")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean enableStreamJob;
+  @JsonProperty("enableStreamJob")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean enableStreamJob;
 
-    @JsonProperty("environment")
-    private String environment;
+  @JsonProperty("environment")
+  private String environment;
 
-    @JsonProperty("streamName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String streamName;
+  @JsonProperty("streamName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String streamName;
 
-    @JsonProperty("streamPartnerName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String streamPartnerName;
+  @JsonProperty("streamPartnerName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String streamPartnerName;
 
+  @JsonIgnore
+  public PlaystationIAPConfigRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public PlaystationIAPConfigRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<PlaystationIAPConfigRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<PlaystationIAPConfigRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<PlaystationIAPConfigRequest> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<PlaystationIAPConfigRequest>>() {});
+  }
 }

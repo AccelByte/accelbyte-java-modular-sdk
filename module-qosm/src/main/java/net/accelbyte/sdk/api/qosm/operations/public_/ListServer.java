@@ -10,109 +10,91 @@ package net.accelbyte.sdk.api.qosm.operations.public_;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.qosm.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.qosm.operation_responses.public_.ListServerOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * ListServer
  *
- * ```
- * This endpoint lists all QoS services available in all regions.
- * 
- * This endpoint is intended to be called by game client to find out all available regions.
- * After getting a list of QoS on each region, game client is expected to ping each one with UDP
+ * <p>``` This endpoint lists all QoS services available in all regions.
+ *
+ * <p>This endpoint is intended to be called by game client to find out all available regions. After
+ * getting a list of QoS on each region, game client is expected to ping each one with UDP
  * connection as described below:
- * 
- * 1. Make UDP connection to each QoS's IP:Port
- * 2. Send string "PING" after connection established
- * 3. Wait for string "PONG" response
- * 4. Note the request-response latency for each QoS in each region
- * 
- * The game then can use ping latency information to either:
- * 1. Inform the player on these latencies and let player choose preferred region
- * 2. Send the latency list to Matchmaking Service so that player can be matched with other players
- * in nearby regions
- * ```
+ *
+ * <p>1. Make UDP connection to each QoS's IP:Port 2. Send string "PING" after connection
+ * established 3. Wait for string "PONG" response 4. Note the request-response latency for each QoS
+ * in each region
+ *
+ * <p>The game then can use ping latency information to either: 1. Inform the player on these
+ * latencies and let player choose preferred region 2. Send the latency list to Matchmaking Service
+ * so that player can be matched with other players in nearby regions ```
  */
 @Getter
 @Setter
 public class ListServer extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/qosm/public/qos";
-    private String method = "GET";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
+  /** generated field's value */
+  private String path = "/qosm/public/qos";
 
-    /**
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public ListServer(
-            String customBasePath    )
-    {
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "GET";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+
+  /** */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public ListServer(String customBasePath) {
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public boolean isValid() {
+    return true;
+  }
+
+  public ListServerOpResponse parseResponse(int code, String contentType, InputStream payload)
+      throws HttpResponseException, IOException {
+    final ListServerOpResponse response = new ListServerOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ModelsListServerResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new ResponseError().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
+    return response;
+  }
 
-
-
-
-
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
-    public ListServerOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final ListServerOpResponse response = new ListServerOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ModelsListServerResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 500) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError500(new ResponseError().createFromJson(json));
-            response.setError(response.getError500().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ModelsListServerResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ModelsListServerResponse().createFromJson(json);
-    }
-    */
+  /*
+  public ModelsListServerResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ModelsListServerResponse().createFromJson(json);
+  }
+  */
 
 }

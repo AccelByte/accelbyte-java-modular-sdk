@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.dsmc.operation_responses.server;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dsmc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class CountServerDetailedClientOpResponse extends ApiResponseWithData<ModelsDetailedCountServerResponse> {
-    
-    private ResponseError error401 = null;
+public class CountServerDetailedClientOpResponse
+    extends ApiResponseWithData<ModelsDetailedCountServerResponse> {
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dsmc.operations.server.CountServerDetailedClient";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dsmc.operations.server.CountServerDetailedClient";
+  }
 }

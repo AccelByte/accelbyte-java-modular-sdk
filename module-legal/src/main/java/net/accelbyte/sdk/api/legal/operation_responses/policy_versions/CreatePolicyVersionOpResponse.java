@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.legal.operation_responses.policy_versions;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class CreatePolicyVersionOpResponse extends ApiResponseWithData<CreatePolicyVersionResponse> {
-    
-    private ErrorEntity error400 = null;
+public class CreatePolicyVersionOpResponse
+    extends ApiResponseWithData<CreatePolicyVersionResponse> {
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.policy_versions.CreatePolicyVersion";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.policy_versions.CreatePolicyVersion";
+  }
 }

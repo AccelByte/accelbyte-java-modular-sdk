@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.ugc.operation_responses.public_type;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ugc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GetTypeOpResponse extends ApiResponseWithData<ModelsPaginatedGetTypeResponse> {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error401 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.ugc.operations.public_type.GetType";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.ugc.operations.public_type.GetType";
+  }
 }

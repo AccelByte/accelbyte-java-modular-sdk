@@ -103,11 +103,13 @@ public class TestIntegrationServiceSession extends TestIntegration {
     // CASE Get session configuration template
 
     final ApimodelsConfigurationTemplateResponse adminGetConfigurationTemplateResult =
-        configurationTemplateWrapper.adminGetConfigurationTemplateV1(
-            AdminGetConfigurationTemplateV1.builder()
-                .name(cfgTemplateName)
-                .namespace(namespace)
-                .build()).ensureSuccess();
+        configurationTemplateWrapper
+            .adminGetConfigurationTemplateV1(
+                AdminGetConfigurationTemplateV1.builder()
+                    .name(cfgTemplateName)
+                    .namespace(namespace)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -119,18 +121,20 @@ public class TestIntegrationServiceSession extends TestIntegration {
     // CASE Update session configuration template
 
     final ApimodelsConfigurationTemplateResponse adminUpdateConfigurationTemplateResult =
-        configurationTemplateWrapper.adminUpdateConfigurationTemplateV1(
-            AdminUpdateConfigurationTemplateV1.builder()
-                .name(cfgTemplateName)
-                .namespace(namespace)
-                .body(
-                    ApimodelsUpdateConfigurationTemplateRequest.builder()
-                        .name(cfgTemplateName)
-                        .type("P2P")
-                        .joinability("OPEN")
-                        .maxPlayers(4)
-                        .build())
-                .build()).ensureSuccess();
+        configurationTemplateWrapper
+            .adminUpdateConfigurationTemplateV1(
+                AdminUpdateConfigurationTemplateV1.builder()
+                    .name(cfgTemplateName)
+                    .namespace(namespace)
+                    .body(
+                        ApimodelsUpdateConfigurationTemplateRequest.builder()
+                            .name(cfgTemplateName)
+                            .type("P2P")
+                            .joinability("OPEN")
+                            .maxPlayers(4)
+                            .build())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -202,40 +206,44 @@ public class TestIntegrationServiceSession extends TestIntegration {
       final String player2EmailAdd = player2Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult1 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1EmailAdd)
-                          .password(player1Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player1Username)
-                          .uniqueDisplayName(player1Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player1EmailAdd)
+                              .password(player1Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player1Username)
+                              .uniqueDisplayName(player1Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
 
       final AccountCreateUserResponseV4 createUserResult2 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player2EmailAdd)
-                          .password(player2Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player2Username)
-                          .uniqueDisplayName(player2Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player2EmailAdd)
+                              .password(player2Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player2Username)
+                              .uniqueDisplayName(player2Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player2UserId = createUserResult2.getUserId();
 
@@ -248,14 +256,16 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE Create a game session
 
       final ApimodelsGameSessionResponse createGameSessionResult =
-          player1GameSessionWrapper.createGameSession(
-              CreateGameSession.builder()
-                  .namespace(namespace)
-                  .body(
-                      ApimodelsCreateGameSessionRequest.builder()
-                          .configurationName(cfgTemplateName)
-                          .build())
-                  .build()).ensureSuccess();
+          player1GameSessionWrapper
+              .createGameSession(
+                  CreateGameSession.builder()
+                      .namespace(namespace)
+                      .body(
+                          ApimodelsCreateGameSessionRequest.builder()
+                              .configurationName(cfgTemplateName)
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -266,8 +276,10 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE Join a game session
 
       final ApimodelsGameSessionResponse joinGameSessionResult =
-          player2GameSessionWrapper.joinGameSession(
-              JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build()).ensureSuccess();
+          player2GameSessionWrapper
+              .joinGameSession(
+                  JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build())
+              .ensureSuccess();
 
       assertNotNull(joinGameSessionResult);
 
@@ -276,11 +288,13 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE Get game session
 
       final ApimodelsGameSessionResponse getGameSessionResult =
-          gameSessionWrapper.getGameSession(
-              net.accelbyte.sdk.api.session.operations.game_session.GetGameSession.builder()
-                  .namespace(namespace)
-                  .sessionId(gameSessionId)
-                  .build()).ensureSuccess();
+          gameSessionWrapper
+              .getGameSession(
+                  net.accelbyte.sdk.api.session.operations.game_session.GetGameSession.builder()
+                      .namespace(namespace)
+                      .sessionId(gameSessionId)
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -343,14 +357,16 @@ public class TestIntegrationServiceSession extends TestIntegration {
     // CASE Query public game sessions by attributes
 
     final ApimodelsGameSessionQueryResponse publicQueryGameSessionsResult =
-        gameSessionWrapper.publicQueryGameSessionsByAttributes(
-            PublicQueryGameSessionsByAttributes.builder()
-                .namespace(namespace)
-                .body(Collections.emptyMap())
-                .build()).ensureSuccess();
+        gameSessionWrapper
+            .publicQueryGameSessionsByAttributes(
+                PublicQueryGameSessionsByAttributes.builder()
+                    .namespace(namespace)
+                    .body(Collections.emptyMap())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
-    
+
     assertNotNull(publicQueryGameSessionsResult);
   }
 
@@ -408,40 +424,44 @@ public class TestIntegrationServiceSession extends TestIntegration {
       final String player2EmailAdd = player2Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult1 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1EmailAdd)
-                          .password(player1Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player1Username)
-                          .uniqueDisplayName(player1Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player1EmailAdd)
+                              .password(player1Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player1Username)
+                              .uniqueDisplayName(player1Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
 
       final AccountCreateUserResponseV4 createUserResult2 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player2EmailAdd)
-                          .password(player2Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player2Username)
-                          .uniqueDisplayName(player2Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player2EmailAdd)
+                              .password(player2Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player2Username)
+                              .uniqueDisplayName(player2Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player2UserId = createUserResult2.getUserId();
 
@@ -454,17 +474,19 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE User create a party
 
       final ApimodelsPartySessionResponse publicCreatePartyResult =
-          player1PartyWrapper.publicCreateParty(
-              net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
-                  .namespace(namespace)
-                  .body(
-                      ApimodelsCreatePartyRequest.builder()
-                          .configurationName(cfgTemplateName)
-                          .members(
-                              Collections.singletonList(
-                                  ApimodelsRequestMember.builder().id(player1UserId).build()))
-                          .build())
-                  .build()).ensureSuccess();
+          player1PartyWrapper
+              .publicCreateParty(
+                  net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
+                      .namespace(namespace)
+                      .body(
+                          ApimodelsCreatePartyRequest.builder()
+                              .configurationName(cfgTemplateName)
+                              .members(
+                                  Collections.singletonList(
+                                      ApimodelsRequestMember.builder().id(player1UserId).build()))
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -476,11 +498,13 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE User join a party with code
 
       final ApimodelsPartySessionResponse publicPartyJoinCodeResult =
-          player2PartyWrapper.publicPartyJoinCode(
-              PublicPartyJoinCode.builder()
-                  .namespace(namespace)
-                  .body(ApimodelsJoinByCodeRequest.builder().code(joinCode).build())
-                  .build()).ensureSuccess();
+          player2PartyWrapper
+              .publicPartyJoinCode(
+                  PublicPartyJoinCode.builder()
+                      .namespace(namespace)
+                      .body(ApimodelsJoinByCodeRequest.builder().code(joinCode).build())
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -489,8 +513,10 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // CASE Get party detail
 
       final ApimodelsPartySessionResponse publicGetPartyResult1 =
-          partyWrapper.publicGetParty(
-              PublicGetParty.builder().namespace(namespace).partyId(partyId).build()).ensureSuccess();
+          partyWrapper
+              .publicGetParty(
+                  PublicGetParty.builder().namespace(namespace).partyId(partyId).build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -524,8 +550,10 @@ public class TestIntegrationServiceSession extends TestIntegration {
       // ESAC
 
       final ApimodelsPartySessionResponse publicGetPartyResult2 =
-          partyWrapper.publicGetParty(
-              PublicGetParty.builder().namespace(namespace).partyId(partyId).build()).ensureSuccess();
+          partyWrapper
+              .publicGetParty(
+                  PublicGetParty.builder().namespace(namespace).partyId(partyId).build())
+              .ensureSuccess();
 
       assertNotNull(publicGetPartyResult2);
       assertEquals(2, publicGetPartyResult2.getMembers().size());

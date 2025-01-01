@@ -10,24 +10,21 @@ package net.accelbyte.sdk.api.reporting.operation_responses.public_reasons;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.reporting.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetReasonsOpResponse extends ApiResponseWithData<RestapiPublicReasonListResponse> {
-    
-    private RestapiErrorResponse error404 = null;
+public class PublicGetReasonsOpResponse
+    extends ApiResponseWithData<RestapiPublicReasonListResponse> {
 
-    private RestapiErrorResponse error500 = null;
+  private RestapiErrorResponse error404 = null;
 
+  private RestapiErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.reporting.operations.public_reasons.PublicGetReasons";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.reporting.operations.public_reasons.PublicGetReasons";
+  }
 }

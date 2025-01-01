@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.match2.operation_responses.backfill;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.match2.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AcceptBackfillOpResponse extends ApiResponseWithData<ModelsGameSession> {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.match2.operations.backfill.AcceptBackfill";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.match2.operations.backfill.AcceptBackfill";
+  }
 }

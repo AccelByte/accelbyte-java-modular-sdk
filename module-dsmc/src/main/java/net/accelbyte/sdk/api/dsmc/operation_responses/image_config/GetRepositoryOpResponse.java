@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.dsmc.operation_responses.image_config;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dsmc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GetRepositoryOpResponse extends ApiResponseWithData<ModelsRepositoryRecord> {
-    
-    private ResponseError error401 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dsmc.operations.image_config.GetRepository";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dsmc.operations.image_config.GetRepository";
+  }
 }

@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.lobby;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class LobbyErrors
-{
-}
+public class LobbyErrors {}

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.matchmaking.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,45 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ServiceGetSessionHistorySearchResponseItemV2 extends Model {
 
-    @JsonProperty("_id")
-    private String id;
+  @JsonProperty("_id")
+  private String id;
 
-    @JsonProperty("created_at")
-    private String createdAt;
+  @JsonProperty("created_at")
+  private String createdAt;
 
-    @JsonProperty("game_mode")
-    private String gameMode;
+  @JsonProperty("game_mode")
+  private String gameMode;
 
-    @JsonProperty("joinable")
-    private Boolean joinable;
+  @JsonProperty("joinable")
+  private Boolean joinable;
 
-    @JsonProperty("match_id")
-    private String matchId;
+  @JsonProperty("match_id")
+  private String matchId;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("status")
-    private String status;
+  @JsonProperty("status")
+  private String status;
 
-    @JsonProperty("sub_game_mode")
-    private List<String> subGameMode;
+  @JsonProperty("sub_game_mode")
+  private List<String> subGameMode;
 
+  @JsonIgnore
+  public ServiceGetSessionHistorySearchResponseItemV2 createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ServiceGetSessionHistorySearchResponseItemV2 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ServiceGetSessionHistorySearchResponseItemV2> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ServiceGetSessionHistorySearchResponseItemV2>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ServiceGetSessionHistorySearchResponseItemV2> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(
+            json, new TypeReference<List<ServiceGetSessionHistorySearchResponseItemV2>>() {});
+  }
 }

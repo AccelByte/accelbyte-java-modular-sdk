@@ -12,7 +12,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
 import net.accelbyte.sdk.api.sessionhistory.models.ApimodelsGameSessionDetailQueryResponse;
 import net.accelbyte.sdk.api.sessionhistory.models.ApimodelsMatchmakingDetailQueryResponse;
 import net.accelbyte.sdk.api.sessionhistory.models.ApimodelsPartyDetailQueryResponse;
@@ -23,7 +22,6 @@ import net.accelbyte.sdk.api.sessionhistory.operations.game_session_detail.Admin
 import net.accelbyte.sdk.api.sessionhistory.operations.x_ray.QueryTotalMatchmakingMatch;
 import net.accelbyte.sdk.api.sessionhistory.wrappers.GameSessionDetail;
 import net.accelbyte.sdk.api.sessionhistory.wrappers.XRay;
-
 import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
@@ -39,10 +37,10 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
   public void GameSessionTests() throws Exception {
     final String endDate =
         Instant.now()
-          .plus(31, ChronoUnit.DAYS)
-          .atZone(ZoneId.systemDefault())
-          .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
-        
+            .plus(31, ChronoUnit.DAYS)
+            .atZone(ZoneId.systemDefault())
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+
     final String startDate =
         Instant.now()
             .atZone(ZoneId.systemDefault())
@@ -56,7 +54,9 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
         AdminQueryGameSessionDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
 
     ApimodelsGameSessionDetailQueryResponse gameSessionHistoryResp =
-        gameSessionDetailWrapper.adminQueryGameSessionDetail(adminQueryGameSessionDetail).ensureSuccess();
+        gameSessionDetailWrapper
+            .adminQueryGameSessionDetail(adminQueryGameSessionDetail)
+            .ensureSuccess();
     assertNotNull(gameSessionHistoryResp);
 
     // ESAC
@@ -71,7 +71,9 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
         AdminQueryMatchmakingDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
 
     ApimodelsMatchmakingDetailQueryResponse matchMakingHistoryResp =
-        gameSessionDetailWrapper.adminQueryMatchmakingDetail(adminQueryMatchmakingDetail).ensureSuccess();
+        gameSessionDetailWrapper
+            .adminQueryMatchmakingDetail(adminQueryMatchmakingDetail)
+            .ensureSuccess();
     assertNotNull(matchMakingHistoryResp);
 
     // ESAC
@@ -97,20 +99,22 @@ public class TestIntegrationServiceSessionHistory extends TestIntegration {
 
     // CASE Get all total matchmaking match
     ApimodelsXRayMatchMatchmakingQueryResponse queryTotalMatchmakingMatchResp =
-        xRayWrapper.queryTotalMatchmakingMatch(QueryTotalMatchmakingMatch.builder()
-          .namespace(this.namespace)
-          .endDate(endDate)
-          .startDate(startDate)
-        .build()).ensureSuccess();
+        xRayWrapper
+            .queryTotalMatchmakingMatch(
+                QueryTotalMatchmakingMatch.builder()
+                    .namespace(this.namespace)
+                    .endDate(endDate)
+                    .startDate(startDate)
+                    .build())
+            .ensureSuccess();
     assertNotNull(queryTotalMatchmakingMatchResp);
 
     // ESAC
 
-    if ((queryTotalMatchmakingMatchResp != null) && (queryTotalMatchmakingMatchResp.getData() != null)) {
+    if ((queryTotalMatchmakingMatchResp != null)
+        && (queryTotalMatchmakingMatchResp.getData() != null)) {
       assertTrue(queryTotalMatchmakingMatchResp.getData().size() >= 0);
     }
-
-
   }
 
   @AfterAll

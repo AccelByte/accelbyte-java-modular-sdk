@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.csm.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,42 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelGetAppImageListV2DataItem extends Model {
 
-    @JsonProperty("imageDigest")
-    private String imageDigest;
+  @JsonProperty("imageDigest")
+  private String imageDigest;
 
-    @JsonProperty("imageScanResult")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelGetAppImageListV2DataItemImageScanResult imageScanResult;
+  @JsonProperty("imageScanResult")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelGetAppImageListV2DataItemImageScanResult imageScanResult;
 
-    @JsonProperty("imageScanStatus")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelGetAppImageListV2DataItemImageScanStatus imageScanStatus;
+  @JsonProperty("imageScanStatus")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelGetAppImageListV2DataItemImageScanStatus imageScanStatus;
 
-    @JsonProperty("imageTag")
-    private String imageTag;
+  @JsonProperty("imageTag")
+  private String imageTag;
 
-    @JsonProperty("size")
-    private Long size;
+  @JsonProperty("size")
+  private Long size;
 
-    @JsonProperty("updatedAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String updatedAt;
+  @JsonProperty("updatedAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String updatedAt;
 
+  @JsonIgnore
+  public ApimodelGetAppImageListV2DataItem createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApimodelGetAppImageListV2DataItem createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApimodelGetAppImageListV2DataItem> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelGetAppImageListV2DataItem>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApimodelGetAppImageListV2DataItem> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ApimodelGetAppImageListV2DataItem>>() {});
+  }
 }

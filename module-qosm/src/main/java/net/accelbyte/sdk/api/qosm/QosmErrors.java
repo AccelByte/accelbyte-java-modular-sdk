@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.qosm;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class QosmErrors
-{
-}
+public class QosmErrors {}

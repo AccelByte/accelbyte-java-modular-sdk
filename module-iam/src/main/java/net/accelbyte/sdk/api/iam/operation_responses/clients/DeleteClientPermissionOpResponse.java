@@ -10,29 +10,25 @@ package net.accelbyte.sdk.api.iam.operation_responses.clients;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Deprecated
 @Getter
 @Setter
 public class DeleteClientPermissionOpResponse extends ApiResponse {
-    
-    private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error401 = null;
+  private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error403 = null;
+  private RestErrorResponse error401 = null;
 
-    private String error404 = "";
+  private RestErrorResponse error403 = null;
 
+  private String error404 = "";
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.clients.DeleteClientPermission";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.clients.DeleteClientPermission";
+  }
 }

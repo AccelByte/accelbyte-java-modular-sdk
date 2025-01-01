@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.reporting.operation_responses.admin_reasons;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.reporting.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class AdminGetReasonsOpResponse extends ApiResponseWithData<RestapiAdminReasonListResponse> {
-    
-    private RestapiErrorResponse error404 = null;
 
-    private RestapiErrorResponse error500 = null;
+  private RestapiErrorResponse error404 = null;
 
+  private RestapiErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.reporting.operations.admin_reasons.AdminGetReasons";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.reporting.operations.admin_reasons.AdminGetReasons";
+  }
 }

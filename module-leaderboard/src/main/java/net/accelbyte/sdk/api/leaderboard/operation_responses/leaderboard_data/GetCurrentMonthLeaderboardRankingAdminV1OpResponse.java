@@ -10,30 +10,27 @@ package net.accelbyte.sdk.api.leaderboard.operation_responses.leaderboard_data;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.leaderboard.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetCurrentMonthLeaderboardRankingAdminV1OpResponse extends ApiResponseWithData<ModelsGetLeaderboardRankingResp> {
-    
-    private ResponseErrorResponse error400 = null;
+public class GetCurrentMonthLeaderboardRankingAdminV1OpResponse
+    extends ApiResponseWithData<ModelsGetLeaderboardRankingResp> {
 
-    private ResponseErrorResponse error401 = null;
+  private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error404 = null;
+  private ResponseErrorResponse error403 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error404 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data.GetCurrentMonthLeaderboardRankingAdminV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data.GetCurrentMonthLeaderboardRankingAdminV1";
+  }
 }

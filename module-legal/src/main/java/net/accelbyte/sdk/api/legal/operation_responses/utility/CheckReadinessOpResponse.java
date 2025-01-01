@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.legal.operation_responses.utility;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class CheckReadinessOpResponse extends ApiResponseWithData<LegalReadinessStatusResponse> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.utility.CheckReadiness";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.utility.CheckReadiness";
+  }
 }

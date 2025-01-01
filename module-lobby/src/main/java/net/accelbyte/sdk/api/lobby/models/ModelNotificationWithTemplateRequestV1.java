@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelNotificationWithTemplateRequestV1 extends Model {
 
-    @JsonProperty("templateContext")
-    private Map<String, String> templateContext;
+  @JsonProperty("templateContext")
+  private Map<String, String> templateContext;
 
-    @JsonProperty("templateLanguage")
-    private String templateLanguage;
+  @JsonProperty("templateLanguage")
+  private String templateLanguage;
 
-    @JsonProperty("templateSlug")
-    private String templateSlug;
+  @JsonProperty("templateSlug")
+  private String templateSlug;
 
-    @JsonProperty("topicName")
-    private String topicName;
+  @JsonProperty("topicName")
+  private String topicName;
 
+  @JsonIgnore
+  public ModelNotificationWithTemplateRequestV1 createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelNotificationWithTemplateRequestV1 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelNotificationWithTemplateRequestV1> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelNotificationWithTemplateRequestV1>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelNotificationWithTemplateRequestV1> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelNotificationWithTemplateRequestV1>>() {});
+  }
 }

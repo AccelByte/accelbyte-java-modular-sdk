@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.session.operation_responses.operations;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.session.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class GetHealthcheckInfoOpResponse extends ApiResponse {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.session.operations.operations.GetHealthcheckInfo";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.session.operations.operations.GetHealthcheckInfo";
+  }
 }

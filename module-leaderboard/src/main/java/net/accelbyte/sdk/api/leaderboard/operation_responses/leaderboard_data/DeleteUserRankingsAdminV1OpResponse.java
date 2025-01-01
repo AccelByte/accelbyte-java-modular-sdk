@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.leaderboard.operation_responses.leaderboard_data;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.leaderboard.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteUserRankingsAdminV1OpResponse extends ApiResponse {
-    
-    private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error403 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data.DeleteUserRankingsAdminV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data.DeleteUserRankingsAdminV1";
+  }
 }

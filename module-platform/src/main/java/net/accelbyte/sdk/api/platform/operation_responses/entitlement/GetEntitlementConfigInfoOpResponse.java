@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.platform.operation_responses.entitlement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GetEntitlementConfigInfoOpResponse extends ApiResponseWithData<EntitlementConfigInfo> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.entitlement.GetEntitlementConfigInfo";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.entitlement.GetEntitlementConfigInfo";
+  }
 }

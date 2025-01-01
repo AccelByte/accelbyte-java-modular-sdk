@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.ugc.operation_responses.public_content_legacy;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ugc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteContentScreenshotOpResponse extends ApiResponse {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.ugc.operations.public_content_legacy.DeleteContentScreenshot";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.ugc.operations.public_content_legacy.DeleteContentScreenshot";
+  }
 }

@@ -94,11 +94,13 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             .build();
 
     final ModelsLeaderboardConfigReq createLeaderboardResult =
-        leaderboardConfigWrapper.createLeaderboardConfigurationAdminV1(
-            CreateLeaderboardConfigurationAdminV1.builder()
-                .namespace(this.namespace)
-                .body(createLeaderboardBody)
-                .build()).ensureSuccess();
+        leaderboardConfigWrapper
+            .createLeaderboardConfigurationAdminV1(
+                CreateLeaderboardConfigurationAdminV1.builder()
+                    .namespace(this.namespace)
+                    .body(createLeaderboardBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -108,11 +110,13 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
     // CASE Get a leaderboard
 
     final ModelsGetLeaderboardConfigResp getLeaderboardResult =
-        leaderboardConfigWrapper.getLeaderboardConfigurationAdminV1(
-            GetLeaderboardConfigurationAdminV1.builder()
-                .namespace(this.namespace)
-                .leaderboardCode(leaderboardCode)
-                .build()).ensureSuccess();
+        leaderboardConfigWrapper
+            .getLeaderboardConfigurationAdminV1(
+                GetLeaderboardConfigurationAdminV1.builder()
+                    .namespace(this.namespace)
+                    .leaderboardCode(leaderboardCode)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -130,12 +134,14 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
             .build();
 
     final ModelsGetLeaderboardConfigResp updateLeaderboardResult =
-        leaderboardConfigWrapper.updateLeaderboardConfigurationAdminV1(
-            UpdateLeaderboardConfigurationAdminV1.builder()
-                .namespace(this.namespace)
-                .leaderboardCode(leaderboardCode)
-                .body(updateLeaderboardBody)
-                .build()).ensureSuccess();
+        leaderboardConfigWrapper
+            .updateLeaderboardConfigurationAdminV1(
+                UpdateLeaderboardConfigurationAdminV1.builder()
+                    .namespace(this.namespace)
+                    .leaderboardCode(leaderboardCode)
+                    .body(updateLeaderboardBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -155,11 +161,13 @@ public class TestIntegrationServiceLeaderboard extends TestIntegration {
     // Confirm if leaderboard is deleted
 
     final ModelsGetLeaderboardConfigResp getLeaderboardConfirmResult =
-        leaderboardConfigWrapper.getLeaderboardConfigurationAdminV1(
-            GetLeaderboardConfigurationAdminV1.builder()
-                .namespace(this.namespace)
-                .leaderboardCode(leaderboardCode)
-                .build()).ensureSuccess();
+        leaderboardConfigWrapper
+            .getLeaderboardConfigurationAdminV1(
+                GetLeaderboardConfigurationAdminV1.builder()
+                    .namespace(this.namespace)
+                    .leaderboardCode(leaderboardCode)
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getLeaderboardConfirmResult);
     assertTrue(getLeaderboardConfirmResult.getIsDeleted());

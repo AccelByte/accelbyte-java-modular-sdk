@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.qosm.operation_responses.server;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.qosm.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class HeartbeatOpResponse extends ApiResponse {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error400 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.qosm.operations.server.Heartbeat";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.qosm.operations.server.Heartbeat";
+  }
 }

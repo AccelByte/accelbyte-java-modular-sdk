@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ConditionMatchResult extends Model {
 
-    @JsonProperty("matched")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean matched;
+  @JsonProperty("matched")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean matched;
 
-    @JsonProperty("matchedConditions")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Map<String, ?>> matchedConditions;
+  @JsonProperty("matchedConditions")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<Map<String, ?>> matchedConditions;
 
-    @JsonProperty("notMatchReason")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String notMatchReason;
+  @JsonProperty("notMatchReason")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String notMatchReason;
 
+  @JsonIgnore
+  public ConditionMatchResult createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ConditionMatchResult createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ConditionMatchResult> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ConditionMatchResult>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ConditionMatchResult> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ConditionMatchResult>>() {});
+  }
 }

@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.legal.operation_responses.eligibilities;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class RetrieveEligibilitiesPublicIndirectOpResponse extends ApiResponseWithData<RetrieveUserEligibilitiesIndirectResponse> {
-    
-    private ErrorEntity error400 = null;
+public class RetrieveEligibilitiesPublicIndirectOpResponse
+    extends ApiResponseWithData<RetrieveUserEligibilitiesIndirectResponse> {
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.eligibilities.RetrieveEligibilitiesPublicIndirect";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.eligibilities.RetrieveEligibilitiesPublicIndirect";
+  }
 }

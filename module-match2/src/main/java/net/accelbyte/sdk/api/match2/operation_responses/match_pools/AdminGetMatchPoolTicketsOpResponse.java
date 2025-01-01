@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.match2.operation_responses.match_pools;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.match2.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetMatchPoolTicketsOpResponse extends ApiResponseWithData<ApiListMatchPoolTicketsResponse> {
-    
-    private ResponseError error401 = null;
+public class AdminGetMatchPoolTicketsOpResponse
+    extends ApiResponseWithData<ApiListMatchPoolTicketsResponse> {
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error403 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.match2.operations.match_pools.AdminGetMatchPoolTickets";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.match2.operations.match_pools.AdminGetMatchPoolTickets";
+  }
 }

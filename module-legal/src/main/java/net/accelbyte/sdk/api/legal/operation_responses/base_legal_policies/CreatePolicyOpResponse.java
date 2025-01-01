@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.legal.operation_responses.base_legal_policies;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class CreatePolicyOpResponse extends ApiResponseWithData<CreateBasePolicyResponse> {
-    
-    private ErrorEntity error400 = null;
 
-    private ErrorEntity error404 = null;
+  private ErrorEntity error400 = null;
 
-    private ValidationErrorEntity error422 = null;
+  private ErrorEntity error404 = null;
 
+  private ValidationErrorEntity error422 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.base_legal_policies.CreatePolicy";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.base_legal_policies.CreatePolicy";
+  }
 }

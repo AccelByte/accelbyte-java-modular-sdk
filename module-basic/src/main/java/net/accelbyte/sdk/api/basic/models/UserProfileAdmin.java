@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.basic.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,119 +21,115 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class UserProfileAdmin extends Model {
 
-    @JsonProperty("avatarLargeUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String avatarLargeUrl;
+  @JsonProperty("avatarLargeUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String avatarLargeUrl;
 
-    @JsonProperty("avatarSmallUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String avatarSmallUrl;
+  @JsonProperty("avatarSmallUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String avatarSmallUrl;
 
-    @JsonProperty("avatarUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String avatarUrl;
+  @JsonProperty("avatarUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String avatarUrl;
 
-    @JsonProperty("customAttributes")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, ?> customAttributes;
+  @JsonProperty("customAttributes")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> customAttributes;
 
-    @JsonProperty("dateOfBirth")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String dateOfBirth;
+  @JsonProperty("dateOfBirth")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String dateOfBirth;
 
-    @JsonProperty("firstName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String firstName;
+  @JsonProperty("firstName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String firstName;
 
-    @JsonProperty("language")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String language;
+  @JsonProperty("language")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String language;
 
-    @JsonProperty("lastName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String lastName;
+  @JsonProperty("lastName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String lastName;
 
-    @JsonProperty("privateCustomAttributes")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, ?> privateCustomAttributes;
+  @JsonProperty("privateCustomAttributes")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ?> privateCustomAttributes;
 
-    @JsonProperty("status")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+  @JsonProperty("status")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String status;
+
+  @JsonProperty("timeZone")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String timeZone;
+
+  @JsonProperty("zipCode")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String zipCode;
+
+  @JsonIgnore
+  public String getStatus() {
+    return this.status;
+  }
+
+  @JsonIgnore
+  public Status getStatusAsEnum() {
+    return Status.valueOf(this.status);
+  }
+
+  @JsonIgnore
+  public void setStatus(final String status) {
+    this.status = status;
+  }
+
+  @JsonIgnore
+  public void setStatusFromEnum(final Status status) {
+    this.status = status.toString();
+  }
+
+  @JsonIgnore
+  public UserProfileAdmin createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
+
+  @JsonIgnore
+  public List<UserProfileAdmin> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<UserProfileAdmin>>() {});
+  }
+
+  public enum Status {
+    ACTIVE("ACTIVE"),
+    INACTIVE("INACTIVE");
+
+    private String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class UserProfileAdminBuilder {
     private String status;
 
-    @JsonProperty("timeZone")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String timeZone;
-
-    @JsonProperty("zipCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String zipCode;
-
-
-
-    @JsonIgnore
-    public String getStatus() {
-        return this.status;
+    public UserProfileAdminBuilder status(final String status) {
+      this.status = status;
+      return this;
     }
 
-    @JsonIgnore
-    public Status getStatusAsEnum() {
-        return Status.valueOf(this.status);
+    public UserProfileAdminBuilder statusFromEnum(final Status status) {
+      this.status = status.toString();
+      return this;
     }
-
-    @JsonIgnore
-    public void setStatus(final String status) {
-        this.status = status;
-    }
-
-    @JsonIgnore
-    public void setStatusFromEnum(final Status status) {
-        this.status = status.toString();
-    }
-
-    @JsonIgnore
-    public UserProfileAdmin createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<UserProfileAdmin> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<UserProfileAdmin>>() {});
-    }
-
-
-    public enum Status {
-        ACTIVE("ACTIVE"),
-        INACTIVE("INACTIVE");
-
-        private String value;
-
-        Status(String value){
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-    }
-
-    public static class UserProfileAdminBuilder {
-        private String status;
-
-
-        public UserProfileAdminBuilder status(final String status) {
-            this.status = status;
-            return this;
-        }
-
-        public UserProfileAdminBuilder statusFromEnum(final Status status) {
-            this.status = status.toString();
-            return this;
-        }
-    }
+  }
 }

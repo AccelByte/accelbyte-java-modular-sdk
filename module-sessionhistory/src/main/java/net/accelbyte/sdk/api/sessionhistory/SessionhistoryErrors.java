@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.sessionhistory;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class SessionhistoryErrors
-{
-}
+public class SessionhistoryErrors {}

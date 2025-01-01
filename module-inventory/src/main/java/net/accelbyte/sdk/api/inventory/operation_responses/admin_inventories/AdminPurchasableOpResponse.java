@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.inventory.operation_responses.admin_inventories;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.inventory.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminPurchasableOpResponse extends ApiResponse {
-    
-    private ApimodelsErrorResponse error400 = null;
 
-    private ApimodelsErrorResponse error404 = null;
+  private ApimodelsErrorResponse error400 = null;
 
-    private ApimodelsErrorResponse error409 = null;
+  private ApimodelsErrorResponse error404 = null;
 
-    private ApimodelsErrorResponse error500 = null;
+  private ApimodelsErrorResponse error409 = null;
 
+  private ApimodelsErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminPurchasable";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminPurchasable";
+  }
 }

@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.iam.operation_responses.roles;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicGetRoleV3OpResponse extends ApiResponseWithData<ModelRoleResponse> {
-    
-    private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error404 = null;
+  private RestErrorResponse error400 = null;
 
+  private RestErrorResponse error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.roles.PublicGetRoleV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.roles.PublicGetRoleV3";
+  }
 }

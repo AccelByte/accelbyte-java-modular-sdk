@@ -10,21 +10,18 @@ package net.accelbyte.sdk.api.legal.operation_responses.agreement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Deprecated
 @Getter
 @Setter
-public class IndirectBulkAcceptVersionedPolicyV2OpResponse extends ApiResponseWithData<AcceptAgreementResponse> {
-    
+public class IndirectBulkAcceptVersionedPolicyV2OpResponse
+    extends ApiResponseWithData<AcceptAgreementResponse> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.agreement.IndirectBulkAcceptVersionedPolicyV2";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.agreement.IndirectBulkAcceptVersionedPolicyV2";
+  }
 }

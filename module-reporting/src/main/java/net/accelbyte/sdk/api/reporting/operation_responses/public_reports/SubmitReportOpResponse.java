@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.reporting.operation_responses.public_reports;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.reporting.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class SubmitReportOpResponse extends ApiResponseWithData<RestapiSubmitReportResponse> {
-    
-    private RestapiErrorResponse error400 = null;
 
-    private RestapiErrorResponse error409 = null;
+  private RestapiErrorResponse error400 = null;
 
-    private RestapiErrorResponse error429 = null;
+  private RestapiErrorResponse error409 = null;
 
-    private RestapiErrorResponse error500 = null;
+  private RestapiErrorResponse error429 = null;
 
+  private RestapiErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.reporting.operations.public_reports.SubmitReport";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.reporting.operations.public_reports.SubmitReport";
+  }
 }

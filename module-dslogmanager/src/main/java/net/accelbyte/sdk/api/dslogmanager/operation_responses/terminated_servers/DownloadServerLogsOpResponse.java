@@ -10,24 +10,20 @@ package net.accelbyte.sdk.api.dslogmanager.operation_responses.terminated_server
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dslogmanager.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class DownloadServerLogsOpResponse extends ApiResponseWithData<InputStream> {
-    
-    private ResponseError error404 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dslogmanager.operations.terminated_servers.DownloadServerLogs";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dslogmanager.operations.terminated_servers.DownloadServerLogs";
+  }
 }

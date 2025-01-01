@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.platform.operation_responses.payment_account;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicGetPaymentAccountsOpResponse extends ApiResponseWithData<List<PaymentAccount>> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.payment_account.PublicGetPaymentAccounts";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.payment_account.PublicGetPaymentAccounts";
+  }
 }

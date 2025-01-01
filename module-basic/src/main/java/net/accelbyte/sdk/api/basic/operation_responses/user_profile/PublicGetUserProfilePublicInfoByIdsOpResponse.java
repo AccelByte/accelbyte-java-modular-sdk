@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.basic.operation_responses.user_profile;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.basic.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetUserProfilePublicInfoByIdsOpResponse extends ApiResponseWithData<List<UserProfilePublicInfo>> {
-    
-    private ValidationErrorEntity error400 = null;
+public class PublicGetUserProfilePublicInfoByIdsOpResponse
+    extends ApiResponseWithData<List<UserProfilePublicInfo>> {
 
+  private ValidationErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.basic.operations.user_profile.PublicGetUserProfilePublicInfoByIds";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.basic.operations.user_profile.PublicGetUserProfilePublicInfoByIds";
+  }
 }

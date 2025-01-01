@@ -10,25 +10,21 @@ package net.accelbyte.sdk.api.iam.operation_responses.bans;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Deprecated
 @Getter
 @Setter
 public class GetListBanReasonOpResponse extends ApiResponseWithData<AccountcommonBanReasons> {
-    
-    private RestErrorResponse error401 = null;
 
-    private RestErrorResponse error403 = null;
+  private RestErrorResponse error401 = null;
 
+  private RestErrorResponse error403 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.bans.GetListBanReason";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.bans.GetListBanReason";
+  }
 }

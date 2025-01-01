@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.dsartifact.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsQueue extends Model {
 
-    @JsonProperty("AllocationID")
-    private String allocationID;
+  @JsonProperty("AllocationID")
+  private String allocationID;
 
-    @JsonProperty("CreatedAt")
-    private String createdAt;
+  @JsonProperty("CreatedAt")
+  private String createdAt;
 
-    @JsonProperty("Failed")
-    private Boolean failed;
+  @JsonProperty("Failed")
+  private Boolean failed;
 
-    @JsonProperty("FailedReason")
-    private String failedReason;
+  @JsonProperty("FailedReason")
+  private String failedReason;
 
-    @JsonProperty("Namespace")
-    private String namespace;
+  @JsonProperty("Namespace")
+  private String namespace;
 
-    @JsonProperty("NodeIP")
-    private String nodeIP;
+  @JsonProperty("NodeIP")
+  private String nodeIP;
 
-    @JsonProperty("PodName")
-    private String podName;
+  @JsonProperty("PodName")
+  private String podName;
 
-    @JsonProperty("Uploading")
-    private Boolean uploading;
+  @JsonProperty("Uploading")
+  private Boolean uploading;
 
+  @JsonIgnore
+  public ModelsQueue createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsQueue createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsQueue> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsQueue>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsQueue> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsQueue>>() {});
+  }
 }

@@ -10,30 +10,27 @@ package net.accelbyte.sdk.api.cloudsave.operation_responses.admin_concurrent_rec
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.cloudsave.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminPutPlayerRecordConcurrentHandlerV1OpResponse extends ApiResponseWithData<ModelsPlayerRecordConcurrentUpdateResponse> {
-    
-    private ModelsResponseError error400 = null;
+public class AdminPutPlayerRecordConcurrentHandlerV1OpResponse
+    extends ApiResponseWithData<ModelsPlayerRecordConcurrentUpdateResponse> {
 
-    private ModelsResponseError error401 = null;
+  private ModelsResponseError error400 = null;
 
-    private ModelsResponseError error403 = null;
+  private ModelsResponseError error401 = null;
 
-    private ModelsResponseError error412 = null;
+  private ModelsResponseError error403 = null;
 
-    private ModelsResponseError error500 = null;
+  private ModelsResponseError error412 = null;
 
+  private ModelsResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.cloudsave.operations.admin_concurrent_record.AdminPutPlayerRecordConcurrentHandlerV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.cloudsave.operations.admin_concurrent_record.AdminPutPlayerRecordConcurrentHandlerV1";
+  }
 }

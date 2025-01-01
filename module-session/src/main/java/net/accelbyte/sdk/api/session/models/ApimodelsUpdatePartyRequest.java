@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.session.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,43 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsUpdatePartyRequest extends Model {
 
-    @JsonProperty("attributes")
-    private Map<String, ?> attributes;
+  @JsonProperty("attributes")
+  private Map<String, ?> attributes;
 
-    @JsonProperty("inactiveTimeout")
-    private Integer inactiveTimeout;
+  @JsonProperty("inactiveTimeout")
+  private Integer inactiveTimeout;
 
-    @JsonProperty("inviteTimeout")
-    private Integer inviteTimeout;
+  @JsonProperty("inviteTimeout")
+  private Integer inviteTimeout;
 
-    @JsonProperty("joinability")
-    private String joinability;
+  @JsonProperty("joinability")
+  private String joinability;
 
-    @JsonProperty("maxPlayers")
-    private Integer maxPlayers;
+  @JsonProperty("maxPlayers")
+  private Integer maxPlayers;
 
-    @JsonProperty("minPlayers")
-    private Integer minPlayers;
+  @JsonProperty("minPlayers")
+  private Integer minPlayers;
 
-    @JsonProperty("type")
-    private String type;
+  @JsonProperty("type")
+  private String type;
 
-    @JsonProperty("version")
-    private Integer version;
+  @JsonProperty("version")
+  private Integer version;
 
+  @JsonIgnore
+  public ApimodelsUpdatePartyRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApimodelsUpdatePartyRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApimodelsUpdatePartyRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsUpdatePartyRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApimodelsUpdatePartyRequest> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ApimodelsUpdatePartyRequest>>() {});
+  }
 }

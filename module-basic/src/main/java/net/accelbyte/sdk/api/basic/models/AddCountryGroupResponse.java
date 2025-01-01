@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.basic.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,31 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class AddCountryGroupResponse extends Model {
 
-    @JsonProperty("countries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<CountryObject> countries;
+  @JsonProperty("countries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<CountryObject> countries;
 
-    @JsonProperty("countryGroupCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String countryGroupCode;
+  @JsonProperty("countryGroupCode")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String countryGroupCode;
 
-    @JsonProperty("countryGroupName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String countryGroupName;
+  @JsonProperty("countryGroupName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String countryGroupName;
 
+  @JsonIgnore
+  public AddCountryGroupResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public AddCountryGroupResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<AddCountryGroupResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<AddCountryGroupResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<AddCountryGroupResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<AddCountryGroupResponse>>() {});
+  }
 }

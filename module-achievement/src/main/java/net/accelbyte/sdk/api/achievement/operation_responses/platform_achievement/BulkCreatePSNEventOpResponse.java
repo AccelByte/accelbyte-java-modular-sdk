@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.achievement.operation_responses.platform_achieveme
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.achievement.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class BulkCreatePSNEventOpResponse extends ApiResponseWithData<ModelsBulkCreatePSNEventResponse> {
-    
-    private ResponseError error401 = null;
+public class BulkCreatePSNEventOpResponse
+    extends ApiResponseWithData<ModelsBulkCreatePSNEventResponse> {
 
-    private ResponseError error403 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error403 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.achievement.operations.platform_achievement.BulkCreatePSNEvent";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.achievement.operations.platform_achievement.BulkCreatePSNEvent";
+  }
 }

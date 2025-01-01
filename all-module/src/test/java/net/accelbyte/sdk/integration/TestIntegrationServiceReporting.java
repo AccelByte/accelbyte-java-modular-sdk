@@ -65,15 +65,17 @@ public class TestIntegrationServiceReporting extends TestIntegration {
     // CASE Create a reason
 
     final RestapiAdminReasonResponse createReasonResponse =
-        adminReasonsWrapper.createReason(
-            CreateReason.builder()
-                .namespace(namespace)
-                .body(
-                    RestapiCreateReasonRequest.builder()
-                        .title(reasonTitle)
-                        .description(reasonDescription)
-                        .build())
-                .build()).ensureSuccess();
+        adminReasonsWrapper
+            .createReason(
+                CreateReason.builder()
+                    .namespace(namespace)
+                    .body(
+                        RestapiCreateReasonRequest.builder()
+                            .title(reasonTitle)
+                            .description(reasonDescription)
+                            .build())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -84,8 +86,10 @@ public class TestIntegrationServiceReporting extends TestIntegration {
     // CASE Get a list of reasons
 
     final RestapiPublicReasonListResponse publicGetReasonResponse =
-        wrapper.publicGetReasons(
-            PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build()).ensureSuccess();
+        wrapper
+            .publicGetReasons(
+                PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -108,37 +112,41 @@ public class TestIntegrationServiceReporting extends TestIntegration {
       final String player2EmailAdd = player2Username + "@test.com";
 
       final AccountCreateUserResponseV4 createUserResult1 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player1EmailAdd)
-                          .password(player1Password)
-                          .displayName("Java Server SDK Test")                          
-                          .username(player1Username)
-                          .uniqueDisplayName(player1Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player1EmailAdd)
+                              .password(player1Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player1Username)
+                              .uniqueDisplayName(player1Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
       final AccountCreateUserResponseV4 createUserResult2 =
-          usersV4Wrapper.publicCreateUserV4(
-              PublicCreateUserV4.builder()
-                  .namespace(namespace)
-                  .body(
-                      AccountCreateUserRequestV4.builder()
-                          .authTypeFromEnum(AuthType.EMAILPASSWD)
-                          .emailAddress(player2EmailAdd)
-                          .password(player2Password)
-                          .displayName("Java Server SDK Test")
-                          .username(player2Username)
-                          .uniqueDisplayName(player2Username)
-                          .country("ID")
-                          .dateOfBirth("1995-01-10")
-                          .build())
-                  .build()).ensureSuccess();
+          usersV4Wrapper
+              .publicCreateUserV4(
+                  PublicCreateUserV4.builder()
+                      .namespace(namespace)
+                      .body(
+                          AccountCreateUserRequestV4.builder()
+                              .authTypeFromEnum(AuthType.EMAILPASSWD)
+                              .emailAddress(player2EmailAdd)
+                              .password(player2Password)
+                              .displayName("Java Server SDK Test")
+                              .username(player2Username)
+                              .uniqueDisplayName(player2Username)
+                              .country("ID")
+                              .dateOfBirth("1995-01-10")
+                              .build())
+                      .build())
+              .ensureSuccess();
 
       player1UserId = createUserResult1.getUserId();
       player2UserId = createUserResult2.getUserId();
@@ -159,18 +167,20 @@ public class TestIntegrationServiceReporting extends TestIntegration {
         // CASE Submit a report
 
         final RestapiSubmitReportResponse submitReportResponse =
-            publicReportsWrapper.submitReport(
-                SubmitReport.builder()
-                    .namespace(namespace)
-                    .body(
-                        RestapiSubmitReportRequest.builder()
-                            .categoryFromEnum(Category.UGC)
-                            .reason(reasonTitle)
-                            .userId(player2UserId)
-                            .objectId(UUID.randomUUID().toString().replace("-", ""))
-                            .objectType(UUID.randomUUID().toString().replace("-", ""))
-                            .build())
-                    .build()).ensureSuccess();
+            publicReportsWrapper
+                .submitReport(
+                    SubmitReport.builder()
+                        .namespace(namespace)
+                        .body(
+                            RestapiSubmitReportRequest.builder()
+                                .categoryFromEnum(Category.UGC)
+                                .reason(reasonTitle)
+                                .userId(player2UserId)
+                                .objectId(UUID.randomUUID().toString().replace("-", ""))
+                                .objectType(UUID.randomUUID().toString().replace("-", ""))
+                                .build())
+                        .build())
+                .ensureSuccess();
 
         // ESAC
 

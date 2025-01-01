@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.iam.operation_responses.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetUserLoginHistoriesV3OpResponse extends ApiResponseWithData<ModelLoginHistoriesResponse> {
-    
-    private RestErrorResponse error401 = null;
+public class AdminGetUserLoginHistoriesV3OpResponse
+    extends ApiResponseWithData<ModelLoginHistoriesResponse> {
 
-    private RestErrorResponse error403 = null;
+  private RestErrorResponse error401 = null;
 
-    private String error404 = "";
+  private RestErrorResponse error403 = null;
 
+  private String error404 = "";
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.users.AdminGetUserLoginHistoriesV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.users.AdminGetUserLoginHistoriesV3";
+  }
 }

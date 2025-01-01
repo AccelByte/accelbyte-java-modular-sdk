@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public abstract class ApiResponse extends BaseApiResponse {
 
-    public void ensureSuccess() throws ApiResponseException {
-        this.throwExceptionIfError();
-    }    
+  public void ensureSuccess() throws ApiResponseException {
+    this.throwExceptionIfError();
+  }
 }

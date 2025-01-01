@@ -151,8 +151,9 @@ public class AccelByteSDK implements RequestRunner {
       } else {
         final OAuth20 oAuth20 = new OAuth20(this);
 
-        oAuth20.verifyTokenV3(VerifyTokenV3.builder().token(authContext.getToken()).build())
-          .ensureSuccess();
+        oAuth20
+            .verifyTokenV3(VerifyTokenV3.builder().token(authContext.getToken()).build())
+            .ensureSuccess();
       }
 
       if (Strings.isNullOrEmpty(permission.getResource())) {
@@ -552,7 +553,8 @@ public class AccelByteSDK implements RequestRunner {
               .codeVerifier(codeVerifier)
               .grantTypeFromEnum(TokenGrantV3.GrantType.AuthorizationCode)
               .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
+      final OauthmodelTokenWithDeviceCookieResponseV3 token =
+          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -582,7 +584,8 @@ public class AccelByteSDK implements RequestRunner {
           TokenGrantV3.builder()
               .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
               .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
+      final OauthmodelTokenWithDeviceCookieResponseV3 token =
+          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -664,7 +667,8 @@ public class AccelByteSDK implements RequestRunner {
               .platformId(platformId)
               .platformToken(platformToken)
               .build();
-      final OauthmodelTokenResponse token = oAuth20.platformTokenGrantV3(tokenGrantV3).ensureSuccess();
+      final OauthmodelTokenResponse token =
+          oAuth20.platformTokenGrantV3(tokenGrantV3).ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
@@ -895,7 +899,8 @@ public class AccelByteSDK implements RequestRunner {
           public List<Permission> load(RoleCacheKey key) throws Exception {
             final Roles rolesWrapper = new Roles(sdk);
             final AdminGetRoleV3 param = AdminGetRoleV3.builder().roleId(key.getRoleId()).build();
-            final ModelRoleResponseV3 getRoleV3Result = rolesWrapper.adminGetRoleV3(param).ensureSuccess();
+            final ModelRoleResponseV3 getRoleV3Result =
+                rolesWrapper.adminGetRoleV3(param).ensureSuccess();
 
             // go ref: getRolePermission
             List<Permission> permissions =
@@ -977,7 +982,9 @@ public class AccelByteSDK implements RequestRunner {
           public OauthapiRevocationList load(String key) throws Exception {
             final OAuth20 oauthWrapper = new OAuth20(sdk);
             final OauthapiRevocationList getRevocationListV3Result =
-                oauthWrapper.getRevocationListV3(GetRevocationListV3.builder().build()).ensureSuccess();
+                oauthWrapper
+                    .getRevocationListV3(GetRevocationListV3.builder().build())
+                    .ensureSuccess();
 
             return getRevocationListV3Result;
           }
@@ -996,8 +1003,9 @@ public class AccelByteSDK implements RequestRunner {
           public NamespaceContext load(String key) throws Exception {
             final Namespace namespaceWrapper = new Namespace(sdk);
             final NamespaceContext namespaceContext =
-                namespaceWrapper.getNamespaceContext(
-                    GetNamespaceContext.builder().namespace(key).build()).ensureSuccess();
+                namespaceWrapper
+                    .getNamespaceContext(GetNamespaceContext.builder().namespace(key).build())
+                    .ensureSuccess();
 
             return namespaceContext;
           }

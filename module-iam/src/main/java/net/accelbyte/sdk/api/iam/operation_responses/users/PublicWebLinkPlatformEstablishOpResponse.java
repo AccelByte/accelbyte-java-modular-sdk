@@ -10,20 +10,16 @@ package net.accelbyte.sdk.api.iam.operation_responses.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicWebLinkPlatformEstablishOpResponse extends ApiResponseWithData<String> {
-    
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.users.PublicWebLinkPlatformEstablish";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.users.PublicWebLinkPlatformEstablish";
+  }
 }

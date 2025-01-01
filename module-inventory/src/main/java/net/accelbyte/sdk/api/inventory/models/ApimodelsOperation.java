@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.inventory.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,36 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsOperation extends Model {
 
-    @JsonProperty("consumeItems")
-    private List<ApimodelsConsumeItem> consumeItems;
+  @JsonProperty("consumeItems")
+  private List<ApimodelsConsumeItem> consumeItems;
 
-    @JsonProperty("createItems")
-    private List<ApimodelsCreateItem> createItems;
+  @JsonProperty("createItems")
+  private List<ApimodelsCreateItem> createItems;
 
-    @JsonProperty("removeItems")
-    private List<ApimodelsRemoveItem> removeItems;
+  @JsonProperty("removeItems")
+  private List<ApimodelsRemoveItem> removeItems;
 
-    @JsonProperty("targetUserId")
-    private String targetUserId;
+  @JsonProperty("targetUserId")
+  private String targetUserId;
 
-    @JsonProperty("updateItems")
-    private List<ApimodelsUpdateItem> updateItems;
+  @JsonProperty("updateItems")
+  private List<ApimodelsUpdateItem> updateItems;
 
+  @JsonIgnore
+  public ApimodelsOperation createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApimodelsOperation createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApimodelsOperation> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsOperation>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApimodelsOperation> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsOperation>>() {});
+  }
 }

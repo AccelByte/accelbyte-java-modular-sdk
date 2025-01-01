@@ -32,7 +32,6 @@ import net.accelbyte.sdk.api.group.wrappers.Configuration;
 import net.accelbyte.sdk.api.group.wrappers.Group;
 import net.accelbyte.sdk.api.group.wrappers.GroupMember;
 import net.accelbyte.sdk.core.ApiResponseException;
-import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -75,11 +74,13 @@ public class TestIntegrationServiceGroup extends TestIntegration {
 
     try {
       final ModelsGetGroupConfigurationResponseV1 getGroupConfigResult =
-          configurationWrapper.getGroupConfigurationAdminV1(
-              GetGroupConfigurationAdminV1.builder()
-                  .namespace(this.namespace)
-                  .configurationCode(initialConfigCode)
-                  .build()).ensureSuccess();
+          configurationWrapper
+              .getGroupConfigurationAdminV1(
+                  GetGroupConfigurationAdminV1.builder()
+                      .namespace(this.namespace)
+                      .configurationCode(initialConfigCode)
+                      .build())
+              .ensureSuccess();
 
       assertNotNull(getGroupConfigResult);
 
@@ -91,8 +92,10 @@ public class TestIntegrationServiceGroup extends TestIntegration {
 
       if (isNotAvailable) {
         final ModelsCreateGroupConfigurationResponseV1 initiateGroupConfigResult =
-            configurationWrapper.initiateGroupConfigurationAdminV1(
-                InitiateGroupConfigurationAdminV1.builder().namespace(this.namespace).build()).ensureSuccess();
+            configurationWrapper
+                .initiateGroupConfigurationAdminV1(
+                    InitiateGroupConfigurationAdminV1.builder().namespace(this.namespace).build())
+                .ensureSuccess();
 
         defaultAdminRoleId = initiateGroupConfigResult.getGroupAdminRoleId();
         defaultMemberRoleId = initiateGroupConfigResult.getGroupMemberRoleId();
@@ -115,11 +118,13 @@ public class TestIntegrationServiceGroup extends TestIntegration {
               .build();
 
       final ModelsCreateGroupConfigurationResponseV1 createGroupConfigResult =
-          configurationWrapper.createGroupConfigurationAdminV1(
-              CreateGroupConfigurationAdminV1.builder()
-                  .namespace(this.namespace)
-                  .body(createGroupConfigBody)
-                  .build()).ensureSuccess();
+          configurationWrapper
+              .createGroupConfigurationAdminV1(
+                  CreateGroupConfigurationAdminV1.builder()
+                      .namespace(this.namespace)
+                      .body(createGroupConfigBody)
+                      .build())
+              .ensureSuccess();
 
       // ESAC
 
@@ -174,8 +179,13 @@ public class TestIntegrationServiceGroup extends TestIntegration {
             .configurationCode(configCode)
             .build();
     final ModelsGroupResponseV1 createGroupResult =
-        groupWrapper.createNewGroupPublicV1(
-            CreateNewGroupPublicV1.builder().namespace(this.namespace).body(createGroup).build()).ensureSuccess();
+        groupWrapper
+            .createNewGroupPublicV1(
+                CreateNewGroupPublicV1.builder()
+                    .namespace(this.namespace)
+                    .body(createGroup)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -187,8 +197,10 @@ public class TestIntegrationServiceGroup extends TestIntegration {
     // CASE Get a group
 
     final ModelsGroupResponseV1 getSingleGroupResult =
-        groupWrapper.getSingleGroupPublicV1(
-            GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build()).ensureSuccess();
+        groupWrapper
+            .getSingleGroupPublicV1(
+                GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -200,12 +212,14 @@ public class TestIntegrationServiceGroup extends TestIntegration {
     final ModelsUpdateGroupRequestV1 updateGroup =
         ModelsUpdateGroupRequestV1.builder().groupDescription(groupDescriptionUpdated).build();
     final ModelsGroupResponseV1 updateGroupResult =
-        groupWrapper.updateSingleGroupV1(
-            UpdateSingleGroupV1.builder()
-                .namespace(this.namespace)
-                .groupId(groupId)
-                .body(updateGroup)
-                .build()).ensureSuccess();
+        groupWrapper
+            .updateSingleGroupV1(
+                UpdateSingleGroupV1.builder()
+                    .namespace(this.namespace)
+                    .groupId(groupId)
+                    .body(updateGroup)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -224,18 +238,24 @@ public class TestIntegrationServiceGroup extends TestIntegration {
     assertThrows(
         ApiResponseException.class,
         () -> {
-          groupWrapper.getSingleGroupPublicV1(
-              GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build()).ensureSuccess();
+          groupWrapper
+              .getSingleGroupPublicV1(
+                  GetSingleGroupPublicV1.builder()
+                      .namespace(this.namespace)
+                      .groupId(groupId)
+                      .build())
+              .ensureSuccess();
         });
 
     // CASE Delete group configuration
 
-    configurationWrapper.deleteGroupConfigurationV1(
-        DeleteGroupConfigurationV1.builder()
-            .namespace(this.namespace)
-            .configurationCode(configCode)
-            .build())
-            .ensureSuccess();
+    configurationWrapper
+        .deleteGroupConfigurationV1(
+            DeleteGroupConfigurationV1.builder()
+                .namespace(this.namespace)
+                .configurationCode(configCode)
+                .build())
+        .ensureSuccess();
 
     // ESAC
   }

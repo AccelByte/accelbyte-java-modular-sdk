@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.legal.operation_responses.localized_policy_version
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class UpdateLocalizedPolicyVersion1OpResponse extends ApiResponseWithData<UpdateLocalizedPolicyVersionResponse> {
-    
-    private ErrorEntity error400 = null;
+public class UpdateLocalizedPolicyVersion1OpResponse
+    extends ApiResponseWithData<UpdateLocalizedPolicyVersionResponse> {
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.UpdateLocalizedPolicyVersion1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.localized_policy_versions_with_namespace.UpdateLocalizedPolicyVersion1";
+  }
 }

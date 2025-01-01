@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.cloudsave.operation_responses.admin_game_binary_re
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.cloudsave.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminListGameBinaryRecordsV1OpResponse extends ApiResponseWithData<ModelsListGameBinaryRecordsAdminResponse> {
-    
-    private ModelsResponseError error400 = null;
+public class AdminListGameBinaryRecordsV1OpResponse
+    extends ApiResponseWithData<ModelsListGameBinaryRecordsAdminResponse> {
 
-    private ModelsResponseError error401 = null;
+  private ModelsResponseError error400 = null;
 
-    private ModelsResponseError error403 = null;
+  private ModelsResponseError error401 = null;
 
-    private ModelsResponseError error500 = null;
+  private ModelsResponseError error403 = null;
 
+  private ModelsResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.cloudsave.operations.admin_game_binary_record.AdminListGameBinaryRecordsV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.cloudsave.operations.admin_game_binary_record.AdminListGameBinaryRecordsV1";
+  }
 }

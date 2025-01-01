@@ -8,85 +8,92 @@
 
 package net.accelbyte.sdk.api.lobby.wrappers;
 
-
 import net.accelbyte.sdk.api.lobby.models.*;
-import net.accelbyte.sdk.api.lobby.operations.third_party.*;
 import net.accelbyte.sdk.api.lobby.operation_responses.third_party.*;
-import net.accelbyte.sdk.core.RequestRunner;
+import net.accelbyte.sdk.api.lobby.operations.third_party.*;
 import net.accelbyte.sdk.core.HttpResponse;
+import net.accelbyte.sdk.core.RequestRunner;
 
 public class ThirdParty {
 
-    private RequestRunner sdk;
-    private String customBasePath = "";
+  private RequestRunner sdk;
+  private String customBasePath = "";
 
-    public ThirdParty(RequestRunner sdk){
-        this.sdk = sdk;
-        String configCustomBasePath = sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
-        if (!configCustomBasePath.equals("")) {
-            this.customBasePath = configCustomBasePath;
-        }
+  public ThirdParty(RequestRunner sdk) {
+    this.sdk = sdk;
+    String configCustomBasePath =
+        sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("lobby");
+    if (!configCustomBasePath.equals("")) {
+      this.customBasePath = configCustomBasePath;
+    }
+  }
+
+  public ThirdParty(RequestRunner sdk, String customBasePath) {
+    this.sdk = sdk;
+    this.customBasePath = customBasePath;
+  }
+
+  /**
+   * @see AdminGetThirdPartyConfig
+   * @deprecated
+   */
+  @Deprecated
+  public AdminGetThirdPartyConfigOpResponse adminGetThirdPartyConfig(AdminGetThirdPartyConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    public ThirdParty(RequestRunner sdk, String customBasePath){
-        this.sdk = sdk;
-        this.customBasePath = customBasePath;
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminUpdateThirdPartyConfig
+   * @deprecated
+   */
+  @Deprecated
+  public AdminUpdateThirdPartyConfigOpResponse adminUpdateThirdPartyConfig(
+      AdminUpdateThirdPartyConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminGetThirdPartyConfig
-     */
-    public AdminGetThirdPartyConfigOpResponse adminGetThirdPartyConfig(AdminGetThirdPartyConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see AdminCreateThirdPartyConfig
+   * @deprecated
+   */
+  @Deprecated
+  public AdminCreateThirdPartyConfigOpResponse adminCreateThirdPartyConfig(
+      AdminCreateThirdPartyConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminUpdateThirdPartyConfig
-     */
-    public AdminUpdateThirdPartyConfigOpResponse adminUpdateThirdPartyConfig(AdminUpdateThirdPartyConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
+  /**
+   * @see AdminDeleteThirdPartyConfig
+   * @deprecated
+   */
+  @Deprecated
+  public AdminDeleteThirdPartyConfigOpResponse adminDeleteThirdPartyConfig(
+      AdminDeleteThirdPartyConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
     }
 
-    /**
-     * @see AdminCreateThirdPartyConfig
-     */
-    public AdminCreateThirdPartyConfigOpResponse adminCreateThirdPartyConfig(AdminCreateThirdPartyConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
-    /**
-     * @see AdminDeleteThirdPartyConfig
-     */
-    public AdminDeleteThirdPartyConfigOpResponse adminDeleteThirdPartyConfig(AdminDeleteThirdPartyConfig input) throws Exception {
-        if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-            input.setCustomBasePath(customBasePath);
-        }
-
-        final HttpResponse httpResponse = sdk.runRequest(input);
-        return input.parseResponse(
-            httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload()
-        );
-    }
-
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

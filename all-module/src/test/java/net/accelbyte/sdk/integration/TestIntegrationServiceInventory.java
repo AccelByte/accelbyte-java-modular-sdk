@@ -65,7 +65,8 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminCreateInventoryConfiguration.builder()
                     .body(createInventoryConfigBody)
                     .namespace(this.namespace)
-                    .build()).ensureSuccess();
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(createInventoryConfigResult);
 
@@ -82,7 +83,8 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminCreateInventory.builder()
                     .body(createInventoryBody)
                     .namespace(this.namespace)
-                    .build()).ensureSuccess();
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(createInventoryResult);
 
@@ -93,7 +95,8 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 AdminGetInventory.builder()
                     .inventoryId(createInventoryResult.getId())
                     .namespace(this.namespace)
-                    .build()).ensureSuccess();
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(getInventoryResult);
 
@@ -108,7 +111,8 @@ class TestIntegrationServiceInventory extends TestIntegration {
                     .body(updateInventoryBody)
                     .inventoryId(createInventoryResult.getId())
                     .namespace(this.namespace)
-                    .build()).ensureSuccess();
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(updateInventoryResult);
 

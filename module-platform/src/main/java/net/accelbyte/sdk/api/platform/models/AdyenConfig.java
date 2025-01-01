@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,73 +21,69 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class AdyenConfig extends Model {
 
-    @JsonProperty("allowedPaymentMethods")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> allowedPaymentMethods;
+  @JsonProperty("allowedPaymentMethods")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> allowedPaymentMethods;
 
-    @JsonProperty("apiKey")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String apiKey;
+  @JsonProperty("apiKey")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String apiKey;
 
-    @JsonProperty("authoriseAsCapture")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean authoriseAsCapture;
+  @JsonProperty("authoriseAsCapture")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean authoriseAsCapture;
 
-    @JsonProperty("blockedPaymentMethods")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> blockedPaymentMethods;
+  @JsonProperty("blockedPaymentMethods")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> blockedPaymentMethods;
 
-    @JsonProperty("clientKey")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String clientKey;
+  @JsonProperty("clientKey")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String clientKey;
 
-    @JsonProperty("dropInSettings")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String dropInSettings;
+  @JsonProperty("dropInSettings")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String dropInSettings;
 
-    @JsonProperty("liveEndpointUrlPrefix")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String liveEndpointUrlPrefix;
+  @JsonProperty("liveEndpointUrlPrefix")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String liveEndpointUrlPrefix;
 
-    @JsonProperty("merchantAccount")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String merchantAccount;
+  @JsonProperty("merchantAccount")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String merchantAccount;
 
-    @JsonProperty("notificationHmacKey")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String notificationHmacKey;
+  @JsonProperty("notificationHmacKey")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String notificationHmacKey;
 
-    @JsonProperty("notificationPassword")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String notificationPassword;
+  @JsonProperty("notificationPassword")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String notificationPassword;
 
-    @JsonProperty("notificationUsername")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String notificationUsername;
+  @JsonProperty("notificationUsername")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String notificationUsername;
 
-    @JsonProperty("returnUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String returnUrl;
+  @JsonProperty("returnUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String returnUrl;
 
-    @JsonProperty("settings")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String settings;
+  @JsonProperty("settings")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String settings;
 
+  @JsonIgnore
+  public AdyenConfig createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public AdyenConfig createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<AdyenConfig> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<AdyenConfig>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<AdyenConfig> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<AdyenConfig>>() {});
+  }
 }

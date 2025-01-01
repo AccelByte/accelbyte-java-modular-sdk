@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class AccountcommonRole extends Model {
 
-    @JsonProperty("AdminRole")
-    private Boolean adminRole;
+  @JsonProperty("AdminRole")
+  private Boolean adminRole;
 
-    @JsonProperty("Deletable")
-    private Boolean deletable;
+  @JsonProperty("Deletable")
+  private Boolean deletable;
 
-    @JsonProperty("IsWildcard")
-    private Boolean isWildcard;
+  @JsonProperty("IsWildcard")
+  private Boolean isWildcard;
 
-    @JsonProperty("Managers")
-    private List<AccountcommonRoleManager> managers;
+  @JsonProperty("Managers")
+  private List<AccountcommonRoleManager> managers;
 
-    @JsonProperty("Members")
-    private List<AccountcommonRoleMember> members;
+  @JsonProperty("Members")
+  private List<AccountcommonRoleMember> members;
 
-    @JsonProperty("Permissions")
-    private List<AccountcommonPermission> permissions;
+  @JsonProperty("Permissions")
+  private List<AccountcommonPermission> permissions;
 
-    @JsonProperty("RoleId")
-    private String roleId;
+  @JsonProperty("RoleId")
+  private String roleId;
 
-    @JsonProperty("RoleName")
-    private String roleName;
+  @JsonProperty("RoleName")
+  private String roleName;
 
+  @JsonIgnore
+  public AccountcommonRole createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public AccountcommonRole createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<AccountcommonRole> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonRole>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<AccountcommonRole> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<AccountcommonRole>>() {});
+  }
 }

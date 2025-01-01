@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.dsmc.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,31 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsWorkerConfigRequest extends Model {
 
-    @JsonProperty("auto_deletion")
-    private Boolean autoDeletion;
+  @JsonProperty("auto_deletion")
+  private Boolean autoDeletion;
 
-    @JsonProperty("ghost_worker")
-    private Boolean ghostWorker;
+  @JsonProperty("ghost_worker")
+  private Boolean ghostWorker;
 
-    @JsonProperty("manual_buffer_override")
-    private Boolean manualBufferOverride;
+  @JsonProperty("manual_buffer_override")
+  private Boolean manualBufferOverride;
 
-    @JsonProperty("zombie_worker")
-    private Boolean zombieWorker;
+  @JsonProperty("zombie_worker")
+  private Boolean zombieWorker;
 
+  @JsonIgnore
+  public ModelsWorkerConfigRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsWorkerConfigRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsWorkerConfigRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsWorkerConfigRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsWorkerConfigRequest> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsWorkerConfigRequest>>() {});
+  }
 }

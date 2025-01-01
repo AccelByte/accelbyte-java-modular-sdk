@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.legal.operation_responses.base_legal_policies;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class RetrieveSinglePolicyOpResponse extends ApiResponseWithData<RetrieveBasePolicyResponse> {
-    
-    private ErrorEntity error404 = null;
+public class RetrieveSinglePolicyOpResponse
+    extends ApiResponseWithData<RetrieveBasePolicyResponse> {
 
+  private ErrorEntity error404 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.base_legal_policies.RetrieveSinglePolicy";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.base_legal_policies.RetrieveSinglePolicy";
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,29 +21,27 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class BulkEntitlementGrantRequest extends Model {
 
-    @JsonProperty("entitlementGrantList")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<EntitlementGrant> entitlementGrantList;
+  @JsonProperty("entitlementGrantList")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<EntitlementGrant> entitlementGrantList;
 
-    @JsonProperty("userIds")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> userIds;
+  @JsonProperty("userIds")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> userIds;
 
+  @JsonIgnore
+  public BulkEntitlementGrantRequest createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public BulkEntitlementGrantRequest createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<BulkEntitlementGrantRequest> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<BulkEntitlementGrantRequest>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<BulkEntitlementGrantRequest> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<BulkEntitlementGrantRequest>>() {});
+  }
 }

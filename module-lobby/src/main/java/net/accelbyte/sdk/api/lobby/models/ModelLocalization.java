@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.lobby.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,33 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelLocalization extends Model {
 
-    @JsonProperty("lastDraftAt")
-    private String lastDraftAt;
+  @JsonProperty("lastDraftAt")
+  private String lastDraftAt;
 
-    @JsonProperty("lastPublishedAt")
-    private String lastPublishedAt;
+  @JsonProperty("lastPublishedAt")
+  private String lastPublishedAt;
 
-    @JsonProperty("templateContent")
-    private ModelTemplateContent templateContent;
+  @JsonProperty("templateContent")
+  private ModelTemplateContent templateContent;
 
-    @JsonProperty("templateLanguage")
-    private String templateLanguage;
+  @JsonProperty("templateLanguage")
+  private String templateLanguage;
 
+  @JsonIgnore
+  public ModelLocalization createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelLocalization createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelLocalization> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelLocalization>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelLocalization> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelLocalization>>() {});
+  }
 }

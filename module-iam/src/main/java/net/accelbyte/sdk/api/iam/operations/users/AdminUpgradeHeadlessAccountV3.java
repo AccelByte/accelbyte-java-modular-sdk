@@ -10,165 +10,151 @@ package net.accelbyte.sdk.api.iam.operations.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.iam.operation_responses.users.AdminUpgradeHeadlessAccountV3OpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * AdminUpgradeHeadlessAccountV3
  *
- * If validateOnly is set false, will upgrade headless account with verification code
- * The endpoint upgrades a headless account by linking the headless account with the email address and the password.
- * By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
- * The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
- * In order to get a verification code for the endpoint, please check the send verification code endpoint.
- * This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
- * Supported user data fields :
- * - displayName
- * - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
- * - country : format ISO3166-1 alpha-2 two letter, e.g. US
- * 
- * action code : 10124
+ * <p>If validateOnly is set false, will upgrade headless account with verification code The
+ * endpoint upgrades a headless account by linking the headless account with the email address and
+ * the password. By upgrading the headless account into a full account, the user could use the email
+ * address and password for using Justice IAM. The endpoint is a shortcut for upgrading a headless
+ * account and verifying the email address in one call. In order to get a verification code for the
+ * endpoint, please check the send verification code endpoint. This endpoint also have an ability to
+ * update user data (if the user data field is specified) right after the upgrade account process is
+ * done. Supported user data fields : - displayName - dateOfBirth : format YYYY-MM-DD, e.g.
+ * 2019-04-29 - country : format ISO3166-1 alpha-2 two letter, e.g. US
+ *
+ * <p>action code : 10124
  */
 @Getter
 @Setter
 public class AdminUpgradeHeadlessAccountV3 extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify";
-    private String method = "POST";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private String userId;
-    private ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 body;
+  /** generated field's value */
+  private String path = "/iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify";
 
-    /**
-    * @param namespace required
-    * @param userId required
-    * @param body required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public AdminUpgradeHeadlessAccountV3(
-            String customBasePath,            String namespace,
-            String userId,
-            ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 body
-    )
-    {
-        this.namespace = namespace;
-        this.userId = userId;
-        this.body = body;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "POST";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private String userId;
+  private ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 body;
+
+  /**
+   * @param namespace required
+   * @param userId required
+   * @param body required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public AdminUpgradeHeadlessAccountV3(
+      String customBasePath,
+      String namespace,
+      String userId,
+      ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 body) {
+    this.namespace = namespace;
+    this.userId = userId;
+    this.body = body;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    if (this.userId != null) {
+      pathParams.put("userId", this.userId);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 getBodyParams() {
+    return this.body;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.userId == null) {
+      return false;
+    }
+    if (this.body == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public AdminUpgradeHeadlessAccountV3OpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final AdminUpgradeHeadlessAccountV3OpResponse response =
+        new AdminUpgradeHeadlessAccountV3OpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ModelUserResponseV3().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError403(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
+    } else if (code == 409) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError409(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError409().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        if (this.userId != null){
-            pathParams.put("userId", this.userId);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-
-
-    @Override
-    public ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3 getBodyParams(){
-        return this.body;
-    }
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.userId == null) {
-            return false;
-        }
-        if(this.body == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public AdminUpgradeHeadlessAccountV3OpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final AdminUpgradeHeadlessAccountV3OpResponse response = new AdminUpgradeHeadlessAccountV3OpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ModelUserResponseV3().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 400) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError400(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError400().translateToApiError());
-        }
-        else if (code == 401) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError401(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError401().translateToApiError());
-        }
-        else if (code == 403) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError403(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError403().translateToApiError());
-        }
-        else if (code == 404) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError404(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError404().translateToApiError());
-        }
-        else if (code == 409) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError409(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError409().translateToApiError());
-        }
-        else if (code == 500) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError500(new RestErrorResponse().createFromJson(json));
-            response.setError(response.getError500().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ModelUserResponseV3 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ModelUserResponseV3().createFromJson(json);
-    }
-    */
+  /*
+  public ModelUserResponseV3 parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ModelUserResponseV3().createFromJson(json);
+  }
+  */
 
 }

@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.qosm.operation_responses.public_;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.qosm.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class ListServerPerNamespaceOpResponse extends ApiResponseWithData<ModelsListServerResponse> {
-    
-    private ResponseError error500 = null;
+public class ListServerPerNamespaceOpResponse
+    extends ApiResponseWithData<ModelsListServerResponse> {
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.qosm.operations.public_.ListServerPerNamespace";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.qosm.operations.public_.ListServerPerNamespace";
+  }
 }

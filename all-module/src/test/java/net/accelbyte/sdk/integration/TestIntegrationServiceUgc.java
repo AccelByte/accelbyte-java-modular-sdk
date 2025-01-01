@@ -49,8 +49,10 @@ public class TestIntegrationServiceUgc extends TestIntegration {
         ModelsCreateTagRequest.builder().tag(tagName).build();
 
     final ModelsCreateTagResponse createTagResult =
-        adminTagWrapper.adminCreateTag(
-            AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build()).ensureSuccess();
+        adminTagWrapper
+            .adminCreateTag(
+                AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -62,8 +64,10 @@ public class TestIntegrationServiceUgc extends TestIntegration {
     // CASE Get tags
 
     final ModelsPaginatedGetTagResponse getTagResult =
-        adminTagWrapper.adminGetTag(
-            AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build()).ensureSuccess();
+        adminTagWrapper
+            .adminGetTag(
+                AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -75,12 +79,14 @@ public class TestIntegrationServiceUgc extends TestIntegration {
         ModelsCreateTagRequest.builder().tag(tagNameUpdate).build();
 
     final ModelsCreateTagResponse updateTagResult =
-        adminTagWrapper.adminUpdateTag(
-            AdminUpdateTag.builder()
-                .namespace(this.namespace)
-                .tagId(tagId)
-                .body(updateTag)
-                .build()).ensureSuccess();
+        adminTagWrapper
+            .adminUpdateTag(
+                AdminUpdateTag.builder()
+                    .namespace(this.namespace)
+                    .tagId(tagId)
+                    .body(updateTag)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 

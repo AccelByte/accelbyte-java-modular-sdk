@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.dsmc.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,42 +21,40 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsPodCountConfigOverride extends Model {
 
-    @JsonProperty("buffer_count")
-    private Integer bufferCount;
+  @JsonProperty("buffer_count")
+  private Integer bufferCount;
 
-    @JsonProperty("buffer_percent")
-    private Integer bufferPercent;
+  @JsonProperty("buffer_percent")
+  private Integer bufferPercent;
 
-    @JsonProperty("max_count")
-    private Integer maxCount;
+  @JsonProperty("max_count")
+  private Integer maxCount;
 
-    @JsonProperty("min_count")
-    private Integer minCount;
+  @JsonProperty("min_count")
+  private Integer minCount;
 
-    @JsonProperty("name")
-    private String name;
+  @JsonProperty("name")
+  private String name;
 
-    @JsonProperty("unlimited")
-    private Boolean unlimited;
+  @JsonProperty("unlimited")
+  private Boolean unlimited;
 
-    @JsonProperty("use_buffer_percent")
-    private Boolean useBufferPercent;
+  @JsonProperty("use_buffer_percent")
+  private Boolean useBufferPercent;
 
+  @JsonIgnore
+  public ModelsPodCountConfigOverride createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsPodCountConfigOverride createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsPodCountConfigOverride> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsPodCountConfigOverride>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsPodCountConfigOverride> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsPodCountConfigOverride>>() {});
+  }
 }

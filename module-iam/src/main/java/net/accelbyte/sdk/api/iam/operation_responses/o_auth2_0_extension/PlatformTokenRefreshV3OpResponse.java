@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0_extension;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PlatformTokenRefreshV3OpResponse extends ApiResponseWithData<OauthmodelPlatformTokenRefreshResponseV3> {
-    
-    private OauthmodelErrorResponse error400 = null;
+public class PlatformTokenRefreshV3OpResponse
+    extends ApiResponseWithData<OauthmodelPlatformTokenRefreshResponseV3> {
 
-    private OauthmodelErrorResponse error401 = null;
+  private OauthmodelErrorResponse error400 = null;
 
-    private OauthmodelErrorResponse error403 = null;
+  private OauthmodelErrorResponse error401 = null;
 
-    private OauthmodelErrorResponse error503 = null;
+  private OauthmodelErrorResponse error403 = null;
 
+  private OauthmodelErrorResponse error503 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.PlatformTokenRefreshV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.PlatformTokenRefreshV3";
+  }
 }

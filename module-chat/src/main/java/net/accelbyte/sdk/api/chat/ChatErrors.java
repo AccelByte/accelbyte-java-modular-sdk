@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.chat;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class ChatErrors
-{
-}
+public class ChatErrors {}

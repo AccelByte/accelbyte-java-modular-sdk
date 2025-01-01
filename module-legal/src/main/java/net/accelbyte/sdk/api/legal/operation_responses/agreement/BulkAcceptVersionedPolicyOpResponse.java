@@ -10,22 +10,19 @@ package net.accelbyte.sdk.api.legal.operation_responses.agreement;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class BulkAcceptVersionedPolicyOpResponse extends ApiResponseWithData<AcceptAgreementResponse> {
-    
-    private ErrorEntity error400 = null;
+public class BulkAcceptVersionedPolicyOpResponse
+    extends ApiResponseWithData<AcceptAgreementResponse> {
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.agreement.BulkAcceptVersionedPolicy";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.agreement.BulkAcceptVersionedPolicy";
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,31 +21,29 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelRoleUpdateRequestV3 extends Model {
 
-    @JsonProperty("deletable")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean deletable;
+  @JsonProperty("deletable")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean deletable;
 
-    @JsonProperty("isWildcard")
-    private Boolean isWildcard;
+  @JsonProperty("isWildcard")
+  private Boolean isWildcard;
 
-    @JsonProperty("roleName")
-    private String roleName;
+  @JsonProperty("roleName")
+  private String roleName;
 
+  @JsonIgnore
+  public ModelRoleUpdateRequestV3 createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelRoleUpdateRequestV3 createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelRoleUpdateRequestV3> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelRoleUpdateRequestV3>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelRoleUpdateRequestV3> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelRoleUpdateRequestV3>>() {});
+  }
 }

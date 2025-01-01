@@ -12,28 +12,35 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ApiResponseException extends Exception {
-    
-    private String code = "";
 
-    private String fullOperationId = "";
+  private String code = "";
 
-    private int statusCode = 0;
+  private String fullOperationId = "";
 
-    public ApiResponseException(BaseApiResponse response, boolean errorAvailable) {
-        super(errorAvailable ?
-            response.getFullOperationId() + " returns error: " + response.getError().getCode() + ". " + response.getError().getMessage() : 
-            response.getFullOperationId() + " returns unknown error with http status code " + Integer.toString(response.getHttpStatusCode()));
+  private int statusCode = 0;
 
-        code = response.getError().getCode();
-        fullOperationId = response.getFullOperationId();
-        statusCode = response.getHttpStatusCode();
-    }
+  public ApiResponseException(BaseApiResponse response, boolean errorAvailable) {
+    super(
+        errorAvailable
+            ? response.getFullOperationId()
+                + " returns error: "
+                + response.getError().getCode()
+                + ". "
+                + response.getError().getMessage()
+            : response.getFullOperationId()
+                + " returns unknown error with http status code "
+                + Integer.toString(response.getHttpStatusCode()));
 
-    public ApiResponseException(BaseApiResponse response, String customMessage) {
-        super(customMessage);
+    code = response.getError().getCode();
+    fullOperationId = response.getFullOperationId();
+    statusCode = response.getHttpStatusCode();
+  }
 
-        code = response.getError().getCode();
-        fullOperationId = response.getFullOperationId();
-        statusCode = response.getHttpStatusCode();
-    }
+  public ApiResponseException(BaseApiResponse response, String customMessage) {
+    super(customMessage);
+
+    code = response.getError().getCode();
+    fullOperationId = response.getFullOperationId();
+    statusCode = response.getHttpStatusCode();
+  }
 }

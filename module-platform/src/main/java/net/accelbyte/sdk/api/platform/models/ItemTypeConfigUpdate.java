@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,36 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ItemTypeConfigUpdate extends Model {
 
-    @JsonProperty("clazz")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String clazz;
+  @JsonProperty("clazz")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String clazz;
 
-    @JsonProperty("dryRun")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean dryRun;
+  @JsonProperty("dryRun")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean dryRun;
 
-    @JsonProperty("fulfillmentUrl")
-    private String fulfillmentUrl;
+  @JsonProperty("fulfillmentUrl")
+  private String fulfillmentUrl;
 
-    @JsonProperty("purchaseConditionUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String purchaseConditionUrl;
+  @JsonProperty("purchaseConditionUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String purchaseConditionUrl;
 
+  @JsonIgnore
+  public ItemTypeConfigUpdate createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ItemTypeConfigUpdate createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ItemTypeConfigUpdate> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ItemTypeConfigUpdate>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ItemTypeConfigUpdate> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ItemTypeConfigUpdate>>() {});
+  }
 }

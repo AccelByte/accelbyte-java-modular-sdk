@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.match2.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,36 +21,32 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsDSInformation extends Model {
 
-    @JsonProperty("MinPlayers")
-    private Integer minPlayers;
+  @JsonProperty("MinPlayers")
+  private Integer minPlayers;
 
-    @JsonProperty("RequestedAt")
-    private String requestedAt;
+  @JsonProperty("RequestedAt")
+  private String requestedAt;
 
-    @JsonProperty("RequestedRegions")
-    private List<String> requestedRegions;
+  @JsonProperty("RequestedRegions")
+  private List<String> requestedRegions;
 
-    @JsonProperty("Server")
-    private ModelsServer server;
+  @JsonProperty("Server")
+  private ModelsServer server;
 
-    @JsonProperty("Status")
-    private String status;
+  @JsonProperty("Status")
+  private String status;
 
+  @JsonIgnore
+  public ModelsDSInformation createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsDSInformation createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsDSInformation> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsDSInformation>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsDSInformation> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ModelsDSInformation>>() {});
+  }
 }

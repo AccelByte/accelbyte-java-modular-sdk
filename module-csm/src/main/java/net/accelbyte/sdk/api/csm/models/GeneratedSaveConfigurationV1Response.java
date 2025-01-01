@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.csm.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,27 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class GeneratedSaveConfigurationV1Response extends Model {
 
-    @JsonProperty("configId")
-    private String configId;
+  @JsonProperty("configId")
+  private String configId;
 
-    @JsonProperty("configName")
-    private String configName;
+  @JsonProperty("configName")
+  private String configName;
 
+  @JsonIgnore
+  public GeneratedSaveConfigurationV1Response createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public GeneratedSaveConfigurationV1Response createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<GeneratedSaveConfigurationV1Response> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<GeneratedSaveConfigurationV1Response>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<GeneratedSaveConfigurationV1Response> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<GeneratedSaveConfigurationV1Response>>() {});
+  }
 }

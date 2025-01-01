@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,43 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelRoleCreateV3Request extends Model {
 
-    @JsonProperty("adminRole")
-    private Boolean adminRole;
+  @JsonProperty("adminRole")
+  private Boolean adminRole;
 
-    @JsonProperty("deletable")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean deletable;
+  @JsonProperty("deletable")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean deletable;
 
-    @JsonProperty("isWildcard")
-    private Boolean isWildcard;
+  @JsonProperty("isWildcard")
+  private Boolean isWildcard;
 
-    @JsonProperty("managers")
-    private List<AccountcommonRoleManagerV3> managers;
+  @JsonProperty("managers")
+  private List<AccountcommonRoleManagerV3> managers;
 
-    @JsonProperty("members")
-    private List<AccountcommonRoleMemberV3> members;
+  @JsonProperty("members")
+  private List<AccountcommonRoleMemberV3> members;
 
-    @JsonProperty("permissions")
-    private List<AccountcommonPermissionV3> permissions;
+  @JsonProperty("permissions")
+  private List<AccountcommonPermissionV3> permissions;
 
-    @JsonProperty("roleName")
-    private String roleName;
+  @JsonProperty("roleName")
+  private String roleName;
 
+  @JsonIgnore
+  public ModelRoleCreateV3Request createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelRoleCreateV3Request createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelRoleCreateV3Request> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelRoleCreateV3Request>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelRoleCreateV3Request> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelRoleCreateV3Request>>() {});
+  }
 }

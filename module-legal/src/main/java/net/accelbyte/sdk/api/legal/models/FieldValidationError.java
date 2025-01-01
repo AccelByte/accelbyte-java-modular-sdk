@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,41 +21,37 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class FieldValidationError extends Model {
 
-    @JsonProperty("errorCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String errorCode;
+  @JsonProperty("errorCode")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String errorCode;
 
-    @JsonProperty("errorField")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String errorField;
+  @JsonProperty("errorField")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String errorField;
 
-    @JsonProperty("errorMessage")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String errorMessage;
+  @JsonProperty("errorMessage")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String errorMessage;
 
-    @JsonProperty("errorValue")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String errorValue;
+  @JsonProperty("errorValue")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String errorValue;
 
-    @JsonProperty("messageVariables")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, String> messageVariables;
+  @JsonProperty("messageVariables")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, String> messageVariables;
 
+  @JsonIgnore
+  public FieldValidationError createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public FieldValidationError createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<FieldValidationError> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<FieldValidationError>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<FieldValidationError> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<FieldValidationError>>() {});
+  }
 }

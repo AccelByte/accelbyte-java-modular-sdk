@@ -10,32 +10,29 @@ package net.accelbyte.sdk.api.group.operation_responses.group_member;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.group.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AcceptGroupJoinRequestPublicV1OpResponse extends ApiResponseWithData<ModelsMemberRequestGroupResponseV1> {
-    
-    private ResponseErrorResponse error400 = null;
+public class AcceptGroupJoinRequestPublicV1OpResponse
+    extends ApiResponseWithData<ModelsMemberRequestGroupResponseV1> {
 
-    private ResponseErrorResponse error401 = null;
+  private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error404 = null;
+  private ResponseErrorResponse error403 = null;
 
-    private ResponseErrorResponse error409 = null;
+  private ResponseErrorResponse error404 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error409 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.group.operations.group_member.AcceptGroupJoinRequestPublicV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.group.operations.group_member.AcceptGroupJoinRequestPublicV1";
+  }
 }

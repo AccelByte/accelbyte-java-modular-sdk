@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,28 +21,26 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class TradeActionPagingSlicedResult extends Model {
 
-    @JsonProperty("data")
-    private List<TradeChainActionHistoryInfo> data;
+  @JsonProperty("data")
+  private List<TradeChainActionHistoryInfo> data;
 
-    @JsonProperty("paging")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Paging paging;
+  @JsonProperty("paging")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Paging paging;
 
+  @JsonIgnore
+  public TradeActionPagingSlicedResult createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public TradeActionPagingSlicedResult createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<TradeActionPagingSlicedResult> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<TradeActionPagingSlicedResult>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<TradeActionPagingSlicedResult> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<TradeActionPagingSlicedResult>>() {});
+  }
 }

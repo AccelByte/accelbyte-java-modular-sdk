@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.chat.operation_responses.topic;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.chat.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminCreateNamespaceTopicOpResponse extends ApiResponseWithData<ApiCreateTopicResponse> {
-    
+public class AdminCreateNamespaceTopicOpResponse
+    extends ApiResponseWithData<ApiCreateTopicResponse> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.chat.operations.topic.AdminCreateNamespaceTopic";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.chat.operations.topic.AdminCreateNamespaceTopic";
+  }
 }

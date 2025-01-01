@@ -17,7 +17,6 @@ import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.P
 import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost;
 import net.accelbyte.sdk.api.gametelemetry.operations.gametelemetry_operations.ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut;
 import net.accelbyte.sdk.api.gametelemetry.wrappers.GametelemetryOperations;
-import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.ApiResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -93,10 +92,12 @@ public class TestIntegrationServiceGameTelemetry extends TestIntegration {
     // CASE Get Steam play time
 
     final PlayTimeResponse getTelemetry =
-        gameTelemetryWrapper.protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
-            ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.builder()
-                .steamId(steamId)
-                .build()).ensureSuccess();
+        gameTelemetryWrapper
+            .protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
+                ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.builder()
+                    .steamId(steamId)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 

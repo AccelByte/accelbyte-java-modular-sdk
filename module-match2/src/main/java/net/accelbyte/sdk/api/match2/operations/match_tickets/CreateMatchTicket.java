@@ -10,181 +10,152 @@ package net.accelbyte.sdk.api.match2.operations.match_tickets;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.match2.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.match2.operation_responses.match_tickets.CreateMatchTicketOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * CreateMatchTicket
  *
- * Creates a new request for matchmaking.
- * 
- * Cross Platform: Allow player to play game with "all" registered platforms.
- * 1. Cross Platform can be enabled through session service or create match ticket.
- * a. via ticket: specify several cross_platform on create match ticket attributes. **[DEPRECATED]** client should not send from attribute `cross_platform` will be populated from backend
- * This value will override player attributes in session service. e.g. cross_platform:[xbox,psn,steam]
- * b. via session service: set player/party cross_platform attributes.
- * c. Enable match options ruleset with name cross_platform and type "all".
- * ```
- * {
- * "name": "co-op",
- * "data": {
- * "alliance": {
- * "min_number": 1,
- * "max_number": 1,
- * "player_min_number": 1,
- * "player_max_number": 4
- * },
- * "match_options": {
- * "options": [
- * {"name": "cross_platform", "type": "all"}
- * ]
- * }
- * }
- * }
- * ```
- * 2. Cross Platform can be disabled from the matchpool configuration `crossplay_disabled=true`
- * 3. When matchpool `crossplay_disabled=false`
- * * request attribute cross_platform is empty **[Recommended]**:
- * * Matchmaking will consider Party leader `crossplayEnabled` preference or Session attribute `crossplayEnabled` preference.
- * * When `crossplayEnabled=true` `cross_platforms` attributes will be populated from [active login methods](/iam/apidocs/#/Third%20Party%20Credential/RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3) otherwise it will set to leader current platform
- * * When `crossplayEnabled=false` `cross_platforms` attributes will be set to user's currentPlatform
- * * request attribute cross_platform is not empty **[Not Recommended]**:
- * * Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox]
- * * Multiple cross_platform values is considered to be crossplay enabled
- * 4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.
- * 
- * ExcludedSessions: allow player to list out game sessions that they want to avoid matching, for example a match that they've recently left or get kicked out from.
+ * <p>Creates a new request for matchmaking.
+ *
+ * <p>Cross Platform: Allow player to play game with "all" registered platforms. 1. Cross Platform
+ * can be enabled through session service or create match ticket. a. via ticket: specify several
+ * cross_platform on create match ticket attributes. **[DEPRECATED]** client should not send from
+ * attribute `cross_platform` will be populated from backend This value will override player
+ * attributes in session service. e.g. cross_platform:[xbox,psn,steam] b. via session service: set
+ * player/party cross_platform attributes. c. Enable match options ruleset with name cross_platform
+ * and type "all". ``` { "name": "co-op", "data": { "alliance": { "min_number": 1, "max_number": 1,
+ * "player_min_number": 1, "player_max_number": 4 }, "match_options": { "options": [ {"name":
+ * "cross_platform", "type": "all"} ] } } } ``` 2. Cross Platform can be disabled from the matchpool
+ * configuration `crossplay_disabled=true` 3. When matchpool `crossplay_disabled=false` * request
+ * attribute cross_platform is empty **[Recommended]**: * Matchmaking will consider Party leader
+ * `crossplayEnabled` preference or Session attribute `crossplayEnabled` preference. * When
+ * `crossplayEnabled=true` `cross_platforms` attributes will be populated from [active login
+ * methods](/iam/apidocs/#/Third%20Party%20Credential/RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+ * otherwise it will set to leader current platform * When `crossplayEnabled=false`
+ * `cross_platforms` attributes will be set to user's currentPlatform * request attribute
+ * cross_platform is not empty **[Not Recommended]**: * Cross Platform can be disabled with specify
+ * only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox] *
+ * Multiple cross_platform values is considered to be crossplay enabled 4. This behavior only works
+ * for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its
+ * own implementation.
+ *
+ * <p>ExcludedSessions: allow player to list out game sessions that they want to avoid matching, for
+ * example a match that they've recently left or get kicked out from.
  */
 @Getter
 @Setter
 public class CreateMatchTicket extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/match2/v1/namespaces/{namespace}/match-tickets";
-    private String method = "POST";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
-    private ApiMatchTicketRequest body;
+  /** generated field's value */
+  private String path = "/match2/v1/namespaces/{namespace}/match-tickets";
 
-    /**
-    * @param namespace required
-    * @param body required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public CreateMatchTicket(
-            String customBasePath,            String namespace,
-            ApiMatchTicketRequest body
-    )
-    {
-        this.namespace = namespace;
-        this.body = body;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
+  private String method = "POST";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
 
-        securities.add("Bearer");
+  /** fields as input parameter */
+  private String namespace;
+
+  private ApiMatchTicketRequest body;
+
+  /**
+   * @param namespace required
+   * @param body required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public CreateMatchTicket(String customBasePath, String namespace, ApiMatchTicketRequest body) {
+    this.namespace = namespace;
+    this.body = body;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public ApiMatchTicketRequest getBodyParams() {
+    return this.body;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.body == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public CreateMatchTicketOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final CreateMatchTicketOpResponse response = new CreateMatchTicketOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new ApiMatchTicketResponse().createFromJson(json));
+      response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new ResponseError().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new ResponseError().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError403(new ResponseError().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new ResponseError().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
+    } else if (code == 409) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError409(new ResponseError().createFromJson(json));
+      response.setError(response.getError409().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new ResponseError().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        return pathParams;
-    }
+    return response;
+  }
 
-
-
-    @Override
-    public ApiMatchTicketRequest getBodyParams(){
-        return this.body;
-    }
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.body == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public CreateMatchTicketOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final CreateMatchTicketOpResponse response = new CreateMatchTicketOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new ApiMatchTicketResponse().createFromJson(json));
-            response.setSuccess(true);
-        }
-        else if (code == 400) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError400(new ResponseError().createFromJson(json));
-            response.setError(response.getError400().translateToApiError());
-        }
-        else if (code == 401) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError401(new ResponseError().createFromJson(json));
-            response.setError(response.getError401().translateToApiError());
-        }
-        else if (code == 403) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError403(new ResponseError().createFromJson(json));
-            response.setError(response.getError403().translateToApiError());
-        }
-        else if (code == 404) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError404(new ResponseError().createFromJson(json));
-            response.setError(response.getError404().translateToApiError());
-        }
-        else if (code == 409) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError409(new ResponseError().createFromJson(json));
-            response.setError(response.getError409().translateToApiError());
-        }
-        else if (code == 500) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setError500(new ResponseError().createFromJson(json));
-            response.setError(response.getError500().translateToApiError());
-        }
-
-        return response;
-    }
-
-    /*
-    public ApiMatchTicketResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 201){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new ApiMatchTicketResponse().createFromJson(json);
-    }
-    */
+  /*
+  public ApiMatchTicketResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 201){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new ApiMatchTicketResponse().createFromJson(json);
+  }
+  */
 
 }

@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.iam.operation_responses.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class PublicForgotPasswordV3OpResponse extends ApiResponse {
-    
-    private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error404 = null;
+  private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error429 = null;
+  private RestErrorResponse error404 = null;
 
+  private RestErrorResponse error429 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.users.PublicForgotPasswordV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.users.PublicForgotPasswordV3";
+  }
 }

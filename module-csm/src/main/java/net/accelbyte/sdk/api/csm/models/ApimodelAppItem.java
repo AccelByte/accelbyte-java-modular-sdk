@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.csm.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,99 +21,98 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelAppItem extends Model {
 
-    @JsonProperty("appId")
-    private String appId;
+  @JsonProperty("appId")
+  private String appId;
 
-    @JsonProperty("appName")
-    private String appName;
+  @JsonProperty("appName")
+  private String appName;
 
-    @JsonProperty("appRepoArn")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String appRepoArn;
+  @JsonProperty("appRepoArn")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String appRepoArn;
 
-    @JsonProperty("appRepoUrl")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String appRepoUrl;
+  @JsonProperty("appRepoUrl")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String appRepoUrl;
 
-    @JsonProperty("appStatus")
-    private String appStatus;
+  @JsonProperty("appStatus")
+  private String appStatus;
 
-    @JsonProperty("autoscaling")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelAutoscalingResponse autoscaling;
+  @JsonProperty("autoscaling")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelAutoscalingResponse autoscaling;
 
-    @JsonProperty("basePath")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String basePath;
+  @JsonProperty("basePath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String basePath;
 
-    @JsonProperty("cpu")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelCPUResponse cpu;
+  @JsonProperty("cpu")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelCPUResponse cpu;
 
-    @JsonProperty("createdAt")
-    private String createdAt;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-    @JsonProperty("deletedAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String deletedAt;
+  @JsonProperty("deletedAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String deletedAt;
 
-    @JsonProperty("deploymentCreatedAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String deploymentCreatedAt;
+  @JsonProperty("deploymentCreatedAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String deploymentCreatedAt;
 
-    @JsonProperty("deploymentId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String deploymentId;
+  @JsonProperty("deploymentId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String deploymentId;
 
-    @JsonProperty("deploymentImageTag")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String deploymentImageTag;
+  @JsonProperty("deploymentImageTag")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String deploymentImageTag;
 
-    @JsonProperty("description")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String description;
+  @JsonProperty("description")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String description;
 
-    @JsonProperty("memory")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelMemoryResponse memory;
+  @JsonProperty("gameName")
+  private String gameName;
 
-    @JsonProperty("message")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String message;
+  @JsonProperty("memory")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelMemoryResponse memory;
 
-    @JsonProperty("replica")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private ApimodelReplicaResponse replica;
+  @JsonProperty("message")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String message;
 
-    @JsonProperty("scenario")
-    private String scenario;
+  @JsonProperty("replica")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private ApimodelReplicaResponse replica;
 
-    @JsonProperty("servicePublicURL")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String servicePublicURL;
+  @JsonProperty("scenario")
+  private String scenario;
 
-    @JsonProperty("serviceURL")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String serviceURL;
+  @JsonProperty("servicePublicURL")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String servicePublicURL;
 
-    @JsonProperty("updatedAt")
-    private String updatedAt;
+  @JsonProperty("serviceURL")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String serviceURL;
 
+  @JsonProperty("updatedAt")
+  private String updatedAt;
 
+  @JsonIgnore
+  public ApimodelAppItem createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-    @JsonIgnore
-    public ApimodelAppItem createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApimodelAppItem> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelAppItem>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApimodelAppItem> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelAppItem>>() {});
+  }
 }

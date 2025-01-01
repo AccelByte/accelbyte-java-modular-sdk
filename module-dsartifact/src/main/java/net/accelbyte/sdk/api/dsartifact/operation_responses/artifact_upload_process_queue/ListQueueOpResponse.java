@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.dsartifact.operation_responses.artifact_upload_pro
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.dsartifact.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class ListQueueOpResponse extends ApiResponseWithData<ModelsListQueueResponse> {
-    
-    private ResponseError error400 = null;
 
-    private ResponseError error401 = null;
+  private ResponseError error400 = null;
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.dsartifact.operations.artifact_upload_process_queue.ListQueue";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.dsartifact.operations.artifact_upload_process_queue.ListQueue";
+  }
 }

@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.group.operation_responses.group_member;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.group.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminGetUserGroupStatusInformationV2OpResponse extends ApiResponseWithData<ModelsGetUserGroupInformationResponseV1> {
-    
-    private ResponseErrorResponse error401 = null;
+public class AdminGetUserGroupStatusInformationV2OpResponse
+    extends ApiResponseWithData<ModelsGetUserGroupInformationResponseV1> {
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error404 = null;
+  private ResponseErrorResponse error403 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error404 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.group.operations.group_member.AdminGetUserGroupStatusInformationV2";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.group.operations.group_member.AdminGetUserGroupStatusInformationV2";
+  }
 }

@@ -11,26 +11,26 @@ import lombok.Getter;
 @Getter
 public class ApiError {
 
-    public static ApiError empty = new ApiError("", "");
-    
-    private String code;
+  public static ApiError empty = new ApiError("", "");
 
-    private String message;
+  private String code;
 
-    private boolean isAvailable;
+  private String message;
 
-    public ApiError(String code, String message) {
-        this.code = code;
-        this.message = message;
-        this.isAvailable = !code.equals("");
-    }
+  private boolean isAvailable;
 
-    public Exception throwException() {
-        final String msg = "Code: " + code + ", Message: " + message;
-        return new Exception(msg);
-    }
+  public ApiError(String code, String message) {
+    this.code = code;
+    this.message = message;
+    this.isAvailable = !code.equals("");
+  }
 
-    public boolean isEqualWith(ApiError error) {
-        return this.code.equals(error.getCode());
-    }
+  public Exception throwException() {
+    final String msg = "Code: " + code + ", Message: " + message;
+    return new Exception(msg);
+  }
+
+  public boolean isEqualWith(ApiError error) {
+    return this.code.equals(error.getCode());
+  }
 }

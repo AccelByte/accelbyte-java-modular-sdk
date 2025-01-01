@@ -63,8 +63,10 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     // CASE Get stores
 
     final List<StoreInfo> storeListResp =
-        platformStoreWrapper.listStores(ListStores.builder().namespace(this.namespace).build()).ensureSuccess();
-    
+        platformStoreWrapper
+            .listStores(ListStores.builder().namespace(this.namespace).build())
+            .ensureSuccess();
+
     // ESAC
 
     assertNotNull(storeListResp);
@@ -73,22 +75,24 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     if (storeListResp.size() > 0) {
       selectedStore = storeListResp.get(0);
     } else {
-    
-        // CASE Create store
 
-        final StoreCreate storeCreate =
-            StoreCreate.builder()
-                .defaultLanguage("en-US")
-                .defaultRegion("US")
-                .description(storeTitle)
-                .title(storeTitle)
-                .build();
+      // CASE Create store
 
-        selectedStore =
-            platformStoreWrapper.createStore(
-                CreateStore.builder().body(storeCreate).namespace(this.namespace).build()).ensureSuccess();
-        
-        // ESAC
+      final StoreCreate storeCreate =
+          StoreCreate.builder()
+              .defaultLanguage("en-US")
+              .defaultRegion("US")
+              .description(storeTitle)
+              .title(storeTitle)
+              .build();
+
+      selectedStore =
+          platformStoreWrapper
+              .createStore(
+                  CreateStore.builder().body(storeCreate).namespace(this.namespace).build())
+              .ensureSuccess();
+
+      // ESAC
 
     }
 
@@ -150,12 +154,14 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
             .build();
 
     final FullItemInfo createItemResult =
-        platformItemWrapper.createItem(
-            CreateItem.builder()
-                .namespace(this.namespace)
-                .storeId(selectedStore.getStoreId())
-                .body(createItemBody)
-                .build()).ensureSuccess();
+        platformItemWrapper
+            .createItem(
+                CreateItem.builder()
+                    .namespace(this.namespace)
+                    .storeId(selectedStore.getStoreId())
+                    .body(createItemBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -193,8 +199,10 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
             .build();
 
     final SeasonInfo createSeasonResult =
-        seasonWrapper.createSeason(
-            CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build()).ensureSuccess();
+        seasonWrapper
+            .createSeason(
+                CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -203,11 +211,13 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     // CASE Get Season
 
     final SeasonInfo getSeasonResult =
-        seasonWrapper.getSeason(
-            GetSeason.builder()
-                .namespace(this.namespace)
-                .seasonId(createSeasonResult.getId())
-                .build()).ensureSuccess();
+        seasonWrapper
+            .getSeason(
+                GetSeason.builder()
+                    .namespace(this.namespace)
+                    .seasonId(createSeasonResult.getId())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -218,12 +228,14 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     final SeasonUpdate updateSeasonBody = SeasonUpdate.builder().name(seasonNameUpdated).build();
 
     final SeasonInfo updateSeasonResult =
-        seasonWrapper.updateSeason(
-            UpdateSeason.builder()
-                .namespace(this.namespace)
-                .seasonId(createSeasonResult.getId())
-                .body(updateSeasonBody)
-                .build()).ensureSuccess();
+        seasonWrapper
+            .updateSeason(
+                UpdateSeason.builder()
+                    .namespace(this.namespace)
+                    .seasonId(createSeasonResult.getId())
+                    .body(updateSeasonBody)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -242,11 +254,13 @@ class TestIntegrationServiceSeasonPass extends TestIntegration {
     // Clean up store
 
     final StoreInfo deleteStoreResult =
-        platformStoreWrapper.deleteStore(
-            DeleteStore.builder()
-                .namespace(this.namespace)
-                .storeId(selectedStore.getStoreId())
-                .build()).ensureSuccess();
+        platformStoreWrapper
+            .deleteStore(
+                DeleteStore.builder()
+                    .namespace(this.namespace)
+                    .storeId(selectedStore.getStoreId())
+                    .build())
+            .ensureSuccess();
 
     assertNotNull(deleteStoreResult);
   }

@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.platform.operation_responses.subscription;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetUserSubscriptionActivitiesOpResponse extends ApiResponseWithData<SubscriptionActivityPagingSlicedResult> {
-    
+public class GetUserSubscriptionActivitiesOpResponse
+    extends ApiResponseWithData<SubscriptionActivityPagingSlicedResult> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.platform.operations.subscription.GetUserSubscriptionActivities";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.platform.operations.subscription.GetUserSubscriptionActivities";
+  }
 }

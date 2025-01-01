@@ -10,26 +10,23 @@ package net.accelbyte.sdk.api.ugc.operation_responses.public_content_v2;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ugc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetContentByShareCodeV2OpResponse extends ApiResponseWithData<ModelsContentDownloadResponseV2> {
-    
-    private ResponseError error401 = null;
+public class PublicGetContentByShareCodeV2OpResponse
+    extends ApiResponseWithData<ModelsContentDownloadResponseV2> {
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error404 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.ugc.operations.public_content_v2.PublicGetContentByShareCodeV2";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.ugc.operations.public_content_v2.PublicGetContentByShareCodeV2";
+  }
 }

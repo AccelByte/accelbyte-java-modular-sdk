@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.platform.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,37 +21,34 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class EntitlementSoldResult extends Model {
 
-    @JsonProperty("creditSummaries")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<CreditSummary> creditSummaries;
+  @JsonProperty("creditSummaries")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<CreditSummary> creditSummaries;
 
-    @JsonProperty("entitlementInfo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private EntitlementInfo entitlementInfo;
+  @JsonProperty("entitlementInfo")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private EntitlementInfo entitlementInfo;
 
-    @JsonProperty("replayed")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean replayed;
+  @JsonProperty("replayed")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean replayed;
 
-    @JsonProperty("requestId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String requestId;
+  @JsonProperty("requestId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String requestId;
 
+  @JsonIgnore
+  public EntitlementSoldResult createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public EntitlementSoldResult createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<EntitlementSoldResult> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<EntitlementSoldResult>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<EntitlementSoldResult> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<EntitlementSoldResult>>() {});
+  }
 }

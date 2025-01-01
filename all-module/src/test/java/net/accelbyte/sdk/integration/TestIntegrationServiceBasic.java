@@ -21,7 +21,6 @@ import net.accelbyte.sdk.api.basic.operations.user_profile.GetMyProfileInfo;
 import net.accelbyte.sdk.api.basic.operations.user_profile.UpdateMyProfile;
 import net.accelbyte.sdk.api.basic.wrappers.UserProfile;
 import net.accelbyte.sdk.core.ApiResponseException;
-import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -56,18 +55,19 @@ public class TestIntegrationServiceBasic extends TestIntegration {
 
     try {
       final UserProfilePrivateInfo getProfileResult =
-          userProfileWrapper.getMyProfileInfo(
-              GetMyProfileInfo.builder().namespace(this.namespace).build())
-                .ensureSuccess();
+          userProfileWrapper
+              .getMyProfileInfo(GetMyProfileInfo.builder().namespace(this.namespace).build())
+              .ensureSuccess();
 
       assertNotNull(getProfileResult);
 
       final String userId = getProfileResult.getUserId();
 
       final UserProfilePrivateInfo deleteUserProfileResult =
-          userProfileWrapper.deleteUserProfile(
-              DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build())
-                .ensureSuccess();
+          userProfileWrapper
+              .deleteUserProfile(
+                  DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build())
+              .ensureSuccess();
 
       assertNotNull(deleteUserProfileResult);
     } catch (ApiResponseException hex) {
@@ -91,8 +91,10 @@ public class TestIntegrationServiceBasic extends TestIntegration {
             .build();
 
     final UserProfilePrivateInfo createProfileResult =
-        userProfileWrapper.createMyProfile(
-            CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build()).ensureSuccess();
+        userProfileWrapper
+            .createMyProfile(
+                CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -102,8 +104,9 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     // CASE Get a user profile
 
     final UserProfilePrivateInfo getProfileResult =
-        userProfileWrapper.getMyProfileInfo(
-            GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
+        userProfileWrapper
+            .getMyProfileInfo(GetMyProfileInfo.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -116,8 +119,10 @@ public class TestIntegrationServiceBasic extends TestIntegration {
         UserProfileUpdate.builder().timeZone(profileTimeZone).build();
 
     final UserProfilePrivateInfo updateProfileResult =
-        userProfileWrapper.updateMyProfile(
-            UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build()).ensureSuccess();
+        userProfileWrapper
+            .updateMyProfile(
+                UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -129,8 +134,10 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     final String userId = getProfileResult.getUserId();
 
     final UserProfilePrivateInfo deleteUserProfileResult =
-        userProfileWrapper.deleteUserProfile(
-            DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+        userProfileWrapper
+            .deleteUserProfile(
+                DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -141,8 +148,9 @@ public class TestIntegrationServiceBasic extends TestIntegration {
     assertThrows(
         ApiResponseException.class,
         () -> {
-          userProfileWrapper.getMyProfileInfo(
-              GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
+          userProfileWrapper
+              .getMyProfileInfo(GetMyProfileInfo.builder().namespace(this.namespace).build())
+              .ensureSuccess();
         });
   }
 

@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.seasonpass.operation_responses.pass;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.seasonpass.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class GrantUserPassOpResponse extends ApiResponseWithData<UserSeasonSummary> {
-    
-    private ErrorEntity error400 = null;
 
+  private ErrorEntity error400 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.seasonpass.operations.pass.GrantUserPass";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.seasonpass.operations.pass.GrantUserPass";
+  }
 }

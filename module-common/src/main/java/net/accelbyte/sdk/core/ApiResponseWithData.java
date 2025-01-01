@@ -12,17 +12,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class ApiResponseWithData<T> extends BaseApiResponse {
-    
-    private T data = null;
 
-    public T ensureSuccess() throws ApiResponseException {
-        this.throwExceptionIfError();
+  private T data = null;
 
-        if (data == null) {
-            final String msg = this.getFullOperationId() + " returns NULL.";
-            throw new ApiResponseException(this, msg);
-        }
+  public T ensureSuccess() throws ApiResponseException {
+    this.throwExceptionIfError();
 
-        return data;
+    if (data == null) {
+      final String msg = this.getFullOperationId() + " returns NULL.";
+      throw new ApiResponseException(this, msg);
     }
+
+    return data;
+  }
 }

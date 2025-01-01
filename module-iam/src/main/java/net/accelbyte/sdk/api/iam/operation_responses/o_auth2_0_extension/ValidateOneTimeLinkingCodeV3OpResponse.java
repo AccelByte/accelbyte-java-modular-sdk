@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.iam.operation_responses.o_auth2_0_extension;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class ValidateOneTimeLinkingCodeV3OpResponse extends ApiResponseWithData<OauthmodelOneTimeLinkingCodeValidationResponse> {
-    
+public class ValidateOneTimeLinkingCodeV3OpResponse
+    extends ApiResponseWithData<OauthmodelOneTimeLinkingCodeValidationResponse> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.ValidateOneTimeLinkingCodeV3";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.o_auth2_0_extension.ValidateOneTimeLinkingCodeV3";
+  }
 }

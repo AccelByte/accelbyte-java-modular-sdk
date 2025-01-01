@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.dsmc;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class DsmcErrors
-{
-}
+public class DsmcErrors {}

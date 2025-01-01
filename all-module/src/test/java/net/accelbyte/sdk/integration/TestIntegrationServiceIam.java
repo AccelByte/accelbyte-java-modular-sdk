@@ -29,7 +29,6 @@ import net.accelbyte.sdk.api.iam.operations.users_v4.PublicGetUserPublicInfoByUs
 import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.api.iam.wrappers.UsersV4;
 import net.accelbyte.sdk.core.ApiResponseException;
-import net.accelbyte.sdk.core.HttpResponseException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -75,8 +74,10 @@ public class TestIntegrationServiceIam extends TestIntegration {
             .build();
 
     final ModelUserCreateResponseV3 createUserV3Result =
-        usersWrapper.publicCreateUserV3(
-            PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build()).ensureSuccess();
+        usersWrapper
+            .publicCreateUserV3(
+                PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -87,14 +88,21 @@ public class TestIntegrationServiceIam extends TestIntegration {
 
     // Clean up
 
-    usersWrapper.adminDeleteUserInformationV3(
-        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+    usersWrapper
+        .adminDeleteUserInformationV3(
+            AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build())
+        .ensureSuccess();
 
     assertThrows(
         ApiResponseException.class,
         () -> {
-            usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+          usersV4Wrapper
+              .publicGetUserPublicInfoByUserIdV4(
+                  PublicGetUserPublicInfoByUserIdV4.builder()
+                      .namespace(this.namespace)
+                      .userId(userId)
+                      .build())
+              .ensureSuccess();
         });
   }
 
@@ -127,8 +135,10 @@ public class TestIntegrationServiceIam extends TestIntegration {
             .build();
 
     final AccountCreateUserResponseV4 createUserResult =
-        usersV4Wrapper.publicCreateUserV4(
-            PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build()).ensureSuccess();
+        usersV4Wrapper
+            .publicCreateUserV4(
+                PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -140,8 +150,13 @@ public class TestIntegrationServiceIam extends TestIntegration {
     // CASE Get a user
 
     final ModelUserPublicInfoResponseV4 getUserResult =
-        usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-            PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+        usersV4Wrapper
+            .publicGetUserPublicInfoByUserIdV4(
+                PublicGetUserPublicInfoByUserIdV4.builder()
+                    .namespace(this.namespace)
+                    .userId(userId)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -154,12 +169,14 @@ public class TestIntegrationServiceIam extends TestIntegration {
         ModelUserUpdateRequestV3.builder().dateOfBirth(userDateOfBirthUpdate).build();
 
     final ModelUserResponseV3 updateUserResult =
-        usersWrapper.adminUpdateUserV3(
-            AdminUpdateUserV3.builder()
-                .namespace(this.namespace)
-                .userId(userId)
-                .body(updateUser)
-                .build()).ensureSuccess();
+        usersWrapper
+            .adminUpdateUserV3(
+                AdminUpdateUserV3.builder()
+                    .namespace(this.namespace)
+                    .userId(userId)
+                    .body(updateUser)
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -177,8 +194,10 @@ public class TestIntegrationServiceIam extends TestIntegration {
 
     // CASE Delete a user
 
-    usersWrapper.adminDeleteUserInformationV3(
-        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+    usersWrapper
+        .adminDeleteUserInformationV3(
+            AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build())
+        .ensureSuccess();
 
     // ESAC
 
@@ -187,8 +206,13 @@ public class TestIntegrationServiceIam extends TestIntegration {
     assertThrows(
         ApiResponseException.class,
         () -> {
-            usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-                PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+          usersV4Wrapper
+              .publicGetUserPublicInfoByUserIdV4(
+                  PublicGetUserPublicInfoByUserIdV4.builder()
+                      .namespace(this.namespace)
+                      .userId(userId)
+                      .build())
+              .ensureSuccess();
         });
   }
 

@@ -10,22 +10,18 @@ package net.accelbyte.sdk.api.basic.operation_responses.namespace;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.basic.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class PublicGetNamespacesOpResponse extends ApiResponseWithData<List<NamespaceInfo>> {
-    
-    private ErrorEntity error401 = null;
 
+  private ErrorEntity error401 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.basic.operations.namespace.PublicGetNamespaces";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.basic.operations.namespace.PublicGetNamespaces";
+  }
 }

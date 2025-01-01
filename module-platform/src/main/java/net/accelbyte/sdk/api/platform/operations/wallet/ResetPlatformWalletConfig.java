@@ -10,154 +10,140 @@ package net.accelbyte.sdk.api.platform.operations.wallet;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.HttpResponseException;
-import net.accelbyte.sdk.core.util.Helper;
-import net.accelbyte.sdk.core.ApiError;
 import net.accelbyte.sdk.api.platform.operation_responses.wallet.ResetPlatformWalletConfigOpResponse;
+import net.accelbyte.sdk.core.HttpResponseException;
+import net.accelbyte.sdk.core.Operation;
+import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * resetPlatformWalletConfig
  *
- * Reset platform wallet config to default config.
- * Other detail info:
- * 
- *   * Returns : platform wallet config
+ * <p>Reset platform wallet config to default config. Other detail info:
+ *
+ * <p>* Returns : platform wallet config
  */
 @Getter
 @Setter
 public class ResetPlatformWalletConfig extends Operation {
-    /**
-     * generated field's value
-     */
-    private String path = "/platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset";
-    private String method = "PUT";
-    private List<String> consumes = Arrays.asList("application/json");
-    private List<String> produces = Arrays.asList("application/json");
-    private String locationQuery = null;
-    /**
-     * fields as input parameter
-     */
-    private String namespace;
+  /** generated field's value */
+  private String path =
+      "/platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset";
+
+  private String method = "PUT";
+  private List<String> consumes = Arrays.asList("application/json");
+  private List<String> produces = Arrays.asList("application/json");
+  private String locationQuery = null;
+
+  /** fields as input parameter */
+  private String namespace;
+
+  private String platform;
+
+  /**
+   * @param namespace required
+   * @param platform required
+   */
+  @Builder
+  // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
+  @Deprecated
+  public ResetPlatformWalletConfig(String customBasePath, String namespace, String platform) {
+    this.namespace = namespace;
+    this.platform = platform;
+    super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
+  }
+
+  @Override
+  public Map<String, String> getPathParams() {
+    Map<String, String> pathParams = new HashMap<>();
+    if (this.namespace != null) {
+      pathParams.put("namespace", this.namespace);
+    }
+    if (this.platform != null) {
+      pathParams.put("platform", this.platform);
+    }
+    return pathParams;
+  }
+
+  @Override
+  public boolean isValid() {
+    if (this.namespace == null) {
+      return false;
+    }
+    if (this.platform == null) {
+      return false;
+    }
+    return true;
+  }
+
+  public ResetPlatformWalletConfigOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final ResetPlatformWalletConfigOpResponse response = new ResetPlatformWalletConfigOpResponse();
+
+    response.setHttpStatusCode(code);
+    response.setContentType(contentType);
+
+    if (code == 204) {
+      response.setSuccess(true);
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new PlatformWalletConfigInfo().createFromJson(json));
+      response.setSuccess(true);
+    }
+
+    return response;
+  }
+
+  /*
+  public PlatformWalletConfigInfo parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 200){
+          final String json = Helper.convertInputStreamToString(payload);
+          throw new HttpResponseException(code, json);
+      }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new PlatformWalletConfigInfo().createFromJson(json);
+  }
+  */
+
+  public enum Platform {
+    Epic("Epic"),
+    GooglePlay("GooglePlay"),
+    IOS("IOS"),
+    Nintendo("Nintendo"),
+    Oculus("Oculus"),
+    Other("Other"),
+    Playstation("Playstation"),
+    Steam("Steam"),
+    Xbox("Xbox");
+
+    private String value;
+
+    Platform(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class ResetPlatformWalletConfigBuilder {
     private String platform;
 
-    /**
-    * @param namespace required
-    * @param platform required
-    */
-    @Builder
-    // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-    @Deprecated
-    public ResetPlatformWalletConfig(
-            String customBasePath,            String namespace,
-            String platform
-    )
-    {
-        this.namespace = namespace;
-        this.platform = platform;
-        super.customBasePath = customBasePath != null ? customBasePath : "";
-
-        securities.add("Bearer");
+    public ResetPlatformWalletConfigBuilder platform(final String platform) {
+      this.platform = platform;
+      return this;
     }
 
-    @Override
-    public Map<String, String> getPathParams(){
-        Map<String, String> pathParams = new HashMap<>();
-        if (this.namespace != null){
-            pathParams.put("namespace", this.namespace);
-        }
-        if (this.platform != null){
-            pathParams.put("platform", this.platform);
-        }
-        return pathParams;
+    public ResetPlatformWalletConfigBuilder platformFromEnum(final Platform platform) {
+      this.platform = platform.toString();
+      return this;
     }
-
-
-
-
-
-    @Override
-    public boolean isValid() {
-        if(this.namespace == null) {
-            return false;
-        }
-        if(this.platform == null) {
-            return false;
-        }
-        return true;
-    }
-
-    public ResetPlatformWalletConfigOpResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        final ResetPlatformWalletConfigOpResponse response = new ResetPlatformWalletConfigOpResponse();
-
-        response.setHttpStatusCode(code);
-        response.setContentType(contentType);
-
-        if (code == 204) {
-            response.setSuccess(true);
-        }
-        else if ((code == 200) || (code == 201)) {
-            final String json = Helper.convertInputStreamToString(payload);
-            response.setData(new PlatformWalletConfigInfo().createFromJson(json));
-            response.setSuccess(true);
-        }
-
-        return response;
-    }
-
-    /*
-    public PlatformWalletConfigInfo parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-        if(code != 200){
-            final String json = Helper.convertInputStreamToString(payload);
-            throw new HttpResponseException(code, json);
-        }
-        final String json = Helper.convertInputStreamToString(payload);
-        return new PlatformWalletConfigInfo().createFromJson(json);
-    }
-    */
-
-    public enum Platform {
-        Epic("Epic"),
-        GooglePlay("GooglePlay"),
-        IOS("IOS"),
-        Nintendo("Nintendo"),
-        Oculus("Oculus"),
-        Other("Other"),
-        Playstation("Playstation"),
-        Steam("Steam"),
-        Xbox("Xbox");
-
-        private String value;
-
-        Platform(String value){
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-    }
-
-
-    public static class ResetPlatformWalletConfigBuilder {
-        private String platform;
-
-
-        public ResetPlatformWalletConfigBuilder platform(final String platform) {
-            this.platform = platform;
-            return this;
-        }
-
-        public ResetPlatformWalletConfigBuilder platformFromEnum(final Platform platform) {
-            this.platform = platform.toString();
-            return this;
-        }
-    }
+  }
 }

@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.legal.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,66 +21,65 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class RetrieveLocalizedPolicyVersionResponse extends Model {
 
-    @JsonProperty("attachmentChecksum")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String attachmentChecksum;
+  @JsonProperty("attachmentChecksum")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String attachmentChecksum;
 
-    @JsonProperty("attachmentLocation")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String attachmentLocation;
+  @JsonProperty("attachmentLocation")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String attachmentLocation;
 
-    @JsonProperty("attachmentVersionIdentifier")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String attachmentVersionIdentifier;
+  @JsonProperty("attachmentVersionIdentifier")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String attachmentVersionIdentifier;
 
-    @JsonProperty("baseUrls")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> baseUrls;
+  @JsonProperty("baseUrls")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> baseUrls;
 
-    @JsonProperty("contentType")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String contentType;
+  @JsonProperty("contentType")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String contentType;
 
-    @JsonProperty("createdAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String createdAt;
+  @JsonProperty("createdAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String createdAt;
 
-    @JsonProperty("description")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String description;
+  @JsonProperty("description")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String description;
 
-    @JsonProperty("id")
-    private String id;
+  @JsonProperty("id")
+  private String id;
 
-    @JsonProperty("localeCode")
-    private String localeCode;
+  @JsonProperty("localeCode")
+  private String localeCode;
 
-    @JsonProperty("policy")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private PolicyObject policy;
+  @JsonProperty("policy")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private PolicyObject policy;
 
-    @JsonProperty("policyVersion")
-    private PolicyVersionObject policyVersion;
+  @JsonProperty("policyVersion")
+  private PolicyVersionObject policyVersion;
 
-    @JsonProperty("updatedAt")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String updatedAt;
+  @JsonProperty("updatedAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String updatedAt;
 
+  @JsonIgnore
+  public RetrieveLocalizedPolicyVersionResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public RetrieveLocalizedPolicyVersionResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<RetrieveLocalizedPolicyVersionResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<RetrieveLocalizedPolicyVersionResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<RetrieveLocalizedPolicyVersionResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<RetrieveLocalizedPolicyVersionResponse>>() {});
+  }
 }

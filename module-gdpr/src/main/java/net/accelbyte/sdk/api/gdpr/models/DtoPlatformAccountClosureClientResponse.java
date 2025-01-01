@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.gdpr.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,36 +21,53 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class DtoPlatformAccountClosureClientResponse extends Model {
 
-    @JsonProperty("clientId")
-    private String clientId;
+  @JsonProperty("bpCertExpireAt")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Long bpCertExpireAt;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("bpCertFileName")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String bpCertFileName;
 
-    @JsonProperty("platform")
-    private String platform;
+  @JsonProperty("clientId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String clientId;
 
-    @JsonProperty("secret")
-    private String secret;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("updatedAt")
-    private Long updatedAt;
+  @JsonProperty("platform")
+  private String platform;
 
+  @JsonProperty("publisherKey")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String publisherKey;
 
+  @JsonProperty("sandboxId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String sandboxId;
 
-    @JsonIgnore
-    public DtoPlatformAccountClosureClientResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
+  @JsonProperty("secret")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String secret;
 
-    @JsonIgnore
-    public List<DtoPlatformAccountClosureClientResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<DtoPlatformAccountClosureClientResponse>>() {});
-    }
+  @JsonProperty("updatedAt")
+  private Long updatedAt;
 
+  @JsonIgnore
+  public DtoPlatformAccountClosureClientResponse createFromJson(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
+  @JsonIgnore
+  public List<DtoPlatformAccountClosureClientResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<DtoPlatformAccountClosureClientResponse>>() {});
+  }
 }

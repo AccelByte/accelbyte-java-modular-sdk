@@ -10,26 +10,22 @@ package net.accelbyte.sdk.api.iam.operation_responses.users;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.iam.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class CheckUserAvailabilityOpResponse extends ApiResponse {
-    
-    private RestErrorResponse error400 = null;
 
-    private String error404 = "";
+  private RestErrorResponse error400 = null;
 
-    private RestErrorResponse error422 = null;
+  private String error404 = "";
 
+  private RestErrorResponse error422 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.iam.operations.users.CheckUserAvailability";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.iam.operations.users.CheckUserAvailability";
+  }
 }

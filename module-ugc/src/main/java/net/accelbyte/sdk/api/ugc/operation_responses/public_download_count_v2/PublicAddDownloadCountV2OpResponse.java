@@ -10,28 +10,25 @@ package net.accelbyte.sdk.api.ugc.operation_responses.public_download_count_v2;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ugc.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicAddDownloadCountV2OpResponse extends ApiResponseWithData<ModelsAddDownloadCountResponse> {
-    
-    private ResponseError error401 = null;
+public class PublicAddDownloadCountV2OpResponse
+    extends ApiResponseWithData<ModelsAddDownloadCountResponse> {
 
-    private ResponseError error404 = null;
+  private ResponseError error401 = null;
 
-    private ResponseError error429 = null;
+  private ResponseError error404 = null;
 
-    private ResponseError error500 = null;
+  private ResponseError error429 = null;
 
+  private ResponseError error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.ugc.operations.public_download_count_v2.PublicAddDownloadCountV2";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.ugc.operations.public_download_count_v2.PublicAddDownloadCountV2";
+  }
 }

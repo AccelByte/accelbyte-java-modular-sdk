@@ -8,68 +8,58 @@
 
 package net.accelbyte.sdk.api.social.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
-import net.accelbyte.sdk.core.Model;
 import net.accelbyte.sdk.core.ApiError;
+import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ErrorEntity extends Model {
 
-    @JsonProperty("devStackTrace")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String devStackTrace;
+  @JsonProperty("devStackTrace")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String devStackTrace;
 
-    @JsonProperty("errorCode")
-    private Integer errorCode;
+  @JsonProperty("errorCode")
+  private Integer errorCode;
 
-    @JsonProperty("errorMessage")
-    private String errorMessage;
+  @JsonProperty("errorMessage")
+  private String errorMessage;
 
-    @JsonProperty("messageVariables")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, String> messageVariables;
+  @JsonProperty("messageVariables")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, String> messageVariables;
 
-    @JsonProperty("requiredPermission")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Permission requiredPermission;
+  @JsonProperty("requiredPermission")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Permission requiredPermission;
 
+  @JsonIgnore
+  public ErrorEntity createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
+  @JsonIgnore
+  public List<ErrorEntity> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ErrorEntity>>() {});
+  }
 
-    @JsonIgnore
-    public ErrorEntity createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
+  public ApiError translateToApiError() {
 
-    @JsonIgnore
-    public List<ErrorEntity> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ErrorEntity>>() {});
-    }
+    final String theCode = errorCode != null ? Integer.toString(errorCode) : "";
 
-    public ApiError translateToApiError() {
+    final String theMessage = errorMessage != null ? errorMessage : "";
 
-        final String theCode = 
-            errorCode != null ? Integer.toString(errorCode) :
-            "";
-        
-        final String theMessage = 
-            errorMessage != null ? errorMessage : 
-            "";
-        
-        return new ApiError(theCode, theMessage);
-    }
-
-
+    return new ApiError(theCode, theMessage);
+  }
 }

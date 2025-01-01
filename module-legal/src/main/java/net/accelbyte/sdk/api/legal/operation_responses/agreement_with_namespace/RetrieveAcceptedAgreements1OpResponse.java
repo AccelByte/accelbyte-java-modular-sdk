@@ -10,20 +10,17 @@ package net.accelbyte.sdk.api.legal.operation_responses.agreement_with_namespace
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.legal.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class RetrieveAcceptedAgreements1OpResponse extends ApiResponseWithData<List<RetrieveAcceptedAgreementResponse>> {
-    
+public class RetrieveAcceptedAgreements1OpResponse
+    extends ApiResponseWithData<List<RetrieveAcceptedAgreementResponse>> {
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.legal.operations.agreement_with_namespace.RetrieveAcceptedAgreements1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.legal.operations.agreement_with_namespace.RetrieveAcceptedAgreements1";
+  }
 }

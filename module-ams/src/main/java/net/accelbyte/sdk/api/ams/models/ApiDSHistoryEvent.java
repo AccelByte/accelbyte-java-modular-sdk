@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.ams.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,45 +21,41 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApiDSHistoryEvent extends Model {
 
-    @JsonProperty("createdAt")
-    private String createdAt;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-    @JsonProperty("exitCode")
-    private Integer exitCode;
+  @JsonProperty("exitCode")
+  private Integer exitCode;
 
-    @JsonProperty("ipAddress")
-    private String ipAddress;
+  @JsonProperty("ipAddress")
+  private String ipAddress;
 
-    @JsonProperty("reason")
-    private String reason;
+  @JsonProperty("reason")
+  private String reason;
 
-    @JsonProperty("region")
-    private String region;
+  @JsonProperty("region")
+  private String region;
 
-    @JsonProperty("serverId")
-    private String serverId;
+  @JsonProperty("serverId")
+  private String serverId;
 
-    @JsonProperty("sessionId")
-    private String sessionId;
+  @JsonProperty("sessionId")
+  private String sessionId;
 
-    @JsonProperty("status")
-    private String status;
+  @JsonProperty("status")
+  private String status;
 
+  @JsonIgnore
+  public ApiDSHistoryEvent createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApiDSHistoryEvent createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApiDSHistoryEvent> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApiDSHistoryEvent>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApiDSHistoryEvent> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApiDSHistoryEvent>>() {});
+  }
 }

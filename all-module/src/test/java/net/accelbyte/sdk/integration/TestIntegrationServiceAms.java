@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
-
 import net.accelbyte.sdk.api.ams.models.ApiAMSRegionsResponse;
 import net.accelbyte.sdk.api.ams.models.ApiDSHostConfigurationParameters;
 import net.accelbyte.sdk.api.ams.models.ApiFleetGetResponse;
@@ -22,8 +21,8 @@ import net.accelbyte.sdk.api.ams.operations.fleets.FleetGet;
 import net.accelbyte.sdk.api.ams.operations.fleets.FleetUpdate;
 import net.accelbyte.sdk.api.ams.operations.images.ImageList;
 import net.accelbyte.sdk.api.ams.wrappers.AMSInfo;
-import net.accelbyte.sdk.api.ams.wrappers.Images;
 import net.accelbyte.sdk.api.ams.wrappers.Fleets;
+import net.accelbyte.sdk.api.ams.wrappers.Images;
 import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
@@ -46,11 +45,13 @@ public class TestIntegrationServiceAms extends TestIntegration {
     final String regionFleet = "us-west-1";
     String imageIdFleet = "";
     String instanceIdFleet = "";
-    
+
     // CASE Image list
 
     final ApiImageList imageList =
-        imagesWrapper.imageList(ImageList.builder().namespace(this.namespace).build()).ensureSuccess();
+        imagesWrapper
+            .imageList(ImageList.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -63,7 +64,9 @@ public class TestIntegrationServiceAms extends TestIntegration {
     // CASE Get AMS info for info region operation
 
     final ApiAMSRegionsResponse infoRegions =
-        amsInfoWrapper.infoRegions(InfoRegions.builder().namespace(this.namespace).build()).ensureSuccess();
+        amsInfoWrapper
+            .infoRegions(InfoRegions.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -73,8 +76,10 @@ public class TestIntegrationServiceAms extends TestIntegration {
     // CASE Get AMS info for info region operation
 
     final ApiInstanceTypesForNamespaceResponse infoInstances =
-        amsInfoWrapper.infoSupportedInstances(
-            InfoSupportedInstances.builder().namespace(this.namespace).build()).ensureSuccess();
+        amsInfoWrapper
+            .infoSupportedInstances(
+                InfoSupportedInstances.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -82,36 +87,35 @@ public class TestIntegrationServiceAms extends TestIntegration {
     assertTrue(infoInstances.getAvailableInstanceTypes().size() > 0);
 
     if (infoInstances.getAvailableInstanceTypes().size() > 0) {
-        instanceIdFleet  = infoInstances.getAvailableInstanceTypes().get(0).getId();
+      instanceIdFleet = infoInstances.getAvailableInstanceTypes().get(0).getId();
     }
 
     if (imageIdFleet != "" && instanceIdFleet != "") {
 
       // CASE Fleet create
-    
+
       final ApiFleetParameters fleetCreateBody =
-      ApiFleetParameters.builder()
-        .active(false)
-        .claimKeys(Arrays.asList(new String[] {"beta"}))
-        .name(nameFleet)
-        .regions(Arrays.asList(new ApiRegionConfig[] {
-          ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
-        }))
-        .imageDeploymentProfile(
-          ApiImageDeploymentProfile.builder()
-          .imageId(imageIdFleet)
-          .build())
-        .dsHostConfiguration(ApiDSHostConfigurationParameters.builder()
-          .instanceId(imageIdFleet)
-          .serversPerVm(null)
-          .build())
-        .build();
+          ApiFleetParameters.builder()
+              .active(false)
+              .claimKeys(Arrays.asList(new String[] {"beta"}))
+              .name(nameFleet)
+              .regions(
+                  Arrays.asList(
+                      new ApiRegionConfig[] {
+                        ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
+                      }))
+              .imageDeploymentProfile(
+                  ApiImageDeploymentProfile.builder().imageId(imageIdFleet).build())
+              .dsHostConfiguration(
+                  ApiDSHostConfigurationParameters.builder()
+                      .instanceId(imageIdFleet)
+                      .serversPerVm(null)
+                      .build())
+              .build();
 
       final FleetCreateOpResponse fleetCreate =
-          fleetsWrapper.fleetCreate(FleetCreate.builder()
-          .namespace(this.namespace)
-          .body(fleetCreateBody)
-          .build());
+          fleetsWrapper.fleetCreate(
+              FleetCreate.builder().namespace(this.namespace).body(fleetCreateBody).build());
 
       // ESAC
 
@@ -121,36 +125,38 @@ public class TestIntegrationServiceAms extends TestIntegration {
 
         // CASE Fleet update
         final ApiFleetParameters fleetUpdateBody =
-          ApiFleetParameters.builder()
-            .active(false)
-            .claimKeys(Arrays.asList(new String[] {"alpha"}))
-            .name(nameFleet)
-            .regions(Arrays.asList(new ApiRegionConfig[] {
-              ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
-            }))
-            .build();
+            ApiFleetParameters.builder()
+                .active(false)
+                .claimKeys(Arrays.asList(new String[] {"alpha"}))
+                .name(nameFleet)
+                .regions(
+                    Arrays.asList(
+                        new ApiRegionConfig[] {
+                          ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
+                        }))
+                .build();
 
-        fleetsWrapper.fleetUpdate(FleetUpdate.builder()
-          .namespace(this.namespace)
-          .body(fleetUpdateBody)
-          .build()).ensureSuccess();
+        fleetsWrapper
+            .fleetUpdate(
+                FleetUpdate.builder().namespace(this.namespace).body(fleetUpdateBody).build())
+            .ensureSuccess();
 
         // ESAC
 
         // CASE Fleet get
         final ApiFleetGetResponse fleetGet =
-          fleetsWrapper.fleetGet(FleetGet.builder()
-          .namespace(this.namespace)
-          .build()).ensureSuccess();
-        
-          assertNotNull(fleetGet);
+            fleetsWrapper
+                .fleetGet(FleetGet.builder().namespace(this.namespace).build())
+                .ensureSuccess();
+
+        assertNotNull(fleetGet);
 
         // ESAC
 
         // CASE Fleet delete
-        fleetsWrapper.fleetDelete(FleetDelete.builder()
-          .namespace(this.namespace)
-          .build()).ensureSuccess();
+        fleetsWrapper
+            .fleetDelete(FleetDelete.builder().namespace(this.namespace).build())
+            .ensureSuccess();
 
         // ESAC
       }

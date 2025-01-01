@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.chat.operation_responses.inbox;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.chat.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class AdminUpdateInboxMessageOpResponse extends ApiResponse {
-    
-    private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error401 = null;
+  private RestapiErrorResponseBody error400 = null;
 
-    private RestapiErrorResponseBody error403 = null;
+  private RestapiErrorResponseBody error401 = null;
 
-    private RestapiErrorResponseBody error500 = null;
+  private RestapiErrorResponseBody error403 = null;
 
+  private RestapiErrorResponseBody error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.chat.operations.inbox.AdminUpdateInboxMessage";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.chat.operations.inbox.AdminUpdateInboxMessage";
+  }
 }

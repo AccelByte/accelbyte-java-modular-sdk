@@ -10,30 +10,26 @@ package net.accelbyte.sdk.api.leaderboard.operation_responses.leaderboard_config
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.leaderboard.models.*;
-
 import net.accelbyte.sdk.core.ApiResponse;
 
 @Getter
 @Setter
 public class DeleteLeaderboardConfigurationAdminV1OpResponse extends ApiResponse {
-    
-    private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error401 = null;
+  private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error404 = null;
+  private ResponseErrorResponse error403 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error404 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_configuration.DeleteLeaderboardConfigurationAdminV1";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.leaderboard.operations.leaderboard_configuration.DeleteLeaderboardConfigurationAdminV1";
+  }
 }

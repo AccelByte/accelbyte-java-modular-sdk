@@ -7,8 +7,5 @@
  */
 package net.accelbyte.sdk.api.reporting;
 
-import net.accelbyte.sdk.core.ApiError;
 
-public class ReportingErrors
-{
-}
+public class ReportingErrors {}

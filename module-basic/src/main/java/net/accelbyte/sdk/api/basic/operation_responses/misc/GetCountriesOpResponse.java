@@ -10,25 +10,21 @@ package net.accelbyte.sdk.api.basic.operation_responses.misc;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.basic.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Deprecated
 @Getter
 @Setter
 public class GetCountriesOpResponse extends ApiResponseWithData<List<CountryObject>> {
-    
-    private ValidationErrorEntity error400 = null;
 
-    private ErrorEntity error401 = null;
+  private ValidationErrorEntity error400 = null;
 
+  private ErrorEntity error401 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.basic.operations.misc.GetCountries";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.basic.operations.misc.GetCountries";
+  }
 }

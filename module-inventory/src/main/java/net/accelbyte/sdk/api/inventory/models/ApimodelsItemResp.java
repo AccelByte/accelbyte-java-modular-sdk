@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.inventory.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,73 +21,69 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ApimodelsItemResp extends Model {
 
-    @JsonProperty("createdAt")
-    private String createdAt;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-    @JsonProperty("customAttributes")
-    private Map<String, ?> customAttributes;
+  @JsonProperty("customAttributes")
+  private Map<String, ?> customAttributes;
 
-    @JsonProperty("id")
-    private String id;
+  @JsonProperty("id")
+  private String id;
 
-    @JsonProperty("inventoryId")
-    private String inventoryId;
+  @JsonProperty("inventoryId")
+  private String inventoryId;
 
-    @JsonProperty("itemInfo")
-    private Map<String, ?> itemInfo;
+  @JsonProperty("itemInfo")
+  private Map<String, ?> itemInfo;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("platformAvailable")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean platformAvailable;
+  @JsonProperty("platformAvailable")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean platformAvailable;
 
-    @JsonProperty("qty")
-    private Integer qty;
+  @JsonProperty("qty")
+  private Integer qty;
 
-    @JsonProperty("serverCustomAttributes")
-    private Map<String, ?> serverCustomAttributes;
+  @JsonProperty("serverCustomAttributes")
+  private Map<String, ?> serverCustomAttributes;
 
-    @JsonProperty("slotId")
-    private String slotId;
+  @JsonProperty("slotId")
+  private String slotId;
 
-    @JsonProperty("slotUsed")
-    private Integer slotUsed;
+  @JsonProperty("slotUsed")
+  private Integer slotUsed;
 
-    @JsonProperty("source")
-    private String source;
+  @JsonProperty("source")
+  private String source;
 
-    @JsonProperty("sourceItemId")
-    private String sourceItemId;
+  @JsonProperty("sourceItemId")
+  private String sourceItemId;
 
-    @JsonProperty("tags")
-    private List<String> tags;
+  @JsonProperty("tags")
+  private List<String> tags;
 
-    @JsonProperty("type")
-    private String type;
+  @JsonProperty("type")
+  private String type;
 
-    @JsonProperty("updatedAt")
-    private String updatedAt;
+  @JsonProperty("updatedAt")
+  private String updatedAt;
 
-    @JsonProperty("userId")
-    private String userId;
+  @JsonProperty("userId")
+  private String userId;
 
+  @JsonIgnore
+  public ApimodelsItemResp createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ApimodelsItemResp createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ApimodelsItemResp> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsItemResp>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ApimodelsItemResp> createFromJsonList(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, new TypeReference<List<ApimodelsItemResp>>() {});
+  }
 }

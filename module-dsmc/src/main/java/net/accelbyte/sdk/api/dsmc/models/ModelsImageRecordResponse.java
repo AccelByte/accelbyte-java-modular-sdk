@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.dsmc.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,72 +21,70 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelsImageRecordResponse extends Model {
 
-    @JsonProperty("artifactPath")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String artifactPath;
+  @JsonProperty("artifactPath")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String artifactPath;
 
-    @JsonProperty("coreDumpEnabled")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Boolean coreDumpEnabled;
+  @JsonProperty("coreDumpEnabled")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean coreDumpEnabled;
 
-    @JsonProperty("createdAt")
-    private String createdAt;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-    @JsonProperty("deployments")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<String> deployments;
+  @JsonProperty("deployments")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> deployments;
 
-    @JsonProperty("dockerPath")
-    private String dockerPath;
+  @JsonProperty("dockerPath")
+  private String dockerPath;
 
-    @JsonProperty("image")
-    private String image;
+  @JsonProperty("image")
+  private String image;
 
-    @JsonProperty("imageReplications")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<ModelsImageReplication> imageReplications;
+  @JsonProperty("imageReplications")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<ModelsImageReplication> imageReplications;
 
-    @JsonProperty("imageReplicationsMap")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, ModelsImageReplication> imageReplicationsMap;
+  @JsonProperty("imageReplicationsMap")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ModelsImageReplication> imageReplicationsMap;
 
-    @JsonProperty("imageSize")
-    private Long imageSize;
+  @JsonProperty("imageSize")
+  private Long imageSize;
 
-    @JsonProperty("modifiedBy")
-    private String modifiedBy;
+  @JsonProperty("modifiedBy")
+  private String modifiedBy;
 
-    @JsonProperty("namespace")
-    private String namespace;
+  @JsonProperty("namespace")
+  private String namespace;
 
-    @JsonProperty("persistent")
-    private Boolean persistent;
+  @JsonProperty("persistent")
+  private Boolean persistent;
 
-    @JsonProperty("ulimitFileSize")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Integer ulimitFileSize;
+  @JsonProperty("ulimitFileSize")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Integer ulimitFileSize;
 
-    @JsonProperty("updatedAt")
-    private String updatedAt;
+  @JsonProperty("updatedAt")
+  private String updatedAt;
 
-    @JsonProperty("version")
-    private String version;
+  @JsonProperty("version")
+  private String version;
 
+  @JsonIgnore
+  public ModelsImageRecordResponse createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelsImageRecordResponse createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelsImageRecordResponse> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelsImageRecordResponse>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelsImageRecordResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelsImageRecordResponse>>() {});
+  }
 }

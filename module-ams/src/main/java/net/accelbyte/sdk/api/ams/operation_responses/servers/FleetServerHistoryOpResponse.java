@@ -10,28 +10,24 @@ package net.accelbyte.sdk.api.ams.operation_responses.servers;
 
 import java.io.*;
 import java.util.*;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import net.accelbyte.sdk.api.ams.models.*;
-
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
 public class FleetServerHistoryOpResponse extends ApiResponseWithData<ApiDSHistoryList> {
-    
-    private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error401 = null;
+  private ResponseErrorResponse error400 = null;
 
-    private ResponseErrorResponse error403 = null;
+  private ResponseErrorResponse error401 = null;
 
-    private ResponseErrorResponse error500 = null;
+  private ResponseErrorResponse error403 = null;
 
+  private ResponseErrorResponse error500 = null;
 
-    public String getFullOperationId() {
-        return "net.accelbyte.sdk.api.ams.operations.servers.FleetServerHistory";
-    }
+  public String getFullOperationId() {
+    return "net.accelbyte.sdk.api.ams.operations.servers.FleetServerHistory";
+  }
 }

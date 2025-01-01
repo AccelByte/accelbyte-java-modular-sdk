@@ -8,14 +8,12 @@
 
 package net.accelbyte.sdk.api.iam.models;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 import lombok.*;
-
 import net.accelbyte.sdk.core.Model;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,80 +21,78 @@ import net.accelbyte.sdk.core.Model;
 @Getter
 @Setter
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
-@AllArgsConstructor(onConstructor=@__(@Deprecated))
+@AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
 public class ModelValidationDetailPublic extends Model {
 
-    @JsonProperty("allowAllSpecialCharacters")
-    private Boolean allowAllSpecialCharacters;
+  @JsonProperty("allowAllSpecialCharacters")
+  private Boolean allowAllSpecialCharacters;
 
-    @JsonProperty("allowDigit")
-    private Boolean allowDigit;
+  @JsonProperty("allowDigit")
+  private Boolean allowDigit;
 
-    @JsonProperty("allowLetter")
-    private Boolean allowLetter;
+  @JsonProperty("allowLetter")
+  private Boolean allowLetter;
 
-    @JsonProperty("allowSpace")
-    private Boolean allowSpace;
+  @JsonProperty("allowSpace")
+  private Boolean allowSpace;
 
-    @JsonProperty("allowUnicode")
-    private Boolean allowUnicode;
+  @JsonProperty("allowUnicode")
+  private Boolean allowUnicode;
 
-    @JsonProperty("avatarConfig")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private AccountcommonAvatarConfig avatarConfig;
+  @JsonProperty("avatarConfig")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private AccountcommonAvatarConfig avatarConfig;
 
-    @JsonProperty("blockedWord")
-    private List<String> blockedWord;
+  @JsonProperty("blockedWord")
+  private List<String> blockedWord;
 
-    @JsonProperty("description")
-    private AccountcommonInputValidationDescription description;
+  @JsonProperty("description")
+  private AccountcommonInputValidationDescription description;
 
-    @JsonProperty("isCustomRegex")
-    private Boolean isCustomRegex;
+  @JsonProperty("isCustomRegex")
+  private Boolean isCustomRegex;
 
-    @JsonProperty("letterCase")
-    private String letterCase;
+  @JsonProperty("letterCase")
+  private String letterCase;
 
-    @JsonProperty("maxLength")
-    private Integer maxLength;
+  @JsonProperty("maxLength")
+  private Integer maxLength;
 
-    @JsonProperty("maxRepeatingAlphaNum")
-    private Integer maxRepeatingAlphaNum;
+  @JsonProperty("maxRepeatingAlphaNum")
+  private Integer maxRepeatingAlphaNum;
 
-    @JsonProperty("maxRepeatingSpecialCharacter")
-    private Integer maxRepeatingSpecialCharacter;
+  @JsonProperty("maxRepeatingSpecialCharacter")
+  private Integer maxRepeatingSpecialCharacter;
 
-    @JsonProperty("minCharType")
-    private Integer minCharType;
+  @JsonProperty("minCharType")
+  private Integer minCharType;
 
-    @JsonProperty("minLength")
-    private Integer minLength;
+  @JsonProperty("minLength")
+  private Integer minLength;
 
-    @JsonProperty("profanityFilter")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String profanityFilter;
+  @JsonProperty("profanityFilter")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String profanityFilter;
 
-    @JsonProperty("regex")
-    private String regex;
+  @JsonProperty("regex")
+  private String regex;
 
-    @JsonProperty("specialCharacterLocation")
-    private String specialCharacterLocation;
+  @JsonProperty("specialCharacterLocation")
+  private String specialCharacterLocation;
 
-    @JsonProperty("specialCharacters")
-    private List<String> specialCharacters;
+  @JsonProperty("specialCharacters")
+  private List<String> specialCharacters;
 
+  @JsonIgnore
+  public ModelValidationDetailPublic createFromJson(String json) throws JsonProcessingException {
+    return new ObjectMapper().readValue(json, this.getClass());
+  }
 
-
-    @JsonIgnore
-    public ModelValidationDetailPublic createFromJson(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, this.getClass());
-    }
-
-    @JsonIgnore
-    public List<ModelValidationDetailPublic> createFromJsonList(String json) throws JsonProcessingException {
-        return new ObjectMapper().readValue(json, new TypeReference<List<ModelValidationDetailPublic>>() {});
-    }
-
-
+  @JsonIgnore
+  public List<ModelValidationDetailPublic> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelValidationDetailPublic>>() {});
+  }
 }
