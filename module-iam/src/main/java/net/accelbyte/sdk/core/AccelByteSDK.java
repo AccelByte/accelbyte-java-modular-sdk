@@ -853,6 +853,14 @@ public class AccelByteSDK implements RequestRunner {
     return false;
   }
 
+  public boolean uploadBinaryData(String url, byte[] dataToUpload, String contentType) throws Exception {
+    return sdkConfiguration.getHttpClient().uploadBinaryData(url, dataToUpload, contentType);
+  }
+
+  public byte[] downloadBinaryData(String url) throws Exception {
+    return sdkConfiguration.getHttpClient().downloadBinaryData(url);
+  }
+
   private void scheduleRefreshTokenTask(long delaySeconds) {
     synchronized (refreshTokenTaskLock) {
       if (refreshTokenTask != null) {
