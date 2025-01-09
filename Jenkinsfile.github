@@ -91,43 +91,44 @@ pipeline {
           }
 
           sh "git checkout ${params.RELEASE_BRANCH}"
+
           sshagent(credentials: [githubSsh]) {
-            if (params.RELEASE_BRANCH == 'master') {
-
-              echo "Check if tag `ags/v${params.AGS_VERSION}` is exists"
-              def tagCheck = sh(script: "git tag | grep 'ags/v${params.AGS_VERSION}'", returnStdout: true, returnStatus: true)
-              if (tagCheck == "") {
-                echo "AGS version tag 'ags/v${params.AGS_VERSION}' does not exists in source repository."
-                sh 'false' // Fail this job
-              }
-
-              echo 'Push bitbucket master to github main'
-              sh "git push ${githubUrl} HEAD:main"
-
-              echo "Tag github main with ags version"
-              sh "git push ${githubUrl} 'ags/v${params.AGS_VERSION}'"
-
-              echo "Get all tags related to `ags/v${params.AGS_VERSION}` and push them"
-              sh "git tag --contains \$(git rev-list -n 1 'ags/v${params.AGS_VERSION}') | grep -v 'ags/v${params.AGS_VERSION}' | xargs -I{} sh -c 'git push ${githubUrl} '{}' || exit 255'"
-
-              //do github release
-              releaseName = "${sdkName} for AGS v${params.AGS_VERSION}"
-              createGithubRelease("ags/v${params.AGS_VERSION}", params.IS_PRERELEASE, releaseName, releaseNote)
-
-              // Publish modules
-              sh """
-              make publish AGS_VER=${params.AGS_VERSION} \
-                PUBLISH_OSSRH_USERNAME=\"$PUBLISH_OSSRH_USR\" \
-                PUBLISH_OSSRH_PASSWORD=\"$PUBLISH_OSSRH_PSW\" \
-                PUBLISH_ASC_KEY=\"\$(cat \"$PUBLISH_ASC_KEY_FILE_PATH\")\" \
-                PUBLISH_ASC_KEY_PASSWORD=\"$PUBLISH_ASC_KEY_PASSWORD\"
-              """
-
-              echo "Clear"
-            } else {
-              sh "git push ${githubUrl} HEAD:${params.RELEASE_BRANCH}"
-              //Point release will be implemented later.
+            echo "Check if tag `ags/v${params.AGS_VERSION}` is exists"
+            def tagCheck = sh(script: "git tag | grep 'ags/v${params.AGS_VERSION}'", returnStdout: true, returnStatus: true)
+            if (tagCheck == "") {
+              echo "AGS version tag 'ags/v${params.AGS_VERSION}' does not exists in source repository."
+              sh 'false' // Fail this job
             }
+
+            if (params.RELEASE_BRANCH == 'master') {
+              echo "Push bitbucket 'master' to github 'main'"
+              sh "git push ${githubUrl} HEAD:main"
+            }
+            else {
+              echo "Push bitbucket '${params.RELEASE_BRANCH}' to github"
+              sh "git push ${githubUrl} HEAD:${params.RELEASE_BRANCH}"
+            }
+
+            echo "Tag github with ags version"
+            sh "git push ${githubUrl} 'ags/v${params.AGS_VERSION}'"
+
+            echo "Get all tags related to 'ags/v${params.AGS_VERSION}' and push them"
+            sh "git tag --contains \$(git rev-list -n 1 'ags/v${params.AGS_VERSION}') | grep -v 'ags/v${params.AGS_VERSION}' | xargs -I{} sh -c 'git push ${githubUrl} '{}' || exit 255'"
+
+            //do github release
+            releaseName = "${sdkName} for AGS v${params.AGS_VERSION}"
+            createGithubRelease("ags/v${params.AGS_VERSION}", params.IS_PRERELEASE, releaseName, releaseNote)
+
+            // Publish modules
+            sh """
+            make publish AGS_VER=${params.AGS_VERSION} \
+              PUBLISH_OSSRH_USERNAME=\"$PUBLISH_OSSRH_USR\" \
+              PUBLISH_OSSRH_PASSWORD=\"$PUBLISH_OSSRH_PSW\" \
+              PUBLISH_ASC_KEY=\"\$(cat \"$PUBLISH_ASC_KEY_FILE_PATH\")\" \
+              PUBLISH_ASC_KEY_PASSWORD=\"$PUBLISH_ASC_KEY_PASSWORD\"
+            """
+
+            echo "Clear"
           }
         }
       }
@@ -153,18 +154,18 @@ pipeline {
       }
     }
   }
-//  post {
-//    failure {
-//      script {
-//        message = """
-//            :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
-//
-//            |*Action*
-//            |${params.ACTION}
-//
-//            |""".stripMargin()
-//        slackSend(channel: jobChannel, color: '#FF0000', message: message)
-//      }
-//    }
-//  }
+  post {
+    failure {
+      script {
+        message = """
+           :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
+
+           |*Action*
+           |${params.ACTION}
+
+           |""".stripMargin()
+        slackSend(channel: jobChannel, color: '#FF0000', message: message)
+      }
+    }
+  }
 }
