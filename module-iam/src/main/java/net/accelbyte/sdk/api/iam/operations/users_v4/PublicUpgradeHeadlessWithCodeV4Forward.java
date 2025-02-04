@@ -46,7 +46,7 @@ public class PublicUpgradeHeadlessWithCodeV4Forward extends Operation {
   private String locationQuery = null;
 
   /** fields as input parameter */
-  private AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 body;
+  private AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 body;
 
   /**
    * @param body required
@@ -55,7 +55,8 @@ public class PublicUpgradeHeadlessWithCodeV4Forward extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public PublicUpgradeHeadlessWithCodeV4Forward(
-      String customBasePath, AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 body) {
+      String customBasePath,
+      AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 body) {
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -63,7 +64,7 @@ public class PublicUpgradeHeadlessWithCodeV4Forward extends Operation {
   }
 
   @Override
-  public AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 getBodyParams() {
+  public AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 getBodyParams() {
     return this.body;
   }
 

@@ -18,7 +18,7 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Getter
 @Setter
 public class InfoSupportedInstancesOpResponse
-    extends ApiResponseWithData<ApiInstanceTypesForNamespaceResponse> {
+    extends ApiResponseWithData<ApiInstanceTypesResponse> {
 
   private ResponseErrorResponse error401 = null;
 

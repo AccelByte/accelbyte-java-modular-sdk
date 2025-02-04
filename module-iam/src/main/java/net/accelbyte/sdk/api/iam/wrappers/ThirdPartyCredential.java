@@ -152,6 +152,21 @@ public class ThirdPartyCredential {
   }
 
   /**
+   * @see PartialUpdateThirdPartyLoginPlatformDomainV3
+   */
+  public PartialUpdateThirdPartyLoginPlatformDomainV3OpResponse
+      partialUpdateThirdPartyLoginPlatformDomainV3(
+          PartialUpdateThirdPartyLoginPlatformDomainV3 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminCheckThirdPartyLoginPlatformAvailabilityV3
    */
   public AdminCheckThirdPartyLoginPlatformAvailabilityV3OpResponse

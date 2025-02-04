@@ -161,7 +161,9 @@ public class ConfigurationTemplate {
 
   /**
    * @see AdminGetDSMCConfiguration
+   * @deprecated
    */
+  @Deprecated
   public AdminGetDSMCConfigurationOpResponse adminGetDSMCConfiguration(
       AdminGetDSMCConfiguration input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -175,7 +177,9 @@ public class ConfigurationTemplate {
 
   /**
    * @see AdminSyncDSMCConfiguration
+   * @deprecated
    */
+  @Deprecated
   public AdminSyncDSMCConfigurationOpResponse adminSyncDSMCConfiguration(
       AdminSyncDSMCConfiguration input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

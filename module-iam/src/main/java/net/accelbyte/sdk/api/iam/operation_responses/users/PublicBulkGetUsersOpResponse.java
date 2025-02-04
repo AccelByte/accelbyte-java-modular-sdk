@@ -15,6 +15,7 @@ import lombok.Setter;
 import net.accelbyte.sdk.api.iam.models.*;
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
+@Deprecated
 @Getter
 @Setter
 public class PublicBulkGetUsersOpResponse extends ApiResponseWithData<ModelListBulkUserResponse> {

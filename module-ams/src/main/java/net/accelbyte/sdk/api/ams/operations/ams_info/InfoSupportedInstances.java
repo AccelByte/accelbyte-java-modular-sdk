@@ -79,7 +79,7 @@ public class InfoSupportedInstances extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new ApiInstanceTypesForNamespaceResponse().createFromJson(json));
+      response.setData(new ApiInstanceTypesResponse().createFromJson(json));
       response.setSuccess(true);
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
@@ -99,13 +99,13 @@ public class InfoSupportedInstances extends Operation {
   }
 
   /*
-  public ApiInstanceTypesForNamespaceResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public ApiInstanceTypesResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new ApiInstanceTypesForNamespaceResponse().createFromJson(json);
+      return new ApiInstanceTypesResponse().createFromJson(json);
   }
   */
 

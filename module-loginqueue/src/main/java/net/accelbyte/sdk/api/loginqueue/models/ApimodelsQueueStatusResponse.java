@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.ams.models;
+package net.accelbyte.sdk.api.loginqueue.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,45 +23,32 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class ApiInstanceTypeForNamespaceResponse extends Model {
+public class ApimodelsQueueStatusResponse extends Model {
 
-  @JsonProperty("capacity")
-  private List<ApiCapacity> capacity;
+  @JsonProperty("isActive")
+  private Boolean isActive;
 
-  @JsonProperty("description")
-  private String description;
+  @JsonProperty("loggedUserCount")
+  private Integer loggedUserCount;
 
-  @JsonProperty("id")
-  private String id;
+  @JsonProperty("loginRPS")
+  private Integer loginRPS;
 
-  @JsonProperty("memoryGiB")
-  private Float memoryGiB;
+  @JsonProperty("namespace")
+  private String namespace;
 
-  @JsonProperty("minSpeed")
-  private String minSpeed;
-
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("ownerAccountId")
-  private String ownerAccountId;
-
-  @JsonProperty("provider")
-  private String provider;
-
-  @JsonProperty("virtualCpu")
-  private Integer virtualCpu;
+  @JsonProperty("queueCount")
+  private Integer queueCount;
 
   @JsonIgnore
-  public ApiInstanceTypeForNamespaceResponse createFromJson(String json)
-      throws JsonProcessingException {
+  public ApimodelsQueueStatusResponse createFromJson(String json) throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<ApiInstanceTypeForNamespaceResponse> createFromJsonList(String json)
+  public List<ApimodelsQueueStatusResponse> createFromJsonList(String json)
       throws JsonProcessingException {
     return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApiInstanceTypeForNamespaceResponse>>() {});
+        .readValue(json, new TypeReference<List<ApimodelsQueueStatusResponse>>() {});
   }
 }

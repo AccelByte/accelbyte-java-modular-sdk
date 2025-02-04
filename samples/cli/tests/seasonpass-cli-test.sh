@@ -62,16 +62,16 @@ eval_tap $? 2 'ExportSeason' test.out
 #- 3 QuerySeasons
 ./ng net.accelbyte.sdk.cli.Main seasonpass querySeasons \
     --namespace "$AB_NAMESPACE" \
-    --limit '51' \
-    --offset '39' \
-    --status 'PUBLISHED,RETIRED,RETIRED' \
+    --limit '98' \
+    --offset '84' \
+    --status 'DRAFT,RETIRED,PUBLISHED' \
     > test.out 2>&1
 eval_tap $? 3 'QuerySeasons' test.out
 
 #- 4 CreateSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass createSeason \
     --namespace "$AB_NAMESPACE" \
-    --body '{"autoClaim": true, "defaultLanguage": "A2Dgbqrq", "defaultRequiredExp": 52, "draftStoreId": "brv1Bjv6", "end": "1989-05-08T00:00:00Z", "excessStrategy": {"currency": "rvbvwb6Z", "method": "NONE", "percentPerExp": 0}, "images": [{"as": "pWkbAQTF", "caption": "CF8eYs7D", "height": 54, "imageUrl": "uVGvFI72", "smallImageUrl": "tOxYRVbX", "width": 56}, {"as": "UY0VvPGF", "caption": "aWwLxWqj", "height": 53, "imageUrl": "tObKXS0p", "smallImageUrl": "UwuHhT4W", "width": 63}, {"as": "FbQZ1EtP", "caption": "nVBB6fdq", "height": 91, "imageUrl": "Zu5aOJeG", "smallImageUrl": "z1G1qujQ", "width": 81}], "localizations": {"NqrssQVI": {"description": "TWbOxS5U", "title": "yzH17n5B"}, "LCCMKXlw": {"description": "5VmpIRG0", "title": "DlpmEmgI"}, "q3QEO04R": {"description": "tTzaisdZ", "title": "b0Zmr6k2"}}, "name": "7I2OLfmU", "start": "1997-10-29T00:00:00Z", "tierItemId": "MEmuPOPn"}' \
+    --body '{"autoClaim": false, "defaultLanguage": "p87CnggJ", "defaultRequiredExp": 22, "draftStoreId": "CNLphd3o", "end": "1985-05-31T00:00:00Z", "excessStrategy": {"currency": "YxGoaivF", "method": "CURRENCY", "percentPerExp": 70}, "images": [{"as": "fzorUUqO", "caption": "KoQmWdsL", "height": 76, "imageUrl": "MsdT4hkq", "smallImageUrl": "XV43WGtb", "width": 73}, {"as": "vN6XhHbU", "caption": "3Yguv1QM", "height": 29, "imageUrl": "VY5BkU0j", "smallImageUrl": "X0znmezO", "width": 89}, {"as": "yu0iW7Dl", "caption": "WsGw1Nxg", "height": 85, "imageUrl": "6LVMw8ha", "smallImageUrl": "br2UGBrW", "width": 59}], "localizations": {"zp1kM2pN": {"description": "9JQbJ5L8", "title": "s0C5YVpQ"}, "O6NnRagV": {"description": "p7BJfnN7", "title": "IWzFGxDz"}, "rXgoCgZa": {"description": "jH49sDwW", "title": "WCkYpjNo"}}, "name": "aXD5Wd4h", "start": "1999-10-19T00:00:00Z", "tierItemId": "oShX368c"}' \
     > test.out 2>&1
 eval_tap $? 4 'CreateSeason' test.out
 
@@ -84,98 +84,98 @@ eval_tap $? 5 'GetCurrentSeason' test.out
 #- 6 BulkGetUserSeasonProgression
 ./ng net.accelbyte.sdk.cli.Main seasonpass bulkGetUserSeasonProgression \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userIds": ["S3veYcWd", "Pj0y9zPD", "YR3Gz3z1"]}' \
+    --body '{"userIds": ["Tf0Jx6CM", "C4esN0XS", "l7EKvoLZ"]}' \
     > test.out 2>&1
 eval_tap $? 6 'BulkGetUserSeasonProgression' test.out
 
 #- 7 GetSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass getSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'lKTorm5X' \
+    --seasonId 'e9K5o2WH' \
     > test.out 2>&1
 eval_tap $? 7 'GetSeason' test.out
 
 #- 8 DeleteSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass deleteSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'GRrAXXsy' \
+    --seasonId 'ifzwE2Q8' \
     > test.out 2>&1
 eval_tap $? 8 'DeleteSeason' test.out
 
 #- 9 UpdateSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass updateSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'Y0vmgMbc' \
-    --body '{"autoClaim": true, "defaultLanguage": "VzBrXDbe", "defaultRequiredExp": 72, "draftStoreId": "p7gD7FtO", "end": "1996-08-26T00:00:00Z", "excessStrategy": {"currency": "qu02erQc", "method": "CURRENCY", "percentPerExp": 4}, "images": [{"as": "VhVex50E", "caption": "rRGkp5d4", "height": 81, "imageUrl": "QmM4SDfM", "smallImageUrl": "K7ge0Pe3", "width": 95}, {"as": "rZgx8lDo", "caption": "79nQLQzN", "height": 58, "imageUrl": "RNVLv2v6", "smallImageUrl": "ShJgUxM1", "width": 84}, {"as": "VmCdSAZD", "caption": "woBUU683", "height": 43, "imageUrl": "K7cuA4a5", "smallImageUrl": "L0uroDNH", "width": 56}], "localizations": {"IrJyBABA": {"description": "qWpcrWH7", "title": "JmoHaO22"}, "XrKoLQYz": {"description": "m3nNdD9Q", "title": "dPEQoKPF"}, "sKkkgYZL": {"description": "qKTNyhXf", "title": "88kiQsY1"}}, "name": "QlV3I2KX", "start": "1992-10-04T00:00:00Z", "tierItemId": "KvCPkAzM"}' \
+    --seasonId '4BpBrrO1' \
+    --body '{"autoClaim": true, "defaultLanguage": "Tk0fjjYv", "defaultRequiredExp": 37, "draftStoreId": "olsZjjNe", "end": "1988-11-23T00:00:00Z", "excessStrategy": {"currency": "bCHyNSdo", "method": "NONE", "percentPerExp": 31}, "images": [{"as": "BxiXITy1", "caption": "FwmZtsfL", "height": 46, "imageUrl": "54jUXU3R", "smallImageUrl": "k2kp9990", "width": 20}, {"as": "koydn62B", "caption": "zuhOrB9k", "height": 64, "imageUrl": "FVYs4anF", "smallImageUrl": "D3VOHKgp", "width": 59}, {"as": "7INRWb5d", "caption": "6b3YXyst", "height": 80, "imageUrl": "V1R86rfq", "smallImageUrl": "SjP8XfqM", "width": 34}], "localizations": {"2Hkf5tbV": {"description": "VboEESEM", "title": "aMsEyqUn"}, "99XVPxYD": {"description": "sReE3pBb", "title": "3ForslT7"}, "RK8MyWWI": {"description": "jpmgfnPs", "title": "nLSv94zt"}}, "name": "1PIrLXpT", "start": "1973-08-19T00:00:00Z", "tierItemId": "VyCE57LE"}' \
     > test.out 2>&1
 eval_tap $? 9 'UpdateSeason' test.out
 
 #- 10 CloneSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass cloneSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'BtWyLC10' \
-    --body '{"end": "1987-11-20T00:00:00Z", "name": "DBIMj3uX", "start": "1980-12-26T00:00:00Z"}' \
+    --seasonId 'liFSZMMn' \
+    --body '{"end": "1994-07-31T00:00:00Z", "name": "hzh9OPlT", "start": "1987-07-14T00:00:00Z"}' \
     > test.out 2>&1
 eval_tap $? 10 'CloneSeason' test.out
 
 #- 11 GetFullSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass getFullSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'q5OE0Qlw' \
+    --seasonId 'FoqdeFzf' \
     > test.out 2>&1
 eval_tap $? 11 'GetFullSeason' test.out
 
 #- 12 QueryPasses
 ./ng net.accelbyte.sdk.cli.Main seasonpass queryPasses \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'tTOrCGyy' \
+    --seasonId 'CGdeg6mg' \
     > test.out 2>&1
 eval_tap $? 12 'QueryPasses' test.out
 
 #- 13 CreatePass
 ./ng net.accelbyte.sdk.cli.Main seasonpass createPass \
     --namespace "$AB_NAMESPACE" \
-    --seasonId '06W5hleR' \
-    --body '{"autoEnroll": true, "code": "1LETtMO9", "displayOrder": 87, "images": [{"as": "nst9L2Jx", "caption": "FU7VCn4y", "height": 54, "imageUrl": "Pekal1KT", "smallImageUrl": "Bkqaph3q", "width": 73}, {"as": "rDmRKdJ8", "caption": "xMO0Ybhk", "height": 30, "imageUrl": "Hd08Boxe", "smallImageUrl": "gHFIYObO", "width": 19}, {"as": "o5SoCtQz", "caption": "91UJybwA", "height": 30, "imageUrl": "fCeEXfUx", "smallImageUrl": "Ot8cx1w0", "width": 94}], "localizations": {"DFe8EudH": {"description": "OuWhItdW", "title": "n1Uwv1yF"}, "xs6G2Rwb": {"description": "SYCbSakM", "title": "EK1OMPQq"}, "bT4BHGzx": {"description": "czK63sjv", "title": "1VDs5Hpy"}}, "passItemId": "b8UUUUFl"}' \
+    --seasonId '6tcOcS5r' \
+    --body '{"autoEnroll": true, "code": "r2Ub9AeI", "displayOrder": 90, "images": [{"as": "HmgkSYWJ", "caption": "mll2nVya", "height": 57, "imageUrl": "QsOd9ZuI", "smallImageUrl": "w1qqWJDg", "width": 34}, {"as": "zfZIWWjT", "caption": "G0DzCatf", "height": 86, "imageUrl": "EPk4d1cv", "smallImageUrl": "oxwMQfTp", "width": 97}, {"as": "tiFBRtv3", "caption": "bJD9vOcQ", "height": 33, "imageUrl": "qbTUaaUn", "smallImageUrl": "MJdbwxCR", "width": 77}], "localizations": {"NLgFA4VG": {"description": "1Q6SpBpW", "title": "nSfAFv8o"}, "A0RweabN": {"description": "sQAuJihi", "title": "2vo8tByw"}, "RdHoF5gy": {"description": "jA5k2eWt", "title": "7TjHdCeX"}}, "passItemId": "BGyZoja2"}' \
     > test.out 2>&1
 eval_tap $? 13 'CreatePass' test.out
 
 #- 14 GetPass
 ./ng net.accelbyte.sdk.cli.Main seasonpass getPass \
-    --code 'JM8QPQwT' \
+    --code '7hSM94sl' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'G5G0KuaH' \
+    --seasonId 'cfqW5jTz' \
     > test.out 2>&1
 eval_tap $? 14 'GetPass' test.out
 
 #- 15 DeletePass
 ./ng net.accelbyte.sdk.cli.Main seasonpass deletePass \
-    --code 'iiruX5zQ' \
+    --code 'poLRUX2j' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'lNEcO8BB' \
+    --seasonId 'pqPQTN2E' \
     > test.out 2>&1
 eval_tap $? 15 'DeletePass' test.out
 
 #- 16 UpdatePass
 ./ng net.accelbyte.sdk.cli.Main seasonpass updatePass \
-    --code '1UapdsCN' \
+    --code 'hocB22NA' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'dHvakhQw' \
-    --body '{"autoEnroll": true, "displayOrder": 59, "images": [{"as": "77MBPadl", "caption": "cEzNi4iZ", "height": 60, "imageUrl": "Qob9Rj0d", "smallImageUrl": "nQFCsPhf", "width": 87}, {"as": "rtlyfjN9", "caption": "ag1O3rHC", "height": 51, "imageUrl": "8IDm8ip2", "smallImageUrl": "TFG8W6Cu", "width": 78}, {"as": "Plrghv7y", "caption": "6TUWrwp9", "height": 21, "imageUrl": "JIFr0zl4", "smallImageUrl": "uHOwy63p", "width": 81}], "localizations": {"TiXyFz0Y": {"description": "SYG3NKj7", "title": "I5boW9mN"}, "PVbvORCR": {"description": "fQllLmmH", "title": "ITxudKtB"}, "VNORLyIH": {"description": "02cdLU77", "title": "hRWCphF3"}}, "passItemId": "LXjOgQdo"}' \
+    --seasonId 'uSlKhvrw' \
+    --body '{"autoEnroll": true, "displayOrder": 91, "images": [{"as": "axqz8mGG", "caption": "2UfUaZZ4", "height": 31, "imageUrl": "FTdpyVv3", "smallImageUrl": "isAG5Cpz", "width": 16}, {"as": "JJEh8CK0", "caption": "Z1kWHZNd", "height": 66, "imageUrl": "7CzRQffp", "smallImageUrl": "NyBjE5dB", "width": 90}, {"as": "N9QSBOZE", "caption": "78vOKfna", "height": 28, "imageUrl": "IOPGgG1s", "smallImageUrl": "DQOgoV19", "width": 62}], "localizations": {"JxIlvpdl": {"description": "TKAzGSaf", "title": "lE2pqIRM"}, "1A7inXXe": {"description": "kzx6YKn7", "title": "thjvQXZx"}, "l4aDXy4R": {"description": "AxA8JhEi", "title": "OW7uD5zf"}}, "passItemId": "DqorSsxN"}' \
     > test.out 2>&1
 eval_tap $? 16 'UpdatePass' test.out
 
 #- 17 PublishSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass publishSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'mwPf4KmN' \
+    --seasonId 't7jn72wj' \
     > test.out 2>&1
 eval_tap $? 17 'PublishSeason' test.out
 
 #- 18 RetireSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass retireSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'MlA4GGXZ' \
+    --seasonId 'uRVuIO47' \
     --force  \
     > test.out 2>&1
 eval_tap $? 18 'RetireSeason' test.out
@@ -183,91 +183,91 @@ eval_tap $? 18 'RetireSeason' test.out
 #- 19 QueryRewards
 ./ng net.accelbyte.sdk.cli.Main seasonpass queryRewards \
     --namespace "$AB_NAMESPACE" \
-    --seasonId '8bX7VLJo' \
-    --q 'jzFoamhB' \
+    --seasonId 'MeQHQaTf' \
+    --q 'HO3JnIdN' \
     > test.out 2>&1
 eval_tap $? 19 'QueryRewards' test.out
 
 #- 20 CreateReward
 ./ng net.accelbyte.sdk.cli.Main seasonpass createReward \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'a1hlpFT4' \
-    --body '{"code": "fVPD24mi", "currency": {"currencyCode": "su2kaIED", "namespace": "doNTSTfg"}, "image": {"as": "Zm6dU0tT", "caption": "Kx7uUkP5", "height": 24, "imageUrl": "aKZXMi4T", "smallImageUrl": "o1ZGSqqo", "width": 74}, "itemId": "PVXZnbka", "quantity": 87, "type": "CURRENCY"}' \
+    --seasonId 'f4paZteU' \
+    --body '{"code": "GqZtfIMV", "currency": {"currencyCode": "LXhSbmH9", "namespace": "poxiSbO2"}, "image": {"as": "BZRKdF17", "caption": "U0p2iFD0", "height": 13, "imageUrl": "zDuCguoN", "smallImageUrl": "1OCPLOfs", "width": 14}, "itemId": "q3RcTVvo", "quantity": 57, "type": "CURRENCY"}' \
     > test.out 2>&1
 eval_tap $? 20 'CreateReward' test.out
 
 #- 21 GetReward
 ./ng net.accelbyte.sdk.cli.Main seasonpass getReward \
-    --code 'vEuQYADe' \
+    --code 'MRhI2vFR' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'kv3KfH3i' \
+    --seasonId 'V6wDMd8Q' \
     > test.out 2>&1
 eval_tap $? 21 'GetReward' test.out
 
 #- 22 DeleteReward
 ./ng net.accelbyte.sdk.cli.Main seasonpass deleteReward \
-    --code 'vQM1zx8r' \
+    --code 'iBZWp84A' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'Yw0OAg95' \
+    --seasonId 'CuGlCqQM' \
     > test.out 2>&1
 eval_tap $? 22 'DeleteReward' test.out
 
 #- 23 UpdateReward
 ./ng net.accelbyte.sdk.cli.Main seasonpass updateReward \
-    --code 'ZjHwyDmE' \
+    --code 'ZcTysqaV' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'EjUOHMhB' \
-    --body '{"currency": {"currencyCode": "mChPzeZ4", "namespace": "3yVuWtmL"}, "image": {"as": "cgvPtKQ1", "caption": "ccPIfQAv", "height": 43, "imageUrl": "iDzemt5w", "smallImageUrl": "YWOMPTOl", "width": 65}, "itemId": "RyPg75F2", "nullFields": ["4BlZAMOo", "gQ1naIHx", "M457fma8"], "quantity": 33, "type": "CURRENCY"}' \
+    --seasonId 'EaTtyyox' \
+    --body '{"currency": {"currencyCode": "jYUwRoNC", "namespace": "ueKBkHlk"}, "image": {"as": "lzJDdVd8", "caption": "91pZvNcw", "height": 50, "imageUrl": "abyYoaCZ", "smallImageUrl": "BPsWfzqH", "width": 62}, "itemId": "6tgVhrTb", "nullFields": ["2j1w3H0X", "M541Uz5B", "YXF2lDdU"], "quantity": 60, "type": "ITEM"}' \
     > test.out 2>&1
 eval_tap $? 23 'UpdateReward' test.out
 
 #- 24 QueryTiers
 ./ng net.accelbyte.sdk.cli.Main seasonpass queryTiers \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'ZuHiDjhI' \
-    --limit '4' \
-    --offset '14' \
+    --seasonId 'prJfPkIf' \
+    --limit '20' \
+    --offset '87' \
     > test.out 2>&1
 eval_tap $? 24 'QueryTiers' test.out
 
 #- 25 CreateTier
 ./ng net.accelbyte.sdk.cli.Main seasonpass createTier \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'hSpmpGRX' \
-    --body '{"index": 82, "quantity": 44, "tier": {"requiredExp": 19, "rewards": {"cEodMApY": ["MxoUMf45", "8B8Dp3Pu", "rv00z2Rv"], "f26zpR6u": ["Rf5nSq6Z", "2eov08ia", "ObtDVNBR"], "r8bklwDk": ["qyq7zaHa", "rfuA14PK", "P2OQGFlW"]}}}' \
+    --seasonId 'lj233oiZ' \
+    --body '{"index": 82, "quantity": 53, "tier": {"requiredExp": 60, "rewards": {"mezBPAVc": ["UYXTOajB", "I0urHTaq", "hS9GhGcP"], "TPDE9cXe": ["XFWrDtUd", "jS4Xa8vz", "XKAFId6v"], "zpSyFJzA": ["jvUZhcdu", "jwx9gJDC", "R1MRW8bb"]}}}' \
     > test.out 2>&1
 eval_tap $? 25 'CreateTier' test.out
 
 #- 26 UpdateTier
 ./ng net.accelbyte.sdk.cli.Main seasonpass updateTier \
-    --id 'UJ5Eg04i' \
+    --id 'CosM6GYx' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'TUrbAsuP' \
-    --body '{"requiredExp": 15, "rewards": {"uvUqjot7": ["21E1d9Pp", "skWGlkGQ", "sPeZzNc2"], "7FXSjvQ0": ["Z8KPvNkC", "u4ymPIgV", "NYvELmAy"], "tlA3LCrL": ["EAHuUZn1", "M57gT7AI", "k9lKvKsV"]}}' \
+    --seasonId 'DoBZzvLd' \
+    --body '{"requiredExp": 46, "rewards": {"tXfLvcIg": ["Zf5IhgWO", "hqmM791e", "cxQTyU1a"], "3NFGCRdR": ["lp6mjaC8", "bYXTgxlP", "mPR5UxDk"], "7An4j71o": ["LQL5UPEL", "6LK32Pb5", "yj4JZOdv"]}}' \
     > test.out 2>&1
 eval_tap $? 26 'UpdateTier' test.out
 
 #- 27 DeleteTier
 ./ng net.accelbyte.sdk.cli.Main seasonpass deleteTier \
-    --id 'zxHCMstj' \
+    --id '9WvHESef' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'GUJK6n5l' \
+    --seasonId '4hc8UEfA' \
     > test.out 2>&1
 eval_tap $? 27 'DeleteTier' test.out
 
 #- 28 ReorderTier
 ./ng net.accelbyte.sdk.cli.Main seasonpass reorderTier \
-    --id 'QyFxWB9C' \
+    --id '7dEQEFQu' \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'qb6raYTR' \
-    --body '{"newIndex": 27}' \
+    --seasonId '2KZM0yws' \
+    --body '{"newIndex": 60}' \
     > test.out 2>&1
 eval_tap $? 28 'ReorderTier' test.out
 
 #- 29 UnpublishSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass unpublishSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'aY0GQfj7' \
+    --seasonId 'hiMe5pQB' \
     --force  \
     > test.out 2>&1
 eval_tap $? 29 'UnpublishSeason' test.out
@@ -275,130 +275,130 @@ eval_tap $? 29 'UnpublishSeason' test.out
 #- 30 GetUserParticipatedSeasons
 ./ng net.accelbyte.sdk.cli.Main seasonpass getUserParticipatedSeasons \
     --namespace "$AB_NAMESPACE" \
-    --userId 'EEPMY3Fc' \
-    --limit '90' \
-    --offset '65' \
+    --userId 'Zs6OQmE5' \
+    --limit '70' \
+    --offset '33' \
     > test.out 2>&1
 eval_tap $? 30 'GetUserParticipatedSeasons' test.out
 
 #- 31 GrantUserExp
 ./ng net.accelbyte.sdk.cli.Main seasonpass grantUserExp \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ZHQWFwlp' \
-    --body '{"exp": 73, "source": "SWEAT", "tags": ["RW2ZGLgG", "Ef6OLcrt", "IzLTcaqa"]}' \
+    --userId 'SKnYl8mH' \
+    --body '{"exp": 28, "source": "PAID_FOR", "tags": ["FAQqqOcE", "g7aqHwPV", "sigegTCU"]}' \
     > test.out 2>&1
 eval_tap $? 31 'GrantUserExp' test.out
 
 #- 32 GrantUserPass
 ./ng net.accelbyte.sdk.cli.Main seasonpass grantUserPass \
     --namespace "$AB_NAMESPACE" \
-    --userId 'bCpBwSch' \
-    --body '{"passCode": "GsnmYYqD", "passItemId": "K8STVImx"}' \
+    --userId 'y24JjER0' \
+    --body '{"passCode": "JnQJ0R0I", "passItemId": "jxn99akD"}' \
     > test.out 2>&1
 eval_tap $? 32 'GrantUserPass' test.out
 
 #- 33 ExistsAnyPassByPassCodes
 ./ng net.accelbyte.sdk.cli.Main seasonpass existsAnyPassByPassCodes \
     --namespace "$AB_NAMESPACE" \
-    --userId '3pLdAxI7' \
-    --passCodes '9F8bViMP,ojVYI691,s3NU1cPm' \
+    --userId 'E3uQhu0s' \
+    --passCodes 'fYVn3vKK,k0FcGocn,2MrOFF0A' \
     > test.out 2>&1
 eval_tap $? 33 'ExistsAnyPassByPassCodes' test.out
 
 #- 34 GetCurrentUserSeasonProgression
 ./ng net.accelbyte.sdk.cli.Main seasonpass getCurrentUserSeasonProgression \
     --namespace "$AB_NAMESPACE" \
-    --userId 'rroyVKLZ' \
+    --userId 'xYVfrZES' \
     > test.out 2>&1
 eval_tap $? 34 'GetCurrentUserSeasonProgression' test.out
 
 #- 35 CheckSeasonPurchasable
 ./ng net.accelbyte.sdk.cli.Main seasonpass checkSeasonPurchasable \
     --namespace "$AB_NAMESPACE" \
-    --userId 'RKp4yBDU' \
-    --body '{"passItemId": "zgJpZ1qc", "tierItemCount": 91, "tierItemId": "a4XYQq1A"}' \
+    --userId 'HeJO4eaj' \
+    --body '{"passItemId": "tf9iAj6q", "tierItemCount": 28, "tierItemId": "eeQdIHbC"}' \
     > test.out 2>&1
 eval_tap $? 35 'CheckSeasonPurchasable' test.out
 
 #- 36 ResetUserSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass resetUserSeason \
     --namespace "$AB_NAMESPACE" \
-    --userId 'JVkotov4' \
+    --userId 'Tlnf4P3N' \
     > test.out 2>&1
 eval_tap $? 36 'ResetUserSeason' test.out
 
 #- 37 GrantUserTier
 ./ng net.accelbyte.sdk.cli.Main seasonpass grantUserTier \
     --namespace "$AB_NAMESPACE" \
-    --userId 'iKwEryLz' \
-    --body '{"count": 5, "source": "PAID_FOR", "tags": ["clLl3eNx", "dn4i6Gx4", "muyne6Je"]}' \
+    --userId 'KlMlm21I' \
+    --body '{"count": 21, "source": "PAID_FOR", "tags": ["LNk7E6ej", "EwIAxAbW", "lSfJdSpS"]}' \
     > test.out 2>&1
 eval_tap $? 37 'GrantUserTier' test.out
 
 #- 38 QueryUserExpGrantHistory
 ./ng net.accelbyte.sdk.cli.Main seasonpass queryUserExpGrantHistory \
     --namespace "$AB_NAMESPACE" \
-    --userId 'rNeIM1JK' \
-    --from 'kN8MRjM9' \
+    --userId 'oXKzZNlB' \
+    --from 'VT522PTQ' \
     --limit '6' \
-    --offset '53' \
-    --seasonId '0rk4RZet' \
-    --source 'PAID_FOR' \
-    --tags 'FG5ROIg5,fCO3ClKV,0nW47bDk' \
-    --to 'rRmv865b' \
+    --offset '55' \
+    --seasonId 'bQ03EpEt' \
+    --source 'SWEAT' \
+    --tags 'oh2EvMWR,zI4iZTKR,Y2VDiDpp' \
+    --to 'yfLhTdPc' \
     > test.out 2>&1
 eval_tap $? 38 'QueryUserExpGrantHistory' test.out
 
 #- 39 QueryUserExpGrantHistoryTag
 ./ng net.accelbyte.sdk.cli.Main seasonpass queryUserExpGrantHistoryTag \
     --namespace "$AB_NAMESPACE" \
-    --userId 'hX9wn0OW' \
-    --seasonId 'uv9IPzP2' \
+    --userId 'CS9TgyJ0' \
+    --seasonId 'CLzhbyDD' \
     > test.out 2>&1
 eval_tap $? 39 'QueryUserExpGrantHistoryTag' test.out
 
 #- 40 GetUserSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass getUserSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'cc7aOBAT' \
-    --userId 'yuzTZ4qA' \
+    --seasonId 'Iq2j6yG1' \
+    --userId '9OI1W1NF' \
     > test.out 2>&1
 eval_tap $? 40 'GetUserSeason' test.out
 
 #- 41 PublicGetCurrentSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass publicGetCurrentSeason \
     --namespace "$AB_NAMESPACE" \
-    --language 'O2hIp69r' \
+    --language 'S8OlepzA' \
     > test.out 2>&1
 eval_tap $? 41 'PublicGetCurrentSeason' test.out
 
 #- 42 PublicGetCurrentUserSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass publicGetCurrentUserSeason \
     --namespace "$AB_NAMESPACE" \
-    --userId 'FoQ1YoGO' \
+    --userId 'Lk4h3Wox' \
     > test.out 2>&1
 eval_tap $? 42 'PublicGetCurrentUserSeason' test.out
 
 #- 43 PublicClaimUserReward
 ./ng net.accelbyte.sdk.cli.Main seasonpass publicClaimUserReward \
     --namespace "$AB_NAMESPACE" \
-    --userId 'NP9jQlbo' \
-    --body '{"passCode": "gHEjhUqV", "rewardCode": "QYhbiHIk", "tierIndex": 37}' \
+    --userId 'q2TJPolq' \
+    --body '{"passCode": "4HMm9rJL", "rewardCode": "tqgYKu8s", "tierIndex": 13}' \
     > test.out 2>&1
 eval_tap $? 43 'PublicClaimUserReward' test.out
 
 #- 44 PublicBulkClaimUserRewards
 ./ng net.accelbyte.sdk.cli.Main seasonpass publicBulkClaimUserRewards \
     --namespace "$AB_NAMESPACE" \
-    --userId '9UXD9L4U' \
+    --userId 'dbqAPNWK' \
     > test.out 2>&1
 eval_tap $? 44 'PublicBulkClaimUserRewards' test.out
 
 #- 45 PublicGetUserSeason
 ./ng net.accelbyte.sdk.cli.Main seasonpass publicGetUserSeason \
     --namespace "$AB_NAMESPACE" \
-    --seasonId 'KlbxTjGb' \
-    --userId 'GESGnNFq' \
+    --seasonId 'A9SNt5Q1' \
+    --userId 'wXmeuARC' \
     > test.out 2>&1
 eval_tap $? 45 'PublicGetUserSeason' test.out
 

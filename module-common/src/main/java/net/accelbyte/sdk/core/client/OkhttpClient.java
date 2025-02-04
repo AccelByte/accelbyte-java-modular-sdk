@@ -180,7 +180,8 @@ public class OkhttpClient implements HttpClient<HttpLogger<Request, Response>> {
     return createResponse(response);
   }
 
-  public boolean uploadBinaryData(String url, byte[] dataToUpload, String contentType) throws Exception {
+  public boolean uploadBinaryData(String url, byte[] dataToUpload, String contentType)
+      throws Exception {
 
     final Request.Builder requestBuilder = new Request.Builder().url(url);
     RequestBody requestBody = RequestBody.create(MediaType.parse(contentType), dataToUpload);
@@ -206,12 +207,13 @@ public class OkhttpClient implements HttpClient<HttpLogger<Request, Response>> {
     if (statusCode >= 200 && statusCode <= 299) {
       final ResponseBody body = response.body();
       if (body != null) {
-        return body.bytes();        
+        return body.bytes();
       } else {
         throw new IllegalArgumentException("Response body is null");
       }
     } else {
-      throw new IllegalArgumentException("Response status code is not within acceptable range. (" + statusCode + ")");
+      throw new IllegalArgumentException(
+          "Response status code is not within acceptable range. (" + statusCode + ")");
     }
   }
 

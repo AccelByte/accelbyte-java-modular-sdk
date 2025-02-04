@@ -19,6 +19,8 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Setter
 public class AdminGetChallengesOpResponse extends ApiResponseWithData<ModelListChallengeResponse> {
 
+  private ResponseError error400 = null;
+
   private IamErrorResponse error401 = null;
 
   private IamErrorResponse error403 = null;

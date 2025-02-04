@@ -263,6 +263,33 @@ public class Wallet {
   }
 
   /**
+   * @see GetWalletConfig
+   */
+  public GetWalletConfigOpResponse getWalletConfig(GetWalletConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UpdateWalletConfig
+   */
+  public UpdateWalletConfigOpResponse updateWalletConfig(UpdateWalletConfig input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see QueryWallets
    * @deprecated
    */

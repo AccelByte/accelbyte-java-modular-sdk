@@ -143,6 +143,11 @@
 |---|---|---|---|---|
 | `/agreement/public/readiness` | GET | CheckReadiness | [CheckReadiness](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/operations/utility/CheckReadiness.java) | [CheckReadiness](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/utility/CheckReadiness.java) |
 
+### Policies With Namespace V2 Wrapper:  [PoliciesWithNamespaceV2](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/wrappers/PoliciesWithNamespaceV2.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/agreement/v2/public/policies/namespaces/{namespace}/countries/{countryCode}` | GET | RetrieveLatestPoliciesByNamespaceAndCountryPublic1 | [RetrieveLatestPoliciesByNamespaceAndCountryPublic1](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/operations/policies_with_namespace_v2/RetrieveLatestPoliciesByNamespaceAndCountryPublic1.java) | [RetrieveLatestPoliciesByNamespaceAndCountryPublic1](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/legal/policies_with_namespace_v2/RetrieveLatestPoliciesByNamespaceAndCountryPublic1.java) |
+
 
 &nbsp;
 
@@ -182,10 +187,13 @@
 | `RetrievePolicyResponse` | [RetrievePolicyResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrievePolicyResponse.java) |
 | `RetrievePolicyTypeResponse` | [RetrievePolicyTypeResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrievePolicyTypeResponse.java) |
 | `RetrievePolicyVersionResponse` | [RetrievePolicyVersionResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrievePolicyVersionResponse.java) |
+| `RetrieveSimplePolicyPublicResponseV2` | [RetrieveSimplePolicyPublicResponseV2](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrieveSimplePolicyPublicResponseV2.java) |
 | `RetrieveUserAcceptedAgreementResponse` | [RetrieveUserAcceptedAgreementResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrieveUserAcceptedAgreementResponse.java) |
 | `RetrieveUserEligibilitiesIndirectResponse` | [RetrieveUserEligibilitiesIndirectResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrieveUserEligibilitiesIndirectResponse.java) |
 | `RetrieveUserEligibilitiesResponse` | [RetrieveUserEligibilitiesResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrieveUserEligibilitiesResponse.java) |
 | `RetrieveUserInfoCacheStatusResponse` | [RetrieveUserInfoCacheStatusResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/RetrieveUserInfoCacheStatusResponse.java) |
+| `SimpleLocalizedPolicyVersionObject` | [SimpleLocalizedPolicyVersionObject](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/SimpleLocalizedPolicyVersionObject.java) |
+| `SimplePolicyVersionWithLocalizedVersionObject` | [SimplePolicyVersionWithLocalizedVersionObject](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/SimplePolicyVersionWithLocalizedVersionObject.java) |
 | `UpdateBasePolicyRequest` | [UpdateBasePolicyRequest](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/UpdateBasePolicyRequest.java) |
 | `UpdateBasePolicyRequestV2` | [UpdateBasePolicyRequestV2](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/UpdateBasePolicyRequestV2.java) |
 | `UpdateBasePolicyResponse` | [UpdateBasePolicyResponse](../../module-legal/src/main/java/net/accelbyte/sdk/api/legal/models/UpdateBasePolicyResponse.java) |

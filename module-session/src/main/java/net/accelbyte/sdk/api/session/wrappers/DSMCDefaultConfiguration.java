@@ -35,7 +35,9 @@ public class DSMCDefaultConfiguration {
 
   /**
    * @see AdminGetDSMCConfigurationDefault
+   * @deprecated
    */
+  @Deprecated
   public AdminGetDSMCConfigurationDefaultOpResponse adminGetDSMCConfigurationDefault(
       AdminGetDSMCConfigurationDefault input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

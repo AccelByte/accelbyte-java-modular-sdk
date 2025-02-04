@@ -96,6 +96,7 @@
 | `model.GoalProgressionResponse` | [ModelGoalProgressionResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalProgressionResponse.java) |
 | `model.GoalResponse` | [ModelGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalResponse.java) |
 | `model.GoalSchedule` | [ModelGoalSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalSchedule.java) |
+| `model.GoalScheduleRequest` | [ModelGoalScheduleRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalScheduleRequest.java) |
 | `model.ListChallengeResponse` | [ModelListChallengeResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListChallengeResponse.java) |
 | `model.ListPeriodsResponse` | [ModelListPeriodsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListPeriodsResponse.java) |
 | `model.ListScheduleByGoalResponse` | [ModelListScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListScheduleByGoalResponse.java) |

@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.ams.models;
+package net.accelbyte.sdk.api.iam.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,21 +23,37 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class ApiInstanceTypesForNamespaceResponse extends Model {
+public class ModelPlatformDomainPatchRequest extends Model {
 
-  @JsonProperty("availableInstanceTypes")
-  private List<ApiInstanceTypeForNamespaceResponse> availableInstanceTypes;
+  @JsonProperty("affectedClientIDs")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> affectedClientIDs;
+
+  @JsonProperty("assignedNamespaces")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> assignedNamespaces;
+
+  @JsonProperty("domain")
+  private String domain;
+
+  @JsonProperty("roleId")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private String roleId;
+
+  @JsonProperty("ssoCfg")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private AccountcommonSsoConfigPatchReq ssoCfg;
 
   @JsonIgnore
-  public ApiInstanceTypesForNamespaceResponse createFromJson(String json)
+  public ModelPlatformDomainPatchRequest createFromJson(String json)
       throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<ApiInstanceTypesForNamespaceResponse> createFromJsonList(String json)
+  public List<ModelPlatformDomainPatchRequest> createFromJsonList(String json)
       throws JsonProcessingException {
     return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApiInstanceTypesForNamespaceResponse>>() {});
+        .readValue(json, new TypeReference<List<ModelPlatformDomainPatchRequest>>() {});
   }
 }

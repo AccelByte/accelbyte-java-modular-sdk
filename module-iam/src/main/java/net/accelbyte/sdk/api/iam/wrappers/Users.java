@@ -1816,6 +1816,20 @@ public class Users {
   }
 
   /**
+   * @see AdminGetUserStateByUserIdV3
+   */
+  public AdminGetUserStateByUserIdV3OpResponse adminGetUserStateByUserIdV3(
+      AdminGetUserStateByUserIdV3 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminUpdateUserStatusV3
    */
   public AdminUpdateUserStatusV3OpResponse adminUpdateUserStatusV3(AdminUpdateUserStatusV3 input)
@@ -1903,7 +1917,9 @@ public class Users {
 
   /**
    * @see PublicGetUserByPlatformUserIDV3
+   * @deprecated
    */
+  @Deprecated
   public PublicGetUserByPlatformUserIDV3OpResponse publicGetUserByPlatformUserIDV3(
       PublicGetUserByPlatformUserIDV3 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -1973,7 +1989,9 @@ public class Users {
 
   /**
    * @see PublicBulkGetUsers
+   * @deprecated
    */
+  @Deprecated
   public PublicBulkGetUsersOpResponse publicBulkGetUsers(PublicBulkGetUsers input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
