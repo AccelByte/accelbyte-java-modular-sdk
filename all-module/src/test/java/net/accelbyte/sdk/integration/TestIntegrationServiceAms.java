@@ -10,7 +10,7 @@ import net.accelbyte.sdk.api.ams.models.ApiFleetGetResponse;
 import net.accelbyte.sdk.api.ams.models.ApiFleetParameters;
 import net.accelbyte.sdk.api.ams.models.ApiImageDeploymentProfile;
 import net.accelbyte.sdk.api.ams.models.ApiImageList;
-import net.accelbyte.sdk.api.ams.models.ApiInstanceTypesForNamespaceResponse;
+import net.accelbyte.sdk.api.ams.models.ApiInstanceTypesResponse;
 import net.accelbyte.sdk.api.ams.models.ApiRegionConfig;
 import net.accelbyte.sdk.api.ams.operation_responses.fleets.FleetCreateOpResponse;
 import net.accelbyte.sdk.api.ams.operations.ams_info.InfoRegions;
@@ -75,7 +75,7 @@ public class TestIntegrationServiceAms extends TestIntegration {
 
     // CASE Get AMS info for info region operation
 
-    final ApiInstanceTypesForNamespaceResponse infoInstances =
+    final ApiInstanceTypesResponse infoInstances =
         amsInfoWrapper
             .infoSupportedInstances(
                 InfoSupportedInstances.builder().namespace(this.namespace).build())
