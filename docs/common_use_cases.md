@@ -31,11 +31,13 @@ final ModelsAchievementRequest createAchievementBody =
         .build();
 
 final ModelsAchievementResponse createAchievementResult =
-    achievementsWrapper.adminCreateNewAchievement(
-        AdminCreateNewAchievement.builder()
-            .namespace(this.namespace)
-            .body(createAchievementBody)
-            .build()).ensureSuccess();
+    achievementsWrapper
+        .adminCreateNewAchievement(
+            AdminCreateNewAchievement.builder()
+                .namespace(this.namespace)
+                .body(createAchievementBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update an achievement
@@ -49,23 +51,27 @@ final ModelsAchievementUpdateRequest updateAchievementBody =
         .build();
 
 final ModelsAchievementResponse updateAchievementResult =
-    achievementsWrapper.adminUpdateAchievement(
-        AdminUpdateAchievement.builder()
-            .namespace(this.namespace)
-            .achievementCode(achievementCode)
-            .body(updateAchievementBody)
-            .build()).ensureSuccess();
+    achievementsWrapper
+        .adminUpdateAchievement(
+            AdminUpdateAchievement.builder()
+                .namespace(this.namespace)
+                .achievementCode(achievementCode)
+                .body(updateAchievementBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Get an achievement by achievement code
 
 ```java
 final ModelsAchievementResponse getAchievementResult =
-    achievementsWrapper.adminGetAchievement(
-        AdminGetAchievement.builder()
-            .namespace(this.namespace)
-            .achievementCode(achievementCode)
-            .build()).ensureSuccess();
+    achievementsWrapper
+        .adminGetAchievement(
+            AdminGetAchievement.builder()
+                .namespace(this.namespace)
+                .achievementCode(achievementCode)
+                .build())
+        .ensureSuccess();
 
 assertNotNull(getAchievementResult);
 assertEquals(getAchievementResult.getGoalValue(), 2000f);
@@ -84,14 +90,13 @@ if (exportAchievementFile.exists()) {
 exportAchievementFile.deleteOnExit();
 
 final InputStream exportAchievementsResult =
-    achievementsWrapper.exportAchievements(
-        ExportAchievements.builder()
-            .namespace(this.namespace)
-            .build()).ensureSuccess();
+    achievementsWrapper
+        .exportAchievements(ExportAchievements.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 java.nio.file.Files.copy(
-        exportAchievementsResult,
-        exportAchievementFile.toPath(),
-        java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+    exportAchievementsResult,
+    exportAchievementFile.toPath(),
+    java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 org.apache.commons.io.IOUtils.closeQuietly(exportAchievementsResult);
 ```
 
@@ -99,8 +104,14 @@ org.apache.commons.io.IOUtils.closeQuietly(exportAchievementsResult);
 
 ```java
 final ModelsPaginatedAchievementResponse getAchievementListResult =
-    achievementsWrapper.adminListAchievements(
-        AdminListAchievements.builder().namespace(this.namespace).limit(100).offset(0).build()).ensureSuccess();
+    achievementsWrapper
+        .adminListAchievements(
+            AdminListAchievements.builder()
+                .namespace(this.namespace)
+                .limit(100)
+                .offset(0)
+                .build())
+        .ensureSuccess();
 
 assertNotNull(getAchievementListResult);
 assertTrue(getAchievementListResult.getData().size() > 0);
@@ -109,12 +120,13 @@ assertTrue(getAchievementListResult.getData().size() > 0);
 ### Delete an achievement
 
 ```java
-achievementsWrapper.adminDeleteAchievement(
-    AdminDeleteAchievement.builder()
-        .namespace(this.namespace)
-        .achievementCode(achievementCode)
-        .build())
-        .ensureSuccess();
+achievementsWrapper
+    .adminDeleteAchievement(
+        AdminDeleteAchievement.builder()
+            .namespace(this.namespace)
+            .achievementCode(achievementCode)
+            .build())
+    .ensureSuccess();
 ```
 ## AMS
 
@@ -124,88 +136,94 @@ Source: [TestIntegrationServiceAms.java](../all-module/src/test/java/net/accelby
 
 ```java
 final ApiImageList imageList =
-    imagesWrapper.imageList(ImageList.builder().namespace(this.namespace).build()).ensureSuccess();
+    imagesWrapper
+        .imageList(ImageList.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Get AMS info for info region operation
 
 ```java
 final ApiAMSRegionsResponse infoRegions =
-    amsInfoWrapper.infoRegions(InfoRegions.builder().namespace(this.namespace).build()).ensureSuccess();
+    amsInfoWrapper
+        .infoRegions(InfoRegions.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Get AMS info for info region operation
 
 ```java
 final ApiAMSRegionsResponse infoRegions =
-    amsInfoWrapper.infoRegions(InfoRegions.builder().namespace(this.namespace).build()).ensureSuccess();
+    amsInfoWrapper
+        .infoRegions(InfoRegions.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Fleet create
 
 ```java
+final ApiFleetParameters fleetCreateBody =
+    ApiFleetParameters.builder()
+        .active(false)
+        .claimKeys(Arrays.asList(new String[] {"beta"}))
+        .name(nameFleet)
+        .regions(
+            Arrays.asList(
+                new ApiRegionConfig[] {
+                  ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
+                }))
+        .imageDeploymentProfile(
+            ApiImageDeploymentProfile.builder().imageId(imageIdFleet).build())
+        .dsHostConfiguration(
+            ApiDSHostConfigurationParameters.builder()
+                .instanceId(imageIdFleet)
+                .serversPerVm(null)
+                .build())
+        .build();
 
-  final ApiFleetParameters fleetCreateBody =
-  ApiFleetParameters.builder()
-    .active(false)
-    .claimKeys(Arrays.asList(new String[] {"beta"}))
-    .name(nameFleet)
-    .regions(Arrays.asList(new ApiRegionConfig[] {
-      ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
-    }))
-    .imageDeploymentProfile(
-      ApiImageDeploymentProfile.builder()
-      .imageId(imageIdFleet)
-      .build())
-    .dsHostConfiguration(ApiDSHostConfigurationParameters.builder()
-      .instanceId(imageIdFleet)
-      .serversPerVm(null)
-      .build())
-    .build();
-
-  final FleetCreateOpResponse fleetCreate =
-      fleetsWrapper.fleetCreate(FleetCreate.builder()
-      .namespace(this.namespace)
-      .body(fleetCreateBody)
-      .build());
+final FleetCreateOpResponse fleetCreate =
+    fleetsWrapper.fleetCreate(
+        FleetCreate.builder().namespace(this.namespace).body(fleetCreateBody).build());
 ```
 
 ### Fleet update
 
 ```java
 final ApiFleetParameters fleetUpdateBody =
-  ApiFleetParameters.builder()
-    .active(false)
-    .claimKeys(Arrays.asList(new String[] {"alpha"}))
-    .name(nameFleet)
-    .regions(Arrays.asList(new ApiRegionConfig[] {
-      ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
-    }))
-    .build();
+    ApiFleetParameters.builder()
+        .active(false)
+        .claimKeys(Arrays.asList(new String[] {"alpha"}))
+        .name(nameFleet)
+        .regions(
+            Arrays.asList(
+                new ApiRegionConfig[] {
+                  ApiRegionConfig.builder().bufferSize(10).region(regionFleet).build()
+                }))
+        .build();
 
-fleetsWrapper.fleetUpdate(FleetUpdate.builder()
-  .namespace(this.namespace)
-  .body(fleetUpdateBody)
-  .build()).ensureSuccess();
+fleetsWrapper
+    .fleetUpdate(
+        FleetUpdate.builder().namespace(this.namespace).body(fleetUpdateBody).build())
+    .ensureSuccess();
 ```
 
 ### Fleet get
 
 ```java
 final ApiFleetGetResponse fleetGet =
-  fleetsWrapper.fleetGet(FleetGet.builder()
-  .namespace(this.namespace)
-  .build()).ensureSuccess();
+    fleetsWrapper
+        .fleetGet(FleetGet.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 
-  assertNotNull(fleetGet);
+assertNotNull(fleetGet);
 ```
 
 ### Fleet delete
 
 ```java
-fleetsWrapper.fleetDelete(FleetDelete.builder()
-  .namespace(this.namespace)
-  .build()).ensureSuccess();
+fleetsWrapper
+    .fleetDelete(FleetDelete.builder().namespace(this.namespace).build())
+    .ensureSuccess();
 ```
 ## Basic
 
@@ -223,16 +241,19 @@ final UserProfilePrivateCreate createProfileBody =
         .build();
 
 final UserProfilePrivateInfo createProfileResult =
-    userProfileWrapper.createMyProfile(
-        CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build()).ensureSuccess();
+    userProfileWrapper
+        .createMyProfile(
+            CreateMyProfile.builder().namespace(this.namespace).body(createProfileBody).build())
+        .ensureSuccess();
 ```
 
 ### Get a user profile
 
 ```java
 final UserProfilePrivateInfo getProfileResult =
-    userProfileWrapper.getMyProfileInfo(
-        GetMyProfileInfo.builder().namespace(this.namespace).build()).ensureSuccess();
+    userProfileWrapper
+        .getMyProfileInfo(GetMyProfileInfo.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Update a user profile
@@ -242,8 +263,10 @@ final UserProfileUpdate updateProfileBody =
     UserProfileUpdate.builder().timeZone(profileTimeZone).build();
 
 final UserProfilePrivateInfo updateProfileResult =
-    userProfileWrapper.updateMyProfile(
-        UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build()).ensureSuccess();
+    userProfileWrapper
+        .updateMyProfile(
+            UpdateMyProfile.builder().namespace(this.namespace).body(updateProfileBody).build())
+        .ensureSuccess();
 ```
 
 ### Delete a user profile
@@ -252,8 +275,10 @@ final UserProfilePrivateInfo updateProfileResult =
 final String userId = getProfileResult.getUserId();
 
 final UserProfilePrivateInfo deleteUserProfileResult =
-    userProfileWrapper.deleteUserProfile(
-        DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+    userProfileWrapper
+        .deleteUserProfile(
+            DeleteUserProfile.builder().namespace(this.namespace).userId(userId).build())
+        .ensureSuccess();
 ```
 ## Chat
 
@@ -341,8 +366,13 @@ publicGameRecordWrapper.postGameRecordHandlerV1(
 
 ```java
 final ModelsGameRecordResponse getGameRecordResult =
-    publicGameRecordWrapper.getGameRecordHandlerV1(
-        GetGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
+    publicGameRecordWrapper
+        .getGameRecordHandlerV1(
+            GetGameRecordHandlerV1.builder()
+                .namespace(this.namespace)
+                .key(gameRecordKey)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update a game record
@@ -366,8 +396,13 @@ publicGameRecordWrapper.putGameRecordHandlerV1(
 ### Delete a game record
 
 ```java
-publicGameRecordWrapper.deleteGameRecordHandlerV1(
-    DeleteGameRecordHandlerV1.builder().namespace(this.namespace).key(gameRecordKey).build()).ensureSuccess();
+publicGameRecordWrapper
+    .deleteGameRecordHandlerV1(
+        DeleteGameRecordHandlerV1.builder()
+            .namespace(this.namespace)
+            .key(gameRecordKey)
+            .build())
+    .ensureSuccess();
 ```
 
 ### Create a player record
@@ -393,12 +428,14 @@ publicPlayerRecordWrapper.postPlayerRecordHandlerV1(
 
 ```java
 final ModelsPlayerRecordResponse getPlayerRecordResult =
-    publicPlayerRecordWrapper.getPlayerRecordHandlerV1(
-        GetPlayerRecordHandlerV1.builder()
-            .namespace(this.namespace)
-            .key(playerRecordKey)
-            .userId(userId)
-        .build()).ensureSuccess();
+    publicPlayerRecordWrapper
+        .getPlayerRecordHandlerV1(
+            GetPlayerRecordHandlerV1.builder()
+                .namespace(this.namespace)
+                .key(playerRecordKey)
+                .userId(userId)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update a player record
@@ -428,7 +465,7 @@ publicPlayerRecordWrapper.deletePlayerRecordHandlerV1(
         .namespace(this.namespace)
         .key(playerRecordKey)
         .userId(userId)
-    .build());
+        .build());
 ```
 ## CSM
 
@@ -437,16 +474,18 @@ Source: [TestIntegrationServiceCsm.java](../all-module/src/test/java/net/accelby
 ### Create Extend app
 
 ```java
-final CreateAppV2 createAppV2Op = CreateAppV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .body(ApimodelCreateAppV2Request.builder()
-        .cpu(ApimodelCPURequest.builder().requestCPU(100).build())
-        .description("test integration create extend app for extend sdk")
-        .memory(ApimodelMemoryRequest.builder().requestMemory(100).build())
-        .scenario("service-extension")
-        .build())
-    .build();
+final CreateAppV2 createAppV2Op =
+    CreateAppV2.builder()
+        .app(EXTEND_APP_NAME)
+        .namespace(namespace)
+        .body(
+            ApimodelCreateAppV2Request.builder()
+                .cpu(ApimodelCPURequest.builder().requestCPU(100).build())
+                .description("test integration create extend app for extend sdk")
+                .memory(ApimodelMemoryRequest.builder().requestMemory(100).build())
+                .scenario("service-extension")
+                .build())
+        .build();
 
 final ApimodelAppItem createAppV2Res = appV2Wrapper.createAppV2(createAppV2Op).ensureSuccess();
 ```
@@ -454,10 +493,8 @@ final ApimodelAppItem createAppV2Res = appV2Wrapper.createAppV2(createAppV2Op).e
 ### Get Extend app
 
 ```java
-final GetAppV2 getAppV2Op = GetAppV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .build();
+final GetAppV2 getAppV2Op =
+    GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
 
 final ApimodelAppItem getAppv2Res = appV2Wrapper.getAppV2(getAppV2Op).ensureSuccess();
 ```
@@ -465,57 +502,61 @@ final ApimodelAppItem getAppv2Res = appV2Wrapper.getAppV2(getAppV2Op).ensureSucc
 ### Save secret variable
 
 ```java
-final SaveSecretV2 saveSecretV2Op = SaveSecretV2
-    .builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .body(ApimodelSaveConfigurationV2Request.builder()
-        .configName("THIS_IS_A_SECRET")
-        .value("ssshhhh")
-        .source("plaintext")
-        .applyMask(true)
-        .build())
-    .build();
+final SaveSecretV2 saveSecretV2Op =
+    SaveSecretV2.builder()
+        .app(EXTEND_APP_NAME)
+        .namespace(namespace)
+        .body(
+            ApimodelSaveConfigurationV2Request.builder()
+                .configName("THIS_IS_A_SECRET")
+                .value("ssshhhh")
+                .source("plaintext")
+                .applyMask(true)
+                .build())
+        .build();
 
-final ApimodelSaveConfigurationV2Response saveSecretV2Res = wrapper.saveSecretV2(saveSecretV2Op).ensureSuccess();
+final ApimodelSaveConfigurationV2Response saveSecretV2Res =
+    wrapper.saveSecretV2(saveSecretV2Op).ensureSuccess();
 ```
 
 ### Get secret variable list
 
 ```java
-final GetListOfSecretsV2 getListOfSecretsV2Op = GetListOfSecretsV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .build();
+final GetListOfSecretsV2 getListOfSecretsV2Op =
+    GetListOfSecretsV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
 
-final ApimodelGetListOfConfigurationsV2Response getListOfSecretsV2Res = wrapper
-    .getListOfSecretsV2(getListOfSecretsV2Op).ensureSuccess();
+final ApimodelGetListOfConfigurationsV2Response getListOfSecretsV2Res =
+    wrapper.getListOfSecretsV2(getListOfSecretsV2Op).ensureSuccess();
 ```
 
 ### Update secret variable
 
 ```java
-final UpdateSecretV2 updateSecretV2Op = UpdateSecretV2.builder()
-    .app(EXTEND_APP_NAME)
-    .configId(secretConfigId)
-    .namespace(namespace)
-    .body(ApimodelUpdateConfigurationV2Request.builder()
-        .value("silence")
-        .applyMask(true)
-        .build())
-    .build();
+final UpdateSecretV2 updateSecretV2Op =
+    UpdateSecretV2.builder()
+        .app(EXTEND_APP_NAME)
+        .configId(secretConfigId)
+        .namespace(namespace)
+        .body(
+            ApimodelUpdateConfigurationV2Request.builder()
+                .value("silence")
+                .applyMask(true)
+                .build())
+        .build();
 
-final ApimodelUpdateConfigurationV2Response updateSecretV2Res = wrapper.updateSecretV2(updateSecretV2Op).ensureSuccess();
+final ApimodelUpdateConfigurationV2Response updateSecretV2Res =
+    wrapper.updateSecretV2(updateSecretV2Op).ensureSuccess();
 ```
 
 ### Delete secret variable
 
 ```java
-final DeleteSecretV2 operation = DeleteSecretV2.builder()
-    .app(EXTEND_APP_NAME)
-    .configId(secretConfigId)
-    .namespace(namespace)
-    .build();
+final DeleteSecretV2 operation =
+    DeleteSecretV2.builder()
+        .app(EXTEND_APP_NAME)
+        .configId(secretConfigId)
+        .namespace(namespace)
+        .build();
 
 wrapper.deleteSecretV2(operation);
 ```
@@ -523,54 +564,59 @@ wrapper.deleteSecretV2(operation);
 ### Save environment variable
 
 ```java
-final SaveVariableV2 saveVariableV2Op = SaveVariableV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .body(ApimodelSaveConfigurationV2Request.builder()
-        .configName("MY_ENV_VAR")
-        .value("helloworld!")
-        .source("plaintext")
-        .applyMask(true)
-        .build())
-    .build();
+final SaveVariableV2 saveVariableV2Op =
+    SaveVariableV2.builder()
+        .app(EXTEND_APP_NAME)
+        .namespace(namespace)
+        .body(
+            ApimodelSaveConfigurationV2Request.builder()
+                .configName("MY_ENV_VAR")
+                .value("helloworld!")
+                .source("plaintext")
+                .applyMask(true)
+                .build())
+        .build();
 
-final ApimodelSaveConfigurationV2Response saveVariableV2Res = wrapper.saveVariableV2(saveVariableV2Op).ensureSuccess();
+final ApimodelSaveConfigurationV2Response saveVariableV2Res =
+    wrapper.saveVariableV2(saveVariableV2Op).ensureSuccess();
 ```
 
 ### Get environment variable list
 
 ```java
-final GetListOfVariablesV2 getListOfVariablesV2Op = GetListOfVariablesV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .build();
-final ApimodelGetListOfConfigurationsV2Response getListOfVariablesV2Res = wrapper
-    .getListOfVariablesV2(getListOfVariablesV2Op).ensureSuccess();
+final GetListOfVariablesV2 getListOfVariablesV2Op =
+    GetListOfVariablesV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build();
+final ApimodelGetListOfConfigurationsV2Response getListOfVariablesV2Res =
+    wrapper.getListOfVariablesV2(getListOfVariablesV2Op).ensureSuccess();
 ```
 
 ### Update environment variable
 
 ```java
-final UpdateVariableV2 updateVariableV2Op = UpdateVariableV2.builder()
-    .app(EXTEND_APP_NAME)
-    .configId(envConfigId)
-    .namespace(namespace)
-    .body(ApimodelUpdateConfigurationV2Request.builder()
-        .value("hellosekai!")
-        .applyMask(true)
-        .build())
-    .build();
-final ApimodelUpdateConfigurationV2Response updateVariableV2Res = wrapper.updateVariableV2(updateVariableV2Op).ensureSuccess();
+final UpdateVariableV2 updateVariableV2Op =
+    UpdateVariableV2.builder()
+        .app(EXTEND_APP_NAME)
+        .configId(envConfigId)
+        .namespace(namespace)
+        .body(
+            ApimodelUpdateConfigurationV2Request.builder()
+                .value("hellosekai!")
+                .applyMask(true)
+                .build())
+        .build();
+final ApimodelUpdateConfigurationV2Response updateVariableV2Res =
+    wrapper.updateVariableV2(updateVariableV2Op).ensureSuccess();
 ```
 
 ### Delete environment variable
 
 ```java
-final DeleteVariableV2 operation = DeleteVariableV2.builder()
-    .app(EXTEND_APP_NAME)
-    .configId(envConfigId)
-    .namespace(namespace)
-    .build();
+final DeleteVariableV2 operation =
+    DeleteVariableV2.builder()
+        .app(EXTEND_APP_NAME)
+        .configId(envConfigId)
+        .namespace(namespace)
+        .build();
 
 wrapper.deleteVariableV2(operation);
 ```
@@ -578,11 +624,8 @@ wrapper.deleteVariableV2(operation);
 ### Delete Extend app
 
 ```java
-final DeleteAppV2 deleteAppV2Op = DeleteAppV2.builder()
-    .app(EXTEND_APP_NAME)
-    .namespace(namespace)
-    .forced("true")
-    .build();
+final DeleteAppV2 deleteAppV2Op =
+    DeleteAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).forced("true").build();
 
 appV2Wrapper.deleteAppV2(deleteAppV2Op);
 ```
@@ -622,10 +665,12 @@ gameTelemetryWrapper
 
 ```java
 final PlayTimeResponse getTelemetry =
-    gameTelemetryWrapper.protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
-        ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.builder()
-            .steamId(steamId)
-            .build()).ensureSuccess();
+    gameTelemetryWrapper
+        .protectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(
+            ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.builder()
+                .steamId(steamId)
+                .build())
+        .ensureSuccess();
 ```
 ## GDPR
 
@@ -635,11 +680,11 @@ Source: [TestIntegrationServiceGdpr.java](../all-module/src/test/java/net/accelb
 
 ```java
 final PublicGetUserPersonalDataRequestsOpResponse getUserPersonalData =
-  dataRetrievalWrapper.publicGetUserPersonalDataRequests(
-    PublicGetUserPersonalDataRequests.builder()
-        .namespace(this.namespace)
-        .userId(this.username)
-        .build());
+    dataRetrievalWrapper.publicGetUserPersonalDataRequests(
+        PublicGetUserPersonalDataRequests.builder()
+            .namespace(this.namespace)
+            .userId(this.username)
+            .build());
 ```
 
 ### Save admin email configuration
@@ -656,8 +701,10 @@ configurationWrapper.saveAdminEmailConfiguration(
 
 ```java
 final List<String> emails =
-    configurationWrapper.getAdminEmailConfiguration(
-        GetAdminEmailConfiguration.builder().namespace(this.namespace).build()).ensureSuccess();
+    configurationWrapper
+        .getAdminEmailConfiguration(
+            GetAdminEmailConfiguration.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Update admin email configuration
@@ -697,11 +744,13 @@ final ModelsCreateGroupConfigurationRequestV1 createGroupConfigBody =
         .build();
 
 final ModelsCreateGroupConfigurationResponseV1 createGroupConfigResult =
-    configurationWrapper.createGroupConfigurationAdminV1(
-        CreateGroupConfigurationAdminV1.builder()
-            .namespace(this.namespace)
-            .body(createGroupConfigBody)
-            .build()).ensureSuccess();
+    configurationWrapper
+        .createGroupConfigurationAdminV1(
+            CreateGroupConfigurationAdminV1.builder()
+                .namespace(this.namespace)
+                .body(createGroupConfigBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Create a group
@@ -717,16 +766,23 @@ final ModelsPublicCreateNewGroupRequestV1 createGroup =
         .configurationCode(configCode)
         .build();
 final ModelsGroupResponseV1 createGroupResult =
-    groupWrapper.createNewGroupPublicV1(
-        CreateNewGroupPublicV1.builder().namespace(this.namespace).body(createGroup).build()).ensureSuccess();
+    groupWrapper
+        .createNewGroupPublicV1(
+            CreateNewGroupPublicV1.builder()
+                .namespace(this.namespace)
+                .body(createGroup)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Get a group
 
 ```java
 final ModelsGroupResponseV1 getSingleGroupResult =
-    groupWrapper.getSingleGroupPublicV1(
-        GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build()).ensureSuccess();
+    groupWrapper
+        .getSingleGroupPublicV1(
+            GetSingleGroupPublicV1.builder().namespace(this.namespace).groupId(groupId).build())
+        .ensureSuccess();
 ```
 
 ### Update a group
@@ -735,12 +791,14 @@ final ModelsGroupResponseV1 getSingleGroupResult =
 final ModelsUpdateGroupRequestV1 updateGroup =
     ModelsUpdateGroupRequestV1.builder().groupDescription(groupDescriptionUpdated).build();
 final ModelsGroupResponseV1 updateGroupResult =
-    groupWrapper.updateSingleGroupV1(
-        UpdateSingleGroupV1.builder()
-            .namespace(this.namespace)
-            .groupId(groupId)
-            .body(updateGroup)
-            .build()).ensureSuccess();
+    groupWrapper
+        .updateSingleGroupV1(
+            UpdateSingleGroupV1.builder()
+                .namespace(this.namespace)
+                .groupId(groupId)
+                .body(updateGroup)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a group
@@ -753,12 +811,13 @@ groupWrapper.deleteGroupPublicV1(
 ### Delete group configuration
 
 ```java
-configurationWrapper.deleteGroupConfigurationV1(
-    DeleteGroupConfigurationV1.builder()
-        .namespace(this.namespace)
-        .configurationCode(configCode)
-        .build())
-        .ensureSuccess();
+configurationWrapper
+    .deleteGroupConfigurationV1(
+        DeleteGroupConfigurationV1.builder()
+            .namespace(this.namespace)
+            .configurationCode(configCode)
+            .build())
+    .ensureSuccess();
 ```
 ## IAM
 
@@ -775,11 +834,14 @@ final ModelUserCreateRequestV3 createUserV3 =
         .displayName(userDisplayName)
         .country(userCountry)
         .dateOfBirth(userDateOfBirth)
+        .uniqueDisplayName(userName)
         .build();
 
 final ModelUserCreateResponseV3 createUserV3Result =
-    usersWrapper.publicCreateUserV3(
-        PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build()).ensureSuccess();
+    usersWrapper
+        .publicCreateUserV3(
+            PublicCreateUserV3.builder().namespace(namespace).body(createUserV3).build())
+        .ensureSuccess();
 ```
 
 ### Create a user
@@ -798,16 +860,23 @@ final AccountCreateUserRequestV4 createUser =
         .build();
 
 final AccountCreateUserResponseV4 createUserResult =
-    usersV4Wrapper.publicCreateUserV4(
-        PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build()).ensureSuccess();
+    usersV4Wrapper
+        .publicCreateUserV4(
+            PublicCreateUserV4.builder().namespace(this.namespace).body(createUser).build())
+        .ensureSuccess();
 ```
 
 ### Get a user
 
 ```java
 final ModelUserPublicInfoResponseV4 getUserResult =
-    usersV4Wrapper.publicGetUserPublicInfoByUserIdV4(
-        PublicGetUserPublicInfoByUserIdV4.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+    usersV4Wrapper
+        .publicGetUserPublicInfoByUserIdV4(
+            PublicGetUserPublicInfoByUserIdV4.builder()
+                .namespace(this.namespace)
+                .userId(userId)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update a user
@@ -817,19 +886,23 @@ final ModelUserUpdateRequestV3 updateUser =
     ModelUserUpdateRequestV3.builder().dateOfBirth(userDateOfBirthUpdate).build();
 
 final ModelUserResponseV3 updateUserResult =
-    usersWrapper.adminUpdateUserV3(
-        AdminUpdateUserV3.builder()
-            .namespace(this.namespace)
-            .userId(userId)
-            .body(updateUser)
-            .build()).ensureSuccess();
+    usersWrapper
+        .adminUpdateUserV3(
+            AdminUpdateUserV3.builder()
+                .namespace(this.namespace)
+                .userId(userId)
+                .body(updateUser)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a user
 
 ```java
-usersWrapper.adminDeleteUserInformationV3(
-    AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build()).ensureSuccess();
+usersWrapper
+    .adminDeleteUserInformationV3(
+        AdminDeleteUserInformationV3.builder().namespace(this.namespace).userId(userId).build())
+    .ensureSuccess();
 ```
 ## Leaderboard
 
@@ -852,22 +925,26 @@ final ModelsLeaderboardConfigReq createLeaderboardBody =
         .build();
 
 final ModelsLeaderboardConfigReq createLeaderboardResult =
-    leaderboardConfigWrapper.createLeaderboardConfigurationAdminV1(
-        CreateLeaderboardConfigurationAdminV1.builder()
-            .namespace(this.namespace)
-            .body(createLeaderboardBody)
-            .build()).ensureSuccess();
+    leaderboardConfigWrapper
+        .createLeaderboardConfigurationAdminV1(
+            CreateLeaderboardConfigurationAdminV1.builder()
+                .namespace(this.namespace)
+                .body(createLeaderboardBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Get a leaderboard
 
 ```java
 final ModelsGetLeaderboardConfigResp getLeaderboardResult =
-    leaderboardConfigWrapper.getLeaderboardConfigurationAdminV1(
-        GetLeaderboardConfigurationAdminV1.builder()
-            .namespace(this.namespace)
-            .leaderboardCode(leaderboardCode)
-            .build()).ensureSuccess();
+    leaderboardConfigWrapper
+        .getLeaderboardConfigurationAdminV1(
+            GetLeaderboardConfigurationAdminV1.builder()
+                .namespace(this.namespace)
+                .leaderboardCode(leaderboardCode)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update a leaderboard
@@ -882,12 +959,14 @@ final ModelsUpdateLeaderboardConfigReq updateLeaderboardBody =
         .build();
 
 final ModelsGetLeaderboardConfigResp updateLeaderboardResult =
-    leaderboardConfigWrapper.updateLeaderboardConfigurationAdminV1(
-        UpdateLeaderboardConfigurationAdminV1.builder()
-            .namespace(this.namespace)
-            .leaderboardCode(leaderboardCode)
-            .body(updateLeaderboardBody)
-            .build()).ensureSuccess();
+    leaderboardConfigWrapper
+        .updateLeaderboardConfigurationAdminV1(
+            UpdateLeaderboardConfigurationAdminV1.builder()
+                .namespace(this.namespace)
+                .leaderboardCode(leaderboardCode)
+                .body(updateLeaderboardBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a leaderboard
@@ -907,68 +986,82 @@ Source: [TestIntegrationServiceLegal.java](../all-module/src/test/java/net/accel
 
 ```java
 final List<RetrieveAcceptedAgreementResponse> agreements =
-    agreementWrapper.retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build()).ensureSuccess();
+    agreementWrapper
+        .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
+        .ensureSuccess();
 ```
 
 ### Retrieved aggreement
 
 ```java
 final List<RetrieveAcceptedAgreementResponse> retrievedAgreement =
-    agreementWrapper.retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build()).ensureSuccess();
+    agreementWrapper
+        .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
+        .ensureSuccess();
 ```
 
 ### Bulk accept versioned policy
 
 ```java
 final AcceptAgreementResponse bulkAcceptAgreement =
-agreementWrapper.bulkAcceptVersionedPolicy(BulkAcceptVersionedPolicy.builder()
-.body(bodyLegal)
-.build()).ensureSuccess();
+    agreementWrapper
+        .bulkAcceptVersionedPolicy(
+            BulkAcceptVersionedPolicy.builder().body(bodyLegal).build())
+        .ensureSuccess();
 ```
 
 ### Create policy
 
 ```java
 final CreateBasePolicyResponse createPolicy =
-baseLegalWrapper.createPolicy(CreatePolicy.builder()
-  .body(
-    CreateBasePolicyRequest.builder()
-      .basePolicyName(basePolicyName)
-      .isHidden(false)
-      .isHiddenPublic(false)
-      .namespace(this.namespace)
-      .typeId("")
-      .description(basePolicyDesc)
-      .tags(Arrays.asList(new String[] {"java", "sdk", "test"}))
-      .affectedCountries(Arrays.asList(new String[] {""}))
-      .affectedClientIds(Arrays.asList(new String[] {"ID"}))
-      .build())
-.build()).ensureSuccess();
+    baseLegalWrapper
+        .createPolicy(
+            CreatePolicy.builder()
+                .body(
+                    CreateBasePolicyRequest.builder()
+                        .basePolicyName(basePolicyName)
+                        .isHidden(false)
+                        .isHiddenPublic(false)
+                        .namespace(this.namespace)
+                        .typeId("")
+                        .description(basePolicyDesc)
+                        .tags(Arrays.asList(new String[] {"java", "sdk", "test"}))
+                        .affectedCountries(Arrays.asList(new String[] {""}))
+                        .affectedClientIds(Arrays.asList(new String[] {"ID"}))
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Create policy version
 
 ```java
 final CreatePolicyVersionResponse createPolicyVersions =
-    policyVersionsWrapper.createPolicyVersion(CreatePolicyVersion.builder()
-      .body(
-        CreatePolicyVersionRequest.builder()
-            .description(basePolicyDesc)
-            .displayVersion("1")
-            .isCommitted(false)
-        .build())
-      .policyId(createPolicy.getPolicyId())
-    .build()).ensureSuccess();
+    policyVersionsWrapper
+        .createPolicyVersion(
+            CreatePolicyVersion.builder()
+                .body(
+                    CreatePolicyVersionRequest.builder()
+                        .description(basePolicyDesc)
+                        .displayVersion("1")
+                        .isCommitted(false)
+                        .build())
+                .policyId(createPolicy.getPolicyId())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Change preference consent
 
 ```java
-agreementWrapper.changePreferenceConsent(ChangePreferenceConsent.builder()
-    .body(bodyLegal)
-    .namespace(this.namespace)
-    .userId(this.username)
-    .build()).ensureSuccess();
+agreementWrapper
+    .changePreferenceConsent(
+        ChangePreferenceConsent.builder()
+            .body(bodyLegal)
+            .namespace(this.namespace)
+            .userId(this.username)
+            .build())
+    .ensureSuccess();
 ```
 ## Lobby
 
@@ -988,8 +1081,31 @@ adminWrapper.freeFormNotification(
 
 ```java
 final AdminExportConfigV1OpResponse adminExportConfigResp =
-  configWrapper.adminExportConfigV1(
-    AdminExportConfigV1.builder().namespace(this.namespace).build());
+    configWrapper.adminExportConfigV1(
+        AdminExportConfigV1.builder().namespace(this.namespace).build());
+```
+## LoginQueue
+
+Source: [TestIntegrationServiceLoginQueue.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceLoginQueue.java)
+
+### Get configuration
+
+```java
+final ApimodelsConfigurationResponse config = wrapper.adminGetConfiguration(AdminGetConfiguration.builder()
+    .namespace(namespace)
+    .build())
+    .ensureSuccess();
+```
+
+### Update configurationF
+
+```java
+final ApimodelsConfigurationResponse configUpdate = wrapper.adminUpdateConfiguration(AdminUpdateConfiguration
+    .builder()
+    .namespace(namespace)
+    .body(ApimodelsConfigurationRequest.builder().maxLoginRate(maxLoginRate).build())
+    .build())
+    .ensureSuccess();
 ```
 ## MatchmakingV2
 
@@ -1009,8 +1125,10 @@ ruleSetsWrapper.createRuleSet(
 
 ```java
 final ApiRuleSetPayload ruleSetDetailsResult =
-    ruleSetsWrapper.ruleSetDetails(
-        RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build()).ensureSuccess();
+    ruleSetsWrapper
+        .ruleSetDetails(
+            RuleSetDetails.builder().namespace(namespace).ruleset(rulesetName).build())
+        .ensureSuccess();
 ```
 
 ### Create a match pool
@@ -1035,7 +1153,9 @@ matchPoolsWrapper.createMatchPool(
 
 ```java
 final ApiListMatchPoolsResponse matchPoolListResult =
-    matchPoolsWrapper.matchPoolList(MatchPoolList.builder().namespace(namespace).build()).ensureSuccess();
+    matchPoolsWrapper
+        .matchPoolList(MatchPoolList.builder().namespace(namespace).build())
+        .ensureSuccess();
 ```
 
 ### Match pool details
@@ -1044,22 +1164,23 @@ final ApiListMatchPoolsResponse matchPoolListResult =
 MatchPoolDetails matchPoolDetails =
     MatchPoolDetails.builder().namespace(namespace).pool(poolName).build();
 ApiMatchPool matchPool = matchPoolsWrapper.matchPoolDetails(matchPoolDetails).ensureSuccess();
-
 ```
 
 ### Player create a match ticket
 
 ```java
 final ApiMatchTicketResponse createMatchTicketResult =
-    player1MatchTicketWrapper.createMatchTicket(
-        CreateMatchTicket.builder()
-            .namespace(namespace)
-            .body(
-                ApiMatchTicketRequest.builder()
-                    .matchPool(poolName)
-                    .sessionID(partySessionId)
-                    .build())
-            .build()).ensureSuccess();
+    player1MatchTicketWrapper
+        .createMatchTicket(
+            CreateMatchTicket.builder()
+                .namespace(namespace)
+                .body(
+                    ApiMatchTicketRequest.builder()
+                        .matchPool(poolName)
+                        .sessionID(partySessionId)
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Player delete a match ticket
@@ -1073,7 +1194,10 @@ player1MatchTicketWrapper.deleteMatchTicket(
 
 ```java
 player1PartyWrapper.publicPartyLeave(
-    PublicPartyLeave.builder().namespace(namespace).partyId(publicCreatePartyResult.getId()).build());
+    PublicPartyLeave.builder()
+        .namespace(namespace)
+        .partyId(publicCreatePartyResult.getId())
+        .build());
 ```
 
 ### Delete a match pool
@@ -1094,8 +1218,9 @@ ruleSetsWrapper.deleteRuleSet(
 
 ```java
 final ApiListMatchFunctionsResponse response =
-    matchFunctionsWrapper.matchFunctionList(
-        MatchFunctionList.builder().namespace(this.namespace).build()).ensureSuccess();
+    matchFunctionsWrapper
+        .matchFunctionList(MatchFunctionList.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 ## Platform
 
@@ -1115,16 +1240,19 @@ final StoreCreate createStoreBody =
         .build();
 
 final StoreInfo createStoreResult =
-    storeWrapper.createStore(
-        CreateStore.builder().namespace(this.namespace).body(createStoreBody).build()).ensureSuccess();
+    storeWrapper
+        .createStore(
+            CreateStore.builder().namespace(this.namespace).body(createStoreBody).build())
+        .ensureSuccess();
 ```
 
 ### Get a store
 
 ```java
 final StoreInfo getStoreBody =
-    storeWrapper.getStore(
-        GetStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
+    storeWrapper
+        .getStore(GetStore.builder().namespace(this.namespace).storeId(storeId).build())
+        .ensureSuccess();
 ```
 
 ### Update a store
@@ -1134,12 +1262,14 @@ final StoreUpdate updateStoreBody =
     StoreUpdate.builder().description(storeDescriptionUpdate).build();
 
 final StoreInfo updateStoreResult =
-    storeWrapper.updateStore(
-        UpdateStore.builder()
-            .namespace(this.namespace)
-            .storeId(storeId)
-            .body(updateStoreBody)
-            .build()).ensureSuccess();
+    storeWrapper
+        .updateStore(
+            UpdateStore.builder()
+                .namespace(this.namespace)
+                .storeId(storeId)
+                .body(updateStoreBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Export a store
@@ -1148,12 +1278,14 @@ final StoreInfo updateStoreResult =
 final ExportStoreRequest exportStoreBody = ExportStoreRequest.builder().build();
 
 final InputStream exportStoreResult =
-    storeWrapper.exportStore1(
-        ExportStore1.builder()
-            .namespace(namespace)
-            .storeId(storeId)
-            .body(exportStoreBody)
-            .build()).ensureSuccess();
+    storeWrapper
+        .exportStore1(
+            ExportStore1.builder()
+                .namespace(namespace)
+                .storeId(storeId)
+                .body(exportStoreBody)
+                .build())
+        .ensureSuccess();
 java.nio.file.Files.copy(
     exportStoreResult,
     exportStoreFile.toPath(),
@@ -1165,27 +1297,32 @@ org.apache.commons.io.IOUtils.closeQuietly(exportStoreResult);
 
 ```java
 final ImportStoreResult importStoreResult =
-    storeWrapper.importStore1(
-        ImportStore1.builder()
-            .namespace(namespace)
-            .storeId(storeId)
-            .file(exportStoreFile)
-            .build()).ensureSuccess();
+    storeWrapper
+        .importStore1(
+            ImportStore1.builder()
+                .namespace(namespace)
+                .storeId(storeId)
+                .file(exportStoreFile)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a store
 
 ```java
 final StoreInfo deleteStoreResult =
-    storeWrapper.deleteStore(
-        DeleteStore.builder().namespace(this.namespace).storeId(storeId).build()).ensureSuccess();
+    storeWrapper
+        .deleteStore(DeleteStore.builder().namespace(this.namespace).storeId(storeId).build())
+        .ensureSuccess();
 ```
 
 ### Export rewards
 
 ```java
 final InputStream exportRewardsResult =
-    rewardWrapper.exportRewards(ExportRewards.builder().namespace(namespace).build()).ensureSuccess();
+    rewardWrapper
+        .exportRewards(ExportRewards.builder().namespace(namespace).build())
+        .ensureSuccess();
 java.nio.file.Files.copy(
     exportRewardsResult,
     exportRewardFile.toPath(),
@@ -1196,11 +1333,14 @@ org.apache.commons.io.IOUtils.closeQuietly(exportRewardsResult);
 ### Import rewards
 
 ```java
-rewardWrapper.importRewards(ImportRewards.builder()
-    .namespace(this.namespace)
-    .file(exportRewardFile)
-    .replaceExisting(false)
-    .build()).ensureSuccess();
+rewardWrapper
+    .importRewards(
+        ImportRewards.builder()
+            .namespace(this.namespace)
+            .file(exportRewardFile)
+            .replaceExisting(false)
+            .build())
+    .ensureSuccess();
 ```
 ## Reporting
 
@@ -1210,41 +1350,47 @@ Source: [TestIntegrationServiceReporting.java](../all-module/src/test/java/net/a
 
 ```java
 final RestapiAdminReasonResponse createReasonResponse =
-    adminReasonsWrapper.createReason(
-        CreateReason.builder()
-            .namespace(namespace)
-            .body(
-                RestapiCreateReasonRequest.builder()
-                    .title(reasonTitle)
-                    .description(reasonDescription)
-                    .build())
-            .build()).ensureSuccess();
+    adminReasonsWrapper
+        .createReason(
+            CreateReason.builder()
+                .namespace(namespace)
+                .body(
+                    RestapiCreateReasonRequest.builder()
+                        .title(reasonTitle)
+                        .description(reasonDescription)
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Get a list of reasons
 
 ```java
 final RestapiPublicReasonListResponse publicGetReasonResponse =
-    wrapper.publicGetReasons(
-        PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build()).ensureSuccess();
+    wrapper
+        .publicGetReasons(
+            PublicGetReasons.builder().namespace(namespace).title(reasonTitle).build())
+        .ensureSuccess();
 ```
 
 ### Submit a report
 
 ```java
 final RestapiSubmitReportResponse submitReportResponse =
-    publicReportsWrapper.submitReport(
-        SubmitReport.builder()
-            .namespace(namespace)
-            .body(
-                RestapiSubmitReportRequest.builder()
-                    .categoryFromEnum(Category.UGC)
-                    .reason(reasonTitle)
-                    .userId(player2UserId)
-                    .objectId(UUID.randomUUID().toString().replace("-", ""))
-                    .objectType(UUID.randomUUID().toString().replace("-", ""))
-                    .build())
-            .build()).ensureSuccess();
+    publicReportsWrapper
+        .submitReport(
+            SubmitReport.builder()
+                .namespace(namespace)
+                .body(
+                    RestapiSubmitReportRequest.builder()
+                        .categoryFromEnum(Category.UGC)
+                        .reason(reasonTitle)
+                        .userId(player2UserId)
+                        .objectId(UUID.randomUUID().toString().replace("-", ""))
+                        .objectType(UUID.randomUUID().toString().replace("-", ""))
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a reason
@@ -1261,8 +1407,9 @@ Source: [TestIntegrationServiceSeasonPass.java](../all-module/src/test/java/net/
 
 ```java
 final List<StoreInfo> storeListResp =
-    platformStoreWrapper.listStores(ListStores.builder().namespace(this.namespace).build()).ensureSuccess();
-
+    platformStoreWrapper
+        .listStores(ListStores.builder().namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Create store
@@ -1277,9 +1424,10 @@ final StoreCreate storeCreate =
         .build();
 
 selectedStore =
-    platformStoreWrapper.createStore(
-        CreateStore.builder().body(storeCreate).namespace(this.namespace).build()).ensureSuccess();
-
+    platformStoreWrapper
+        .createStore(
+            CreateStore.builder().body(storeCreate).namespace(this.namespace).build())
+        .ensureSuccess();
 ```
 
 ### Create category
@@ -1341,12 +1489,14 @@ final ItemCreate createItemBody =
         .build();
 
 final FullItemInfo createItemResult =
-    platformItemWrapper.createItem(
-        CreateItem.builder()
-            .namespace(this.namespace)
-            .storeId(selectedStore.getStoreId())
-            .body(createItemBody)
-            .build()).ensureSuccess();
+    platformItemWrapper
+        .createItem(
+            CreateItem.builder()
+                .namespace(this.namespace)
+                .storeId(selectedStore.getStoreId())
+                .body(createItemBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Create season
@@ -1382,19 +1532,23 @@ final SeasonCreate createSeasonBody =
         .build();
 
 final SeasonInfo createSeasonResult =
-    seasonWrapper.createSeason(
-        CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build()).ensureSuccess();
+    seasonWrapper
+        .createSeason(
+            CreateSeason.builder().namespace(this.namespace).body(createSeasonBody).build())
+        .ensureSuccess();
 ```
 
 ### Get Season
 
 ```java
 final SeasonInfo getSeasonResult =
-    seasonWrapper.getSeason(
-        GetSeason.builder()
-            .namespace(this.namespace)
-            .seasonId(createSeasonResult.getId())
-            .build()).ensureSuccess();
+    seasonWrapper
+        .getSeason(
+            GetSeason.builder()
+                .namespace(this.namespace)
+                .seasonId(createSeasonResult.getId())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update season
@@ -1403,12 +1557,14 @@ final SeasonInfo getSeasonResult =
 final SeasonUpdate updateSeasonBody = SeasonUpdate.builder().name(seasonNameUpdated).build();
 
 final SeasonInfo updateSeasonResult =
-    seasonWrapper.updateSeason(
-        UpdateSeason.builder()
-            .namespace(this.namespace)
-            .seasonId(createSeasonResult.getId())
-            .body(updateSeasonBody)
-            .build()).ensureSuccess();
+    seasonWrapper
+        .updateSeason(
+            UpdateSeason.builder()
+                .namespace(this.namespace)
+                .seasonId(createSeasonResult.getId())
+                .body(updateSeasonBody)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete Sseason
@@ -1431,7 +1587,9 @@ final AdminQueryGameSessionDetail adminQueryGameSessionDetail =
     AdminQueryGameSessionDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
 
 ApimodelsGameSessionDetailQueryResponse gameSessionHistoryResp =
-    gameSessionDetailWrapper.adminQueryGameSessionDetail(adminQueryGameSessionDetail).ensureSuccess();
+    gameSessionDetailWrapper
+        .adminQueryGameSessionDetail(adminQueryGameSessionDetail)
+        .ensureSuccess();
 assertNotNull(gameSessionHistoryResp);
 ```
 
@@ -1442,7 +1600,9 @@ final AdminQueryMatchmakingDetail adminQueryMatchmakingDetail =
     AdminQueryMatchmakingDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
 
 ApimodelsMatchmakingDetailQueryResponse matchMakingHistoryResp =
-    gameSessionDetailWrapper.adminQueryMatchmakingDetail(adminQueryMatchmakingDetail).ensureSuccess();
+    gameSessionDetailWrapper
+        .adminQueryMatchmakingDetail(adminQueryMatchmakingDetail)
+        .ensureSuccess();
 assertNotNull(matchMakingHistoryResp);
 ```
 
@@ -1461,11 +1621,14 @@ assertNotNull(adminQueryPartyDetailResp);
 
 ```java
 ApimodelsXRayMatchMatchmakingQueryResponse queryTotalMatchmakingMatchResp =
-    xRayWrapper.queryTotalMatchmakingMatch(QueryTotalMatchmakingMatch.builder()
-      .namespace(this.namespace)
-      .endDate(endDate)
-      .startDate(startDate)
-    .build()).ensureSuccess();
+    xRayWrapper
+        .queryTotalMatchmakingMatch(
+            QueryTotalMatchmakingMatch.builder()
+                .namespace(this.namespace)
+                .endDate(endDate)
+                .startDate(startDate)
+                .build())
+        .ensureSuccess();
 assertNotNull(queryTotalMatchmakingMatchResp);
 ```
 ## Session
@@ -1497,29 +1660,33 @@ configurationTemplateWrapper.adminCreateConfigurationTemplateV1(
 
 ```java
 final ApimodelsConfigurationTemplateResponse adminGetConfigurationTemplateResult =
-    configurationTemplateWrapper.adminGetConfigurationTemplateV1(
-        AdminGetConfigurationTemplateV1.builder()
-            .name(cfgTemplateName)
-            .namespace(namespace)
-            .build()).ensureSuccess();
+    configurationTemplateWrapper
+        .adminGetConfigurationTemplateV1(
+            AdminGetConfigurationTemplateV1.builder()
+                .name(cfgTemplateName)
+                .namespace(namespace)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update session configuration template
 
 ```java
 final ApimodelsConfigurationTemplateResponse adminUpdateConfigurationTemplateResult =
-    configurationTemplateWrapper.adminUpdateConfigurationTemplateV1(
-        AdminUpdateConfigurationTemplateV1.builder()
-            .name(cfgTemplateName)
-            .namespace(namespace)
-            .body(
-                ApimodelsUpdateConfigurationTemplateRequest.builder()
-                    .name(cfgTemplateName)
-                    .type("P2P")
-                    .joinability("OPEN")
-                    .maxPlayers(4)
-                    .build())
-            .build()).ensureSuccess();
+    configurationTemplateWrapper
+        .adminUpdateConfigurationTemplateV1(
+            AdminUpdateConfigurationTemplateV1.builder()
+                .name(cfgTemplateName)
+                .namespace(namespace)
+                .body(
+                    ApimodelsUpdateConfigurationTemplateRequest.builder()
+                        .name(cfgTemplateName)
+                        .type("P2P")
+                        .joinability("OPEN")
+                        .maxPlayers(4)
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete session configuration template
@@ -1536,22 +1703,26 @@ configurationTemplateWrapper.adminDeleteConfigurationTemplateV1(
 
 ```java
 final ApimodelsGameSessionResponse createGameSessionResult =
-    player1GameSessionWrapper.createGameSession(
-        CreateGameSession.builder()
-            .namespace(namespace)
-            .body(
-                ApimodelsCreateGameSessionRequest.builder()
-                    .configurationName(cfgTemplateName)
-                    .build())
-            .build()).ensureSuccess();
+    player1GameSessionWrapper
+        .createGameSession(
+            CreateGameSession.builder()
+                .namespace(namespace)
+                .body(
+                    ApimodelsCreateGameSessionRequest.builder()
+                        .configurationName(cfgTemplateName)
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Join a game session
 
 ```java
 final ApimodelsGameSessionResponse joinGameSessionResult =
-    player2GameSessionWrapper.joinGameSession(
-        JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build()).ensureSuccess();
+    player2GameSessionWrapper
+        .joinGameSession(
+            JoinGameSession.builder().namespace(namespace).sessionId(gameSessionId).build())
+        .ensureSuccess();
 
 assertNotNull(joinGameSessionResult);
 ```
@@ -1560,11 +1731,13 @@ assertNotNull(joinGameSessionResult);
 
 ```java
 final ApimodelsGameSessionResponse getGameSessionResult =
-    gameSessionWrapper.getGameSession(
-        net.accelbyte.sdk.api.session.operations.game_session.GetGameSession.builder()
-            .namespace(namespace)
-            .sessionId(gameSessionId)
-            .build()).ensureSuccess();
+    gameSessionWrapper
+        .getGameSession(
+            net.accelbyte.sdk.api.session.operations.game_session.GetGameSession.builder()
+                .namespace(namespace)
+                .sessionId(gameSessionId)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Leave game session
@@ -1585,47 +1758,55 @@ player1GameSessionWrapper.deleteGameSession(
 
 ```java
 final ApimodelsGameSessionQueryResponse publicQueryGameSessionsResult =
-    gameSessionWrapper.publicQueryGameSessionsByAttributes(
-        PublicQueryGameSessionsByAttributes.builder()
-            .namespace(namespace)
-            .body(Collections.emptyMap())
-            .build()).ensureSuccess();
+    gameSessionWrapper
+        .publicQueryGameSessionsByAttributes(
+            PublicQueryGameSessionsByAttributes.builder()
+                .namespace(namespace)
+                .body(Collections.emptyMap())
+                .build())
+        .ensureSuccess();
 ```
 
 ### User create a party
 
 ```java
 final ApimodelsPartySessionResponse publicCreatePartyResult =
-    player1PartyWrapper.publicCreateParty(
-        net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
-            .namespace(namespace)
-            .body(
-                ApimodelsCreatePartyRequest.builder()
-                    .configurationName(cfgTemplateName)
-                    .members(
-                        Collections.singletonList(
-                            ApimodelsRequestMember.builder().id(player1UserId).build()))
-                    .build())
-            .build()).ensureSuccess();
+    player1PartyWrapper
+        .publicCreateParty(
+            net.accelbyte.sdk.api.session.operations.party.PublicCreateParty.builder()
+                .namespace(namespace)
+                .body(
+                    ApimodelsCreatePartyRequest.builder()
+                        .configurationName(cfgTemplateName)
+                        .members(
+                            Collections.singletonList(
+                                ApimodelsRequestMember.builder().id(player1UserId).build()))
+                        .build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### User join a party with code
 
 ```java
 final ApimodelsPartySessionResponse publicPartyJoinCodeResult =
-    player2PartyWrapper.publicPartyJoinCode(
-        PublicPartyJoinCode.builder()
-            .namespace(namespace)
-            .body(ApimodelsJoinByCodeRequest.builder().code(joinCode).build())
-            .build()).ensureSuccess();
+    player2PartyWrapper
+        .publicPartyJoinCode(
+            PublicPartyJoinCode.builder()
+                .namespace(namespace)
+                .body(ApimodelsJoinByCodeRequest.builder().code(joinCode).build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Get party detail
 
 ```java
 final ApimodelsPartySessionResponse publicGetPartyResult1 =
-    partyWrapper.publicGetParty(
-        PublicGetParty.builder().namespace(namespace).partyId(partyId).build()).ensureSuccess();
+    partyWrapper
+        .publicGetParty(
+            PublicGetParty.builder().namespace(namespace).partyId(partyId).build())
+        .ensureSuccess();
 ```
 
 ### User leave a party
@@ -1669,16 +1850,18 @@ final StatCreate createStatBody =
         .build();
 
 final StatInfo createStatResult =
-    statConfigWrapper.createStat(
-        CreateStat.builder().namespace(this.namespace).body(createStatBody).build()).ensureSuccess();
+    statConfigWrapper
+        .createStat(CreateStat.builder().namespace(this.namespace).body(createStatBody).build())
+        .ensureSuccess();
 ```
 
 ### Get a statistic
 
 ```java
 final StatInfo getStatResult =
-    statConfigWrapper.getStat(
-        GetStat.builder().namespace(this.namespace).statCode(statCode).build()).ensureSuccess();
+    statConfigWrapper
+        .getStat(GetStat.builder().namespace(this.namespace).statCode(statCode).build())
+        .ensureSuccess();
 
 assertNotNull(getStatResult);
 assertEquals(statName, getStatResult.getName());
@@ -1688,8 +1871,9 @@ assertEquals(statName, getStatResult.getName());
 
 ```java
 final StatInfo getStatResult =
-    statConfigWrapper.getStat(
-        GetStat.builder().namespace(this.namespace).statCode(statCode).build()).ensureSuccess();
+    statConfigWrapper
+        .getStat(GetStat.builder().namespace(this.namespace).statCode(statCode).build())
+        .ensureSuccess();
 
 assertNotNull(getStatResult);
 assertEquals(statName, getStatResult.getName());
@@ -1701,19 +1885,23 @@ assertEquals(statName, getStatResult.getName());
 final StatUpdate updateStat = StatUpdate.builder().description(statDescriptionUpdated).build();
 
 final StatInfo updateStatResult =
-    statConfigWrapper.updateStat(
-        UpdateStat.builder()
-            .namespace(this.namespace)
-            .statCode(statCode)
-            .body(updateStat)
-            .build()).ensureSuccess();
+    statConfigWrapper
+        .updateStat(
+            UpdateStat.builder()
+                .namespace(this.namespace)
+                .statCode(statCode)
+                .body(updateStat)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Export statistics
 
 ```java
 final InputStream exportStatsResult =
-    statConfigWrapper.exportStats(ExportStats.builder().namespace(namespace).build()).ensureSuccess();
+    statConfigWrapper
+        .exportStats(ExportStats.builder().namespace(namespace).build())
+        .ensureSuccess();
 java.nio.file.Files.copy(
     exportStatsResult,
     exportStatsFile.toPath(),
@@ -1725,23 +1913,23 @@ org.apache.commons.io.IOUtils.closeQuietly(exportStatsResult);
 
 ```java
 final StatImportInfo importStatsResult =
-    statConfigWrapper.importStats(ImportStats.builder()
-        .namespace(this.namespace)
-        .replaceExisting(false)
-        .file(exportStatsFile)
-    .build()).ensureSuccess();
-  
+    statConfigWrapper
+        .importStats(
+            ImportStats.builder()
+                .namespace(this.namespace)
+                .replaceExisting(false)
+                .file(exportStatsFile)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Query statistics
 
 ```java
 final StatPagingSlicedResult queryStatsResult =
-    statConfigWrapper.queryStats(QueryStats.builder()
-        .namespace(this.namespace)
-        .keyword(statCode)
-    .build()).ensureSuccess();
-  
+    statConfigWrapper
+        .queryStats(QueryStats.builder().namespace(this.namespace).keyword(statCode).build())
+        .ensureSuccess();
 ```
 
 ### Delete a statistic
@@ -1766,27 +1954,31 @@ userStatisticWrapper.createUserStatItem(
 
 ```java
 final UserStatItemPagingSlicedResult getUserStatItemsResult =
-    userStatisticWrapper.getUserStatItems(
-        GetUserStatItems.builder()
-            .namespace(this.namespace)
-            .userId(userId)
-            .statCodes(statCode)
-            .offset(0)
-            .limit(10)
-            .build()).ensureSuccess();
+    userStatisticWrapper
+        .getUserStatItems(
+            GetUserStatItems.builder()
+                .namespace(this.namespace)
+                .userId(userId)
+                .statCodes(statCode)
+                .offset(0)
+                .limit(10)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Update user stat item value
 
 ```java
 final StatItemIncResult incUserStatItemValueResult =
-    userStatisticWrapper.incUserStatItemValue(
-        IncUserStatItemValue.builder()
-            .namespace(this.namespace)
-            .userId(userId)
-            .statCode(statCode)
-            .body(StatItemInc.builder().inc(5f).build())
-            .build()).ensureSuccess();
+    userStatisticWrapper
+        .incUserStatItemValue(
+            IncUserStatItemValue.builder()
+                .namespace(this.namespace)
+                .userId(userId)
+                .statCode(statCode)
+                .body(StatItemInc.builder().inc(5f).build())
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete user stat item
@@ -1810,16 +2002,20 @@ final ModelsCreateTagRequest createTagBody =
     ModelsCreateTagRequest.builder().tag(tagName).build();
 
 final ModelsCreateTagResponse createTagResult =
-    adminTagWrapper.adminCreateTag(
-        AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build()).ensureSuccess();
+    adminTagWrapper
+        .adminCreateTag(
+            AdminCreateTag.builder().namespace(this.namespace).body(createTagBody).build())
+        .ensureSuccess();
 ```
 
 ### Get tags
 
 ```java
 final ModelsPaginatedGetTagResponse getTagResult =
-    adminTagWrapper.adminGetTag(
-        AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build()).ensureSuccess();
+    adminTagWrapper
+        .adminGetTag(
+            AdminGetTag.builder().namespace(this.namespace).offset(0).limit(10).build())
+        .ensureSuccess();
 ```
 
 ### Update a tag
@@ -1829,12 +2025,14 @@ final ModelsCreateTagRequest updateTag =
     ModelsCreateTagRequest.builder().tag(tagNameUpdate).build();
 
 final ModelsCreateTagResponse updateTagResult =
-    adminTagWrapper.adminUpdateTag(
-        AdminUpdateTag.builder()
-            .namespace(this.namespace)
-            .tagId(tagId)
-            .body(updateTag)
-            .build()).ensureSuccess();
+    adminTagWrapper
+        .adminUpdateTag(
+            AdminUpdateTag.builder()
+                .namespace(this.namespace)
+                .tagId(tagId)
+                .body(updateTag)
+                .build())
+        .ensureSuccess();
 ```
 
 ### Delete a tag
