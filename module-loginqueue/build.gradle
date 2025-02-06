@@ -1,6 +1,6 @@
 version = '0.1.0'
 
 dependencies {
-    api project(':module-iam')
+    api project(':module-common')
 }
 
