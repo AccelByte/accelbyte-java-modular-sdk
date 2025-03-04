@@ -487,6 +487,37 @@ public class AccelByteSDK implements RequestRunner {
     return sdkConfiguration.getHttpClient().sendRequest(operation, baseUrl, headers);
   }
 
+  public boolean loginClient() {
+    try {
+      final OAuth20 oAuth20 = new OAuth20(this);
+
+      final Instant utcNow = Instant.now();
+      final TokenGrantV3 tokenGrantV3 =
+          TokenGrantV3.builder()
+              .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
+              .build();
+      final OauthmodelTokenWithDeviceCookieResponseV3 token =
+          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
+
+      final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
+      tokenRepository.storeToken(token.getAccessToken());
+      if (tokenRepository instanceof TokenRefreshV2) {
+        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
+        final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
+        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
+        tokenRefresh.storeRefreshToken(null);
+        tokenRefresh.setRefreshTokenExpiresAt(null);
+        scheduleRefreshTokenTask(expiresIn);
+      }
+
+      return true;
+    } catch (Exception e) {
+      log.warning(e.getMessage());
+    }
+    return false;
+  }
+
+
   public boolean loginUser(String username, String password) {
     return loginUser(username, password, DEFAULT_LOGIN_USER_SCOPE);
   }
@@ -565,36 +596,6 @@ public class AccelByteSDK implements RequestRunner {
         tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
         tokenRefresh.storeRefreshToken(token.getRefreshToken());
         tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
-        scheduleRefreshTokenTask(expiresIn);
-      }
-
-      return true;
-    } catch (Exception e) {
-      log.warning(e.getMessage());
-    }
-    return false;
-  }
-
-  public boolean loginClient() {
-    try {
-      final OAuth20 oAuth20 = new OAuth20(this);
-
-      final Instant utcNow = Instant.now();
-      final TokenGrantV3 tokenGrantV3 =
-          TokenGrantV3.builder()
-              .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
-              .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token =
-          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
-
-      final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
-      tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefreshV2) {
-        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-        final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
-        tokenRefresh.storeRefreshToken(null);
-        tokenRefresh.setRefreshTokenExpiresAt(null);
         scheduleRefreshTokenTask(expiresIn);
       }
 
