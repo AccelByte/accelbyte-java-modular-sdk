@@ -518,6 +518,20 @@ public class Item {
   }
 
   /**
+   * @see QueryItemReferences
+   */
+  public QueryItemReferencesOpResponse queryItemReferences(QueryItemReferences input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see ReturnItem
    */
   public ReturnItemOpResponse returnItem(ReturnItem input) throws Exception {

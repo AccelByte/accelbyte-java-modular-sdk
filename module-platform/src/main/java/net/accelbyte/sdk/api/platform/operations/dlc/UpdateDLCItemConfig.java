@@ -97,6 +97,10 @@ public class UpdateDLCItemConfig extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError400(new ErrorEntity().createFromJson(json));
       response.setError(response.getError400().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new ErrorEntity().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
     } else if (code == 409) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError409(new ErrorEntity().createFromJson(json));

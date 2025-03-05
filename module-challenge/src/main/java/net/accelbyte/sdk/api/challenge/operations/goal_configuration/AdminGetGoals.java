@@ -43,6 +43,7 @@ public class AdminGetGoals extends Operation {
   private Integer limit;
   private Integer offset;
   private String sortBy;
+  private List<String> tags;
 
   /**
    * @param challengeCode required
@@ -57,12 +58,14 @@ public class AdminGetGoals extends Operation {
       String namespace,
       Integer limit,
       Integer offset,
-      String sortBy) {
+      String sortBy,
+      List<String> tags) {
     this.challengeCode = challengeCode;
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
     this.sortBy = sortBy;
+    this.tags = tags;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -87,6 +90,13 @@ public class AdminGetGoals extends Operation {
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
     queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
+    queryParams.put(
+        "tags",
+        this.tags == null
+            ? null
+            : this.tags.stream()
+                .map(i -> String.valueOf(i))
+                .collect(java.util.stream.Collectors.toList()));
     return queryParams;
   }
 
@@ -152,6 +162,7 @@ public class AdminGetGoals extends Operation {
     result.put("limit", "None");
     result.put("offset", "None");
     result.put("sortBy", "None");
+    result.put("tags", "csv");
     return result;
   }
 

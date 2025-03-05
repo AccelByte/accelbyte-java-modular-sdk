@@ -56,77 +56,77 @@ touch "tmp.dat"
 #- 2 GetServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager getServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName 'eyBBHw9M' \
-    --logType '58UaY3GU' \
-    --offset '2' \
-    --origin 'INX3FJoo' \
+    --podName '1pZwY6ih' \
+    --logType 'cRXbhlPC' \
+    --offset '23' \
+    --origin 'zcPRphCQ' \
     > test.out 2>&1
 eval_tap $? 2 'GetServerLogs' test.out
 
 #- 3 ListTerminatedServers
 ./ng net.accelbyte.sdk.cli.Main dslogmanager listTerminatedServers \
     --namespace "$AB_NAMESPACE" \
-    --deployment 'P3ywef4j' \
-    --endDate 'VcpVtKCm' \
-    --gameMode 'f5uFEqrs' \
-    --limit '89' \
-    --next 'an1CHh2V' \
-    --partyId 'McLu5g9d' \
-    --podName 'tYsCpy2h' \
-    --previous '4N7Ssp5K' \
-    --provider 'ljRzPLim' \
-    --region 'VeoIz9m3' \
-    --sessionId '3WPLmL0D' \
-    --source '2YqrOv7Y' \
-    --startDate 'MKeDVJ5N' \
-    --status '3TqafBl5' \
-    --userId 'ngHHcrAI' \
+    --deployment 'xzrK3ukx' \
+    --endDate 'FfQHIj4K' \
+    --gameMode 'Oc1DBepo' \
+    --limit '3' \
+    --next 'qdLdMBn5' \
+    --partyId 'mecgh9b9' \
+    --podName 'ZDekSNV1' \
+    --previous 'VExQNOPr' \
+    --provider 'hB3FxufB' \
+    --region 'dH2kys4k' \
+    --sessionId 'isSnHdB4' \
+    --source 'dBTyaSj0' \
+    --startDate '2heHwedz' \
+    --status 'QWTdVaqH' \
+    --userId 'faw4iRrn' \
     > test.out 2>&1
 eval_tap $? 3 'ListTerminatedServers' test.out
 
 #- 4 DownloadServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager downloadServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName 'wnYAgXpd' \
+    --podName 'JEBy0plw' \
     > test.out 2>&1
 eval_tap $? 4 'DownloadServerLogs' test.out
 
 #- 5 CheckServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager checkServerLogs \
     --namespace "$AB_NAMESPACE" \
-    --podName '7xrJSXuf' \
+    --podName '8nWlsG6U' \
     > test.out 2>&1
 eval_tap $? 5 'CheckServerLogs' test.out
 
 #- 6 BatchDownloadServerLogs
 ./ng net.accelbyte.sdk.cli.Main dslogmanager batchDownloadServerLogs \
-    --body '{"Downloads": [{"alloc_id": "NCdNGoRg", "namespace": "rJ8UFt4N", "pod_name": "SorAkRp5"}, {"alloc_id": "TMAoYbnk", "namespace": "B7SwDkAH", "pod_name": "zzs5RacQ"}, {"alloc_id": "JJNX6zQd", "namespace": "2R7fxx2y", "pod_name": "naX28WPh"}]}' \
+    --body '{"Downloads": [{"alloc_id": "z020vYhH", "namespace": "sEpVDKj0", "pod_name": "oKaDPTKk"}, {"alloc_id": "ZpMocOJ8", "namespace": "Y9xgxYO6", "pod_name": "8XaS6JCX"}, {"alloc_id": "RFSXBOk9", "namespace": "sFZeALHb", "pod_name": "G371TSFE"}]}' \
     > test.out 2>&1
 eval_tap $? 6 'BatchDownloadServerLogs' test.out
 
 #- 7 ListMetadataServers
 ./ng net.accelbyte.sdk.cli.Main dslogmanager listMetadataServers \
-    --body '{"pod_names": ["eCmitEmZ", "qjK6ZLRS", "eHi5H95i"]}' \
+    --body '{"pod_names": ["CmAWbdeS", "URGDv7Yo", "43XiqqX8"]}' \
     > test.out 2>&1
 eval_tap $? 7 'ListMetadataServers' test.out
 
 #- 8 ListAllTerminatedServers
 ./ng net.accelbyte.sdk.cli.Main dslogmanager listAllTerminatedServers \
-    --deployment 'JjxxE9Oc' \
-    --endDate 'fdA4SHjM' \
-    --gameMode 'wgaejiaF' \
-    --limit '97' \
+    --deployment 'BpaC37nh' \
+    --endDate 'E3IuNYJo' \
+    --gameMode 'J3pCSqFh' \
+    --limit '81' \
     --namespace "$AB_NAMESPACE" \
-    --next '8Lwu7YU8' \
-    --partyId '2DcjMswp' \
-    --podName 'RNkmf61C' \
-    --previous 'CzOzAZQD' \
-    --provider 'fdeiMxn4' \
-    --region 'Bed3CKpx' \
-    --sessionId 'iHMGc03A' \
-    --startDate 'MNVeI88H' \
-    --status '881wErLy' \
-    --userId 'urxyE7L5' \
+    --next 'x1ODl8FL' \
+    --partyId 'J0e6gAHb' \
+    --podName 'QP15qzrJ' \
+    --previous 'MMEoVLTg' \
+    --provider 'nfhQHfsm' \
+    --region 'bLP7h1J3' \
+    --sessionId 'BwjZFY8R' \
+    --startDate 'hfe4DIAa' \
+    --status 'oKRGHich' \
+    --userId 'TJ8txSC9' \
     > test.out 2>&1
 eval_tap $? 8 'ListAllTerminatedServers' test.out
 

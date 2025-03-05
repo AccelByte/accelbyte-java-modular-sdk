@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.ams.models;
+package net.accelbyte.sdk.api.iam.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,27 +23,32 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class TimeZoneTrans extends Model {
+public class AccountcommonTagResponse extends Model {
 
-  @JsonProperty("index")
-  private Integer index;
+  @JsonProperty("createdAt")
+  private String createdAt;
 
-  @JsonProperty("isstd")
-  private Boolean isstd;
+  @JsonProperty("id")
+  private String id;
 
-  @JsonProperty("isutc")
-  private Boolean isutc;
+  @JsonProperty("namespace")
+  private String namespace;
 
-  @JsonProperty("when")
-  private Long when;
+  @JsonProperty("tagName")
+  private String tagName;
+
+  @JsonProperty("updatedAt")
+  private String updatedAt;
 
   @JsonIgnore
-  public TimeZoneTrans createFromJson(String json) throws JsonProcessingException {
+  public AccountcommonTagResponse createFromJson(String json) throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<TimeZoneTrans> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<TimeZoneTrans>>() {});
+  public List<AccountcommonTagResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<AccountcommonTagResponse>>() {});
   }
 }

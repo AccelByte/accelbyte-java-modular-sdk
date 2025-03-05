@@ -148,6 +148,18 @@ public class PlatformErrors {
       new ApiError(
           "30383",
           "Item app id [{appId}] already exists in namespace [{namespace}] item [{itemId}]");
+  public static ApiError error30386 =
+      new ApiError(
+          "30386",
+          "The item [{itemId}] is currently associated and cannot be deleted in namespace"
+              + " [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID"
+              + " {referenceId} are using this item ID");
+  public static ApiError error30387 =
+      new ApiError(
+          "30387",
+          "The item [{itemId}] is currently associated and cannot be disabled in namespace"
+              + " [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID"
+              + " {referenceId} are using this item ID");
   public static ApiError error30541 =
       new ApiError("30541", "Item type config [{id}] doesn't exist");
   public static ApiError error30641 =
@@ -474,6 +486,8 @@ public class PlatformErrors {
           "39150",
           "Third Party User Subscription [{id}] not found for user [{userId}] in the namespace"
               + " [{namespace}]..");
+  public static ApiError error39151 =
+      new ApiError("39151", "IAP order no [{iapOrderNo}] not found in namespace [{namespace}].");
   public static ApiError error39171 =
       new ApiError(
           "39171",
@@ -494,6 +508,20 @@ public class PlatformErrors {
               + " [{expected}] but was [{actual}]");
   public static ApiError error39175 =
       new ApiError("39175", "Duplicate IAP item mapping, IAPType: [{iapType}] and id: [{iapId}]");
+  public static ApiError error39183 =
+      new ApiError(
+          "39183",
+          "Steam transaction [{orderId}] is still pending or failed, status [{status}], please try"
+              + " it later");
+  public static ApiError error39184 =
+      new ApiError(
+          "39184",
+          "Steam api exception with error code [{errorCode}] and error message [{message}]");
+  public static ApiError error39185 =
+      new ApiError(
+          "39185",
+          "This endpoint only works on sync mode [{workSyncMode}], but current steam iap config"
+              + " sync mode is [{currentSyncMode}] under namespace [{namespace}]");
   public static ApiError error39221 =
       new ApiError("39221", "Invalid Xbox Business Partner Certificate or password: [{message}]");
   public static ApiError error39244 = new ApiError("39244", "Steam config does not exist");
@@ -508,6 +536,9 @@ public class PlatformErrors {
       new ApiError("39442", "DLC item config cannot be found in namespace [{namespace}]");
   public static ApiError error39471 =
       new ApiError("39471", "Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] ");
+  public static ApiError error39621 =
+      new ApiError(
+          "39621", "Steam api common exception with status code [statusCode] details: [details]");
   public static ApiError error40121 =
       new ApiError("40121", "Item type [{itemType}] does not support");
   public static ApiError error40122 =

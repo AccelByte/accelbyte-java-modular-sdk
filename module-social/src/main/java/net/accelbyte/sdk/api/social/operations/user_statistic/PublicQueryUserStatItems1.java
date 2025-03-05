@@ -8,8 +8,6 @@
 
 package net.accelbyte.sdk.api.social.operations.user_statistic;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
@@ -24,16 +22,13 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * publicQueryUserStatItems_1
  *
- * <p>Public list all statItems of user. NOTE: * If stat code does not exist, will ignore this stat
- * code. * If stat item does not exist, will return default value Other detail info: * Returns :
- * stat items
+ * <p>Public list all statItems by pagination. Other detail info: * Returns : stat items
  */
 @Getter
 @Setter
 public class PublicQueryUserStatItems1 extends Operation {
   /** generated field's value */
-  private String path =
-      "/social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk";
+  private String path = "/social/v1/public/namespaces/{namespace}/users/{userId}/statitems";
 
   private String method = "GET";
   private List<String> consumes = Arrays.asList();
@@ -44,9 +39,11 @@ public class PublicQueryUserStatItems1 extends Operation {
   private String namespace;
 
   private String userId;
-  private String additionalKey;
-  private List<String> statCodes;
-  private List<String> tags;
+  private Integer limit;
+  private Integer offset;
+  private String sortBy;
+  private String statCodes;
+  private String tags;
 
   /**
    * @param namespace required
@@ -59,12 +56,16 @@ public class PublicQueryUserStatItems1 extends Operation {
       String customBasePath,
       String namespace,
       String userId,
-      String additionalKey,
-      List<String> statCodes,
-      List<String> tags) {
+      Integer limit,
+      Integer offset,
+      String sortBy,
+      String statCodes,
+      String tags) {
     this.namespace = namespace;
     this.userId = userId;
-    this.additionalKey = additionalKey;
+    this.limit = limit;
+    this.offset = offset;
+    this.sortBy = sortBy;
     this.statCodes = statCodes;
     this.tags = tags;
     super.customBasePath = customBasePath != null ? customBasePath : "";
@@ -87,22 +88,12 @@ public class PublicQueryUserStatItems1 extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put(
-        "additionalKey", this.additionalKey == null ? null : Arrays.asList(this.additionalKey));
-    queryParams.put(
-        "statCodes",
-        this.statCodes == null
-            ? null
-            : this.statCodes.stream()
-                .map(i -> String.valueOf(i))
-                .collect(java.util.stream.Collectors.toList()));
-    queryParams.put(
-        "tags",
-        this.tags == null
-            ? null
-            : this.tags.stream()
-                .map(i -> String.valueOf(i))
-                .collect(java.util.stream.Collectors.toList()));
+        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put("sortBy", this.sortBy == null ? null : Arrays.asList(this.sortBy));
+    queryParams.put("statCodes", this.statCodes == null ? null : Arrays.asList(this.statCodes));
+    queryParams.put("tags", this.tags == null ? null : Arrays.asList(this.tags));
     return queryParams;
   }
 
@@ -128,15 +119,8 @@ public class PublicQueryUserStatItems1 extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-
+      response.setData(new UserStatItemPagingSlicedResult().createFromJson(json));
       response.setSuccess(true);
-      response.setData(
-          new ObjectMapper()
-              .readValue(json, new TypeReference<List<ADTOObjectForUserStatItemValue>>() {}));
-    } else if (code == 400) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError400(new ErrorEntity().createFromJson(json));
-      response.setError(response.getError400().translateToApiError());
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError401(new ErrorEntity().createFromJson(json));
@@ -145,10 +129,6 @@ public class PublicQueryUserStatItems1 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new ErrorEntity().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
-    } else if (code == 404) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError404(new ErrorEntity().createFromJson(json));
-      response.setError(response.getError404().translateToApiError());
     } else if (code == 422) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError422(new ValidationErrorEntity().createFromJson(json));
@@ -163,22 +143,24 @@ public class PublicQueryUserStatItems1 extends Operation {
   }
 
   /*
-  public List<ADTOObjectForUserStatItemValue> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public UserStatItemPagingSlicedResult parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new ObjectMapper().readValue(json, new TypeReference<List<ADTOObjectForUserStatItemValue>>() {});
+      return new UserStatItemPagingSlicedResult().createFromJson(json);
   }
   */
 
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
-    result.put("additionalKey", "None");
-    result.put("statCodes", "multi");
-    result.put("tags", "multi");
+    result.put("limit", "None");
+    result.put("offset", "None");
+    result.put("sortBy", "None");
+    result.put("statCodes", "None");
+    result.put("tags", "None");
     return result;
   }
 }

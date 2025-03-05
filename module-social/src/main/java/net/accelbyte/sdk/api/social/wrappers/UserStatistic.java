@@ -327,10 +327,10 @@ public class UserStatistic {
   }
 
   /**
-   * @see PublicQueryUserStatItems
+   * @see PublicQueryUserStatItems1
    */
-  public PublicQueryUserStatItemsOpResponse publicQueryUserStatItems(PublicQueryUserStatItems input)
-      throws Exception {
+  public PublicQueryUserStatItems1OpResponse publicQueryUserStatItems1(
+      PublicQueryUserStatItems1 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -355,10 +355,10 @@ public class UserStatistic {
   }
 
   /**
-   * @see PublicQueryUserStatItems1
+   * @see PublicQueryUserStatItems
    */
-  public PublicQueryUserStatItems1OpResponse publicQueryUserStatItems1(
-      PublicQueryUserStatItems1 input) throws Exception {
+  public PublicQueryUserStatItemsOpResponse publicQueryUserStatItems(PublicQueryUserStatItems input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

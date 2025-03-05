@@ -367,6 +367,14 @@
 | `/iam/v3/admin/namespaces/{namespace}/roleoverride/status` | PATCH | AdminChangeRoleOverrideConfigStatusV3 | [AdminChangeRoleOverrideConfigStatusV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/override_role_config_v3/AdminChangeRoleOverrideConfigStatusV3.java) | [AdminChangeRoleOverrideConfigStatusV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/override_role_config_v3/AdminChangeRoleOverrideConfigStatusV3.java) |
 | `/iam/v3/admin/namespaces/{namespace}/roleoverride/{roleId}/permissions` | GET | AdminGetRoleNamespacePermissionV3 | [AdminGetRoleNamespacePermissionV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/override_role_config_v3/AdminGetRoleNamespacePermissionV3.java) | [AdminGetRoleNamespacePermissionV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/override_role_config_v3/AdminGetRoleNamespacePermissionV3.java) |
 
+### Account Idenfifier Tag Wrapper:  [AccountIdenfifierTag](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/wrappers/AccountIdenfifierTag.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/iam/v3/admin/namespaces/{namespace}/tags` | GET | AdminQueryTagV3 | [AdminQueryTagV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/account_idenfifier_tag/AdminQueryTagV3.java) | [AdminQueryTagV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/account_idenfifier_tag/AdminQueryTagV3.java) |
+| `/iam/v3/admin/namespaces/{namespace}/tags` | POST | AdminCreateTagV3 | [AdminCreateTagV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/account_idenfifier_tag/AdminCreateTagV3.java) | [AdminCreateTagV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/account_idenfifier_tag/AdminCreateTagV3.java) |
+| `/iam/v3/admin/namespaces/{namespace}/tags/{tagId}` | PUT | AdminUpdateTagV3 | [AdminUpdateTagV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/account_idenfifier_tag/AdminUpdateTagV3.java) | [AdminUpdateTagV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/account_idenfifier_tag/AdminUpdateTagV3.java) |
+| `/iam/v3/admin/namespaces/{namespace}/tags/{tagId}` | DELETE | AdminDeleteTagV3 | [AdminDeleteTagV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/operations/account_idenfifier_tag/AdminDeleteTagV3.java) | [AdminDeleteTagV3](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/iam/account_idenfifier_tag/AdminDeleteTagV3.java) |
+
 ### OAuth2.0 - Extension Wrapper:  [OAuth20Extension](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/wrappers/OAuth20Extension.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -594,6 +602,8 @@
 | `accountcommon.SimpleUserPlatformInfoV3` | [AccountcommonSimpleUserPlatformInfoV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonSimpleUserPlatformInfoV3.java) |
 | `accountcommon.SsoConfig` | [AccountcommonSsoConfig](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonSsoConfig.java) |
 | `accountcommon.SsoConfigPatchReq` | [AccountcommonSsoConfigPatchReq](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonSsoConfigPatchReq.java) |
+| `accountcommon.TagResponse` | [AccountcommonTagResponse](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonTagResponse.java) |
+| `accountcommon.TagsGetResponseV3` | [AccountcommonTagsGetResponseV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonTagsGetResponseV3.java) |
 | `accountcommon.UserInformationV3` | [AccountcommonUserInformationV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonUserInformationV3.java) |
 | `accountcommon.UserLinkedPlatform` | [AccountcommonUserLinkedPlatform](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonUserLinkedPlatform.java) |
 | `accountcommon.UserLinkedPlatformV3` | [AccountcommonUserLinkedPlatformV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/AccountcommonUserLinkedPlatformV3.java) |
@@ -773,6 +783,8 @@
 | `model.SendVerificationLinkRequest` | [ModelSendVerificationLinkRequest](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelSendVerificationLinkRequest.java) |
 | `model.SimpleProfileUpdateStrategyConfigs` | [ModelSimpleProfileUpdateStrategyConfigs](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelSimpleProfileUpdateStrategyConfigs.java) |
 | `model.SimpleUserBan` | [ModelSimpleUserBan](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelSimpleUserBan.java) |
+| `model.TagCreateRequestV3` | [ModelTagCreateRequestV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelTagCreateRequestV3.java) |
+| `model.TagUpdateRequestV3` | [ModelTagUpdateRequestV3](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelTagUpdateRequestV3.java) |
 | `model.ThirdPartyLoginPlatformCredentialRequest` | [ModelThirdPartyLoginPlatformCredentialRequest](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelThirdPartyLoginPlatformCredentialRequest.java) |
 | `model.ThirdPartyLoginPlatformCredentialResponse` | [ModelThirdPartyLoginPlatformCredentialResponse](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelThirdPartyLoginPlatformCredentialResponse.java) |
 | `model.TokenThirdPartyLinkStatusResponse` | [ModelTokenThirdPartyLinkStatusResponse](../../module-iam/src/main/java/net/accelbyte/sdk/api/iam/models/ModelTokenThirdPartyLinkStatusResponse.java) |

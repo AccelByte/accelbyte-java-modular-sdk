@@ -15,6 +15,7 @@ import lombok.Setter;
 import net.accelbyte.sdk.api.social.models.*;
 import net.accelbyte.sdk.core.ApiResponseWithData;
 
+@Deprecated
 @Getter
 @Setter
 public class PublicUpdateProfileOpResponse extends ApiResponseWithData<GameProfileInfo> {

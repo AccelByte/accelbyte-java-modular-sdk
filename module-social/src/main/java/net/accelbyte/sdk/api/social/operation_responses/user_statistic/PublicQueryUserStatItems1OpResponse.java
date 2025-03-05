@@ -18,15 +18,11 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Getter
 @Setter
 public class PublicQueryUserStatItems1OpResponse
-    extends ApiResponseWithData<List<ADTOObjectForUserStatItemValue>> {
-
-  private ErrorEntity error400 = null;
+    extends ApiResponseWithData<UserStatItemPagingSlicedResult> {
 
   private ErrorEntity error401 = null;
 
   private ErrorEntity error403 = null;
-
-  private ErrorEntity error404 = null;
 
   private ValidationErrorEntity error422 = null;
 

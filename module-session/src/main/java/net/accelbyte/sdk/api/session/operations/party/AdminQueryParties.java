@@ -38,6 +38,7 @@ public class AdminQueryParties extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private String fromTime;
   private String isSoftDeleted;
   private String joinability;
   private String key;
@@ -49,6 +50,7 @@ public class AdminQueryParties extends Operation {
   private String order;
   private String orderBy;
   private String partyID;
+  private String toTime;
   private String value;
 
   /**
@@ -60,6 +62,7 @@ public class AdminQueryParties extends Operation {
   public AdminQueryParties(
       String customBasePath,
       String namespace,
+      String fromTime,
       String isSoftDeleted,
       String joinability,
       String key,
@@ -71,8 +74,10 @@ public class AdminQueryParties extends Operation {
       String order,
       String orderBy,
       String partyID,
+      String toTime,
       String value) {
     this.namespace = namespace;
+    this.fromTime = fromTime;
     this.isSoftDeleted = isSoftDeleted;
     this.joinability = joinability;
     this.key = key;
@@ -84,6 +89,7 @@ public class AdminQueryParties extends Operation {
     this.order = order;
     this.orderBy = orderBy;
     this.partyID = partyID;
+    this.toTime = toTime;
     this.value = value;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -102,6 +108,7 @@ public class AdminQueryParties extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("fromTime", this.fromTime == null ? null : Arrays.asList(this.fromTime));
     queryParams.put(
         "isSoftDeleted", this.isSoftDeleted == null ? null : Arrays.asList(this.isSoftDeleted));
     queryParams.put(
@@ -117,6 +124,7 @@ public class AdminQueryParties extends Operation {
     queryParams.put("order", this.order == null ? null : Arrays.asList(this.order));
     queryParams.put("orderBy", this.orderBy == null ? null : Arrays.asList(this.orderBy));
     queryParams.put("partyID", this.partyID == null ? null : Arrays.asList(this.partyID));
+    queryParams.put("toTime", this.toTime == null ? null : Arrays.asList(this.toTime));
     queryParams.put("value", this.value == null ? null : Arrays.asList(this.value));
     return queryParams;
   }
@@ -173,6 +181,7 @@ public class AdminQueryParties extends Operation {
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
+    result.put("fromTime", "None");
     result.put("isSoftDeleted", "None");
     result.put("joinability", "None");
     result.put("key", "None");
@@ -184,6 +193,7 @@ public class AdminQueryParties extends Operation {
     result.put("order", "None");
     result.put("orderBy", "None");
     result.put("partyID", "None");
+    result.put("toTime", "None");
     result.put("value", "None");
     return result;
   }

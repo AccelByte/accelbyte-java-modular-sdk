@@ -30,6 +30,7 @@
 ### Backfill Wrapper:  [Backfill](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/wrappers/Backfill.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
+| `/match2/v1/namespaces/{namespace}/backfill` | GET | AdminQueryBackfill | [AdminQueryBackfill](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/backfill/AdminQueryBackfill.java) | [AdminQueryBackfill](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/backfill/AdminQueryBackfill.java) |
 | `/match2/v1/namespaces/{namespace}/backfill` | POST | CreateBackfill | [CreateBackfill](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/backfill/CreateBackfill.java) | [CreateBackfill](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/backfill/CreateBackfill.java) |
 | `/match2/v1/namespaces/{namespace}/backfill/proposal` | GET | GetBackfillProposal | [GetBackfillProposal](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/backfill/GetBackfillProposal.java) | [GetBackfillProposal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/backfill/GetBackfillProposal.java) |
 | `/match2/v1/namespaces/{namespace}/backfill/{backfillID}` | GET | GetBackfill | [GetBackfill](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/backfill/GetBackfill.java) | [GetBackfill](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/backfill/GetBackfill.java) |
@@ -89,6 +90,7 @@
 | `api.BackfillGetResponse` | [ApiBackfillGetResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiBackfillGetResponse.java) |
 | `api.BackfillProposalResponse` | [ApiBackfillProposalResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiBackfillProposalResponse.java) |
 | `api.ExternalFailureMetricRecord` | [ApiExternalFailureMetricRecord](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiExternalFailureMetricRecord.java) |
+| `api.ListBackfillQueryResponse` | [ApiListBackfillQueryResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiListBackfillQueryResponse.java) |
 | `api.ListEnvironmentVariablesResponse` | [ApiListEnvironmentVariablesResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiListEnvironmentVariablesResponse.java) |
 | `api.ListMatchFunctionsResponse` | [ApiListMatchFunctionsResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiListMatchFunctionsResponse.java) |
 | `api.ListMatchPoolTicketsResponse` | [ApiListMatchPoolTicketsResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ApiListMatchPoolTicketsResponse.java) |

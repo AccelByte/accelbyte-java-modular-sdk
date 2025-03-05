@@ -34,6 +34,33 @@ public class Config {
   }
 
   /**
+   * @see AdminGetEnvConfig
+   */
+  public AdminGetEnvConfigOpResponse adminGetEnvConfig(AdminGetEnvConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminPatchUpdateEnvConfig
+   */
+  public AdminPatchUpdateEnvConfigOpResponse adminPatchUpdateEnvConfig(
+      AdminPatchUpdateEnvConfig input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminGetLogConfig
    */
   public AdminGetLogConfigOpResponse adminGetLogConfig(AdminGetLogConfig input) throws Exception {

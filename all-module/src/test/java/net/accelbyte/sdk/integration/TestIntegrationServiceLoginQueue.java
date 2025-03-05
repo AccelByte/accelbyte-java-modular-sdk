@@ -31,16 +31,16 @@ public class TestIntegrationServiceLoginQueue extends TestIntegration {
     if (isUsingAGSStarter()) {
       return; // SKIP
     }
-    
+
     final AdminV1 wrapper = new AdminV1(sdk);
     final int maxLoginRate = 100;
 
     // CASE Get configuration
 
-    final ApimodelsConfigurationResponse config = wrapper.adminGetConfiguration(AdminGetConfiguration.builder()
-        .namespace(namespace)
-        .build())
-        .ensureSuccess();
+    final ApimodelsConfigurationResponse config =
+        wrapper
+            .adminGetConfiguration(AdminGetConfiguration.builder().namespace(namespace).build())
+            .ensureSuccess();
 
     // ESAC
 
@@ -48,12 +48,15 @@ public class TestIntegrationServiceLoginQueue extends TestIntegration {
 
     // CASE Update configurationF
 
-    final ApimodelsConfigurationResponse configUpdate = wrapper.adminUpdateConfiguration(AdminUpdateConfiguration
-        .builder()
-        .namespace(namespace)
-        .body(ApimodelsConfigurationRequest.builder().maxLoginRate(maxLoginRate).build())
-        .build())
-        .ensureSuccess();
+    final ApimodelsConfigurationResponse configUpdate =
+        wrapper
+            .adminUpdateConfiguration(
+                AdminUpdateConfiguration.builder()
+                    .namespace(namespace)
+                    .body(
+                        ApimodelsConfigurationRequest.builder().maxLoginRate(maxLoginRate).build())
+                    .build())
+            .ensureSuccess();
 
     // ESAC
 

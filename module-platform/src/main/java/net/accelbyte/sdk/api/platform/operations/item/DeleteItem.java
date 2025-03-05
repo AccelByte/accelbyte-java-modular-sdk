@@ -43,6 +43,7 @@ public class DeleteItem extends Operation {
   private String itemId;
 
   private String namespace;
+  private List<String> featuresToCheck;
   private Boolean force;
   private String storeId;
 
@@ -54,9 +55,15 @@ public class DeleteItem extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public DeleteItem(
-      String customBasePath, String itemId, String namespace, Boolean force, String storeId) {
+      String customBasePath,
+      String itemId,
+      String namespace,
+      List<String> featuresToCheck,
+      Boolean force,
+      String storeId) {
     this.itemId = itemId;
     this.namespace = namespace;
+    this.featuresToCheck = featuresToCheck;
     this.force = force;
     this.storeId = storeId;
     super.customBasePath = customBasePath != null ? customBasePath : "";
@@ -79,6 +86,13 @@ public class DeleteItem extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "featuresToCheck",
+        this.featuresToCheck == null
+            ? null
+            : this.featuresToCheck.stream()
+                .map(i -> String.valueOf(i))
+                .collect(java.util.stream.Collectors.toList()));
     queryParams.put("force", this.force == null ? null : Arrays.asList(String.valueOf(this.force)));
     queryParams.put("storeId", this.storeId == null ? null : Arrays.asList(this.storeId));
     return queryParams;
@@ -108,6 +122,10 @@ public class DeleteItem extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError404(new ErrorEntity().createFromJson(json));
       response.setError(response.getError404().translateToApiError());
+    } else if (code == 409) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError409(new ErrorEntity().createFromJson(json));
+      response.setError(response.getError409().translateToApiError());
     }
 
     return response;
@@ -125,8 +143,45 @@ public class DeleteItem extends Operation {
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
+    result.put("featuresToCheck", "multi");
     result.put("force", "None");
     result.put("storeId", "None");
     return result;
+  }
+
+  public enum FeaturesToCheck {
+    CAMPAIGN("CAMPAIGN"),
+    CATALOG("CATALOG"),
+    DLC("DLC"),
+    ENTITLEMENT("ENTITLEMENT"),
+    IAP("IAP"),
+    REWARD("REWARD");
+
+    private String value;
+
+    FeaturesToCheck(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return this.value;
+    }
+  }
+
+  public static class DeleteItemBuilder {
+    private List<String> featuresToCheck;
+
+    public DeleteItemBuilder featuresToCheck(final List<String> featuresToCheck) {
+      this.featuresToCheck = featuresToCheck;
+      return this;
+    }
+
+    public DeleteItemBuilder featuresToCheckFromEnum(final List<FeaturesToCheck> featuresToCheck) {
+      ArrayList<String> en = new ArrayList<String>();
+      for (FeaturesToCheck e : featuresToCheck) en.add(e.toString());
+      this.featuresToCheck = en;
+      return this;
+    }
   }
 }

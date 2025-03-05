@@ -21,6 +21,8 @@ public class DeleteItemOpResponse extends ApiResponse {
 
   private ErrorEntity error404 = null;
 
+  private ErrorEntity error409 = null;
+
   public String getFullOperationId() {
     return "net.accelbyte.sdk.api.platform.operations.item.DeleteItem";
   }

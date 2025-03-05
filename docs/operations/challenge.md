@@ -20,6 +20,11 @@
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied` | DELETE | AdminDeleteTiedChallenge | [AdminDeleteTiedChallenge](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_configuration/AdminDeleteTiedChallenge.java) | [AdminDeleteTiedChallenge](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_configuration/AdminDeleteTiedChallenge.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied/schedule` | PUT | AdminUpdateTiedChallengeSchedule | [AdminUpdateTiedChallengeSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_configuration/AdminUpdateTiedChallengeSchedule.java) | [AdminUpdateTiedChallengeSchedule](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_configuration/AdminUpdateTiedChallengeSchedule.java) |
 
+### Utilities Wrapper:  [Utilities](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/Utilities.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/challenge/v1/admin/namespaces/{namespace}/challenges/item/references` | GET | AdminGetItemReferences | [AdminGetItemReferences](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/utilities/AdminGetItemReferences.java) | [AdminGetItemReferences](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/utilities/AdminGetItemReferences.java) |
+
 ### Goal Configuration Wrapper:  [GoalConfiguration](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/GoalConfiguration.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -80,6 +85,7 @@
 |---|---|
 | `iam.ErrorResponse` | [IamErrorResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/IamErrorResponse.java) |
 | `iam.Permission` | [IamPermission](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/IamPermission.java) |
+| `model.ChallengeReference` | [ModelChallengeReference](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeReference.java) |
 | `model.ChallengeResponse` | [ModelChallengeResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeResponse.java) |
 | `model.ClaimUserRewardsByGoalCodeRequest` | [ModelClaimUserRewardsByGoalCodeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUserRewardsByGoalCodeRequest.java) |
 | `model.ClaimUserRewardsReq` | [ModelClaimUserRewardsReq](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUserRewardsReq.java) |
@@ -97,6 +103,8 @@
 | `model.GoalResponse` | [ModelGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalResponse.java) |
 | `model.GoalSchedule` | [ModelGoalSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalSchedule.java) |
 | `model.GoalScheduleRequest` | [ModelGoalScheduleRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalScheduleRequest.java) |
+| `model.ItemReference` | [ModelItemReference](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelItemReference.java) |
+| `model.ItemReferenceResponse` | [ModelItemReferenceResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelItemReferenceResponse.java) |
 | `model.ListChallengeResponse` | [ModelListChallengeResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListChallengeResponse.java) |
 | `model.ListPeriodsResponse` | [ModelListPeriodsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListPeriodsResponse.java) |
 | `model.ListScheduleByGoalResponse` | [ModelListScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListScheduleByGoalResponse.java) |

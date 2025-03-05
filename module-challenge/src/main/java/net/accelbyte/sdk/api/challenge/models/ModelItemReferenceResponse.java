@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.ams.models;
+package net.accelbyte.sdk.api.challenge.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,24 +23,20 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class ApiTime extends Model {
+public class ModelItemReferenceResponse extends Model {
 
-  @JsonProperty("ext")
-  private Long ext;
-
-  @JsonProperty("loc")
-  private TimeLocation loc;
-
-  @JsonProperty("wall")
-  private Integer wall;
+  @JsonProperty("references")
+  private List<ModelItemReference> references;
 
   @JsonIgnore
-  public ApiTime createFromJson(String json) throws JsonProcessingException {
+  public ModelItemReferenceResponse createFromJson(String json) throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<ApiTime> createFromJsonList(String json) throws JsonProcessingException {
-    return new ObjectMapper().readValue(json, new TypeReference<List<ApiTime>>() {});
+  public List<ModelItemReferenceResponse> createFromJsonList(String json)
+      throws JsonProcessingException {
+    return new ObjectMapper()
+        .readValue(json, new TypeReference<List<ModelItemReferenceResponse>>() {});
   }
 }

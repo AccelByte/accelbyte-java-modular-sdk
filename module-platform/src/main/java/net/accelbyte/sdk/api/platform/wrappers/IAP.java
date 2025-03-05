@@ -477,6 +477,76 @@ public class IAP {
   }
 
   /**
+   * @see QueryAbnormalTransactions
+   */
+  public QueryAbnormalTransactionsOpResponse queryAbnormalTransactions(
+      QueryAbnormalTransactions input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetSteamJobInfo
+   */
+  public AdminGetSteamJobInfoOpResponse adminGetSteamJobInfo(AdminGetSteamJobInfo input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminResetSteamJobTime
+   */
+  public AdminResetSteamJobTimeOpResponse adminResetSteamJobTime(AdminResetSteamJobTime input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminRefundIAPOrder
+   */
+  public AdminRefundIAPOrderOpResponse adminRefundIAPOrder(AdminRefundIAPOrder input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see QuerySteamReportHistories
+   */
+  public QuerySteamReportHistoriesOpResponse querySteamReportHistories(
+      QuerySteamReportHistories input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see GetIAPOrderConsumeDetails
    */
   public GetIAPOrderConsumeDetailsOpResponse getIAPOrderConsumeDetails(
@@ -537,6 +607,48 @@ public class IAP {
    */
   public MockFulfillIAPItemOpResponse mockFulfillIAPItem(MockFulfillIAPItem input)
       throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminGetIAPOrderLineItems
+   */
+  public AdminGetIAPOrderLineItemsOpResponse adminGetIAPOrderLineItems(
+      AdminGetIAPOrderLineItems input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminSyncSteamAbnormalTransaction
+   */
+  public AdminSyncSteamAbnormalTransactionOpResponse adminSyncSteamAbnormalTransaction(
+      AdminSyncSteamAbnormalTransaction input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminSyncSteamIAPByTransaction
+   */
+  public AdminSyncSteamIAPByTransactionOpResponse adminSyncSteamIAPByTransaction(
+      AdminSyncSteamIAPByTransaction input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -677,6 +789,34 @@ public class IAP {
    */
   public SyncSteamInventoryOpResponse syncSteamInventory(SyncSteamInventory input)
       throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see SyncSteamAbnormalTransaction
+   */
+  public SyncSteamAbnormalTransactionOpResponse syncSteamAbnormalTransaction(
+      SyncSteamAbnormalTransaction input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see SyncSteamIAPByTransaction
+   */
+  public SyncSteamIAPByTransactionOpResponse syncSteamIAPByTransaction(
+      SyncSteamIAPByTransaction input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

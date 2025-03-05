@@ -21,6 +21,8 @@ public class UpdateDLCItemConfigOpResponse extends ApiResponseWithData<DLCItemCo
 
   private ErrorEntity error400 = null;
 
+  private ErrorEntity error404 = null;
+
   private ErrorEntity error409 = null;
 
   private ValidationErrorEntity error422 = null;

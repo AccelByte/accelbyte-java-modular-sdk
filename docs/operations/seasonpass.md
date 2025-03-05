@@ -38,6 +38,11 @@
 | `/seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data` | GET | PublicGetCurrentUserSeason | [PublicGetCurrentUserSeason](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublicGetCurrentUserSeason.java) | [PublicGetCurrentUserSeason](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/seasonpass/season/PublicGetCurrentUserSeason.java) |
 | `/seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data` | GET | PublicGetUserSeason | [PublicGetUserSeason](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/season/PublicGetUserSeason.java) | [PublicGetUserSeason](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/seasonpass/season/PublicGetUserSeason.java) |
 
+### Utilities Wrapper:  [Utilities](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Utilities.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/seasonpass/admin/namespaces/{namespace}/seasons/item/references` | GET | GetItemReferences | [GetItemReferences](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/operations/utilities/GetItemReferences.java) | [GetItemReferences](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/seasonpass/utilities/GetItemReferences.java) |
+
 ### Pass Wrapper:  [Pass](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/wrappers/Pass.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -87,6 +92,8 @@
 | `FieldValidationError` | [FieldValidationError](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/FieldValidationError.java) |
 | `FullSeasonInfo` | [FullSeasonInfo](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/FullSeasonInfo.java) |
 | `Image` | [Image](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/Image.java) |
+| `ItemReference` | [ItemReference](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ItemReference.java) |
+| `ItemReferenceInfo` | [ItemReferenceInfo](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ItemReferenceInfo.java) |
 | `ListSeasonInfo` | [ListSeasonInfo](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListSeasonInfo.java) |
 | `ListSeasonInfoPagingSlicedResult` | [ListSeasonInfoPagingSlicedResult](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListSeasonInfoPagingSlicedResult.java) |
 | `ListUserSeasonInfo` | [ListUserSeasonInfo](../../module-seasonpass/src/main/java/net/accelbyte/sdk/api/seasonpass/models/ListUserSeasonInfo.java) |
