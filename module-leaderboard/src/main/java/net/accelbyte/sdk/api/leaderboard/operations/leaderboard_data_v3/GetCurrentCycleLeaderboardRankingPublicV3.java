@@ -43,6 +43,7 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
   private String namespace;
   private Integer limit;
   private Integer offset;
+  private Integer previousVersion;
 
   /**
    * @param cycleId required
@@ -58,12 +59,14 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
       String leaderboardCode,
       String namespace,
       Integer limit,
-      Integer offset) {
+      Integer offset,
+      Integer previousVersion) {
     this.cycleId = cycleId;
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
     this.limit = limit;
     this.offset = offset;
+    this.previousVersion = previousVersion;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -90,6 +93,9 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put(
+        "previousVersion",
+        this.previousVersion == null ? null : Arrays.asList(String.valueOf(this.previousVersion)));
     return queryParams;
   }
 
@@ -154,6 +160,7 @@ public class GetCurrentCycleLeaderboardRankingPublicV3 extends Operation {
     Map<String, String> result = new HashMap<>();
     result.put("limit", "None");
     result.put("offset", "None");
+    result.put("previousVersion", "None");
     return result;
   }
 }

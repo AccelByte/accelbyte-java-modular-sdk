@@ -55,6 +55,8 @@ public class PublicGetCurrentSeason extends Operation {
     this.namespace = namespace;
     this.language = language;
     super.customBasePath = customBasePath != null ? customBasePath : "";
+
+    securities.add("Bearer");
   }
 
   @Override
@@ -98,6 +100,10 @@ public class PublicGetCurrentSeason extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError400(new ErrorEntity().createFromJson(json));
       response.setError(response.getError400().translateToApiError());
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new ErrorEntity().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
     } else if (code == 404) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError404(new ErrorEntity().createFromJson(json));

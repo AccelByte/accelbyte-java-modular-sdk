@@ -23,6 +23,8 @@ public class MatchPoolDetailsOpResponse extends ApiResponseWithData<ApiMatchPool
 
   private ResponseError error403 = null;
 
+  private ResponseError error404 = null;
+
   private ResponseError error500 = null;
 
   public String getFullOperationId() {

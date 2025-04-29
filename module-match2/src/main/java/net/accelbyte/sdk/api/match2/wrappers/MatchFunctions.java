@@ -61,6 +61,19 @@ public class MatchFunctions {
   }
 
   /**
+   * @see MatchFunctionGet
+   */
+  public MatchFunctionGetOpResponse matchFunctionGet(MatchFunctionGet input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see UpdateMatchFunction
    */
   public UpdateMatchFunctionOpResponse updateMatchFunction(UpdateMatchFunction input)

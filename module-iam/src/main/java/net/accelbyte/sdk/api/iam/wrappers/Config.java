@@ -48,6 +48,20 @@ public class Config {
   }
 
   /**
+   * @see PublicGetSystemConfigV3
+   */
+  public PublicGetSystemConfigV3OpResponse publicGetSystemConfigV3(PublicGetSystemConfigV3 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicGetConfigValueV3
    */
   public PublicGetConfigValueV3OpResponse publicGetConfigValueV3(PublicGetConfigValueV3 input)

@@ -8,6 +8,7 @@
 
 package net.accelbyte.sdk.api.achievement.wrappers;
 
+import java.util.*;
 import net.accelbyte.sdk.api.achievement.models.*;
 import net.accelbyte.sdk.api.achievement.operation_responses.user_achievements.*;
 import net.accelbyte.sdk.api.achievement.operations.user_achievements.*;
@@ -38,6 +39,20 @@ public class UserAchievements {
    */
   public AdminListUserAchievementsOpResponse adminListUserAchievements(
       AdminListUserAchievements input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminBulkUnlockAchievement
+   */
+  public AdminBulkUnlockAchievementOpResponse adminBulkUnlockAchievement(
+      AdminBulkUnlockAchievement input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -80,6 +95,20 @@ public class UserAchievements {
    */
   public PublicListUserAchievementsOpResponse publicListUserAchievements(
       PublicListUserAchievements input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicBulkUnlockAchievement
+   */
+  public PublicBulkUnlockAchievementOpResponse publicBulkUnlockAchievement(
+      PublicBulkUnlockAchievement input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

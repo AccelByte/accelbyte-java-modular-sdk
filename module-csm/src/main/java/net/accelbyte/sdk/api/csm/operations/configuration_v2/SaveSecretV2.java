@@ -24,10 +24,10 @@ import net.accelbyte.sdk.core.util.Helper;
  *
  * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
  *
- * <p>Save an environment secret. Request body: - configName : environment secret name - Required. -
- * source : source of the configuration value (plaintext or ssm) - Required. - value : configuration
- * value - Required. - description : description of the configuration - Optional. - applyMask : mask
- * the value in the Helm manifest for sensitive information (true or false) - Optional.
+ * <p>Save an environment secret. Secret will always be masked. Request body: - configName :
+ * environment secret name - Required. - source : source of the configuration value (plaintext or
+ * ssm) - Required. - value : configuration value - Required. - description : description of the
+ * configuration - Optional.
  */
 @Getter
 @Setter
@@ -44,7 +44,7 @@ public class SaveSecretV2 extends Operation {
   private String app;
 
   private String namespace;
-  private ApimodelSaveConfigurationV2Request body;
+  private ApimodelSaveSecretConfigurationV2Request body;
 
   /**
    * @param app required
@@ -58,7 +58,7 @@ public class SaveSecretV2 extends Operation {
       String customBasePath,
       String app,
       String namespace,
-      ApimodelSaveConfigurationV2Request body) {
+      ApimodelSaveSecretConfigurationV2Request body) {
     this.app = app;
     this.namespace = namespace;
     this.body = body;
@@ -80,7 +80,7 @@ public class SaveSecretV2 extends Operation {
   }
 
   @Override
-  public ApimodelSaveConfigurationV2Request getBodyParams() {
+  public ApimodelSaveSecretConfigurationV2Request getBodyParams() {
     return this.body;
   }
 

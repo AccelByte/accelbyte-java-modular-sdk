@@ -21,6 +21,8 @@ public class PublicGetCurrentSeasonOpResponse extends ApiResponseWithData<Locali
 
   private ErrorEntity error400 = null;
 
+  private ErrorEntity error401 = null;
+
   private ErrorEntity error404 = null;
 
   public String getFullOperationId() {

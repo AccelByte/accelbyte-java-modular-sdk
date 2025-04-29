@@ -39,7 +39,7 @@ public class AdminListUserIDByUserIDsV3 extends Operation {
   /** fields as input parameter */
   private String namespace;
 
-  private ModelUserIDsRequest body;
+  private ModelAdminBulkUserRequest body;
 
   /**
    * @param namespace required
@@ -49,7 +49,7 @@ public class AdminListUserIDByUserIDsV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminListUserIDByUserIDsV3(
-      String customBasePath, String namespace, ModelUserIDsRequest body) {
+      String customBasePath, String namespace, ModelAdminBulkUserRequest body) {
     this.namespace = namespace;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
@@ -67,7 +67,7 @@ public class AdminListUserIDByUserIDsV3 extends Operation {
   }
 
   @Override
-  public ModelUserIDsRequest getBodyParams() {
+  public ModelAdminBulkUserRequest getBodyParams() {
     return this.body;
   }
 

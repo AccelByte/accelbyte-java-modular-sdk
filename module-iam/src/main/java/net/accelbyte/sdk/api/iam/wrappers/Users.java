@@ -1212,6 +1212,20 @@ public class Users {
   }
 
   /**
+   * @see AdminCursorGetUserV3
+   */
+  public AdminCursorGetUserV3OpResponse adminCursorGetUserV3(AdminCursorGetUserV3 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminInviteUserV3
    */
   public AdminInviteUserV3OpResponse adminInviteUserV3(AdminInviteUserV3 input) throws Exception {
@@ -2473,6 +2487,20 @@ public class Users {
    */
   public PublicValidateUserByUserIDAndPasswordV3OpResponse publicValidateUserByUserIDAndPasswordV3(
       PublicValidateUserByUserIDAndPasswordV3 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicForgotPasswordWithoutNamespaceV3
+   */
+  public PublicForgotPasswordWithoutNamespaceV3OpResponse publicForgotPasswordWithoutNamespaceV3(
+      PublicForgotPasswordWithoutNamespaceV3 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

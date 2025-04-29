@@ -42,6 +42,8 @@ public class QueryXrayTimelineByUserID extends Operation {
   private String userId;
   private Integer limit;
   private Integer offset;
+  private String order;
+  private String orderBy;
   private String endDate;
   private String startDate;
 
@@ -60,12 +62,16 @@ public class QueryXrayTimelineByUserID extends Operation {
       String userId,
       Integer limit,
       Integer offset,
+      String order,
+      String orderBy,
       String endDate,
       String startDate) {
     this.namespace = namespace;
     this.userId = userId;
     this.limit = limit;
     this.offset = offset;
+    this.order = order;
+    this.orderBy = orderBy;
     this.endDate = endDate;
     this.startDate = startDate;
     super.customBasePath = customBasePath != null ? customBasePath : "";
@@ -91,6 +97,8 @@ public class QueryXrayTimelineByUserID extends Operation {
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put("order", this.order == null ? null : Arrays.asList(this.order));
+    queryParams.put("orderBy", this.orderBy == null ? null : Arrays.asList(this.orderBy));
     queryParams.put("endDate", this.endDate == null ? null : Arrays.asList(this.endDate));
     queryParams.put("startDate", this.startDate == null ? null : Arrays.asList(this.startDate));
     return queryParams;
@@ -167,6 +175,8 @@ public class QueryXrayTimelineByUserID extends Operation {
     Map<String, String> result = new HashMap<>();
     result.put("limit", "None");
     result.put("offset", "None");
+    result.put("order", "None");
+    result.put("orderBy", "None");
     result.put("endDate", "None");
     result.put("startDate", "None");
     return result;

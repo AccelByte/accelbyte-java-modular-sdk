@@ -20,6 +20,8 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 public class GetUserLeaderboardRankingsAdminV3OpResponse
     extends ApiResponseWithData<ModelsGetAllUserLeaderboardsRespV3> {
 
+  private ResponseErrorResponse error400 = null;
+
   private ResponseErrorResponse error401 = null;
 
   private ResponseErrorResponse error403 = null;

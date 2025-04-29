@@ -23,6 +23,8 @@ public class PublicUnlockAchievementOpResponse extends ApiResponse {
 
   private ResponseError error401 = null;
 
+  private ResponseError error404 = null;
+
   private ResponseError error422 = null;
 
   private ResponseError error500 = null;

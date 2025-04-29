@@ -41,6 +41,7 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
   private String userId;
   private Integer limit;
   private Integer offset;
+  private Integer previousVersion;
 
   /**
    * @param namespace required
@@ -50,11 +51,17 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetUserLeaderboardRankingsAdminV3(
-      String customBasePath, String namespace, String userId, Integer limit, Integer offset) {
+      String customBasePath,
+      String namespace,
+      String userId,
+      Integer limit,
+      Integer offset,
+      Integer previousVersion) {
     this.namespace = namespace;
     this.userId = userId;
     this.limit = limit;
     this.offset = offset;
+    this.previousVersion = previousVersion;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -78,6 +85,9 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
+    queryParams.put(
+        "previousVersion",
+        this.previousVersion == null ? null : Arrays.asList(String.valueOf(this.previousVersion)));
     return queryParams;
   }
 
@@ -106,6 +116,10 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setData(new ModelsGetAllUserLeaderboardsRespV3().createFromJson(json));
       response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError401(new ResponseErrorResponse().createFromJson(json));
@@ -139,6 +153,7 @@ public class GetUserLeaderboardRankingsAdminV3 extends Operation {
     Map<String, String> result = new HashMap<>();
     result.put("limit", "None");
     result.put("offset", "None");
+    result.put("previousVersion", "None");
     return result;
   }
 }

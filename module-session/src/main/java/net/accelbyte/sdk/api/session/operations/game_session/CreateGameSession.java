@@ -127,6 +127,7 @@ public class CreateGameSession extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private Boolean resolveMaxActiveSession;
   private ApimodelsCreateGameSessionRequest body;
 
   /**
@@ -137,8 +138,12 @@ public class CreateGameSession extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public CreateGameSession(
-      String customBasePath, String namespace, ApimodelsCreateGameSessionRequest body) {
+      String customBasePath,
+      String namespace,
+      Boolean resolveMaxActiveSession,
+      ApimodelsCreateGameSessionRequest body) {
     this.namespace = namespace;
+    this.resolveMaxActiveSession = resolveMaxActiveSession;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -152,6 +157,17 @@ public class CreateGameSession extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "resolveMaxActiveSession",
+        this.resolveMaxActiveSession == null
+            ? null
+            : Arrays.asList(String.valueOf(this.resolveMaxActiveSession)));
+    return queryParams;
   }
 
   @Override
@@ -215,4 +231,10 @@ public class CreateGameSession extends Operation {
   }
   */
 
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("resolveMaxActiveSession", "None");
+    return result;
+  }
 }

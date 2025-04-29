@@ -107,6 +107,10 @@ public class AdminUnlockAchievement extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError401(new ResponseError().createFromJson(json));
       response.setError(response.getError401().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new ResponseError().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
     } else if (code == 422) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError422(new ResponseError().createFromJson(json));

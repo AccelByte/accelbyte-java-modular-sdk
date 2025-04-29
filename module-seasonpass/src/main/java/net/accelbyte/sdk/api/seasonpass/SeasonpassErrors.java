@@ -10,6 +10,7 @@ package net.accelbyte.sdk.api.seasonpass;
 import net.accelbyte.sdk.core.ApiError;
 
 public class SeasonpassErrors {
+  public static ApiError error20001 = new ApiError("20001", "Unauthorized");
   public static ApiError error20002 = new ApiError("20002", "validation error");
   public static ApiError error20026 = new ApiError("20026", "publisher namespace not allowed");
   public static ApiError error30141 =

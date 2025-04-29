@@ -40,6 +40,7 @@ public class BulkGetUsersRankingPublicV3 extends Operation {
   private String leaderboardCode;
 
   private String namespace;
+  private Integer previousVersion;
   private ModelsBulkUserIDsRequest body;
 
   /**
@@ -54,9 +55,11 @@ public class BulkGetUsersRankingPublicV3 extends Operation {
       String customBasePath,
       String leaderboardCode,
       String namespace,
+      Integer previousVersion,
       ModelsBulkUserIDsRequest body) {
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
+    this.previousVersion = previousVersion;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -73,6 +76,15 @@ public class BulkGetUsersRankingPublicV3 extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "previousVersion",
+        this.previousVersion == null ? null : Arrays.asList(String.valueOf(this.previousVersion)));
+    return queryParams;
   }
 
   @Override
@@ -144,4 +156,10 @@ public class BulkGetUsersRankingPublicV3 extends Operation {
   }
   */
 
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("previousVersion", "None");
+    return result;
+  }
 }

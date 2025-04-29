@@ -41,6 +41,7 @@ public class GetUserRankingAdminV3 extends Operation {
 
   private String namespace;
   private String userId;
+  private Integer previousVersion;
 
   /**
    * @param leaderboardCode required
@@ -51,10 +52,15 @@ public class GetUserRankingAdminV3 extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public GetUserRankingAdminV3(
-      String customBasePath, String leaderboardCode, String namespace, String userId) {
+      String customBasePath,
+      String leaderboardCode,
+      String namespace,
+      String userId,
+      Integer previousVersion) {
     this.leaderboardCode = leaderboardCode;
     this.namespace = namespace;
     this.userId = userId;
+    this.previousVersion = previousVersion;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -73,6 +79,15 @@ public class GetUserRankingAdminV3 extends Operation {
       pathParams.put("userId", this.userId);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "previousVersion",
+        this.previousVersion == null ? null : Arrays.asList(String.valueOf(this.previousVersion)));
+    return queryParams;
   }
 
   @Override
@@ -102,6 +117,10 @@ public class GetUserRankingAdminV3 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setData(new ModelsUserRankingResponseV3().createFromJson(json));
       response.setSuccess(true);
+    } else if (code == 400) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError400(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError400().translateToApiError());
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError401(new ResponseErrorResponse().createFromJson(json));
@@ -134,4 +153,10 @@ public class GetUserRankingAdminV3 extends Operation {
   }
   */
 
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("previousVersion", "None");
+    return result;
+  }
 }
