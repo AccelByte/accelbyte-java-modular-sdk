@@ -1555,61 +1555,7 @@ seasonWrapper.deleteSeason(
         .seasonId(createSeasonResult.getId())
         .build());
 ```
-## SessionHistory
 
-Source: [TestIntegrationServiceSessionHistory.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSessionHistory.java)
-
-### Get all game sessions history
-
-```java
-final AdminQueryGameSessionDetail adminQueryGameSessionDetail =
-    AdminQueryGameSessionDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
-
-ApimodelsGameSessionDetailQueryResponse gameSessionHistoryResp =
-    gameSessionDetailWrapper
-        .adminQueryGameSessionDetail(adminQueryGameSessionDetail)
-        .ensureSuccess();
-assertNotNull(gameSessionHistoryResp);
-```
-
-### Get all matchmaking history
-
-```java
-final AdminQueryMatchmakingDetail adminQueryMatchmakingDetail =
-    AdminQueryMatchmakingDetail.builder().namespace(this.namespace).offset(0).limit(20).build();
-
-ApimodelsMatchmakingDetailQueryResponse matchMakingHistoryResp =
-    gameSessionDetailWrapper
-        .adminQueryMatchmakingDetail(adminQueryMatchmakingDetail)
-        .ensureSuccess();
-assertNotNull(matchMakingHistoryResp);
-```
-
-### Query party detail
-
-```java
-final AdminQueryPartyDetail adminQueryPartyDetail =
-    AdminQueryPartyDetail.builder().namespace(this.namespace).build();
-
-ApimodelsPartyDetailQueryResponse adminQueryPartyDetailResp =
-    gameSessionDetailWrapper.adminQueryPartyDetail(adminQueryPartyDetail).ensureSuccess();
-assertNotNull(adminQueryPartyDetailResp);
-```
-
-### Get all total matchmaking match
-
-```java
-ApimodelsXRayMatchMatchmakingQueryResponse queryTotalMatchmakingMatchResp =
-    xRayWrapper
-        .queryTotalMatchmakingMatch(
-            QueryTotalMatchmakingMatch.builder()
-                .namespace(this.namespace)
-                .endDate(endDate)
-                .startDate(startDate)
-                .build())
-        .ensureSuccess();
-assertNotNull(queryTotalMatchmakingMatchResp);
-```
 ## Session
 
 Source: [TestIntegrationServiceSession.java](../all-module/src/test/java/net/accelbyte/sdk/integration/TestIntegrationServiceSession.java)

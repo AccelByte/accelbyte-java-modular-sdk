@@ -14,13 +14,11 @@ includeBuild("../../../") {
         substitute module('net.accelbyte.sdk:module-legal') using project(':module-legal')
         substitute module('net.accelbyte.sdk:module-lobby') using project(':module-lobby')
         substitute module('net.accelbyte.sdk:module-match2') using project(':module-match2')
-        substitute module('net.accelbyte.sdk:module-matchmaking') using project(':module-matchmaking')
         substitute module('net.accelbyte.sdk:module-platform') using project(':module-platform')
         substitute module('net.accelbyte.sdk:module-qosm') using project(':module-qosm')
         substitute module('net.accelbyte.sdk:module-reporting') using project(':module-reporting')
         substitute module('net.accelbyte.sdk:module-seasonpass') using project(':module-seasonpass')
         substitute module('net.accelbyte.sdk:module-session') using project(':module-session')
-        substitute module('net.accelbyte.sdk:module-sessionbrowser') using project(':module-sessionbrowser')
         substitute module('net.accelbyte.sdk:module-social') using project(':module-social')
         substitute module('net.accelbyte.sdk:module-ugc') using project(':module-ugc')
     }
