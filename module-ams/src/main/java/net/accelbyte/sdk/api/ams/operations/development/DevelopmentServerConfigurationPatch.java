@@ -6,54 +6,57 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.iam.operations.account_idenfifier_tag;
+package net.accelbyte.sdk.api.ams.operations.development;
 
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.api.iam.operation_responses.account_idenfifier_tag.AdminUpdateTagV3OpResponse;
+import net.accelbyte.sdk.api.ams.models.*;
+import net.accelbyte.sdk.api.ams.operation_responses.development.DevelopmentServerConfigurationPatchOpResponse;
 import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.util.Helper;
 
 /**
- * AdminUpdateTagV3
+ * DevelopmentServerConfigurationPatch
  *
- * <p>Update an existing Account Identifier Tag. This endpoint allows administrators to update the
- * details of a tag that is used to identify and categorize user accounts.
+ * <p>Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
  */
 @Getter
 @Setter
-public class AdminUpdateTagV3 extends Operation {
+public class DevelopmentServerConfigurationPatch extends Operation {
   /** generated field's value */
-  private String path = "/iam/v3/admin/namespaces/{namespace}/tags/{tagId}";
+  private String path =
+      "/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}";
 
-  private String method = "PUT";
+  private String method = "PATCH";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
 
   /** fields as input parameter */
-  private String namespace;
+  private String developmentServerConfigID;
 
-  private String tagId;
-  private ModelTagUpdateRequestV3 body;
+  private String namespace;
+  private ApiDevelopmentServerConfigurationUpdateRequest body;
 
   /**
+   * @param developmentServerConfigID required
    * @param namespace required
-   * @param tagId required
    * @param body required
    */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminUpdateTagV3(
-      String customBasePath, String namespace, String tagId, ModelTagUpdateRequestV3 body) {
+  public DevelopmentServerConfigurationPatch(
+      String customBasePath,
+      String developmentServerConfigID,
+      String namespace,
+      ApiDevelopmentServerConfigurationUpdateRequest body) {
+    this.developmentServerConfigID = developmentServerConfigID;
     this.namespace = namespace;
-    this.tagId = tagId;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -63,26 +66,26 @@ public class AdminUpdateTagV3 extends Operation {
   @Override
   public Map<String, String> getPathParams() {
     Map<String, String> pathParams = new HashMap<>();
+    if (this.developmentServerConfigID != null) {
+      pathParams.put("developmentServerConfigID", this.developmentServerConfigID);
+    }
     if (this.namespace != null) {
       pathParams.put("namespace", this.namespace);
-    }
-    if (this.tagId != null) {
-      pathParams.put("tagId", this.tagId);
     }
     return pathParams;
   }
 
   @Override
-  public ModelTagUpdateRequestV3 getBodyParams() {
+  public ApiDevelopmentServerConfigurationUpdateRequest getBodyParams() {
     return this.body;
   }
 
   @Override
   public boolean isValid() {
-    if (this.namespace == null) {
+    if (this.developmentServerConfigID == null) {
       return false;
     }
-    if (this.tagId == null) {
+    if (this.namespace == null) {
       return false;
     }
     if (this.body == null) {
@@ -91,34 +94,31 @@ public class AdminUpdateTagV3 extends Operation {
     return true;
   }
 
-  public AdminUpdateTagV3OpResponse parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    final AdminUpdateTagV3OpResponse response = new AdminUpdateTagV3OpResponse();
+  public DevelopmentServerConfigurationPatchOpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final DevelopmentServerConfigurationPatchOpResponse response =
+        new DevelopmentServerConfigurationPatchOpResponse();
 
     response.setHttpStatusCode(code);
     response.setContentType(contentType);
 
     if (code == 204) {
       response.setSuccess(true);
-    } else if ((code == 200) || (code == 201)) {
+    } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new AccountcommonTagResponse().createFromJson(json));
-      response.setSuccess(true);
-    } else if (code == 400) {
+      response.setError401(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setError400(new RestErrorResponse().createFromJson(json));
-      response.setError(response.getError400().translateToApiError());
+      response.setError403(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
     } else if (code == 404) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setError404(new RestErrorResponse().createFromJson(json));
+      response.setError404(new ResponseErrorResponse().createFromJson(json));
       response.setError(response.getError404().translateToApiError());
-    } else if (code == 409) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError409(new RestErrorResponse().createFromJson(json));
-      response.setError(response.getError409().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setError500(new RestErrorResponse().createFromJson(json));
+      response.setError500(new ResponseErrorResponse().createFromJson(json));
       response.setError(response.getError500().translateToApiError());
     }
 
@@ -126,13 +126,11 @@ public class AdminUpdateTagV3 extends Operation {
   }
 
   /*
-  public AccountcommonTagResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-      if(code != 200){
+  public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+      if(code != 204){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
-      final String json = Helper.convertInputStreamToString(payload);
-      return new AccountcommonTagResponse().createFromJson(json);
   }
   */
 

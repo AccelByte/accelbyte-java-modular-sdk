@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.iam.operation_responses.account_idenfifier_tag;
+package net.accelbyte.sdk.api.iam.operation_responses.account_identifier_tag;
 
 import java.io.*;
 import java.util.*;
@@ -17,17 +17,15 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminUpdateTagV3OpResponse extends ApiResponseWithData<AccountcommonTagResponse> {
+public class AdminCreateTagV3OpResponse extends ApiResponseWithData<AccountcommonTagResponse> {
 
   private RestErrorResponse error400 = null;
-
-  private RestErrorResponse error404 = null;
 
   private RestErrorResponse error409 = null;
 
   private RestErrorResponse error500 = null;
 
   public String getFullOperationId() {
-    return "net.accelbyte.sdk.api.iam.operations.account_idenfifier_tag.AdminUpdateTagV3";
+    return "net.accelbyte.sdk.api.iam.operations.account_identifier_tag.AdminCreateTagV3";
   }
 }

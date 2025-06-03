@@ -166,6 +166,8 @@
 ### DLC Wrapper:  [DLC](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/wrappers/DLC.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
+| `/platform/admin/namespaces/{namespace}/dlc/config/history` | GET | GetDLCItemConfigHistory | [GetDLCItemConfigHistory](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/GetDLCItemConfigHistory.java) | [GetDLCItemConfigHistory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/GetDLCItemConfigHistory.java) |
+| `/platform/admin/namespaces/{namespace}/dlc/config/history/{id}/restore` | POST | RestoreDLCItemConfigHistory | [RestoreDLCItemConfigHistory](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/RestoreDLCItemConfigHistory.java) | [RestoreDLCItemConfigHistory](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/RestoreDLCItemConfigHistory.java) |
 | `/platform/admin/namespaces/{namespace}/dlc/config/item` | GET | GetDLCItemConfig | [GetDLCItemConfig](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/GetDLCItemConfig.java) | [GetDLCItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/GetDLCItemConfig.java) |
 | `/platform/admin/namespaces/{namespace}/dlc/config/item` | PUT | UpdateDLCItemConfig | [UpdateDLCItemConfig](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/UpdateDLCItemConfig.java) | [UpdateDLCItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/UpdateDLCItemConfig.java) |
 | `/platform/admin/namespaces/{namespace}/dlc/config/item` | DELETE | DeleteDLCItemConfig | [DeleteDLCItemConfig](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/operations/dlc/DeleteDLCItemConfig.java) | [DeleteDLCItemConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/platform/dlc/DeleteDLCItemConfig.java) |
@@ -750,6 +752,8 @@
 | `Customization` | [Customization](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/Customization.java) |
 | `DLCConfigRewardShortInfo` | [DLCConfigRewardShortInfo](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCConfigRewardShortInfo.java) |
 | `DLCItem` | [DLCItem](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCItem.java) |
+| `DLCItemConfigHistoryInfo` | [DLCItemConfigHistoryInfo](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCItemConfigHistoryInfo.java) |
+| `DLCItemConfigHistoryResult` | [DLCItemConfigHistoryResult](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCItemConfigHistoryResult.java) |
 | `DLCItemConfigInfo` | [DLCItemConfigInfo](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCItemConfigInfo.java) |
 | `DLCItemConfigUpdate` | [DLCItemConfigUpdate](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCItemConfigUpdate.java) |
 | `DLCRecord` | [DLCRecord](../../module-platform/src/main/java/net/accelbyte/sdk/api/platform/models/DLCRecord.java) |

@@ -6,24 +6,22 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.iam.operation_responses.account_idenfifier_tag;
+package net.accelbyte.sdk.api.iam.operation_responses.account_identifier_tag;
 
 import java.io.*;
 import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.core.ApiResponse;
+import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class AdminDeleteTagV3OpResponse extends ApiResponse {
-
-  private RestErrorResponse error404 = null;
+public class AdminQueryTagV3OpResponse extends ApiResponseWithData<AccountcommonTagsGetResponseV3> {
 
   private RestErrorResponse error500 = null;
 
   public String getFullOperationId() {
-    return "net.accelbyte.sdk.api.iam.operations.account_idenfifier_tag.AdminDeleteTagV3";
+    return "net.accelbyte.sdk.api.iam.operations.account_identifier_tag.AdminQueryTagV3";
   }
 }

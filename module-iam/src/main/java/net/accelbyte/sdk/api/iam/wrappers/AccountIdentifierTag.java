@@ -9,17 +9,17 @@
 package net.accelbyte.sdk.api.iam.wrappers;
 
 import net.accelbyte.sdk.api.iam.models.*;
-import net.accelbyte.sdk.api.iam.operation_responses.account_idenfifier_tag.*;
-import net.accelbyte.sdk.api.iam.operations.account_idenfifier_tag.*;
+import net.accelbyte.sdk.api.iam.operation_responses.account_identifier_tag.*;
+import net.accelbyte.sdk.api.iam.operations.account_identifier_tag.*;
 import net.accelbyte.sdk.core.HttpResponse;
 import net.accelbyte.sdk.core.RequestRunner;
 
-public class AccountIdenfifierTag {
+public class AccountIdentifierTag {
 
   private RequestRunner sdk;
   private String customBasePath = "";
 
-  public AccountIdenfifierTag(RequestRunner sdk) {
+  public AccountIdentifierTag(RequestRunner sdk) {
     this.sdk = sdk;
     String configCustomBasePath =
         sdk.getSdkConfiguration().getConfigRepository().getCustomServiceBasePath("iam");
@@ -28,7 +28,7 @@ public class AccountIdenfifierTag {
     }
   }
 
-  public AccountIdenfifierTag(RequestRunner sdk, String customBasePath) {
+  public AccountIdentifierTag(RequestRunner sdk, String customBasePath) {
     this.sdk = sdk;
     this.customBasePath = customBasePath;
   }
