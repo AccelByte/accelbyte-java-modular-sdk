@@ -39,7 +39,7 @@ def createGithubRelease(tag_name, prerelease = false, name = null, body = null) 
 
 pipeline {
   agent {
-    label "extend-builder-batch && linux-amd64"
+    label "extend-builder-ci && linux-amd64"
   }
   stages {
     stage('Prepare') {
