@@ -12,8 +12,7 @@ jobChannel = env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK ? env.SLACK_C
 
 pipeline {
   agent {
-    //label "extend-builder-batch || lima"
-    label "lima"
+    label "extend-builder-batch"
   }
   stages {
     stage('Setup') {
