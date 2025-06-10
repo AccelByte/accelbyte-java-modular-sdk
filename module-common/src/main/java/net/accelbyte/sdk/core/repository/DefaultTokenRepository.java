@@ -56,10 +56,7 @@ public class DefaultTokenRepository implements TokenRepository {
   }
 
   protected void notifyOnAccessTokenRefreshed(String newToken) {
-    log.info("notifyOnAccessTokenRefreshed: " + newToken);
     for (TokenRepositoryCallback callback : callbacks) {
-      log.info("notifyOnAccessTokenRefreshed execute: " + newToken);
-
       executor.execute(() -> callback.onAccessTokenRefreshed(newToken));
     }
   }
