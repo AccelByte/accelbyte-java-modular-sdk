@@ -81,7 +81,7 @@ public class TestIntegrationServiceCsm extends TestIntegration {
     boolean isExtendAppExists = false;
 
     try {
-      appV2Wrapper.getAppV2(GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build());
+      appV2Wrapper.getAppV2(GetAppV2.builder().app(EXTEND_APP_NAME).namespace(namespace).build()).ensureSuccess();
 
       isExtendAppExists = true;
     } catch (ApiResponseException hrex) {
