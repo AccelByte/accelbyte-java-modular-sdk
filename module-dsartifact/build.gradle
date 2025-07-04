@@ -1,7 +1,0 @@
-version = '0.2.0'
-
-dependencies {
-    api project(':module-challenge')
-    api project(':module-common')
-}
-
