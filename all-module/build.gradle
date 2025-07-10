@@ -2,7 +2,10 @@ version = '0.0.1'
 
 dependencies {
     api project(':module-achievement')
+    api project(':module-ams')
     api project(':module-basic')
+    api project(':module-challenge')
+    api project(':module-chat')
     api project(':module-cloudsave')
     api project(':module-csm')
     api project(':module-gametelemetry')
@@ -13,17 +16,15 @@ dependencies {
     api project(':module-leaderboard')
     api project(':module-legal')
     api project(':module-lobby')
+    api project(':module-loginqueue')
     api project(':module-match2')
     api project(':module-platform')
     api project(':module-reporting')
     api project(':module-seasonpass')
     api project(':module-session')
+    api project(':module-sessionhistory')
     api project(':module-social')
     api project(':module-ugc')
-    api project(':module-ams')
-    api project(':module-chat')
-    api project(':module-challenge')
-    api project(':module-loginqueue')
 
     testImplementation 'com.github.tomakehurst:wiremock-jre8:2.35.1'
 }
