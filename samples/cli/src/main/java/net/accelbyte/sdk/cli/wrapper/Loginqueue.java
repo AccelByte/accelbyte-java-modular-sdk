@@ -10,20 +10,23 @@ package net.accelbyte.sdk.cli.wrapper;
 
 import net.accelbyte.sdk.cli.api.loginqueue.admin_v1.*;
 import net.accelbyte.sdk.cli.api.loginqueue.ticket_v1.*;
+
 import picocli.CommandLine.Command;
 
-@Command(
-    name = "loginqueue",
-    mixinStandardHelpOptions = true,
-    subcommands = {
-      AdminGetConfiguration.class,
-      AdminUpdateConfiguration.class,
-      AdminGetStatus.class,
-      RefreshTicket.class,
-      CancelTicket.class,
-    })
+@Command(name = "loginqueue",
+        mixinStandardHelpOptions = true,
+        subcommands = {
+                AdminGetConfiguration.class,
+                AdminUpdateConfiguration.class,
+                AdminGetStatus.class,
+                RefreshTicket.class,
+                CancelTicket.class,
+        }
+)
 public class Loginqueue implements Runnable {
 
-  @Override
-  public void run() {}
+    @Override
+    public void run() {
+
+    }
 }

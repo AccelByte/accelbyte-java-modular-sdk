@@ -7,5 +7,4 @@
  */
 package net.accelbyte.sdk.api.reporting;
 
-
 public class ReportingErrors {}

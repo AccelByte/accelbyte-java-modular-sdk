@@ -7,5 +7,4 @@
  */
 package net.accelbyte.sdk.api.gdpr;
 
-
 public class GdprErrors {}

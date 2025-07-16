@@ -19,11 +19,6 @@
       "type": "apiKey"
     }
   },
-  "security": [
-    {
-      "authorization": []
-    }
-  ],
   "swagger": "2.0",
   "paths": {
     "/sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets": {
@@ -31,7 +26,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Create ticket observability request\nRequest body details (all attributes are optional):\nTimestamp \t\t\t\t  : timestamp when calling this endpoint           \nAction    \t\t\t\t  : support one of the following value: \n\t\t\t\t\t\t    1. \"matchFound\"\n\t\t\t\t\t\t    2. \"matchNotFound\"\n\t\t\t\t\t\t    3. \"flexed\"\nTicketID\t\t\t\t  : ticket ID            \nMatchID\t\t\t\t\t  : match ID will be filled only when match found\nNamespace           \t  : ticket current namespace\nGameMode            \t  : ticket current matchpool\nActiveAllianceRule  \t  : current active alliance ruleset \nActiveMatchingRule  \t  : current active matching ruleset\nFunction            \t  : name of the function that called the endpoint \nIteration           \t  : total iteration before match found\nTimeToMatchSec      \t  : time to match (in seconds) will be filled only when match found \nUnmatchReason       \t  : reason when unable to find match\nRemainingTickets    \t  : remaining ticket when unable to find match\nRemainingPlayersPerTicket : remaining players when unable to find match\nUnbackfillReason          : reason when unable to backfill\nIsBackfillMatch        \t  : flag to distinguish between new match and backfill match\nIsRuleSetFlexed       \t  : flag if ruleset is getting flexed\nTickID          \t\t  : tick id for the matchmaking tick\nSessionTickID \t\t\t  : session tick id for differentiate session when doing matches\n",
+        "description": "Create ticket observability request\nRequest body details (all attributes are optional):\nTimestamp \t\t\t\t  : timestamp when calling this endpoint           \nAction    \t\t\t\t  : support one of the following value: \n\t\t\t\t\t\t    1. \u0026#34;matchFound\u0026#34;\n\t\t\t\t\t\t    2. \u0026#34;matchNotFound\u0026#34;\n\t\t\t\t\t\t    3. \u0026#34;flexed\u0026#34;\nTicketID\t\t\t\t  : ticket ID            \nMatchID\t\t\t\t\t  : match ID will be filled only when match found\nNamespace           \t  : ticket current namespace\nGameMode            \t  : ticket current matchpool\nActiveAllianceRule  \t  : current active alliance ruleset \nActiveMatchingRule  \t  : current active matching ruleset\nFunction            \t  : name of the function that called the endpoint \nIteration           \t  : total iteration before match found\nTimeToMatchSec      \t  : time to match (in seconds) will be filled only when match found \nUnmatchReason       \t  : reason when unable to find match\nRemainingTickets    \t  : remaining ticket when unable to find match\nRemainingPlayersPerTicket : remaining players when unable to find match\nUnbackfillReason          : reason when unable to backfill\nIsBackfillMatch        \t  : flag to distinguish between new match and backfill match\nIsRuleSetFlexed       \t  : flag if ruleset is getting flexed\nTickID          \t\t  : tick id for the matchmaking tick\nSessionTickID \t\t\t  : session tick id for differentiate session when doing matches\n",
         "operationId": "createXrayTicketObservability",
         "parameters": [
           {
@@ -86,6 +81,11 @@
             }
           }
         },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
         "summary": "Create ticket observability request",
         "tags": [
           "XRay"
@@ -105,7 +105,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Create bulk ticket observability request\nRequest body details (all attributes are optional):\nTimestamp \t\t\t\t  : timestamp when calling this endpoint           \nAction    \t\t\t\t  : support one of the following value: \n\t\t\t\t\t\t    1. \"matchFound\"\n\t\t\t\t\t\t    2. \"matchNotFound\"\n\t\t\t\t\t\t    3. \"flexed\"\nPartyID\t\t\t\t\t  : ticket Party ID            \nMatchID\t\t\t\t\t  : match ID will be filled only when match found\nNamespace           \t  : ticket current namespace\nGameMode            \t  : ticket current matchpool\nActiveAllianceRule  \t  : current active alliance ruleset \nActiveMatchingRule  \t  : current active matching ruleset\nFunction            \t  : name of the function that called the endpoint \nIteration           \t  : total iteration before match found\nTimeToMatchSec      \t  : time to match (in seconds) will be filled only when match found \nUnmatchReason       \t  : reason when unable to find match\nRemainingTickets    \t  : remaining ticket when unable to find match\nRemainingPlayersPerTicket : remaining players when unable to find match\nUnbackfillReason          : reason when unable to backfill\nIsBackfillMatch        \t  : flag to distinguish between new match and backfill match\nIsRuleSetFlexed       \t  : flag if ruleset is getting flexed\nTickID          \t\t  : tick id for the matchmaking tick\nSessionTickID \t\t\t  : session tick id for differentiate session when doing matches\n",
+        "description": "Create bulk ticket observability request\nRequest body details (all attributes are optional):\nTimestamp \t\t\t\t  : timestamp when calling this endpoint           \nAction    \t\t\t\t  : support one of the following value: \n\t\t\t\t\t\t    1. \u0026#34;matchFound\u0026#34;\n\t\t\t\t\t\t    2. \u0026#34;matchNotFound\u0026#34;\n\t\t\t\t\t\t    3. \u0026#34;flexed\u0026#34;\nPartyID\t\t\t\t\t  : ticket Party ID            \nMatchID\t\t\t\t\t  : match ID will be filled only when match found\nNamespace           \t  : ticket current namespace\nGameMode            \t  : ticket current matchpool\nActiveAllianceRule  \t  : current active alliance ruleset \nActiveMatchingRule  \t  : current active matching ruleset\nFunction            \t  : name of the function that called the endpoint \nIteration           \t  : total iteration before match found\nTimeToMatchSec      \t  : time to match (in seconds) will be filled only when match found \nUnmatchReason       \t  : reason when unable to find match\nRemainingTickets    \t  : remaining ticket when unable to find match\nRemainingPlayersPerTicket : remaining players when unable to find match\nUnbackfillReason          : reason when unable to backfill\nIsBackfillMatch        \t  : flag to distinguish between new match and backfill match\nIsRuleSetFlexed       \t  : flag if ruleset is getting flexed\nTickID          \t\t  : tick id for the matchmaking tick\nSessionTickID \t\t\t  : session tick id for differentiate session when doing matches\n",
         "operationId": "createXrayBulkTicketObservability",
         "parameters": [
           {
@@ -160,6 +160,11 @@
             }
           }
         },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
         "summary": "Create bulk ticket observability request",
         "tags": [
           "XRay"
@@ -223,10 +228,12 @@
           "type": "string"
         },
         "isBackfillMatch": {
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
         },
         "isRuleSetFlexed": {
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
         },
         "iteration": {
           "format": "int32",
@@ -265,7 +272,8 @@
         },
         "timestamp": {
           "format": "date-time",
-          "type": "string"
+          "type": "string",
+          "x-nullable": false
         },
         "unbackfillReason": {
           "type": "string"

@@ -337,6 +337,20 @@ public class Notification {
   }
 
   /**
+   * @see GetMyOfflineNotifications
+   */
+  public GetMyOfflineNotificationsOpResponse getMyOfflineNotifications(
+      GetMyOfflineNotifications input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see GetTopicByNamespace
    */
   public GetTopicByNamespaceOpResponse getTopicByNamespace(GetTopicByNamespace input)

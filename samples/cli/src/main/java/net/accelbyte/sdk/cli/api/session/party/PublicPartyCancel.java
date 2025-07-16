@@ -8,8 +8,8 @@
 
 package net.accelbyte.sdk.cli.api.session.party;
 
-import java.util.*;
-import java.util.concurrent.Callable;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.accelbyte.sdk.api.session.models.*;
 import net.accelbyte.sdk.api.session.wrappers.Party;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
@@ -18,67 +18,65 @@ import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.client.OkhttpClient;
 import net.accelbyte.sdk.core.logging.OkhttpLogger;
 import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.Callable;
+
 @Command(name = "publicPartyCancel", mixinStandardHelpOptions = true)
 public class PublicPartyCancel implements Callable<Integer> {
 
-  private static final Logger log = LogManager.getLogger(PublicPartyCancel.class);
+    private static final Logger log = LogManager.getLogger(PublicPartyCancel.class);
 
-  @Option(
-      names = {"--namespace"},
-      description = "namespace")
-  String namespace;
+    @Option(names = {"--namespace"}, description = "namespace")
+    String namespace;
 
-  @Option(
-      names = {"--partyId"},
-      description = "partyId")
-  String partyId;
+    @Option(names = {"--partyId"}, description = "partyId")
+    String partyId;
 
-  @Option(
-      names = {"--userId"},
-      description = "userId")
-  String userId;
+    @Option(names = {"--userId"}, description = "userId")
+    String userId;
 
-  @Option(
-      names = {"--logging"},
-      description = "logger")
-  boolean logging;
 
-  public static void main(String[] args) {
-    int exitCode = new CommandLine(new PublicPartyCancel()).execute(args);
-    System.exit(exitCode);
-  }
+    @Option(names = {"--logging"}, description = "logger")
+    boolean logging;
 
-  @Override
-  public Integer call() {
-    try {
-      final OkhttpClient httpClient = new OkhttpClient();
-      if (logging) {
-        httpClient.setLogger(new OkhttpLogger());
-      }
-      final AccelByteSDK sdk =
-          new AccelByteSDK(
-              httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-      final Party wrapper = new Party(sdk);
-      final net.accelbyte.sdk.api.session.operations.party.PublicPartyCancel operation =
-          net.accelbyte.sdk.api.session.operations.party.PublicPartyCancel.builder()
-              .namespace(namespace)
-              .partyId(partyId)
-              .userId(userId)
-              .build();
-      wrapper.publicPartyCancel(operation).ensureSuccess();
-      log.info("Operation successful");
-      return 0;
-    } catch (HttpResponseException e) {
-      log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
-    } catch (Exception e) {
-      log.error("An exception was thrown", e);
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new PublicPartyCancel()).execute(args);
+        System.exit(exitCode);
     }
-    return 1;
-  }
+
+    @Override
+    public Integer call() {
+        try {
+            final OkhttpClient httpClient = new OkhttpClient();
+            if (logging) {
+                httpClient.setLogger(new OkhttpLogger());
+            }
+            final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
+            final Party wrapper = new Party(sdk);
+            final net.accelbyte.sdk.api.session.operations.party.PublicPartyCancel operation =
+                    net.accelbyte.sdk.api.session.operations.party.PublicPartyCancel.builder()
+                            .namespace(namespace)
+                            .partyId(partyId)
+                            .userId(userId)
+                            .build();
+                    wrapper.publicPartyCancel(operation).ensureSuccess();
+            log.info("Operation successful");
+            return 0;
+        } catch (HttpResponseException e) {
+            log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
+        } catch (Exception e) {
+            log.error("An exception was thrown", e);
+        }
+        return 1;
+    }
 }

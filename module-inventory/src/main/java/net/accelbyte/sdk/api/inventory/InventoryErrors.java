@@ -7,5 +7,4 @@
  */
 package net.accelbyte.sdk.api.inventory;
 
-
 public class InventoryErrors {}

@@ -7,5 +7,4 @@
  */
 package net.accelbyte.sdk.api.session;
 
-
 public class SessionErrors {}

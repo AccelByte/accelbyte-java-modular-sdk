@@ -7,5 +7,4 @@
  */
 package net.accelbyte.sdk.api.match2;
 
-
 public class Match2Errors {}
