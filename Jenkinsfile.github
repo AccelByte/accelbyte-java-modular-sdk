@@ -8,6 +8,8 @@ githubPat = 'accelbyte-sdk-sdkbuild-pat-github'
 githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
 sdkName = "AccelByte Java Extend Modular SDK"
 
+agentLabel = params.ACTION == 'PUSH+RELEASE' ? 'extend-builder-ci && linux-amd64' : 'extend-builder-ci'
+
 jobChannel = env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK ? env.SLACK_CHANNEL_ACTIVITY_EXTEND_CODEGEN_MODULAR_SDK : "#activity-justice-codegen-modular-sdk"
 
 def createGithubRelease(tag_name, prerelease = false, name = null, body = null) {
@@ -39,7 +41,7 @@ def createGithubRelease(tag_name, prerelease = false, name = null, body = null) 
 
 pipeline {
   agent {
-    label "extend-builder-ci && linux-amd64"
+    label "${agentLabel}"
   }
   stages {
     stage('Prepare') {
