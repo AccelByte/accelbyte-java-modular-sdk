@@ -28,6 +28,9 @@ public class ApiDevelopmentServerConfigurationListResponse extends Model {
   @JsonProperty("data")
   private List<ApiDevelopmentServerConfigurationGetResponse> data;
 
+  @JsonProperty("paging")
+  private PaginationPaginationInfo paging;
+
   @JsonProperty("totalData")
   private Integer totalData;
 

@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.csm.models;
+package net.accelbyte.sdk.api.match2.models;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,25 +23,21 @@ import net.accelbyte.sdk.core.Model;
 // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
 @AllArgsConstructor(onConstructor = @__(@Deprecated))
 @NoArgsConstructor
-public class ApimodelSubscriberItemRequest extends Model {
+public class ModelsXRayConfigHttpUpdateRequest extends Model {
 
-  @JsonProperty("emailAddress")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String emailAddress;
-
-  @JsonProperty("userId")
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private String userId;
+  @JsonProperty("whitelistedUsers")
+  private List<String> whitelistedUsers;
 
   @JsonIgnore
-  public ApimodelSubscriberItemRequest createFromJson(String json) throws JsonProcessingException {
+  public ModelsXRayConfigHttpUpdateRequest createFromJson(String json)
+      throws JsonProcessingException {
     return new ObjectMapper().readValue(json, this.getClass());
   }
 
   @JsonIgnore
-  public List<ApimodelSubscriberItemRequest> createFromJsonList(String json)
+  public List<ModelsXRayConfigHttpUpdateRequest> createFromJsonList(String json)
       throws JsonProcessingException {
     return new ObjectMapper()
-        .readValue(json, new TypeReference<List<ApimodelSubscriberItemRequest>>() {});
+        .readValue(json, new TypeReference<List<ModelsXRayConfigHttpUpdateRequest>>() {});
   }
 }

@@ -11,6 +11,7 @@ package net.accelbyte.sdk.cli.wrapper;
 import net.accelbyte.sdk.cli.api.match2.operations.*;
 import net.accelbyte.sdk.cli.api.match2.config.*;
 import net.accelbyte.sdk.cli.api.match2.play_feature_flag.*;
+import net.accelbyte.sdk.cli.api.match2.x_ray_config.*;
 import net.accelbyte.sdk.cli.api.match2.environment_variables.*;
 import net.accelbyte.sdk.cli.api.match2.backfill.*;
 import net.accelbyte.sdk.cli.api.match2.match_functions.*;
@@ -30,6 +31,8 @@ import picocli.CommandLine.Command;
                 AdminGetPlayFeatureFlag.class,
                 AdminUpsertPlayFeatureFlag.class,
                 AdminDeletePlayFeatureFlag.class,
+                AdminGetXRayConfig.class,
+                AdminUpdateXRayConfig.class,
                 AdminGetAllConfigV1.class,
                 AdminGetConfigV1.class,
                 AdminPatchConfigV1.class,

@@ -29,6 +29,12 @@
 | `/match2/v1/admin/namespaces/{namespace}/playfeatureflag` | POST | AdminUpsertPlayFeatureFlag | [AdminUpsertPlayFeatureFlag](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/play_feature_flag/AdminUpsertPlayFeatureFlag.java) | [AdminUpsertPlayFeatureFlag](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/play_feature_flag/AdminUpsertPlayFeatureFlag.java) |
 | `/match2/v1/admin/namespaces/{namespace}/playfeatureflag` | DELETE | AdminDeletePlayFeatureFlag | [AdminDeletePlayFeatureFlag](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/play_feature_flag/AdminDeletePlayFeatureFlag.java) | [AdminDeletePlayFeatureFlag](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/play_feature_flag/AdminDeletePlayFeatureFlag.java) |
 
+### XRay Config Wrapper:  [XRayConfig](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/wrappers/XRayConfig.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/match2/v1/admin/namespaces/{namespace}/xray/config` | GET | AdminGetXRayConfig | [AdminGetXRayConfig](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/x_ray_config/AdminGetXRayConfig.java) | [AdminGetXRayConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/x_ray_config/AdminGetXRayConfig.java) |
+| `/match2/v1/admin/namespaces/{namespace}/xray/config` | POST | AdminUpdateXRayConfig | [AdminUpdateXRayConfig](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/operations/x_ray_config/AdminUpdateXRayConfig.java) | [AdminUpdateXRayConfig](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/match2/x_ray_config/AdminUpdateXRayConfig.java) |
+
 ### Environment-Variables Wrapper:  [EnvironmentVariables](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/wrappers/EnvironmentVariables.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -141,5 +147,7 @@
 | `models.PlayFeatureFlag` | [ModelsPlayFeatureFlag](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ModelsPlayFeatureFlag.java) |
 | `models.Server` | [ModelsServer](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ModelsServer.java) |
 | `models.User` | [ModelsUser](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ModelsUser.java) |
+| `models.XRayConfigHttpResponse` | [ModelsXRayConfigHttpResponse](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ModelsXRayConfigHttpResponse.java) |
+| `models.XRayConfigHttpUpdateRequest` | [ModelsXRayConfigHttpUpdateRequest](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ModelsXRayConfigHttpUpdateRequest.java) |
 | `player.PlayerData` | [PlayerPlayerData](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/PlayerPlayerData.java) |
 | `response.Error` | [ResponseError](../../module-match2/src/main/java/net/accelbyte/sdk/api/match2/models/ResponseError.java) |
