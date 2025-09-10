@@ -14,6 +14,8 @@ import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.HttpClient;
 import net.accelbyte.sdk.core.repository.ConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRefreshRepository;
+import net.accelbyte.sdk.core.repository.OnDemandTokenRefreshRepository;
+import net.accelbyte.sdk.core.repository.TokenRefreshV3;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -87,7 +89,7 @@ public class TestIntegrationLoginPlatform extends TestIntegration {
     assertTrue(phAuth.getTokenType() != null && !phAuth.getTokenType().isEmpty());
 
     final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
-    final DefaultTokenRefreshRepository tokenRepository = new DefaultTokenRefreshRepository();
+    final TokenRefreshV3 tokenRepository = OnDemandTokenRefreshRepository.createDefault();
     final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
 
     final AccelByteSDK sdk = new AccelByteSDK(httpClient, tokenRepository, configRepository);

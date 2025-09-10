@@ -1,12 +1,10 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2022-2025 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
 
 package net.accelbyte.sdk.core;
-
-import static net.accelbyte.sdk.core.AccessTokenPayload.Types.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
@@ -25,7 +23,6 @@ import java.security.KeyFactory;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
-import java.time.Instant;
 import java.util.*;
 import java.util.Base64.Decoder;
 import java.util.concurrent.ExecutionException;
@@ -72,11 +69,6 @@ public class AccelByteSDK implements RequestRunner {
   private static final String CLAIM_SUB = "sub";
 
   private AccelByteConfig sdkConfiguration;
-
-  private final Timer refreshTokenTimer = new Timer("RefreshTokenTimer", true);
-  private final Object refreshTokenTaskLock = new Object();
-  private TimerTask refreshTokenTask = null;
-
   private final ReentrantLock refreshTokenMethodLock = new ReentrantLock();
 
   private LoadingCache<String, Map<String, RSAPublicKey>> jwksCache;
@@ -85,9 +77,6 @@ public class AccelByteSDK implements RequestRunner {
 
   private LoadingCache<RoleCacheKey, List<Permission>> rolePermissionsCache;
   private static final BloomFilter bloomFilter = new BloomFilter();
-
-  // TODO: make this configurable
-  private float tokenRefreshRatio = 0.8f;
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -427,22 +416,27 @@ public class AccelByteSDK implements RequestRunner {
       selectedSecurity = operation.getSecurities().get(0);
     }
 
+    final boolean isBasicSecurity = Operation.Security.Basic.toString().equals(selectedSecurity);
+    final boolean isBearerSecurity = Operation.Security.Bearer.toString().equals(selectedSecurity);
+    final boolean IsCookieSecurity = Operation.Security.Cookie.toString().equals(selectedSecurity);
+
     final HttpHeaders headers = new HttpHeaders();
     final Map<String, String> cookies = operation.getCookieParams();
     final ConfigRepository configRepository = sdkConfiguration.getConfigRepository();
 
-    final String accessToken = sdkConfiguration.getTokenRepository().getToken();
+    final TokenRepository tokenRepository = sdkConfiguration.getTokenRepository();
+    final String accessToken = tokenRepository.getToken();
 
-    if (Operation.Security.Basic.toString().equals(selectedSecurity)) {
+    if (isBasicSecurity) {
       final String clientId = configRepository.getClientId();
       final String clientSecret = configRepository.getClientSecret();
       headers.put(HttpHeaders.AUTHORIZATION, Credentials.basic(clientId, clientSecret));
-    } else if (Operation.Security.Bearer.toString().equals(selectedSecurity)) {
+    } else if (isBearerSecurity) {
       if (accessToken != null && !accessToken.isEmpty()) {
         headers.put(
             HttpHeaders.AUTHORIZATION, Operation.Security.Bearer.toString() + " " + accessToken);
       }
-    } else if (Operation.Security.Cookie.toString().equals(selectedSecurity)) {
+    } else if (IsCookieSecurity) {
       if (accessToken != null && !accessToken.isEmpty()) {
         cookies.put(COOKIE_KEY_ACCESS_TOKEN, accessToken);
       }
@@ -484,13 +478,21 @@ public class AccelByteSDK implements RequestRunner {
       headers.put(HttpHeaders.COOKIE, String.join("; ", cookieEntries));
     }
 
-    final String baseUrl = sdkConfiguration.getConfigRepository().getBaseURL();
+    if (!isBasicSecurity) {
+      //make sure that only endpoint with non-basic security triggers token refresh
+      final TokenRefreshOptions trOpts = sdkConfiguration.getTokenRefreshOptions();
+      if (trOpts != null && trOpts.isEnabled() && trOpts.isType(OnDemandTokenRefreshOptions.REFRESH_TYPE) && tokenRepository instanceof TokenRefreshV3) {
+        final TokenRefreshV3 tokenRefresh = (TokenRefreshV3)tokenRepository;
+        tokenRefresh.doTokenRefresh(this,true,null);
+      }
+    }
 
+    final String baseUrl = sdkConfiguration.getConfigRepository().getBaseURL();
     return sdkConfiguration.getHttpClient().sendRequest(operation, baseUrl, headers);
   }
 
   public boolean loginClient() {
-    return loginClientInternal(true);
+    return loginClientInternal();
   }
 
   public boolean loginUser(String username, String password) {
@@ -498,84 +500,80 @@ public class AccelByteSDK implements RequestRunner {
   }
 
   public boolean loginUser(String username, String password, String scope) {
-    return loginUserInternal(username, password, scope, true);
+    return loginUserInternal(username, password, scope);
   }
 
   @SneakyThrows // TODO: remove unused exception from getToken, getTokenExpiredAt
   public boolean loginOrRefreshClient() {
     TokenRepository tokenRepo = sdkConfiguration.getTokenRepository();
-    TokenRefreshV2 refreshRepo;
-    if (tokenRepo instanceof TokenRefreshV2) {
-      refreshRepo = (TokenRefreshV2) tokenRepo;
+    TokenRefreshV3 refreshRepo;
+    if (tokenRepo instanceof TokenRefreshV3) {
+      refreshRepo = (TokenRefreshV3)tokenRepo;
     } else {
       throw new IllegalArgumentException(
           "Token repository is not a Refresh Repository"); // TODO: restructure the inheritance
     }
 
-    if (Strings.isNullOrEmpty(tokenRepo.getToken())) {
-      return loginClientInternal(false);
+    if (!tokenRepo.isTokenAvailable()) {
+      return loginClientInternal();
     }
 
-    boolean isAccessTokenExpired = isExpired(refreshRepo.getTokenExpiresAt());
-    if (!isAccessTokenExpired) {
+    if (!refreshRepo.isTokenExpiring()) {
       return true; // do nothing, since accessToken still valid
     }
 
-    return loginClientInternal(false);
+    return loginClientInternal();
   }
 
   @SneakyThrows // TODO: remove unused exception from getToken, getTokenExpiredAt
   public boolean loginOrRefreshUser(String username, String password) {
     TokenRepository tokenRepo = sdkConfiguration.getTokenRepository();
-    TokenRefreshV2 refreshRepo;
-    if (tokenRepo instanceof TokenRefreshV2) {
-      refreshRepo = (TokenRefreshV2) tokenRepo;
+    TokenRefreshV3 refreshRepo;
+    if (tokenRepo instanceof TokenRefreshV3) {
+      refreshRepo = (TokenRefreshV3)tokenRepo;
     } else {
       throw new IllegalArgumentException(
           "Token repository is not a Refresh Repository"); // TODO: restructure the inheritance
     }
 
     if (Strings.isNullOrEmpty(tokenRepo.getToken())) {
-      return loginUserInternal(username, password, DEFAULT_LOGIN_USER_SCOPE, false);
+      return loginUserInternal(username, password, DEFAULT_LOGIN_USER_SCOPE);
     }
 
-    boolean isAccessTokenExpired = isExpired(refreshRepo.getTokenExpiresAt());
-    boolean isRefreshTokenExpired = isExpired(refreshRepo.getRefreshTokenExpiresAt());
-
-    if (!isAccessTokenExpired) {
+    if (!refreshRepo.isTokenExpiring()) {
       return true; // do nothing, since accessToken still valid
     }
 
-    if (!isRefreshTokenExpired) {
+    if (!refreshRepo.isRefreshTokenExpired()) {
       return refreshToken();
     }
 
-    return loginUserInternal(username, password, DEFAULT_LOGIN_USER_SCOPE, false);
+    return loginUserInternal(username, password, DEFAULT_LOGIN_USER_SCOPE);
   }
 
   public boolean loginPlatform(String platformId, String platformToken) {
     try {
       final OAuth20 oAuth20 = new OAuth20(this);
 
-      final Instant utcNow = Instant.now();
       final PlatformTokenGrantV3 tokenGrantV3 =
           PlatformTokenGrantV3.builder()
               .platformId(platformId)
               .platformToken(platformToken)
               .build();
-      final OauthmodelTokenResponse token =
-          oAuth20.platformTokenGrantV3(tokenGrantV3).ensureSuccess();
+      final OauthmodelTokenResponse token = oAuth20.platformTokenGrantV3(tokenGrantV3)
+        .ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefreshV2) {
-        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-        final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-        final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
-        tokenRefresh.storeRefreshToken(token.getRefreshToken());
-        tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
-        scheduleRefreshTokenTask(expiresIn);
+      if (tokenRepository instanceof TokenRefreshV3) {
+        final TokenRefreshV3 tokenRefresh = (TokenRefreshV3)tokenRepository;
+        tokenRefresh.storeTokenData(token);
+      }
+
+      final TokenRefreshOptions trOpts = this.sdkConfiguration.getTokenRefreshOptions();
+      if (trOpts != null && trOpts.isEnabled() && trOpts.isType(BackgroundTokenRefreshOptions.REFRESH_TYPE) && tokenRepository instanceof BackgroundTokenRefreshRepository) {
+        final BackgroundTokenRefreshRepository btrRepo = (BackgroundTokenRefreshRepository)tokenRepository;
+        btrRepo.start(this);
       }
 
       return true;
@@ -610,37 +608,24 @@ public class AccelByteSDK implements RequestRunner {
       final TokenRepository tokenRepository = sdkConfiguration.getTokenRepository();
       final String accessToken = tokenRepository.getToken();
 
-      if (accessToken == null || accessToken.isEmpty()) {
+      if (!tokenRepository.isTokenAvailable()) {
         return false; // Cannot perform token refresh
       }
 
-      if (!(tokenRepository instanceof TokenRefreshV2)) {
+      if (!(tokenRepository instanceof TokenRefreshV3)) {
         return false; // Cannot perform token refresh
       }
 
-      final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-
-      final Instant accessTokenExpiresAt = tokenRefresh.getTokenExpiresAt();
+      final TokenRefreshV3 tokenRefresh = (TokenRefreshV3) tokenRepository;
       final String refreshToken = tokenRefresh.getRefreshToken();
-
       final boolean isLoginUserOrLoginPlatform = refreshToken != null && !refreshToken.isEmpty();
 
-      final Instant refreshTokenExpiresAt =
-          isLoginUserOrLoginPlatform ? tokenRefresh.getRefreshTokenExpiresAt() : null;
-
-      if (accessTokenExpiresAt == null) {
-        return false; // Cannot perform token refresh
-      }
-
       if (isLoginUserOrLoginPlatform) {
-        final boolean isRefreshTokenExpired = isExpired(refreshTokenExpiresAt);
-
-        if (isRefreshTokenExpired) {
+        if (tokenRefresh.isRefreshTokenExpired()) {
           return false; // Cannot perform token refresh
         }
 
         try {
-          final Instant utcNow = Instant.now();
           final OAuth20 oAuth20 = new OAuth20(this);
           final TokenGrantV3 tokenGrantV3 =
               TokenGrantV3.builder()
@@ -650,13 +635,9 @@ public class AccelByteSDK implements RequestRunner {
           final OauthmodelTokenWithDeviceCookieResponseV3 token =
               oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
 
-          final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-          final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
           tokenRepository.storeToken(token.getAccessToken());
-          tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
-          tokenRefresh.storeRefreshToken(token.getRefreshToken());
-          tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
-          scheduleRefreshTokenTask(expiresIn);
+          tokenRefresh.storeTokenData(token);
+          log.info("Access token refreshed");
 
           return true; // Token refresh successful
         } catch (Exception e) {
@@ -734,11 +715,14 @@ public class AccelByteSDK implements RequestRunner {
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.removeToken();
       if (tokenRepository instanceof TokenRefreshV2) {
-        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-        tokenRefresh.setTokenExpiresAt(null);
-        tokenRefresh.removeRefreshToken();
-        tokenRefresh.setRefreshTokenExpiresAt(null);
-        cancelRefreshTokenTask();
+        final TokenRefreshV3 tokenRefresh = (TokenRefreshV3) tokenRepository;
+        tokenRefresh.clearTokenData();
+      }
+
+      final TokenRefreshOptions trOpts = this.sdkConfiguration.getTokenRefreshOptions();
+      if (trOpts != null && trOpts.isType(BackgroundTokenRefreshOptions.REFRESH_TYPE) && tokenRepository instanceof BackgroundTokenRefreshRepository) {
+        final BackgroundTokenRefreshRepository btrRepo = (BackgroundTokenRefreshRepository)tokenRepository;
+        btrRepo.stop();
       }
 
       return true;
@@ -756,44 +740,6 @@ public class AccelByteSDK implements RequestRunner {
 
   public byte[] downloadBinaryData(String url) throws Exception {
     return sdkConfiguration.getHttpClient().downloadBinaryData(url);
-  }
-
-  private void scheduleRefreshTokenTask(long delaySeconds) {
-    synchronized (refreshTokenTaskLock) {
-      if (refreshTokenTask != null) {
-        refreshTokenTask.cancel();
-      }
-
-      refreshTokenTask =
-          new TimerTask() {
-            public void run() {
-              final boolean isRefreshTokenOk = refreshToken();
-
-              if (!isRefreshTokenOk) {
-                scheduleRefreshTokenTask(10);
-              }
-            }
-          };
-
-      refreshTokenTimer.schedule(refreshTokenTask, delaySeconds * 1000);
-    }
-  }
-
-  private void cancelRefreshTokenTask() {
-    synchronized (refreshTokenTaskLock) {
-      if (refreshTokenTask != null) {
-        refreshTokenTask.cancel();
-      }
-    }
-  }
-
-  private static boolean isExpired(Instant expiresAt) {
-    final long tokenExpiresAtEpoch = expiresAt.getEpochSecond();
-    final long utcNowEpoch = Instant.now().getEpochSecond();
-
-    final boolean isExpired = (tokenExpiresAtEpoch - utcNowEpoch) <= 0;
-
-    return isExpired;
   }
 
   private LoadingCache<RoleCacheKey, List<Permission>> buildRolePermissionLoadingCache(
@@ -926,29 +872,28 @@ public class AccelByteSDK implements RequestRunner {
         .build(revocationLoader);
   }
 
-  private boolean loginClientInternal(boolean startRefreshTokenTask) {
+  private boolean loginClientInternal() {
     try {
       final OAuth20 oAuth20 = new OAuth20(this);
 
-      final Instant utcNow = Instant.now();
       final TokenGrantV3 tokenGrantV3 =
           TokenGrantV3.builder()
-              .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
-              .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token =
-          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
+            .grantTypeFromEnum(TokenGrantV3.GrantType.ClientCredentials)
+            .build();
+      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3)
+        .ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefreshV2) {
-        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-        final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
-        tokenRefresh.storeRefreshToken(null);
-        tokenRefresh.setRefreshTokenExpiresAt(null);
-        if (startRefreshTokenTask) {
-          scheduleRefreshTokenTask(expiresIn);
-        }
+      if (tokenRepository instanceof TokenRefreshV3) {
+        final TokenRefreshV3 tokenRefresh = (TokenRefreshV3)tokenRepository;
+        tokenRefresh.storeTokenData(token);
+      }
+
+      final TokenRefreshOptions trOpts = this.sdkConfiguration.getTokenRefreshOptions();
+      if (trOpts != null && trOpts.isEnabled() && trOpts.isType(BackgroundTokenRefreshOptions.REFRESH_TYPE) && tokenRepository instanceof BackgroundTokenRefreshRepository) {
+        final BackgroundTokenRefreshRepository btrRepo = (BackgroundTokenRefreshRepository)tokenRepository;
+        btrRepo.start(this);
       }
 
       return true;
@@ -959,7 +904,7 @@ public class AccelByteSDK implements RequestRunner {
   }
 
   private boolean loginUserInternal(
-      String username, String password, String scope, boolean startRefreshTokenTask) {
+      String username, String password, String scope) {
     final String codeVerifier = Helper.generateCodeVerifier();
     final String codeChallenge = Helper.generateCodeChallenge(codeVerifier);
     final String clientId = this.sdkConfiguration.getConfigRepository().getClientId();
@@ -976,7 +921,8 @@ public class AccelByteSDK implements RequestRunner {
               .clientId(clientId)
               .responseTypeFromEnum(AuthorizeV3.ResponseType.Code)
               .build();
-      final String authorizeResponse = oAuth20.authorizeV3(authorizeV3).ensureSuccess();
+      final String authorizeResponse = oAuth20.authorizeV3(authorizeV3)
+        .ensureSuccess();
 
       final List<NameValuePair> authorizeParams =
           URLEncodedUtils.parse(new URI(authorizeResponse), StandardCharsets.UTF_8);
@@ -996,8 +942,8 @@ public class AccelByteSDK implements RequestRunner {
               .password(password)
               .requestId(requestId)
               .build();
-      final String authenticationResponse =
-          oAuth20Extension.userAuthenticationV3(userAuthenticationV3).ensureSuccess();
+      final String authenticationResponse = oAuth20Extension.userAuthenticationV3(userAuthenticationV3)
+        .ensureSuccess();
 
       final List<NameValuePair> authenticationParams =
           URLEncodedUtils.parse(new URI(authenticationResponse), StandardCharsets.UTF_8);
@@ -1013,7 +959,7 @@ public class AccelByteSDK implements RequestRunner {
       if (code == null) {
         return false; // Invalid username or password?
       }
-      final Instant utcNow = Instant.now();
+
       final TokenGrantV3 tokenGrantV3 =
           TokenGrantV3.builder()
               .clientId(clientId)
@@ -1021,21 +967,20 @@ public class AccelByteSDK implements RequestRunner {
               .codeVerifier(codeVerifier)
               .grantTypeFromEnum(TokenGrantV3.GrantType.AuthorizationCode)
               .build();
-      final OauthmodelTokenWithDeviceCookieResponseV3 token =
-          oAuth20.tokenGrantV3(tokenGrantV3).ensureSuccess();
+      final OauthmodelTokenWithDeviceCookieResponseV3 token = oAuth20.tokenGrantV3(tokenGrantV3)
+        .ensureSuccess();
 
       final TokenRepository tokenRepository = this.sdkConfiguration.getTokenRepository();
       tokenRepository.storeToken(token.getAccessToken());
-      if (tokenRepository instanceof TokenRefreshV2) {
-        final TokenRefreshV2 tokenRefresh = (TokenRefreshV2) tokenRepository;
-        final long expiresIn = (long) (token.getExpiresIn() * tokenRefreshRatio);
-        final long refreshExpiresIn = (long) (token.getRefreshExpiresIn() * tokenRefreshRatio);
-        tokenRefresh.setTokenExpiresAt(utcNow.plusSeconds(expiresIn));
-        tokenRefresh.storeRefreshToken(token.getRefreshToken());
-        tokenRefresh.setRefreshTokenExpiresAt(utcNow.plusSeconds(refreshExpiresIn));
-        if (startRefreshTokenTask) {
-          scheduleRefreshTokenTask(expiresIn);
-        }
+      if (tokenRepository instanceof TokenRefreshV3) {
+        final TokenRefreshV3 tokenRefresh = (TokenRefreshV3) tokenRepository;
+        tokenRefresh.storeTokenData(token);
+      }
+
+      final TokenRefreshOptions trOpts = this.sdkConfiguration.getTokenRefreshOptions();
+      if (trOpts != null && trOpts.isEnabled() && trOpts.isType(BackgroundTokenRefreshOptions.REFRESH_TYPE) && tokenRepository instanceof BackgroundTokenRefreshRepository) {
+        final BackgroundTokenRefreshRepository btrRepo = (BackgroundTokenRefreshRepository)tokenRepository;
+        btrRepo.start(this);
       }
 
       return true;

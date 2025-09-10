@@ -77,6 +77,21 @@ public class CLITokenRepositoryImpl implements TokenRepository {
     }
   }
 
+  @Override
+  public boolean isTokenAvailable() {
+    try {
+      File file = new File(getDataStorePath());
+      ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+      DataStore dataStore =
+          file.exists() ? mapper.readValue(file, DataStore.class) : new DataStore();
+      final String accessToken = dataStore.getAccessToken();
+      return (accessToken != null) && (!accessToken.isEmpty());
+    } catch (Exception e) {
+      log.error("File not found with exception: {}", e.getMessage());
+    }
+    return false;
+  }
+
   private String getDataStorePath() {
     Path dataStorePath = Paths.get(System.getProperty("java.io.tmpdir"), DATA_STORE_FILE_NAME);
     return dataStorePath.toString();

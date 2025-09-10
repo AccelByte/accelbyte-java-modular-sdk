@@ -2,16 +2,16 @@ package net.accelbyte.sdk.integration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import lombok.Data;
+import net.accelbyte.sdk.core.AccelByteConfig;
 import net.accelbyte.sdk.core.AccelByteSDK;
-import net.accelbyte.sdk.core.client.OkhttpClient;
-import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
-import net.accelbyte.sdk.core.repository.DefaultTokenRefreshRepository;
+import net.accelbyte.sdk.core.repository.OnDemandTokenRefreshOptions;
+import net.accelbyte.sdk.core.repository.OnDemandTokenRefreshRepository;
+
 import org.junit.jupiter.api.*;
 
 @Tag("test-integration")
@@ -24,17 +24,6 @@ public class TestIntegrationRefreshToken extends TestIntegration {
     super.setup(false);
   }
 
-  private void reflectionSetRefreshRatio(AccelByteSDK sdk, float refreshRatio) {
-    Field fieldRefreshRation;
-    try {
-      fieldRefreshRation = AccelByteSDK.class.getDeclaredField("tokenRefreshRatio");
-      fieldRefreshRation.setAccessible(true);
-      fieldRefreshRation.setFloat(sdk, refreshRatio);
-    } catch (NoSuchFieldException | IllegalAccessException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
   @Data
   private static class RefreshedToken {
     private final boolean isSuccess;
@@ -45,20 +34,21 @@ public class TestIntegrationRefreshToken extends TestIntegration {
   @Test
   public void testRefreshUserToken() throws Exception {
 
-    DefaultConfigRepository configRepo = new DefaultConfigRepository();
-    DefaultTokenRefreshRepository refreshRepo = new DefaultTokenRefreshRepository();
+    OnDemandTokenRefreshOptions refreshOpts = OnDemandTokenRefreshOptions.getDefault();
+    refreshOpts.setRate(0.0005f);
+    final OnDemandTokenRefreshRepository refreshRepo = new OnDemandTokenRefreshRepository(refreshOpts);
 
-    OkhttpClient httpClient = new OkhttpClient();
-    final AccelByteSDK sdk = new AccelByteSDK(httpClient, refreshRepo, configRepo);
-    reflectionSetRefreshRatio(sdk, 0.0005f); // ~1.8 second
+    final AccelByteConfig sdkConfig = AccelByteConfig.getDefault()
+      .setTokenRefresh(refreshRepo);
+    final AccelByteSDK sdk = new AccelByteSDK(sdkConfig);
+
     final int expirationDuration = 2; // in second
 
     boolean loggedIn = sdk.loginOrRefreshUser(username, password);
     assertTrue(loggedIn);
 
     // TODO: make the scheduler 'test-able' and follow SOLID
-    Thread.sleep(
-        expirationDuration * 1_000); // sleep for 2 second, since expiredAt was set 1.8 second
+    Thread.sleep(expirationDuration * 1_000); // sleep for 2 second, since expiredAt was set 1.8 second
 
     CountDownLatch latch = new CountDownLatch(1); // all threads will wait on this latch
     int numWorker = 2;

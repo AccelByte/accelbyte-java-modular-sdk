@@ -2,6 +2,7 @@ package net.accelbyte.sdk.core.repository;
 
 import java.time.Instant;
 
+// @deprecated 2025-09-09 - Use DefaultTokenRefreshRepositoryV2 instead
 public class DefaultTokenRefreshRepository extends DefaultTokenRepository
     implements TokenRefreshV2 {
   private Instant tokenExpiresAt = null;

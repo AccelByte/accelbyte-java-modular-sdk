@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2022-2025 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
@@ -54,6 +54,13 @@ public class DefaultTokenRepository implements TokenRepository {
       notifyOnAccessTokenRefreshed(accessToken);
     }
   }
+
+  @Override
+  public boolean isTokenAvailable() {
+    if (this.accessToken != null)
+      return !this.accessToken.isEmpty();
+    return false;
+  }  
 
   protected void notifyOnAccessTokenRefreshed(String newToken) {
     for (TokenRepositoryCallback callback : callbacks) {

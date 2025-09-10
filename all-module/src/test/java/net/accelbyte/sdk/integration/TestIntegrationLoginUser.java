@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 AccelByte Inc. All Rights Reserved
+ * Copyright (c) 2022-2025 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
@@ -8,10 +8,10 @@ package net.accelbyte.sdk.integration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import net.accelbyte.sdk.core.AccelByteConfig;
 import net.accelbyte.sdk.core.AccelByteSDK;
-import net.accelbyte.sdk.core.client.HttpClient;
-import net.accelbyte.sdk.core.repository.ConfigRepository;
-import net.accelbyte.sdk.core.repository.DefaultTokenRefreshRepository;
+import net.accelbyte.sdk.core.repository.OnDemandTokenRefreshRepository;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -33,12 +33,9 @@ public class TestIntegrationLoginUser extends TestIntegration {
   @Test
   @Order(1)
   public void testLoginUser() throws Exception {
-    final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
-    final DefaultTokenRefreshRepository tokenRefreshRepository =
-        new DefaultTokenRefreshRepository();
-    final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
-
-    final AccelByteSDK sdk = new AccelByteSDK(httpClient, tokenRefreshRepository, configRepository);
+    final AccelByteConfig sdkConfig = AccelByteConfig.getDefault()
+      .setTokenRefresh(OnDemandTokenRefreshRepository.createDefault());
+    final AccelByteSDK sdk = new AccelByteSDK(sdkConfig);
 
     boolean isLoginOk = sdk.loginUser(this.username, this.password);
 
@@ -48,12 +45,9 @@ public class TestIntegrationLoginUser extends TestIntegration {
   @Test
   @Order(1)
   public void testLoginUserWithScope() throws Exception {
-    final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
-    final DefaultTokenRefreshRepository tokenRefreshRepository =
-        new DefaultTokenRefreshRepository();
-    final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
-
-    final AccelByteSDK sdk = new AccelByteSDK(httpClient, tokenRefreshRepository, configRepository);
+    final AccelByteConfig sdkConfig = AccelByteConfig.getDefault()
+      .setTokenRefresh(OnDemandTokenRefreshRepository.createDefault());
+    final AccelByteSDK sdk = new AccelByteSDK(sdkConfig);
 
     boolean isLoginOk = sdk.loginUser(this.username, this.password, "account");
 
@@ -67,12 +61,9 @@ public class TestIntegrationLoginUser extends TestIntegration {
       return; // SKIP
     }
 
-    final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
-    final DefaultTokenRefreshRepository tokenRefreshRepository =
-        new DefaultTokenRefreshRepository();
-    final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
-
-    final AccelByteSDK sdk = new AccelByteSDK(httpClient, tokenRefreshRepository, configRepository);
+    final AccelByteConfig sdkConfig = AccelByteConfig.getDefault()
+      .setTokenRefresh(OnDemandTokenRefreshRepository.createDefault());
+    final AccelByteSDK sdk = new AccelByteSDK(sdkConfig);
 
     boolean isLoginOk = sdk.loginUser(this.username, this.password, "");
 
