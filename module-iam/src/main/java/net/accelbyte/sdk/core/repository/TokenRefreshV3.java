@@ -11,7 +11,7 @@ import net.accelbyte.sdk.api.iam.models.OauthmodelTokenWithDeviceCookieResponseV
 import net.accelbyte.sdk.core.AccelByteSDK;
 
 public interface TokenRefreshV3 extends BaseTokenRefresh {
-  
+
   void storeTokenData(OauthmodelTokenWithDeviceCookieResponseV3 token);
 
   void storeTokenData(OauthmodelTokenResponse token);

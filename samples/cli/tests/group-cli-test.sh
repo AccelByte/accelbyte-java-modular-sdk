@@ -56,15 +56,15 @@ touch "tmp.dat"
 #- 2 ListGroupConfigurationAdminV1
 ./ng net.accelbyte.sdk.cli.Main group listGroupConfigurationAdminV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '32' \
-    --offset '8' \
+    --limit '27' \
+    --offset '59' \
     > test.out 2>&1
 eval_tap $? 2 'ListGroupConfigurationAdminV1' test.out
 
 #- 3 CreateGroupConfigurationAdminV1
 ./ng net.accelbyte.sdk.cli.Main group createGroupConfigurationAdminV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"allowMultiple": false, "configurationCode": "sZfUvsBY", "description": "HdLapPS5", "globalRules": [{"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "H4xS20Eh", "ruleCriteria": "MINIMUM", "ruleValue": 0.24972883512614208}, {"ruleAttribute": "0SPsrobJ", "ruleCriteria": "MAXIMUM", "ruleValue": 0.12733188646755145}, {"ruleAttribute": "Lkp07JBv", "ruleCriteria": "MINIMUM", "ruleValue": 0.5768890274876914}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "yKJPaLgh", "ruleCriteria": "EQUAL", "ruleValue": 0.2937128484827254}, {"ruleAttribute": "ZNCfrTiZ", "ruleCriteria": "MINIMUM", "ruleValue": 0.42560009641008256}, {"ruleAttribute": "BP1Qphxy", "ruleCriteria": "EQUAL", "ruleValue": 0.7985762838534645}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "gu6xI6uY", "ruleCriteria": "MINIMUM", "ruleValue": 0.9336929971214204}, {"ruleAttribute": "wCCVg5RG", "ruleCriteria": "MAXIMUM", "ruleValue": 0.2676494150177169}, {"ruleAttribute": "7T291H4v", "ruleCriteria": "MINIMUM", "ruleValue": 0.22431589220419312}]}], "groupAdminRoleId": "rCIUcCNw", "groupMaxMember": 24, "groupMemberRoleId": "gbswBvdO", "name": "koGveqBd"}' \
+    --body '{"allowMultiple": true, "configurationCode": "1HUI7VVY", "description": "bp7M2nJ0", "globalRules": [{"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "Tf8WNHyU", "ruleCriteria": "MINIMUM", "ruleValue": 0.9132667541600127}, {"ruleAttribute": "mIUJonGC", "ruleCriteria": "EQUAL", "ruleValue": 0.9453161504600651}, {"ruleAttribute": "uvrclUqC", "ruleCriteria": "EQUAL", "ruleValue": 0.9170520860187765}]}, {"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "CvMpdXlO", "ruleCriteria": "MINIMUM", "ruleValue": 0.6755057500692399}, {"ruleAttribute": "WOAnuw68", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5052706054342011}, {"ruleAttribute": "Yi8EmKAr", "ruleCriteria": "EQUAL", "ruleValue": 0.5653665416152139}]}, {"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "gxkH3xgY", "ruleCriteria": "EQUAL", "ruleValue": 0.009463342890012716}, {"ruleAttribute": "FJUIW9tc", "ruleCriteria": "EQUAL", "ruleValue": 0.3753927110289299}, {"ruleAttribute": "aQw4hAzC", "ruleCriteria": "EQUAL", "ruleValue": 0.67760250607045}]}], "groupAdminRoleId": "NIFHWx6F", "groupMaxMember": 36, "groupMemberRoleId": "E4U0XLXc", "name": "oCnvzYd6"}' \
     > test.out 2>&1
 eval_tap $? 3 'CreateGroupConfigurationAdminV1' test.out
 
@@ -76,39 +76,39 @@ eval_tap $? 4 'InitiateGroupConfigurationAdminV1' test.out
 
 #- 5 GetGroupConfigurationAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupConfigurationAdminV1 \
-    --configurationCode '1UfSZadi' \
+    --configurationCode 'kWuKxdQ0' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 5 'GetGroupConfigurationAdminV1' test.out
 
 #- 6 DeleteGroupConfigurationV1
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupConfigurationV1 \
-    --configurationCode 'E8Yb6XJP' \
+    --configurationCode 'YMqxwuTf' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 6 'DeleteGroupConfigurationV1' test.out
 
 #- 7 UpdateGroupConfigurationAdminV1
 ./ng net.accelbyte.sdk.cli.Main group updateGroupConfigurationAdminV1 \
-    --configurationCode 'npVWSJoc' \
+    --configurationCode 'XoZVmgkn' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"description": "C9qJfZnV", "groupMaxMember": 76, "name": "wXPEol50"}' \
+    --body '{"description": "YdoU953I", "groupMaxMember": 3, "name": "Z23fYZhj"}' \
     > test.out 2>&1
 eval_tap $? 7 'UpdateGroupConfigurationAdminV1' test.out
 
 #- 8 UpdateGroupConfigurationGlobalRuleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group updateGroupConfigurationGlobalRuleAdminV1 \
-    --allowedAction 'o7EVsu5t' \
-    --configurationCode 'upQ8jAFi' \
+    --allowedAction 'WVFlmAkQ' \
+    --configurationCode 'pTjIBM9B' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ruleDetail": [{"ruleAttribute": "JA4PuaSs", "ruleCriteria": "EQUAL", "ruleValue": 0.1558942281301946}, {"ruleAttribute": "e6e7H5em", "ruleCriteria": "MAXIMUM", "ruleValue": 0.34219128340555993}, {"ruleAttribute": "oD5DBwLK", "ruleCriteria": "EQUAL", "ruleValue": 0.04648774524463983}]}' \
+    --body '{"ruleDetail": [{"ruleAttribute": "kYTi0qd0", "ruleCriteria": "MAXIMUM", "ruleValue": 0.911772694086246}, {"ruleAttribute": "Iyn47Qyj", "ruleCriteria": "MAXIMUM", "ruleValue": 0.1690544356921907}, {"ruleAttribute": "QhbIr5Ns", "ruleCriteria": "MAXIMUM", "ruleValue": 0.724602589526983}]}' \
     > test.out 2>&1
 eval_tap $? 8 'UpdateGroupConfigurationGlobalRuleAdminV1' test.out
 
 #- 9 DeleteGroupConfigurationGlobalRuleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupConfigurationGlobalRuleAdminV1 \
-    --allowedAction 'tKMfIebq' \
-    --configurationCode 'JzolUmzO' \
+    --allowedAction 'satnexBN' \
+    --configurationCode 'pS0WNXZw' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 9 'DeleteGroupConfigurationGlobalRuleAdminV1' test.out
@@ -116,206 +116,206 @@ eval_tap $? 9 'DeleteGroupConfigurationGlobalRuleAdminV1' test.out
 #- 10 GetGroupListAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupListAdminV1 \
     --namespace "$AB_NAMESPACE" \
-    --configurationCode 'pPwwOeZg' \
-    --groupName 'N7znBRVI' \
-    --groupRegion '7GjMFQzw' \
-    --limit '52' \
-    --offset '71' \
+    --configurationCode '6hz5gyYH' \
+    --groupName '3ekPre2p' \
+    --groupRegion 'yBZPuH07' \
+    --limit '37' \
+    --offset '0' \
     > test.out 2>&1
 eval_tap $? 10 'GetGroupListAdminV1' test.out
 
 #- 11 GetSingleGroupAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getSingleGroupAdminV1 \
-    --groupId 'siTTz3jG' \
+    --groupId 'WTq8IZRH' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 11 'GetSingleGroupAdminV1' test.out
 
 #- 12 DeleteGroupAdminV1
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupAdminV1 \
-    --groupId 'Br45oFRl' \
+    --groupId 'rJxa2S6G' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 12 'DeleteGroupAdminV1' test.out
 
 #- 13 GetGroupMembersListAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupMembersListAdminV1 \
-    --groupId 'o6kt0Uin' \
+    --groupId '9sDC6z1y' \
     --namespace "$AB_NAMESPACE" \
-    --limit '92' \
-    --offset '49' \
-    --order 'BGCzq262' \
+    --limit '22' \
+    --offset '38' \
+    --order '6IjhvCfw' \
     > test.out 2>&1
 eval_tap $? 13 'GetGroupMembersListAdminV1' test.out
 
 #- 14 GetMemberRolesListAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getMemberRolesListAdminV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '24' \
-    --offset '81' \
+    --limit '18' \
+    --offset '8' \
     > test.out 2>&1
 eval_tap $? 14 'GetMemberRolesListAdminV1' test.out
 
 #- 15 CreateMemberRoleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group createMemberRoleAdminV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"memberRoleName": "3bpkJcqq", "memberRolePermissions": [{"action": 8, "resourceName": "gPNQ1xSu"}, {"action": 38, "resourceName": "mv9Gs1SV"}, {"action": 99, "resourceName": "yDkm1Ehp"}]}' \
+    --body '{"memberRoleName": "mi4R3X6f", "memberRolePermissions": [{"action": 79, "resourceName": "HYY0nPKR"}, {"action": 54, "resourceName": "h0LyB4Fy"}, {"action": 91, "resourceName": "dT6vOoWN"}]}' \
     > test.out 2>&1
 eval_tap $? 15 'CreateMemberRoleAdminV1' test.out
 
 #- 16 GetSingleMemberRoleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group getSingleMemberRoleAdminV1 \
-    --memberRoleId 'O7aDqe5T' \
+    --memberRoleId '4ioYldn1' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 16 'GetSingleMemberRoleAdminV1' test.out
 
 #- 17 DeleteMemberRoleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group deleteMemberRoleAdminV1 \
-    --memberRoleId 'Csx1L2X7' \
+    --memberRoleId 'e9op3ZN1' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 17 'DeleteMemberRoleAdminV1' test.out
 
 #- 18 UpdateMemberRoleAdminV1
 ./ng net.accelbyte.sdk.cli.Main group updateMemberRoleAdminV1 \
-    --memberRoleId 'eEOFuaru' \
+    --memberRoleId 'JoNHBfti' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"memberRoleName": "ITozA7iO"}' \
+    --body '{"memberRoleName": "kp541YCW"}' \
     > test.out 2>&1
 eval_tap $? 18 'UpdateMemberRoleAdminV1' test.out
 
 #- 19 UpdateMemberRolePermissionAdminV1
 ./ng net.accelbyte.sdk.cli.Main group updateMemberRolePermissionAdminV1 \
-    --memberRoleId 'I5LmwyMF' \
+    --memberRoleId 'P3pPkKxp' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"memberRolePermissions": [{"action": 40, "resourceName": "bD5hdjoI"}, {"action": 61, "resourceName": "cb7AYWx3"}, {"action": 81, "resourceName": "Z8AEeXhX"}]}' \
+    --body '{"memberRolePermissions": [{"action": 66, "resourceName": "3djlAhE2"}, {"action": 87, "resourceName": "xbX4Ews8"}, {"action": 24, "resourceName": "MpnzmJyQ"}]}' \
     > test.out 2>&1
 eval_tap $? 19 'UpdateMemberRolePermissionAdminV1' test.out
 
 #- 20 GetGroupListPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupListPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --groupName 'IM5orjM6' \
-    --groupRegion 'vTiYjLWM' \
-    --limit '88' \
-    --offset '53' \
+    --groupName 'jM1T8AWh' \
+    --groupRegion 'gVloqksM' \
+    --limit '94' \
+    --offset '65' \
     > test.out 2>&1
 eval_tap $? 20 'GetGroupListPublicV1' test.out
 
 #- 21 CreateNewGroupPublicV1
 ./ng net.accelbyte.sdk.cli.Main group createNewGroupPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"configurationCode": "DRmTSoTx", "customAttributes": {"HdfeN4Pm": {}, "gt1Ebr4F": {}, "Gqfi5ZBm": {}}, "groupDescription": "zLF9pF4a", "groupIcon": "l60LDxyJ", "groupMaxMember": 68, "groupName": "w9AWhH1m", "groupRegion": "BxyF99p2", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "7I7V8ovb", "ruleCriteria": "MINIMUM", "ruleValue": 0.7256126783288318}, {"ruleAttribute": "dIonMx1N", "ruleCriteria": "EQUAL", "ruleValue": 0.49527222396391546}, {"ruleAttribute": "F2kSqB5W", "ruleCriteria": "EQUAL", "ruleValue": 0.9904612756594224}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "ZhzEvw9s", "ruleCriteria": "MAXIMUM", "ruleValue": 0.44630173571426157}, {"ruleAttribute": "iCZMovsn", "ruleCriteria": "MAXIMUM", "ruleValue": 0.46586712367378724}, {"ruleAttribute": "N6PQzbtU", "ruleCriteria": "MAXIMUM", "ruleValue": 0.31493525779248266}]}, {"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "B7YSK1xQ", "ruleCriteria": "EQUAL", "ruleValue": 0.6487546379600736}, {"ruleAttribute": "wKgPDmbY", "ruleCriteria": "MAXIMUM", "ruleValue": 0.45037599197052136}, {"ruleAttribute": "XLo2czgE", "ruleCriteria": "MINIMUM", "ruleValue": 0.6093133009423679}]}]}, "groupType": "PUBLIC"}' \
+    --body '{"configurationCode": "SG7KbpUD", "customAttributes": {"Sdvvtrbb": {}, "dzCDquvK": {}, "hmXQAWtI": {}}, "groupDescription": "eWtIETpe", "groupIcon": "AVms6SHl", "groupMaxMember": 70, "groupName": "OCcBTnTl", "groupRegion": "VuNAcwkC", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "HV3OD2WI", "ruleCriteria": "MINIMUM", "ruleValue": 0.05052940121147942}, {"ruleAttribute": "wPC4War2", "ruleCriteria": "MAXIMUM", "ruleValue": 0.4204595572470924}, {"ruleAttribute": "aVvFY0kd", "ruleCriteria": "MINIMUM", "ruleValue": 0.4387980129112}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "wj5lkaQT", "ruleCriteria": "MINIMUM", "ruleValue": 0.36190918927341664}, {"ruleAttribute": "IS6HmnMK", "ruleCriteria": "MAXIMUM", "ruleValue": 0.802921258647118}, {"ruleAttribute": "Kd2ACyuF", "ruleCriteria": "MINIMUM", "ruleValue": 0.3211716438660702}]}, {"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "540BGmuq", "ruleCriteria": "MINIMUM", "ruleValue": 0.6771756534921517}, {"ruleAttribute": "f1Pi9ab4", "ruleCriteria": "MINIMUM", "ruleValue": 0.9895968477536876}, {"ruleAttribute": "OcE08FoM", "ruleCriteria": "EQUAL", "ruleValue": 0.6537276854612621}]}]}, "groupType": "PRIVATE"}' \
     > test.out 2>&1
 eval_tap $? 21 'CreateNewGroupPublicV1' test.out
 
 #- 22 GetSingleGroupPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getSingleGroupPublicV1 \
-    --groupId 'OH1oOSVz' \
+    --groupId 'k4AnCIyG' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 22 'GetSingleGroupPublicV1' test.out
 
 #- 23 UpdateSingleGroupV1
 ./ng net.accelbyte.sdk.cli.Main group updateSingleGroupV1 \
-    --groupId 'PxQ4HvTS' \
+    --groupId 'sastB97H' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {}, "groupDescription": "O7mqbd4z", "groupIcon": "0fMXT1uU", "groupName": "ThvDKuKx", "groupRegion": "3q0cnfOn", "groupType": "PRIVATE"}' \
+    --body '{"customAttributes": {}, "groupDescription": "dWRrgZqK", "groupIcon": "u7KduTkh", "groupName": "jnfSxH4i", "groupRegion": "wy2AJ9IE", "groupType": "PUBLIC"}' \
     > test.out 2>&1
 eval_tap $? 23 'UpdateSingleGroupV1' test.out
 
 #- 24 DeleteGroupPublicV1
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupPublicV1 \
-    --groupId 'qzcMhdYf' \
+    --groupId 'YVqpHSUq' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 24 'DeleteGroupPublicV1' test.out
 
 #- 25 UpdatePatchSingleGroupPublicV1
 ./ng net.accelbyte.sdk.cli.Main group updatePatchSingleGroupPublicV1 \
-    --groupId 'srqeSxG0' \
+    --groupId '2TkW4vMK' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {}, "groupDescription": "F10hEAcs", "groupIcon": "n3baYOAI", "groupName": "kB7pXfUS", "groupRegion": "0WDa2AwE", "groupType": "PUBLIC"}' \
+    --body '{"customAttributes": {}, "groupDescription": "fnzYmEvt", "groupIcon": "dk7VQpbe", "groupName": "3QT7lqrY", "groupRegion": "aBXxpfGM", "groupType": "PUBLIC"}' \
     > test.out 2>&1
 eval_tap $? 25 'UpdatePatchSingleGroupPublicV1' test.out
 
 #- 26 UpdateGroupCustomAttributesPublicV1
 ./ng net.accelbyte.sdk.cli.Main group updateGroupCustomAttributesPublicV1 \
-    --groupId 'dwG2YBJO' \
+    --groupId 'Ls4zg5Wd' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {"VR5mn3d9": {}, "UzOJEvt3": {}, "IimatAIB": {}}}' \
+    --body '{"customAttributes": {"BG7Pdn4M": {}, "Jt3RDZkf": {}, "yrKDnTcr": {}}}' \
     > test.out 2>&1
 eval_tap $? 26 'UpdateGroupCustomAttributesPublicV1' test.out
 
 #- 27 AcceptGroupInvitationPublicV1
 ./ng net.accelbyte.sdk.cli.Main group acceptGroupInvitationPublicV1 \
-    --groupId 'wczdE1Y9' \
+    --groupId 'gV9396T5' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 27 'AcceptGroupInvitationPublicV1' test.out
 
 #- 28 RejectGroupInvitationPublicV1
 ./ng net.accelbyte.sdk.cli.Main group rejectGroupInvitationPublicV1 \
-    --groupId '17iqjn47' \
+    --groupId '1c7p0Xpg' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 28 'RejectGroupInvitationPublicV1' test.out
 
 #- 29 JoinGroupV1
 ./ng net.accelbyte.sdk.cli.Main group joinGroupV1 \
-    --groupId 'D1bZ20GS' \
+    --groupId 'CMd1IJT2' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 29 'JoinGroupV1' test.out
 
 #- 30 CancelGroupJoinRequestV1
 ./ng net.accelbyte.sdk.cli.Main group cancelGroupJoinRequestV1 \
-    --groupId 'UxCNTDMO' \
+    --groupId 'tp1xwmTG' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 30 'CancelGroupJoinRequestV1' test.out
 
 #- 31 GetGroupJoinRequestPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupJoinRequestPublicV1 \
-    --groupId 'NaIhfRmb' \
+    --groupId '7cAWcP32' \
     --namespace "$AB_NAMESPACE" \
-    --limit '93' \
-    --offset '36' \
+    --limit '21' \
+    --offset '25' \
     > test.out 2>&1
 eval_tap $? 31 'GetGroupJoinRequestPublicV1' test.out
 
 #- 32 GetGroupMembersListPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupMembersListPublicV1 \
-    --groupId 'Qgy28iRk' \
+    --groupId '7BP6elCN' \
     --namespace "$AB_NAMESPACE" \
-    --limit '61' \
-    --offset '69' \
-    --order 'vhSazqld' \
+    --limit '94' \
+    --offset '100' \
+    --order 'rtAH1Zpk' \
     > test.out 2>&1
 eval_tap $? 32 'GetGroupMembersListPublicV1' test.out
 
 #- 33 UpdateGroupCustomRulePublicV1
 ./ng net.accelbyte.sdk.cli.Main group updateGroupCustomRulePublicV1 \
-    --groupId 'l76cKXVX' \
+    --groupId '9WGL6x3I' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"groupCustomRule": {"1xuC4pTn": {}, "v6V4HyKT": {}, "9lRniDls": {}}}' \
+    --body '{"groupCustomRule": {"gc2dSpJi": {}, "M4jXxPvd": {}, "mb2C1vG4": {}}}' \
     > test.out 2>&1
 eval_tap $? 33 'UpdateGroupCustomRulePublicV1' test.out
 
 #- 34 UpdateGroupPredefinedRulePublicV1
 ./ng net.accelbyte.sdk.cli.Main group updateGroupPredefinedRulePublicV1 \
-    --allowedAction 'KKBFGjTB' \
-    --groupId 'lFL9TtJ0' \
+    --allowedAction 'MyiVL0qn' \
+    --groupId 'RwX256fG' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ruleDetail": [{"ruleAttribute": "Yp1QGNOQ", "ruleCriteria": "MAXIMUM", "ruleValue": 0.0051671059371131145}, {"ruleAttribute": "SEsA9sNf", "ruleCriteria": "EQUAL", "ruleValue": 0.38028258603795473}, {"ruleAttribute": "cCrwKOuv", "ruleCriteria": "MINIMUM", "ruleValue": 0.20144795747741595}]}' \
+    --body '{"ruleDetail": [{"ruleAttribute": "d8kzZlV8", "ruleCriteria": "MAXIMUM", "ruleValue": 0.06689253793318273}, {"ruleAttribute": "4st59iMN", "ruleCriteria": "MAXIMUM", "ruleValue": 0.8559093471475622}, {"ruleAttribute": "4sAPSLVw", "ruleCriteria": "MINIMUM", "ruleValue": 0.9218080698236739}]}' \
     > test.out 2>&1
 eval_tap $? 34 'UpdateGroupPredefinedRulePublicV1' test.out
 
 #- 35 DeleteGroupPredefinedRulePublicV1
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupPredefinedRulePublicV1 \
-    --allowedAction 'sBzZu0cm' \
-    --groupId 'P5IEQmvV' \
+    --allowedAction '0d0mvtY1' \
+    --groupId '7IxwFgvE' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 35 'DeleteGroupPredefinedRulePublicV1' test.out
@@ -329,206 +329,206 @@ eval_tap $? 36 'LeaveGroupPublicV1' test.out
 #- 37 GetMemberRolesListPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getMemberRolesListPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '96' \
-    --offset '19' \
+    --limit '9' \
+    --offset '89' \
     > test.out 2>&1
 eval_tap $? 37 'GetMemberRolesListPublicV1' test.out
 
 #- 38 UpdateMemberRolePublicV1
 ./ng net.accelbyte.sdk.cli.Main group updateMemberRolePublicV1 \
-    --memberRoleId 'u0cBGypL' \
+    --memberRoleId 'aDDYLRG5' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userId": "ZNhuNQr3"}' \
+    --body '{"userId": "08ciHKCX"}' \
     > test.out 2>&1
 eval_tap $? 38 'UpdateMemberRolePublicV1' test.out
 
 #- 39 DeleteMemberRolePublicV1
 ./ng net.accelbyte.sdk.cli.Main group deleteMemberRolePublicV1 \
-    --memberRoleId 'dMcoPVkS' \
+    --memberRoleId 'clJKRONo' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userId": "60e5OXy7"}' \
+    --body '{"userId": "WAaGyUkD"}' \
     > test.out 2>&1
 eval_tap $? 39 'DeleteMemberRolePublicV1' test.out
 
 #- 40 GetGroupInvitationRequestPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getGroupInvitationRequestPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --limit '44' \
-    --offset '74' \
+    --limit '24' \
+    --offset '43' \
     > test.out 2>&1
 eval_tap $? 40 'GetGroupInvitationRequestPublicV1' test.out
 
 #- 41 GetUserGroupInformationPublicV1
 ./ng net.accelbyte.sdk.cli.Main group getUserGroupInformationPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId '97YuY8Qq' \
+    --userId 'FZjryvVp' \
     > test.out 2>&1
 eval_tap $? 41 'GetUserGroupInformationPublicV1' test.out
 
 #- 42 InviteGroupPublicV1
 ./ng net.accelbyte.sdk.cli.Main group inviteGroupPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId '2WTRyB9t' \
+    --userId 'OGSvMw7A' \
     > test.out 2>&1
 eval_tap $? 42 'InviteGroupPublicV1' test.out
 
 #- 43 AcceptGroupJoinRequestPublicV1
 ./ng net.accelbyte.sdk.cli.Main group acceptGroupJoinRequestPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'PWKf3jLK' \
+    --userId 'yeTGgs5Z' \
     > test.out 2>&1
 eval_tap $? 43 'AcceptGroupJoinRequestPublicV1' test.out
 
 #- 44 RejectGroupJoinRequestPublicV1
 ./ng net.accelbyte.sdk.cli.Main group rejectGroupJoinRequestPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'XHLKc7Xu' \
+    --userId 'tUcQtB49' \
     > test.out 2>&1
 eval_tap $? 44 'RejectGroupJoinRequestPublicV1' test.out
 
 #- 45 KickGroupMemberPublicV1
 ./ng net.accelbyte.sdk.cli.Main group kickGroupMemberPublicV1 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ERgTW17t' \
+    --userId 'nujsO1du' \
     > test.out 2>&1
 eval_tap $? 45 'KickGroupMemberPublicV1' test.out
 
 #- 46 GetListGroupByIDsAdminV2
 ./ng net.accelbyte.sdk.cli.Main group getListGroupByIDsAdminV2 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"groupIDs": ["pA83H6L8", "BQRDQWqZ", "Cdx3twkX"]}' \
+    --body '{"groupIDs": ["0vmrNubj", "sFMpXKxx", "sZqVpXsa"]}' \
     > test.out 2>&1
 eval_tap $? 46 'GetListGroupByIDsAdminV2' test.out
 
 #- 47 GetUserJoinedGroupInformationPublicV2
 ./ng net.accelbyte.sdk.cli.Main group getUserJoinedGroupInformationPublicV2 \
     --namespace "$AB_NAMESPACE" \
-    --userId 'hwH6IiAm' \
-    --limit '39' \
-    --offset '76' \
+    --userId 'zMNS5tMo' \
+    --limit '70' \
+    --offset '91' \
     > test.out 2>&1
 eval_tap $? 47 'GetUserJoinedGroupInformationPublicV2' test.out
 
 #- 48 AdminGetUserGroupStatusInformationV2
 ./ng net.accelbyte.sdk.cli.Main group adminGetUserGroupStatusInformationV2 \
-    --groupId '1jFx8F3j' \
+    --groupId 'azAzsqy5' \
     --namespace "$AB_NAMESPACE" \
-    --userId '6gPO48Ka' \
+    --userId 'X4YU8X5x' \
     > test.out 2>&1
 eval_tap $? 48 'AdminGetUserGroupStatusInformationV2' test.out
 
 #- 49 CreateNewGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group createNewGroupPublicV2 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"configurationCode": "fDpq5Ous", "customAttributes": {"jX9Yc5w9": {}, "WaQ2KJIP": {}, "okc3nsYp": {}}, "groupDescription": "wNFbttOP", "groupIcon": "VjzK3EwY", "groupMaxMember": 25, "groupName": "EJYQg8Kl", "groupRegion": "FegLGVk9", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "jrDRFOMZ", "ruleCriteria": "EQUAL", "ruleValue": 0.28611383399293955}, {"ruleAttribute": "QlHDMdaY", "ruleCriteria": "EQUAL", "ruleValue": 0.8855588104901905}, {"ruleAttribute": "2zZaX9rz", "ruleCriteria": "EQUAL", "ruleValue": 0.021396078411892727}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "lqhVexIW", "ruleCriteria": "MINIMUM", "ruleValue": 0.6841026186648418}, {"ruleAttribute": "g0dgMF63", "ruleCriteria": "MAXIMUM", "ruleValue": 0.11331790250538842}, {"ruleAttribute": "IjCAF7tv", "ruleCriteria": "MAXIMUM", "ruleValue": 0.04324943076314636}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "96SAMN2B", "ruleCriteria": "MINIMUM", "ruleValue": 0.6575578134251802}, {"ruleAttribute": "O8hsMbVG", "ruleCriteria": "MAXIMUM", "ruleValue": 0.31783098372456253}, {"ruleAttribute": "oOMoxcz1", "ruleCriteria": "MAXIMUM", "ruleValue": 0.4961195640308791}]}]}, "groupType": "PUBLIC"}' \
+    --body '{"configurationCode": "P0LHRjFs", "customAttributes": {"TQn1IPvT": {}, "n0bQt0YP": {}, "8BLE92ph": {}}, "groupDescription": "PyLdCKLD", "groupIcon": "A82OO5ij", "groupMaxMember": 43, "groupName": "NzmjV4E5", "groupRegion": "BSujtsUO", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "VrK6r58o", "ruleCriteria": "EQUAL", "ruleValue": 0.09656601492605443}, {"ruleAttribute": "mqjVhtso", "ruleCriteria": "MINIMUM", "ruleValue": 0.501112908971063}, {"ruleAttribute": "sHyQw8zB", "ruleCriteria": "EQUAL", "ruleValue": 0.31213510523884247}]}, {"allowedAction": "createGroup", "ruleDetail": [{"ruleAttribute": "CKxi7Y0r", "ruleCriteria": "MAXIMUM", "ruleValue": 0.6001240539421357}, {"ruleAttribute": "CZ7JhOTz", "ruleCriteria": "MINIMUM", "ruleValue": 0.2722633553765018}, {"ruleAttribute": "DNNCyDSq", "ruleCriteria": "MINIMUM", "ruleValue": 0.5564748316624409}]}, {"allowedAction": "joinGroup", "ruleDetail": [{"ruleAttribute": "OYCrDMkX", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7044024209481615}, {"ruleAttribute": "4EVa6syv", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7792802753674988}, {"ruleAttribute": "XjOCr9WW", "ruleCriteria": "MINIMUM", "ruleValue": 0.7473616452154381}]}]}, "groupType": "OPEN"}' \
     > test.out 2>&1
 eval_tap $? 49 'CreateNewGroupPublicV2' test.out
 
 #- 50 GetListGroupByIDsV2
 ./ng net.accelbyte.sdk.cli.Main group getListGroupByIDsV2 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"groupIDs": ["dnWW72r6", "lhXm2yHP", "GsiKUCMk"]}' \
+    --body '{"groupIDs": ["CQdvm6Ww", "njTHzIF9", "z9mY02Bf"]}' \
     > test.out 2>&1
 eval_tap $? 50 'GetListGroupByIDsV2' test.out
 
 #- 51 UpdatePutSingleGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group updatePutSingleGroupPublicV2 \
-    --groupId 'SqzYX9d8' \
+    --groupId 'GU8FjL5X' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {}, "groupDescription": "LVH34Lnh", "groupIcon": "ZhVZVvC2", "groupName": "chaN5kan", "groupRegion": "aVo5dsPO", "groupType": "PRIVATE"}' \
+    --body '{"customAttributes": {}, "groupDescription": "MDe19E3Q", "groupIcon": "umbHRGeo", "groupName": "LgBp8IOZ", "groupRegion": "n8CAtt4D", "groupType": "PRIVATE"}' \
     > test.out 2>&1
 eval_tap $? 51 'UpdatePutSingleGroupPublicV2' test.out
 
 #- 52 DeleteGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupPublicV2 \
-    --groupId 'ymVxBycS' \
+    --groupId 'fSPOTe3A' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 52 'DeleteGroupPublicV2' test.out
 
 #- 53 UpdatePatchSingleGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group updatePatchSingleGroupPublicV2 \
-    --groupId 'nnmfiZpY' \
+    --groupId 'sY2FScnT' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {}, "groupDescription": "TabkUvxj", "groupIcon": "8Zt1jSkO", "groupName": "rcvLj1Wi", "groupRegion": "pIMBmT5R", "groupType": "OPEN"}' \
+    --body '{"customAttributes": {}, "groupDescription": "CBvigpM1", "groupIcon": "dfOJ3VuK", "groupName": "KzSk9OyL", "groupRegion": "nTOKePnA", "groupType": "PRIVATE"}' \
     > test.out 2>&1
 eval_tap $? 53 'UpdatePatchSingleGroupPublicV2' test.out
 
 #- 54 UpdateGroupCustomAttributesPublicV2
 ./ng net.accelbyte.sdk.cli.Main group updateGroupCustomAttributesPublicV2 \
-    --groupId 'o1TsZOOC' \
+    --groupId 'MWLrNtxf' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {"TbwBx1O9": {}, "ZxjEeqS0": {}, "hq39Autk": {}}}' \
+    --body '{"customAttributes": {"4KmYuGAn": {}, "kPwyDxCY": {}, "1T4v6mFC": {}}}' \
     > test.out 2>&1
 eval_tap $? 54 'UpdateGroupCustomAttributesPublicV2' test.out
 
 #- 55 AcceptGroupInvitationPublicV2
 ./ng net.accelbyte.sdk.cli.Main group acceptGroupInvitationPublicV2 \
-    --groupId 'kAIK9wyi' \
+    --groupId '7RdVhRxK' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 55 'AcceptGroupInvitationPublicV2' test.out
 
 #- 56 RejectGroupInvitationPublicV2
 ./ng net.accelbyte.sdk.cli.Main group rejectGroupInvitationPublicV2 \
-    --groupId '8XzrvP2o' \
+    --groupId '9Nk67yti' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 56 'RejectGroupInvitationPublicV2' test.out
 
 #- 57 GetGroupInviteRequestPublicV2
 ./ng net.accelbyte.sdk.cli.Main group getGroupInviteRequestPublicV2 \
-    --groupId 'wDwlkYRt' \
+    --groupId 'RWbBYyPw' \
     --namespace "$AB_NAMESPACE" \
-    --limit '16' \
-    --offset '19' \
+    --limit '45' \
+    --offset '70' \
     > test.out 2>&1
 eval_tap $? 57 'GetGroupInviteRequestPublicV2' test.out
 
 #- 58 JoinGroupV2
 ./ng net.accelbyte.sdk.cli.Main group joinGroupV2 \
-    --groupId '5YPGKyXy' \
+    --groupId 'qcg3OCli' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 58 'JoinGroupV2' test.out
 
 #- 59 GetGroupJoinRequestPublicV2
 ./ng net.accelbyte.sdk.cli.Main group getGroupJoinRequestPublicV2 \
-    --groupId 'UPd5rfdj' \
+    --groupId '4eEGJBHL' \
     --namespace "$AB_NAMESPACE" \
-    --limit '42' \
-    --offset '59' \
+    --limit '87' \
+    --offset '71' \
     > test.out 2>&1
 eval_tap $? 59 'GetGroupJoinRequestPublicV2' test.out
 
 #- 60 LeaveGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group leaveGroupPublicV2 \
-    --groupId 'hlIUb5Ky' \
+    --groupId 'yHDiccxI' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 60 'LeaveGroupPublicV2' test.out
 
 #- 61 UpdateGroupCustomRulePublicV2
 ./ng net.accelbyte.sdk.cli.Main group updateGroupCustomRulePublicV2 \
-    --groupId 'SDRF1mBq' \
+    --groupId 'CsO94MSi' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"groupCustomRule": {"6QQuzM35": {}, "aQ45K87O": {}, "ShpgPxfl": {}}}' \
+    --body '{"groupCustomRule": {"DbY8fhHS": {}, "1EtWNUjo": {}, "1kYSFHjF": {}}}' \
     > test.out 2>&1
 eval_tap $? 61 'UpdateGroupCustomRulePublicV2' test.out
 
 #- 62 UpdateGroupPredefinedRulePublicV2
 ./ng net.accelbyte.sdk.cli.Main group updateGroupPredefinedRulePublicV2 \
-    --allowedAction 'bD6iueCs' \
-    --groupId 'sWp5Ou9l' \
+    --allowedAction 'GlbANOXy' \
+    --groupId 'YMuKPNwp' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ruleDetail": [{"ruleAttribute": "WyF6Dtsy", "ruleCriteria": "EQUAL", "ruleValue": 0.5735652472474069}, {"ruleAttribute": "mr1Aqze9", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5618039245255467}, {"ruleAttribute": "hCSCsZwq", "ruleCriteria": "EQUAL", "ruleValue": 0.5849018418654555}]}' \
+    --body '{"ruleDetail": [{"ruleAttribute": "JLDVN0CE", "ruleCriteria": "MAXIMUM", "ruleValue": 0.2532817911054914}, {"ruleAttribute": "qC2vACz3", "ruleCriteria": "MINIMUM", "ruleValue": 0.4553036992423847}, {"ruleAttribute": "I169da5m", "ruleCriteria": "EQUAL", "ruleValue": 0.48561823843299545}]}' \
     > test.out 2>&1
 eval_tap $? 62 'UpdateGroupPredefinedRulePublicV2' test.out
 
 #- 63 DeleteGroupPredefinedRulePublicV2
 ./ng net.accelbyte.sdk.cli.Main group deleteGroupPredefinedRulePublicV2 \
-    --allowedAction 'WJmvda7b' \
-    --groupId 'HN2quZlr' \
+    --allowedAction 'EZiOq6Xa' \
+    --groupId 'SkhmiRHg' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 63 'DeleteGroupPredefinedRulePublicV2' test.out
@@ -536,90 +536,90 @@ eval_tap $? 63 'DeleteGroupPredefinedRulePublicV2' test.out
 #- 64 GetMemberRolesListPublicV2
 ./ng net.accelbyte.sdk.cli.Main group getMemberRolesListPublicV2 \
     --namespace "$AB_NAMESPACE" \
-    --limit '84' \
-    --offset '6' \
+    --limit '98' \
+    --offset '51' \
     > test.out 2>&1
 eval_tap $? 64 'GetMemberRolesListPublicV2' test.out
 
 #- 65 UpdateMemberRolePublicV2
 ./ng net.accelbyte.sdk.cli.Main group updateMemberRolePublicV2 \
-    --groupId 'NFt0vHny' \
-    --memberRoleId '7aRDBi2G' \
+    --groupId 'EsqGLM2K' \
+    --memberRoleId 'LlQcEBmJ' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userId": "2OGonM0K"}' \
+    --body '{"userId": "OsuJitIh"}' \
     > test.out 2>&1
 eval_tap $? 65 'UpdateMemberRolePublicV2' test.out
 
 #- 66 DeleteMemberRolePublicV2
 ./ng net.accelbyte.sdk.cli.Main group deleteMemberRolePublicV2 \
-    --groupId 'XrFOVrPx' \
-    --memberRoleId 'EPZtPW5n' \
+    --groupId 'Gtwou1y0' \
+    --memberRoleId '54fuxYsN' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"userId": "Zcce4w5j"}' \
+    --body '{"userId": "ocL3PYK8"}' \
     > test.out 2>&1
 eval_tap $? 66 'DeleteMemberRolePublicV2' test.out
 
 #- 67 GetUserGroupInformationPublicV2
 ./ng net.accelbyte.sdk.cli.Main group getUserGroupInformationPublicV2 \
     --namespace "$AB_NAMESPACE" \
-    --limit '44' \
-    --offset '25' \
+    --limit '22' \
+    --offset '61' \
     > test.out 2>&1
 eval_tap $? 67 'GetUserGroupInformationPublicV2' test.out
 
 #- 68 GetMyGroupJoinRequestV2
 ./ng net.accelbyte.sdk.cli.Main group getMyGroupJoinRequestV2 \
     --namespace "$AB_NAMESPACE" \
-    --limit '79' \
-    --offset '77' \
+    --limit '90' \
+    --offset '24' \
     > test.out 2>&1
 eval_tap $? 68 'GetMyGroupJoinRequestV2' test.out
 
 #- 69 InviteGroupPublicV2
 ./ng net.accelbyte.sdk.cli.Main group inviteGroupPublicV2 \
-    --groupId 'oH7IWdbT' \
+    --groupId 'HTKdkv5z' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'FGX68SHF' \
+    --userId 'RVuqWEhT' \
     > test.out 2>&1
 eval_tap $? 69 'InviteGroupPublicV2' test.out
 
 #- 70 CancelInvitationGroupMemberV2
 ./ng net.accelbyte.sdk.cli.Main group cancelInvitationGroupMemberV2 \
-    --groupId 'y4msipJg' \
+    --groupId 'pgPfFfb5' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'jxkZSoJ9' \
+    --userId 'c2WcWdeV' \
     > test.out 2>&1
 eval_tap $? 70 'CancelInvitationGroupMemberV2' test.out
 
 #- 71 AcceptGroupJoinRequestPublicV2
 ./ng net.accelbyte.sdk.cli.Main group acceptGroupJoinRequestPublicV2 \
-    --groupId 'hRyOAjuy' \
+    --groupId 'cy5gNyGU' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'Zj13BUlX' \
+    --userId 'BvyziX3t' \
     > test.out 2>&1
 eval_tap $? 71 'AcceptGroupJoinRequestPublicV2' test.out
 
 #- 72 RejectGroupJoinRequestPublicV2
 ./ng net.accelbyte.sdk.cli.Main group rejectGroupJoinRequestPublicV2 \
-    --groupId 'bvqYN5jX' \
+    --groupId 'eBvOGNxJ' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ZH964iAd' \
+    --userId 'LGDI4zQy' \
     > test.out 2>&1
 eval_tap $? 72 'RejectGroupJoinRequestPublicV2' test.out
 
 #- 73 KickGroupMemberPublicV2
 ./ng net.accelbyte.sdk.cli.Main group kickGroupMemberPublicV2 \
-    --groupId 'QYFnJWdb' \
+    --groupId 'JcWasfXB' \
     --namespace "$AB_NAMESPACE" \
-    --userId '0UOudZwp' \
+    --userId 'DOsAmHSd' \
     > test.out 2>&1
 eval_tap $? 73 'KickGroupMemberPublicV2' test.out
 
 #- 74 GetUserGroupStatusInformationV2
 ./ng net.accelbyte.sdk.cli.Main group getUserGroupStatusInformationV2 \
-    --groupId 'NdCk1vnI' \
+    --groupId '60WK9q3w' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'tLRszB8A' \
+    --userId 'XnUumQk5' \
     > test.out 2>&1
 eval_tap $? 74 'GetUserGroupStatusInformationV2' test.out
 

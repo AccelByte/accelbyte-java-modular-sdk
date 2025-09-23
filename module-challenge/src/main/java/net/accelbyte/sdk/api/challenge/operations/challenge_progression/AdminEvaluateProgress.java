@@ -39,6 +39,7 @@ public class AdminEvaluateProgress extends Operation {
   /** fields as input parameter */
   private String namespace;
 
+  private List<String> challengeCode;
   private ModelEvaluatePlayerProgressionRequest body;
 
   /**
@@ -49,8 +50,12 @@ public class AdminEvaluateProgress extends Operation {
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
   public AdminEvaluateProgress(
-      String customBasePath, String namespace, ModelEvaluatePlayerProgressionRequest body) {
+      String customBasePath,
+      String namespace,
+      List<String> challengeCode,
+      ModelEvaluatePlayerProgressionRequest body) {
     this.namespace = namespace;
+    this.challengeCode = challengeCode;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -64,6 +69,19 @@ public class AdminEvaluateProgress extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(
+        "challengeCode",
+        this.challengeCode == null
+            ? null
+            : this.challengeCode.stream()
+                .map(i -> String.valueOf(i))
+                .collect(java.util.stream.Collectors.toList()));
+    return queryParams;
   }
 
   @Override
@@ -125,4 +143,10 @@ public class AdminEvaluateProgress extends Operation {
   }
   */
 
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("challengeCode", "csv");
+    return result;
+  }
 }

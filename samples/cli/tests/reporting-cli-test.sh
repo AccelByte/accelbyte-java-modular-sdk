@@ -60,88 +60,88 @@ eval_tap $? 2 'AdminFindActionList' test.out
 
 #- 3 AdminCreateModAction
 ./ng net.accelbyte.sdk.cli.Main reporting adminCreateModAction \
-    --body '{"actionId": "x5kEPGU0", "actionName": "E7dg2X5X", "eventName": "FdnIgS2a"}' \
+    --body '{"actionId": "fo8TAVM0", "actionName": "99V48XjH", "eventName": "TaY5IB0o"}' \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateModAction' test.out
 
 #- 4 AdminFindExtensionCategoryList
 ./ng net.accelbyte.sdk.cli.Main reporting adminFindExtensionCategoryList \
-    --order 'desc' \
+    --order 'ascending' \
     --sortBy 'extensionCategoryName' \
     > test.out 2>&1
 eval_tap $? 4 'AdminFindExtensionCategoryList' test.out
 
 #- 5 AdminCreateExtensionCategory
 ./ng net.accelbyte.sdk.cli.Main reporting adminCreateExtensionCategory \
-    --body '{"extensionCategory": "GSj0Ivvr", "extensionCategoryName": "WhWLlrdF", "serviceSource": "Wc8QafnT"}' \
+    --body '{"extensionCategory": "2zMwffgN", "extensionCategoryName": "mpcxczCH", "serviceSource": "AypoMJS0"}' \
     > test.out 2>&1
 eval_tap $? 5 'AdminCreateExtensionCategory' test.out
 
 #- 6 Get
 ./ng net.accelbyte.sdk.cli.Main reporting get \
     --namespace "$AB_NAMESPACE" \
-    --category 'extension' \
+    --category 'all' \
     > test.out 2>&1
 eval_tap $? 6 'Get' test.out
 
 #- 7 Upsert
 ./ng net.accelbyte.sdk.cli.Main reporting upsert \
     --namespace "$AB_NAMESPACE" \
-    --body '{"categoryLimits": [{"extensionCategory": "HqGcBV9r", "maxReportPerTicket": 6, "name": "73Js8iwm"}, {"extensionCategory": "AOxNVtVg", "maxReportPerTicket": 6, "name": "g8WH6tCq"}, {"extensionCategory": "EUI2yt2Y", "maxReportPerTicket": 91, "name": "x560rhYO"}], "timeInterval": 19, "userMaxReportPerTimeInterval": 0}' \
+    --body '{"categoryLimits": [{"extensionCategory": "37vvmxBs", "maxReportPerTicket": 15, "name": "iKvyAIPf"}, {"extensionCategory": "XkBbSoIS", "maxReportPerTicket": 42, "name": "nnfKc538"}, {"extensionCategory": "LBFwWR6c", "maxReportPerTicket": 16, "name": "YH7b61fq"}], "timeInterval": 76, "userMaxReportPerTimeInterval": 60}' \
     > test.out 2>&1
 eval_tap $? 7 'Upsert' test.out
 
 #- 8 AdminListReasonGroups
 ./ng net.accelbyte.sdk.cli.Main reporting adminListReasonGroups \
     --namespace "$AB_NAMESPACE" \
-    --limit '12' \
-    --offset '38' \
+    --limit '71' \
+    --offset '42' \
     > test.out 2>&1
 eval_tap $? 8 'AdminListReasonGroups' test.out
 
 #- 9 CreateReasonGroup
 ./ng net.accelbyte.sdk.cli.Main reporting createReasonGroup \
     --namespace "$AB_NAMESPACE" \
-    --body '{"reasonIds": ["hRCjoYNK", "ieryeQqU", "1zSOTanT"], "title": "YarIYKjy"}' \
+    --body '{"reasonIds": ["ollQqSZ5", "muJuUQ7e", "9rsp7qKw"], "title": "vu1Pa98Q"}' \
     > test.out 2>&1
 eval_tap $? 9 'CreateReasonGroup' test.out
 
 #- 10 GetReasonGroup
 ./ng net.accelbyte.sdk.cli.Main reporting getReasonGroup \
-    --groupId 'MjetqXrY' \
+    --groupId '2mIJarBk' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 10 'GetReasonGroup' test.out
 
 #- 11 DeleteReasonGroup
 ./ng net.accelbyte.sdk.cli.Main reporting deleteReasonGroup \
-    --groupId 'jlJq3tlp' \
+    --groupId 'JAX3caee' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 11 'DeleteReasonGroup' test.out
 
 #- 12 UpdateReasonGroup
 ./ng net.accelbyte.sdk.cli.Main reporting updateReasonGroup \
-    --groupId 'KVX2reDD' \
+    --groupId 'zjb3ZHzl' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"reasonIds": ["f1J2iD4p", "hW99WQle", "BK17lcQ6"], "title": "hN9motdc"}' \
+    --body '{"reasonIds": ["48T8XyKE", "LMOOdvE8", "WDR4DMgg"], "title": "JUyMjJwb"}' \
     > test.out 2>&1
 eval_tap $? 12 'UpdateReasonGroup' test.out
 
 #- 13 AdminGetReasons
 ./ng net.accelbyte.sdk.cli.Main reporting adminGetReasons \
     --namespace "$AB_NAMESPACE" \
-    --group 'envWRinu' \
-    --limit '82' \
-    --offset '50' \
-    --title 'cbZFpWqo' \
+    --group 'XPQEvete' \
+    --limit '5' \
+    --offset '39' \
+    --title 'JeaBoe6C' \
     > test.out 2>&1
 eval_tap $? 13 'AdminGetReasons' test.out
 
 #- 14 CreateReason
 ./ng net.accelbyte.sdk.cli.Main reporting createReason \
     --namespace "$AB_NAMESPACE" \
-    --body '{"description": "rR8MkV4K", "groupIds": ["dgJbF1rO", "ca4RcEna", "3b6gIpiw"], "title": "YHnjIHAM"}' \
+    --body '{"description": "PYb6boRJ", "groupIds": ["R0TquQYL", "lORi3Ewx", "vWqzjktT"], "title": "xJt56TIG"}' \
     > test.out 2>&1
 eval_tap $? 14 'CreateReason' test.out
 
@@ -154,77 +154,77 @@ eval_tap $? 15 'AdminGetAllReasons' test.out
 #- 16 AdminGetUnusedReasons
 ./ng net.accelbyte.sdk.cli.Main reporting adminGetUnusedReasons \
     --namespace "$AB_NAMESPACE" \
-    --extensionCategory 'YN6WxIy2' \
-    --category 'hoy5wJSi' \
+    --extensionCategory 'gMUD0nAq' \
+    --category 'VNSuJLgo' \
     > test.out 2>&1
 eval_tap $? 16 'AdminGetUnusedReasons' test.out
 
 #- 17 AdminGetReason
 ./ng net.accelbyte.sdk.cli.Main reporting adminGetReason \
     --namespace "$AB_NAMESPACE" \
-    --reasonId 'TzpWExgO' \
+    --reasonId 'AZO5UaEA' \
     > test.out 2>&1
 eval_tap $? 17 'AdminGetReason' test.out
 
 #- 18 DeleteReason
 ./ng net.accelbyte.sdk.cli.Main reporting deleteReason \
     --namespace "$AB_NAMESPACE" \
-    --reasonId 'qcNeqwWZ' \
+    --reasonId 'GTLhNlwV' \
     > test.out 2>&1
 eval_tap $? 18 'DeleteReason' test.out
 
 #- 19 UpdateReason
 ./ng net.accelbyte.sdk.cli.Main reporting updateReason \
     --namespace "$AB_NAMESPACE" \
-    --reasonId 'iWKKcWlz' \
-    --body '{"description": "fvhq8Lq1", "groupIds": ["83TO8YAj", "xekjjfg0", "BJR6kJcy"], "title": "gVmlVYUV"}' \
+    --reasonId 'z70Iivk0' \
+    --body '{"description": "0LBn8a5p", "groupIds": ["3R96dwRr", "Ktekzwl6", "MgHraLk0"], "title": "NdGSLsj7"}' \
     > test.out 2>&1
 eval_tap $? 19 'UpdateReason' test.out
 
 #- 20 ListReports
 ./ng net.accelbyte.sdk.cli.Main reporting listReports \
     --namespace "$AB_NAMESPACE" \
-    --category '35tiL2bA' \
-    --limit '2' \
-    --offset '5' \
-    --reportedUserId 'E9VYbfiX' \
-    --sortBy 'BJQ2KTNh' \
+    --category 'rilEX8bM' \
+    --limit '14' \
+    --offset '74' \
+    --reportedUserId 'fQPJ0Jjl' \
+    --sortBy '4YcybSL5' \
     > test.out 2>&1
 eval_tap $? 20 'ListReports' test.out
 
 #- 21 AdminSubmitReport
 ./ng net.accelbyte.sdk.cli.Main reporting adminSubmitReport \
     --namespace "$AB_NAMESPACE" \
-    --body '{"additionalInfo": {"T95yEJqI": {}, "j0Pvk0v4": {}, "325e0iZT": {}}, "category": "EXTENSION", "comment": "Ylwah5ss", "extensionCategory": "De9dHf17", "objectId": "ckHuYfjO", "objectType": "7l5YvylT", "reason": "rZvK4fq0", "userId": "TuvwuxOg"}' \
+    --body '{"additionalInfo": {"RxvB0rxC": {}, "3e7e7CPY": {}, "48WpcpJd": {}}, "category": "CHAT", "comment": "IabuXTkq", "extensionCategory": "MwFjkFJC", "objectId": "wB4PLVUZ", "objectType": "t1DdAjOi", "reason": "g7VAsEe0", "userId": "BBErfzai"}' \
     > test.out 2>&1
 eval_tap $? 21 'AdminSubmitReport' test.out
 
 #- 22 CreateModerationRule
 ./ng net.accelbyte.sdk.cli.Main reporting createModerationRule \
     --namespace "$AB_NAMESPACE" \
-    --body '{"action": "HideContent", "actions": {"banAccount": {"comment": "F1QyLYAK", "duration": 16, "reason": "jo5mPCwd", "skipNotif": true, "type": "1JM5NXQt"}, "deleteChat": false, "extensionActionIds": ["dXbQf8DB", "iDgprfPU", "68215XCR"], "hideContent": true}, "active": true, "category": "USER", "extensionCategory": "nHE8JSvt", "reason": "Lx1Q9pFA", "threshold": 100}' \
+    --body '{"action": "HideContent", "actions": {"banAccount": {"comment": "XVTO2188", "duration": 89, "reason": "5A5BCISF", "skipNotif": true, "type": "KnM4pMrQ"}, "deleteChat": true, "extensionActionIds": ["G94JWrkw", "kJJ1DTyL", "snAn8tZB"], "hideContent": true}, "active": false, "category": "CHAT", "extensionCategory": "wrRoRbjt", "reason": "UuKisRhV", "threshold": 64}' \
     > test.out 2>&1
 eval_tap $? 22 'CreateModerationRule' test.out
 
 #- 23 UpdateModerationRule
 ./ng net.accelbyte.sdk.cli.Main reporting updateModerationRule \
     --namespace "$AB_NAMESPACE" \
-    --ruleId 'sLOQhq8x' \
-    --body '{"action": "HideContent", "actions": {"banAccount": {"comment": "kF6plc8M", "duration": 57, "reason": "TEeORXSR", "skipNotif": true, "type": "Qe7qUx8h"}, "deleteChat": true, "extensionActionIds": ["sfg9E6HY", "RGuJ6GX1", "fipxKRyG"], "hideContent": true}, "active": false, "category": "CHAT", "extensionCategory": "LIb4geH1", "reason": "cUm5zeJ3", "threshold": 14}' \
+    --ruleId '5aHCOjfC' \
+    --body '{"action": "HideContent", "actions": {"banAccount": {"comment": "FDyjXSZL", "duration": 78, "reason": "x1V8QcDB", "skipNotif": true, "type": "bpoUldnc"}, "deleteChat": true, "extensionActionIds": ["mtuSnsHH", "TnOKJJ3D", "TPgpcE4Q"], "hideContent": false}, "active": true, "category": "EXTENSION", "extensionCategory": "FW5vYJZi", "reason": "sCnla50B", "threshold": 51}' \
     > test.out 2>&1
 eval_tap $? 23 'UpdateModerationRule' test.out
 
 #- 24 DeleteModerationRule
 ./ng net.accelbyte.sdk.cli.Main reporting deleteModerationRule \
     --namespace "$AB_NAMESPACE" \
-    --ruleId 'ED5m8zF8' \
+    --ruleId '2IvIBL9v' \
     > test.out 2>&1
 eval_tap $? 24 'DeleteModerationRule' test.out
 
 #- 25 UpdateModerationRuleStatus
 ./ng net.accelbyte.sdk.cli.Main reporting updateModerationRuleStatus \
     --namespace "$AB_NAMESPACE" \
-    --ruleId 'TCRGslrZ' \
+    --ruleId 'pSZBuOdD' \
     --body '{"active": false}' \
     > test.out 2>&1
 eval_tap $? 25 'UpdateModerationRuleStatus' test.out
@@ -232,95 +232,95 @@ eval_tap $? 25 'UpdateModerationRuleStatus' test.out
 #- 26 GetModerationRules
 ./ng net.accelbyte.sdk.cli.Main reporting getModerationRules \
     --namespace "$AB_NAMESPACE" \
-    --category 'H0yUhErU' \
-    --extensionCategory 'gxTvH3nP' \
-    --limit '83' \
-    --offset '32' \
+    --category 'MXnNxqdK' \
+    --extensionCategory 'UKqig7Nw' \
+    --limit '11' \
+    --offset '64' \
     > test.out 2>&1
 eval_tap $? 26 'GetModerationRules' test.out
 
 #- 27 GetModerationRuleDetails
 ./ng net.accelbyte.sdk.cli.Main reporting getModerationRuleDetails \
     --namespace "$AB_NAMESPACE" \
-    --ruleId 'LvXfRLdD' \
+    --ruleId '84rz8Azi' \
     > test.out 2>&1
 eval_tap $? 27 'GetModerationRuleDetails' test.out
 
 #- 28 ListTickets
 ./ng net.accelbyte.sdk.cli.Main reporting listTickets \
     --namespace "$AB_NAMESPACE" \
-    --category '2ubg6xY4' \
-    --extensionCategory 'pl9Mziao' \
-    --limit '69' \
-    --offset '23' \
-    --order 'Soaz3uo5' \
-    --reportedUserId 'XD2O7kW2' \
-    --sortBy 'WPT3Ofjr' \
-    --status 'ATk2UO7C' \
+    --category 'USeNpar6' \
+    --extensionCategory 'Ydf8LpsH' \
+    --limit '83' \
+    --offset '63' \
+    --order 'fQvGGvbD' \
+    --reportedUserId 'Tn58XnK9' \
+    --sortBy '9K97HYWh' \
+    --status 'Iz16QwPk' \
     > test.out 2>&1
 eval_tap $? 28 'ListTickets' test.out
 
 #- 29 TicketStatistic
 ./ng net.accelbyte.sdk.cli.Main reporting ticketStatistic \
     --namespace "$AB_NAMESPACE" \
-    --extensionCategory 'Yika4eGB' \
-    --category '7LZtkAQK' \
+    --extensionCategory 'h2lzt3tS' \
+    --category 'vgS2WjFI' \
     > test.out 2>&1
 eval_tap $? 29 'TicketStatistic' test.out
 
 #- 30 GetTicketDetail
 ./ng net.accelbyte.sdk.cli.Main reporting getTicketDetail \
     --namespace "$AB_NAMESPACE" \
-    --ticketId 'OzMZDNHA' \
+    --ticketId 'kHxbS3QG' \
     > test.out 2>&1
 eval_tap $? 30 'GetTicketDetail' test.out
 
 #- 31 DeleteTicket
 ./ng net.accelbyte.sdk.cli.Main reporting deleteTicket \
     --namespace "$AB_NAMESPACE" \
-    --ticketId 'kGw1R3FX' \
+    --ticketId 'v2adu8d6' \
     > test.out 2>&1
 eval_tap $? 31 'DeleteTicket' test.out
 
 #- 32 GetReportsByTicket
 ./ng net.accelbyte.sdk.cli.Main reporting getReportsByTicket \
     --namespace "$AB_NAMESPACE" \
-    --ticketId 'TnRNh91e' \
-    --limit '14' \
-    --offset '58' \
+    --ticketId 'LzGSqqiV' \
+    --limit '5' \
+    --offset '75' \
     > test.out 2>&1
 eval_tap $? 32 'GetReportsByTicket' test.out
 
 #- 33 UpdateTicketResolutions
 ./ng net.accelbyte.sdk.cli.Main reporting updateTicketResolutions \
     --namespace "$AB_NAMESPACE" \
-    --ticketId '4bOdwQbA' \
-    --body '{"notes": "KfiSY4bS", "status": "AUTO_MODERATED"}' \
+    --ticketId 'KH43Lva8' \
+    --body '{"notes": "W2cElfsq", "status": "OPEN"}' \
     > test.out 2>&1
 eval_tap $? 33 'UpdateTicketResolutions' test.out
 
 #- 34 PublicListReasonGroups
 ./ng net.accelbyte.sdk.cli.Main reporting publicListReasonGroups \
     --namespace "$AB_NAMESPACE" \
-    --limit '3' \
-    --offset '29' \
+    --limit '53' \
+    --offset '4' \
     > test.out 2>&1
 eval_tap $? 34 'PublicListReasonGroups' test.out
 
 #- 35 PublicGetReasons
 ./ng net.accelbyte.sdk.cli.Main reporting publicGetReasons \
     --namespace "$AB_NAMESPACE" \
-    --group 'TpiPFE2u' \
-    --limit '1' \
-    --offset '29' \
-    --title 'v3lAHqbR' \
+    --group 'YKtLzIl5' \
+    --limit '60' \
+    --offset '45' \
+    --title 'B0tTcs63' \
     > test.out 2>&1
 eval_tap $? 35 'PublicGetReasons' test.out
 
 #- 36 SubmitReport
 ./ng net.accelbyte.sdk.cli.Main reporting submitReport \
     --namespace "$AB_NAMESPACE" \
-    --body '{"additionalInfo": {"099XYftu": {}, "Zh5mvMza": {}, "3kqFiD6t": {}}, "category": "USER", "comment": "UVMSd5XD", "extensionCategory": "LTUlsrJw", "objectId": "TgJ9grz0", "objectType": "e4O3Gks7", "reason": "wJqAb58n", "userId": "0jcQPchb"}' \
+    --body '{"additionalInfo": {"oqinkwYG": {}, "JQ0ci3sI": {}, "CnwbI6TC": {}}, "category": "EXTENSION", "comment": "oIN1tY5d", "extensionCategory": "MTaXf0ek", "objectId": "G4rH28Yp", "objectType": "LTNczZ4N", "reason": "9dLJMSuO", "userId": "gmALSlRK"}' \
     > test.out 2>&1
 eval_tap $? 36 'SubmitReport' test.out
 

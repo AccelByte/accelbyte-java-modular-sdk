@@ -23,6 +23,8 @@ public class GetSessionServerSecretOpResponse extends ApiResponseWithData<Apimod
 
   private ResponseError error401 = null;
 
+  private ResponseError error403 = null;
+
   private ResponseError error404 = null;
 
   private ResponseError error500 = null;

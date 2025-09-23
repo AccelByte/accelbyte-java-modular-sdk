@@ -17,10 +17,10 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class QueryEntitlements1OpResponse
+public class QueryEntitlementsByItemIdsOpResponse
     extends ApiResponseWithData<EntitlementPagingSlicedResult> {
 
   public String getFullOperationId() {
-    return "net.accelbyte.sdk.api.platform.operations.entitlement.QueryEntitlements1";
+    return "net.accelbyte.sdk.api.platform.operations.entitlement.QueryEntitlementsByItemIds";
   }
 }

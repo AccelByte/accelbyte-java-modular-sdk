@@ -39,6 +39,9 @@ public class AdminEvaluateProgress implements Callable<Integer> {
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--challengeCode"}, description = "challengeCode", split = ",")
+    List<String> challengeCode;
+
     @Option(names = {"--body"}, description = "body")
     String body;
 
@@ -63,6 +66,7 @@ public class AdminEvaluateProgress implements Callable<Integer> {
             final net.accelbyte.sdk.api.challenge.operations.challenge_progression.AdminEvaluateProgress operation =
                     net.accelbyte.sdk.api.challenge.operations.challenge_progression.AdminEvaluateProgress.builder()
                             .namespace(namespace)
+                            .challengeCode(challengeCode)
                             .body(new ObjectMapper().readValue(body, ModelEvaluatePlayerProgressionRequest.class)) 
                             .build();
                     wrapper.adminEvaluateProgress(operation).ensureSuccess();

@@ -56,11 +56,11 @@ touch "tmp.dat"
 #- 2 AdminGetListDeletionDataRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetListDeletionDataRequest \
     --namespace "$AB_NAMESPACE" \
-    --after 'naqOaELD' \
-    --before 'rfG8ivJH' \
-    --limit '7' \
-    --offset '19' \
-    --requestDate 'eIOTNfmi' \
+    --after 'rci7Vedu' \
+    --before '9pTJ5ZBO' \
+    --limit '58' \
+    --offset '1' \
+    --requestDate 'l0Xsrc4R' \
     > test.out 2>&1
 eval_tap $? 2 'AdminGetListDeletionDataRequest' test.out
 
@@ -73,21 +73,21 @@ eval_tap $? 3 'GetAdminEmailConfiguration' test.out
 #- 4 UpdateAdminEmailConfiguration
 ./ng net.accelbyte.sdk.cli.Main gdpr updateAdminEmailConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --body '["SsAD5Ilp", "sUl1Y7AP", "VqX0MlQM"]' \
+    --body '["diTfdN2O", "qVGbULtR", "do40eYAW"]' \
     > test.out 2>&1
 eval_tap $? 4 'UpdateAdminEmailConfiguration' test.out
 
 #- 5 SaveAdminEmailConfiguration
 ./ng net.accelbyte.sdk.cli.Main gdpr saveAdminEmailConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --body '["FxkmheRj", "gD4Yow3z", "JYpbHomY"]' \
+    --body '["XHXhvob8", "A2a38tXw", "FvdbihBD"]' \
     > test.out 2>&1
 eval_tap $? 5 'SaveAdminEmailConfiguration' test.out
 
 #- 6 DeleteAdminEmailConfiguration
 ./ng net.accelbyte.sdk.cli.Main gdpr deleteAdminEmailConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --emails 'W5C3gIV7,soh6kD1V,BqbqcV9N' \
+    --emails '4In9NDrG,5AblUOEH,9Npcliqa' \
     > test.out 2>&1
 eval_tap $? 6 'DeleteAdminEmailConfiguration' test.out
 
@@ -100,46 +100,46 @@ eval_tap $? 7 'AdminGetPlatformAccountClosureClients' test.out
 #- 8 AdminValidateXboxBPCertFile
 ./ng net.accelbyte.sdk.cli.Main gdpr adminValidateXboxBPCertFile \
     --namespace "$AB_NAMESPACE" \
-    --body '{"bpCert": "nKZcFAvk", "password": "9nU6mwyg"}' \
+    --body '{"bpCert": "we7sYKmT", "password": "O2HtZTxZ"}' \
     > test.out 2>&1
 eval_tap $? 8 'AdminValidateXboxBPCertFile' test.out
 
 #- 9 AdminGetPlatformAccountClosureClient
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetPlatformAccountClosureClient \
     --namespace "$AB_NAMESPACE" \
-    --platform 'PtguW2G6' \
+    --platform 'FgraIYit' \
     > test.out 2>&1
 eval_tap $? 9 'AdminGetPlatformAccountClosureClient' test.out
 
 #- 10 AdminUpdatePlatformAccountClosureClient
 ./ng net.accelbyte.sdk.cli.Main gdpr adminUpdatePlatformAccountClosureClient \
     --namespace "$AB_NAMESPACE" \
-    --platform 'i2WbKvv8' \
-    --body '{"bpCert": "eUNv24Mc", "bpCertFileName": "7o1hxptL", "clientId": "PdWnXkHv", "password": "8Wm2zxW5", "publisherKey": "9wooCUlj", "sandboxId": "ZSVGkW8u", "secret": "BVEkml9a"}' \
+    --platform 'g10pH8NH' \
+    --body '{"bpCert": "YLTReVJy", "bpCertFileName": "0PTnkl6Z", "clientId": "fXe36PVK", "password": "nJHmNomx", "publisherKey": "DfirOuMi", "sandboxId": "ts956UWX", "secret": "p6aR8Jww"}' \
     > test.out 2>&1
 eval_tap $? 10 'AdminUpdatePlatformAccountClosureClient' test.out
 
 #- 11 AdminDeletePlatformAccountClosureClient
 ./ng net.accelbyte.sdk.cli.Main gdpr adminDeletePlatformAccountClosureClient \
     --namespace "$AB_NAMESPACE" \
-    --platform 'vg9lXDKR' \
+    --platform 'TlK4Vqqy' \
     > test.out 2>&1
 eval_tap $? 11 'AdminDeletePlatformAccountClosureClient' test.out
 
 #- 12 AdminMockPlatformAccountClosureData
 ./ng net.accelbyte.sdk.cli.Main gdpr adminMockPlatformAccountClosureData \
     --namespace "$AB_NAMESPACE" \
-    --platform 'x7fkDTJd' \
-    --body '{"platformUserId": "HzqBmfQw", "sandbox": "k8W80noB", "startImmediately": true}' \
+    --platform 'AEbHuhNv' \
+    --body '{"platformUserId": "yvrY7FbP", "sandbox": "cIlHp8MA", "startImmediately": true}' \
     > test.out 2>&1
 eval_tap $? 12 'AdminMockPlatformAccountClosureData' test.out
 
 #- 13 AdminGetListPersonalDataRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetListPersonalDataRequest \
     --namespace "$AB_NAMESPACE" \
-    --limit '26' \
-    --offset '68' \
-    --requestDate 'o8rPUUjg' \
+    --limit '74' \
+    --offset '74' \
+    --requestDate 'PNIN6Bwj' \
     > test.out 2>&1
 eval_tap $? 13 'AdminGetListPersonalDataRequest' test.out
 
@@ -152,7 +152,7 @@ eval_tap $? 14 'AdminGetServicesConfiguration' test.out
 #- 15 AdminUpdateServicesConfiguration
 ./ng net.accelbyte.sdk.cli.Main gdpr adminUpdateServicesConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --body '{"services": [{"extendConfig": {"appName": "K4BJPZY9", "namespace": "xouY4U9x"}, "id": "NuTqCQ5S", "serviceConfig": {"protocol": "EVENT", "skipAck": false, "url": "qU0auqZH"}, "type": "SERVICE"}, {"extendConfig": {"appName": "GbVFo2FV", "namespace": "dL8pN1Yq"}, "id": "D5IBuqwV", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "SVztTCgR"}, "type": "EXTEND"}, {"extendConfig": {"appName": "7IDMZ4Pl", "namespace": "94gjAwBq"}, "id": "b6RUhjjk", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "9jiOPb6t"}, "type": "EXTEND"}]}' \
+    --body '{"services": [{"extendConfig": {"appName": "JT9cnYZ7", "namespace": "JUU3j1BD"}, "id": "XLu1HeCD", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "OnNL35Fb"}, "type": "SERVICE"}, {"extendConfig": {"appName": "fivJsJd0", "namespace": "9L2hWG4e"}, "id": "sVoCcih0", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "P3kNY8zx"}, "type": "SERVICE"}, {"extendConfig": {"appName": "b61GKvdz", "namespace": "fAp29xCo"}, "id": "MvLD0Kmw", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "BSfg0j4j"}, "type": "SERVICE"}]}' \
     > test.out 2>&1
 eval_tap $? 15 'AdminUpdateServicesConfiguration' test.out
 
@@ -171,7 +171,7 @@ eval_tap $? 17 'AdminGetPlatformAccountClosureServicesConfiguration' test.out
 #- 18 AdminUpdatePlatformAccountClosureServicesConfiguration
 ./ng net.accelbyte.sdk.cli.Main gdpr adminUpdatePlatformAccountClosureServicesConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --body '{"services": [{"extendConfig": {"appName": "bP0CZHJ5", "namespace": "DEDMF8lu"}, "id": "kPFxeviu", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "yVhahdUC"}, "type": "EXTEND"}, {"extendConfig": {"appName": "F1coyUW6", "namespace": "X1OcudbP"}, "id": "PDOqDVdH", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "vyslJzFF"}, "type": "SERVICE"}, {"extendConfig": {"appName": "Y0nOtHsB", "namespace": "2dcroD8C"}, "id": "U0qmUFFV", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "fnW27Fah"}, "type": "EXTEND"}]}' \
+    --body '{"services": [{"extendConfig": {"appName": "5SBiYY4a", "namespace": "DY14TyZd"}, "id": "qqBaLC26", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "qMdstgI3"}, "type": "EXTEND"}, {"extendConfig": {"appName": "T7D8g1g8", "namespace": "7RIscQZ7"}, "id": "Z46OgTJq", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "xwxthPIW"}, "type": "EXTEND"}, {"extendConfig": {"appName": "GjhthL8B", "namespace": "OchMJvKt"}, "id": "sN5Wu3vV", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "ZRBWyjra"}, "type": "EXTEND"}]}' \
     > test.out 2>&1
 eval_tap $? 18 'AdminUpdatePlatformAccountClosureServicesConfiguration' test.out
 
@@ -184,130 +184,130 @@ eval_tap $? 19 'AdminResetPlatformAccountClosureServicesConfiguration' test.out
 #- 20 AdminGetUserPlatformAccountClosureHistories
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetUserPlatformAccountClosureHistories \
     --namespace "$AB_NAMESPACE" \
-    --limit '15' \
-    --offset '78' \
-    --platform 'Z7lSA18Y' \
-    --userId 'E7ORTHD9' \
+    --limit '48' \
+    --offset '68' \
+    --platform 'pmLbtV94' \
+    --userId 'GsBll3qr' \
     > test.out 2>&1
 eval_tap $? 20 'AdminGetUserPlatformAccountClosureHistories' test.out
 
 #- 21 AdminGetUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'rv23nzlu' \
+    --userId 'cnvVmff3' \
     > test.out 2>&1
 eval_tap $? 21 'AdminGetUserAccountDeletionRequest' test.out
 
 #- 22 AdminSubmitUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminSubmitUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'numFMCri' \
+    --userId '8z24wYBH' \
     > test.out 2>&1
 eval_tap $? 22 'AdminSubmitUserAccountDeletionRequest' test.out
 
 #- 23 AdminCancelUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminCancelUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ZRJD6eyq' \
+    --userId 'HRTqNuCP' \
     > test.out 2>&1
 eval_tap $? 23 'AdminCancelUserAccountDeletionRequest' test.out
 
 #- 24 AdminGetUserPersonalDataRequests
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGetUserPersonalDataRequests \
     --namespace "$AB_NAMESPACE" \
-    --userId 'rS1V0tts' \
-    --limit '11' \
-    --offset '95' \
+    --userId 'KjdBeKD0' \
+    --limit '8' \
+    --offset '61' \
     > test.out 2>&1
 eval_tap $? 24 'AdminGetUserPersonalDataRequests' test.out
 
 #- 25 AdminRequestDataRetrieval
 ./ng net.accelbyte.sdk.cli.Main gdpr adminRequestDataRetrieval \
     --namespace "$AB_NAMESPACE" \
-    --userId 'wQjPRqyO' \
-    --password 'xQ4NMFbP' \
+    --userId 'fkHneiPb' \
+    --password 'Qbib8lqk' \
     > test.out 2>&1
 eval_tap $? 25 'AdminRequestDataRetrieval' test.out
 
 #- 26 AdminCancelUserPersonalDataRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr adminCancelUserPersonalDataRequest \
     --namespace "$AB_NAMESPACE" \
-    --requestDate 'WW9Xa9Dg' \
-    --userId 'qdpDwwa5' \
+    --requestDate 'fVu3bJS8' \
+    --userId 'h1n9GoUN' \
     > test.out 2>&1
 eval_tap $? 26 'AdminCancelUserPersonalDataRequest' test.out
 
 #- 27 AdminGeneratePersonalDataURL
 ./ng net.accelbyte.sdk.cli.Main gdpr adminGeneratePersonalDataURL \
     --namespace "$AB_NAMESPACE" \
-    --requestDate 'kDOY6gNf' \
-    --userId 'hxV8aWUd' \
-    --password 'rWSEb1Fu' \
+    --requestDate 'Oz0zCQ0m' \
+    --userId 'sbBsBxAh' \
+    --password 'eeovRKtB' \
     > test.out 2>&1
 eval_tap $? 27 'AdminGeneratePersonalDataURL' test.out
 
 #- 28 PublicSubmitUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr publicSubmitUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'W3T1mxRu' \
-    --languageTag 'A5njBXVI' \
-    --password 'vXkVKx29' \
+    --userId 'K2Njbbcf' \
+    --languageTag 'bIaPxeph' \
+    --password '8UqtDZDj' \
     > test.out 2>&1
 eval_tap $? 28 'PublicSubmitUserAccountDeletionRequest' test.out
 
 #- 29 PublicCancelUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr publicCancelUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'bJTCJZsY' \
+    --userId 'Lwy8Ysax' \
     > test.out 2>&1
 eval_tap $? 29 'PublicCancelUserAccountDeletionRequest' test.out
 
 #- 30 PublicGetUserAccountDeletionStatus
 ./ng net.accelbyte.sdk.cli.Main gdpr publicGetUserAccountDeletionStatus \
     --namespace "$AB_NAMESPACE" \
-    --userId 'I2Nzfqgz' \
+    --userId 'eASb3Kxj' \
     > test.out 2>&1
 eval_tap $? 30 'PublicGetUserAccountDeletionStatus' test.out
 
 #- 31 PublicGetUserPersonalDataRequests
 ./ng net.accelbyte.sdk.cli.Main gdpr publicGetUserPersonalDataRequests \
     --namespace "$AB_NAMESPACE" \
-    --userId 'PreT1LQY' \
-    --limit '84' \
-    --offset '57' \
+    --userId '5Axi2Vic' \
+    --limit '30' \
+    --offset '68' \
     > test.out 2>&1
 eval_tap $? 31 'PublicGetUserPersonalDataRequests' test.out
 
 #- 32 PublicRequestDataRetrieval
 ./ng net.accelbyte.sdk.cli.Main gdpr publicRequestDataRetrieval \
     --namespace "$AB_NAMESPACE" \
-    --userId 'znk9gcLk' \
-    --languageTag '6PZZmYGy' \
-    --password '7UACr3IH' \
+    --userId 'toUaNLrj' \
+    --languageTag 'B0rlvOU1' \
+    --password 'gmWFYgLU' \
     > test.out 2>&1
 eval_tap $? 32 'PublicRequestDataRetrieval' test.out
 
 #- 33 PublicCancelUserPersonalDataRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr publicCancelUserPersonalDataRequest \
     --namespace "$AB_NAMESPACE" \
-    --requestDate 'v4m7suFI' \
-    --userId '4FNtkdgm' \
+    --requestDate '5gZiZqN8' \
+    --userId 'KGPVNPWb' \
     > test.out 2>&1
 eval_tap $? 33 'PublicCancelUserPersonalDataRequest' test.out
 
 #- 34 PublicGeneratePersonalDataURL
 ./ng net.accelbyte.sdk.cli.Main gdpr publicGeneratePersonalDataURL \
     --namespace "$AB_NAMESPACE" \
-    --requestDate 'W7tF0KSL' \
-    --userId 'c5w7fcVI' \
-    --password 'JFfRyBkK' \
+    --requestDate 'yum0BpuT' \
+    --userId 'sUPcxRco' \
+    --password 'ncAUuzAC' \
     > test.out 2>&1
 eval_tap $? 34 'PublicGeneratePersonalDataURL' test.out
 
 #- 35 PublicSubmitMyAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr publicSubmitMyAccountDeletionRequest \
-    --platformId '9xeBZqh8' \
-    --platformToken 'nZTYznTj' \
+    --platformId 'kmo1n4Ve' \
+    --platformToken 'ff1TsA7d' \
     > test.out 2>&1
 eval_tap $? 35 'PublicSubmitMyAccountDeletionRequest' test.out
 
@@ -324,45 +324,45 @@ eval_tap $? 37 'PublicGetMyAccountDeletionStatus' test.out
 #- 38 S2SGetListFinishedAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sGetListFinishedAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --end 'zPJ7xCZz' \
-    --start 'HQM3PiUI' \
+    --end 'iyjmO90F' \
+    --start 'Clm1Uw6R' \
     > test.out 2>&1
 eval_tap $? 38 'S2SGetListFinishedAccountDeletionRequest' test.out
 
 #- 39 S2SGetListFinishedPersonalDataRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sGetListFinishedPersonalDataRequest \
     --namespace "$AB_NAMESPACE" \
-    --end 'IqRH8bcL' \
-    --start 'p2A6A8wH' \
+    --end '9FieW4VX' \
+    --start 'hcYUYOKV' \
     > test.out 2>&1
 eval_tap $? 39 'S2SGetListFinishedPersonalDataRequest' test.out
 
 #- 40 S2SGetDataRequestByRequestID
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sGetDataRequestByRequestID \
     --namespace "$AB_NAMESPACE" \
-    --requestId 'aopL27wr' \
+    --requestId 'UePF8eSc' \
     > test.out 2>&1
 eval_tap $? 40 'S2SGetDataRequestByRequestID' test.out
 
 #- 41 S2SSubmitUserAccountDeletionRequest
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sSubmitUserAccountDeletionRequest \
     --namespace "$AB_NAMESPACE" \
-    --userId 'tC8GEr8k' \
+    --userId 'K3JimeBs' \
     > test.out 2>&1
 eval_tap $? 41 'S2SSubmitUserAccountDeletionRequest' test.out
 
 #- 42 S2SRequestDataRetrieval
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sRequestDataRetrieval \
     --namespace "$AB_NAMESPACE" \
-    --userId 'uqLfCsck' \
+    --userId 'RN0PjaHe' \
     > test.out 2>&1
 eval_tap $? 42 'S2SRequestDataRetrieval' test.out
 
 #- 43 S2SGeneratePersonalDataURL
 ./ng net.accelbyte.sdk.cli.Main gdpr s2sGeneratePersonalDataURL \
     --namespace "$AB_NAMESPACE" \
-    --requestDate 'l8mXdSsZ' \
-    --userId '8GrYtdHg' \
+    --requestDate 'Eifkrym8' \
+    --userId '5fK6F0Bk' \
     > test.out 2>&1
 eval_tap $? 43 'S2SGeneratePersonalDataURL' test.out
 

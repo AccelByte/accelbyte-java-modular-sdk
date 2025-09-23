@@ -175,6 +175,8 @@ public class CloudsaveErrors {
   public static ApiError error18356 =
       new ApiError(
           "18356", "invalid request body: size of the request body must be less than [%d]MB");
+  public static ApiError error18361 = new ApiError("18361", "record not found");
+  public static ApiError error18362 = new ApiError("18362", "unable to update record");
   public static ApiError error18401 = new ApiError("18401", "invalid request body");
   public static ApiError error18402 = new ApiError("18402", "plugins already configured");
   public static ApiError error18404 = new ApiError("18404", "plugins not found");

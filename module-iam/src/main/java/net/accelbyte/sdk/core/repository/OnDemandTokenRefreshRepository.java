@@ -11,7 +11,8 @@ import net.accelbyte.sdk.api.iam.models.OauthmodelTokenResponse;
 import net.accelbyte.sdk.api.iam.models.OauthmodelTokenWithDeviceCookieResponseV3;
 import net.accelbyte.sdk.core.AccelByteSDK;
 
-public class OnDemandTokenRefreshRepository extends DefaultTokenRepository implements TokenRefreshV3 {
+public class OnDemandTokenRefreshRepository extends DefaultTokenRepository
+    implements TokenRefreshV3 {
 
   private String refreshToken = null;
   private TokenRefreshOptions options = null;
@@ -61,13 +62,12 @@ public class OnDemandTokenRefreshRepository extends DefaultTokenRepository imple
   }
 
   @Override
-  public void storeTokenData(OauthmodelTokenWithDeviceCookieResponseV3 token) {    
+  public void storeTokenData(OauthmodelTokenWithDeviceCookieResponseV3 token) {
     this.tokenExpiresIn = token.getExpiresIn();
     this.refreshToken = token.getRefreshToken();
     if (token.getRefreshExpiresIn() != null)
       this.refreshTokenExpiresIn = token.getRefreshExpiresIn();
     this.tokenIssuedTime = Instant.now().getEpochSecond();
-    
   }
 
   @Override
@@ -81,7 +81,7 @@ public class OnDemandTokenRefreshRepository extends DefaultTokenRepository imple
 
   @Override
   public void clearTokenData() {
-    this.tokenExpiresIn = 0;    
+    this.tokenExpiresIn = 0;
     this.refreshToken = "";
     this.refreshTokenExpiresIn = 0;
     this.tokenIssuedTime = 0;
@@ -89,14 +89,14 @@ public class OnDemandTokenRefreshRepository extends DefaultTokenRepository imple
 
   @Override
   public boolean isTokenExpiring() {
-    final int tExpiry = Math.round(options.getRate() * (float)tokenExpiresIn);
+    final int tExpiry = Math.round(options.getRate() * (float) tokenExpiresIn);
     final long targetTs = tokenIssuedTime + tExpiry;
     return (Instant.now().getEpochSecond() >= targetTs);
-  }  
+  }
 
   @Override
   public Instant getTokenExpiringAt() {
-    final int tExpiry = Math.round(options.getRate() * (float)tokenExpiresIn);
+    final int tExpiry = Math.round(options.getRate() * (float) tokenExpiresIn);
     final long targetTs = tokenIssuedTime + tExpiry;
     return Instant.ofEpochSecond(targetTs);
   }
@@ -108,36 +108,31 @@ public class OnDemandTokenRefreshRepository extends DefaultTokenRepository imple
   }
 
   @Override
-  public boolean isRefreshTokenExpired() {    
+  public boolean isRefreshTokenExpired() {
     final long targetTs = tokenIssuedTime + refreshTokenExpiresIn;
     return (Instant.now().getEpochSecond() >= targetTs);
   }
 
   @Override
-  public void doTokenRefresh(AccelByteSDK sdk, boolean rethrowOnError, TokenRefreshCallbacks callbacks) {
-    if (options == null)
-      return;
-    if (!options.isEnabled())
-      return;
+  public void doTokenRefresh(
+      AccelByteSDK sdk, boolean rethrowOnError, TokenRefreshCallbacks callbacks) {
+    if (options == null) return;
+    if (!options.isEnabled()) return;
 
     if (isTokenAvailable() && isTokenExpiring()) {
       int retryCount = 0;
       while (true) {
         try {
           sdk.refreshToken();
-          if (callbacks != null)
-            callbacks.onUpdated();
+          if (callbacks != null) callbacks.onUpdated();
           break;
         } catch (Exception x) {
           retryCount++;
           if (retryCount >= options.getMaxRetry()) {
-            if (callbacks != null)
-              callbacks.onFailed(x);
-            if (rethrowOnError)
-              throw x;
-            else
-              break;
-          }          
+            if (callbacks != null) callbacks.onFailed(x);
+            if (rethrowOnError) throw x;
+            else break;
+          }
         }
       }
     }

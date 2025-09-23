@@ -39,6 +39,9 @@ public class EvaluateMyProgress implements Callable<Integer> {
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--challengeCode"}, description = "challengeCode", split = ",")
+    List<String> challengeCode;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -60,6 +63,7 @@ public class EvaluateMyProgress implements Callable<Integer> {
             final net.accelbyte.sdk.api.challenge.operations.challenge_progression.EvaluateMyProgress operation =
                     net.accelbyte.sdk.api.challenge.operations.challenge_progression.EvaluateMyProgress.builder()
                             .namespace(namespace)
+                            .challengeCode(challengeCode)
                             .build();
                     wrapper.evaluateMyProgress(operation).ensureSuccess();
             log.info("Operation successful");
