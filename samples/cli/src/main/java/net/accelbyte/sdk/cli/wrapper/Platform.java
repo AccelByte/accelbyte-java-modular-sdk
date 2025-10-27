@@ -20,8 +20,8 @@ import net.accelbyte.sdk.cli.api.platform.entitlement.*;
 import net.accelbyte.sdk.cli.api.platform.fulfillment.*;
 import net.accelbyte.sdk.cli.api.platform.clawback.*;
 import net.accelbyte.sdk.cli.api.platform.iap.*;
-import net.accelbyte.sdk.cli.api.platform.iap_notification.*;
 import net.accelbyte.sdk.cli.api.platform.iap_subscription.*;
+import net.accelbyte.sdk.cli.api.platform.iap_notification.*;
 import net.accelbyte.sdk.cli.api.platform.invoice.*;
 import net.accelbyte.sdk.cli.api.platform.key_group.*;
 import net.accelbyte.sdk.cli.api.platform.order.*;
@@ -143,6 +143,12 @@ import picocli.CommandLine.Command;
                 GetOculusIAPConfig.class,
                 UpdateOculusIAPConfig.class,
                 DeleteOculusIAPConfig.class,
+                ListOculusSubscriptionGroups.class,
+                CreateOculusSubscriptionGroup.class,
+                DeleteOculusSubscriptionGroup.class,
+                ListOculusSubscriptionGroupTier.class,
+                AddTierIntoMetaQuestSubscriptionGroup.class,
+                DeleteOculusSubscriptionTier.class,
                 GetPlayStationIAPConfig.class,
                 UpdatePlaystationIAPConfig.class,
                 DeletePlaystationIAPConfig.class,
@@ -339,6 +345,7 @@ import picocli.CommandLine.Command;
                 QueryAllUserIAPOrders.class,
                 QueryUserIAPConsumeHistory.class,
                 MockFulfillIAPItem.class,
+                AdminSyncOculusSubscriptions.class,
                 AdminGetIAPOrderLineItems.class,
                 AdminSyncSteamAbnormalTransaction.class,
                 AdminSyncSteamIAPByTransaction.class,
@@ -508,6 +515,7 @@ import picocli.CommandLine.Command;
                 PublicFulfillAppleIAPItem.class,
                 SyncEpicGamesInventory.class,
                 PublicFulfillGoogleIAPItem.class,
+                SyncOculusSubscriptions.class,
                 SyncOculusConsumableEntitlements.class,
                 PublicReconcilePlayStationStore.class,
                 PublicReconcilePlayStationStoreWithMultipleServiceLabels.class,

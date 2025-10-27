@@ -48,9 +48,9 @@ public class Policies {
   }
 
   /**
-   * @see UpdatePolicy
+   * @see OldUpdatePolicy
    */
-  public UpdatePolicyOpResponse updatePolicy(UpdatePolicy input) throws Exception {
+  public OldUpdatePolicyOpResponse oldUpdatePolicy(OldUpdatePolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -61,9 +61,10 @@ public class Policies {
   }
 
   /**
-   * @see SetDefaultPolicy2
+   * @see OldSetDefaultPolicy
    */
-  public SetDefaultPolicy2OpResponse setDefaultPolicy2(SetDefaultPolicy2 input) throws Exception {
+  public OldSetDefaultPolicyOpResponse oldSetDefaultPolicy(OldSetDefaultPolicy input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -116,11 +117,11 @@ public class Policies {
   }
 
   /**
-   * @see RetrieveLatestPoliciesByNamespaceAndCountryPublic
+   * @see OldRetrieveLatestPoliciesByNamespaceAndCountryPublic
    */
-  public RetrieveLatestPoliciesByNamespaceAndCountryPublicOpResponse
-      retrieveLatestPoliciesByNamespaceAndCountryPublic(
-          RetrieveLatestPoliciesByNamespaceAndCountryPublic input) throws Exception {
+  public OldRetrieveLatestPoliciesByNamespaceAndCountryPublicOpResponse
+      oldRetrieveLatestPoliciesByNamespaceAndCountryPublic(
+          OldRetrieveLatestPoliciesByNamespaceAndCountryPublic input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

@@ -49,10 +49,10 @@ public class Agreement {
   }
 
   /**
-   * @see RetrieveAcceptedAgreements
+   * @see OldRetrieveAcceptedAgreements
    */
-  public RetrieveAcceptedAgreementsOpResponse retrieveAcceptedAgreements(
-      RetrieveAcceptedAgreements input) throws Exception {
+  public OldRetrieveAcceptedAgreementsOpResponse oldRetrieveAcceptedAgreements(
+      OldRetrieveAcceptedAgreements input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -63,10 +63,10 @@ public class Agreement {
   }
 
   /**
-   * @see RetrieveAllUsersByPolicyVersion
+   * @see OldRetrieveAllUsersByPolicyVersion
    */
-  public RetrieveAllUsersByPolicyVersionOpResponse retrieveAllUsersByPolicyVersion(
-      RetrieveAllUsersByPolicyVersion input) throws Exception {
+  public OldRetrieveAllUsersByPolicyVersionOpResponse oldRetrieveAllUsersByPolicyVersion(
+      OldRetrieveAllUsersByPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -77,10 +77,10 @@ public class Agreement {
   }
 
   /**
-   * @see ChangePreferenceConsent1
+   * @see PublicChangePreferenceConsent
    */
-  public ChangePreferenceConsent1OpResponse changePreferenceConsent1(ChangePreferenceConsent1 input)
-      throws Exception {
+  public PublicChangePreferenceConsentOpResponse publicChangePreferenceConsent(
+      PublicChangePreferenceConsent input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -149,12 +149,12 @@ public class Agreement {
   }
 
   /**
-   * @see IndirectBulkAcceptVersionedPolicy1
+   * @see PublicIndirectBulkAcceptVersionedPolicy
    * @deprecated
    */
   @Deprecated
-  public IndirectBulkAcceptVersionedPolicy1OpResponse indirectBulkAcceptVersionedPolicy1(
-      IndirectBulkAcceptVersionedPolicy1 input) throws Exception {
+  public PublicIndirectBulkAcceptVersionedPolicyOpResponse publicIndirectBulkAcceptVersionedPolicy(
+      PublicIndirectBulkAcceptVersionedPolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

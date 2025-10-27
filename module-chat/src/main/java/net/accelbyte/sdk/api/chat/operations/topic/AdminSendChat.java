@@ -120,6 +120,10 @@ public class AdminSendChat extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new RestapiErrorResponseBody().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new RestapiErrorResponseBody().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new RestapiErrorResponseBody().createFromJson(json));

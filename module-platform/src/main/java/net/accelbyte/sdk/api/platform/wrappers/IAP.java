@@ -617,6 +617,20 @@ public class IAP {
   }
 
   /**
+   * @see AdminSyncOculusSubscriptions
+   */
+  public AdminSyncOculusSubscriptionsOpResponse adminSyncOculusSubscriptions(
+      AdminSyncOculusSubscriptions input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminGetIAPOrderLineItems
    */
   public AdminGetIAPOrderLineItemsOpResponse adminGetIAPOrderLineItems(
@@ -732,6 +746,20 @@ public class IAP {
    */
   public PublicFulfillGoogleIAPItemOpResponse publicFulfillGoogleIAPItem(
       PublicFulfillGoogleIAPItem input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see SyncOculusSubscriptions
+   */
+  public SyncOculusSubscriptionsOpResponse syncOculusSubscriptions(SyncOculusSubscriptions input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

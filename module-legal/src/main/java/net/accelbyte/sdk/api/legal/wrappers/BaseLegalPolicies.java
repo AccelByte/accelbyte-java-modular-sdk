@@ -49,9 +49,9 @@ public class BaseLegalPolicies {
   }
 
   /**
-   * @see CreatePolicy
+   * @see OldCreatePolicy
    */
-  public CreatePolicyOpResponse createPolicy(CreatePolicy input) throws Exception {
+  public OldCreatePolicyOpResponse oldCreatePolicy(OldCreatePolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -62,9 +62,9 @@ public class BaseLegalPolicies {
   }
 
   /**
-   * @see RetrieveSinglePolicy
+   * @see OldRetrieveSinglePolicy
    */
-  public RetrieveSinglePolicyOpResponse retrieveSinglePolicy(RetrieveSinglePolicy input)
+  public OldRetrieveSinglePolicyOpResponse oldRetrieveSinglePolicy(OldRetrieveSinglePolicy input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -76,9 +76,9 @@ public class BaseLegalPolicies {
   }
 
   /**
-   * @see PartialUpdatePolicy
+   * @see OldPartialUpdatePolicy
    */
-  public PartialUpdatePolicyOpResponse partialUpdatePolicy(PartialUpdatePolicy input)
+  public OldPartialUpdatePolicyOpResponse oldPartialUpdatePolicy(OldPartialUpdatePolicy input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -90,9 +90,9 @@ public class BaseLegalPolicies {
   }
 
   /**
-   * @see RetrievePolicyCountry
+   * @see OldRetrievePolicyCountry
    */
-  public RetrievePolicyCountryOpResponse retrievePolicyCountry(RetrievePolicyCountry input)
+  public OldRetrievePolicyCountryOpResponse oldRetrievePolicyCountry(OldRetrievePolicyCountry input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -104,10 +104,10 @@ public class BaseLegalPolicies {
   }
 
   /**
-   * @see RetrieveAllPolicyTypes
+   * @see OldRetrieveAllPolicyTypes
    */
-  public RetrieveAllPolicyTypesOpResponse retrieveAllPolicyTypes(RetrieveAllPolicyTypes input)
-      throws Exception {
+  public OldRetrieveAllPolicyTypesOpResponse oldRetrieveAllPolicyTypes(
+      OldRetrieveAllPolicyTypes input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

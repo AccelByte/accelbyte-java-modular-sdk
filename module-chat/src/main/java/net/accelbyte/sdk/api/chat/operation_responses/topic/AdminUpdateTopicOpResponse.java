@@ -19,6 +19,14 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Setter
 public class AdminUpdateTopicOpResponse extends ApiResponseWithData<ApiCreateTopicResponse> {
 
+  private RestapiErrorResponseBody error401 = null;
+
+  private RestapiErrorResponseBody error403 = null;
+
+  private RestapiErrorResponseBody error404 = null;
+
+  private RestapiErrorResponseBody error500 = null;
+
   public String getFullOperationId() {
     return "net.accelbyte.sdk.api.chat.operations.topic.AdminUpdateTopic";
   }

@@ -46,9 +46,9 @@ public class PoliciesWithNamespace {
   }
 
   /**
-   * @see UpdatePolicy1
+   * @see UpdatePolicy
    */
-  public UpdatePolicy1OpResponse updatePolicy1(UpdatePolicy1 input) throws Exception {
+  public UpdatePolicyOpResponse updatePolicy(UpdatePolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -59,9 +59,9 @@ public class PoliciesWithNamespace {
   }
 
   /**
-   * @see SetDefaultPolicy3
+   * @see SetDefaultPolicy
    */
-  public SetDefaultPolicy3OpResponse setDefaultPolicy3(SetDefaultPolicy3 input) throws Exception {
+  public SetDefaultPolicyOpResponse setDefaultPolicy(SetDefaultPolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

@@ -49,10 +49,10 @@ public class AgreementWithNamespace {
   }
 
   /**
-   * @see RetrieveAcceptedAgreements1
+   * @see RetrieveAcceptedAgreements
    */
-  public RetrieveAcceptedAgreements1OpResponse retrieveAcceptedAgreements1(
-      RetrieveAcceptedAgreements1 input) throws Exception {
+  public RetrieveAcceptedAgreementsOpResponse retrieveAcceptedAgreements(
+      RetrieveAcceptedAgreements input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -63,10 +63,10 @@ public class AgreementWithNamespace {
   }
 
   /**
-   * @see RetrieveAllUsersByPolicyVersion1
+   * @see RetrieveAllUsersByPolicyVersion
    */
-  public RetrieveAllUsersByPolicyVersion1OpResponse retrieveAllUsersByPolicyVersion1(
-      RetrieveAllUsersByPolicyVersion1 input) throws Exception {
+  public RetrieveAllUsersByPolicyVersionOpResponse retrieveAllUsersByPolicyVersion(
+      RetrieveAllUsersByPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

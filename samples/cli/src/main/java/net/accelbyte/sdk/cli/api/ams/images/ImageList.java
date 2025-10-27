@@ -66,6 +66,9 @@ public class ImageList implements Callable<Integer> {
     @Option(names = {"--tag"}, description = "tag")
     String tag;
 
+    @Option(names = {"--targetArchitecture"}, description = "targetArchitecture")
+    String targetArchitecture;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -96,6 +99,7 @@ public class ImageList implements Callable<Integer> {
                             .sortDirection(sortDirection)
                             .status(status)
                             .tag(tag)
+                            .targetArchitecture(targetArchitecture)
                             .build();
             final ApiImageList response =
                     wrapper.imageList(operation).ensureSuccess();

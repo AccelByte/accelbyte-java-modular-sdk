@@ -49,10 +49,10 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see RetrieveLocalizedPolicyVersions1
+   * @see RetrieveLocalizedPolicyVersions
    */
-  public RetrieveLocalizedPolicyVersions1OpResponse retrieveLocalizedPolicyVersions1(
-      RetrieveLocalizedPolicyVersions1 input) throws Exception {
+  public RetrieveLocalizedPolicyVersionsOpResponse retrieveLocalizedPolicyVersions(
+      RetrieveLocalizedPolicyVersions input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -63,10 +63,10 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see CreateLocalizedPolicyVersion1
+   * @see CreateLocalizedPolicyVersion
    */
-  public CreateLocalizedPolicyVersion1OpResponse createLocalizedPolicyVersion1(
-      CreateLocalizedPolicyVersion1 input) throws Exception {
+  public CreateLocalizedPolicyVersionOpResponse createLocalizedPolicyVersion(
+      CreateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -77,10 +77,10 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see RetrieveSingleLocalizedPolicyVersion1
+   * @see RetrieveSingleLocalizedPolicyVersion
    */
-  public RetrieveSingleLocalizedPolicyVersion1OpResponse retrieveSingleLocalizedPolicyVersion1(
-      RetrieveSingleLocalizedPolicyVersion1 input) throws Exception {
+  public RetrieveSingleLocalizedPolicyVersionOpResponse retrieveSingleLocalizedPolicyVersion(
+      RetrieveSingleLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -91,10 +91,10 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see UpdateLocalizedPolicyVersion1
+   * @see UpdateLocalizedPolicyVersion
    */
-  public UpdateLocalizedPolicyVersion1OpResponse updateLocalizedPolicyVersion1(
-      UpdateLocalizedPolicyVersion1 input) throws Exception {
+  public UpdateLocalizedPolicyVersionOpResponse updateLocalizedPolicyVersion(
+      UpdateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -105,9 +105,9 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see RequestPresignedURL1
+   * @see RequestPresignedURL
    */
-  public RequestPresignedURL1OpResponse requestPresignedURL1(RequestPresignedURL1 input)
+  public RequestPresignedURLOpResponse requestPresignedURL(RequestPresignedURL input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -119,9 +119,10 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see SetDefaultPolicy1
+   * @see SetDefaultLocalizedPolicy
    */
-  public SetDefaultPolicy1OpResponse setDefaultPolicy1(SetDefaultPolicy1 input) throws Exception {
+  public SetDefaultLocalizedPolicyOpResponse setDefaultLocalizedPolicy(
+      SetDefaultLocalizedPolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -132,10 +133,11 @@ public class LocalizedPolicyVersionsWithNamespace {
   }
 
   /**
-   * @see RetrieveSingleLocalizedPolicyVersion3
+   * @see PublicRetrieveSingleLocalizedPolicyVersion
    */
-  public RetrieveSingleLocalizedPolicyVersion3OpResponse retrieveSingleLocalizedPolicyVersion3(
-      RetrieveSingleLocalizedPolicyVersion3 input) throws Exception {
+  public PublicRetrieveSingleLocalizedPolicyVersionOpResponse
+      publicRetrieveSingleLocalizedPolicyVersion(PublicRetrieveSingleLocalizedPolicyVersion input)
+          throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

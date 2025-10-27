@@ -25,6 +25,8 @@ public class AdminTopicListOpResponse extends ApiResponseWithData<List<ModelsTop
 
   private RestapiErrorResponseBody error403 = null;
 
+  private RestapiErrorResponseBody error404 = null;
+
   private RestapiErrorResponseBody error500 = null;
 
   public String getFullOperationId() {

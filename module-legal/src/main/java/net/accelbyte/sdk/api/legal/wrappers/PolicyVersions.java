@@ -35,9 +35,9 @@ public class PolicyVersions {
   }
 
   /**
-   * @see UpdatePolicyVersion
+   * @see OldUpdatePolicyVersion
    */
-  public UpdatePolicyVersionOpResponse updatePolicyVersion(UpdatePolicyVersion input)
+  public OldUpdatePolicyVersionOpResponse oldUpdatePolicyVersion(OldUpdatePolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -49,9 +49,9 @@ public class PolicyVersions {
   }
 
   /**
-   * @see PublishPolicyVersion
+   * @see OldPublishPolicyVersion
    */
-  public PublishPolicyVersionOpResponse publishPolicyVersion(PublishPolicyVersion input)
+  public OldPublishPolicyVersionOpResponse oldPublishPolicyVersion(OldPublishPolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -63,10 +63,10 @@ public class PolicyVersions {
   }
 
   /**
-   * @see RetrieveSinglePolicyVersion
+   * @see OldRetrieveSinglePolicyVersion
    */
-  public RetrieveSinglePolicyVersionOpResponse retrieveSinglePolicyVersion(
-      RetrieveSinglePolicyVersion input) throws Exception {
+  public OldRetrieveSinglePolicyVersionOpResponse oldRetrieveSinglePolicyVersion(
+      OldRetrieveSinglePolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -77,9 +77,9 @@ public class PolicyVersions {
   }
 
   /**
-   * @see CreatePolicyVersion
+   * @see OldCreatePolicyVersion
    */
-  public CreatePolicyVersionOpResponse createPolicyVersion(CreatePolicyVersion input)
+  public OldCreatePolicyVersionOpResponse oldCreatePolicyVersion(OldCreatePolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

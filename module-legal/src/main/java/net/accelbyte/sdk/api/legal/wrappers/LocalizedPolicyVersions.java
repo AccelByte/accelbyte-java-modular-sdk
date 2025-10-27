@@ -35,10 +35,10 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see RetrieveLocalizedPolicyVersions
+   * @see OldRetrieveLocalizedPolicyVersions
    */
-  public RetrieveLocalizedPolicyVersionsOpResponse retrieveLocalizedPolicyVersions(
-      RetrieveLocalizedPolicyVersions input) throws Exception {
+  public OldRetrieveLocalizedPolicyVersionsOpResponse oldRetrieveLocalizedPolicyVersions(
+      OldRetrieveLocalizedPolicyVersions input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -49,10 +49,10 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see CreateLocalizedPolicyVersion
+   * @see OldCreateLocalizedPolicyVersion
    */
-  public CreateLocalizedPolicyVersionOpResponse createLocalizedPolicyVersion(
-      CreateLocalizedPolicyVersion input) throws Exception {
+  public OldCreateLocalizedPolicyVersionOpResponse oldCreateLocalizedPolicyVersion(
+      OldCreateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -63,10 +63,10 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see RetrieveSingleLocalizedPolicyVersion
+   * @see OldRetrieveSingleLocalizedPolicyVersion
    */
-  public RetrieveSingleLocalizedPolicyVersionOpResponse retrieveSingleLocalizedPolicyVersion(
-      RetrieveSingleLocalizedPolicyVersion input) throws Exception {
+  public OldRetrieveSingleLocalizedPolicyVersionOpResponse oldRetrieveSingleLocalizedPolicyVersion(
+      OldRetrieveSingleLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -77,10 +77,10 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see UpdateLocalizedPolicyVersion
+   * @see OldUpdateLocalizedPolicyVersion
    */
-  public UpdateLocalizedPolicyVersionOpResponse updateLocalizedPolicyVersion(
-      UpdateLocalizedPolicyVersion input) throws Exception {
+  public OldUpdateLocalizedPolicyVersionOpResponse oldUpdateLocalizedPolicyVersion(
+      OldUpdateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -91,9 +91,9 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see RequestPresignedURL
+   * @see OldRequestPresignedURL
    */
-  public RequestPresignedURLOpResponse requestPresignedURL(RequestPresignedURL input)
+  public OldRequestPresignedURLOpResponse oldRequestPresignedURL(OldRequestPresignedURL input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -105,9 +105,10 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see SetDefaultPolicy
+   * @see OldSetDefaultLocalizedPolicy
    */
-  public SetDefaultPolicyOpResponse setDefaultPolicy(SetDefaultPolicy input) throws Exception {
+  public OldSetDefaultLocalizedPolicyOpResponse oldSetDefaultLocalizedPolicy(
+      OldSetDefaultLocalizedPolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }
@@ -118,10 +119,11 @@ public class LocalizedPolicyVersions {
   }
 
   /**
-   * @see RetrieveSingleLocalizedPolicyVersion2
+   * @see OldPublicRetrieveSingleLocalizedPolicyVersion
    */
-  public RetrieveSingleLocalizedPolicyVersion2OpResponse retrieveSingleLocalizedPolicyVersion2(
-      RetrieveSingleLocalizedPolicyVersion2 input) throws Exception {
+  public OldPublicRetrieveSingleLocalizedPolicyVersionOpResponse
+      oldPublicRetrieveSingleLocalizedPolicyVersion(
+          OldPublicRetrieveSingleLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

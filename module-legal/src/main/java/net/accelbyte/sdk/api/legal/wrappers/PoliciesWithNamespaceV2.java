@@ -35,11 +35,11 @@ public class PoliciesWithNamespaceV2 {
   }
 
   /**
-   * @see RetrieveLatestPoliciesByNamespaceAndCountryPublic1
+   * @see RetrieveLatestPoliciesByNamespaceAndCountryPublic
    */
-  public RetrieveLatestPoliciesByNamespaceAndCountryPublic1OpResponse
-      retrieveLatestPoliciesByNamespaceAndCountryPublic1(
-          RetrieveLatestPoliciesByNamespaceAndCountryPublic1 input) throws Exception {
+  public RetrieveLatestPoliciesByNamespaceAndCountryPublicOpResponse
+      retrieveLatestPoliciesByNamespaceAndCountryPublic(
+          RetrieveLatestPoliciesByNamespaceAndCountryPublic input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

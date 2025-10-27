@@ -101,6 +101,22 @@ public class AdminRemoveTopicMember extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setData(new MessageActionAddUserToTopicResult().createFromJson(json));
       response.setSuccess(true);
+    } else if (code == 401) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError401(new RestapiErrorResponseBody().createFromJson(json));
+      response.setError(response.getError401().translateToApiError());
+    } else if (code == 403) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError403(new RestapiErrorResponseBody().createFromJson(json));
+      response.setError(response.getError403().translateToApiError());
+    } else if (code == 404) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError404(new RestapiErrorResponseBody().createFromJson(json));
+      response.setError(response.getError404().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new RestapiErrorResponseBody().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
     return response;

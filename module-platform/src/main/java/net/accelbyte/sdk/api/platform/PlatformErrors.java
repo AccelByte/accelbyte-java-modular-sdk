@@ -488,6 +488,16 @@ public class PlatformErrors {
               + " [{namespace}]..");
   public static ApiError error39151 =
       new ApiError("39151", "IAP order no [{iapOrderNo}] not found in namespace [{namespace}].");
+  public static ApiError error39152 =
+      new ApiError(
+          "39152",
+          "Platform [{platform}] - Third-party subscription group [{sku}] not found in namespace"
+              + " [{namespace}]. It may have been deleted.");
+  public static ApiError error39154 =
+      new ApiError(
+          "39154",
+          "Meta Quest Subscription Sku [{sku}] not found in namespace [{namespace}] config, please"
+              + " config this Subscription sku in subscription group.");
   public static ApiError error39171 =
       new ApiError(
           "39171",
@@ -522,6 +532,14 @@ public class PlatformErrors {
           "39185",
           "This endpoint only works on sync mode [{workSyncMode}], but current steam iap config"
               + " sync mode is [{currentSyncMode}] under namespace [{namespace}]");
+  public static ApiError error39187 =
+      new ApiError(
+          "39187", "Duplicated group sku [{sku}] platform [{platform}] in namespace [{namespace}]");
+  public static ApiError error39188 =
+      new ApiError(
+          "39188",
+          "Third-party subscription group [{sku}] on platform [{platform}] in namespace"
+              + " [{namespace}] is already linked to the user's third-party subscription.");
   public static ApiError error39221 =
       new ApiError("39221", "Invalid Xbox Business Partner Certificate or password: [{message}]");
   public static ApiError error39244 = new ApiError("39244", "Steam config does not exist");

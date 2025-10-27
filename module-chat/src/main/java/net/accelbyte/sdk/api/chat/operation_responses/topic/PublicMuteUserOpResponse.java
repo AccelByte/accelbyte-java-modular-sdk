@@ -25,6 +25,8 @@ public class PublicMuteUserOpResponse extends ApiResponse {
 
   private RestapiErrorResponseBody error403 = null;
 
+  private RestapiErrorResponseBody error404 = null;
+
   private RestapiErrorResponseBody error500 = null;
 
   public String getFullOperationId() {
