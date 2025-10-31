@@ -21,8 +21,9 @@ import net.accelbyte.sdk.api.legal.models.RetrieveAcceptedAgreementResponse;
 import net.accelbyte.sdk.api.legal.operations.agreement.BulkAcceptVersionedPolicy;
 import net.accelbyte.sdk.api.legal.operations.agreement.ChangePreferenceConsent;
 import net.accelbyte.sdk.api.legal.operations.agreement.RetrieveAgreementsPublic;
-import net.accelbyte.sdk.api.legal.operations.base_legal_policies.CreatePolicy;
-import net.accelbyte.sdk.api.legal.operations.policy_versions.CreatePolicyVersion;
+import net.accelbyte.sdk.api.legal.operations.base_legal_policies.OldCreatePolicy;
+import net.accelbyte.sdk.api.legal.operations.base_legal_policies_with_namespace.CreatePolicy;
+import net.accelbyte.sdk.api.legal.operations.policy_versions.OldCreatePolicyVersion;
 import net.accelbyte.sdk.api.legal.wrappers.Agreement;
 import net.accelbyte.sdk.api.legal.wrappers.BaseLegalPolicies;
 import net.accelbyte.sdk.api.legal.wrappers.PolicyVersions;
@@ -57,9 +58,9 @@ public class TestIntegrationServiceLegal extends TestIntegration {
     // CASE Get agreements
 
     final List<RetrieveAcceptedAgreementResponse> agreements =
-        agreementWrapper
-            .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
-            .ensureSuccess();
+            agreementWrapper
+                    .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
+                    .ensureSuccess();
 
     // ESAC
 
@@ -68,9 +69,9 @@ public class TestIntegrationServiceLegal extends TestIntegration {
     // CASE Retrieved aggreement
 
     final List<RetrieveAcceptedAgreementResponse> retrievedAgreement =
-        agreementWrapper
-            .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
-            .ensureSuccess();
+            agreementWrapper
+                    .retrieveAgreementsPublic(RetrieveAgreementsPublic.builder().build())
+                    .ensureSuccess();
 
     // ESAC
 
@@ -79,21 +80,21 @@ public class TestIntegrationServiceLegal extends TestIntegration {
     if (!retrievedAgreement.isEmpty()) {
       // Create the AcceptAgreementRequest using the first element
       final List<AcceptAgreementRequest> bodyLegal =
-          Collections.singletonList(
-              AcceptAgreementRequest.builder()
-                  .policyId(retrievedAgreement.get(0).getPolicyId())
-                  .policyVersionId(retrievedAgreement.get(0).getPolicyId())
-                  .localizedPolicyVersionId(
-                      retrievedAgreement.get(0).getLocalizedPolicyVersion().toString())
-                  .build());
+              Collections.singletonList(
+                      AcceptAgreementRequest.builder()
+                              .policyId(retrievedAgreement.get(0).getPolicyId())
+                              .policyVersionId(retrievedAgreement.get(0).getPolicyId())
+                              .localizedPolicyVersionId(
+                                      retrievedAgreement.get(0).getLocalizedPolicyVersion().toString())
+                              .build());
 
       // CASE Bulk accept versioned policy
 
       final AcceptAgreementResponse bulkAcceptAgreement =
-          agreementWrapper
-              .bulkAcceptVersionedPolicy(
-                  BulkAcceptVersionedPolicy.builder().body(bodyLegal).build())
-              .ensureSuccess();
+              agreementWrapper
+                      .bulkAcceptVersionedPolicy(
+                              BulkAcceptVersionedPolicy.builder().body(bodyLegal).build())
+                      .ensureSuccess();
 
       // ESAC
 
@@ -102,23 +103,23 @@ public class TestIntegrationServiceLegal extends TestIntegration {
       // CASE Create policy
 
       final CreateBasePolicyResponse createPolicy =
-          baseLegalWrapper
-              .createPolicy(
-                  CreatePolicy.builder()
-                      .body(
-                          CreateBasePolicyRequest.builder()
-                              .basePolicyName(basePolicyName)
-                              .isHidden(false)
-                              .isHiddenPublic(false)
-                              .namespace(this.namespace)
-                              .typeId("")
-                              .description(basePolicyDesc)
-                              .tags(Arrays.asList(new String[] {"java", "sdk", "test"}))
-                              .affectedCountries(Arrays.asList(new String[] {""}))
-                              .affectedClientIds(Arrays.asList(new String[] {"ID"}))
-                              .build())
-                      .build())
-              .ensureSuccess();
+              baseLegalWrapper
+                      .oldCreatePolicy(
+                              OldCreatePolicy.builder()
+                                      .body(
+                                              CreateBasePolicyRequest.builder()
+                                                      .basePolicyName(basePolicyName)
+                                                      .isHidden(false)
+                                                      .isHiddenPublic(false)
+                                                      .namespace(this.namespace)
+                                                      .typeId("")
+                                                      .description(basePolicyDesc)
+                                                      .tags(Arrays.asList(new String[] {"java", "sdk", "test"}))
+                                                      .affectedCountries(Arrays.asList(new String[] {""}))
+                                                      .affectedClientIds(Arrays.asList(new String[] {"ID"}))
+                                                      .build())
+                                      .build())
+                      .ensureSuccess();
 
       // ESAC
 
@@ -127,18 +128,18 @@ public class TestIntegrationServiceLegal extends TestIntegration {
       // CASE Create policy version
 
       final CreatePolicyVersionResponse createPolicyVersions =
-          policyVersionsWrapper
-              .createPolicyVersion(
-                  CreatePolicyVersion.builder()
-                      .body(
-                          CreatePolicyVersionRequest.builder()
-                              .description(basePolicyDesc)
-                              .displayVersion("1")
-                              .isCommitted(false)
-                              .build())
-                      .policyId(createPolicy.getPolicyId())
-                      .build())
-              .ensureSuccess();
+              policyVersionsWrapper
+                      .oldCreatePolicyVersion(
+                              OldCreatePolicyVersion.builder()
+                                      .body(
+                                              CreatePolicyVersionRequest.builder()
+                                                      .description(basePolicyDesc)
+                                                      .displayVersion("1")
+                                                      .isCommitted(false)
+                                                      .build())
+                                      .policyId(createPolicy.getPolicyId())
+                                      .build())
+                      .ensureSuccess();
 
       // ESAC
 
@@ -147,13 +148,13 @@ public class TestIntegrationServiceLegal extends TestIntegration {
       // CASE Change preference consent
 
       agreementWrapper
-          .changePreferenceConsent(
-              ChangePreferenceConsent.builder()
-                  .body(bodyLegal)
-                  .namespace(this.namespace)
-                  .userId(this.username)
-                  .build())
-          .ensureSuccess();
+              .changePreferenceConsent(
+                      ChangePreferenceConsent.builder()
+                              .body(bodyLegal)
+                              .namespace(this.namespace)
+                              .userId(this.username)
+                              .build())
+              .ensureSuccess();
 
       // ESAC
     }
