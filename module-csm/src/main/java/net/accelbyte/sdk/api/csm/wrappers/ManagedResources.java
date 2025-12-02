@@ -145,6 +145,34 @@ public class ManagedResources {
   }
 
   /**
+   * @see StartNoSQLClusterV2
+   */
+  public StartNoSQLClusterV2OpResponse startNoSQLClusterV2(StartNoSQLClusterV2 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see StopNoSQLClusterV2
+   */
+  public StopNoSQLClusterV2OpResponse stopNoSQLClusterV2(StopNoSQLClusterV2 input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see GetNoSQLAccessTunnelV2
    */
   public GetNoSQLAccessTunnelV2OpResponse getNoSQLAccessTunnelV2(GetNoSQLAccessTunnelV2 input)

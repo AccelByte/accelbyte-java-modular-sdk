@@ -62,6 +62,15 @@
 | `/csm/v2/admin/namespaces/{namespace}/apps/{app}/start` | PUT | StartAppV2 | [StartAppV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/StartAppV2.java) | [StartAppV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/app_v2/StartAppV2.java) |
 | `/csm/v2/admin/namespaces/{namespace}/apps/{app}/stop` | PUT | StopAppV2 | [StopAppV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/app_v2/StopAppV2.java) | [StopAppV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/app_v2/StopAppV2.java) |
 
+### Async Messaging Wrapper:  [AsyncMessaging](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/wrappers/AsyncMessaging.java)
+| Endpoint | Method | ID | Class | Example |
+|---|---|---|---|---|
+| `/csm/v2/admin/namespaces/{namespace}/apps/{app}/asyncmessaging/topics/subscriptions` | POST | CreateSubscriptionHandler | [CreateSubscriptionHandler](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/CreateSubscriptionHandler.java) | [CreateSubscriptionHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/async_messaging/CreateSubscriptionHandler.java) |
+| `/csm/v2/admin/namespaces/{namespace}/apps/{app}/asyncmessaging/topics/{topicName}/subscriptions` | DELETE | UnsubscribeTopicHandler | [UnsubscribeTopicHandler](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/UnsubscribeTopicHandler.java) | [UnsubscribeTopicHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/async_messaging/UnsubscribeTopicHandler.java) |
+| `/csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics` | GET | ListTopicsHandler | [ListTopicsHandler](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/ListTopicsHandler.java) | [ListTopicsHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/async_messaging/ListTopicsHandler.java) |
+| `/csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics` | POST | CreateTopicHandler | [CreateTopicHandler](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/CreateTopicHandler.java) | [CreateTopicHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/async_messaging/CreateTopicHandler.java) |
+| `/csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics/{topicName}` | DELETE | DeleteTopicHandler | [DeleteTopicHandler](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/async_messaging/DeleteTopicHandler.java) | [DeleteTopicHandler](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/async_messaging/DeleteTopicHandler.java) |
+
 ### Deployment V2 Wrapper:  [DeploymentV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/wrappers/DeploymentV2.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
@@ -87,6 +96,8 @@
 | `/csm/v2/admin/namespaces/{namespace}/nosql/clusters` | PUT | UpdateNoSQLClusterV2 | [UpdateNoSQLClusterV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/UpdateNoSQLClusterV2.java) | [UpdateNoSQLClusterV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/UpdateNoSQLClusterV2.java) |
 | `/csm/v2/admin/namespaces/{namespace}/nosql/clusters` | POST | CreateNoSQLClusterV2 | [CreateNoSQLClusterV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/CreateNoSQLClusterV2.java) | [CreateNoSQLClusterV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/CreateNoSQLClusterV2.java) |
 | `/csm/v2/admin/namespaces/{namespace}/nosql/clusters` | DELETE | DeleteNoSQLClusterV2 | [DeleteNoSQLClusterV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/DeleteNoSQLClusterV2.java) | [DeleteNoSQLClusterV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/DeleteNoSQLClusterV2.java) |
+| `/csm/v2/admin/namespaces/{namespace}/nosql/clusters/start` | PUT | StartNoSQLClusterV2 | [StartNoSQLClusterV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/StartNoSQLClusterV2.java) | [StartNoSQLClusterV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/StartNoSQLClusterV2.java) |
+| `/csm/v2/admin/namespaces/{namespace}/nosql/clusters/stop` | PUT | StopNoSQLClusterV2 | [StopNoSQLClusterV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/StopNoSQLClusterV2.java) | [StopNoSQLClusterV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/StopNoSQLClusterV2.java) |
 | `/csm/v2/admin/namespaces/{namespace}/nosql/tunnels` | GET | GetNoSQLAccessTunnelV2 | [GetNoSQLAccessTunnelV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/operations/managed_resources/GetNoSQLAccessTunnelV2.java) | [GetNoSQLAccessTunnelV2](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/csm/managed_resources/GetNoSQLAccessTunnelV2.java) |
 
 ### Configuration V2 Wrapper:  [ConfigurationV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/wrappers/ConfigurationV2.java)
@@ -144,6 +155,9 @@
 | `apimodel.CreateDeploymentV2Response` | [ApimodelCreateDeploymentV2Response](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateDeploymentV2Response.java) |
 | `apimodel.CreateNoSQLAppDatabaseRequest` | [ApimodelCreateNoSQLAppDatabaseRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateNoSQLAppDatabaseRequest.java) |
 | `apimodel.CreateNoSQLDatabaseCredentialRequest` | [ApimodelCreateNoSQLDatabaseCredentialRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateNoSQLDatabaseCredentialRequest.java) |
+| `apimodel.CreateSubscriptionRequest` | [ApimodelCreateSubscriptionRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateSubscriptionRequest.java) |
+| `apimodel.CreateSubscriptionResponse` | [ApimodelCreateSubscriptionResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateSubscriptionResponse.java) |
+| `apimodel.CreateTopicRequest` | [ApimodelCreateTopicRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelCreateTopicRequest.java) |
 | `apimodel.DeleteNoSQLResourceResponse` | [ApimodelDeleteNoSQLResourceResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelDeleteNoSQLResourceResponse.java) |
 | `apimodel.GetAppImageListV2DataItem` | [ApimodelGetAppImageListV2DataItem](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2DataItem.java) |
 | `apimodel.GetAppImageListV2DataItemImageScanResult` | [ApimodelGetAppImageListV2DataItemImageScanResult](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetAppImageListV2DataItemImageScanResult.java) |
@@ -162,6 +176,7 @@
 | `apimodel.GetNotificationSubscriberListResponseV2` | [ApimodelGetNotificationSubscriberListResponseV2](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberListResponseV2.java) |
 | `apimodel.GetNotificationSubscriberStatusResponse` | [ApimodelGetNotificationSubscriberStatusResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelGetNotificationSubscriberStatusResponse.java) |
 | `apimodel.IncreaseLimitFormRequest` | [ApimodelIncreaseLimitFormRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelIncreaseLimitFormRequest.java) |
+| `apimodel.ListTopicsResponse` | [ApimodelListTopicsResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelListTopicsResponse.java) |
 | `apimodel.MemoryRequest` | [ApimodelMemoryRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelMemoryRequest.java) |
 | `apimodel.MemoryResponse` | [ApimodelMemoryResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelMemoryResponse.java) |
 | `apimodel.NoSQLDatabaseCredentialResponse` | [ApimodelNoSQLDatabaseCredentialResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNoSQLDatabaseCredentialResponse.java) |
@@ -169,6 +184,7 @@
 | `apimodel.NoSQLDatabaseResponse` | [ApimodelNoSQLDatabaseResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNoSQLDatabaseResponse.java) |
 | `apimodel.NoSQLResourceResponse` | [ApimodelNoSQLResourceResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNoSQLResourceResponse.java) |
 | `apimodel.NotificationType` | [ApimodelNotificationType](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelNotificationType.java) |
+| `apimodel.PaginationResponse` | [ApimodelPaginationResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelPaginationResponse.java) |
 | `apimodel.ReplicaRequest` | [ApimodelReplicaRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelReplicaRequest.java) |
 | `apimodel.ReplicaResponse` | [ApimodelReplicaResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelReplicaResponse.java) |
 | `apimodel.SaveConfigurationV2Request` | [ApimodelSaveConfigurationV2Request](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSaveConfigurationV2Request.java) |
@@ -179,6 +195,9 @@
 | `apimodel.SubscribeNotificationResponse` | [ApimodelSubscribeNotificationResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscribeNotificationResponse.java) |
 | `apimodel.SubscriberItemRequest` | [ApimodelSubscriberItemRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscriberItemRequest.java) |
 | `apimodel.SubscriberItemResponse` | [ApimodelSubscriberItemResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelSubscriberItemResponse.java) |
+| `apimodel.TopicDetailResponse` | [ApimodelTopicDetailResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicDetailResponse.java) |
+| `apimodel.TopicResponse` | [ApimodelTopicResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicResponse.java) |
+| `apimodel.TopicSubscription` | [ApimodelTopicSubscription](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTopicSubscription.java) |
 | `apimodel.TunnelInfoResponse` | [ApimodelTunnelInfoResponse](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelTunnelInfoResponse.java) |
 | `apimodel.UpdateAppResourceRequest` | [ApimodelUpdateAppResourceRequest](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateAppResourceRequest.java) |
 | `apimodel.UpdateAppV2Request` | [ApimodelUpdateAppV2Request](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ApimodelUpdateAppV2Request.java) |
@@ -216,6 +235,8 @@
 | `generated.UpdateConfigurationV1Request` | [GeneratedUpdateConfigurationV1Request](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateConfigurationV1Request.java) |
 | `generated.UpdateConfigurationV1Response` | [GeneratedUpdateConfigurationV1Response](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/GeneratedUpdateConfigurationV1Response.java) |
 | `log.AppMessageDeclaration` | [LogAppMessageDeclaration](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/LogAppMessageDeclaration.java) |
+| `model.AppRedeploymentDetail` | [ModelAppRedeploymentDetail](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ModelAppRedeploymentDetail.java) |
+| `model.AppRedeploymentInfo` | [ModelAppRedeploymentInfo](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ModelAppRedeploymentInfo.java) |
 | `model.CSMAutoscalingDefaults` | [ModelCSMAutoscalingDefaults](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ModelCSMAutoscalingDefaults.java) |
 | `model.ImageScanFinding` | [ModelImageScanFinding](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/ModelImageScanFinding.java) |
 | `nosqlresource.NoSQLResourceConfiguration` | [NosqlresourceNoSQLResourceConfiguration](../../module-csm/src/main/java/net/accelbyte/sdk/api/csm/models/NosqlresourceNoSQLResourceConfiguration.java) |

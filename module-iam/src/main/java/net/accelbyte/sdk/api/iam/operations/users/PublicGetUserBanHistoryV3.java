@@ -22,8 +22,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * PublicGetUserBanHistoryV3
  *
- * <p>Notes: - This endpoint retrieve the first page of the data if after and before parameters is
- * empty - **The pagination is not working yet**
+ * <p>Notes:
  *
  * <p>**Authentication:** The _**userId**_ parameter should match the one in the access token.
  */
@@ -43,9 +42,8 @@ public class PublicGetUserBanHistoryV3 extends Operation {
 
   private String userId;
   private Boolean activeOnly;
-  private String after;
-  private String before;
   private Integer limit;
+  private Integer offset;
 
   /**
    * @param namespace required
@@ -59,15 +57,13 @@ public class PublicGetUserBanHistoryV3 extends Operation {
       String namespace,
       String userId,
       Boolean activeOnly,
-      String after,
-      String before,
-      Integer limit) {
+      Integer limit,
+      Integer offset) {
     this.namespace = namespace;
     this.userId = userId;
     this.activeOnly = activeOnly;
-    this.after = after;
-    this.before = before;
     this.limit = limit;
+    this.offset = offset;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -91,9 +87,9 @@ public class PublicGetUserBanHistoryV3 extends Operation {
     queryParams.put(
         "activeOnly",
         this.activeOnly == null ? null : Arrays.asList(String.valueOf(this.activeOnly)));
-    queryParams.put("after", this.after == null ? null : Arrays.asList(this.after));
-    queryParams.put("before", this.before == null ? null : Arrays.asList(this.before));
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
+    queryParams.put(
+        "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
     return queryParams;
   }
 
@@ -161,9 +157,8 @@ public class PublicGetUserBanHistoryV3 extends Operation {
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
     result.put("activeOnly", "None");
-    result.put("after", "None");
-    result.put("before", "None");
     result.put("limit", "None");
+    result.put("offset", "None");
     return result;
   }
 }

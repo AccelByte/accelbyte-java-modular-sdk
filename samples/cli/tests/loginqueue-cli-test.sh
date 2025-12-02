@@ -62,7 +62,7 @@ eval_tap $? 2 'AdminGetConfiguration' test.out
 #- 3 AdminUpdateConfiguration
 ./ng net.accelbyte.sdk.cli.Main loginqueue adminUpdateConfiguration \
     --namespace "$AB_NAMESPACE" \
-    --body '{"enabled": false, "maxConcurrency": 83, "maxLoginRate": 49, "minActivationPeriodInSecond": 31, "playerPollingTimeInSecond": 5, "playerReconnectGracePeriodInSecond": 14, "queueReconnectGracePeriodInSecond": 35, "safetyMarginPercentage": 14}' \
+    --body '{"enabled": true, "maxConcurrency": 81, "maxLoginRate": 33, "minActivationPeriodInSecond": 61, "playerPollingTimeInSecond": 75, "playerReconnectGracePeriodInSecond": 96, "queueReconnectGracePeriodInSecond": 52, "safetyMarginPercentage": 90}' \
     > test.out 2>&1
 eval_tap $? 3 'AdminUpdateConfiguration' test.out
 
