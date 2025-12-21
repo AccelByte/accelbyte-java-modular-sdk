@@ -25,9 +25,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0'
     implementation 'com.facebook:nailgun-server:1.0.1'
     implementation 'org.apache.logging.log4j:log4j-api:2.17.1'
-    implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.25.3'
     implementation 'commons-io:commons-io:2.18.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
 
     // Include all modules in the root project (i.e :module-* )
     gradle.includedModules.each { moduleName ->

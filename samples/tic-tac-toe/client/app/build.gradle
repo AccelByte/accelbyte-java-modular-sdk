@@ -41,7 +41,7 @@ dependencies {
     implementation 'net.accelbyte.sdk:module-session:+'
     implementation 'net.accelbyte.sdk:module-social:+'
     implementation 'net.accelbyte.sdk:module-ugc:+'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
 }
 
