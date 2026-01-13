@@ -17,7 +17,7 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class GetEstimatedPriceOpResponse extends ApiResponseWithData<EstimatedPriceInfo> {
+public class GetEstimatedPriceOpResponse extends ApiResponseWithData<List<EstimatedPriceInfo>> {
 
   private ErrorEntity error404 = null;
 

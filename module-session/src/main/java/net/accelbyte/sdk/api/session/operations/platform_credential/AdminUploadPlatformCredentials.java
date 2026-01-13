@@ -14,35 +14,25 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import net.accelbyte.sdk.api.session.models.*;
-import net.accelbyte.sdk.api.session.operation_responses.platform_credential.AdminSyncPlatformCredentialsOpResponse;
+import net.accelbyte.sdk.api.session.operation_responses.platform_credential.AdminUploadPlatformCredentialsOpResponse;
 import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.util.Helper;
 
 /**
- * adminSyncPlatformCredentials
+ * adminUploadPlatformCredentials
  *
- * <p>Sync Platform Credentials.
- *
- * <p>Supported Platforms: 1. XBOX With this method, we will be performing sync to Platform Service
- * to retrieve the existing PFX certificate which uploaded through IAP. If the API returns Not
- * Found, alternatively what you can do is either: a. upload PFX file to IAP. You can access it from
- * Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through
- * API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert. b. upload PFX file through
- * Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload We
- * recommend approach #a, since you need to only upload the file once, and the service will do the
- * sync. If you set the PFX through Session service, when this API is invoked, we will sync and
- * replace the existing PFX file with the one from Platform (IAP).
+ * <p>Upload certificates for XBox. Certificate must be in the valid form of PFX format.
  */
 @Getter
 @Setter
-public class AdminSyncPlatformCredentials extends Operation {
+public class AdminUploadPlatformCredentials extends Operation {
   /** generated field's value */
   private String path =
-      "/session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/sync";
+      "/session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/upload";
 
   private String method = "PUT";
-  private List<String> consumes = Arrays.asList();
+  private List<String> consumes = Arrays.asList("multipart/form-data");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
 
@@ -50,17 +40,31 @@ public class AdminSyncPlatformCredentials extends Operation {
   private String namespace;
 
   private String platformId;
+  private String description;
+  private File file;
+  private String password;
 
   /**
    * @param namespace required
    * @param platformId required
+   * @param file required
+   * @param password required
    */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminSyncPlatformCredentials(String customBasePath, String namespace, String platformId) {
+  public AdminUploadPlatformCredentials(
+      String customBasePath,
+      String namespace,
+      String platformId,
+      String description,
+      File file,
+      String password) {
     this.namespace = namespace;
     this.platformId = platformId;
+    this.description = description;
+    this.file = file;
+    this.password = password;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -79,6 +83,21 @@ public class AdminSyncPlatformCredentials extends Operation {
   }
 
   @Override
+  public Map<String, Object> getFormParams() {
+    Map<String, Object> formDataParams = new HashMap<>();
+    if (this.description != null) {
+      formDataParams.put("description", this.description);
+    }
+    if (this.file != null) {
+      formDataParams.put("file", this.file);
+    }
+    if (this.password != null) {
+      formDataParams.put("password", this.password);
+    }
+    return formDataParams;
+  }
+
+  @Override
   public boolean isValid() {
     if (this.namespace == null) {
       return false;
@@ -86,22 +105,26 @@ public class AdminSyncPlatformCredentials extends Operation {
     if (this.platformId == null) {
       return false;
     }
+    if (this.file == null) {
+      return false;
+    }
+    if (this.password == null) {
+      return false;
+    }
     return true;
   }
 
-  public AdminSyncPlatformCredentialsOpResponse parseResponse(
+  public AdminUploadPlatformCredentialsOpResponse parseResponse(
       int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
-    final AdminSyncPlatformCredentialsOpResponse response =
-        new AdminSyncPlatformCredentialsOpResponse();
+    final AdminUploadPlatformCredentialsOpResponse response =
+        new AdminUploadPlatformCredentialsOpResponse();
 
     response.setHttpStatusCode(code);
     response.setContentType(contentType);
 
     if (code == 204) {
       response.setSuccess(true);
-    } else if ((code == 200) || (code == 201)) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new ApimodelsXblCertificateResponseBody().createFromJson(json));
+    } else if ((code == 200) || (code == 201) || (code == 202)) {
       response.setSuccess(true);
     } else if (code == 400) {
       final String json = Helper.convertInputStreamToString(payload);
@@ -115,10 +138,6 @@ public class AdminSyncPlatformCredentials extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new ResponseError().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
-    } else if (code == 404) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError404(new ResponseError().createFromJson(json));
-      response.setError(response.getError404().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new ResponseError().createFromJson(json));
@@ -129,13 +148,11 @@ public class AdminSyncPlatformCredentials extends Operation {
   }
 
   /*
-  public ApimodelsXblCertificateResponseBody parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
-      final String json = Helper.convertInputStreamToString(payload);
-      return new ApimodelsXblCertificateResponseBody().createFromJson(json);
   }
   */
 
@@ -154,15 +171,15 @@ public class AdminSyncPlatformCredentials extends Operation {
     }
   }
 
-  public static class AdminSyncPlatformCredentialsBuilder {
+  public static class AdminUploadPlatformCredentialsBuilder {
     private String platformId;
 
-    public AdminSyncPlatformCredentialsBuilder platformId(final String platformId) {
+    public AdminUploadPlatformCredentialsBuilder platformId(final String platformId) {
       this.platformId = platformId;
       return this;
     }
 
-    public AdminSyncPlatformCredentialsBuilder platformIdFromEnum(final PlatformId platformId) {
+    public AdminUploadPlatformCredentialsBuilder platformIdFromEnum(final PlatformId platformId) {
       this.platformId = platformId.toString();
       return this;
     }

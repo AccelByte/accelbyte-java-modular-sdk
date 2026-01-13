@@ -83,7 +83,7 @@ eval_tap $? 6 'AdminGetPlayFeatureFlag' test.out
 #- 7 AdminUpsertPlayFeatureFlag
 ./ng net.accelbyte.sdk.cli.Main match2 adminUpsertPlayFeatureFlag \
     --namespace "$AB_NAMESPACE" \
-    --body '{"ENABLE_AUTO_CANCEL_MATCH_USER_DISCONNECT": false, "ENABLE_AUTO_CANCEL_MATCH_USER_LEAVE": false}' \
+    --body '{"ENABLE_AUTO_CANCEL_MATCH_USER_DISCONNECT": true, "ENABLE_AUTO_CANCEL_MATCH_USER_LEAVE": true}' \
     > test.out 2>&1
 eval_tap $? 7 'AdminUpsertPlayFeatureFlag' test.out
 
@@ -102,7 +102,7 @@ eval_tap $? 9 'AdminGetXRayConfig' test.out
 #- 10 AdminUpdateXRayConfig
 ./ng net.accelbyte.sdk.cli.Main match2 adminUpdateXRayConfig \
     --namespace "$AB_NAMESPACE" \
-    --body '{"whitelistedUsers": ["c809nXo7", "dCjSfXcd", "aRlUQul3"]}' \
+    --body '{"whitelistedUsers": ["A7SYaVHd", "rQfMSeyn", "jMYxDXwi"]}' \
     > test.out 2>&1
 eval_tap $? 10 'AdminUpdateXRayConfig' test.out
 
@@ -120,7 +120,7 @@ eval_tap $? 12 'AdminGetConfigV1' test.out
 #- 13 AdminPatchConfigV1
 ./ng net.accelbyte.sdk.cli.Main match2 adminPatchConfigV1 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["fhm8kcfl", "KYlSWmbS", "MpWJhwGs"], "matchAnyCommon": true, "platformGroup": {"QyCQ9Mfc": ["pIN6onpx", "tsGjOK2P", "QbM4mzGj"], "nIaoUysD": ["QRjpKzcn", "M4yn2jCI", "3Oe7CHTw"], "WpzdFMeF": ["jrQsT6Es", "icrYhHDZ", "Tw0P5owg"]}, "xrayMaxWhitelistedUserCount": 19}' \
+    --body '{"crossPlatformNoCurrentPlatform": true, "extraPlatforms": ["PTEBOo9b", "j0tPr2G7", "gqh8HRkH"], "matchAnyCommon": false, "platformGroup": {"HPJ8Bzhs": ["okaBshJs", "Okb9LkKl", "LVbivuWC"], "nujw9WFm": ["2d1QzOi1", "ErTF0buA", "5ZdcEq68"], "SHqfRN72": ["i5YqIZW0", "QDdh3Fnz", "JF2cnReK"]}, "xrayMaxWhitelistedUserCount": 76}' \
     > test.out 2>&1
 eval_tap $? 13 'AdminPatchConfigV1' test.out
 
@@ -132,95 +132,95 @@ eval_tap $? 14 'EnvironmentVariableList' test.out
 #- 15 AdminQueryBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 adminQueryBackfill \
     --namespace "$AB_NAMESPACE" \
-    --fromTime '1973-11-19T00:00:00Z' \
+    --fromTime '1992-10-19T00:00:00Z' \
     --isActive  \
-    --limit '94' \
-    --matchPool 'RDveT8Z4' \
-    --offset '44' \
-    --playerID 'SRUaqgVI' \
-    --region 'N5Rxn83Y' \
-    --sessionID 'ThiDUT0g' \
-    --toTime '1976-05-02T00:00:00Z' \
+    --limit '0' \
+    --matchPool '0BLnoAzp' \
+    --offset '57' \
+    --playerID 'CzjX86eR' \
+    --region 'DmzylsUH' \
+    --sessionID 'MpMg17Ci' \
+    --toTime '1977-03-14T00:00:00Z' \
     > test.out 2>&1
 eval_tap $? 15 'AdminQueryBackfill' test.out
 
 #- 16 CreateBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 createBackfill \
     --namespace "$AB_NAMESPACE" \
-    --body '{"matchPool": "uixAtOYi", "sessionId": "z2r7LWkB"}' \
+    --body '{"matchPool": "2rScn6Wt", "sessionId": "EKPhjC2f"}' \
     > test.out 2>&1
 eval_tap $? 16 'CreateBackfill' test.out
 
 #- 17 GetBackfillProposal
 ./ng net.accelbyte.sdk.cli.Main match2 getBackfillProposal \
     --namespace "$AB_NAMESPACE" \
-    --sessionID 'sMPvk9tu' \
+    --sessionID 'MHJUvdwf' \
     > test.out 2>&1
 eval_tap $? 17 'GetBackfillProposal' test.out
 
 #- 18 GetBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 getBackfill \
-    --backfillID 'xp6cxSiF' \
+    --backfillID 'z1SqEcr5' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 18 'GetBackfill' test.out
 
 #- 19 DeleteBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 deleteBackfill \
-    --backfillID 'sfwR88bb' \
+    --backfillID '0yAwNwlJ' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 19 'DeleteBackfill' test.out
 
 #- 20 AcceptBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 acceptBackfill \
-    --backfillID 'vUVjFqgR' \
+    --backfillID '1hT02uDY' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"acceptedTicketIds": ["26A4MIwC", "vAaRWRWm", "UjxahUzg"], "proposalId": "12Fl2kNM", "stop": false}' \
+    --body '{"acceptedTicketIds": ["Cj5nT9vx", "V4DWqIVc", "37oHvNE9"], "proposalId": "PzipxRRw", "stop": true}' \
     > test.out 2>&1
 eval_tap $? 20 'AcceptBackfill' test.out
 
 #- 21 RejectBackfill
 ./ng net.accelbyte.sdk.cli.Main match2 rejectBackfill \
-    --backfillID 'ZCXJbDMP' \
+    --backfillID 'D5HKqMb8' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"proposalId": "1jc0OMLJ", "stop": false}' \
+    --body '{"proposalId": "BFtVJPDA", "stop": true}' \
     > test.out 2>&1
 eval_tap $? 21 'RejectBackfill' test.out
 
 #- 22 MatchFunctionList
 ./ng net.accelbyte.sdk.cli.Main match2 matchFunctionList \
     --namespace "$AB_NAMESPACE" \
-    --limit '20' \
-    --offset '78' \
+    --limit '95' \
+    --offset '42' \
     > test.out 2>&1
 eval_tap $? 22 'MatchFunctionList' test.out
 
 #- 23 CreateMatchFunction
 ./ng net.accelbyte.sdk.cli.Main match2 createMatchFunction \
     --namespace "$AB_NAMESPACE" \
-    --body '{"match_function": "Ms7kC1bl", "serviceAppName": "YDDs5Fed", "url": "3j8MngQW"}' \
+    --body '{"match_function": "0WZ2tpoT", "serviceAppName": "Fy0r0PV9", "url": "bb1Fhxcz"}' \
     > test.out 2>&1
 eval_tap $? 23 'CreateMatchFunction' test.out
 
 #- 24 MatchFunctionGet
 ./ng net.accelbyte.sdk.cli.Main match2 matchFunctionGet \
-    --name '4CZSxDKD' \
+    --name 'CSJIZWxA' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 24 'MatchFunctionGet' test.out
 
 #- 25 UpdateMatchFunction
 ./ng net.accelbyte.sdk.cli.Main match2 updateMatchFunction \
-    --name 'EI7Uo6pD' \
+    --name '9q14RQTK' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"match_function": "zbgnsZCe", "serviceAppName": "5i9XhtuI", "url": "ZNP9gHG2"}' \
+    --body '{"match_function": "TohWL3jR", "serviceAppName": "AvlEQKI6", "url": "m0rAopuW"}' \
     > test.out 2>&1
 eval_tap $? 25 'UpdateMatchFunction' test.out
 
 #- 26 DeleteMatchFunction
 ./ng net.accelbyte.sdk.cli.Main match2 deleteMatchFunction \
-    --name 'saX2vn5H' \
+    --name 'klpOtxUt' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 26 'DeleteMatchFunction' test.out
@@ -228,52 +228,52 @@ eval_tap $? 26 'DeleteMatchFunction' test.out
 #- 27 MatchPoolList
 ./ng net.accelbyte.sdk.cli.Main match2 matchPoolList \
     --namespace "$AB_NAMESPACE" \
-    --limit '93' \
-    --name '2bQ4BLDG' \
-    --offset '9' \
+    --limit '35' \
+    --name 'LX5cu4if' \
+    --offset '72' \
     > test.out 2>&1
 eval_tap $? 27 'MatchPoolList' test.out
 
 #- 28 CreateMatchPool
 ./ng net.accelbyte.sdk.cli.Main match2 createMatchPool \
     --namespace "$AB_NAMESPACE" \
-    --body '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 29, "backfill_ticket_expiration_seconds": 72, "best_latency_calculation_method": "IXlnyr45", "crossplay_disabled": true, "match_function": "Q4t00Bx1", "match_function_override": {"backfill_matches": "KMLWvAZh", "enrichment": ["8jhJTyFK", "RwJaQwzx", "yP9hCPEB"], "make_matches": "l1AQtMOk", "stat_codes": ["StLTD2y6", "qsqYz9MM", "CGqaZkgm"], "validation": ["AxXGOYfP", "O6mfuce3", "dmSzy9nJ"]}, "name": "U5VAmPLJ", "platform_group_enabled": true, "rule_set": "D9njMDQB", "session_template": "B7D57mZN", "ticket_expiration_seconds": 73}' \
+    --body '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 16, "backfill_ticket_expiration_seconds": 84, "best_latency_calculation_method": "7HuZdwhR", "crossplay_disabled": false, "match_function": "ZA3BhBAQ", "match_function_override": {"backfill_matches": "HQutrGWV", "enrichment": ["zLmBahxS", "Xo2Hbwvk", "qMGpYIoQ"], "make_matches": "sQpK1GkE", "stat_codes": ["tqtkZbrm", "uX3aPcE0", "OSbFfy2U"], "validation": ["nYiRcp3g", "ibEeR2gg", "mYAfi76f"]}, "name": "73wiwHf7", "platform_group_enabled": true, "rule_set": "XMowC3SL", "session_template": "uIn0JcBv", "ticket_expiration_seconds": 58}' \
     > test.out 2>&1
 eval_tap $? 28 'CreateMatchPool' test.out
 
 #- 29 MatchPoolDetails
 ./ng net.accelbyte.sdk.cli.Main match2 matchPoolDetails \
     --namespace "$AB_NAMESPACE" \
-    --pool 'qdJT6IV5' \
+    --pool 'a39fFxCv' \
     > test.out 2>&1
 eval_tap $? 29 'MatchPoolDetails' test.out
 
 #- 30 UpdateMatchPool
 ./ng net.accelbyte.sdk.cli.Main match2 updateMatchPool \
     --namespace "$AB_NAMESPACE" \
-    --pool 'N0NbdjeT' \
-    --body '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 65, "backfill_ticket_expiration_seconds": 25, "best_latency_calculation_method": "ZUQzD48X", "crossplay_disabled": true, "match_function": "yuKifguG", "match_function_override": {"backfill_matches": "TNhJPTyO", "enrichment": ["r1bN9cfq", "J2dBEhRp", "vGnHjJhq"], "make_matches": "gfE30hxr", "stat_codes": ["r9wLkrs0", "fyNQqUnF", "QH5NWdEh"], "validation": ["8xjyk6mG", "jHqy1Kxp", "RTe27tsI"]}, "platform_group_enabled": true, "rule_set": "nDO7s96E", "session_template": "FsLCB8Lg", "ticket_expiration_seconds": 60}' \
+    --pool '2pK6FR4s' \
+    --body '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 77, "backfill_ticket_expiration_seconds": 96, "best_latency_calculation_method": "sVUrzyd4", "crossplay_disabled": false, "match_function": "Gwdllxin", "match_function_override": {"backfill_matches": "RVO0WONE", "enrichment": ["nWiLBrGa", "k7Unpr8C", "1T1DfFLY"], "make_matches": "delTGNTB", "stat_codes": ["ObD6nI5r", "e4cMsU8w", "1ArraVDo"], "validation": ["26QqoQcp", "reBwDPEQ", "omtJnJun"]}, "platform_group_enabled": true, "rule_set": "i7vKt7DL", "session_template": "ePJldQSH", "ticket_expiration_seconds": 63}' \
     > test.out 2>&1
 eval_tap $? 30 'UpdateMatchPool' test.out
 
 #- 31 DeleteMatchPool
 ./ng net.accelbyte.sdk.cli.Main match2 deleteMatchPool \
     --namespace "$AB_NAMESPACE" \
-    --pool 'GUAM3Pgs' \
+    --pool 'P8bs9HPa' \
     > test.out 2>&1
 eval_tap $? 31 'DeleteMatchPool' test.out
 
 #- 32 MatchPoolMetric
 ./ng net.accelbyte.sdk.cli.Main match2 matchPoolMetric \
     --namespace "$AB_NAMESPACE" \
-    --pool 'I0Sn6xB2' \
+    --pool 'zEG8vAhP' \
     > test.out 2>&1
 eval_tap $? 32 'MatchPoolMetric' test.out
 
 #- 33 PostMatchErrorMetric
 ./ng net.accelbyte.sdk.cli.Main match2 postMatchErrorMetric \
     --namespace "$AB_NAMESPACE" \
-    --pool 'y07HSpOb' \
+    --pool 'VagxAvIY' \
     --body '{"type": "getExternalDS"}' \
     > test.out 2>&1
 eval_tap $? 33 'PostMatchErrorMetric' test.out
@@ -281,91 +281,91 @@ eval_tap $? 33 'PostMatchErrorMetric' test.out
 #- 34 GetPlayerMetric
 ./ng net.accelbyte.sdk.cli.Main match2 getPlayerMetric \
     --namespace "$AB_NAMESPACE" \
-    --pool 'GAwzqeiu' \
+    --pool 'bcDcJcit' \
     > test.out 2>&1
 eval_tap $? 34 'GetPlayerMetric' test.out
 
 #- 35 AdminGetMatchPoolTickets
 ./ng net.accelbyte.sdk.cli.Main match2 adminGetMatchPoolTickets \
     --namespace "$AB_NAMESPACE" \
-    --pool 'TRSxiQvY' \
-    --limit '98' \
-    --offset '85' \
+    --pool 'c4R8Asxm' \
+    --limit '18' \
+    --offset '65' \
     > test.out 2>&1
 eval_tap $? 35 'AdminGetMatchPoolTickets' test.out
 
 #- 36 CreateMatchTicket
 ./ng net.accelbyte.sdk.cli.Main match2 createMatchTicket \
     --namespace "$AB_NAMESPACE" \
-    --body '{"attributes": {"zufp2cRa": {}, "s9PFKu2R": {}, "cmW2akgS": {}}, "excludedSessions": ["j3vXQnYS", "vtVJ2GZs", "2KCC3N9t"], "latencies": {"vsfQTnjl": 73, "V5viQvwO": 36, "zC5kNUeO": 43}, "matchPool": "WXR6HyhJ", "sessionID": "3OfXiDSP", "storage": {"ThWXgXhM": {}, "QWUI5TEX": {}, "dnrCDZz9": {}}}' \
+    --body '{"attributes": {"xPPdovDy": {}, "7pXDhekz": {}, "vYa2CzBh": {}}, "excludedSessions": ["3f6MEjK4", "TMaZcF2I", "QdwmxUp9"], "latencies": {"ths6J3E4": 46, "JyxMXqki": 27, "fvqHkP2Y": 25}, "matchPool": "1Bjtnmb9", "sessionID": "Qh40xov0", "storage": {"NSlaG5wu": {}, "4TXUHKe9": {}, "X32kW5ww": {}}}' \
     > test.out 2>&1
 eval_tap $? 36 'CreateMatchTicket' test.out
 
 #- 37 GetMyMatchTickets
 ./ng net.accelbyte.sdk.cli.Main match2 getMyMatchTickets \
     --namespace "$AB_NAMESPACE" \
-    --limit '93' \
-    --matchPool 'ezLMAFMP' \
-    --offset '40' \
+    --limit '23' \
+    --matchPool 'MxUxvCyh' \
+    --offset '83' \
     > test.out 2>&1
 eval_tap $? 37 'GetMyMatchTickets' test.out
 
 #- 38 MatchTicketDetails
 ./ng net.accelbyte.sdk.cli.Main match2 matchTicketDetails \
     --namespace "$AB_NAMESPACE" \
-    --ticketid '4mb3QMsz' \
+    --ticketid 'o1Ag4Npa' \
     > test.out 2>&1
 eval_tap $? 38 'MatchTicketDetails' test.out
 
 #- 39 DeleteMatchTicket
 ./ng net.accelbyte.sdk.cli.Main match2 deleteMatchTicket \
     --namespace "$AB_NAMESPACE" \
-    --ticketid 'XjNItpfH' \
+    --ticketid 'OFlAjyEO' \
     > test.out 2>&1
 eval_tap $? 39 'DeleteMatchTicket' test.out
 
 #- 40 RuleSetList
 ./ng net.accelbyte.sdk.cli.Main match2 ruleSetList \
     --namespace "$AB_NAMESPACE" \
-    --limit '53' \
-    --name 'm91SKDD2' \
-    --offset '13' \
+    --limit '82' \
+    --name 'zq8mZYTy' \
+    --offset '10' \
     > test.out 2>&1
 eval_tap $? 40 'RuleSetList' test.out
 
 #- 41 CreateRuleSet
 ./ng net.accelbyte.sdk.cli.Main match2 createRuleSet \
     --namespace "$AB_NAMESPACE" \
-    --body '{"data": {"K4T2WqCG": {}, "IbZl7N5o": {}, "AztLu3gz": {}}, "enable_custom_match_function": true, "name": "RgsRNtrp"}' \
+    --body '{"data": {"Qog28uE9": {}, "35cdqGZ1": {}, "ocOFkn7t": {}}, "enable_custom_match_function": true, "name": "cIlcfs2m"}' \
     > test.out 2>&1
 eval_tap $? 41 'CreateRuleSet' test.out
 
 #- 42 RuleSetDetails
 ./ng net.accelbyte.sdk.cli.Main match2 ruleSetDetails \
     --namespace "$AB_NAMESPACE" \
-    --ruleset 'ujv4VZgK' \
+    --ruleset 'nrWpKGz9' \
     > test.out 2>&1
 eval_tap $? 42 'RuleSetDetails' test.out
 
 #- 43 UpdateRuleSet
 ./ng net.accelbyte.sdk.cli.Main match2 updateRuleSet \
     --namespace "$AB_NAMESPACE" \
-    --ruleset 'nVFwpf0P' \
-    --body '{"data": {"9K6RHgXs": {}, "jFecXxcA": {}, "j1bHMKiC": {}}, "enable_custom_match_function": true, "name": "fjsZzrBV"}' \
+    --ruleset 'FqntmC8g' \
+    --body '{"data": {"RZoGblAa": {}, "6s4CcRsE": {}, "7f7al2OF": {}}, "enable_custom_match_function": false, "name": "bZOh8Y0M"}' \
     > test.out 2>&1
 eval_tap $? 43 'UpdateRuleSet' test.out
 
 #- 44 DeleteRuleSet
 ./ng net.accelbyte.sdk.cli.Main match2 deleteRuleSet \
     --namespace "$AB_NAMESPACE" \
-    --ruleset 'oY2L0qhB' \
+    --ruleset 'D34awaD4' \
     > test.out 2>&1
 eval_tap $? 44 'DeleteRuleSet' test.out
 
 #- 45 PublicGetPlayerMetric
 ./ng net.accelbyte.sdk.cli.Main match2 publicGetPlayerMetric \
     --namespace "$AB_NAMESPACE" \
-    --pool 'WBxqD1WG' \
+    --pool 'oyWbvpUu' \
     > test.out 2>&1
 eval_tap $? 45 'PublicGetPlayerMetric' test.out
 

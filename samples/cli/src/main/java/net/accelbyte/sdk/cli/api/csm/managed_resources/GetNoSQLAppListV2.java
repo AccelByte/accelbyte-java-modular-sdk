@@ -6,12 +6,12 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.cli.api.platform.item;
+package net.accelbyte.sdk.cli.api.csm.managed_resources;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.api.platform.wrappers.Item;
+import net.accelbyte.sdk.api.csm.models.*;
+import net.accelbyte.sdk.api.csm.wrappers.ManagedResources;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponseException;
@@ -31,35 +31,35 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.Callable;
 
-@Command(name = "getEstimatedPrice", mixinStandardHelpOptions = true)
-public class GetEstimatedPrice implements Callable<Integer> {
+@Command(name = "getNoSQLAppListV2", mixinStandardHelpOptions = true)
+public class GetNoSQLAppListV2 implements Callable<Integer> {
 
-    private static final Logger log = LogManager.getLogger(GetEstimatedPrice.class);
+    private static final Logger log = LogManager.getLogger(GetNoSQLAppListV2.class);
+
+    @Option(names = {"--resourceId"}, description = "resourceId")
+    String resourceId;
+
+    @Option(names = {"--studioName"}, description = "studioName")
+    String studioName;
+
+    @Option(names = {"--appName"}, description = "appName")
+    String appName;
+
+    @Option(names = {"--limit"}, description = "limit")
+    Integer limit;
 
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
-    @Option(names = {"--platform"}, description = "platform")
-    String platform;
-
-    @Option(names = {"--region"}, description = "region")
-    String region;
-
-    @Option(names = {"--storeId"}, description = "storeId")
-    String storeId;
-
-    @Option(names = {"--itemIds"}, description = "itemIds")
-    String itemIds;
-
-    @Option(names = {"--userId"}, description = "userId")
-    String userId;
+    @Option(names = {"--offset"}, description = "offset")
+    Integer offset;
 
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
 
     public static void main(String[] args) {
-        int exitCode = new CommandLine(new GetEstimatedPrice()).execute(args);
+        int exitCode = new CommandLine(new GetNoSQLAppListV2()).execute(args);
         System.exit(exitCode);
     }
 
@@ -71,18 +71,18 @@ public class GetEstimatedPrice implements Callable<Integer> {
                 httpClient.setLogger(new OkhttpLogger());
             }
             final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-            final Item wrapper = new Item(sdk);
-            final net.accelbyte.sdk.api.platform.operations.item.GetEstimatedPrice operation =
-                    net.accelbyte.sdk.api.platform.operations.item.GetEstimatedPrice.builder()
+            final ManagedResources wrapper = new ManagedResources(sdk);
+            final net.accelbyte.sdk.api.csm.operations.managed_resources.GetNoSQLAppListV2 operation =
+                    net.accelbyte.sdk.api.csm.operations.managed_resources.GetNoSQLAppListV2.builder()
+                            .resourceId(resourceId)
+                            .studioName(studioName)
+                            .appName(appName)
+                            .limit(limit)
                             .namespace(namespace)
-                            .platform(platform)
-                            .region(region)
-                            .storeId(storeId)
-                            .itemIds(itemIds)
-                            .userId(userId)
+                            .offset(offset)
                             .build();
-            final List<EstimatedPriceInfo> response =
-                    wrapper.getEstimatedPrice(operation).ensureSuccess();
+            final ApimodelNoSQLAppListResponse response =
+                    wrapper.getNoSQLAppListV2(operation).ensureSuccess();
             final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
             log.info("Operation successful\n{}", responseString);
             return 0;

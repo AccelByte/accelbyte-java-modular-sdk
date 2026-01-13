@@ -6,7 +6,7 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.api.csm.operations.app;
+package net.accelbyte.sdk.api.csm.operations.managed_resources;
 
 import java.io.*;
 import java.util.*;
@@ -14,59 +14,68 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import net.accelbyte.sdk.api.csm.models.*;
-import net.accelbyte.sdk.api.csm.operation_responses.app.GetAppListV1OpResponse;
+import net.accelbyte.sdk.api.csm.operation_responses.managed_resources.GetNoSQLAppListV2OpResponse;
 import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
 import net.accelbyte.sdk.core.util.Helper;
 
 /**
- * GetAppListV1
+ * GetNoSQLAppListV2
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
+ * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
  *
- * <p>Gets the List of Apps for AB-Extend Customer
- *
- * <p>Available scenario: - scenario 1: `function-override` - scenario 2: `service-extension` -
- * scenario 3: `event-handler`
- *
- * @deprecated
+ * <p>Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL
+ * cluster resourceId. - `available` : The cluster is accessible. - `creating` : The cluster or
+ * instance is being created and is not yet accessible. - `deleting` : The cluster is in the process
+ * of being deleted and is not accessible. - `stopped` : The cluster is stopped and not accessible.
+ * - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max
+ * DCU). - `failed` : The cluster failed to provision or is in an error state and not accessible. -
+ * `stopping` : The cluster is in the process of stopping and will soon become inaccessible. -
+ * `starting` : The cluster is transitioning from stopped to running, or is rebooting. -
+ * `maintenance` : The cluster is undergoing maintenance operations and is not accessible. -
+ * `unknown` : The cluster status is not recognized
  */
-@Deprecated
 @Getter
 @Setter
-public class GetAppListV1 extends Operation {
+public class GetNoSQLAppListV2 extends Operation {
   /** generated field's value */
-  private String path = "/csm/v1/admin/namespaces/{namespace}/apps";
+  private String path = "/csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps";
 
-  private String method = "POST";
+  private String method = "GET";
   private List<String> consumes = Arrays.asList("application/json");
   private List<String> produces = Arrays.asList("application/json");
   private String locationQuery = null;
 
   /** fields as input parameter */
-  private String namespace;
+  private String resourceId;
 
+  private String studioName;
+  private String appName;
   private Integer limit;
+  private String namespace;
   private Integer offset;
-  private GeneratedGetAppListV1Request body;
 
   /**
-   * @param namespace required
-   * @param body required
+   * @param resourceId required
+   * @param studioName required
    */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public GetAppListV1(
+  public GetNoSQLAppListV2(
       String customBasePath,
-      String namespace,
+      String resourceId,
+      String studioName,
+      String appName,
       Integer limit,
-      Integer offset,
-      GeneratedGetAppListV1Request body) {
-    this.namespace = namespace;
+      String namespace,
+      Integer offset) {
+    this.resourceId = resourceId;
+    this.studioName = studioName;
+    this.appName = appName;
     this.limit = limit;
+    this.namespace = namespace;
     this.offset = offset;
-    this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -75,8 +84,11 @@ public class GetAppListV1 extends Operation {
   @Override
   public Map<String, String> getPathParams() {
     Map<String, String> pathParams = new HashMap<>();
-    if (this.namespace != null) {
-      pathParams.put("namespace", this.namespace);
+    if (this.resourceId != null) {
+      pathParams.put("resourceId", this.resourceId);
+    }
+    if (this.studioName != null) {
+      pathParams.put("studioName", this.studioName);
     }
     return pathParams;
   }
@@ -84,31 +96,28 @@ public class GetAppListV1 extends Operation {
   @Override
   public Map<String, List<String>> getQueryParams() {
     Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("appName", this.appName == null ? null : Arrays.asList(this.appName));
     queryParams.put("limit", this.limit == null ? null : Arrays.asList(String.valueOf(this.limit)));
+    queryParams.put("namespace", this.namespace == null ? null : Arrays.asList(this.namespace));
     queryParams.put(
         "offset", this.offset == null ? null : Arrays.asList(String.valueOf(this.offset)));
     return queryParams;
   }
 
   @Override
-  public GeneratedGetAppListV1Request getBodyParams() {
-    return this.body;
-  }
-
-  @Override
   public boolean isValid() {
-    if (this.namespace == null) {
+    if (this.resourceId == null) {
       return false;
     }
-    if (this.body == null) {
+    if (this.studioName == null) {
       return false;
     }
     return true;
   }
 
-  public GetAppListV1OpResponse parseResponse(int code, String contentType, InputStream payload)
-      throws HttpResponseException, IOException {
-    final GetAppListV1OpResponse response = new GetAppListV1OpResponse();
+  public GetNoSQLAppListV2OpResponse parseResponse(
+      int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+    final GetNoSQLAppListV2OpResponse response = new GetNoSQLAppListV2OpResponse();
 
     response.setHttpStatusCode(code);
     response.setContentType(contentType);
@@ -117,7 +126,7 @@ public class GetAppListV1 extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new GeneratedGetAppListV1Response().createFromJson(json));
+      response.setData(new ApimodelNoSQLAppListResponse().createFromJson(json));
       response.setSuccess(true);
     } else if (code == 400) {
       final String json = Helper.convertInputStreamToString(payload);
@@ -131,10 +140,6 @@ public class GetAppListV1 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new ResponseErrorResponse().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
-    } else if (code == 404) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError404(new ResponseErrorResponse().createFromJson(json));
-      response.setError(response.getError404().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new ResponseErrorResponse().createFromJson(json));
@@ -145,20 +150,22 @@ public class GetAppListV1 extends Operation {
   }
 
   /*
-  public GeneratedGetAppListV1Response parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public ApimodelNoSQLAppListResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new GeneratedGetAppListV1Response().createFromJson(json);
+      return new ApimodelNoSQLAppListResponse().createFromJson(json);
   }
   */
 
   @Override
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
+    result.put("appName", "None");
     result.put("limit", "None");
+    result.put("namespace", "None");
     result.put("offset", "None");
     return result;
   }

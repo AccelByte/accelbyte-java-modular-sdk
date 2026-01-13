@@ -8,6 +8,8 @@
 
 package net.accelbyte.sdk.api.platform.operations.item;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.*;
 import lombok.Builder;
@@ -116,8 +118,10 @@ public class GetEstimatedPrice extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new EstimatedPriceInfo().createFromJson(json));
+
       response.setSuccess(true);
+      response.setData(
+          new ObjectMapper().readValue(json, new TypeReference<List<EstimatedPriceInfo>>() {}));
     } else if (code == 404) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError404(new ErrorEntity().createFromJson(json));
@@ -128,13 +132,13 @@ public class GetEstimatedPrice extends Operation {
   }
 
   /*
-  public EstimatedPriceInfo parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public List<EstimatedPriceInfo> parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new EstimatedPriceInfo().createFromJson(json);
+      return new ObjectMapper().readValue(json, new TypeReference<List<EstimatedPriceInfo>>() {});
   }
   */
 

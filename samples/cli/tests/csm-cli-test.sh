@@ -39,7 +39,7 @@ for JAR in build/install/cli/lib/*.jar; do ./ng ng-cp $JAR 1>&2; done
 ./ng ng-cp 1>&2
 
 echo "TAP version 13"
-echo "1..74"
+echo "1..75"
 
 #- 1 Login
 ./ng net.accelbyte.sdk.cli.Main loginClient \
@@ -79,7 +79,7 @@ eval_tap 0 9 'DeleteAppImagesV1 # SKIP deprecated' test.out
 
 #- 10 GetAppReleaseV1
 ./ng net.accelbyte.sdk.cli.Main csm getAppReleaseV1 \
-    --app 'vusfgEWS' \
+    --app 'FQ9nEjmT' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 10 'GetAppReleaseV1' test.out
@@ -131,228 +131,228 @@ eval_tap $? 24 'PublicGetMessages' test.out
 #- 25 GetAppListV2
 ./ng net.accelbyte.sdk.cli.Main csm getAppListV2 \
     --namespace "$AB_NAMESPACE" \
-    --limit '9' \
-    --offset '8' \
-    --body '{"appNames": ["6r3FZH6y", "BcVjsYAJ", "TlJB1Xyf"], "appStatuses": ["J16rDnEg", "kUb9KkZ0", "BqlRpfsl"], "fuzzyAppName": "3CqqF0Lf", "scenario": "dYczpdRI"}' \
+    --limit '45' \
+    --offset '12' \
+    --body '{"appNames": ["2vdAIAAD", "m90VTf0I", "YUEBxaRk"], "appStatuses": ["hja7fkgm", "W37Pibpv", "TRPBI4ro"], "fuzzyAppName": "1oXq9eai", "scenario": "rLm5VhQs"}' \
     > test.out 2>&1
 eval_tap $? 25 'GetAppListV2' test.out
 
 #- 26 GetAppV2
 ./ng net.accelbyte.sdk.cli.Main csm getAppV2 \
-    --app 'rrD6DmyP' \
+    --app '8N0LSSbu' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 26 'GetAppV2' test.out
 
 #- 27 CreateAppV2
 ./ng net.accelbyte.sdk.cli.Main csm createAppV2 \
-    --app 'M1YjxZSJ' \
+    --app 'hfDFnjEI' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"autoscaling": {"targetCPUUtilizationPercent": 89}, "cpu": {"requestCPU": 34}, "description": "olxQntLr", "memory": {"requestMemory": 87}, "replica": {"maxReplica": 23, "minReplica": 18}, "scenario": "KiD4KDaP", "vmSharingConfiguration": "VRQtnu6S"}' \
+    --body '{"autoscaling": {"targetCPUUtilizationPercent": 61}, "cpu": {"requestCPU": 46}, "description": "V97j81x7", "memory": {"requestMemory": 100}, "replica": {"maxReplica": 1, "minReplica": 75}, "scenario": "kdYTw2iB", "vmSharingConfiguration": "VBC5DG0O"}' \
     > test.out 2>&1
 eval_tap $? 27 'CreateAppV2' test.out
 
 #- 28 DeleteAppV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteAppV2 \
-    --app 'BCj41rvZ' \
+    --app 'H5gVdn7H' \
     --namespace "$AB_NAMESPACE" \
-    --forced 'mC254lCf' \
+    --forced 'pJX1sa2k' \
     > test.out 2>&1
 eval_tap $? 28 'DeleteAppV2' test.out
 
 #- 29 UpdateAppV2
 ./ng net.accelbyte.sdk.cli.Main csm updateAppV2 \
-    --app 'ydXpW5zJ' \
+    --app '6h88ox2g' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"description": "bLRXrwqa"}' \
+    --body '{"description": "kmplAtqj"}' \
     > test.out 2>&1
 eval_tap $? 29 'UpdateAppV2' test.out
 
 #- 30 CreateSubscriptionHandler
 ./ng net.accelbyte.sdk.cli.Main csm createSubscriptionHandler \
-    --app '95pgzj8e' \
+    --app 'QZWRZwjJ' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"topicNames": ["Zfci1ZO5", "efTUVU5c", "Ajllj04p"]}' \
+    --body '{"topicNames": ["eQUS4Me0", "sNHnvHOG", "piZ8W9dz"]}' \
     > test.out 2>&1
 eval_tap $? 30 'CreateSubscriptionHandler' test.out
 
 #- 31 UnsubscribeTopicHandler
 ./ng net.accelbyte.sdk.cli.Main csm unsubscribeTopicHandler \
-    --app 'WRdARHt3' \
+    --app 'wpPCqMSX' \
     --namespace "$AB_NAMESPACE" \
-    --topicName 'luCfYbOc' \
+    --topicName 'oo3BCA99' \
     > test.out 2>&1
 eval_tap $? 31 'UnsubscribeTopicHandler' test.out
 
 #- 32 CreateDeploymentV2
 ./ng net.accelbyte.sdk.cli.Main csm createDeploymentV2 \
-    --app 'UlGp5O1I' \
+    --app 'IRpdXQu5' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"imageTag": "79rwKC2t"}' \
+    --body '{"imageTag": "fxh5Y5RI"}' \
     > test.out 2>&1
 eval_tap $? 32 'CreateDeploymentV2' test.out
 
 #- 33 GetAppImageListV2
 ./ng net.accelbyte.sdk.cli.Main csm getAppImageListV2 \
-    --app '6PDDxhPn' \
+    --app 'C9ykJl1f' \
     --namespace "$AB_NAMESPACE" \
-    --cached 'J1iar511' \
+    --cached 'QZsc63YA' \
     > test.out 2>&1
 eval_tap $? 33 'GetAppImageListV2' test.out
 
 #- 34 DeleteAppImagesV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteAppImagesV2 \
-    --app '5ESaN3ca' \
+    --app 'd3Oo6FAL' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"imageTags": ["WqhyQsFy", "XHacuVpr", "gFmhgmZD"]}' \
+    --body '{"imageTags": ["iMfgW1Gf", "lqMRd5Ij", "LZgZduDl"]}' \
     > test.out 2>&1
 eval_tap $? 34 'DeleteAppImagesV2' test.out
 
 #- 35 CreateNoSQLDatabaseCredentialV2
 ./ng net.accelbyte.sdk.cli.Main csm createNoSQLDatabaseCredentialV2 \
-    --app '22SnPtv6' \
+    --app 'wRHI957k' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"password": "EEjMlS1W", "username": "9hx8XJ4A"}' \
+    --body '{"password": "2JwbpTRd", "username": "mpZInSR8"}' \
     > test.out 2>&1
 eval_tap $? 35 'CreateNoSQLDatabaseCredentialV2' test.out
 
 #- 36 GetNoSQLDatabaseV2
 ./ng net.accelbyte.sdk.cli.Main csm getNoSQLDatabaseV2 \
-    --app 'FGkHa3XH' \
+    --app 'Jmk8kqXb' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 36 'GetNoSQLDatabaseV2' test.out
 
 #- 37 CreateNoSQLDatabaseV2
 ./ng net.accelbyte.sdk.cli.Main csm createNoSQLDatabaseV2 \
-    --app 'L8tIjyxi' \
+    --app 'inQbJvCy' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"dbName": "6AY1vYvT", "password": "X6GQEjX4", "username": "zLnuaPcx"}' \
+    --body '{"dbName": "jEVGkYzK", "password": "hLoBm0GT", "username": "p63OLCaG"}' \
     > test.out 2>&1
 eval_tap $? 37 'CreateNoSQLDatabaseV2' test.out
 
 #- 38 DeleteNoSQLDatabaseV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteNoSQLDatabaseV2 \
-    --app '6Nwr8nu9' \
+    --app 'rq3ef4GZ' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 38 'DeleteNoSQLDatabaseV2' test.out
 
 #- 39 UpdateAppResourcesV2
 ./ng net.accelbyte.sdk.cli.Main csm updateAppResourcesV2 \
-    --app 'f22l1noI' \
+    --app 'Miv3bAhA' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"autoscaling": {"targetCPUUtilizationPercent": 45}, "cpu": {"requestCPU": 74}, "memory": {"requestMemory": 74}, "replica": {"maxReplica": 2, "minReplica": 31}, "vmSharingConfiguration": "jfSiLPvo"}' \
+    --body '{"autoscaling": {"targetCPUUtilizationPercent": 64}, "cpu": {"requestCPU": 80}, "memory": {"requestMemory": 45}, "replica": {"maxReplica": 83, "minReplica": 64}, "vmSharingConfiguration": "NpY27XB0"}' \
     > test.out 2>&1
 eval_tap $? 39 'UpdateAppResourcesV2' test.out
 
 #- 40 UpdateAppResourcesResourceLimitFormV2
 ./ng net.accelbyte.sdk.cli.Main csm updateAppResourcesResourceLimitFormV2 \
-    --app 'ze16WJFX' \
+    --app 'czFOn3RR' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"clientEmail": "paKhEBzW", "preferredLimitReplica": 17, "requestReason": "zV3LVdGa"}' \
+    --body '{"clientEmail": "eWE7Dxoc", "preferredLimitReplica": 42, "requestReason": "IGEoLRa5"}' \
     > test.out 2>&1
 eval_tap $? 40 'UpdateAppResourcesResourceLimitFormV2' test.out
 
 #- 41 GetListOfSecretsV2
 ./ng net.accelbyte.sdk.cli.Main csm getListOfSecretsV2 \
-    --app 'Z7B6RZwJ' \
+    --app 'BfIthaE8' \
     --namespace "$AB_NAMESPACE" \
-    --limit '90' \
-    --offset '83' \
+    --limit '29' \
+    --offset '60' \
     > test.out 2>&1
 eval_tap $? 41 'GetListOfSecretsV2' test.out
 
 #- 42 SaveSecretV2
 ./ng net.accelbyte.sdk.cli.Main csm saveSecretV2 \
-    --app 'VnKZe3Uf' \
+    --app 'WdEmIRwg' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"configName": "vGoBv4mp", "description": "6M87rBon", "source": "5AVfE2Dg", "value": "Fyk6eVvF"}' \
+    --body '{"configName": "FJQ4eVLn", "description": "EEGsq53Y", "source": "Zr7VjXLF", "value": "zrcnagCS"}' \
     > test.out 2>&1
 eval_tap $? 42 'SaveSecretV2' test.out
 
 #- 43 UpdateSecretV2
 ./ng net.accelbyte.sdk.cli.Main csm updateSecretV2 \
-    --app 'MtCOVbPc' \
-    --configId 'PUNmXAJy' \
+    --app 'ORNULLkK' \
+    --configId 'mHRK7Apm' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"description": "5WORYwe9", "value": "ngzsaLOi"}' \
+    --body '{"description": "glFVHaac", "value": "MtFHrDtH"}' \
     > test.out 2>&1
 eval_tap $? 43 'UpdateSecretV2' test.out
 
 #- 44 DeleteSecretV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteSecretV2 \
-    --app '5GvgGPzn' \
-    --configId 'Eg3Np0az' \
+    --app 'YDUGsmke' \
+    --configId '92pOHuYm' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 44 'DeleteSecretV2' test.out
 
 #- 45 StartAppV2
 ./ng net.accelbyte.sdk.cli.Main csm startAppV2 \
-    --app 'mCA2afcy' \
+    --app 'MEdcvz3Y' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 45 'StartAppV2' test.out
 
 #- 46 StopAppV2
 ./ng net.accelbyte.sdk.cli.Main csm stopAppV2 \
-    --app 'cszt7Pvw' \
+    --app '4sL76sco' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 46 'StopAppV2' test.out
 
 #- 47 GetNotificationSubscriberListV2
 ./ng net.accelbyte.sdk.cli.Main csm getNotificationSubscriberListV2 \
-    --app '3s3YtBFC' \
+    --app 'Bwq0L5jj' \
     --namespace "$AB_NAMESPACE" \
-    --notificationType 'qeVdMoKp' \
+    --notificationType '9N4nVy3q' \
     > test.out 2>&1
 eval_tap $? 47 'GetNotificationSubscriberListV2' test.out
 
 #- 48 BulkSaveSubscriptionAppNotificationV2
 ./ng net.accelbyte.sdk.cli.Main csm bulkSaveSubscriptionAppNotificationV2 \
-    --app 'aKrbasna' \
+    --app 'kCFgUDMe' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"subscribers": [{"emailAddress": "vPTdrYPX", "notificationType": {"hNSEnwFW": true, "G28fj2nj": false, "O4WGT1te": true}, "userId": "aatM3vST"}, {"emailAddress": "Tnq9POat", "notificationType": {"CrORrREy": false, "Ki9nj3jR": false, "uymEjQBG": false}, "userId": "F5sv69KM"}, {"emailAddress": "JnvEOufT", "notificationType": {"ogbDa672": true, "jvV8tEWZ": false, "nmlxqFhJ": true}, "userId": "5okouHwh"}]}' \
+    --body '{"subscribers": [{"emailAddress": "vGZlCSHk", "notificationType": {"bjrYnUk2": false, "aXgRLyD4": true, "1IrRq2Y2": true}, "userId": "IZ7epB24"}, {"emailAddress": "RlyoBkDZ", "notificationType": {"Aa7eT43I": false, "jqmarqKa": true, "odMgmnAY": true}, "userId": "jhIUCC07"}, {"emailAddress": "JOr3TnN1", "notificationType": {"pjpWXi2h": true, "t2lWCgtZ": false, "hNifkIv6": false}, "userId": "1b2UvgFr"}]}' \
     > test.out 2>&1
 eval_tap $? 48 'BulkSaveSubscriptionAppNotificationV2' test.out
 
 #- 49 SubscribeAppNotificationV2
 ./ng net.accelbyte.sdk.cli.Main csm subscribeAppNotificationV2 \
-    --app 'EaHeVI2j' \
+    --app '7wvYUicu' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"notificationType": "F0UUM1IK", "subscribers": [{"emailAddress": "OWHF8lld", "userId": "QSGPgOFj"}, {"emailAddress": "GTYkqgd3", "userId": "zowLhAXa"}, {"emailAddress": "1gtatn95", "userId": "lNBdhPSp"}]}' \
+    --body '{"notificationType": "vS8DCyaS", "subscribers": [{"emailAddress": "e0pDcT4c", "userId": "1O7JFBRv"}, {"emailAddress": "10HZoq5l", "userId": "RrT2zLxE"}, {"emailAddress": "8y9hyrzH", "userId": "dhTxnBjg"}]}' \
     > test.out 2>&1
 eval_tap $? 49 'SubscribeAppNotificationV2' test.out
 
 #- 50 GetSubscriptionV2Handler
 ./ng net.accelbyte.sdk.cli.Main csm getSubscriptionV2Handler \
-    --app 'x8Q656r5' \
+    --app 'xPPBPsmx' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 50 'GetSubscriptionV2Handler' test.out
 
 #- 51 SubscribeV2Handler
 ./ng net.accelbyte.sdk.cli.Main csm subscribeV2Handler \
-    --app 'FdE80Xhq' \
+    --app '8chDVduf' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"notificationType": "fcHQxB9u"}' \
+    --body '{"notificationType": "QTSjhssV"}' \
     > test.out 2>&1
 eval_tap $? 51 'SubscribeV2Handler' test.out
 
 #- 52 UnsubscribeV2Handler
 ./ng net.accelbyte.sdk.cli.Main csm unsubscribeV2Handler \
-    --app 'ki1Rcygc' \
+    --app '6EqtQWMd' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 52 'UnsubscribeV2Handler' test.out
 
 #- 53 DeleteSubscriptionAppNotificationByUserIDV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteSubscriptionAppNotificationByUserIDV2 \
-    --app '22WxVjMK' \
+    --app 'jBxAB795' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'J4CXyKqP' \
+    --userId 'kYJ99LE2' \
     > test.out 2>&1
 eval_tap $? 53 'DeleteSubscriptionAppNotificationByUserIDV2' test.out
 
@@ -361,34 +361,34 @@ eval_tap 0 54 'DeleteSubscriptionAppNotificationV2 # SKIP deprecated' test.out
 
 #- 55 GetListOfVariablesV2
 ./ng net.accelbyte.sdk.cli.Main csm getListOfVariablesV2 \
-    --app 'z2Q7sK5m' \
+    --app 'Cb6S7biX' \
     --namespace "$AB_NAMESPACE" \
-    --limit '5' \
-    --offset '72' \
+    --limit '83' \
+    --offset '34' \
     > test.out 2>&1
 eval_tap $? 55 'GetListOfVariablesV2' test.out
 
 #- 56 SaveVariableV2
 ./ng net.accelbyte.sdk.cli.Main csm saveVariableV2 \
-    --app 'YvDMcxEV' \
+    --app 'maPl8JR3' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"applyMask": false, "configName": "RzJGkpEH", "description": "DouFDPqu", "source": "eL2FhXRr", "value": "JdzzU1Nb"}' \
+    --body '{"applyMask": false, "configName": "32zjM8Ym", "description": "PUdDYLC6", "source": "OpxyTBpw", "value": "7pNha6ZY"}' \
     > test.out 2>&1
 eval_tap $? 56 'SaveVariableV2' test.out
 
 #- 57 UpdateVariableV2
 ./ng net.accelbyte.sdk.cli.Main csm updateVariableV2 \
-    --app 'oo4yMY9q' \
-    --configId 'sXKUN96A' \
+    --app 'NsFS2hfT' \
+    --configId 'StMfGs3P' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"applyMask": false, "description": "CNSuj1gY", "value": "UgkFRu3X"}' \
+    --body '{"applyMask": false, "description": "A7bVzgQy", "value": "wAqTn9pr"}' \
     > test.out 2>&1
 eval_tap $? 57 'UpdateVariableV2' test.out
 
 #- 58 DeleteVariableV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteVariableV2 \
-    --app 'wP36mtsM' \
-    --configId 'otRSR71v' \
+    --app 'B5Aq3MIf' \
+    --configId 'SOb5pJsN' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 58 'DeleteVariableV2' test.out
@@ -396,47 +396,47 @@ eval_tap $? 58 'DeleteVariableV2' test.out
 #- 59 ListTopicsHandler
 ./ng net.accelbyte.sdk.cli.Main csm listTopicsHandler \
     --namespace "$AB_NAMESPACE" \
-    --fuzzyTopicName 'b9CXbUbi' \
-    --isSubscribedByAppName 'VMTphGMV' \
-    --isUnsubscribedByAppName 'Da3ssWB9' \
-    --limit '12' \
-    --offset '7' \
+    --fuzzyTopicName 'ewEQYTdv' \
+    --isSubscribedByAppName 'kdfrt57P' \
+    --isUnsubscribedByAppName 'vReadYlc' \
+    --limit '41' \
+    --offset '43' \
     > test.out 2>&1
 eval_tap $? 59 'ListTopicsHandler' test.out
 
 #- 60 CreateTopicHandler
 ./ng net.accelbyte.sdk.cli.Main csm createTopicHandler \
     --namespace "$AB_NAMESPACE" \
-    --body '{"description": "PhetH1Ef", "topicName": "G8aJ0txr"}' \
+    --body '{"description": "9sYIVB2A", "topicName": "1XVwiVW6"}' \
     > test.out 2>&1
 eval_tap $? 60 'CreateTopicHandler' test.out
 
 #- 61 DeleteTopicHandler
 ./ng net.accelbyte.sdk.cli.Main csm deleteTopicHandler \
     --namespace "$AB_NAMESPACE" \
-    --topicName 'JRHQCfJE' \
+    --topicName 'ezGWEy0B' \
     > test.out 2>&1
 eval_tap $? 61 'DeleteTopicHandler' test.out
 
 #- 62 GetListOfDeploymentV2
 ./ng net.accelbyte.sdk.cli.Main csm getListOfDeploymentV2 \
     --namespace "$AB_NAMESPACE" \
-    --limit '18' \
-    --offset '5' \
-    --body '{"appIds": ["jFmkoiiK", "To9gAew7", "3dTNK7CB"], "deploymentIds": ["DAQQ5nD2", "ceFomNbe", "dhqbhHcC"], "statuses": ["j7bJoOkb", "J06xYs7B", "EitGM37v"]}' \
+    --limit '3' \
+    --offset '82' \
+    --body '{"appIds": ["0mAbznmV", "Uo1LwhqT", "S6zC0vJt"], "deploymentIds": ["KXxAGL0c", "IY3K6XmN", "kav58Bv4"], "statuses": ["bTuAPLHq", "RKHOhsk4", "C02ae6Be"]}' \
     > test.out 2>&1
 eval_tap $? 62 'GetListOfDeploymentV2' test.out
 
 #- 63 GetDeploymentV2
 ./ng net.accelbyte.sdk.cli.Main csm getDeploymentV2 \
-    --deploymentId 'Ru2RVsG9' \
+    --deploymentId 'OEXzpDXI' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 63 'GetDeploymentV2' test.out
 
 #- 64 DeleteDeploymentV2
 ./ng net.accelbyte.sdk.cli.Main csm deleteDeploymentV2 \
-    --deploymentId '9IYKBjcL' \
+    --deploymentId 'BQZDhHRd' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 64 'DeleteDeploymentV2' test.out
@@ -450,14 +450,14 @@ eval_tap $? 65 'GetNoSQLClusterV2' test.out
 #- 66 UpdateNoSQLClusterV2
 ./ng net.accelbyte.sdk.cli.Main csm updateNoSQLClusterV2 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"maxDCU": 0.8605486459717042, "minDCU": 0.06595587603972475, "profileName": "csi3wKwO"}' \
+    --body '{"maxDCU": 0.02411238798929327, "minDCU": 0.9728893505157782, "profileName": "nyqRidXo"}' \
     > test.out 2>&1
 eval_tap $? 66 'UpdateNoSQLClusterV2' test.out
 
 #- 67 CreateNoSQLClusterV2
 ./ng net.accelbyte.sdk.cli.Main csm createNoSQLClusterV2 \
     --namespace "$AB_NAMESPACE" \
-    --body '{"maxDCU": 0.4213314791894801, "minDCU": 0.6277678796357502, "profileName": "a5e2ou46"}' \
+    --body '{"maxDCU": 0.9105276592927538, "minDCU": 0.6754766470786222, "profileName": "SZ6q1epk"}' \
     > test.out 2>&1
 eval_tap $? 67 'CreateNoSQLClusterV2' test.out
 
@@ -491,22 +491,33 @@ eval_tap $? 71 'GetNoSQLAccessTunnelV2' test.out
     > test.out 2>&1
 eval_tap $? 72 'GetResourcesLimits' test.out
 
-#- 73 GetNotificationSubscriberListV3
-./ng net.accelbyte.sdk.cli.Main csm getNotificationSubscriberListV3 \
-    --app 'QNs7YFbs' \
+#- 73 GetNoSQLAppListV2
+./ng net.accelbyte.sdk.cli.Main csm getNoSQLAppListV2 \
+    --resourceId 'G9gzVNVJ' \
+    --studioName 'LJW7Jnvd' \
+    --appName 'RSpVaxZ2' \
+    --limit '37' \
     --namespace "$AB_NAMESPACE" \
-    --notificationType 'UPjoJH6F' \
+    --offset '52' \
     > test.out 2>&1
-eval_tap $? 73 'GetNotificationSubscriberListV3' test.out
+eval_tap $? 73 'GetNoSQLAppListV2' test.out
 
-#- 74 DeleteSubscriptionAppNotificationV3
-./ng net.accelbyte.sdk.cli.Main csm deleteSubscriptionAppNotificationV3 \
-    --app 'PCp9DmfI' \
+#- 74 GetNotificationSubscriberListV3
+./ng net.accelbyte.sdk.cli.Main csm getNotificationSubscriberListV3 \
+    --app 'GFGjS4Dp' \
     --namespace "$AB_NAMESPACE" \
-    --emailAddress 'oAwzEYkf' \
-    --userId 'qOQwpjLJ' \
+    --notificationType 'RC6SZrmQ' \
     > test.out 2>&1
-eval_tap $? 74 'DeleteSubscriptionAppNotificationV3' test.out
+eval_tap $? 74 'GetNotificationSubscriberListV3' test.out
+
+#- 75 DeleteSubscriptionAppNotificationV3
+./ng net.accelbyte.sdk.cli.Main csm deleteSubscriptionAppNotificationV3 \
+    --app '1nTkvoZU' \
+    --namespace "$AB_NAMESPACE" \
+    --emailAddress 'yxvp41NQ' \
+    --userId 'M0XLYTHc' \
+    > test.out 2>&1
+eval_tap $? 75 'DeleteSubscriptionAppNotificationV3' test.out
 
 
 rm -f "tmp.dat"

@@ -6,12 +6,12 @@
  * Code generated. DO NOT EDIT.
  */
 
-package net.accelbyte.sdk.cli.api.platform.item;
+package net.accelbyte.sdk.cli.api.session.platform_credential;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.accelbyte.sdk.api.platform.models.*;
-import net.accelbyte.sdk.api.platform.wrappers.Item;
+import net.accelbyte.sdk.api.session.models.*;
+import net.accelbyte.sdk.api.session.wrappers.PlatformCredential;
 import net.accelbyte.sdk.cli.repository.CLITokenRepositoryImpl;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.HttpResponseException;
@@ -31,35 +31,32 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.Callable;
 
-@Command(name = "getEstimatedPrice", mixinStandardHelpOptions = true)
-public class GetEstimatedPrice implements Callable<Integer> {
+@Command(name = "adminUploadPlatformCredentials", mixinStandardHelpOptions = true)
+public class AdminUploadPlatformCredentials implements Callable<Integer> {
 
-    private static final Logger log = LogManager.getLogger(GetEstimatedPrice.class);
+    private static final Logger log = LogManager.getLogger(AdminUploadPlatformCredentials.class);
 
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
-    @Option(names = {"--platform"}, description = "platform")
-    String platform;
+    @Option(names = {"--platformId"}, description = "platformId")
+    String platformId;
 
-    @Option(names = {"--region"}, description = "region")
-    String region;
+    @Option(names = {"--description"}, description = "description")
+    String description;
 
-    @Option(names = {"--storeId"}, description = "storeId")
-    String storeId;
+    @Option(names = {"--file"}, description = "file")
+    File file;
 
-    @Option(names = {"--itemIds"}, description = "itemIds")
-    String itemIds;
-
-    @Option(names = {"--userId"}, description = "userId")
-    String userId;
+    @Option(names = {"--password"}, description = "password")
+    String password;
 
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
 
     public static void main(String[] args) {
-        int exitCode = new CommandLine(new GetEstimatedPrice()).execute(args);
+        int exitCode = new CommandLine(new AdminUploadPlatformCredentials()).execute(args);
         System.exit(exitCode);
     }
 
@@ -71,20 +68,17 @@ public class GetEstimatedPrice implements Callable<Integer> {
                 httpClient.setLogger(new OkhttpLogger());
             }
             final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
-            final Item wrapper = new Item(sdk);
-            final net.accelbyte.sdk.api.platform.operations.item.GetEstimatedPrice operation =
-                    net.accelbyte.sdk.api.platform.operations.item.GetEstimatedPrice.builder()
+            final PlatformCredential wrapper = new PlatformCredential(sdk);
+            final net.accelbyte.sdk.api.session.operations.platform_credential.AdminUploadPlatformCredentials operation =
+                    net.accelbyte.sdk.api.session.operations.platform_credential.AdminUploadPlatformCredentials.builder()
                             .namespace(namespace)
-                            .platform(platform)
-                            .region(region)
-                            .storeId(storeId)
-                            .itemIds(itemIds)
-                            .userId(userId)
+                            .platformId(platformId)
+                            .description(description != null ? description : null)
+                            .file(file != null ? file : null)
+                            .password(password != null ? password : null)
                             .build();
-            final List<EstimatedPriceInfo> response =
-                    wrapper.getEstimatedPrice(operation).ensureSuccess();
-            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-            log.info("Operation successful\n{}", responseString);
+                    wrapper.adminUploadPlatformCredentials(operation).ensureSuccess();
+            log.info("Operation successful");
             return 0;
         } catch (HttpResponseException e) {
             log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);
