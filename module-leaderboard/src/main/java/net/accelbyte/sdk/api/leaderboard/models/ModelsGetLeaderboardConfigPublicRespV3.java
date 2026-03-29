@@ -31,6 +31,10 @@ public class ModelsGetLeaderboardConfigPublicRespV3 extends Model {
   @JsonProperty("cycleIds")
   private List<String> cycleIds;
 
+  @JsonProperty("cycleMetadata")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Map<String, ModelsCycleInfo> cycleMetadata;
+
   @JsonProperty("iconURL")
   private String iconURL;
 

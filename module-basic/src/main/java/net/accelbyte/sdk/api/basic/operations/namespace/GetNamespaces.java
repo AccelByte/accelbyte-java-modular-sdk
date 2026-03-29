@@ -42,12 +42,15 @@ public class GetNamespaces extends Operation {
   /** fields as input parameter */
   private Boolean activeOnly;
 
+  private Boolean isTesting;
+
   /** */
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public GetNamespaces(String customBasePath, Boolean activeOnly) {
+  public GetNamespaces(String customBasePath, Boolean activeOnly, Boolean isTesting) {
     this.activeOnly = activeOnly;
+    this.isTesting = isTesting;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -59,6 +62,8 @@ public class GetNamespaces extends Operation {
     queryParams.put(
         "activeOnly",
         this.activeOnly == null ? null : Arrays.asList(String.valueOf(this.activeOnly)));
+    queryParams.put(
+        "isTesting", this.isTesting == null ? null : Arrays.asList(String.valueOf(this.isTesting)));
     return queryParams;
   }
 
@@ -110,6 +115,7 @@ public class GetNamespaces extends Operation {
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
     result.put("activeOnly", "None");
+    result.put("isTesting", "None");
     return result;
   }
 }

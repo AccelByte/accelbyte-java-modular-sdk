@@ -42,6 +42,9 @@ public class AdminEvaluateProgress implements Callable<Integer> {
     @Option(names = {"--challengeCode"}, description = "challengeCode", split = ",")
     List<String> challengeCode;
 
+    @Option(names = {"--includeOneTimeEvent"}, description = "includeOneTimeEvent")
+    String includeOneTimeEvent;
+
     @Option(names = {"--body"}, description = "body")
     String body;
 
@@ -67,6 +70,7 @@ public class AdminEvaluateProgress implements Callable<Integer> {
                     net.accelbyte.sdk.api.challenge.operations.challenge_progression.AdminEvaluateProgress.builder()
                             .namespace(namespace)
                             .challengeCode(challengeCode)
+                            .includeOneTimeEvent(includeOneTimeEvent)
                             .body(new ObjectMapper().readValue(body, ModelEvaluatePlayerProgressionRequest.class)) 
                             .build();
                     wrapper.adminEvaluateProgress(operation).ensureSuccess();

@@ -28,6 +28,10 @@ public class NamespaceCreate extends Model {
   @JsonProperty("displayName")
   private String displayName;
 
+  @JsonProperty("isTesting")
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private Boolean isTesting;
+
   @JsonProperty("namespace")
   private String namespace;
 

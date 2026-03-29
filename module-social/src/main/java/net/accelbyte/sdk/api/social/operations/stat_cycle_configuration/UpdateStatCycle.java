@@ -22,7 +22,10 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * updateStatCycle
  *
- * <p>Update stat cycle. Other detail info: * Returns : updated stat cycle
+ * <p>Update stat cycle. Other detail info: * STOPPED cycles cannot be updated * If changing the
+ * start time of an ACTIVE cycle to a future time, the status will be set to INIT and the related
+ * user data will be removed * If changing the cycle type of an ACTIVE cycle, the related user data
+ * will be removed
  */
 @Getter
 @Setter

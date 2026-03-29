@@ -169,6 +169,19 @@ public class Namespace {
   }
 
   /**
+   * @see UpdateTestingFlag
+   */
+  public UpdateTestingFlagOpResponse updateTestingFlag(UpdateTestingFlag input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicGetNamespaces
    */
   public PublicGetNamespacesOpResponse publicGetNamespaces(PublicGetNamespaces input)

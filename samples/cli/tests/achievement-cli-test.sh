@@ -57,24 +57,24 @@ touch "tmp.dat"
 ./ng net.accelbyte.sdk.cli.Main achievement adminListAchievements \
     --namespace "$AB_NAMESPACE" \
     --global  \
-    --limit '63' \
-    --offset '49' \
+    --limit '7' \
+    --offset '42' \
     --sortBy 'createdAt:desc' \
-    --tags '94F9xR2m,dszVQMJT,cX5Rw5eq' \
+    --tags 'KoAuBY8A,b0IMGDmm,zNiqzvTg' \
     > test.out 2>&1
 eval_tap $? 2 'AdminListAchievements' test.out
 
 #- 3 AdminCreateNewAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminCreateNewAchievement \
     --namespace "$AB_NAMESPACE" \
-    --body '{"achievementCode": "MJSqK1NQ", "customAttributes": {"K9RbYcjq": {}, "YiQFWWDs": {}, "9ymxEQqr": {}}, "defaultLanguage": "V0zyT2h8", "description": {"ucnnnzh3": "wHbaFA7N", "vv1VPUII": "xR2dYo0x", "PRqexb06": "kf69xuK5"}, "global": false, "goalValue": 0.2662490721401123, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "wOjG0lWF", "url": "0mH8iS3y"}, {"slug": "2bvUgeuk", "url": "RFGLcwY0"}, {"slug": "XNudp6gV", "url": "hSLZxb8H"}], "name": {"DMROR8aD": "WAx95iMF", "U044JfoD": "KNmzVVoO", "EpDJGAy5": "UDarb2uE"}, "statCode": "e1YLtB7r", "tags": ["mgqyIACl", "r1ckede9", "zwfeiSeP"], "unlockedIcons": [{"slug": "9sDsn10E", "url": "pOT5Lv7i"}, {"slug": "hzR7gVfN", "url": "WyHBsmKL"}, {"slug": "yHzPKATt", "url": "livvmZNV"}]}' \
+    --body '{"achievementCode": "7u4GyT8z", "customAttributes": {"myjiKTuP": {}, "sZjnZoXQ": {}, "vL9ciEEe": {}}, "defaultLanguage": "922gGXgX", "description": {"dHxtyVpl": "qSm5oRcp", "7sgOB6V4": "eg0zDSs2", "9MRCddqZ": "xAZ2Ez0l"}, "global": true, "goalValue": 0.8096183887034425, "hidden": true, "incremental": true, "lockedIcons": [{"slug": "thPb4NiL", "url": "eUjrADlh"}, {"slug": "ajJn4yL3", "url": "RFeiTo5e"}, {"slug": "Gd6l6fTL", "url": "ENmxbCAf"}], "name": {"mqbrMWh9": "6OaC54Bj", "AjVsN6A8": "pOEuyked", "zjuqo5HR": "MavYslPu"}, "statCode": "xuYC57cT", "tags": ["LgDPL1WI", "nswu1iJ0", "DlVQaSRJ"], "unlockedIcons": [{"slug": "PZagXgbe", "url": "gaeQkmex"}, {"slug": "SNhvPdD8", "url": "R9o9jLGU"}, {"slug": "mo7e6QfO", "url": "qfm6XEXs"}]}' \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateNewAchievement' test.out
 
 #- 4 ExportAchievements
 ./ng net.accelbyte.sdk.cli.Main achievement exportAchievements \
     --namespace "$AB_NAMESPACE" \
-    --tags '1abTGiTw,gSrfmOMB,m9Wew63b' \
+    --tags 'J73A6S2T,z87sAEMQ,frT8S6P2' \
     > test.out 2>&1
 eval_tap $? 4 'ExportAchievements' test.out
 
@@ -82,65 +82,65 @@ eval_tap $? 4 'ExportAchievements' test.out
 ./ng net.accelbyte.sdk.cli.Main achievement importAchievements \
     --namespace "$AB_NAMESPACE" \
     --file 'tmp.dat' \
-    --strategy 'jeMZiKs2' \
+    --strategy 'CYEfT6Qh' \
     > test.out 2>&1
 eval_tap $? 5 'ImportAchievements' test.out
 
 #- 6 AdminGetAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminGetAchievement \
-    --achievementCode 'YaaEjtgc' \
+    --achievementCode 'EZnLS1FW' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 6 'AdminGetAchievement' test.out
 
 #- 7 AdminUpdateAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminUpdateAchievement \
-    --achievementCode 'rvrCOJcl' \
+    --achievementCode '5ChN2iyO' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"customAttributes": {"emWXj6Hf": {}, "MwFWxted": {}, "aXdP6gh6": {}}, "defaultLanguage": "dr2uuxyW", "description": {"XZ13gPcO": "f4UeB53n", "bhRSTbcr": "KFn1nKba", "trsv27de": "h6LfJcUE"}, "global": true, "goalValue": 0.33602390435195095, "hidden": false, "incremental": false, "lockedIcons": [{"slug": "iO41Gvfc", "url": "7OvlIs96"}, {"slug": "ge0udtM3", "url": "nNJMl7tW"}, {"slug": "5bRM023n", "url": "YU36S8fN"}], "name": {"c8GJrkAx": "C0jFs7Ct", "Ppgmnf2r": "KcAl5l56", "FfQ6HnjM": "ilOm5oNv"}, "statCode": "ajsY6HPc", "tags": ["QiZ1F5r1", "lqFOpdWI", "vgQZ2J9Y"], "unlockedIcons": [{"slug": "q8DbUqev", "url": "1kyC0qDw"}, {"slug": "ewhBQn2O", "url": "w6GqQ4sG"}, {"slug": "h1GXyEEv", "url": "0mIOPW27"}]}' \
+    --body '{"customAttributes": {"m16ULf0D": {}, "megc0KEx": {}, "8uvTr8Ul": {}}, "defaultLanguage": "50vjfdpr", "description": {"cRwD5ScO": "uxZ5GwCl", "ahG5LuHJ": "zWpsYqeh", "h7ZZYnPx": "kGhpdFLG"}, "global": false, "goalValue": 0.8836498127208532, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "5nFxgNhs", "url": "aW5FTcOj"}, {"slug": "04BOkilE", "url": "hFLYVEvw"}, {"slug": "MFn4yrex", "url": "KsHe19aX"}], "name": {"ehVYtfMy": "4lDkELcJ", "2eJEORcr": "sseIwp3h", "sl0iOvD2": "vgXjt6IT"}, "statCode": "0O4eWIl6", "tags": ["woIrkIsV", "8Vqz3pwQ", "5bVx3wKc"], "unlockedIcons": [{"slug": "SuHsjABs", "url": "kXVooTr2"}, {"slug": "Uk9ylSkP", "url": "waXf1vns"}, {"slug": "ngk2rZWn", "url": "0Dgv1Rkz"}]}' \
     > test.out 2>&1
 eval_tap $? 7 'AdminUpdateAchievement' test.out
 
 #- 8 AdminDeleteAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminDeleteAchievement \
-    --achievementCode '9RVkwrHV' \
+    --achievementCode 'GN9Yczfx' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 8 'AdminDeleteAchievement' test.out
 
 #- 9 AdminUpdateAchievementListOrder
 ./ng net.accelbyte.sdk.cli.Main achievement adminUpdateAchievementListOrder \
-    --achievementCode 'uDBpBmvV' \
+    --achievementCode 'v13vzVEn' \
     --namespace "$AB_NAMESPACE" \
-    --body '{"targetOrder": 43}' \
+    --body '{"targetOrder": 100}' \
     > test.out 2>&1
 eval_tap $? 9 'AdminUpdateAchievementListOrder' test.out
 
 #- 10 AdminListGlobalAchievements
 ./ng net.accelbyte.sdk.cli.Main achievement adminListGlobalAchievements \
     --namespace "$AB_NAMESPACE" \
-    --achievementCodes 'CFLRZ2iX' \
-    --limit '8' \
-    --offset '60' \
-    --sortBy 'achievedAt:desc' \
-    --status 'OLLs1Eg9' \
-    --tags 'DgCxAafa,CaTY13xU,JVu4xQnP' \
+    --achievementCodes 'GJQx6wZT' \
+    --limit '46' \
+    --offset '45' \
+    --sortBy 'achievedAt:asc' \
+    --status '1Qqk5Uyk' \
+    --tags '9EBxxMEX,2L8u0CtF,3UySXm4M' \
     > test.out 2>&1
 eval_tap $? 10 'AdminListGlobalAchievements' test.out
 
 #- 11 AdminListGlobalAchievementContributors
 ./ng net.accelbyte.sdk.cli.Main achievement adminListGlobalAchievementContributors \
-    --achievementCode 'O0ouYAUb' \
+    --achievementCode 'tNeUZwmh' \
     --namespace "$AB_NAMESPACE" \
-    --limit '96' \
-    --offset '21' \
-    --sortBy 'contributedValue:desc' \
+    --limit '40' \
+    --offset '2' \
+    --sortBy 'contributedValue:asc' \
     > test.out 2>&1
 eval_tap $? 11 'AdminListGlobalAchievementContributors' test.out
 
 #- 12 ResetGlobalAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement resetGlobalAchievement \
-    --achievementCode '2Q3LcZrA' \
+    --achievementCode 'zPUA9TxC' \
     --namespace "$AB_NAMESPACE" \
     > test.out 2>&1
 eval_tap $? 12 'ResetGlobalAchievement' test.out
@@ -148,16 +148,16 @@ eval_tap $? 12 'ResetGlobalAchievement' test.out
 #- 13 BulkCreatePSNEvent
 ./ng net.accelbyte.sdk.cli.Main achievement bulkCreatePSNEvent \
     --namespace "$AB_NAMESPACE" \
-    --body '{"data": [{"events": [{"dateTime": "a5Wevnxj", "eventData": {"eventName": "AJj26wKF", "properties": {"QHBht3Up": {}, "hRIznSff": {}, "LjSwSChE": {}}}, "eventId": "cy0idl2H", "version": "s4ERHGbK"}, {"dateTime": "gqgnkSwq", "eventData": {"eventName": "Lj63R7H5", "properties": {"5yixzd53": {}, "zHx5gEOh": {}, "wmbXGGEX": {}}}, "eventId": "WglEb49W", "version": "VrqNkVDw"}, {"dateTime": "o4asAaUT", "eventData": {"eventName": "helLZgbC", "properties": {"pA2MbIF6": {}, "Qj647d5d": {}, "SzbpbXIJ": {}}}, "eventId": "VQzSgUWD", "version": "udSlGvHj"}], "thirdPartyUserId": "9nAWVJsX", "userId": "7eQ5mMUr"}, {"events": [{"dateTime": "rDA5P45B", "eventData": {"eventName": "8Z6M43g0", "properties": {"v6Iotzzq": {}, "l12Sw0Dv": {}, "5EJR6ov6": {}}}, "eventId": "XEZ62rP6", "version": "KGc3jAoV"}, {"dateTime": "uNgDqhOb", "eventData": {"eventName": "BJBDHVuK", "properties": {"vnxcPCJV": {}, "miksbb4T": {}, "rsGprqqB": {}}}, "eventId": "fVi8NSt1", "version": "IVqzbfDm"}, {"dateTime": "F2dlhcE4", "eventData": {"eventName": "FVM7MqKs", "properties": {"llp0ZGvf": {}, "VBSlYomd": {}, "ocj1VZL1": {}}}, "eventId": "tB9D4qYT", "version": "xGFBAxoH"}], "thirdPartyUserId": "BCf7dcOq", "userId": "YHRFFpnP"}, {"events": [{"dateTime": "Fjb7iaDi", "eventData": {"eventName": "ByX4fFwH", "properties": {"E46tViCm": {}, "1TjJxqUR": {}, "CzypYs0i": {}}}, "eventId": "q6HhKJNM", "version": "iyfv7HB7"}, {"dateTime": "WdcKtSXn", "eventData": {"eventName": "j6ee5CRL", "properties": {"uhjF8rej": {}, "WWciyXOR": {}, "da7eFAWJ": {}}}, "eventId": "P5liuP18", "version": "o9WotIYn"}, {"dateTime": "DixbUowU", "eventData": {"eventName": "Y154nRmL", "properties": {"xPjnYPmv": {}, "nlFGlhFx": {}, "t6VzZr3o": {}}}, "eventId": "E1ylyPZw", "version": "ZvBw8YNn"}], "thirdPartyUserId": "ogK8qLmp", "userId": "6eUs9Sid"}]}' \
+    --body '{"data": [{"events": [{"dateTime": "kwqudZyb", "eventData": {"eventName": "CCBGi4ze", "properties": {"AuKpLE9P": {}, "xoZEKhcm": {}, "qwCcIVz9": {}}}, "eventId": "G5ivCZ5N", "version": "dxgxYJEu"}, {"dateTime": "kvUjbsl0", "eventData": {"eventName": "3toOazmM", "properties": {"mSpBcc9g": {}, "rtYDLh1c": {}, "Yee8qzas": {}}}, "eventId": "v1dj3Rvt", "version": "RnF481ex"}, {"dateTime": "ibmnTOGf", "eventData": {"eventName": "l6iALyVn", "properties": {"IqJxUB2e": {}, "Y7hRJwVd": {}, "Ech7RCaH": {}}}, "eventId": "VsLGtD9t", "version": "3uZyWub6"}], "thirdPartyUserId": "OOUaHQP4", "userId": "Jj2LAA6F"}, {"events": [{"dateTime": "3c7CMt8c", "eventData": {"eventName": "bA1bh7pQ", "properties": {"ZcGSwNof": {}, "TRmEZR13": {}, "Fhe76g0C": {}}}, "eventId": "24a3BKl3", "version": "lmTnppeZ"}, {"dateTime": "3v2cYHMy", "eventData": {"eventName": "PgrwPbBW", "properties": {"znqRywmZ": {}, "i4m4iq8M": {}, "jpE4T03T": {}}}, "eventId": "DlhDR3k3", "version": "f3hvX9Gj"}, {"dateTime": "mmBVxr9i", "eventData": {"eventName": "zY0PcDtB", "properties": {"iaUQgeAN": {}, "P9oNGsF0": {}, "N6ZXDpgu": {}}}, "eventId": "keTHyWh8", "version": "QOCEFlyU"}], "thirdPartyUserId": "n13LOTkO", "userId": "LE0JnIbV"}, {"events": [{"dateTime": "I9iPuXpu", "eventData": {"eventName": "3FzC5lIr", "properties": {"3x0QjoxQ": {}, "u3RyIQXP": {}, "cwVYHv7x": {}}}, "eventId": "yWz8QtFA", "version": "VFx9uWVu"}, {"dateTime": "souW45Fd", "eventData": {"eventName": "rD2hijHU", "properties": {"FyAtPueZ": {}, "UFTXtcDh": {}, "0aqH8Oz4": {}}}, "eventId": "xTg3KKCm", "version": "cnYN136l"}, {"dateTime": "XwqrYGhS", "eventData": {"eventName": "BrVcPSCT", "properties": {"zLnfQNOz": {}, "eRDHF4dS": {}, "52PmSaUO": {}}}, "eventId": "OTw2xZZ3", "version": "gVkan1wj"}], "thirdPartyUserId": "MskSBQrr", "userId": "hbLO7asx"}]}' \
     > test.out 2>&1
 eval_tap $? 13 'BulkCreatePSNEvent' test.out
 
 #- 14 AdminListTags
 ./ng net.accelbyte.sdk.cli.Main achievement adminListTags \
     --namespace "$AB_NAMESPACE" \
-    --limit '51' \
-    --name 'isjGL95o' \
-    --offset '42' \
+    --limit '92' \
+    --name 'DadZ6gIm' \
+    --offset '60' \
     --sortBy 'createdAt' \
     > test.out 2>&1
 eval_tap $? 14 'AdminListTags' test.out
@@ -165,55 +165,55 @@ eval_tap $? 14 'AdminListTags' test.out
 #- 15 AdminListUserAchievements
 ./ng net.accelbyte.sdk.cli.Main achievement adminListUserAchievements \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ui6s5v0r' \
-    --limit '66' \
-    --offset '24' \
+    --userId 'yq1qc4et' \
+    --limit '26' \
+    --offset '83' \
     --preferUnlocked  \
-    --sortBy 'achievedAt' \
-    --tags 'b5Sy4zPt,ELJjkPpO,hdU4ccTk' \
+    --sortBy 'achievedAt:asc' \
+    --tags 'zaIrZdg0,iC6toDoL,PY3Glf8s' \
     > test.out 2>&1
 eval_tap $? 15 'AdminListUserAchievements' test.out
 
 #- 16 AdminBulkUnlockAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminBulkUnlockAchievement \
     --namespace "$AB_NAMESPACE" \
-    --userId 'RXTVeCsw' \
-    --body '{"achievementCodes": ["jWq03U7y", "5jODFegj", "buBLzgd1"]}' \
+    --userId 'lxowP1mP' \
+    --body '{"achievementCodes": ["nP4xeO3o", "DUKNROqD", "nR0ryDTt"]}' \
     > test.out 2>&1
 eval_tap $? 16 'AdminBulkUnlockAchievement' test.out
 
 #- 17 AdminResetAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminResetAchievement \
-    --achievementCode '2d8o9vp9' \
+    --achievementCode 'lGf8e6KH' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'ZgGNAA94' \
+    --userId '2MMr89Eb' \
     > test.out 2>&1
 eval_tap $? 17 'AdminResetAchievement' test.out
 
 #- 18 AdminUnlockAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminUnlockAchievement \
-    --achievementCode 'v0jJHUpi' \
+    --achievementCode 'K9vOQPps' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'b2vlkZU3' \
+    --userId '5ueeSKeV' \
     > test.out 2>&1
 eval_tap $? 18 'AdminUnlockAchievement' test.out
 
 #- 19 AdminAnonymizeUserAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement adminAnonymizeUserAchievement \
     --namespace "$AB_NAMESPACE" \
-    --userId 'aeVIeCLi' \
+    --userId 'AB4WmJLm' \
     > test.out 2>&1
 eval_tap $? 19 'AdminAnonymizeUserAchievement' test.out
 
 #- 20 AdminListUserContributions
 ./ng net.accelbyte.sdk.cli.Main achievement adminListUserContributions \
     --namespace "$AB_NAMESPACE" \
-    --userId 'vS84I9c5' \
-    --achievementCodes 'oKiTNOvN' \
-    --limit '88' \
-    --offset '34' \
-    --sortBy 'contributedValue' \
-    --tags 'SebgRaaT,WLWAq2Tx,dikZHWCM' \
+    --userId '7m7NjiHo' \
+    --achievementCodes 'RVrnnUcC' \
+    --limit '45' \
+    --offset '90' \
+    --sortBy 'contributedValue:asc' \
+    --tags '3FsvQwN2,9v0M1eIz,yorshZyQ' \
     > test.out 2>&1
 eval_tap $? 20 'AdminListUserContributions' test.out
 
@@ -221,99 +221,99 @@ eval_tap $? 20 'AdminListUserContributions' test.out
 ./ng net.accelbyte.sdk.cli.Main achievement publicListAchievements \
     --namespace "$AB_NAMESPACE" \
     --global  \
-    --limit '95' \
-    --offset '3' \
-    --sortBy 'listOrder:asc' \
-    --tags '42fhrEFd,vyHPgDmQ,b7TRDKzy' \
-    --language 'BzlttLRL' \
+    --limit '13' \
+    --offset '22' \
+    --sortBy 'createdAt' \
+    --tags 'GTKpfHWp,oB3mCAsr,Jfgrl8ef' \
+    --language 'S8jpMQzw' \
     > test.out 2>&1
 eval_tap $? 21 'PublicListAchievements' test.out
 
 #- 22 PublicGetAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement publicGetAchievement \
-    --achievementCode '72QhhiiI' \
+    --achievementCode 'xwYcfysd' \
     --namespace "$AB_NAMESPACE" \
-    --language 'LQY3Hmgy' \
+    --language 'zgPMGi4Q' \
     > test.out 2>&1
 eval_tap $? 22 'PublicGetAchievement' test.out
 
 #- 23 PublicListGlobalAchievements
 ./ng net.accelbyte.sdk.cli.Main achievement publicListGlobalAchievements \
     --namespace "$AB_NAMESPACE" \
-    --achievementCodes '0mJr5aqq' \
-    --limit '79' \
-    --offset '53' \
+    --achievementCodes 'YZLSJDSx' \
+    --limit '69' \
+    --offset '6' \
     --sortBy 'createdAt:desc' \
-    --status 'owuMyk61' \
-    --tags 'JOHcrYG2,aiFC8uQ5,NpxtjMqm' \
+    --status 'DQctGcyf' \
+    --tags '6twpBpDE,0xYSfgF3,gYg4rGs4' \
     > test.out 2>&1
 eval_tap $? 23 'PublicListGlobalAchievements' test.out
 
 #- 24 ListGlobalAchievementContributors
 ./ng net.accelbyte.sdk.cli.Main achievement listGlobalAchievementContributors \
-    --achievementCode 'AFvsDG0T' \
+    --achievementCode 'vuDbb5yj' \
     --namespace "$AB_NAMESPACE" \
-    --limit '87' \
-    --offset '64' \
-    --sortBy 'contributedValue:desc' \
+    --limit '54' \
+    --offset '37' \
+    --sortBy 'contributedValue' \
     > test.out 2>&1
 eval_tap $? 24 'ListGlobalAchievementContributors' test.out
 
 #- 25 PublicListTags
 ./ng net.accelbyte.sdk.cli.Main achievement publicListTags \
     --namespace "$AB_NAMESPACE" \
-    --limit '51' \
-    --name 'yjIpxpIn' \
-    --offset '58' \
-    --sortBy 'name:desc' \
+    --limit '60' \
+    --name '8mwNO3eG' \
+    --offset '9' \
+    --sortBy 'name:asc' \
     > test.out 2>&1
 eval_tap $? 25 'PublicListTags' test.out
 
 #- 26 PublicListUserAchievements
 ./ng net.accelbyte.sdk.cli.Main achievement publicListUserAchievements \
     --namespace "$AB_NAMESPACE" \
-    --userId '86sBevzk' \
-    --limit '75' \
-    --offset '88' \
+    --userId 'ORtngkeL' \
+    --limit '46' \
+    --offset '13' \
     --preferUnlocked  \
-    --sortBy 'createdAt' \
-    --tags 'R4gGKvOH,MxwSLA7E,pfWqUmDb' \
+    --sortBy 'createdAt:desc' \
+    --tags 'A8q0PY3V,tPfjouCS,wdvck5pb' \
     > test.out 2>&1
 eval_tap $? 26 'PublicListUserAchievements' test.out
 
 #- 27 PublicBulkUnlockAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement publicBulkUnlockAchievement \
     --namespace "$AB_NAMESPACE" \
-    --userId '257GDPdb' \
-    --body '{"achievementCodes": ["hCGXNIcq", "QcC7UC72", "G2APWh90"]}' \
+    --userId '3sI44HGF' \
+    --body '{"achievementCodes": ["1pH9pqaH", "7epgvA8z", "nk2LAObU"]}' \
     > test.out 2>&1
 eval_tap $? 27 'PublicBulkUnlockAchievement' test.out
 
 #- 28 PublicUnlockAchievement
 ./ng net.accelbyte.sdk.cli.Main achievement publicUnlockAchievement \
-    --achievementCode 'od8jofT8' \
+    --achievementCode '5gm2z2qp' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'pLLF1JXb' \
+    --userId 'JMTNi42e' \
     > test.out 2>&1
 eval_tap $? 28 'PublicUnlockAchievement' test.out
 
 #- 29 ListUserContributions
 ./ng net.accelbyte.sdk.cli.Main achievement listUserContributions \
     --namespace "$AB_NAMESPACE" \
-    --userId '17MKy1Cw' \
-    --achievementCodes 'GRb0aDHM' \
-    --limit '5' \
-    --offset '90' \
+    --userId 'NQFDCWUw' \
+    --achievementCodes 'ucHxh750' \
+    --limit '48' \
+    --offset '100' \
     --sortBy 'contributedValue:desc' \
-    --tags 'FILtB181,gE4MC9W0,RmikQeHz' \
+    --tags 'fLQie6Ht,mEGYZDJr,WsOyVE7E' \
     > test.out 2>&1
 eval_tap $? 29 'ListUserContributions' test.out
 
 #- 30 ClaimGlobalAchievementReward
 ./ng net.accelbyte.sdk.cli.Main achievement claimGlobalAchievementReward \
-    --achievementCode 'yG1JKmNY' \
+    --achievementCode '0L9c38HO' \
     --namespace "$AB_NAMESPACE" \
-    --userId 'OCBvQcfG' \
+    --userId 'fCB856VC' \
     > test.out 2>&1
 eval_tap $? 30 'ClaimGlobalAchievementReward' test.out
 

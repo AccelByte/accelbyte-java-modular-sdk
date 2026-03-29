@@ -39,6 +39,9 @@ public class GetNamespaces implements Callable<Integer> {
     @Option(names = {"--activeOnly"}, description = "activeOnly")
     Boolean activeOnly;
 
+    @Option(names = {"--isTesting"}, description = "isTesting")
+    Boolean isTesting;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -60,6 +63,7 @@ public class GetNamespaces implements Callable<Integer> {
             final net.accelbyte.sdk.api.basic.operations.namespace.GetNamespaces operation =
                     net.accelbyte.sdk.api.basic.operations.namespace.GetNamespaces.builder()
                             .activeOnly(activeOnly)
+                            .isTesting(isTesting)
                             .build();
             final List<NamespaceInfo> response =
                     wrapper.getNamespaces(operation).ensureSuccess();

@@ -10,6 +10,6 @@ public class ModuleInfo implements BaseModuleInfo {
 
   @Override
   public String getVersion() {
-    return "0.14.0";
+    return "0.15.0";
   }
 }

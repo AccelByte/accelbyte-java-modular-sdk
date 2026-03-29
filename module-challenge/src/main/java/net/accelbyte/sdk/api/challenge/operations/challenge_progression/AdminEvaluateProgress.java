@@ -40,6 +40,7 @@ public class AdminEvaluateProgress extends Operation {
   private String namespace;
 
   private List<String> challengeCode;
+  private String includeOneTimeEvent;
   private ModelEvaluatePlayerProgressionRequest body;
 
   /**
@@ -53,9 +54,11 @@ public class AdminEvaluateProgress extends Operation {
       String customBasePath,
       String namespace,
       List<String> challengeCode,
+      String includeOneTimeEvent,
       ModelEvaluatePlayerProgressionRequest body) {
     this.namespace = namespace;
     this.challengeCode = challengeCode;
+    this.includeOneTimeEvent = includeOneTimeEvent;
     this.body = body;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
@@ -81,6 +84,9 @@ public class AdminEvaluateProgress extends Operation {
             : this.challengeCode.stream()
                 .map(i -> String.valueOf(i))
                 .collect(java.util.stream.Collectors.toList()));
+    queryParams.put(
+        "includeOneTimeEvent",
+        this.includeOneTimeEvent == null ? null : Arrays.asList(this.includeOneTimeEvent));
     return queryParams;
   }
 
@@ -147,6 +153,7 @@ public class AdminEvaluateProgress extends Operation {
   protected Map<String, String> getCollectionFormatMap() {
     Map<String, String> result = new HashMap<>();
     result.put("challengeCode", "csv");
+    result.put("includeOneTimeEvent", "None");
     return result;
   }
 }

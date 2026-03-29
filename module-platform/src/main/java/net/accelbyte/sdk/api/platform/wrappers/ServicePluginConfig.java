@@ -250,8 +250,24 @@ public class ServicePluginConfig {
   }
 
   /**
-   * @see UploadRevocationPluginConfigCert
+   * @see UploadRevocationPluginConfigCertV2
    */
+  public UploadRevocationPluginConfigCertV2OpResponse uploadRevocationPluginConfigCertV2(
+      UploadRevocationPluginConfigCertV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see UploadRevocationPluginConfigCert
+   * @deprecated
+   */
+  @Deprecated
   public UploadRevocationPluginConfigCertOpResponse uploadRevocationPluginConfigCert(
       UploadRevocationPluginConfigCert input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
