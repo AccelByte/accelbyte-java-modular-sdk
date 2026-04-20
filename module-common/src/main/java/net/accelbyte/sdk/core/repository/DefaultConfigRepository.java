@@ -16,6 +16,7 @@ public class DefaultConfigRepository implements ConfigRepository, TokenValidatio
   // coverity[hardcoded_secret]
   private static final String CLIENT_SECRET = "AB_CLIENT_SECRET";
   private static final String BASE_URL = "AB_BASE_URL";
+  private static final String NAMESPACE = "AB_NAMESPACE";
 
   private AppInfo appInfo = new AppInfo();
   private boolean amazonTraceId = true;
@@ -131,6 +132,14 @@ public class DefaultConfigRepository implements ConfigRepository, TokenValidatio
   @Override
   public int getNamespaceContextRefreshInterval() {
     return this.namespaceContextIntervalSeconds;
+  }
+
+  @Override
+  public String getNamespace() {
+    if (System.getenv(NAMESPACE) == null) {
+      return "";
+    }
+    return System.getenv(NAMESPACE);
   }
 
   @Override

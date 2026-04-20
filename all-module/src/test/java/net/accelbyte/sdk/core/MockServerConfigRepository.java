@@ -74,5 +74,10 @@ class MockServerConfigRepository implements ConfigRepository {
   public String getCustomServiceBasePath(String serviceName) {
     return "";
   }
+
+  @Override
+  public String getNamespace() {
+    return "";
+  }
   ;
 }

@@ -36,4 +36,6 @@ public interface ConfigRepository {
   AppInfo getAppInfo();
 
   String getCustomServiceBasePath(String serviceName);
+
+  String getNamespace();
 }
