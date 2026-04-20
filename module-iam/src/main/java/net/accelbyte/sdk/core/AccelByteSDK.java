@@ -198,28 +198,35 @@ public class AccelByteSDK implements RequestRunner {
     List<Role> namespaceRoles = tokenPayload.getNamespaceRoles();
 
     if (!Strings.isNullOrEmpty(claimsUserId) && !namespaceRoles.isEmpty()) {
-      for (Role role : namespaceRoles) {
-        if (Strings.isNullOrEmpty(role.getRoleId())) {
-          continue;
-        }
-
-        String roleNamespace = role.getNamespace();
-
-        // Expand the target resource with this role's namespace
-        String roleExpandedResource =
-            expandResource(permission.getResource(), roleNamespace, authContext.getUserId());
-
-        try {
-          RoleCacheKey key = RoleCacheKey.of(role, claimsUserId);
-          List<Permission> rolePermissions = rolePermissionsCache.get(key);
-          if (validatePermission(rolePermissions, roleExpandedResource, permission.getAction())) {
-            return true;
+      // [FEEDBACK-CRITICAL] rolePermissionsCache may be null when the test-injection constructor
+      // is used with a non-TokenValidation config repository; guard here to prevent NPE.
+      if (rolePermissionsCache == null) {
+        log.warning("rolePermissionsCache is null; skipping namespaceRoles permission check");
+      } else {
+        for (Role role : namespaceRoles) {
+          if (Strings.isNullOrEmpty(role.getRoleId())) {
+            continue;
           }
-        } catch (ExecutionException e) {
-          log.warning(e.getMessage());
+
+          String roleNamespace = role.getNamespace();
+
+          // Expand the target resource with this role's namespace
+          String roleExpandedResource =
+              expandResource(permission.getResource(), roleNamespace, authContext.getUserId());
+
+          try {
+            RoleCacheKey key = RoleCacheKey.of(role, claimsUserId);
+            List<Permission> rolePermissions = rolePermissionsCache.get(key);
+            if (validatePermission(rolePermissions, roleExpandedResource, permission.getAction())) {
+              return true;
+            }
+          } catch (ExecutionException e) {
+            log.warning(e.getMessage());
+          }
         }
       }
-      return false;
+      // [FEEDBACK-CRITICAL] Do not return false here; fall through to the `roles` check below
+      // so that tokens with non-matching namespaceRoles but valid roles are not incorrectly denied.
     }
 
     List<String> claimRoles = tokenPayload.getRoles();
@@ -354,10 +361,11 @@ public class AccelByteSDK implements RequestRunner {
           NamespaceContext namespaceContext = null;
           try {
             if (namespaceContextCache != null) {
-              if (Strings.isNullOrEmpty(reqElem)) {
+              // [FEEDBACK-HIGH] reqElem from split() is never null; check isEmpty() only.
+              // Use a clear log message that does not conflate empty input with access denial.
+              if (reqElem.isEmpty()) {
                 log.warning(
-                    "Namespace is empty or access denied accessing namespace context for "
-                        + reqElem);
+                    "Skipping namespace context lookup: requested namespace element is empty");
                 return false;
               }
               namespaceContext = namespaceContextCache.get(reqElem);

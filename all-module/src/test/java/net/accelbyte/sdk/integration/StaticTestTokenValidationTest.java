@@ -103,4 +103,32 @@ public class StaticTestTokenValidationTest {
 
     assertFalse(result);
   }
+
+  // [FEEDBACK-HIGH] Exercises the cache-rejection branch: the requested namespace IS present in
+  // the namespace context cache (so no exception is thrown) but its studioNamespace belongs to a
+  // different studio, so isResourceElementMatch must return false. The previous tests
+  // (testDifferentGameNamespace / testDifferentStudioNamespace) only covered the case where the
+  // namespace is absent from the cache (exception path), not this found-but-wrong-studio path.
+  @Test
+  public void testCrossStudioNamespaceRejectedViaCacheLookup() {
+    List<Permission> permissions =
+        Arrays.asList(
+            Permission.builder()
+                .resource(
+                    "NAMESPACE:"
+                        + StaticTestTokenValidator.STUDIO_NAMESPACE
+                        + "-:CLOUDSAVE:RECORD")
+                .action(2)
+                .build());
+
+    // CROSS_STUDIO_GAME_NAMESPACE starts with STUDIO_NAMESPACE + "-" (prefix check passes)
+    // but its studioNamespace in the cache is CROSS_STUDIO_NAMESPACE, not STUDIO_NAMESPACE.
+    boolean result =
+        validator.testValidateResource(
+            permissions,
+            "NAMESPACE:" + StaticTestTokenValidator.CROSS_STUDIO_GAME_NAMESPACE + ":CLOUDSAVE:RECORD",
+            2);
+
+    assertFalse(result);
+  }
 }

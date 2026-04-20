@@ -21,6 +21,11 @@ public class StaticTestTokenValidator extends AccelByteSDK {
   public static final String PUBLISHER_NAMESPACE = "accelbyte";
   public static final String STUDIO_NAMESPACE = "accelbyte-studio";
   public static final String GAME_NAMESPACE = "accelbyte-studio-game";
+  // [FEEDBACK-HIGH] A game namespace that starts with STUDIO_NAMESPACE + "-" (so the prefix
+  // check passes) but whose studioNamespace in the cache belongs to a different studio.
+  // Used to exercise the cache-rejection branch in isResourceElementMatch.
+  public static final String CROSS_STUDIO_GAME_NAMESPACE = "accelbyte-studio-crossgame";
+  public static final String CROSS_STUDIO_NAMESPACE = "different-studio";
 
   public StaticTestTokenValidator() {
     super(buildConfig(), buildNamespaceContextCache());
@@ -47,6 +52,16 @@ public class StaticTestTokenValidator extends AccelByteSDK {
             .namespace(GAME_NAMESPACE)
             .publisherNamespace(PUBLISHER_NAMESPACE)
             .studioNamespace(STUDIO_NAMESPACE)
+            .type("Game")
+            .build());
+    // [FEEDBACK-HIGH] Cache entry whose studioNamespace differs from STUDIO_NAMESPACE so the
+    // cache-rejection branch (namespace found but belongs to a different studio) is reachable.
+    cache.put(
+        CROSS_STUDIO_GAME_NAMESPACE,
+        NamespaceContext.builder()
+            .namespace(CROSS_STUDIO_GAME_NAMESPACE)
+            .publisherNamespace(PUBLISHER_NAMESPACE)
+            .studioNamespace(CROSS_STUDIO_NAMESPACE)
             .type("Game")
             .build());
     return cache;

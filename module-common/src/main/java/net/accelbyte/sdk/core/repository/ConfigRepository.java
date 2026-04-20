@@ -37,5 +37,9 @@ public interface ConfigRepository {
 
   String getCustomServiceBasePath(String serviceName);
 
-  String getNamespace();
+  // [FEEDBACK-HIGH] Default implementation preserves backward compatibility for existing
+  // ConfigRepository implementations outside this repository that do not override getNamespace().
+  default String getNamespace() {
+    return "";
+  }
 }
