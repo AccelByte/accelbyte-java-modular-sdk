@@ -642,6 +642,10 @@ public class AccelByteSDK implements RequestRunner {
           && tokenBeforeRefresh != null
           && !tokenAfterWaiting.equals(tokenBeforeRefresh)) {
         log.info("Access token already refreshed by another concurrent call");
+        // NOTE: The lock is held at this point (acquiredLock == true). Returning here is safe
+        // because the finally block at the end of this method unconditionally releases the lock
+        // when acquiredLock is true. Do NOT copy this early-return pattern without a corresponding
+        // finally-unlock; omitting it would cause a permanent deadlock on the next refresh attempt.
         return true;
       }
 
