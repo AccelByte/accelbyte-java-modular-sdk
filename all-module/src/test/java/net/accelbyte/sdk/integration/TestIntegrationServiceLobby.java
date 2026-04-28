@@ -38,7 +38,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 class TestIntegrationServiceLobby extends TestIntegration {
   @BeforeAll
   public void setup() throws Exception {
-    super.setup();
+    super.setup(true, IntegrationTestConfigRepository.Lobby);
   }
 
   @Test

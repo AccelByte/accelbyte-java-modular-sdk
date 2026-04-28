@@ -8,9 +8,6 @@ package net.accelbyte.sdk.integration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import net.accelbyte.sdk.api.iam.models.ModelUserResponseV3;
-import net.accelbyte.sdk.api.iam.operations.users.AdminGetMyUserV3;
-import net.accelbyte.sdk.api.iam.wrappers.Users;
 import net.accelbyte.sdk.api.inventory.models.*;
 import net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminCreateInventory;
 import net.accelbyte.sdk.api.inventory.operations.admin_inventories.AdminGetInventory;
@@ -29,21 +26,15 @@ class TestIntegrationServiceInventory extends TestIntegration {
 
   @BeforeAll
   public void setup() throws Exception {
-    super.setup();
+    super.setup(false, IntegrationTestConfigRepository.Inventory);
   }
 
   @Test
   @Order(1)
   public void test() throws Exception {
 
-    final Users usersWrapper = new Users(sdk);
-
-    final ModelUserResponseV3 getUserResult =
-        usersWrapper.adminGetMyUserV3(AdminGetMyUserV3.builder().build()).ensureSuccess();
-
-    assertNotNull(getUserResult);
-
-    final String userId = getUserResult.getUserId();
+    System.out.printf("ClientID: " + sdk.getSdkConfiguration().getConfigRepository().getClientId());
+    System.out.printf("Namespace: " + this.namespace);
 
     final String codeInventoryConfig =
         "java-sdk-code-" + java.util.UUID.randomUUID().toString().substring(0, 4);
@@ -69,6 +60,9 @@ class TestIntegrationServiceInventory extends TestIntegration {
             .ensureSuccess();
 
     assertNotNull(createInventoryConfigResult);
+
+    final TestPlayer player = new NewTestPlayer(sdk, this.namespace, true);
+    final String userId = player.getUserId();
 
     // CASE Create inventory
     final ApimodelsCreateInventoryReq createInventoryBody =
@@ -135,6 +129,8 @@ class TestIntegrationServiceInventory extends TestIntegration {
                 .inventoryConfigurationId(createInventoryConfigResult.getId())
                 .namespace(this.namespace)
                 .build());
+
+    player.logout();
   }
 
   @AfterAll

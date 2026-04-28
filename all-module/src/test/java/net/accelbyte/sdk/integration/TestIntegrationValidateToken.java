@@ -15,8 +15,6 @@ import net.accelbyte.sdk.core.AccelByteConfig;
 import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.client.HttpClient;
 import net.accelbyte.sdk.core.client.OkhttpClient;
-import net.accelbyte.sdk.core.repository.ConfigRepository;
-import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -35,7 +33,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class TestIntegrationValidateToken extends TestIntegration {
   @BeforeAll
   public void setup() throws Exception {
-    super.setup(false);
+    super.setup(false, IntegrationTestConfigRepository.Admin);
   }
 
   @ParameterizedTest
@@ -48,7 +46,7 @@ public class TestIntegrationValidateToken extends TestIntegration {
 
     // Setup
 
-    final DefaultConfigRepository configRepo1 = new DefaultConfigRepository();
+    final IntegrationTestConfigRepository configRepo1 = IntegrationTestConfigRepository.Admin;
 
     configRepo1.setLocalTokenValidationEnabled(localTokenValidationEnabled);
     configRepo1.setJwksRefreshInterval(3); // 3 seconds for testing purpose only
@@ -61,7 +59,7 @@ public class TestIntegrationValidateToken extends TestIntegration {
     final AccelByteSDK sdk2 =
         new AccelByteSDK(
             new AccelByteConfig(
-                new OkhttpClient(), new DefaultTokenRepository(), new DefaultConfigRepository()));
+                new OkhttpClient(), new DefaultTokenRepository(), IntegrationTestConfigRepository.Admin));
 
     sdk1.loginClient();
 
@@ -100,7 +98,7 @@ public class TestIntegrationValidateToken extends TestIntegration {
 
     // Setup
 
-    final DefaultConfigRepository configRepo1 = new DefaultConfigRepository();
+    final IntegrationTestConfigRepository configRepo1 = IntegrationTestConfigRepository.Admin;
 
     configRepo1.setLocalTokenValidationEnabled(localTokenValidationEnabled);
     configRepo1.setJwksRefreshInterval(3); // 3 seconds for testing purpose only
@@ -113,7 +111,7 @@ public class TestIntegrationValidateToken extends TestIntegration {
     final AccelByteSDK sdk2 =
         new AccelByteSDK(
             new AccelByteConfig(
-                new OkhttpClient(), new DefaultTokenRepository(), new DefaultConfigRepository()));
+                new OkhttpClient(), new DefaultTokenRepository(), IntegrationTestConfigRepository.Admin));
 
     sdk1.loginClient();
 
@@ -150,10 +148,9 @@ public class TestIntegrationValidateToken extends TestIntegration {
     }
 
     final HttpClient<?> httpClient = super.sdk.getSdkConfiguration().getHttpClient();
-    final ConfigRepository configRepository = super.sdk.getSdkConfiguration().getConfigRepository();
 
     final DefaultTokenRepository tokenRepository1 = new DefaultTokenRepository();
-    final AccelByteSDK sdk1 = new AccelByteSDK(httpClient, tokenRepository1, configRepository);
+    final AccelByteSDK sdk1 = new AccelByteSDK(httpClient, tokenRepository1, IntegrationTestConfigRepository.Basic);
 
     sdk1.loginClient();
 
@@ -179,6 +176,25 @@ public class TestIntegrationValidateToken extends TestIntegration {
     assertTrue(isGoodPermissionOk1);
     assertFalse(isBadPermissionOk1);
     assertFalse(isBadPermissionOk2);
+  }
+
+  @Test
+  @Order(2)
+  public void testCustomPermissionClientToken() throws Exception {
+    final AccelByteSDK customSdk =
+        new AccelByteSDK(
+            new AccelByteConfig(
+                new OkhttpClient(),
+                new DefaultTokenRepository(),
+                IntegrationTestConfigRepository.CustomPermission));
+
+    customSdk.loginClient();
+
+    final String token = customSdk.getSdkConfiguration().getTokenRepository().getToken();
+
+    assertTrue(
+        customSdk.validateToken(
+            token, "CUSTOM:ADMIN:NAMESPACE:" + namespace + ":GUILD", 2));
   }
 
   @AfterAll

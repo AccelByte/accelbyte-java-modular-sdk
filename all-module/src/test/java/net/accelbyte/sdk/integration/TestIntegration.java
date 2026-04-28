@@ -24,27 +24,30 @@ public class TestIntegration {
   protected String password;
 
   protected void setup() throws Exception {
-    setup(true);
+    final ConfigRepository configRepo = new DefaultConfigRepository();
+    setup(true, configRepo);
   }
 
   protected void setup(boolean loginUser) throws Exception {
+    final ConfigRepository configRepo = new DefaultConfigRepository();
+    setup(loginUser, configRepo);
+  }
+
+  protected void setup(boolean loginUser, ConfigRepository configRepo) throws Exception {
     final HttpClient<?> httpClient = new OkhttpClient();
     final TokenRepository tokenRepo = DefaultTokenRepository.getInstance();
-    final ConfigRepository configRepo = new DefaultConfigRepository();
     final AccelByteConfig sdkConfig = new AccelByteConfig(httpClient, tokenRepo, configRepo);
 
     final String baseUrl = configRepo.getBaseURL();
     final String clientId = configRepo.getClientId();
-    final String clientSecret = configRepo.getClientSecret();
     final String username = System.getenv("AB_USERNAME");
     final String password = System.getenv("AB_PASSWORD");
-    final String namespace = System.getenv("AB_NAMESPACE");
+    final String namespace = configRepo instanceof IntegrationTestConfigRepository
+        ? ((IntegrationTestConfigRepository) configRepo).getNamespace()
+        : System.getenv("AB_NAMESPACE");
 
     assertTrue(baseUrl != null && !baseUrl.isEmpty());
     assertTrue(clientId != null && !clientId.isEmpty());
-    assertTrue(clientSecret != null && !clientSecret.isEmpty());
-    assertTrue(username != null && !username.isEmpty());
-    assertTrue(password != null && !password.isEmpty());
     assertTrue(namespace != null && !namespace.isEmpty());
 
     this.sdk = new AccelByteSDK(sdkConfig);
@@ -53,10 +56,19 @@ public class TestIntegration {
     this.password = password;
 
     if (loginUser) {
+      assertTrue(username != null && !username.isEmpty());
+      assertTrue(password != null && !password.isEmpty());
+
       final boolean isLoginUserOk = sdk.loginUser(username, password);
       final String token = tokenRepo.getToken();
 
       assertTrue(isLoginUserOk);
+      assertTrue(token != null && !token.isEmpty());
+    } else {
+      final boolean isLoginClientOk = sdk.loginClient();
+      final String token = tokenRepo.getToken();
+
+      assertTrue(isLoginClientOk);
       assertTrue(token != null && !token.isEmpty());
     }
   }
@@ -70,7 +82,11 @@ public class TestIntegration {
   }
 
   protected boolean isUsingAGSStarter() {
-    final String baseUrl = sdk.getSdkConfiguration().getConfigRepository().getBaseURL();
+    return isUsingAGSStarter(sdk.getSdkConfiguration().getConfigRepository());
+  }
+
+  protected boolean isUsingAGSStarter(ConfigRepository configRepo) {
+    final String baseUrl = configRepo.getBaseURL();
     return baseUrl.contains("gamingservices.accelbyte.io");
   }
 }

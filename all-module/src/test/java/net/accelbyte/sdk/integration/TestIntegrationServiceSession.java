@@ -28,6 +28,7 @@ import net.accelbyte.sdk.api.session.models.ApimodelsCreatePartyRequest;
 import net.accelbyte.sdk.api.session.models.ApimodelsGameSessionQueryResponse;
 import net.accelbyte.sdk.api.session.models.ApimodelsGameSessionResponse;
 import net.accelbyte.sdk.api.session.models.ApimodelsJoinByCodeRequest;
+import net.accelbyte.sdk.api.session.models.ApimodelsPartyQueryResponse;
 import net.accelbyte.sdk.api.session.models.ApimodelsPartySessionResponse;
 import net.accelbyte.sdk.api.session.models.ApimodelsRequestMember;
 import net.accelbyte.sdk.api.session.models.ApimodelsUpdateConfigurationTemplateRequest;
@@ -41,7 +42,7 @@ import net.accelbyte.sdk.api.session.operations.game_session.DeleteGameSession;
 import net.accelbyte.sdk.api.session.operations.game_session.JoinGameSession;
 import net.accelbyte.sdk.api.session.operations.game_session.LeaveGameSession;
 import net.accelbyte.sdk.api.session.operations.game_session.PublicQueryGameSessionsByAttributes;
-import net.accelbyte.sdk.api.session.operations.party.PublicGetParty;
+import net.accelbyte.sdk.api.session.operations.party.AdminQueryParties;
 import net.accelbyte.sdk.api.session.operations.party.PublicPartyJoinCode;
 import net.accelbyte.sdk.api.session.wrappers.ConfigurationTemplate;
 import net.accelbyte.sdk.api.session.wrappers.GameSession;
@@ -63,7 +64,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 public class TestIntegrationServiceSession extends TestIntegration {
   @BeforeAll
   public void setup() throws Exception {
-    super.setup(false);
+    super.setup(false, IntegrationTestConfigRepository.Session);
 
     sdk.loginClient();
   }
@@ -71,9 +72,6 @@ public class TestIntegrationServiceSession extends TestIntegration {
   @Test
   @Order(1)
   public void testConfigurationTemplate() throws Exception {
-    if (isUsingAGSStarter()) {
-      return; // SKIP Temporarily disabled in AGS Starter due to issue in session service
-    }
 
     final String cfgTemplateName = "java_sdk_template_" + TestHelper.generateRandomId(4);
 
@@ -155,9 +153,6 @@ public class TestIntegrationServiceSession extends TestIntegration {
   @Test
   @Order(1)
   public void testGameSession() throws Exception {
-    if (isUsingAGSStarter()) {
-      return; // SKIP Temporarily disabled in AGS Starter due to issue in session service
-    }
 
     final String cfgTemplateName = "java_sdk_template_" + TestHelper.generateRandomId(4);
 
@@ -373,9 +368,6 @@ public class TestIntegrationServiceSession extends TestIntegration {
   @Test
   @Order(1)
   public void testParty() throws Exception {
-    if (isUsingAGSStarter()) {
-      return; // SKIP Temporarily disabled in AGS Starter due to issue in session service
-    }
 
     final String cfgTemplateName = "java_sdk_template_" + TestHelper.generateRandomId(4);
 
@@ -512,18 +504,24 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       // CASE Get party detail
 
-      final ApimodelsPartySessionResponse publicGetPartyResult1 =
+      final ApimodelsPartyQueryResponse partyData =
           partyWrapper
-              .publicGetParty(
-                  PublicGetParty.builder().namespace(namespace).partyId(partyId).build())
+              .adminQueryParties(
+                  AdminQueryParties.builder()
+                      .partyID(partyId)
+                      .namespace(namespace)
+                      .build())
               .ensureSuccess();
 
       // ESAC
 
-      assertNotNull(publicGetPartyResult1);
-      assertEquals(2, publicGetPartyResult1.getMembers().size());
+      assertNotNull(partyData);
+      assertFalse(partyData.getData().isEmpty(), "Expected at least one party in query result");
+      final ApimodelsPartySessionResponse party = partyData.getData().get(0);
+
+      assertEquals(2, party.getMembers().size());
       final List<String> userIds1 =
-          publicGetPartyResult1.getMembers().stream()
+          party.getMembers().stream()
               .map(ApimodelsUserResponse::getId)
               .collect(Collectors.toList());
       assertTrue(userIds1.contains(player1UserId));
@@ -539,26 +537,23 @@ public class TestIntegrationServiceSession extends TestIntegration {
 
       // ESAC
 
-      // CASE Query parties
-
-      partyWrapper.adminQueryParties(
-          net.accelbyte.sdk.api.session.operations.party.AdminQueryParties.builder()
-              .namespace(namespace)
-              .key(publicCreatePartyResult.getCode())
-              .build());
-
-      // ESAC
-
-      final ApimodelsPartySessionResponse publicGetPartyResult2 =
+      final ApimodelsPartyQueryResponse partyData2 =
           partyWrapper
-              .publicGetParty(
-                  PublicGetParty.builder().namespace(namespace).partyId(partyId).build())
+              .adminQueryParties(
+                  AdminQueryParties.builder()
+                      .partyID(partyId)
+                      .namespace(namespace)
+                      .build())
               .ensureSuccess();
 
-      assertNotNull(publicGetPartyResult2);
-      assertEquals(2, publicGetPartyResult2.getMembers().size());
+      assertNotNull(partyData2);
+      assertFalse(partyData2.getData().isEmpty(), "Expected at least one party in query result");
+      final ApimodelsPartySessionResponse party2 = partyData2.getData().get(0);
+
+      assertNotNull(party2);
+      assertEquals(2, party2.getMembers().size());
       final List<String> userIds2 =
-          publicGetPartyResult2.getMembers().stream()
+          party2.getMembers().stream()
               .filter(m -> !m.getStatus().equals("LEFT"))
               .map(ApimodelsUserResponse::getId)
               .collect(Collectors.toList());
