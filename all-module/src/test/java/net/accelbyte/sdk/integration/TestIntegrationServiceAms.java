@@ -94,7 +94,7 @@ public class TestIntegrationServiceAms extends TestIntegration {
       instanceIdFleet = infoInstances.getAvailableInstanceTypes().get(0).getId();
     }
 
-    if (imageIdFleet != "" && instanceIdFleet != "") {
+    if (!imageIdFleet.isEmpty() && !instanceIdFleet.isEmpty()) {
 
       // CASE Fleet create
 
