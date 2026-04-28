@@ -16,6 +16,7 @@ import net.accelbyte.sdk.core.AccelByteSDK;
 import net.accelbyte.sdk.core.AccessTokenPayload;
 import net.accelbyte.sdk.core.client.HttpClient;
 import net.accelbyte.sdk.core.client.OkhttpClient;
+import net.accelbyte.sdk.core.repository.DefaultConfigRepository;
 import net.accelbyte.sdk.core.repository.DefaultTokenRepository;
 import net.accelbyte.sdk.core.validator.UserAuthContext;
 import org.junit.jupiter.api.AfterAll;
@@ -181,7 +182,6 @@ public class TestIntegrationValidateToken extends TestIntegration {
   }
 
   @Test
-<<<<<<< HEAD
   @Order(2)
   public void testCustomPermissionClientToken() throws Exception {
     final AccelByteSDK customSdk =
@@ -198,7 +198,9 @@ public class TestIntegrationValidateToken extends TestIntegration {
     assertTrue(
         customSdk.validateToken(
             token, "CUSTOM:ADMIN:NAMESPACE:" + namespace + ":GUILD", 2));
-=======
+  }
+
+  @Test
   @Order(1)
   public void testValidateUserTokenRolePermission() throws Exception {
     if (isUsingAGSStarter()) {
@@ -233,11 +235,6 @@ public class TestIntegrationValidateToken extends TestIntegration {
       return; // SKIP
     }
 
-    if (!diffBaseUrl.contains("accelbyte.io")
-        || diffBaseUrl.contains("gamingservices.accelbyte.io")) {
-      return; // SKIP
-    }
-
     final DefaultConfigRepository diffConfig =
         new DefaultConfigRepository() {
           @Override public String getBaseURL() { return diffBaseUrl; }
@@ -252,11 +249,16 @@ public class TestIntegrationValidateToken extends TestIntegration {
             new AccelByteConfig(new OkhttpClient(), new DefaultTokenRepository(), diffConfig));
     diffSdk.loginClient();
 
+    sdk.loginUser(this.username, this.password);
     final String token = sdk.getSdkConfiguration().getTokenRepository().getToken();
+    // System.out.println("Token from primary SDK: " + token);
 
+    final String diffToken = diffSdk.getSdkConfiguration().getTokenRepository().getToken();
+    // System.out.println("Token from different-studio SDK: " + diffToken);
+
+    // The primary user's token should be rejected by the different-studio SDK
     final boolean result = diffSdk.validateToken(token);
     assertFalse(result, "Token from a different studio should be rejected");
->>>>>>> d50c2c2b (fix: implement fe token validation)
   }
 
   @AfterAll
