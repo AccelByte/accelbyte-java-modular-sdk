@@ -42,6 +42,9 @@ public class PublicPartyJoin implements Callable<Integer> {
     @Option(names = {"--partyId"}, description = "partyId")
     String partyId;
 
+    @Option(names = {"--body"}, description = "body")
+    String body;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -64,6 +67,7 @@ public class PublicPartyJoin implements Callable<Integer> {
                     net.accelbyte.sdk.api.session.operations.party.PublicPartyJoin.builder()
                             .namespace(namespace)
                             .partyId(partyId)
+                            .body(new ObjectMapper().readValue(body, ApimodelsJoinSessionRequest.class)) 
                             .build();
             final ApimodelsPartySessionResponse response =
                     wrapper.publicPartyJoin(operation).ensureSuccess();

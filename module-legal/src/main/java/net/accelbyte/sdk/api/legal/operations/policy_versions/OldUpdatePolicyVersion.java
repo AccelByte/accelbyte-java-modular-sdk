@@ -23,7 +23,10 @@ import net.accelbyte.sdk.core.util.Helper;
  * oldUpdatePolicyVersion
  *
  * <p>Update a particular policy version.
+ *
+ * @deprecated
  */
+@Deprecated
 @Getter
 @Setter
 public class OldUpdatePolicyVersion extends Operation {

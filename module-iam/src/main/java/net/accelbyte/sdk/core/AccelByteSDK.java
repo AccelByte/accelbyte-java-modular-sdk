@@ -148,7 +148,8 @@ public class AccelByteSDK implements RequestRunner {
           // Accept if:
           // 1. Exact match (e.g., token namespace == SDK namespace)
           // 2. Token is studio-level: tokenNamespace is "studio" and sdkNamespace is "studio-game"
-          // 3. SDK is studio-level validating a game-level token (sdkNamespace == tokenParentNamespace)
+          // 3. SDK is studio-level validating a game-level token (sdkNamespace ==
+          // tokenParentNamespace)
           final boolean namespaceMatch =
               sdkNamespace.equals(tokenNamespace)
                   || (!Strings.isNullOrEmpty(tokenNamespace)
@@ -201,11 +202,12 @@ public class AccelByteSDK implements RequestRunner {
     // - Otherwise, fall back to the SDK's configured namespace
     String sdkNamespace = sdkConfiguration.getConfigRepository().getNamespace();
     String effectiveNamespace =
-        Strings.isNullOrEmpty(authContext.getNamespace()) ? sdkNamespace : authContext.getNamespace();
+        Strings.isNullOrEmpty(authContext.getNamespace())
+            ? sdkNamespace
+            : authContext.getNamespace();
 
     String expandedResource =
-        expandResource(
-            permission.getResource(), effectiveNamespace, authContext.getUserId());
+        expandResource(permission.getResource(), effectiveNamespace, authContext.getUserId());
 
     List<Permission> originPermissions = tokenPayload.getPermissions();
 
@@ -467,8 +469,8 @@ public class AccelByteSDK implements RequestRunner {
   }
 
   /**
-   * Constructor for testing: accepts a pre-built namespace context cache so tests can inject
-   * static namespace context data without network calls.
+   * Constructor for testing: accepts a pre-built namespace context cache so tests can inject static
+   * namespace context data without network calls.
    */
   protected AccelByteSDK(
       AccelByteConfig sdkConfiguration,

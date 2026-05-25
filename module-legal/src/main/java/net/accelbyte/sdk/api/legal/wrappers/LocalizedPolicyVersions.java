@@ -36,7 +36,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldRetrieveLocalizedPolicyVersions
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveLocalizedPolicyVersionsOpResponse oldRetrieveLocalizedPolicyVersions(
       OldRetrieveLocalizedPolicyVersions input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -50,7 +52,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldCreateLocalizedPolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldCreateLocalizedPolicyVersionOpResponse oldCreateLocalizedPolicyVersion(
       OldCreateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -64,7 +68,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldRetrieveSingleLocalizedPolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveSingleLocalizedPolicyVersionOpResponse oldRetrieveSingleLocalizedPolicyVersion(
       OldRetrieveSingleLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -78,7 +84,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldUpdateLocalizedPolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldUpdateLocalizedPolicyVersionOpResponse oldUpdateLocalizedPolicyVersion(
       OldUpdateLocalizedPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -92,7 +100,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldRequestPresignedURL
+   * @deprecated
    */
+  @Deprecated
   public OldRequestPresignedURLOpResponse oldRequestPresignedURL(OldRequestPresignedURL input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -106,7 +116,9 @@ public class LocalizedPolicyVersions {
 
   /**
    * @see OldSetDefaultLocalizedPolicy
+   * @deprecated
    */
+  @Deprecated
   public OldSetDefaultLocalizedPolicyOpResponse oldSetDefaultLocalizedPolicy(
       OldSetDefaultLocalizedPolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

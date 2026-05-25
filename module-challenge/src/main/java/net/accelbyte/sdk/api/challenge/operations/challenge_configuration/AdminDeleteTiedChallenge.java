@@ -41,6 +41,7 @@ public class AdminDeleteTiedChallenge extends Operation {
   private String challengeCode;
 
   private String namespace;
+  private String safeDelete;
 
   /**
    * @param challengeCode required
@@ -49,9 +50,11 @@ public class AdminDeleteTiedChallenge extends Operation {
   @Builder
   // @deprecated 2022-08-29 - All args constructor may cause problems. Use builder instead.
   @Deprecated
-  public AdminDeleteTiedChallenge(String customBasePath, String challengeCode, String namespace) {
+  public AdminDeleteTiedChallenge(
+      String customBasePath, String challengeCode, String namespace, String safeDelete) {
     this.challengeCode = challengeCode;
     this.namespace = namespace;
+    this.safeDelete = safeDelete;
     super.customBasePath = customBasePath != null ? customBasePath : "";
 
     securities.add("Bearer");
@@ -67,6 +70,13 @@ public class AdminDeleteTiedChallenge extends Operation {
       pathParams.put("namespace", this.namespace);
     }
     return pathParams;
+  }
+
+  @Override
+  public Map<String, List<String>> getQueryParams() {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put("safeDelete", this.safeDelete == null ? null : Arrays.asList(this.safeDelete));
+    return queryParams;
   }
 
   @Override
@@ -123,4 +133,10 @@ public class AdminDeleteTiedChallenge extends Operation {
   }
   */
 
+  @Override
+  protected Map<String, String> getCollectionFormatMap() {
+    Map<String, String> result = new HashMap<>();
+    result.put("safeDelete", "None");
+    return result;
+  }
 }

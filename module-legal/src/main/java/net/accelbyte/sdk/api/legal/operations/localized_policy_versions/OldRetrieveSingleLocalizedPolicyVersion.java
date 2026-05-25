@@ -23,7 +23,10 @@ import net.accelbyte.sdk.core.util.Helper;
  * oldRetrieveSingleLocalizedPolicyVersion
  *
  * <p>Retrieve a version of a particular country-specific policy.
+ *
+ * @deprecated
  */
+@Deprecated
 @Getter
 @Setter
 public class OldRetrieveSingleLocalizedPolicyVersion extends Operation {

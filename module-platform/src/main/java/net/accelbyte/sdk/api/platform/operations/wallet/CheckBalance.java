@@ -115,7 +115,9 @@ public class CheckBalance extends Operation {
 
     if (code == 204) {
       response.setSuccess(true);
-    } else if ((code == 200) || (code == 201) || (code == 202)) {
+    } else if ((code == 200) || (code == 201)) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setData(new CheckBalanceResponse().createFromJson(json));
       response.setSuccess(true);
     } else if (code == 400) {
       final String json = Helper.convertInputStreamToString(payload);
@@ -127,11 +129,13 @@ public class CheckBalance extends Operation {
   }
 
   /*
-  public void handleEmptyResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public CheckBalanceResponse parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
+      final String json = Helper.convertInputStreamToString(payload);
+      return new CheckBalanceResponse().createFromJson(json);
   }
   */
 

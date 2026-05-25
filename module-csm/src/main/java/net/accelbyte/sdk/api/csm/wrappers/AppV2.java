@@ -99,6 +99,19 @@ public class AppV2 {
   }
 
   /**
+   * @see ApplyAppConfigV2
+   */
+  public ApplyAppConfigV2OpResponse applyAppConfigV2(ApplyAppConfigV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see UpdateAppResourcesV2
    */
   public UpdateAppResourcesV2OpResponse updateAppResourcesV2(UpdateAppResourcesV2 input)

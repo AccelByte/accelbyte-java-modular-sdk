@@ -15,6 +15,7 @@ import lombok.Setter;
 import net.accelbyte.sdk.api.legal.models.*;
 import net.accelbyte.sdk.core.ApiResponse;
 
+@Deprecated
 @Getter
 @Setter
 public class OldSetDefaultLocalizedPolicyOpResponse extends ApiResponse {

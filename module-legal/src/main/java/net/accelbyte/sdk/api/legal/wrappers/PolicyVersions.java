@@ -36,7 +36,9 @@ public class PolicyVersions {
 
   /**
    * @see OldUpdatePolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldUpdatePolicyVersionOpResponse oldUpdatePolicyVersion(OldUpdatePolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -50,7 +52,9 @@ public class PolicyVersions {
 
   /**
    * @see OldPublishPolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldPublishPolicyVersionOpResponse oldPublishPolicyVersion(OldPublishPolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -64,7 +68,9 @@ public class PolicyVersions {
 
   /**
    * @see OldRetrieveSinglePolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveSinglePolicyVersionOpResponse oldRetrieveSinglePolicyVersion(
       OldRetrieveSinglePolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -78,7 +84,9 @@ public class PolicyVersions {
 
   /**
    * @see OldCreatePolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldCreatePolicyVersionOpResponse oldCreatePolicyVersion(OldCreatePolicyVersion input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

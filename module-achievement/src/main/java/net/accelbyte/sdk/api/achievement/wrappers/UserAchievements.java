@@ -49,6 +49,20 @@ public class UserAchievements {
   }
 
   /**
+   * @see AdminBatchQueryUserAchievements
+   */
+  public AdminBatchQueryUserAchievementsOpResponse adminBatchQueryUserAchievements(
+      AdminBatchQueryUserAchievements input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminBulkUnlockAchievement
    */
   public AdminBulkUnlockAchievementOpResponse adminBulkUnlockAchievement(

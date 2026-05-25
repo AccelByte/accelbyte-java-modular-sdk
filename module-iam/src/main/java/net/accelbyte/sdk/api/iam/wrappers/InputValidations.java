@@ -35,7 +35,9 @@ public class InputValidations {
 
   /**
    * @see AdminGetInputValidations
+   * @deprecated
    */
+  @Deprecated
   public AdminGetInputValidationsOpResponse adminGetInputValidations(AdminGetInputValidations input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -49,7 +51,9 @@ public class InputValidations {
 
   /**
    * @see AdminUpdateInputValidations
+   * @deprecated
    */
+  @Deprecated
   public AdminUpdateInputValidationsOpResponse adminUpdateInputValidations(
       AdminUpdateInputValidations input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -63,7 +67,9 @@ public class InputValidations {
 
   /**
    * @see AdminResetInputValidations
+   * @deprecated
    */
+  @Deprecated
   public AdminResetInputValidationsOpResponse adminResetInputValidations(
       AdminResetInputValidations input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -76,8 +82,54 @@ public class InputValidations {
   }
 
   /**
-   * @see PublicGetInputValidations
+   * @see AdminGetNamespaceScopedInputValidations
    */
+  public AdminGetNamespaceScopedInputValidationsOpResponse adminGetNamespaceScopedInputValidations(
+      AdminGetNamespaceScopedInputValidations input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminUpdateNamespaceScopedInputValidations
+   */
+  public AdminUpdateNamespaceScopedInputValidationsOpResponse
+      adminUpdateNamespaceScopedInputValidations(AdminUpdateNamespaceScopedInputValidations input)
+          throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see AdminResetNamespaceScopedInputValidations
+   */
+  public AdminResetNamespaceScopedInputValidationsOpResponse
+      adminResetNamespaceScopedInputValidations(AdminResetNamespaceScopedInputValidations input)
+          throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicGetInputValidations
+   * @deprecated
+   */
+  @Deprecated
   public PublicGetInputValidationsOpResponse publicGetInputValidations(
       PublicGetInputValidations input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -91,9 +143,41 @@ public class InputValidations {
 
   /**
    * @see PublicGetInputValidationByField
+   * @deprecated
    */
+  @Deprecated
   public PublicGetInputValidationByFieldOpResponse publicGetInputValidationByField(
       PublicGetInputValidationByField input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicGetNamespaceScopedInputValidations
+   */
+  public PublicGetNamespaceScopedInputValidationsOpResponse
+      publicGetNamespaceScopedInputValidations(PublicGetNamespaceScopedInputValidations input)
+          throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicGetNamespaceScopedInputValidationByField
+   */
+  public PublicGetNamespaceScopedInputValidationByFieldOpResponse
+      publicGetNamespaceScopedInputValidationByField(
+          PublicGetNamespaceScopedInputValidationByField input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

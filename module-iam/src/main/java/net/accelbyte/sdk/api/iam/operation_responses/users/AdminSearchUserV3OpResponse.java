@@ -26,6 +26,8 @@ public class AdminSearchUserV3OpResponse
 
   private RestErrorResponse error403 = null;
 
+  private RestErrorResponse error429 = null;
+
   private RestErrorResponse error500 = null;
 
   public String getFullOperationId() {

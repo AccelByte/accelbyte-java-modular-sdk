@@ -97,10 +97,6 @@ public class AdminGetRoleOverrideConfigV3 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setData(new ModelRoleOverrideResponse().createFromJson(json));
       response.setSuccess(true);
-    } else if (code == 400) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setError400(new RestErrorResponse().createFromJson(json));
-      response.setError(response.getError400().translateToApiError());
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError401(new RestErrorResponse().createFromJson(json));

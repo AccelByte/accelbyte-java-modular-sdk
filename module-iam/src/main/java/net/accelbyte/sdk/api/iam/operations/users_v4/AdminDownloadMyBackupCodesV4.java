@@ -22,7 +22,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminDownloadMyBackupCodesV4
  *
- * <p>This endpoint is used to download backup codes.
+ * <p>Downloads backup codes as a file.
  *
  * @deprecated
  */

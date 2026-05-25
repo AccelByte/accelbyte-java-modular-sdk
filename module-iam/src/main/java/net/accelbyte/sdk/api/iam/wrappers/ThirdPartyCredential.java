@@ -182,6 +182,20 @@ public class ThirdPartyCredential {
   }
 
   /**
+   * @see GetThirdPartyLoginPlatformDefaultsV3
+   */
+  public GetThirdPartyLoginPlatformDefaultsV3OpResponse getThirdPartyLoginPlatformDefaultsV3(
+      GetThirdPartyLoginPlatformDefaultsV3 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
    */
   public RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3OpResponse

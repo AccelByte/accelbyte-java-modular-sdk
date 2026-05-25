@@ -34,8 +34,24 @@ public class ManagedResources {
   }
 
   /**
-   * @see CreateNoSQLDatabaseCredentialV2
+   * @see CreateNewNoSQLDatabaseCredentialV2
    */
+  public CreateNewNoSQLDatabaseCredentialV2OpResponse createNewNoSQLDatabaseCredentialV2(
+      CreateNewNoSQLDatabaseCredentialV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see CreateNoSQLDatabaseCredentialV2
+   * @deprecated
+   */
+  @Deprecated
   public CreateNoSQLDatabaseCredentialV2OpResponse createNoSQLDatabaseCredentialV2(
       CreateNoSQLDatabaseCredentialV2 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

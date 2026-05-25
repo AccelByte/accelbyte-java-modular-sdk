@@ -29,7 +29,10 @@ import net.accelbyte.sdk.core.util.Helper;
  *
  * <p>* policy with COUNTRY_GROUP type include multiple countries and apply the same policy across
  * the entire list of countries
+ *
+ * @deprecated
  */
+@Deprecated
 @Getter
 @Setter
 public class OldPartialUpdatePolicy extends Operation {

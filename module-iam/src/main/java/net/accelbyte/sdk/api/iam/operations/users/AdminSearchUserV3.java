@@ -22,21 +22,20 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminSearchUserV3
  *
- * <p>Endpoint behavior : - By default this endpoint searches all users on the specified namespace.
- * - If query parameter is defined, endpoint will search users whose email address, display name,
- * username, or third party partially match with the query. - The query parameter length must be
- * between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length
- * is 3 to 40 characters. Otherwise, the database will not be queried. - If startDate and endDate
- * parameters is defined, endpoint will search users which created on the certain date range. - If
- * query, startDate and endDate parameters are defined, endpoint will search users whose email
- * address and display name match and created on the certain date range. - If startDate parameter is
- * defined, endpoint will search users that created start from the defined date. - If endDate
- * parameter is defined, endpoint will search users that created until the defined date. - If
- * platformId parameter is defined and by parameter is using thirdparty, endpoint will search users
+ * <p>Behavior : - By default, searches all users on the specified namespace. - If query parameter
+ * is defined, searches users whose email address, display name, username, or third party partially
+ * match with the query. - The query parameter length must be between 3 and 30 characters. For email
+ * address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the
+ * database will not be queried. - If startDate and endDate parameters is defined, searches users
+ * which created on the certain date range. - If query, startDate and endDate parameters are
+ * defined, searches users whose email address and display name match and created on the certain
+ * date range. - If startDate parameter is defined, searches users that created start from the
+ * defined date. - If endDate parameter is defined, searches users that created until the defined
+ * date. - If platformId parameter is defined and by parameter is using thirdparty, searches users
  * based on the platformId they have linked to. - If platformBy parameter is defined and by
- * parameter is using thirdparty, endpoint will search users based on the platformUserId or
- * platformDisplayName they have linked to, example value: platformUserId or platformDisplayName. -
- * If limit is not defined, The default limit is 100.
+ * parameter is using thirdparty, searches users based on the platformUserId or platformDisplayName
+ * they have linked to, example value: platformUserId or platformDisplayName. - If limit is not
+ * defined, The default limit is 100.
  *
  * <p>GraphQL-Like Querying: - By default, the API only returns the minimum fields -> [displayName,
  * authType, createdAt, uniqueDisplayName, deletionStatus, enabled, emailAddress, skipLoginQueue,
@@ -51,9 +50,9 @@ import net.accelbyte.sdk.core.util.Helper;
  * under the game studio namespace - If super admin search in game namespace, the result will be all
  * game admin users and players under the game namespace - If game admin search in their game studio
  * namespace, the result will be all game admin user in the studio namespace - If game admin search
- * in their game namespace, the result will be all player in the game namespace
- *
- * <p>action code : 10133
+ * in their game namespace, the result will be all player in the game namespace - If IAM client
+ * token (from studio namespace or game namespace) with ADMIN:NAMESPACE:{namespace}:USER permission
+ * searches in a game namespace, the result will be all players in that game namespace
  */
 @Getter
 @Setter
@@ -197,6 +196,10 @@ public class AdminSearchUserV3 extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new RestErrorResponse().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
+    } else if (code == 429) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError429(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError429().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new RestErrorResponse().createFromJson(json));

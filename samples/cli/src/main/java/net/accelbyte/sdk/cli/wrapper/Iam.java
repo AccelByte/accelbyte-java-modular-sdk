@@ -8,6 +8,7 @@
 
 package net.accelbyte.sdk.cli.wrapper;
 
+import net.accelbyte.sdk.cli.api.iam.o_auth2_0.*;
 import net.accelbyte.sdk.cli.api.iam.bans.*;
 import net.accelbyte.sdk.cli.api.iam.clients.*;
 import net.accelbyte.sdk.cli.api.iam.users.*;
@@ -24,7 +25,6 @@ import net.accelbyte.sdk.cli.api.iam.profile_update_strategy.*;
 import net.accelbyte.sdk.cli.api.iam.override_role_config_v3.*;
 import net.accelbyte.sdk.cli.api.iam.account_identifier_tag.*;
 import net.accelbyte.sdk.cli.api.iam.o_auth2_0_extension.*;
-import net.accelbyte.sdk.cli.api.iam.o_auth2_0.*;
 import net.accelbyte.sdk.cli.api.iam.sso_saml_2_0.*;
 import net.accelbyte.sdk.cli.api.iam.sso.*;
 import net.accelbyte.sdk.cli.api.iam.users_v4.*;
@@ -36,6 +36,7 @@ import picocli.CommandLine.Command;
 @Command(name = "iam",
         mixinStandardHelpOptions = true,
         subcommands = {
+                GetAuthorizationServerMetadataWithNamespace.class,
                 GetBansType.class,
                 GetListBanReason.class,
                 GetClients.class,
@@ -145,6 +146,7 @@ import picocli.CommandLine.Command;
                 AdminListClientAvailablePermissions.class,
                 AdminUpdateAvailablePermissionsByModule.class,
                 AdminDeleteConfigPermissionsByGroup.class,
+                AdminUpdateModulePackage.class,
                 AdminListClientTemplates.class,
                 AdminGetInputValidations.class,
                 AdminUpdateInputValidations.class,
@@ -171,6 +173,9 @@ import picocli.CommandLine.Command;
                 AdminGetCountryListV3.class,
                 AdminGetCountryBlacklistV3.class,
                 AdminAddCountryBlacklistV3.class,
+                AdminGetNamespaceScopedInputValidations.class,
+                AdminUpdateNamespaceScopedInputValidations.class,
+                AdminResetNamespaceScopedInputValidations.class,
                 AdminGetLoginAllowlistV3.class,
                 AdminUpdateLoginAllowlistV3.class,
                 RetrieveAllThirdPartyLoginPlatformCredentialV3.class,
@@ -256,6 +261,7 @@ import picocli.CommandLine.Command;
                 AdminVerifyUserWithoutVerificationCodeV3.class,
                 AdminUpdateClientSecretV3.class,
                 AdminCheckThirdPartyLoginPlatformAvailabilityV3.class,
+                GetThirdPartyLoginPlatformDefaultsV3.class,
                 AdminGetRolesV3.class,
                 AdminCreateRoleV3.class,
                 AdminGetRoleV3.class,
@@ -295,6 +301,7 @@ import picocli.CommandLine.Command;
                 Change2faMethod.class,
                 Verify2faCode.class,
                 Verify2faCodeForward.class,
+                OAuthDynamicClientRegisterWithNamespaceV3.class,
                 RetrieveUserThirdPartyPlatformTokenV3.class,
                 AuthCodeRequestV3.class,
                 PlatformTokenGrantV3.class,
@@ -310,6 +317,8 @@ import picocli.CommandLine.Command;
                 PublicGetCountryAgeRestrictionV3.class,
                 PublicGetConfigValueV3.class,
                 PublicGetCountryListV3.class,
+                PublicGetNamespaceScopedInputValidations.class,
+                PublicGetNamespaceScopedInputValidationByField.class,
                 RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.class,
                 RetrieveActiveOIDCClientsPublicV3.class,
                 PublicListUserIDByPlatformUserIDsV3.class,

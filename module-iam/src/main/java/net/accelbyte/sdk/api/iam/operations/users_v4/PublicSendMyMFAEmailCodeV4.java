@@ -22,8 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * PublicSendMyMFAEmailCodeV4
  *
- * <p>This endpoint is used to send email code. ---------------- Supported values of action: *
- * ChangePassword * DisableMFAEmail
+ * <p>Sends an MFA email code. ---------------- Supported values of action: * ChangePassword *
+ * DisableMFAEmail
  */
 @Getter
 @Setter

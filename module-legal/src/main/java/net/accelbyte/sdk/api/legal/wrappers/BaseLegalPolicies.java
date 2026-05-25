@@ -36,7 +36,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see RetrieveAllLegalPolicies
+   * @deprecated
    */
+  @Deprecated
   public RetrieveAllLegalPoliciesOpResponse retrieveAllLegalPolicies(RetrieveAllLegalPolicies input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -50,7 +52,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see OldCreatePolicy
+   * @deprecated
    */
+  @Deprecated
   public OldCreatePolicyOpResponse oldCreatePolicy(OldCreatePolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -63,7 +67,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see OldRetrieveSinglePolicy
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveSinglePolicyOpResponse oldRetrieveSinglePolicy(OldRetrieveSinglePolicy input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -77,7 +83,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see OldPartialUpdatePolicy
+   * @deprecated
    */
+  @Deprecated
   public OldPartialUpdatePolicyOpResponse oldPartialUpdatePolicy(OldPartialUpdatePolicy input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -91,7 +99,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see OldRetrievePolicyCountry
+   * @deprecated
    */
+  @Deprecated
   public OldRetrievePolicyCountryOpResponse oldRetrievePolicyCountry(OldRetrievePolicyCountry input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -105,7 +115,9 @@ public class BaseLegalPolicies {
 
   /**
    * @see OldRetrieveAllPolicyTypes
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveAllPolicyTypesOpResponse oldRetrieveAllPolicyTypes(
       OldRetrieveAllPolicyTypes input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

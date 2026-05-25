@@ -36,7 +36,9 @@ public class UserInfo {
 
   /**
    * @see GetUserInfoStatus
+   * @deprecated
    */
+  @Deprecated
   public GetUserInfoStatusOpResponse getUserInfoStatus(GetUserInfoStatus input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

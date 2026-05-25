@@ -17,7 +17,6 @@ import net.accelbyte.sdk.api.platform.models.*;
 import net.accelbyte.sdk.api.platform.operation_responses.payment_station.PublicGetQRCodeOpResponse;
 import net.accelbyte.sdk.core.HttpResponseException;
 import net.accelbyte.sdk.core.Operation;
-import net.accelbyte.sdk.core.util.Helper;
 
 /**
  * publicGetQRCode
@@ -92,22 +91,20 @@ public class PublicGetQRCode extends Operation {
     if (code == 204) {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
-      final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new BinarySchema().createFromJson(json));
       response.setSuccess(true);
+      response.setData(payload);
     }
 
     return response;
   }
 
   /*
-  public BinarySchema parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public InputStream parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
-      final String json = Helper.convertInputStreamToString(payload);
-      return new BinarySchema().createFromJson(json);
+      return payload;
   }
   */
 

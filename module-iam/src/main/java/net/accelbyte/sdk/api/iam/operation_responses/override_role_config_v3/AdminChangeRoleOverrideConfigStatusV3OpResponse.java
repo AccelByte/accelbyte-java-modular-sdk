@@ -20,6 +20,8 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 public class AdminChangeRoleOverrideConfigStatusV3OpResponse
     extends ApiResponseWithData<ModelRoleOverrideResponse> {
 
+  private RestErrorResponse error400 = null;
+
   private RestErrorResponse error401 = null;
 
   private RestErrorResponse error403 = null;

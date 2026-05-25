@@ -36,7 +36,9 @@ public class Policies {
 
   /**
    * @see RetrievePolicies
+   * @deprecated
    */
+  @Deprecated
   public RetrievePoliciesOpResponse retrievePolicies(RetrievePolicies input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -49,7 +51,9 @@ public class Policies {
 
   /**
    * @see OldUpdatePolicy
+   * @deprecated
    */
+  @Deprecated
   public OldUpdatePolicyOpResponse oldUpdatePolicy(OldUpdatePolicy input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
@@ -62,7 +66,9 @@ public class Policies {
 
   /**
    * @see OldSetDefaultPolicy
+   * @deprecated
    */
+  @Deprecated
   public OldSetDefaultPolicyOpResponse oldSetDefaultPolicy(OldSetDefaultPolicy input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

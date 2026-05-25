@@ -184,6 +184,34 @@ public class Party {
   }
 
   /**
+   * @see PublicGetPartyPassword
+   */
+  public PublicGetPartyPasswordOpResponse publicGetPartyPassword(PublicGetPartyPassword input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicUpdatePartyPassword
+   */
+  public PublicUpdatePartyPasswordOpResponse publicUpdatePartyPassword(
+      PublicUpdatePartyPassword input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicPartyJoin
    */
   public PublicPartyJoinOpResponse publicPartyJoin(PublicPartyJoin input) throws Exception {

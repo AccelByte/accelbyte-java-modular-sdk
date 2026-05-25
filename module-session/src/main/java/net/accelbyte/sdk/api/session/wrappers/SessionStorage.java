@@ -159,4 +159,61 @@ public class SessionStorage {
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
+
+  /**
+   * @see PublicReplaceSessionStorageLeaderV2
+   */
+  public PublicReplaceSessionStorageLeaderV2OpResponse publicReplaceSessionStorageLeaderV2(
+      PublicReplaceSessionStorageLeaderV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicUpdateInsertSessionStorageLeaderV2
+   */
+  public PublicUpdateInsertSessionStorageLeaderV2OpResponse
+      publicUpdateInsertSessionStorageLeaderV2(PublicUpdateInsertSessionStorageLeaderV2 input)
+          throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicReplaceSessionStorageUserV2
+   */
+  public PublicReplaceSessionStorageUserV2OpResponse publicReplaceSessionStorageUserV2(
+      PublicReplaceSessionStorageUserV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicUpdateInsertSessionStorageUserV2
+   */
+  public PublicUpdateInsertSessionStorageUserV2OpResponse publicUpdateInsertSessionStorageUserV2(
+      PublicUpdateInsertSessionStorageUserV2 input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
 }

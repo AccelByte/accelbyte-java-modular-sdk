@@ -50,7 +50,9 @@ public class Agreement {
 
   /**
    * @see OldRetrieveAcceptedAgreements
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveAcceptedAgreementsOpResponse oldRetrieveAcceptedAgreements(
       OldRetrieveAcceptedAgreements input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -64,7 +66,9 @@ public class Agreement {
 
   /**
    * @see OldRetrieveAllUsersByPolicyVersion
+   * @deprecated
    */
+  @Deprecated
   public OldRetrieveAllUsersByPolicyVersionOpResponse oldRetrieveAllUsersByPolicyVersion(
       OldRetrieveAllUsersByPolicyVersion input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

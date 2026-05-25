@@ -22,8 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminSearchUsersV2
  *
- * <p>## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute
- * endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
+ * <p>**This endpoint is deprecated.** **Endpoint migration guide** - **Substitute endpoint:
+ * _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
  *
  * @deprecated
  */

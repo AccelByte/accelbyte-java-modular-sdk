@@ -23,8 +23,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * UpdateClientPermission
  *
- * <p>## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute
- * endpoint: _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
+ * <p>**This endpoint is deprecated.** **Endpoint migration guide** - **Substitute endpoint:
+ * _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
  *
  * @deprecated
  */

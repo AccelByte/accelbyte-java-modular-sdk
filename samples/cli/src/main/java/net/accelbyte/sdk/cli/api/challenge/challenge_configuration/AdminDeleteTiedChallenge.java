@@ -42,6 +42,9 @@ public class AdminDeleteTiedChallenge implements Callable<Integer> {
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--safeDelete"}, description = "safeDelete")
+    String safeDelete;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -64,6 +67,7 @@ public class AdminDeleteTiedChallenge implements Callable<Integer> {
                     net.accelbyte.sdk.api.challenge.operations.challenge_configuration.AdminDeleteTiedChallenge.builder()
                             .challengeCode(challengeCode)
                             .namespace(namespace)
+                            .safeDelete(safeDelete)
                             .build();
                     wrapper.adminDeleteTiedChallenge(operation).ensureSuccess();
             log.info("Operation successful");

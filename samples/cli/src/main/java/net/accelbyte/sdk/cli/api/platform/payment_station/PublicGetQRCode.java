@@ -65,10 +65,12 @@ public class PublicGetQRCode implements Callable<Integer> {
                             .namespace(namespace)
                             .code(code)
                             .build();
-            final BinarySchema response =
+            final InputStream response =
                     wrapper.publicGetQRCode(operation).ensureSuccess();
-            final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-            log.info("Operation successful\n{}", responseString);
+            final File outputFile = new File("response.out");
+            java.nio.file.Files.copy(response, outputFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            org.apache.commons.io.IOUtils.closeQuietly(response);
+            log.info("Operation successful\n{}", "response.out");
             return 0;
         } catch (HttpResponseException e) {
             log.error(String.format("Operation failed with HTTP response %s\n{}", e.getHttpCode()), e);

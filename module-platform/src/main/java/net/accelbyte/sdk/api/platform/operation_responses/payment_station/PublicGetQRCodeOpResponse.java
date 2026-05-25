@@ -17,7 +17,7 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetQRCodeOpResponse extends ApiResponseWithData<BinarySchema> {
+public class PublicGetQRCodeOpResponse extends ApiResponseWithData<InputStream> {
 
   public String getFullOperationId() {
     return "net.accelbyte.sdk.api.platform.operations.payment_station.PublicGetQRCode";

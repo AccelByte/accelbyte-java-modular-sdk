@@ -35,7 +35,9 @@ public class AdminChainingOperations {
 
   /**
    * @see AdminCreateChainingOperations
+   * @deprecated
    */
+  @Deprecated
   public AdminCreateChainingOperationsOpResponse adminCreateChainingOperations(
       AdminCreateChainingOperations input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {

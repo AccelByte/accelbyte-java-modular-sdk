@@ -22,7 +22,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminUnbanDeviceV4
  *
- * <p>This is the endpoint for an admin to unban device
+ * <p>Unbans a device (admin operation).
  */
 @Getter
 @Setter

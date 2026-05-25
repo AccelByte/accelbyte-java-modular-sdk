@@ -22,7 +22,7 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * AdminRemoveRoleManagersV3
  *
- * <p>Role can only be assigned to other users by the role's manager. action code: 10409
+ * <p>Role can only be assigned to other users by the role's manager.
  */
 @Getter
 @Setter

@@ -34,6 +34,21 @@ public class OAuth20 {
   }
 
   /**
+   * @see GetAuthorizationServerMetadataWithNamespace
+   */
+  public GetAuthorizationServerMetadataWithNamespaceOpResponse
+      getAuthorizationServerMetadataWithNamespace(GetAuthorizationServerMetadataWithNamespace input)
+          throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see AdminRetrieveUserThirdPartyPlatformTokenV3
    */
   public AdminRetrieveUserThirdPartyPlatformTokenV3OpResponse
@@ -146,6 +161,21 @@ public class OAuth20 {
    */
   public Verify2faCodeForwardOpResponse verify2faCodeForward(Verify2faCodeForward input)
       throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see OAuthDynamicClientRegisterWithNamespaceV3
+   */
+  public OAuthDynamicClientRegisterWithNamespaceV3OpResponse
+      oAuthDynamicClientRegisterWithNamespaceV3(OAuthDynamicClientRegisterWithNamespaceV3 input)
+          throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

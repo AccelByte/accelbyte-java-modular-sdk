@@ -1775,7 +1775,9 @@ public class Users {
 
   /**
    * @see AdminDeleteUserRolesV3
+   * @deprecated
    */
+  @Deprecated
   public AdminDeleteUserRolesV3OpResponse adminDeleteUserRolesV3(AdminDeleteUserRolesV3 input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -1803,7 +1805,9 @@ public class Users {
 
   /**
    * @see AdminAddUserRoleV3
+   * @deprecated
    */
+  @Deprecated
   public AdminAddUserRoleV3OpResponse adminAddUserRoleV3(AdminAddUserRoleV3 input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -1817,7 +1821,9 @@ public class Users {
 
   /**
    * @see AdminDeleteUserRoleV3
+   * @deprecated
    */
+  @Deprecated
   public AdminDeleteUserRoleV3OpResponse adminDeleteUserRoleV3(AdminDeleteUserRoleV3 input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
@@ -2442,7 +2448,9 @@ public class Users {
 
   /**
    * @see PublicLinkPlatformAccount
+   * @deprecated
    */
+  @Deprecated
   public PublicLinkPlatformAccountOpResponse publicLinkPlatformAccount(
       PublicLinkPlatformAccount input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
