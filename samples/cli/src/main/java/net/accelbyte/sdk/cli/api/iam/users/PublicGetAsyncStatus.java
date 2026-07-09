@@ -65,7 +65,7 @@ public class PublicGetAsyncStatus implements Callable<Integer> {
                             .namespace(namespace)
                             .requestId(requestId)
                             .build();
-            final ModelLinkRequest response =
+            final ModelReAuthRequest response =
                     wrapper.publicGetAsyncStatus(operation).ensureSuccess();
             final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
             log.info("Operation successful\n{}", responseString);

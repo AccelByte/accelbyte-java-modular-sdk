@@ -42,6 +42,9 @@ public class GetAllTimeLeaderboardRankingAdminV3 implements Callable<Integer> {
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--includeHiddenUsers"}, description = "includeHiddenUsers")
+    Boolean includeHiddenUsers;
+
     @Option(names = {"--limit"}, description = "limit")
     Integer limit;
 
@@ -70,6 +73,7 @@ public class GetAllTimeLeaderboardRankingAdminV3 implements Callable<Integer> {
                     net.accelbyte.sdk.api.leaderboard.operations.leaderboard_data_v3.GetAllTimeLeaderboardRankingAdminV3.builder()
                             .leaderboardCode(leaderboardCode)
                             .namespace(namespace)
+                            .includeHiddenUsers(includeHiddenUsers)
                             .limit(limit)
                             .offset(offset)
                             .build();

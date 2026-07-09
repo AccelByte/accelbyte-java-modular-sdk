@@ -45,6 +45,9 @@ public class GetCurrentCycleLeaderboardRankingAdminV3 implements Callable<Intege
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--includeHiddenUsers"}, description = "includeHiddenUsers")
+    Boolean includeHiddenUsers;
+
     @Option(names = {"--limit"}, description = "limit")
     Integer limit;
 
@@ -77,6 +80,7 @@ public class GetCurrentCycleLeaderboardRankingAdminV3 implements Callable<Intege
                             .cycleId(cycleId)
                             .leaderboardCode(leaderboardCode)
                             .namespace(namespace)
+                            .includeHiddenUsers(includeHiddenUsers)
                             .limit(limit)
                             .offset(offset)
                             .previousVersion(previousVersion)

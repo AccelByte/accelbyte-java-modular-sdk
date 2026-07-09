@@ -22,7 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * publicGameSessionCancel
  *
- * <p>cancel a game session invitation.
+ * <p>Cancels a pending game session invitation sent to the specified user. Only the session leader
+ * or the inviting member can cancel the invitation.
  */
 @Getter
 @Setter

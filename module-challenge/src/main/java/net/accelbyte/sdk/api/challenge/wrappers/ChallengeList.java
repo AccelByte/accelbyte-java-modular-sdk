@@ -34,9 +34,10 @@ public class ChallengeList {
   }
 
   /**
-   * @see GetChallenges
+   * @see PublicGetChallenges
    */
-  public GetChallengesOpResponse getChallenges(GetChallenges input) throws Exception {
+  public PublicGetChallengesOpResponse publicGetChallenges(PublicGetChallenges input)
+      throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

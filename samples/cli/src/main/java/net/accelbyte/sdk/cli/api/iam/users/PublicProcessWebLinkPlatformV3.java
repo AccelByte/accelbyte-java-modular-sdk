@@ -73,7 +73,7 @@ public class PublicProcessWebLinkPlatformV3 implements Callable<Integer> {
                             .code(code != null ? code : null)
                             .state(state != null ? state : null)
                             .build();
-            final ModelLinkRequest response =
+            final ModelReAuthRequest response =
                     wrapper.publicProcessWebLinkPlatformV3(operation).ensureSuccess();
             final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
             log.info("Operation successful\n{}", responseString);

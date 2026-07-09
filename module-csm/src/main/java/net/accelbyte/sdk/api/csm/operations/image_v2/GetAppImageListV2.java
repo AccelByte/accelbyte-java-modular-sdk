@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * GetAppImageListV2
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
- *
  * <p>Get a list of container images
  *
  * <p>Default 'cached' parameter is 'true'

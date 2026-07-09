@@ -22,7 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * adminSyncDSMCConfiguration
  *
- * <p>sync dsmc configuration.
+ * <p>**Deprecated.** Synchronizes the dedicated server manager controller configuration from DSMC.
+ * The DSMC config is cached locally for use during session creation.
  *
  * @deprecated
  */

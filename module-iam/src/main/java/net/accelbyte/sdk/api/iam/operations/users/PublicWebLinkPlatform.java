@@ -22,9 +22,15 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * PublicWebLinkPlatform
  *
- * <p>Generates a third party login page which will redirect to the establish API. Supported
- * platforms: - ps4web - xblweb - steamopenid - epicgames - facebook - twitch - google - apple -
- * snapchat - discord - amazon - oculusweb
+ * <p>Generates a redirect to a third party login page for account linking authentication.
+ *
+ * <p>Supported platforms: - ps4web - xblweb - steamopenid - epicgames - facebook - twitch - google
+ * - apple - snapchat - discord - amazon - oculusweb
+ *
+ * <p>## New API version
+ *
+ * <p>This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is
+ * recommended for new integrations.
  */
 @Getter
 @Setter
@@ -124,6 +130,10 @@ public class PublicWebLinkPlatform extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError404(new RestErrorResponse().createFromJson(json));
       response.setError(response.getError404().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
     return response;

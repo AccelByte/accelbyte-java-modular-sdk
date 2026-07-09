@@ -62,9 +62,9 @@ public class ChallengeProgression {
   }
 
   /**
-   * @see EvaluateMyProgress
+   * @see PublicEvaluateMyProgress
    */
-  public EvaluateMyProgressOpResponse evaluateMyProgress(EvaluateMyProgress input)
+  public PublicEvaluateMyProgressOpResponse publicEvaluateMyProgress(PublicEvaluateMyProgress input)
       throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

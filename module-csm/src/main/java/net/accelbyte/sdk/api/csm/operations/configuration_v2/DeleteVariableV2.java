@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * DeleteVariableV2
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
- *
  * <p>Delete an environment variable by its config id
  */
 @Getter

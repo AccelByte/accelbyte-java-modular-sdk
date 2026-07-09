@@ -33,6 +33,8 @@
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | GET | AdminGetGoal | [AdminGetGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminGetGoal.java) | [AdminGetGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminGetGoal.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | PUT | AdminUpdateGoals | [AdminUpdateGoals](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminUpdateGoals.java) | [AdminUpdateGoals](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminUpdateGoals.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}` | DELETE | AdminDeleteGoal | [AdminDeleteGoal](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminDeleteGoal.java) | [AdminDeleteGoal](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminDeleteGoal.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/slots` | PUT | AdminMoveGoalToSlot | [AdminMoveGoalToSlot](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminMoveGoalToSlot.java) | [AdminMoveGoalToSlot](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminMoveGoalToSlot.java) |
+| `/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/slots` | GET | AdminGetChallengeSlots | [AdminGetChallengeSlots](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/goal_configuration/AdminGetChallengeSlots.java) | [AdminGetChallengeSlots](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/goal_configuration/AdminGetChallengeSlots.java) |
 
 ### Schedules Wrapper:  [Schedules](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/Schedules.java)
 | Endpoint | Method | ID | Class | Example |
@@ -55,7 +57,7 @@
 |---|---|---|---|---|
 | `/challenge/v1/admin/namespaces/{namespace}/progress/evaluate` | POST | AdminEvaluateProgress | [AdminEvaluateProgress](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/AdminEvaluateProgress.java) | [AdminEvaluateProgress](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/AdminEvaluateProgress.java) |
 | `/challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}` | GET | AdminGetUserProgression | [AdminGetUserProgression](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/AdminGetUserProgression.java) | [AdminGetUserProgression](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/AdminGetUserProgression.java) |
-| `/challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate` | POST | EvaluateMyProgress | [EvaluateMyProgress](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/EvaluateMyProgress.java) | [EvaluateMyProgress](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/EvaluateMyProgress.java) |
+| `/challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate` | POST | PublicEvaluateMyProgress | [PublicEvaluateMyProgress](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/PublicEvaluateMyProgress.java) | [PublicEvaluateMyProgress](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/PublicEvaluateMyProgress.java) |
 | `/challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}` | GET | PublicGetUserProgression | [PublicGetUserProgression](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/PublicGetUserProgression.java) | [PublicGetUserProgression](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/PublicGetUserProgression.java) |
 | `/challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}` | GET | PublicGetPastUserProgression | [PublicGetPastUserProgression](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_progression/PublicGetPastUserProgression.java) | [PublicGetPastUserProgression](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_progression/PublicGetPastUserProgression.java) |
 
@@ -73,7 +75,7 @@
 ### Challenge List Wrapper:  [ChallengeList](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/wrappers/ChallengeList.java)
 | Endpoint | Method | ID | Class | Example |
 |---|---|---|---|---|
-| `/challenge/v1/public/namespaces/{namespace}/challenges` | GET | GetChallenges | [GetChallenges](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_list/GetChallenges.java) | [GetChallenges](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_list/GetChallenges.java) |
+| `/challenge/v1/public/namespaces/{namespace}/challenges` | GET | PublicGetChallenges | [PublicGetChallenges](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_list/PublicGetChallenges.java) | [PublicGetChallenges](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_list/PublicGetChallenges.java) |
 | `/challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals` | GET | PublicGetScheduledGoals | [PublicGetScheduledGoals](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/operations/challenge_list/PublicGetScheduledGoals.java) | [PublicGetScheduledGoals](../../samples/cli/src/main/java/net/accelbyte/sdk/cli/api/challenge/challenge_list/PublicGetScheduledGoals.java) |
 
 
@@ -87,6 +89,7 @@
 | `iam.Permission` | [IamPermission](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/IamPermission.java) |
 | `model.ChallengeReference` | [ModelChallengeReference](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeReference.java) |
 | `model.ChallengeResponse` | [ModelChallengeResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeResponse.java) |
+| `model.ChallengeSlotResponse` | [ModelChallengeSlotResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelChallengeSlotResponse.java) |
 | `model.ClaimUserRewardsByGoalCodeRequest` | [ModelClaimUserRewardsByGoalCodeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUserRewardsByGoalCodeRequest.java) |
 | `model.ClaimUserRewardsReq` | [ModelClaimUserRewardsReq](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUserRewardsReq.java) |
 | `model.ClaimUsersRewardsRequest` | [ModelClaimUsersRewardsRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimUsersRewardsRequest.java) |
@@ -94,8 +97,10 @@
 | `model.ClaimableUserReward` | [ModelClaimableUserReward](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelClaimableUserReward.java) |
 | `model.CreateChallengeRequest` | [ModelCreateChallengeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateChallengeRequest.java) |
 | `model.CreateGoalRequest` | [ModelCreateGoalRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCreateGoalRequest.java) |
+| `model.CurrentRoundSlotResponse` | [ModelCurrentRoundSlotResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelCurrentRoundSlotResponse.java) |
 | `model.EvaluatePlayerProgressionRequest` | [ModelEvaluatePlayerProgressionRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelEvaluatePlayerProgressionRequest.java) |
 | `model.GetGoalsResponse` | [ModelGetGoalsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGetGoalsResponse.java) |
+| `model.GetSlotsResponse` | [ModelGetSlotsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGetSlotsResponse.java) |
 | `model.GoalInSchedulesResponse` | [ModelGoalInSchedulesResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalInSchedulesResponse.java) |
 | `model.GoalMeta` | [ModelGoalMeta](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalMeta.java) |
 | `model.GoalOrder` | [ModelGoalOrder](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelGoalOrder.java) |
@@ -110,6 +115,7 @@
 | `model.ListScheduleByGoalResponse` | [ModelListScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListScheduleByGoalResponse.java) |
 | `model.ListSchedulesResponse` | [ModelListSchedulesResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListSchedulesResponse.java) |
 | `model.ListUserRewardsResponse` | [ModelListUserRewardsResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelListUserRewardsResponse.java) |
+| `model.MoveGoalToSlotRequest` | [ModelMoveGoalToSlotRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelMoveGoalToSlotRequest.java) |
 | `model.Pagination` | [ModelPagination](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPagination.java) |
 | `model.PluginAsignmentAppConfig` | [ModelPluginAsignmentAppConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAsignmentAppConfig.java) |
 | `model.PluginAssignmentCustomConfig` | [ModelPluginAssignmentCustomConfig](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelPluginAssignmentCustomConfig.java) |
@@ -123,6 +129,7 @@
 | `model.Schedule` | [ModelSchedule](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelSchedule.java) |
 | `model.ScheduleByGoalResponse` | [ModelScheduleByGoalResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelScheduleByGoalResponse.java) |
 | `model.ScheduleResponse` | [ModelScheduleResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelScheduleResponse.java) |
+| `model.TemplateSlotResponse` | [ModelTemplateSlotResponse](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelTemplateSlotResponse.java) |
 | `model.UpdateChallengeRequest` | [ModelUpdateChallengeRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateChallengeRequest.java) |
 | `model.UpdateChallengeScheduleRequest` | [ModelUpdateChallengeScheduleRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateChallengeScheduleRequest.java) |
 | `model.UpdateGoalRequest` | [ModelUpdateGoalRequest](../../module-challenge/src/main/java/net/accelbyte/sdk/api/challenge/models/ModelUpdateGoalRequest.java) |

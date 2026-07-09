@@ -2319,6 +2319,48 @@ public class Users {
   }
 
   /**
+   * @see PublicWebReauthPlatform
+   */
+  public PublicWebReauthPlatformOpResponse publicWebReauthPlatform(PublicWebReauthPlatform input)
+      throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicWebReauthPlatformEstablish
+   */
+  public PublicWebReauthPlatformEstablishOpResponse publicWebReauthPlatformEstablish(
+      PublicWebReauthPlatformEstablish input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
+   * @see PublicWebReauthPlatformProcess
+   */
+  public PublicWebReauthPlatformProcessOpResponse publicWebReauthPlatformProcess(
+      PublicWebReauthPlatformProcess input) throws Exception {
+    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
+      input.setCustomBasePath(customBasePath);
+    }
+
+    final HttpResponse httpResponse = sdk.runRequest(input);
+    return input.parseResponse(
+        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
+  }
+
+  /**
    * @see PublicGetUsersPlatformInfosV3
    */
   public PublicGetUsersPlatformInfosV3OpResponse publicGetUsersPlatformInfosV3(

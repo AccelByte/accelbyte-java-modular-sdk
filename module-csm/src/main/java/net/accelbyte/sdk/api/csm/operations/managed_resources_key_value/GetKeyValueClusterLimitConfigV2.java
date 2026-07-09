@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * GetKeyValueClusterLimitConfigV2
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
- *
  * <p>Get Key-Value cluster limit config.
  */
 @Getter

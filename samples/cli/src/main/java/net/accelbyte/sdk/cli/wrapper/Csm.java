@@ -26,6 +26,9 @@ import net.accelbyte.sdk.cli.api.csm.managed_resources_sql.*;
 import net.accelbyte.sdk.cli.api.csm.notification_subscription.*;
 import net.accelbyte.sdk.cli.api.csm.resources_limits.*;
 import net.accelbyte.sdk.cli.api.csm.notification_subscription_v3.*;
+import net.accelbyte.sdk.cli.api.csm.app_v4.*;
+import net.accelbyte.sdk.cli.api.csm.app_status_progress_v4.*;
+import net.accelbyte.sdk.cli.api.csm.app_v5.*;
 
 import picocli.CommandLine.Command;
 
@@ -135,6 +138,10 @@ import picocli.CommandLine.Command;
                 GetNoSQLAppListV2.class,
                 GetNotificationSubscriberListV3.class,
                 DeleteSubscriptionAppNotificationV3.class,
+                GetAppDebugInfoV4.class,
+                UpdateAppDebugModeV4.class,
+                GetAppStatusProgressV4.class,
+                CreateAppV5.class,
         }
 )
 public class Csm implements Runnable {

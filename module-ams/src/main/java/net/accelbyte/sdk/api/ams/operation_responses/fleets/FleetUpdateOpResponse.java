@@ -27,6 +27,8 @@ public class FleetUpdateOpResponse extends ApiResponse {
 
   private ResponseErrorResponse error404 = null;
 
+  private ResponseErrorResponse error409 = null;
+
   private ResponseErrorResponse error500 = null;
 
   public String getFullOperationId() {

@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * DeleteSecretV1
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
- *
  * <p>Delete an environment secret.
  *
  * @deprecated

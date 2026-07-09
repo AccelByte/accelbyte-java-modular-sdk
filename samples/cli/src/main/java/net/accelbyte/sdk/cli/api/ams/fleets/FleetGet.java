@@ -42,6 +42,9 @@ public class FleetGet implements Callable<Integer> {
     @Option(names = {"--namespace"}, description = "namespace")
     String namespace;
 
+    @Option(names = {"--includeInactiveRegions"}, description = "includeInactiveRegions")
+    Boolean includeInactiveRegions;
+
 
     @Option(names = {"--logging"}, description = "logger")
     boolean logging;
@@ -64,6 +67,7 @@ public class FleetGet implements Callable<Integer> {
                     net.accelbyte.sdk.api.ams.operations.fleets.FleetGet.builder()
                             .fleetID(fleetID)
                             .namespace(namespace)
+                            .includeInactiveRegions(includeInactiveRegions)
                             .build();
             final ApiFleetGetResponse response =
                     wrapper.fleetGet(operation).ensureSuccess();

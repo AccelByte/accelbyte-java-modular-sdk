@@ -22,8 +22,6 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * GetListIntegratedAppKeyValueClusterV2
  *
- * <p>Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
- *
  * <p>Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active
  * integrations are returned.
  */

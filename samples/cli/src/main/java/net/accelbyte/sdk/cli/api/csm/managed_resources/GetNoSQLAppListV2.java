@@ -45,11 +45,11 @@ public class GetNoSQLAppListV2 implements Callable<Integer> {
     @Option(names = {"--appName"}, description = "appName")
     String appName;
 
+    @Option(names = {"--gameNamespace"}, description = "gameNamespace")
+    String gameNamespace;
+
     @Option(names = {"--limit"}, description = "limit")
     Integer limit;
-
-    @Option(names = {"--namespace"}, description = "namespace")
-    String namespace;
 
     @Option(names = {"--offset"}, description = "offset")
     Integer offset;
@@ -77,8 +77,8 @@ public class GetNoSQLAppListV2 implements Callable<Integer> {
                             .resourceId(resourceId)
                             .studioName(studioName)
                             .appName(appName)
+                            .gameNamespace(gameNamespace)
                             .limit(limit)
-                            .namespace(namespace)
                             .offset(offset)
                             .build();
             final ApimodelNoSQLAppListResponse response =

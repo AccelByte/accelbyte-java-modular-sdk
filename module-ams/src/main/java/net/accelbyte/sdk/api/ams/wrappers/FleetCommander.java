@@ -46,9 +46,9 @@ public class FleetCommander {
   }
 
   /**
-   * @see Func1
+   * @see VersionInfo
    */
-  public Func1OpResponse func1(Func1 input) throws Exception {
+  public VersionInfoOpResponse versionInfo(VersionInfo input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

@@ -13,6 +13,8 @@ import net.accelbyte.sdk.cli.api.gdpr.configuration.*;
 import net.accelbyte.sdk.cli.api.gdpr.platform_account_closure_client.*;
 import net.accelbyte.sdk.cli.api.gdpr.data_retrieval.*;
 import net.accelbyte.sdk.cli.api.gdpr.platform_account_closure_history.*;
+import net.accelbyte.sdk.cli.api.gdpr.data_deletion_headless.*;
+import net.accelbyte.sdk.cli.api.gdpr.data_retrieval_headless.*;
 import net.accelbyte.sdk.cli.api.gdpr.data_deletion_s2s.*;
 import net.accelbyte.sdk.cli.api.gdpr.data_retrieval_s2s.*;
 
@@ -57,6 +59,12 @@ import picocli.CommandLine.Command;
                 PublicSubmitMyAccountDeletionRequest.class,
                 PublicCancelMyAccountDeletionRequest.class,
                 PublicGetMyAccountDeletionStatus.class,
+                PublicSubmitMyHeadlessDeletionRequest.class,
+                PublicSubmitMyHeadlessPersonalDataRequest.class,
+                PublicGenerateMyHeadlessPersonalDataURL.class,
+                PublicGetMyPersonalDataRequests.class,
+                PublicSubmitMyPersonalDataRequest.class,
+                PublicCancelMyPersonalDataRequest.class,
                 S2SGetListFinishedAccountDeletionRequest.class,
                 S2SGetListFinishedPersonalDataRequest.class,
                 S2SGetDataRequestByRequestID.class,

@@ -24,6 +24,8 @@ public class AdminGetUserPersonalDataRequestsOpResponse
 
   private ResponseError error401 = null;
 
+  private ResponseError error404 = null;
+
   private ResponseError error500 = null;
 
   public String getFullOperationId() {

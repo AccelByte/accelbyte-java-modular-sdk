@@ -22,7 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * deleteGameSession
  *
- * <p>Delete a game session.
+ * <p>Permanently deletes a game session. Only the session leader or an admin can delete the
+ * session. Any allocated dedicated server will be released.
  */
 @Getter
 @Setter

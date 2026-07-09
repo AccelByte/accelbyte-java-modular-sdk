@@ -17,7 +17,7 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 
 @Getter
 @Setter
-public class PublicGetAsyncStatusOpResponse extends ApiResponseWithData<ModelLinkRequest> {
+public class PublicGetAsyncStatusOpResponse extends ApiResponseWithData<ModelReAuthRequest> {
 
   private RestErrorResponse error401 = null;
 

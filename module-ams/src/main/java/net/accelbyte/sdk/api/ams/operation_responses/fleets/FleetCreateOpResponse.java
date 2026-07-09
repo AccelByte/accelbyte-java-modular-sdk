@@ -25,6 +25,8 @@ public class FleetCreateOpResponse extends ApiResponseWithData<ApiFleetCreateRes
 
   private ResponseErrorResponse error403 = null;
 
+  private ResponseErrorResponse error409 = null;
+
   private ResponseErrorResponse error500 = null;
 
   public String getFullOperationId() {

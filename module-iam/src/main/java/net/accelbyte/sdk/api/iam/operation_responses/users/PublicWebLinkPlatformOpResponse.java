@@ -25,6 +25,8 @@ public class PublicWebLinkPlatformOpResponse extends ApiResponseWithData<ModelWe
 
   private RestErrorResponse error404 = null;
 
+  private RestErrorResponse error500 = null;
+
   public String getFullOperationId() {
     return "net.accelbyte.sdk.api.iam.operations.users.PublicWebLinkPlatform";
   }

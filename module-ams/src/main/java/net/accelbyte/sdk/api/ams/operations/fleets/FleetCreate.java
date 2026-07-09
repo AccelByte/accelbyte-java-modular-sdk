@@ -107,6 +107,10 @@ public class FleetCreate extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError403(new ResponseErrorResponse().createFromJson(json));
       response.setError(response.getError403().translateToApiError());
+    } else if (code == 409) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError409(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError409().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new ResponseErrorResponse().createFromJson(json));

@@ -18,9 +18,11 @@ import net.accelbyte.sdk.core.ApiResponseWithData;
 @Getter
 @Setter
 public class PublicProcessWebLinkPlatformV3OpResponse
-    extends ApiResponseWithData<ModelLinkRequest> {
+    extends ApiResponseWithData<ModelReAuthRequest> {
 
   private RestErrorResponse error400 = null;
+
+  private RestErrorResponse error500 = null;
 
   public String getFullOperationId() {
     return "net.accelbyte.sdk.api.iam.operations.users.PublicProcessWebLinkPlatformV3";

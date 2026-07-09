@@ -61,7 +61,9 @@ public class AppV2 {
 
   /**
    * @see CreateAppV2
+   * @deprecated
    */
+  @Deprecated
   public CreateAppV2OpResponse createAppV2(CreateAppV2 input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);

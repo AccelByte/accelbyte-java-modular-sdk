@@ -64,12 +64,12 @@ public class OAuth {
   }
 
   /**
-   * @see PlatformTokenRequestHandler
+   * @see NamespaceScopedPlatformTokenGrant
    * @deprecated
    */
   @Deprecated
-  public PlatformTokenRequestHandlerOpResponse platformTokenRequestHandler(
-      PlatformTokenRequestHandler input) throws Exception {
+  public NamespaceScopedPlatformTokenGrantOpResponse namespaceScopedPlatformTokenGrant(
+      NamespaceScopedPlatformTokenGrant input) throws Exception {
     if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
       input.setCustomBasePath(customBasePath);
     }

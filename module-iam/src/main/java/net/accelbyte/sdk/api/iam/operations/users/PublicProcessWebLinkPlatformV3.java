@@ -22,10 +22,17 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * PublicProcessWebLinkPlatformV3
  *
- * <p>Processes third party account link and returns the link status directly instead of redirecting
- * to the original page. The param **state** comes from the response of
- * `/users/me/platforms/{platformId}/web/link` Supported platforms: - ps4web - xblweb - steamopenid
- * - epicgames - facebook - twitch - google - apple - snapchat - discord - amazon - oculusweb
+ * <p>Completes the third party account link and returns the link status directly instead of
+ * redirecting to the **redirectUri** defined when calling the `GET
+ * /users/me/platforms/{platformId}/web/link` endpoint.
+ *
+ * <p>Supported platforms: - ps4web - xblweb - steamopenid - epicgames - facebook - twitch - google
+ * - apple - snapchat - discord - amazon - oculusweb
+ *
+ * <p>## New API version
+ *
+ * <p>This API remains fully functional, but `POST
+ * /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
  */
 @Getter
 @Setter
@@ -115,25 +122,29 @@ public class PublicProcessWebLinkPlatformV3 extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new ModelLinkRequest().createFromJson(json));
+      response.setData(new ModelReAuthRequest().createFromJson(json));
       response.setSuccess(true);
     } else if (code == 400) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError400(new RestErrorResponse().createFromJson(json));
       response.setError(response.getError400().translateToApiError());
+    } else if (code == 500) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError500(new RestErrorResponse().createFromJson(json));
+      response.setError(response.getError500().translateToApiError());
     }
 
     return response;
   }
 
   /*
-  public ModelLinkRequest parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public ModelReAuthRequest parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new ModelLinkRequest().createFromJson(json);
+      return new ModelReAuthRequest().createFromJson(json);
   }
   */
 

@@ -22,7 +22,8 @@ import net.accelbyte.sdk.core.util.Helper;
 /**
  * adminGetMemberActiveSession
  *
- * <p>Get Member Active Session.
+ * <p>Returns the number of active sessions the specified user is participating in under the given
+ * configuration template.
  */
 @Getter
 @Setter

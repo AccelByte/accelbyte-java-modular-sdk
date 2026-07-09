@@ -130,46 +130,4 @@ public class DataDeletion {
     return input.parseResponse(
         httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
   }
-
-  /**
-   * @see PublicSubmitMyAccountDeletionRequest
-   */
-  public PublicSubmitMyAccountDeletionRequestOpResponse publicSubmitMyAccountDeletionRequest(
-      PublicSubmitMyAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
-    }
-
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see PublicCancelMyAccountDeletionRequest
-   */
-  public PublicCancelMyAccountDeletionRequestOpResponse publicCancelMyAccountDeletionRequest(
-      PublicCancelMyAccountDeletionRequest input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
-    }
-
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
-
-  /**
-   * @see PublicGetMyAccountDeletionStatus
-   */
-  public PublicGetMyAccountDeletionStatusOpResponse publicGetMyAccountDeletionStatus(
-      PublicGetMyAccountDeletionStatus input) throws Exception {
-    if (input.getCustomBasePath().equals("") && !customBasePath.equals("")) {
-      input.setCustomBasePath(customBasePath);
-    }
-
-    final HttpResponse httpResponse = sdk.runRequest(input);
-    return input.parseResponse(
-        httpResponse.getCode(), httpResponse.getContentType(), httpResponse.getPayload());
-  }
 }

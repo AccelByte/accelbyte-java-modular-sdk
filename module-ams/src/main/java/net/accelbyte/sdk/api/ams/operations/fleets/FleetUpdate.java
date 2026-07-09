@@ -117,6 +117,10 @@ public class FleetUpdate extends Operation {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError404(new ResponseErrorResponse().createFromJson(json));
       response.setError(response.getError404().translateToApiError());
+    } else if (code == 409) {
+      final String json = Helper.convertInputStreamToString(payload);
+      response.setError409(new ResponseErrorResponse().createFromJson(json));
+      response.setError(response.getError409().translateToApiError());
     } else if (code == 500) {
       final String json = Helper.convertInputStreamToString(payload);
       response.setError500(new ResponseErrorResponse().createFromJson(json));

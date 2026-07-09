@@ -45,6 +45,9 @@ public class FleetList implements Callable<Integer> {
     @Option(names = {"--count"}, description = "count")
     Integer count;
 
+    @Option(names = {"--includeInactiveRegions"}, description = "includeInactiveRegions")
+    Boolean includeInactiveRegions;
+
     @Option(names = {"--name"}, description = "name")
     String name;
 
@@ -83,6 +86,7 @@ public class FleetList implements Callable<Integer> {
                             .namespace(namespace)
                             .active(active)
                             .count(count)
+                            .includeInactiveRegions(includeInactiveRegions)
                             .name(name)
                             .offset(offset)
                             .region(region)

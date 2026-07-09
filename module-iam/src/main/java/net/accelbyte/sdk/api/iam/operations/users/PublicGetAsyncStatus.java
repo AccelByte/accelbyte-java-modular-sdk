@@ -90,7 +90,7 @@ public class PublicGetAsyncStatus extends Operation {
       response.setSuccess(true);
     } else if ((code == 200) || (code == 201)) {
       final String json = Helper.convertInputStreamToString(payload);
-      response.setData(new ModelLinkRequest().createFromJson(json));
+      response.setData(new ModelReAuthRequest().createFromJson(json));
       response.setSuccess(true);
     } else if (code == 401) {
       final String json = Helper.convertInputStreamToString(payload);
@@ -110,13 +110,13 @@ public class PublicGetAsyncStatus extends Operation {
   }
 
   /*
-  public ModelLinkRequest parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
+  public ModelReAuthRequest parseResponse(int code, String contentType, InputStream payload) throws HttpResponseException, IOException {
       if(code != 200){
           final String json = Helper.convertInputStreamToString(payload);
           throw new HttpResponseException(code, json);
       }
       final String json = Helper.convertInputStreamToString(payload);
-      return new ModelLinkRequest().createFromJson(json);
+      return new ModelReAuthRequest().createFromJson(json);
   }
   */
 

@@ -115,6 +115,7 @@ public class IamErrors {
   public static ApiError error10237 = new ApiError("10237", "display name not allowed to update");
   public static ApiError error10238 = new ApiError("10238", "country not allowed to update");
   public static ApiError error10240 = new ApiError("10240", "namespace is not game namespace");
+  public static ApiError error10249 = new ApiError("10249", "platform re-authentication failed");
   public static ApiError error10364 = new ApiError("10364", "client exists");
   public static ApiError error10365 = new ApiError("10365", "client not found");
   public static ApiError error10456 = new ApiError("10456", "role not found");
