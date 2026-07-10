@@ -69,7 +69,7 @@ public class PublicWebReauthPlatform implements Callable<Integer> {
             }
             final AccelByteSDK sdk = new AccelByteSDK(httpClient, CLITokenRepositoryImpl.getInstance(), new DefaultConfigRepository());
             final Users wrapper = new Users(sdk);
-            final net.accelbyte.sdk.api.iam.operations.users.PublicWebReauthPlatform operation =
+            final net.accelbyte.sdk.api.iam.operations.users.PublicWebReauthPlatform operationRequest =
                     net.accelbyte.sdk.api.iam.operations.users.PublicWebReauthPlatform.builder()
                             .namespace(namespace)
                             .platformId(platformId)
@@ -78,7 +78,7 @@ public class PublicWebReauthPlatform implements Callable<Integer> {
                             .operation(operation)
                             .build();
             final ModelWebLinkingResponse response =
-                    wrapper.publicWebReauthPlatform(operation).ensureSuccess();
+                    wrapper.publicWebReauthPlatform(operationRequest).ensureSuccess();
             final String responseString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
             log.info("Operation successful\n{}", responseString);
             return 0;
